@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.all_qna_list_wrap {
+	width: 90%;
+	margin: 0 auto;
+}
+#all_qna_list_title {
+	font-size: 2.0rem;
+	font-family: '여기어때 잘난체';
+}
+.all_qna_list_table {
+	width: 100%;
+	border: 1px solid;
+	border-collapse : collapse;
+	margin-bottom: 50px;
+}
+.all_qna_list_table th, td {
+	border: 1px solid;
+	border-collapse : collapse;
+	text-align: center;
+	height: 25px;
+}
+.all_qna_list_table button {
+	border: none;
+	background-color: #fde2ac;
+}
+.all_qna_list_table input {
+	width: 50%;
+}
+
+#qna_number {
+	width: 8%;
+}
+.page_area{
+	text-align:center;
+}

@@ -1,0 +1,281 @@
+@charset "UTF-8";
+*{font-family:Malgun Gothic;}
+
+#login_wrap {
+	display: flex;
+	flex-direction: column; /* 세로정렬 */
+	text-align: center;
+}
+
+#login_title {
+	font-size: 2.0rem;
+	/* font-family:'여기어때 잘난체'; */
+	font-weight:bold;
+	color: black;
+}
+
+#login_info {
+	width: 80%;
+	font-size: 0.8rem;
+	color:gray;
+	margin: 0 auto;
+	font-weight: 400;
+}
+
+#login_wrap a {
+	font-size: 1.0rem;
+	color: black;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+#login_wrap button{
+	width: 80%;
+	height: 50px;
+	border-radius: 5px;
+	border: 0;
+}
+
+#kakao_btn {
+	background-color: #F5E54F;
+}
+#naver_btn {
+	background-color: #79B64D;
+}
+#facebook_btn {
+	background-color: #5766A8;
+}
+#google_btn {
+	background-color: #F3F3F3;
+}
+#naver_btn a{
+	color:white;
+}
+#facebook_btn a{
+	color:white;
+}
+
+#id_login p a {
+	font-size: 1.0rem;
+}
+
+/*아이디로 로그인*/
+#id_login_wrap {
+	display: flex;
+	flex-direction: column; /* 세로정렬 */
+	text-align: center;
+}
+#id_login_title {
+	font-size: 1.7rem;
+	/* font-family:'여기어때 잘난체'; */
+	font-weight:bold;
+	color: black;
+	margin-top:10px;
+	margin-bottom: 20px;
+}
+#id_login_box input{
+	width: 75%;
+	margin-bottom: 20px;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	font-size: 1.1rem;
+	height: 50px;
+}
+#id_login_box button {
+	width: 75%;
+	font-size: 1.3rem;
+	font-weight:bold;
+	height: 50px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #347844;
+	color: white;
+}
+#find_box {
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+#find_box a {
+	font-size: 1.0rem;
+	color: black;
+	text-decoration: none;
+	font-weight:bold;
+}
+#join_info {
+	font-size: 1.0rem;
+	color: gray;
+	font-weight:bold;
+}
+#join_info a {
+	font-size: 1.0rem;
+	font-style: italic;
+	/* text-decoration: none; */
+	color: #347844;
+	font-weight:bold;
+}
+
+/*회원가입*/
+#join_wrap , #join_form_box{
+	display: flex;
+	flex-direction: column; /* 세로정렬 */
+	text-align: center;
+}
+#join_title {
+	font-size: 1.7rem;
+	/* font-family:'여기어때 잘난체'; */
+	font-weight:bold;
+	color: black;
+}
+#join_form_table {
+	align-items: center;
+	width:90%;
+	margin: 0 auto;
+	border-spacing: 0 15px;
+	background-color: #d5eaca;
+	border-radius: 5px;
+}
+#join_form_table th {
+	text-align: center;
+	font-size: 1.0rem;
+}
+
+#join_form_table input {
+	height: 30px;
+	width: 90%;
+}
+#join_form_table td{
+	width: 70%;
+}
+/* #id_box>input {
+	width: 60%;
+	margin-right: 10px;
+} */
+#emailbox>input, #emailbox>select{
+	width: 26%;
+	height: 30px;
+}
+#join_btn {
+	width: 75%;
+	font-size: 1.3rem;
+	font-weight:bold;
+	height: 50px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #347844;
+	color: white;
+	margin-top: 20px;
+}
+.join_agree {
+	width:90%;
+	text-align: left;	
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column; 
+	line-height: 30px;
+	padding-top: 20px;
+}
+.agree_text {
+	float: left;
+	margin-right: 5px;
+}
+#all_check {
+	font-size: 1.1rem;
+	color: gray;
+	font-weight: 700;
+}
+#text1 {
+	font-size: 0.8rem;
+	color: #ff870f;
+}
+#text2 , #text2 a{
+	font-size: 0.8rem;
+	color: black;
+}
+#text3 {
+	font-size: 0.7rem;
+	color: #c82b1e;
+}
+
+
+
+/* 아이디 비번 찾기 */
+.find_wrap{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding-top: 20px;
+}
+#find_select {
+	width: 85%;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+.select_btn {
+	width: 50%;
+	height: 50px;
+	border: 0;
+	background-color: transparent;
+	font-size: 1.3rem;
+	font-weight:bold;
+}
+.select_btn:active {
+	font-size: 1.5rem;
+}
+.find_id {
+	padding-top: 20px;
+}
+#find_id_btn {
+	width: 75%;
+	font-weight:bold;
+	font-size: 1.3rem;
+	height: 50px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #347844;
+	color: white;
+	margin-top: 10px;
+}
+.find_id_input {
+	width: 75%;
+	/* margin-bottom: 20px; */
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	font-size: 1.1rem;
+	height: 45px;
+}
+.find_pwd {
+	padding-top: 20px;
+}
+#find_pwd_btn {
+	width: 75%;
+	font-size: 1.3rem;
+	font-weight:bold;
+	height: 50px;
+	border-radius: 5px;
+	border: 0;
+	background-color: #347844;
+	color: white;
+	margin-top: 10px;
+}
+.find_pwd_input {
+	width: 75%;
+	/* margin-bottom: 20px; */
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	font-size: 1.1rem;
+	height: 45px;
+}
+
+.find_info button{
+	border: 0;
+	background-color: transparent;
+	color: gray;
+	padding-top: 20px;
+}
+#find_pwd_info {
+	font-size: 0.7rem;
+	margin-top: 0;
+	margin-bottom: 18px;
+	color: red;
+}

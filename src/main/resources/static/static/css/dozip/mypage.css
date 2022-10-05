@@ -1,0 +1,558 @@
+@charset "UTF-8";
+
+/*해당 페이지 본문 전체를 감싸는 wrap*/
+.mypage_wrap {
+	width: 100%;
+	margin: 0 auto;
+}
+
+/* 상단 메뉴 부분*/
+.mypage_menu {
+	display: flex;
+	justify-content:space-between; 
+	flex-direction: column;
+	align-items: center;
+}
+.mypage_menu button {
+	border :none;
+	background: none;
+	/* font-family: '여기어때 잘난체'; */
+	font-size: 1.3rem;
+	margin: 15px 10px;
+	font-weight: bold;
+}
+.mypage_menu_main {
+	width: 100%;
+	background-color: #3a7232;
+	text-align: center;
+}
+.mypage_menu_main button {
+	color: white;
+}
+.mypage_menu_main button:active {
+	color: #faf37e;
+}
+.mypage_menu_sub_box {
+	width: 100%;
+}
+.mypage_menu_sub button:active {
+	text-decoration: underline;
+	background-color: #faf37e;
+}
+.mypage_menu_sub{
+	background-color: #ddefda;
+	width: 100%;
+	text-align: center;
+	display: none; /*sub 메뉴를 전부 가림*/
+}
+#myact_sub { /*기본 나의활동 메뉴를 활성화*/
+	display: block;
+}
+/*본문부분*/
+.mypage_body_wrap {
+	width: 100%;
+	border: 1px solid;
+}
+.mypage_body {
+	display: none;
+}
+/* 내 정보 */
+#my_info {
+	display: block; /*기본 나의활동 메뉴를 활성화*/
+}
+.my_info_wrap {
+	width: 60%;
+	border: 1px solid;
+	margin: 30px auto;
+}
+#mp {
+	margin: 40px 10px;
+}
+#mp>span{
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.my_info_wrap p {
+	font-size: 1.2rem;
+	margin: 30px 20px;
+}
+.my_info_wrap span {
+	font-size: 1.2rem;
+	margin: 20px 20px;
+}
+#span_box {
+	text-align: center;
+	margin: 20px 0;
+}
+.num_text {
+	color: #009fec;
+	font-weight: bold;
+}
+.notice_wrap {
+	width: 60%;
+	border-radius: 5px;
+	border: 3px solid #3a7232;
+	margin: 10px auto;
+}
+#logout_btn {
+	background-color: #3a7232;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	height: 30px;
+	font-weight: bold;
+	width: 100px;
+}
+
+/*정보수정*/
+#my_info_modify {
+	width: 90%;
+	margin: 20px auto;
+	display: none;
+}
+#mim_wrap {
+	width:100%;
+	display: flex;
+	justify-content:space-between; 
+	flex-direction: column;
+	align-items: center;
+}
+#mim_title {
+	font-size: 2.0rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight: bold;
+}
+.mim_table_box {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 100px;
+}
+.mim_table {
+	width: 100%;
+}
+.mim_table th {
+	font-size: 1.3rem;
+}
+.mim_table td {
+	border: none;
+	text-decoration: none;
+}
+.mim_table td>input{
+	width: 80%;
+	height: 40px;
+	font-size: 1.3rem;
+	margin: 5px 0;
+	margin-left: 20px;
+}
+#emailbox>input, #emailbox>select{
+	width: 25%;
+	height: 40px;
+}
+#mem_domain { margin-left: 0;}
+#mem_zip {
+	width: 20%;
+	height: 40px;
+	font-size: 1.3rem;
+	margin: 5px 0;
+	margin-left: 20px;
+}
+#mem_addr1 {
+	width: 58%;
+	height: 40px;
+	font-size: 1.3rem;
+	margin: 5px 0;
+}
+
+#search_btn {
+	height : 45px;
+	padding: 10px;
+	color: white;
+	font-size: 1.0rem;
+	border-radius: 5px;
+	font-weight:bold;
+	letter-spacing: 1px;
+	border: none;
+	background-color: #3a7232;
+}
+#mim_btn {
+	width: 40%;
+	height : 50px;
+	color: white;
+	font-size: 1.3rem;
+	letter-spacing: 10px;
+	border: none;
+	background-color: #3a7232;
+	border-radius: 5px;
+	margin: 20px auto;
+}
+
+/*비밀번호 변경*/
+#my_pwd_modify {
+	display: none;
+}
+.mpm_wrap {
+	border: 1px solid;
+	width: 50%;
+	margin: 50px auto;	
+}
+#mpm_title {
+	font-size: 1.7rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	margin-bottom: 40px;
+	margin-left: 20px;
+}
+.my_pwd_modify_box {
+	width: 90%;
+	margin: 0 auto;
+}
+.my_pwd_modify_box p {
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+}
+.my_pwd_modify_box input {
+	width: 95%;
+	height: 30px;
+}
+#infotext_s {
+	color: gray;
+	font-size: 0.8rem;
+	margin-top: 0;
+}
+#mpm_btn_wrap {
+	display: flex;
+	align-items: center;
+}
+#mpm_btn {
+	width: 45%;
+	height : 50px;
+	color: white;
+	font-size: 1.3rem;
+	letter-spacing: 1px;
+	border: none;
+	background-color: #3a7232;
+	border-radius: 5px;
+	margin: 30px auto;
+}
+
+/* 내 스크랩 확인*/
+#my_scrap_view {
+	display: none;
+}
+
+/* 내 후기 확인 */
+#my_review_list {
+	display: none;
+}
+.mrl_wrap {
+	width: 90%;
+	margin: 20px auto;
+}
+#mrl_title {
+	font-size: 1.7rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight: bold;
+}
+#b_review {
+	margin-bottom: 20px;
+}
+#mrl_info {
+	margin: 80px 0 80px 0;
+}
+#mrl_info>p {
+	font-weight: bold;
+	font-size: 1.0rem;
+	text-align: center;
+}
+#mrl_info>p>a{
+	color: #3a7232;
+	text-decoration: underline;
+}
+
+/* 견적신청내역 */
+#my_apply_list {
+	display: none;
+}
+ .my_apply_wrap {
+ 	width: 90%;
+ 	margin: 30px auto;
+ }
+ .my_apply_info {
+	border: 0;
+	border-radius: 20px;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	background-color: #d9eede;
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+	padding-top: 15px; 
+	padding-bottom: 15px;
+ }
+ .my_apply_title {
+ 	font-size: 1.5rem;
+	font-family: '여기어때 잘난체';
+	margin-top: 30px;
+ }
+ .my_apply_cont table {
+ 	width: 100%;
+ 	border: 1px solid;
+ 	border-collapse : collapse;
+ 	display: table;
+ 	/* table-layout: fixed;  셀 너비 동일하게 나누고 싶으면 살리기*/ 
+ }
+  .my_apply_cont  th {
+ 	border: 1px solid #347844;;
+ 	border-collapse : collapse;
+ 	height: 40px;
+ 	display: table-cell;
+ 	background-color: #347844;
+ 	color: white;
+ }
+ .my_apply_cont  td {
+ 	border: 0.5px solid #808080;
+ 	text-align: center;
+ 	border-collapse : collapse;
+ 	height: 25px;
+ 	font-size: 1.0rem;
+ }
+ 
+ /*계약상세*/
+#my_contract {
+	display: none;
+}
+.my_contract_wrap {
+	width: 90%;
+	margin: 30px auto;
+	border: 1px solid yellow;
+}
+#my_cont_title {
+	font-size: 2.0rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	text-align: center;
+	padding: 5px;
+	background-color: #fde482;
+}
+
+.follow_title_wrap {
+	display: flex;
+}
+#follow_title {
+	font-size: 1.5rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	margin-right: 20px;
+}
+.progress_bar {
+    width: 300px;
+    height: 30px;
+    background-color: #dedede;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-top: 20px;
+}
+.progress_bar .progress {
+    width: 45%; 
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-color: #4F98FF;
+    color: #111;
+}
+#progress_percent {
+	font-size: 1.5rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	margin-left: 10px;
+}
+
+.my_contract_info {
+	border: 5px solid #3a7232;
+	border-radius: 20px;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	/* background-color: #d9eede; */
+	text-align: center;
+	width: 90%;
+	padding-top: 15px; 
+	padding-bottom: 15px;
+	margin: 0 auto;
+}
+.my_contract_info table, td, th {
+ 	border: none;
+	margin: 0 auto;
+}
+.my_contract_info table {
+	width: 100%;
+}
+.my_contract_info th, td {
+	font-size: 1.3rem;
+}
+.my_contract_info td {
+	/* color: blue; 해당 진행상태일 경우만 블루*/
+	border: none;
+}
+.next_arrow {
+	color: red;
+}
+.my_contract_cont p {
+	font-size: 1.5rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+}
+.my_contract_cont {
+	width: 50%;
+}
+.contract_summary {
+	border: 5px solid #3a7232;
+	border-radius: 20px;
+	/* background-color: #d9eede; */
+	padding-top: 15px; 
+	padding-bottom: 15px;
+	width: 95%;
+}
+#contract_summary_table { 
+	width: 90%; 
+	margin: 0 auto;
+}
+.cst_th, .cst_td {
+	font-size: 1.0rem;
+}
+.contract_view_wrap {
+	text-align: center;
+}
+#contract_view , #apply_view{
+	margin-top: 15px;
+	border: 0;
+	border-radius: 20px;
+	background-color: #008000;
+	color: white;
+	height: 30px;
+	width: 30%;
+}
+
+.contract_pay {
+	width: 50%;
+}
+.contract_pay p {
+	font-size: 1.5rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+}
+.contarct_pay_wrap {
+	border-radius: 20px;
+	border: 5px solid #3a7232;
+	padding-top: 15px; 
+	padding-bottom: 15px;
+	width: 95%;
+}
+.contarct_pay_table {
+	width: 90%; 
+	margin: 20px auto;
+}
+.cpt_th , .cpt_td {
+	font-size: 1.0rem;
+	text-align: center;
+}
+#ttt {
+	background-color: #d5ebd1;
+}
+#total_pay {
+	color: red;
+	font-size: 1.1rem;
+}
+
+.ppp {
+	display: flex;	
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+.pay_wrap {
+	text-align: center;	
+	margin-top: 5px;
+}
+#pay_btn{
+	margin-left: 10px;
+	border: 0;
+	border-radius: 20px;
+	background-color: #008000;
+	color: white;
+	height: 30px;
+	width: 20%;
+}
+
+/* 고객센터문의 */
+#my_counsel_list {
+	display: none;
+}
+.mqw_box {
+	margin: 40px auto; 
+	text-align: center;
+}
+#my_qna_write_btn {
+	border: 0;
+	border-radius: 20px;
+	font-size: 1.2rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	background-color: #347844;
+	text-align: center;
+	width: 37%;
+	height: 50px;
+}
+#my_qna_write_btn a {
+	color: white;
+}
+#my_qna_text {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 200px;
+}
+#my_qna_text  a {
+	text-decoration: underline;
+	color: #347844;
+}
+
+/* 업체문의 */
+#my_partner_qna {
+	display: none;
+}
+.my_P_qna {
+	width: 90%;
+	margin: 30px auto;
+}
+.my_P_qna_title {
+	font-size: 1.5rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+}
+.my_P_qna_cont table {
+	width: 100%;
+	border-top: 1px solid;
+	text-align: center;
+	border-collapse: collapse;
+}
+.my_P_qna_cont  th, td {
+	border-bottom: 1px solid #808080;
+	padding: 10px 0;
+}
+.my_P_qna_cont  td {
+	font-size: 0.8rem;
+}
+#my_P_qna_write_btn {
+	border: 0;
+	border-radius: 20px;
+	font-size: 1.2rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	background-color: #347844;
+	text-align: center;
+	width: 37%;
+	height: 50px;
+}
+#my_P_qna_write_btn a {
+	color: white;
+}

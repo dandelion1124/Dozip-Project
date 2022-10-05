@@ -1,0 +1,362 @@
+@charset "UTF-8";
+
+.review_wrap {
+	width: 100%;
+	margin: 0 auto;
+}
+
+/*드롭다운*/
+.dropdown {
+	position: relative;
+	display: inline-block;
+	height: 70px;
+}
+
+.dd_group {
+	width: 100px;
+	height: 30px;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	border-radius: 5px;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight:bold;
+	font-size: 14px;
+	line-height: 50px;
+}
+
+.dd_group:focus {
+	border: 1px solid #9B51E0;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid #a7ee8e;
+	border-radius: 10px;
+}
+
+.review_write {
+	position: relative;
+	display: inline-block;
+	float: right;
+}
+
+/* part1 */
+.review_write button {
+	border: 0;
+	border-radius: 5px;
+	height: 40px;
+	width: 180px;
+	font-size: 1.0rem;
+	background-color: #347844;
+	color: white;
+	vertical-align: middle;
+	font-weight: bold;
+	margin-right: 30px;
+}
+
+.part1 {
+	
+}
+
+#part1_title {
+	font-size: 2.0rem;
+	/* font-family: '여기어때 잘난체'; */
+	line-height: 70px;
+	font-weight: bold;
+	margin-left: 30px;
+}
+
+#part1_count {
+	font-size: 1.1rem;
+	line-height: 70px;
+	float: right;
+	font-weight: bold;
+	margin-right: 30px;
+}
+
+/* 큰 리뷰 창 */
+.big_review {
+	padding: 20px 0;
+	/* border: 1px solid; */
+	display: flex;
+	margin: 0 auto;
+	justify-content: space-between;
+	background-color: #F8F8F8;
+}
+
+#big_img {
+	width: 50%;
+	margin-left: 20px;
+}
+
+.big_review_cont {
+	width: 43%;
+	margin-right: 20px;
+	padding: 10px;
+	height: 50%;
+	margin-bottom: 0;
+	margin-top: auto;
+}
+
+#review_title {
+	font-size: 1.8rem;
+	font-weight:bold;
+	margin-top: 120px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+
+#review_cont {
+	font-size: 0.8rem;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	margin-top: 30px;
+}
+
+#review_tag button {
+	border: 0;
+	border-radius: 70px;
+	height: 20%;
+	font-size: 0.8rem;
+	margin-right: 5px;
+	background-color: #cef3c5;
+}
+
+#review_info {
+	font-size: 0.8rem;
+}
+#revie_go {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+#revie_go_box {
+	text-align: right;
+}
+/* part2 */
+.part2 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+#part2_area {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	/* background-color: #cdd8e9; */
+	margin: 0 auto; /* 가운데 정렬 */
+}
+
+.part2_inner {
+	border: 2px solid #78cbe7;
+	border-radius: 10px;
+	width: 30%;
+	padding: 10px;
+	background-color: #dff3f9;
+}
+.part2_inner>div>a>img {
+	width: 280px;
+	height: 150px;
+}
+.part2_title {
+	font-size: 1.3rem;
+	font-weight:bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	height: 50px;
+	margin-top: 0;
+}
+
+.part2_cont {
+	width: 90%;
+	margin: 0 auto; /* 가운데 정렬 */
+	font-size: 0.8rem;
+	text-overflow: ellipsis;
+	/* white-space: nowrap; */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* 더보기 버튼 */
+.part3 {
+	display: flex;
+	justify-content: center;
+}
+
+#more {
+	width: 30%;
+	height: 50px;
+	font-size: 1.5rem;
+	border: 0;
+	border-radius: 5px;
+}
+
+/* 리뷰작성페이지 */
+.review_write_wrap {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.review_guide {
+	width: 80%;
+	border-radius: 5px;
+	border: 0;
+	background-color: #cae3f4;
+	margin: 20px auto;
+	padding: 8px;
+}
+
+.review_guide p {
+	font-size: 1.3rem;
+	margin-left: 20px;
+}
+
+.review_guide li {
+	font-family: 'Malgun Gothic';
+	font-weight: 500;
+}
+
+.review_write_form {
+	margin-top: 50px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.review_write_form table {
+	width: 100%;
+}
+
+.review_write_form th {
+	height: 40px;
+}
+
+.review_write_form td {
+	font-size: 0.8rem;
+}
+
+.review_write_form td input {
+	width: 90%;
+	height: 25px;
+	border-radius: 5px;
+}
+
+#load_cont {
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+#r_cont {
+	width: 90%;
+	height: 100px;
+	resize: none;
+	font-family: 'Malgun Gothic';
+	border-radius: 5px;
+}
+
+#image_container {
+	border: 1px solid;
+	width: 70%;
+}
+
+#image_container img {
+	max-width: 20%;
+	height: auto;
+}
+
+.choice_group {
+	width: 100px;
+	height: 20px;
+	border: 1px solid #747474;
+	box-sizing: border-box;
+	border-radius: 10px;
+	font-family: '여기어때 잘난체';
+	font-size: 14px;
+	line-height: 50px;
+}
+
+.choice_group:focus {
+	border: 1px solid #9B51E0;
+	box-sizing: border-box;
+	border-radius: 10px;
+	outline: 3px solid #a7ee8e;
+	border-radius: 10px;
+}
+
+/* 별점 */
+#test {
+	background-color: #fdefcc;
+}
+.star-rating {
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 1.3rem;
+	line-height: 1.8rem;
+	justify-content: space-around;
+	padding: 0 0.2em;
+	width: 5em;
+	/* vertical-align: middle; 안먹힘 */
+}
+
+.star-rating input {
+	display: none;
+}
+
+.star-rating label {
+	-webkit-text-fill-color: transparent;
+	/* Will override color (regardless of order) */
+	-webkit-text-stroke-width: 1.5px;/* 2.3px; */
+	-webkit-text-stroke-color: #2b2a29;
+	cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+	-webkit-text-fill-color: gold;
+}
+
+.star-rating label:hover, .star-rating label:hover ~ label {
+	-webkit-text-fill-color: #fff58c;
+}
+
+.star_area {
+	display: flex;
+}
+
+.star_score {
+	display: flex;
+	font-size: 1.0rem;
+	line-height: 1.5rem;
+	justify-content: space-around;
+	font-family: '여기어때 잘난체';
+	margin-left: 5px;
+}
+
+
+
+
+#r_submit_btn {
+	border: 0;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	background-color: #347844;
+	color: white;
+	text-align: center;
+	width: 45%;
+	height: 40px;
+}
+
+#btn_cell {
+	text-align: center;
+	height: 60px;
+}

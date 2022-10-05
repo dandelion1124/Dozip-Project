@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+.counsel_wrap {
+	width: 95%;
+	margin: 0 auto;
+}
+
+/* 상단 안내부분 part1 */
+.counsel_info {
+	display: flex;
+	flex-direction: column;
+	background-color: #F8F8F8;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+#info_text {
+	text-align: center;	
+}
+#info_text_b {
+	font-size: 2.0rem;
+	/* font-family: '여기어때 잘난체'; */
+	font-weight: bold;
+}
+#info_text_s {
+	font-size: 1.2rem;
+	color: #575757;
+}
+.btn_group {
+	display: flex;
+	margin: 0 auto;
+	width: 50%;
+}
+.btn_group button {
+	border: 0;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	font-weight:bold;
+	/* font-family: '여기어때 잘난체'; */
+	background-color: #347844;
+	text-align: center;
+	width: 45%;
+	height: 50px;
+}
+.btn_group a{
+	color: white;
+}
+#qna_write_btn {
+	margin-right: 50px;
+}
+
+/* 나의문의 part2 */
+.my_qna {
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+.my_qna_title p{
+	font-size: 1.5rem;
+	font-weight: bold;
+	/* font-family: '여기어때 잘난체'; */
+}
+.my_qna_cont table {
+	width: 100%;
+	border-top: 1px solid;
+	text-align: center;
+	border-collapse: collapse;
+}
+.my_qna_cont  th, td {
+	border-bottom: 1px solid #808080;
+	padding: 10px 0;
+}
+.my_qna_cont  td {
+	font-size: 0.8rem;
+}
+#head_num {
+	width: 10%;
+}
+#head_title, #title {
+	width: 60%;
+	text-align: left;
+	padding-left: 20px;
+}
+.page_area{
+	text-align:center;
+}
+
+/* 자주하는 질문 */
+.qna_part {
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 30px;
+}
+.qna_btn_group {
+	text-align: center;
+	margin-bottom: 30px;
+}
+.qna_btn_group button {
+	border: 0;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	font-weight: bold;
+	background-color: #d3e4ad;
+	text-align: center;
+	width: 12%;
+	height: 30px;
+}
+
+/*질문답변 박스부분 시작*/
+.qna_cont {
+  width: 100%;
+}
+.qna_menu{
+  position: relative;
+  padding: 17px 0;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #dddddd;  
+}
+.qna_menu::before{
+  display: inline-block;
+  content: 'Q';
+  font-size: 14px;
+  color: #006633;
+  margin: 0 5px;
+}
+.qna_menu.on>span{
+  font-weight: bold;
+  color: #006633; 
+}
+.qna_hide {
+  display: none;
+    overflow: hidden;
+  font-size: 14px;
+  background-color: #f4f4f2;
+  padding: 27px 0;
+}  
+.qna_hide::before {
+  display: inline-block;
+  content: 'A';
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin: 0 5px;
+}
+.qna_menu .arrow-top {
+  display: none;
+}
+.qna_menu .arrow-bottom {
+  display: block;
+}
+.qna_menu.on .arrow-bottom {
+  display: none;
+}
+.qna_menu.on .arrow-top {
+  display: block; 
+}
+/*질문답변 박스부분 끝*/
+
+/* 문의글쓰기 페이지 */
+.counsel_write_wrap {
+	width: 95%;
+	margin: 0 auto;
+}
+.counsel_write_title {
+	font-size: 1.7rem;
+	text-align: center;
+	font-weight: bold;
+}
+.counsel_write_form_box {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	background-color: #e7e7e7;
+	border-radius: 15px;
+	margin-bottom: 30px;
+	font-weight: bold;
+}
+#qna_title {
+	width: 95%;
+	border-radius: 5px;
+	height: 30px;
+	margin: 5px 0 20px 10px;
+	font-weight: bold;
+}
+#businessName {
+	width: 86%;
+	border-radius: 5px;
+	height: 30px;
+	margin: 5px 0 20px 10px;
+}
+#cw_search_btn {
+	width: 8%;
+	border: 0;
+	border-radius: 5px;
+	height: 35px;
+	background-color: #347844;
+	color: white;
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+#counsel_write_form span {
+	font-size: 1.2rem;
+	width: 95%;
+	margin-left: 10px;
+}
+#qna_type {
+	width: 95%;
+	border-radius: 5px;
+	height: 30px;
+	margin: 5px 0 20px 10px;
+}
+#qna_cont {
+	margin: 5px 0 20px 10px;
+	width: 95%;
+	height: 100px;
+	resize: none;
+	font-family: 'Malgun Gothic';
+	border-radius: 5px;
+}
+.cw_btn_wrap {
+	display: flex;
+	text-align: center;
+}
+#qna_btn {
+	border: 0;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	background-color: #347844;
+	color: white;
+	text-align: center;
+	width: 45%;
+	height: 40px;
+	margin:0 auto;
+	font-weight: bold;
+}

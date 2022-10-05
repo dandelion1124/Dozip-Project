@@ -1,0 +1,108 @@
+.title {
+  background-color: none;
+  width: 600px;
+  display:flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+.subtitle{
+  background-color: none;
+  width: 600px;
+  margin: 0 auto;
+}
+.estimate_box{
+  background-color: none;
+  width: 600px;
+  height: 500px;
+  margin: 0 auto;
+}
+#paragraph{
+ margin-left:10px;
+ width: 75%;
+ height: 250px;
+ vertical-align: top;
+}
+.para{
+  display: flex;
+}
+.para p{
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size:small;
+}
+[type="file"]{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.companies{
+  background-color: #888;
+}
+.title h3{
+  color: #888;
+  font-size: 28px;
+  margin-top: 10px;
+}
+button#certify_phone, button#address_btn {
+    height: 35px;
+    background: #EB6703;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+    padding-top: 2px;
+}
+button#certify_phone:hover, button#address_btn:hover{
+	background: #444;
+}
+/*your_cost, proposed_cost*/
+.proposed_cost{
+  display:flex;
+}
+.your_cost{
+  display: flex;
+}
+
+.estimate_box input[type=text]{
+  font-size: large;
+  margin: 10px 10px 0px 10px;  /*아래 오른쪽 위 왼쪽*/
+  height: 35px;
+  width: 450px;
+}
+.estimate_box input[type=text]:hover{
+	
+}
+/*다음 페이지 넘김 버튼*/
+.nextpage{
+  background-color: none;
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+#go-back{
+  margin-top: 5%;
+  width: 30%;
+  height: 45px;
+  border-radius: 10px;
+  background-color: rgb(247, 226, 169);
+  border:none;
+  font: bolder;
+}
+#go-next{
+  margin-top: 5%;
+  width: 69%;
+  height: 45px;
+  border-radius: 10px;
+  background-color: rgb(235, 103, 3);
+  border:none;
+  font: bolder;
+  color: white;
+}
+.nextpage button:hover{
+  cursor: pointer;
+}
+
+#li_01{
+  display: flex;
+}

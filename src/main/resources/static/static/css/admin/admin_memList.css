@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+.memlist_wrap {
+	width: 95%;
+	margin: 0 auto;
+}
+/* 본문 상단 */
+
+.table_type {
+	display: flex;
+	flex-direction : column;	
+	justify-content : center;
+	align-items : center;
+	background-color: #F8F8F8;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	margin-top: 10px;
+}
+
+#table_sel {
+	font-size : 1.4rem;
+	font-family : '여기어때 잘난체';
+	padding-top : 20px;
+	color : #0A6EFF;
+}
+
+#table_info {
+	font-size : 1.4rem;
+	font-family : '여기어때 잘난체';
+	color : #347844;
+}
+
+/* 본문 테이블 */
+
+.table_btn {
+	display : flex;
+	justify-content: center;
+	
+}
+
+#mem_btn {
+	margin-right : 40px;
+	border : 0;
+	border-radius : 20px;
+	font-size : 18px;
+	text-align : center;
+	width : 10%;
+	height : 50px;
+	background-color : #32AAFF;
+	font-family : '여기어때 잘난체';	
+	color : white;
+}
+
+#part_btn {
+	border : 0;
+	border-radius : 20px;
+	font-size : 18px;
+	text-align : center;
+	width : 15%;
+	height : 50px;
+	background-color : #32AAFF;
+	font-family : '여기어때 잘난체';	
+	color : white;
+}
+
+.mem_table {
+	display : flex;
+	justify-content: center; 
+}
+
+#tb_mem {
+	margin-top : 70px;
+	display : flex;
+	justify-content: center; 
+	border-top: 1px solid #ccc;
+	border-bottom : 1px solid #ccc;
+	margin : 20px 10px;
+	text-align: center;
+	line-height : 1.5;
+	border-collapse: collapse;
+}
+
+#tb_mem th {
+	padding : 10px;
+	font-weight : bold;
+	color : #fff;
+	background-color : #41A541; 
+}
+
+#tb_mem tr.even {
+	background-color: #D2FFD2;
+}
+
+
+#tb_part {
+	margin-top : 50px;
+	display : none;
+	text-align: center;
+	line-height : 1.5;
+	border-collapse: collapse;
+}
+
+#tb_part th{
+	padding:10px;
+	font-weight:bold;
+	color: #fff;
+	background-color: #41A541; 
+}
+
+#tb_part tr.even {
+	background-color : #D2FFD2;
+}
+
+
+
+

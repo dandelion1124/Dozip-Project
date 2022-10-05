@@ -1,0 +1,369 @@
+@charset "UTF-8";
+/* index.jsp ui */
+body{
+	margin:0px; /*상하좌우 바깥여백을 없앰*/
+	padding:0px; /*상하좌우 안여백을 없앰 */
+}
+
+a {
+  text-decoration: none;
+  color:black;
+}
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+/* 헤더시작 */
+#header {
+	position: fixed; /* 헤더부분 상단 고정 */
+	width: 100%;
+	background-color: white;
+	z-index: 1; /* 항상 제일 위에 위치하도록 설정 */
+}
+#header + div{ /* 헤더 다음에 오는 div 에 패딩을 주어 가려짐 문제 해결 */
+  padding-top: 100px;
+}
+.header_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+}
+.logo{
+    font-size: 24px;
+    margin-left: 30px;
+}
+.logo img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover; /*가로세로 비율유지한채 사이즈조절.*/
+}
+.menu{
+    display:flex;
+    list-style: none;
+    padding-left: 0; /*왼쪽여백을 0을 줘서 중앙에 정렬*/
+    font-size: 1.3rem;
+	font-family:'210 맨발의청춘 Regular'; 
+}
+.menu li{
+    padding: 8px 12px;
+}
+.menu li:hover{
+    border-radius: 4px;
+}
+.icons{
+    list-style: none; /*옆에 토글을 지움*/
+    padding-left: 0;
+    color: black;
+    display: flex;
+    margin-right: 30px;
+}
+.icons li{
+    padding: 8px 12px;
+}
+.toggleBtn{
+    display: none;
+    position: absolute;
+    top: 18px;
+    right:32px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 600px){
+    .header_nav{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 8px 24px;
+    }
+    .menu{
+        display: none; /*스크린 가로가 600px미만일때 메뉴가 보이지 않게*/
+        flex-direction: column;
+        align-items: center; /*메뉴바만 가운데 정렬*/
+        width: 100%; /*메뉴바의 가운데 정렬을위해 너비를 늘림*/
+    }
+    .menu li{
+        width:100%;
+        text-align: center;
+    }
+    .icons{
+        display: none;
+        justify-content: center;
+        width: 100%;
+    }
+    .toggleBtn{
+        display: block;
+    }
+
+    /*active 요소 추가*/
+    .menu.active,
+    .icons.active{
+        display: flex;
+    }
+}
+.clear{ clear:both; /*float속성을 제거해서 잘못된 ui 적용을 막아준다. */}
+/* 헤더끝 */
+
+/* 본문 */
+#wrap { /* 본문 전체를 감싸는 wrap */
+	width: 90%;
+	margin:0 auto; /* 가운데 정렬 */
+}
+
+#part {
+}
+
+/*part1 부분*/
+#part1 {
+	width: 100%;
+	padding-top: 20px;
+	display: flex;
+	justify-content:center;	
+	position: relative;
+}
+#btn_group {
+	position: absolute;
+	/* background-color: orange; */
+	left:1.75em;
+	bottom:0.75em;
+}
+
+#btn1 , #btn2 {
+	background-color: transparent;
+	border: none;
+}
+
+/*part2 부분*/
+#part2 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#part2 ul{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+#part2 ul li{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+#part2 a{
+  padding: 10px 0 10px 50px;
+  font-weight: 500;
+  color: black;
+  white-space: nowrap;
+}
+.icon_title{
+	font-size: 0.8rem;
+	color: gray;
+}
+
+.part_title {
+	display: flex;
+	justify-content: center;
+	font-size: 2.0rem;
+	font-family:'여기어때 잘난체';
+}
+
+#part3 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;	
+	padding-bottom: 20px;
+	background-color: #F8F8F8;
+}
+#part3_img{
+	display: flex;
+	justify-content: center;
+}
+
+
+#part4 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;	
+	padding-bottom: 20px;
+	text-align: center;
+}
+#part4_link {
+	text-decoration: none;
+	color: black;
+}
+#part4_area {
+	width:100%;
+	display: flex;
+	justify-content:space-between;
+	/*background-color: #cdd8e9;*/
+	margin: 0 auto;  /*가운데 정렬*/ 
+}
+
+.part4_title {
+	font-size: 1.3rem;
+	font-family:'210 맨발의청춘 Regular'; 
+	background-color: orange;
+}
+
+.part4_cont {
+	background-color: green;
+	width:90%;
+	margin: 0 auto; /* 가운데 정렬 */
+	font-size: 0.8rem;
+	text-overflow: ellipsis;
+	/*white-space: nowrap; 
+	overflow: hidden;
+	display: -webkit-box;
+ 	-webkit-line-clamp: 3;
+ 	-webkit-box-orient: vertical; */	
+}
+
+/* part 4 카드영역 */
+/* 카드리스트 */
+.cards-list {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* 개별카드 */
+.card {
+	width: 22%;
+	height: 100%;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.card_image img {
+	width: 100%;
+	height: 200px;
+	border-radius: 40px 40px 0px 0px;
+	object-fit: cover;
+	display: flex;
+}
+
+.card_title {
+	border-radius: 0px 0px 40px 40px;
+	background-color:#92d1fc;
+	height: 80px;
+	width: 100%;
+	padding-top: 20px;
+}
+
+.card_title li {
+	list-style: none;
+	text-align: center;
+	font-size: 1.1rem;
+	font-family:'여기어때 잘난체';
+	line-height: 1.9;
+}
+.card:hover {
+  transform: scale(0.9, 0.9);
+}
+
+/* part 5 시작 */
+#part5 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;	
+	padding-bottom: 20px;
+	text-align: center;
+}
+#part5_link {
+	text-decoration: none;
+	color: black;
+}
+#part5_area {
+	width:90%;
+	display: flex;
+	justify-content:space-between;
+	margin: 0 auto; /* 가운데 정렬 */
+}
+.part5_inner {
+	border: 2px solid #78cbe7;
+	border-radius: 10px;
+	width: 30%;
+	padding: 10px;
+	background-color: #dff3f9;
+}
+.part5_inner>div>a>img {
+	width: 280px;
+	height: 150px;
+}
+.part5_title {
+	font-size: 1.3rem;
+	font-family:'210 맨발의청춘 Regular'; 
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	height: 50px;
+	margin-top: 0;
+}
+.part5_cont {
+	width:90%;
+	margin: 0 auto; /* 가운데 정렬 */
+	font-size: 0.8rem;
+	text-overflow: ellipsis;
+	/* white-space: nowrap; */
+	overflow: hidden;
+	display: -webkit-box;
+ 	-webkit-line-clamp: 3;
+ 	-webkit-box-orient: vertical; 	
+}
+
+/* index.jsp footer 영역 */
+footer{
+	/* background: #89a2cb; */ /* 푸터 구분 위해서 색 넣음 */
+}
+
+.footer_menu{
+    display:flex;
+    list-style: none;
+    padding-left: 0; /*왼쪽여백을 0을 줘서 중앙에 정렬*/
+    font-size: 1.0rem;
+	font-family:'210 맨발의청춘 Regular'; 
+}
+.footer_menu li{
+    padding: 8px 12px;
+}
+
+.footer_nav a:hover {
+  color: green;
+  text-decoration: none;
+}
+
+#footer_company {
+	/* background-color: #cdd8e9; */
+	color:gray;
+	font-size: 0.8rem;
+	margin-left: 20px;
+}
+.footer_company_call_number {
+	font-size: 1.0rem;
+	font-family:'여기어때 잘난체';
+	color: black;
+}
+
+
+
+#admin_logout {
+	background-color:  #cdd8e9;
+	font-size: 1.0rem;
+	font-family:'여기어때 잘난체';
+	border-radius: 10px;
+	padding: 10px;
+}

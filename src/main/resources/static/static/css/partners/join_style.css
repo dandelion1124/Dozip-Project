@@ -1,0 +1,374 @@
+@charset "UTF-8";
+
+
+#join_wrap {
+	margin: 50px 0px;
+}
+*{
+	font-family: "맑은 고딕", 돋움, 굴림;
+	
+	margin:0px ;
+	padding:0px;
+}
+body{
+	background: #FBFBF9;
+	
+}
+
+/**********************/
+/* 회원가입 signup.jsp */
+/*********************/
+
+#signup_form {
+	width: 420px;
+	margin: 0 auto;
+	/*background: #84c1ff;*/
+	border:1px solid #2C2A29;
+	border-radius: 4px;
+	padding-bottom: 20px;
+}
+
+#signup_title {
+	width: 80%;
+	height: 90px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+#signup_title img {
+	width: 250px;
+	margin-left: 40px;
+}
+
+#signup_form>form>.info,#signup_form>form>.signup_pwd {
+	margin: 0px 30px;
+	padding: 10px 30px;
+}
+
+
+/* 회원가입 input태그 */
+
+
+#signup_form input  {
+	border: none;
+	outline: none;
+	height: 30px;
+	
+}
+#signup_form input:hover[type=text], #signup_form input:hover[type=password] {
+	border: 2.5px solid #659832;
+}
+
+#signup_form input:hover[type=button], #signup_form input:hover[type=submit] {
+	background:#659832;	
+}
+#signup_form input[type=button], #signup_form input[type=submit]{
+	height: 37px;
+	border-radius: 4px;
+	
+}
+#signup_form input:active[type=button] {
+	color: white;
+}
+
+#signup_form input[type=text], #signup_form input[type=password], #email_adr {
+	width: 97%;
+	padding: 1px 0px 1px 10px;
+	border: 2.5px solid gray;
+}
+#email_adr {
+	width: 306px;
+	height: 37px;
+	margin-top: 10px;
+}
+#signup_form label {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 13px;
+}
+
+.signup_idchk {
+	display: flex;
+	margin-bottom: 3px;
+}
+
+.signup_idchk input[type=text] {
+	margin-right: 10px;
+}
+
+.signup_pwd input[type=password]:first-of-type {
+	margin-bottom: 8px;
+}
+
+.signup_submit input {
+	width: 293px;
+	padding: 1px 0px;
+	height: 37px;
+	border-radius: 4px;
+}
+
+#signup_personalInfo {
+	height: 150px;
+}
+
+#signup_personalInfo input[type=checkbox] {
+	margin: 0px;
+}
+
+#signup_personalInfo>div {
+	display:flex;
+	margin: 0px 30px;
+	padding: 0px 30px;
+	height: 20px;
+}
+
+#signup_personalInfo>div:first-of-type {
+	margin-bottom: 10px;
+}
+
+#signup_personalInfo_label {
+	margin: 5px 0px 0px 5px;
+}
+
+#signup_personalInfo_label>label {
+	font-weight: lighter;
+	width: 250px;
+}
+
+.signup_submit {
+	margin: 0 30px;
+	padding: 0px 30px;
+}
+#join_wrap .email_info {
+	display: flex;
+	justify-content: space-around;
+	width: 306px;
+}
+
+#business_num_box, #idcheck_box, #password_check_box, #password_check_box  {
+	height: 15px;
+	margin-left: 8px;
+}
+
+/************************/
+/*로그인 페이지 signin.jsp */
+/************************/
+
+#signin_cont{
+	width:435px; height:500px;
+	margin:0px auto;
+	border:1px solid black;
+	/*background:#84c1ff;*/
+	border-radius: 4px;
+}
+#signin_title{
+	width:100%;
+	height:65px;
+	margin-bottom:10px;
+	padding:20px 100px;
+	font-size:38px;
+}
+#signin_title img{
+	width:230px;
+	object-fit:cover;
+	float:left;
+}
+form #signin_id, form #signin_pw{
+	width:85%;
+	margin:8px;
+	height:40px;
+	padding: 0px 20px;
+	font-size: 16px;
+}
+form #login{
+	width:95%;
+	margin:8px;
+	height:45px;
+	border:none;
+	background:#659832;
+	font-size:1.1em;
+}
+form #login:hover{
+	font-weight: bolder;
+}
+
+#bottom_button1{
+	display:flex;
+	justify-content:space-between;
+	margin: 15px 10px;
+	width: 94%;
+}
+input[type=checkbox] {
+zoom: 1.3;
+}
+#id_save{ 
+	display:flex;
+	justify-content:flex-start;
+}
+#id_save_button:hover{
+	font-weight: bolder;
+}
+
+
+#bottom_button2{
+	display:flex;
+	justify-content:space-between;
+	margin: 50px 10px;
+}
+#bottom_button2 input:hover{ /*문의하기 버튼 */
+	font-weight: bolder;
+}
+
+#id_save_button, #signup_button{
+	background: none;
+	border:none;
+}
+
+#signin_id:hover, #signin_pw:hover{
+	border: 2.5px solid #659832;
+
+}
+
+
+#signup_button:hover{
+	font-weight: bolder;
+}
+#bottom_button2 input{
+	background: white;
+	border:none;
+	padding:5px 20px;
+}
+
+#bottom_button2 div:first-child{
+	padding: 3px;
+}
+
+
+/*****************/
+/*find_info.jsp */
+/****************/
+
+/*회원정보 찾기 틀 */
+#findinfo_cont {
+	width: 435px;
+    height: 500px;
+    margin: 0 auto;
+    /*background:#68B4FF;*/
+	border:1px solid black;
+    border-radius: 4px;
+}
+/*회원정보 찾기 타이틀 */
+#findinfo_title {
+	width: 80%;
+	height: 90px;
+	margin-left: 40px;
+	padding-top: 25px;
+}
+
+#findinfo_title img {
+	width:230px;
+	margin-left: 55px;
+}
+
+/*회원정보 찾기 입력폼 */
+#findpwd_form {
+	display: none;
+}
+
+#findinfo_menu {
+	border-bottom: 1px solid black;
+}
+
+#findinfo_menu, #findpwd_form>div, #findid_form>div, #findpwd_form p {
+	margin: 10px 50px;
+}
+
+#findid_form input[type=text], #findpwd_form input[type=text], #findid_form input[type=email] {
+	width: 97%;
+	height: 30px;
+	padding: 1px 0px 1px 7px;
+}
+#findid_btn:hover, #findpwd_btn:hover {
+	color: #1E3932;
+	font-weight: bold;
+}
+
+.findinfo_findbtn input:hover{
+	background: #659832;
+	color: #1E3932;
+	font-weight: bold;
+}
+
+
+
+.findinfo_label {
+	margin: 10px 0;
+}
+
+#findinfo_wrap input[type=button], #findinfo_wrap input[type=reset] {
+	height: 40px;
+	border: none;
+	border-radius: 4px;
+}
+
+.findinfo_findbtn {
+	display: flex;
+	justify-content: center;
+}
+
+.findinfo_findbtn>div {
+	margin: 20px 10px;
+}
+#findid_btn, #findpwd_btn, .findinfo_findbtn input {
+	border: none;
+	padding:10px;
+}
+/*********************/
+/* join 관련 footer **/
+/*********************/
+
+
+footer{
+    width: 100%;
+	padding: 10px 0px 20px 0px;
+    margin-left: 0;
+    margin-top: 20px;
+    background: #2C2A29;
+}
+
+
+#footer_nav a {
+	padding: 10px 0px 0px 20px;
+	color: white;	
+	white-space: nowrap;
+	text-decoration: none;
+	
+	
+}
+
+#footer_nav a:hover {
+	color: green;
+}
+
+footer ul {
+	margin: 10px 0px;
+	display: flex;
+	list-style: none;
+}
+
+#footer_company {
+	color: gray;
+	font-size: 0.8rem;
+	margin-left: 20px;
+}
+
+a.footer_mail {
+    color: white;
+    text-decoration: none;
+}
+a.footer_mail:hover {
+	color: green;
+}
+.footer_company_call_number {
+    font-size: 1.0rem;
+}

@@ -1,0 +1,378 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/*포트폴리오 본문*/
+.port_wrap{
+	display:flex;
+	justify-content: space-between;
+	margin-top : 40px;
+}
+/*드롭다운*/
+.dropdown{
+  height : 70px;
+  float:left;
+  margin-left : 50px;
+}
+
+#dd_group1, #dd_group2, #dd_group3, #dd_group4, #dd_group5 {
+	width: 120px;
+	height: 30px;
+	/* border: 1px solid #C4C4C4; */
+	box-sizing: border-box;
+	margin-left : 10px;
+	border-radius: 5px;
+	font-family: 'Malgun-Gothic';
+	font-size: 14px;
+	line-height: 50px;
+}
+
+#dd_group1 ,#dd_group2 ,#dd_group3 ,#dd_group4 ,#dd_group5:focus {
+	border: 1px solid #00704a;
+	box-sizing: border-box;
+	border-radius: 10px;
+	/* outline: 1px solid #00704a; */
+	border-radius: 2px;
+}
+
+#clear_btn {
+	width : 70px;
+	height : 30px;
+	outline: 1px solid #00704a;
+	border-radius : 2px;
+}
+
+/*검색창 부분*/
+.search {
+	width:100%;
+	float: right;
+	display: flex;
+	margin-right : 20px;
+}
+
+.search_nav > ul{
+	list-style:none;
+}
+
+#keyword {
+  width: 400px;
+  
+  border-bottom: 1px solid #00704a;
+  border-top : none;
+  border-left : none;
+  border-right: none;
+  text-align : center;
+  padding: 5px;
+  height: 20px;
+  outline: none;
+  color: #00704a;
+}
+
+#keyword:focus{
+  color: #00704a;
+}
+
+.search_Btn {
+  width: 40px;
+  margin-bottom : 40px;
+  margin-left : 2px;
+  text-align: center;
+  color: #00704a;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#none_search {
+	display : flex;
+	font-size : 2.0rem;
+	color : #347844;
+	margin: 0 auto ; 
+	justify-content: center;
+	font-weight: 200px;
+	margin-top: 50px;
+	margin-bottom : 100px;
+}
+
+.top_tag {
+	display : flex;
+	justify-content : center;
+	font-family : '맑은고딕';
+	font-size : 1.6rem;
+	font-weight: bold;
+	background-color: #f4f4f2;
+	margin-bottom : 20px;
+	padding:20px 0px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.search_wrap{
+  width: 30%;
+}
+
+/*프리미엄 포트폴리오*/
+
+.premium_comp {
+	margin-top : 30px;
+}
+
+/*배너시작*/
+/*GLOBALS*/
+#slider{margin:0; padding:0; list-style:none;}
+
+#wrapper{
+  width :1500px;
+  margin:0 auto;
+  height:400px;
+ 
+  position:relative;
+  color:#fff;
+  text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;  
+}
+
+#slider-wrap{
+  width:1500px;
+  height:400px;
+  position:relative;
+  overflow:hidden;
+}
+
+#slider-wrap ul#slider{
+  width:100%;
+  height:100%;
+  
+  position:absolute;
+  top:0;
+  left:0;   
+}
+
+#slider-wrap ul#slider li{
+  float:left;
+  position:relative;
+  width:1500px;
+  height:400px; 
+}
+
+#slider-wrap ul#slider li > div{
+  position:absolute;
+  top:20px;
+  left:35px;  
+}
+
+#slider-wrap ul#slider li > div h3{
+  font-size:36px;
+  text-transform:uppercase; 
+}
+
+#slider-wrap ul#slider li > div span{
+  font-family: Neucha, Arial, sans serif;
+  font-size:21px;
+}
+
+#slider-wrap ul#slider li img{
+  display:block;
+  width:100%;
+  height: 100%;
+}
+
+
+/*btns*/
+.btns{
+  position:absolute;
+  width:50px;
+  height:60px;
+  top:50%;
+  margin-top:-25px;
+  line-height:57px;
+  text-align:center;
+  cursor:pointer; 
+  background:rgba(0,0,0,0.1);
+  z-index:100;
+  
+  
+  -webkit-user-select: none;  
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -ms-user-select: none;
+  
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.btns:hover{
+  background:rgba(0,0,0,0.3); 
+}
+
+#next{right:-50px; border-radius:7px 0px 0px 7px;}
+#previous{left:-50px; border-radius:0px 7px 7px 7px;}
+#counter{
+  top: 30px; 
+  right:35px; 
+  width:auto;
+  position:absolute;
+}
+
+#slider-wrap.active #next{right:0px;}
+#slider-wrap.active #previous{left:0px;}
+
+
+/*bar*/
+#pagination-wrap{
+  min-width:20px;
+  margin-top:350px;
+  margin-left: auto; 
+  margin-right: auto;
+  height:15px;
+  position:relative;
+  text-align:center;
+}
+
+#pagination-wrap ul {
+  width:100%;
+}
+
+#pagination-wrap ul li{
+  margin: 0 4px;
+  display: inline-block;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#fff;
+  opacity:0.5;
+  position:relative;
+  top:0;
+  
+  
+}
+
+#pagination-wrap ul li.active{
+  width:12px;
+  height:12px;
+  top:3px;
+  opacity:1;
+  box-shadow:rgba(0,0,0,0.1) 1px 1px 0px; 
+}
+
+
+
+
+/*Header*/
+h1, h2{text-shadow:none; text-align:center;}
+h1{ color: #666; text-transform:uppercase;  font-size:36px;}
+h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+
+
+
+
+/*ANIMATION*/
+#slider-wrap ul, #pagination-wrap ul li{
+  -webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  -ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+  transition: all 0.3s cubic-bezier(1,.01,.32,1); 
+}
+/*배너 종료*/
+
+
+/*포트폴리오 본문*/
+
+/* 전체 */
+.construction_list {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.top_title {
+	display : flex;
+	justify-content : center;
+	font-family : '맑은고딕';
+	font-size : 1.6rem;
+	font-weight: bold;
+	background-color: #f4f4f2;
+	margin-bottom : 20px;
+	padding:20px 0px;
+	
+}
+
+/* 포트폴리오가 없을 시*/
+#none_pf {
+	display : flex;
+	font-size : 2.0rem;
+	color : #347844;
+	margin: 0 auto ; 
+	font-weight: 200px;
+	margin-top: 50px;
+	
+}
+
+/* 카드리스트 */
+.cards-list {
+	flex-wrap : wrap;
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	margin : 0 auto;
+}
+
+/* 개별카드 */
+
+.card-list {
+	width : 100%;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+
+.card {
+	width: 30%;
+	margin: 10px;
+	display: flex;
+	flex-direction: column;
+}  
+
+
+
+.card_image img {
+	width: 100%;
+	height: 280px;
+	border-radius: 5px 5px 5px 5px;
+	object-fit: cover;
+	display: flex;
+}
+
+.card_title {
+	border-radius: 0px 0px 5px 5px;
+	/* background-color:#92d1fc; */
+	height: 70px;
+	width: 100%;
+}
+
+.corp {
+	list-style: none;
+	text-align: center;
+	font-size: 1.3rem;
+	font-family:'Malgun-Gothic';
+	color : #347844;
+	line-height: 1.9;
+	font-weight : 1000;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+.card:hover {
+  transform: scale(0.98, 0.98);
+}
+
+.card_tag {
+	font-size: 0.9rem;
+	list-style: none;
+	text-align: center;
+	line-height: 1.9;
+	font-weight : 700;
+}

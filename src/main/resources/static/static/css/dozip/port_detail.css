@@ -1,0 +1,294 @@
+@charset "UTF-8";
+
+
+.detail_1{
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+#main_img{
+ 
+  width: 800px;
+  height: 500px;
+  border-radius: 9px; 
+}
+
+#d_title{
+	text-align : center;
+	font-family: 'Malgun Gothic';	
+	font-size : 1.5rem;
+	color : #347844;
+}
+
+#d_location{
+	margin : 10px;
+	text-align : center;
+	font-family: 'Malgun Gothic';
+	font-size : 19px;
+}
+
+#d_loca{
+    width : 20px;
+    height:20px;	
+    object-fit: cover;
+}
+
+.d_tags{
+	width : 90%;
+	margin :0 auto;
+	padding-bottom : 30px;
+	text-align : center;
+}
+
+.d_tags button{
+	border : 0;
+	border-radius : 20px;
+	font-size : 1.0rem;
+	font-weight: 800;
+	font-family: 'Malgun Gothic';
+	text-align : center;
+	width : 15%;
+	height : 40px;
+	background-color : #BEF5BE;
+}
+
+/* .d_check{
+	width : 90%;
+	margin: 0 auto;
+	text-align : center;
+	padding : 30px;
+} */
+
+
+
+#contact{
+	border:0;
+	border-radius : 20px;
+	font-size : 18px;
+	text-align : center;
+	width : 20%;
+	height : 50px;
+	background-color : #FFA500;
+	font-family : 'Malgun Gothic';	
+	color : white;
+}
+
+/*상세 본문 디자인*/
+
+.detail_cont1 {
+	display:flex;
+	margin: 0 auto;
+	justify-content:center;
+	text-align : center;
+	border-radius : 5px;
+	width : 60%;
+	height : 50%;
+	background-color :  #FFEFD5 ;
+	
+}
+
+#start_cont{
+	position : relative;
+	right:40px;
+	font-family : 'Malgun Gothic';
+	font-size : 18px;
+	line-height:40px;
+	margin : 0px auto;
+	
+}
+
+.detail_cont2 {
+	display:flex;
+	margin: 0 auto;
+	justify-content:center;
+	text-align : center;
+	border-radius : 5px;
+	width : 60%;
+	height : 40%;
+	background-color :  #FFEFD5 ;
+	
+}
+
+#end_cont{
+	
+	position : relative;
+	right:40px;
+	font-family : 'Malgun Gothic';
+	font-size : 18px;
+	line-height:40px; 
+	margin :  10px, 0px,0px,0px;
+}
+
+.detail_imgs{
+	display:flex;
+	flex-direction : column;
+	align-items:center;
+}
+	
+#d_imgs{
+  margin : 30px;
+  width: 60%;
+  border-radius: 9px; 
+  object-fit: cover;
+}
+
+
+/*스크랩 토글*/
+h3{
+	font-family:'Malgun Gothic';
+	color:#0A6EFF;
+	margin-right : 30px;
+}
+
+.scrap{
+	display:flex;
+	flex-direction : row;
+	justify-content: center;
+} 
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-top : 10px;
+  width: 80px;
+  height: 40px;
+  vertical-align:middle;
+}
+
+
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 6px;
+  bottom: 6px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#scrap_no {
+	margin-top:15px;
+	margin-left : 10px;
+	display:inline-block;
+	font-size:20px;
+	color: #54BD54;
+	font-weight:bold;
+}
+
+#scrap_ok{
+	margin-top:15px;
+	margin-left : 10px;
+	display:inline-block;
+	font-size:20px;
+	color: #0A6EFF;
+	font-weight:bold;
+}
+
+.scrap {
+	margin-bottom : 40px;
+}
+
+.direct_contact{
+	display:flex;
+	justify-content: center;
+}
+
+/* 업체 더 보러가기 */
+.comp_card {
+	width : 500px;
+	height: 150px;
+	background-color : #fff;
+	display:flex;
+	/* flex-direction : row; */
+	justify-content: space-evenly;
+	align-items : center;
+	flex-grow : 1;
+	flex-wrap : wrap;
+	margin: 0 auto;	
+	outline : 3px solid #347844; 
+	border-radius : 5px;
+}
+
+#comp_logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100%;	
+}
+
+.comp_img {
+	display:flex;
+	justify-content:flex-start; 
+	
+}
+
+.name{
+	font-family:'Malg';
+	color: #347844;
+	font-size : 1.4rem;
+	font-weight : 1000;
+}
+#comp {
+	border:0;
+	border-radius : 5px;
+	font-size : 18px;
+	text-align : center;
+	width : 120px;
+	height : 50px;
+	background-color : #347844;
+	font-family : 'Malgun Gothic';	
+	color : white;
+}
+
+#comp_loca {
+	font-family:'Malgun Gothic';
+	font-size : 1.0rem;
+	font-weight : 1000;
+}
+
+
+
+

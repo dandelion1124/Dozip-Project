@@ -1,0 +1,148 @@
+
+.clear {
+	clear: both;
+}
+
+/*Qnad A, review 파일 */
+
+#qna_title .title {
+	font-size: 2em;
+	margin-left: 10px;
+	font-weight: 900;
+}
+
+#qna_title .message {
+	background-color: #eee;
+	margin: 10px;
+	padding: 6px;
+}
+
+#search_bar {
+	background-color: #A29FC6;
+	border-radius: 20px;
+	height: 120px;
+	margin: 0px 10px;
+}
+
+#search_bar dt {
+	font-weight: bolder;
+	float: left;
+	margin: 0px 15px;
+}
+
+#search_bar span div {
+	display: inline-block;
+	margin: 0px 15px 0px 0px;
+}
+
+
+#search_bar_cont span :last-of-type {
+	color: antiquewhite;
+}
+
+
+
+#search_bar button {
+	border: none;
+	background: none;
+}
+
+#search_bar>div {
+	margin-left: 50px;
+}
+
+#search_bar {
+	display: grid;
+	align-items: center;
+}
+
+span>div {
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 3px 10px;
+	font-size: 0.8em;
+}
+
+.period_cont {
+	color: royalblue;
+}
+
+#search_conditon{
+	background:beige;
+	margin: 50px 10px;
+}
+
+div#search_conditon_wrap {
+   padding: 20px 50px;
+}
+#search_conditon_wrap>div{
+	margin:15px 0px;
+}
+#search_conditon_sub_1{
+		display:flex;
+		justify-content:flex-start;
+}
+#search_conditon_sub_1>div{
+	margin-right:100px;
+}
+#search_conditon_hidemenu{
+	display: flex;
+	justify-content: space-between;
+	margin-right:50px;
+}
+
+/*시공 사례 등록 파일 */
+
+#introduce_cont {
+  	background-color: #F39A49;
+    padding: 20px 10px;
+    border-radius: 6px;
+}
+#introduce_cont *{
+  padding:10px 0px;
+	
+}
+
+#portfolio_form fieldset{
+  padding:20px 10px;
+  
+}
+#form_sub_title{
+		margin-bottom: 7px;
+		font-weight: bold;
+}
+fieldset {
+	border:1px lightgray solid ;
+}
+#f_button{
+	border: none;
+}
+fieldset>div{
+  margin:7px 15px;
+}
+fieldset>legend{
+  font-size:18px;
+}
+.inline_div{
+  float:left;
+}
+/*시공 사례 사진 등록 페이지 */
+#uploda_photo_cont {
+	display: inline-grid;
+}
+#uploda_photo_cont>div {
+	float: left;
+	border-right: 3px solid black;
+	margin-right: 30px;
+}
+.photo_inputfile {
+	margin-bottom: 20px;
+}
+#uploda_photo_cont img {
+	width: 200px;
+	height: 200px;
+}
+#photo_submit {
+	margin: 40px 0px 0px 50px;
+	clear: both;
+}

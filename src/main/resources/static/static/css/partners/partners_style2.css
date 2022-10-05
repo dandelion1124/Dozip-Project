@@ -1,0 +1,844 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+/* data_manage */
+   .item_title{
+      margin: 0 0 10px 0;
+      padding: 10px 0 0 2.5%;
+      /*background-color: white;*/
+   }
+   .item_tab_box{
+      width: 100%;
+
+   }
+   .item_tab_inbox{
+      font-size: 17px;
+      width:80%;
+      border: 1px solid lightgray;
+      background-color:white;
+      height: 50px;
+      margin: 20px 2.5%;
+    	padding: 0 2.5%;
+      text-align:center;
+   }
+   #tab1, #tab2, #tab3, #tab4, #tab5{
+      cursor:pointer;
+      line-height:50px;
+      display: inline-block;
+      text-align:center;
+      font-size:15px;
+      font-weight:600px;
+      margin:0 2px;
+      width:18%;
+      height:100%;
+   }
+   #tab1:hover, #tab2:hover, #tab3:hover, #tab4:hover, #tab5:hover{
+   		color:#4398ed;
+   		border-bottom: 2px solid #4398ed;  	
+   }
+   .tab-link{
+      cursor:pointer;
+      text-decoration-line:none;
+      font-weight:bold;
+      color:lightgray;
+      scroll-behavior: smooth;
+   }
+   .tab-link:hover{
+   		color:#4398ed;
+   }
+   
+   .all_information{
+      width:100%;
+   }
+   #business, #additional, #preference, #representative, #payment{
+      width: 80%;
+      margin: 30px 2.5%;
+  	  padding: 0 2.5%;
+      background-color:white;
+   }
+   .business-01{
+   		display:inline-block;
+   }
+   .business-01-1 {
+   		display:inline-block;
+   		float:left;
+   }
+   .business-01-2{
+ 	  	display:inline-block;
+ 	  	float:right;
+   }
+  
+   #pShortstate{
+      resize: vertical;
+      width: 95%;
+      padding:5px 10px;
+      line-height: 1.5;
+   }
+   .additional-02{
+      display:inline-block;
+   }
+   .upload_image_title{
+      
+   }
+   .upload_image_size{
+      font-size:13px;
+      color:blue;
+   }
+   
+   .upload_image{
+      border: 1px dashed #AAB9FF;
+      width: 150px;
+      height: 150px;
+      text-align:center;
+      margin: 0!important;
+   }
+   .upload_lbl{
+      cursor:pointer;
+      display:block;
+      width:150px;
+      height:150px;
+      display:table-cell;
+      vertical-align:middle;
+   }
+   #pInt_img, #pComp_logo, #pAccount_file, #pBusiness_lic_file {
+      visibility: hidden;
+   }
+   .additional-03{
+      display:inline-block;
+   }
+   .current-service{
+   		display:inline-block;
+   }
+   
+    .additional-04.hi{
+       border:1px solid black;
+    }
+ 
+  .label-bordered{
+    border:1px solid gray;
+    height:37px;
+    padding-top: 9px;
+    margin-bottom: 4px;
+    margin-right: 6px;
+  }
+  .homepage{
+     width:95%;
+     padding: 5px 10px;
+     line-height: 1.5;
+     resize:vertical;
+  }
+  .additional-06, .additional-07{
+     display:inline-block;
+     width:45%;
+  }
+  .upload_image2{
+      border: 1px dashed #AAB9FF;
+      width: 100%;
+      height: 200px;
+      text-align:center;
+      margin: 0!important;
+  }
+   .upload_lbl2{
+      cursor:pointer;
+      display:block;
+      width:100%;
+      height:200px;
+      display:table-cell;
+      vertical-align:middle;
+   }  
+  #red{
+    color:red;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .residence, .commercial{
+  	border: 1px solid lightgray;
+  	border-radius:5px;
+  }
+  .clear{
+     clear:both; 
+   }
+  #service1, #service2, #service3, #service4, #service5, #service6,
+  #res_build_all, #res_build01, #res_build02, #res_build03, #res_build04,
+  #res_space_all, #res_space01, #res_space02, #res_space03, #res_space04, #res_space05, #res_space06, #res_space07, #res_space08,
+  #com_build_all, #com_build01, #com_build02, #com_build03, #com_build04, #com_build05, #com_build06, #com_build07,
+  #com_space_all, #com_space01, #com_space02, #com_space03, #com_space04, #com_space05, #com_space06, #com_space07, #com_space08{
+     cursor: pointer;
+  }
+  #check1:visited{
+     color:red;
+  }
+  .lbl-checkbox{
+     font-size: 15px;
+     font-weight: bold;
+     color: #606266;
+     padding:5px;
+     margin:5px;
+     border:1px solid #4398ed; 
+     border-radius:5px 5px 5px 5px;
+     cursor: pointer;
+     display: inline-block;
+  }
+  .lbl-checkbox:hover{
+     border:1px solid blue;
+  }
+  
+ /* 나중에 관리자 페이지에서 파트너스 예치금 추가할수 있도록 변경 */
+  .lbl-checkbox-disabled{  
+     font-size: 15px;
+     font-weight: bold;
+     color: #606266;
+     padding:5px;
+     margin:5px;
+     border:1px solid #4398ed; 
+     border-radius:5px 5px 5px 5px;
+     cursor: pointer;
+     display: inline-block;
+  }
+  .lbl-checkbox-disabled:hover{
+     border:1px solid blue;
+  }
+  
+  .deposit_label{
+     margin:5px;
+  }
+  #deposit_money{
+     width: 30%;
+     height: 20px;
+  }
+  .sigong, .gicho{
+    margin:10px 0px 5px;
+  }
+  
+  .data_edit_button_tag{
+ 		width: 95%;
+    margin: 30px 2%;
+    padding: 0 2%;
+  }
+  .data_edit_button{
+  	padding: 5px;
+  }
+  .money1, .money2{
+  	display:inline-block;
+  }
+  .representative-01, .representative-02{
+  	display:inline-block;
+  	width:40%;
+  	margin:15px;
+  }
+  
+  
+  
+/* estimate_request */
+/* bid */
+   body{
+      letter-spacing: 0.025em;
+      background-color:#f7f7f7;
+   }
+   .request_spot{
+      width: 100%;
+      /*background-color:white; */
+   }
+   .search_tab{
+      width: 100%;
+   }
+   
+   .search_box {
+    margin: 0 2% 0 0;
+    padding: 10px 0 10px 2.5%;
+      width: 100%;
+      height: 35px;
+      /*text-align:center; */
+   }
+   .search-txt {
+      padding:0px;
+      display:inline-block;
+      border:none;
+      border-bottom: 2px solid black;
+      width: 60%;
+      height: 30px;
+   }
+   .search-txt:focus{
+      border:none;
+      background:aliceblue;
+   }
+   
+   .search-btn {
+      padding:0px;
+      display:inline-block;
+      cursor:pointer;
+      background:#F4FFFF;
+      width: 35px;
+      height: 33px;
+
+      border:1px solid black;
+   }
+   .my_bid_icon{
+      position:fixed;
+      top:120px;
+      right:10%;
+   }
+
+   #filter{
+      cursor: pointer;
+   }
+   .filter{
+      cursor: pointer;
+   }
+
+   .request_list_top{
+      padding: 7px 0 0 2.5%;
+   }
+
+   .request_list_container{
+      margin-bottom: 15px;
+      width: 80%;
+      white-space: nowrap;
+   }
+    .request_list{
+       margin-bottom: 15px;   
+    }
+    .request_list_top_right{
+       float: right;
+       margin:5px 2% 5px 2%;
+    }
+    #pr_order{
+       width:100%;
+       font-size:15px;
+       font-weight:bold;
+      padding:5px 10px 0 0;
+    background: transparent;
+    border: 0;
+    }
+
+    .request_list_card{
+       display:table;
+       width:95%;
+       margin:0 2.5% 0 2.5%;
+       background-color:white;
+       white-space: nowrap;
+       table-layout: fixed;
+    }
+    .request_list_item01, .request_list_item02{
+        display: table-cell;
+    }
+    .request_list_item01{
+       width: 80%;
+       padding: 20px 30px 15px 40px;
+    }
+    .request_list_item02{
+        width: 20%;
+     border-left: 1px solid #f4f4f7;
+       margin: 5px;
+    }
+    .label_badge{
+       margin:0;
+       padding:0;
+    }
+    .label_val1{
+       color:white;
+       font-size:12px;
+       margin:0;
+    padding: 5px 5px 5px 5px;
+    background:#00A5FF;
+    }
+    .label_val2{
+       color:white;
+       font-size:12px;
+    margin:0;
+    padding: 5px 5px 5px 5px;
+    background:#000069;
+    }
+    .request_title{
+      margin-top: 20px;
+      overflow: hidden;
+   }
+   .request_title a{
+      text-decoration-line:none;
+      font-size: 20px;
+      font-weight: 600;
+      color: #00050a;
+   }
+   .request_desc_div{
+      display:flex;
+      margin:10px 0 10px 0;
+      padding:10px 0 10px 0;
+   }
+    .request_desc{
+       flex-basis: 100%;
+       margin:0;
+       color: #63666e;
+       height:45px;
+       line-height: 1.6;
+    font-size: 15px;
+    overflow: hidden;
+    /*word-wrap: break-word;*/
+    }
+    .request_list .request_day {
+      float:right;
+      margin:0;
+    font-size: 16px;
+    font-weight: bold;
+    }
+    ul.request_info{
+       margin:0px;
+       display:inline-block;
+       width:100%;
+       padding:0px;
+    }
+    
+    ul li.info{
+        overflow:hidden;  
+     text-overflow: ellipsis;
+      width:18%;
+       display:inline-block;
+      margin:10px 10px 10px 0px;
+      padding:5px;
+       font-size: 12px;
+       list-style:none;
+       text-align:center;
+       background-color:aliceblue;
+       border-radius:3px;
+       /*word-break: keep-all;*/
+    }
+    
+    ul.company_profile{
+       width: 90%;
+       display: block;
+       margin: 0% 5% 25px 5%;
+      padding:0px;
+    }
+    ul li.info2{
+       width:90%;
+       overflow:hidden;  
+     text-overflow: ellipsis;
+     margin:0px 5% 8px 5%;
+       font-size: 12px;
+       list-style: none;
+       text-align: center;
+       background-color:aliceblue;
+       border-radius:3px;
+    }
+    p.request_info_tit{
+       color:gray;
+       margin-top:0px;
+       margin-bottom:3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    p.request_info_val{
+       margin:10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    
+    p.key{
+       margin:3px;
+       color:gray;
+    }
+    p.val{
+       margin:3px;
+       text-overflow: ellipsis;
+    }
+    p.request_info_val{
+       margin:0;
+    }
+    
+    div.bid_detail{
+      padding:0 5% 0 5%;
+       margin:0 auto;
+       text-align: center;
+       
+    }
+    td.bid_result{
+       font-weight:bold;
+    }
+    td.bid_result .success1{
+       color:blue;
+    }
+    td.bid_result .fail1{
+       color:red;
+    }
+    .btn-d-view{
+       overflow:hidden;  
+     width: 90%;
+       margin: 0 5% 0 5%;
+    text-decoration-line:none;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 5px;
+    background: #00BFFF;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.025em;
+    }
+    .bottom-btn-wrap{
+       width:80%;
+    }
+    
+    .bottom-btn-wrap .more_button{
+       opacity:0.5;
+       width:100px;
+       margin:auto;
+       display:block;
+       border:none;
+       background:white;
+       cursor:pointer;
+       text-align:center;
+    }
+    
+    
+    
+/* bid_detail */
+   .my_bid_detail_icon{
+      position:absolute;
+      top:13.5%;
+      right:10%;
+   }
+   .request_list_detail_container{
+      background-color:#f7f7f7;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 80%;
+      /*white-space: nowrap;*/
+   }
+   .go_bid_detail{
+      padding:10px;
+      margin-left:10px;
+   }
+   .list_go{
+      text-decoration-line:none;
+   }
+   .ico_back{
+      float:left;
+   }
+   .list_go_text{
+      font-size:18px;
+      font-weight:bold;
+      color:black;
+      margin-left:1%;
+   }
+    .label_val{
+       color:white;
+       font-size:12px;
+       min-width: 100px;
+    padding: 5px 5px 5px 5px;
+    background: #20B2AA;
+    }
+   .request_detail{
+      background-color:white;
+      margin: 0 3% 0 3%;
+      padding:25px;
+      word-wrap: break-word;
+    word-break: keep-all;
+   }
+   .request_detail_title {
+      margin:20px 0;
+      text-decoration-line:none;
+      font-size: 20px;
+      font-weight: 600;
+      color: #00050a;
+      
+   }
+    .request_detail_desc{
+       line-height: 1.6;
+      height: 48px;
+    margin-top: 15px;
+    /*word-wrap: break-word;*/
+    }
+   .request_detail_day{
+      float: right;
+    font-size: 16px;
+    font-weight: bold;
+   }
+   .green_box{
+    padding: 1.5%;
+    background-color: aliceblue;
+    box-sizing: border-box;
+      font-weight: 500;
+   
+   }
+   .box-cell5{
+      width: 100%;
+      padding:0;
+   }
+   
+
+   .detail_info{
+      width: 15%;
+      display: inline-block;
+      border-right:1px solid gray;
+      padding:0% 2% 0% 2%;
+      overflow: hidden;
+   }
+   .detail_info_ex{
+      width: 15%;
+      display: inline-block;
+      padding:0% 2% 0% 2%;
+      overflow: hidden;
+   }
+   
+   .detail_info .dt, .detail_info_ex .dt{
+      font:12px;
+      color:gray;
+   }
+   .detail_info .dd, .detail_info_ex .dd{
+      text-align:center;
+   }
+   .ico1, .ico2, .ico3, .ico4, .ico5{
+      text-align:center;
+      margin:0;
+   }
+   .detail-op-sec{
+      padding:30px 0 0px 0;
+   }
+   .sec-head-title {
+     border-bottom: 2px solid #00050a;
+     padding-bottom: 15px;
+     font-size:18px;
+     font-weight:bold;
+   }
+   .file-box{
+      margin-top:10px;
+   }
+   .attach_file_list{
+      list-style: none;
+   }
+   .btn-file{
+      text-decoration-line:none;
+      font-size:17px;
+      font-weight:500;
+      color:black;
+      margin-left:5px;
+   }
+   .download_mark{
+      float:left;
+   }
+   .sec-item{
+      margin:10px 0;
+      display: flex;
+      flex-wrap:no-wrap;
+   }
+   .sec-title{
+      flex-basis:25%;
+      width:145px;
+      font-weight: 500;
+      line-height: 30px;
+      color:#4398ed;
+   }
+   .sec-cont{
+      flex-basis:75%;
+      margin:0;
+      line-height: 30px;
+      overflow:auto;
+   }
+   .bottom_color{
+      height: 20px;
+      padding: 10px;
+      /*background-color: aliceblue;*/
+   }
+   .bid_part_div{
+   		width:100%;
+   		
+   
+   }
+   #bid_participate{
+   	cursor:pointer;
+    overflow: hidden;
+    margin: 15px 25% 15px 25%;
+    width: 40%;
+    text-decoration-line: none;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 5px;
+    background: #00BFFF;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.025em;
+    text-align:center;
+   }
+   #bid_complete{
+   	cursor:pointer;
+    overflow: hidden;
+    margin-top:5px;
+    text-decoration-line: none;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 5px;
+    background: #00BFFF;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.025em;
+    text-align:center;
+   }
+   #bid_part_detail{
+   	/*display:inline-block; */
+   	display:none;
+   	width:100%;
+   	background-color:#f7f7f7;
+   }
+   .bid_complete_button{
+   	display:inline-block;
+   	display:none;
+   	width:50%;
+   }
+   
+   
+   .bid_but_tab{
+     padding:0 15% 0 15%;
+     margin:0 auto;
+     text-align: center;
+   }
+
+	 .bid_detail01, .bid_detail02, .bid_detail03{
+	 	/*text-align:center; */
+	 	width: 50%;
+	 	margin:5px 0;
+	 	display: inline-block;
+	 }
+	 .bid_detail_text01, .bid_detail_text02{
+	 	width: 48%;
+	 	margin:5px 0;
+	 	display: inline-block;
+	 	text-align:right;
+	 }
+	 
+	 #bid_price, #bid_period{
+	 	
+	 }
+	 
+	 #bid_detail{
+	 	width: 100%;
+	 }
+
+
+/* my_bid */
+   .request_spot{
+   
+   }
+   .my_bid_title1, .my_bid_title2{
+      width: 100%;
+   }
+   #bid_fin, #bid_proc{
+      padding: 40px 0 10px 50px;
+      /*background-color:white; */
+   }
+   .my_bid_list{
+      margin-bottom:20px;
+   }
+   .my_bid_label{
+      font-size:20px;
+      height: 100px;
+   }
+   .my_bid_cont{
+      font-size:16px;
+      height: 50px;
+   }
+   .my_bid_btn-d-view{
+       overflow:hidden;  
+     text-overflow: ellipsis;
+       margin: 0 5% 0 5%;
+    text-align: center;
+    text-decoration-line:none;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 5px;
+    background: #00BFFF;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.025em;   
+   }
+    .btn-cancel{
+       overflow:hidden;  
+     text-overflow: ellipsis;
+       margin: 0 25% 0 25%;
+    text-align: center;
+    text-decoration-line:none;
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 5px;
+    background: red;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.025em;   
+    }
+    
+ /*construct-request */
+    .my_req_list{
+      margin-top:20px;
+      margin-bottom:20px;
+   }
+   .my_req_label{
+      font-size:20px;
+      height: 100px;
+   }
+   .my_req_cont{
+      font-size:16px;
+      height: 50px;
+   }
+   .req_accept{
+      display:table-cell;
+   }
+   .req_accept .accept, .req_accept .deny{
+      width:40%;
+      height:40px;
+      border:0;
+      color:white;
+      cursor:pointer;
+   }
+   .req_accept .accept{
+      background-color: #0000FF;
+   }
+   .req_accept .deny{
+      background-color: red;
+   }
+   .style_list{
+      list-style:none;
+   }
+   .attach_style_list{
+      list-style:none;
+   }
+   
+   /*request_detail */
+   .detail_info_cons{
+      width: 20%;
+      display: inline-block;
+      border-right:1px solid gray;
+      padding:0% 2% 0% 2%;
+      overflow: hidden;
+   }
+   .detail_info_cons_ex{
+      width: 20%;
+      display: inline-block;
+      padding:0% 2% 0% 2%;
+      overflow: hidden;
+   }
+   .detail_info_cons .dt, .detail_info_cons_ex .dt{
+      font:12px;
+      color:gray;
+   }
+   .detail_info_cons .dd, .detail_info_cons_ex .dd{
+      text-align:center;
+   }
+   
+   
+   
+   /*pw_change */
+   .pw_change_form{
+   		min-height: 500px;
+   }
+   .pw_change_title{
+   		margin-bottom:10px;
+   }
+   .pw_change01, .pw_change02, .pw_change03{
+  	width: 97%;
+    padding: 1px 0px 1px 10px;
+    border: 2.5px solid gray;
+   }
+   
+   
