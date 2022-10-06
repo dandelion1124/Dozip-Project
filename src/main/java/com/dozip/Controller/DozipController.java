@@ -9,5 +9,5 @@ public class DozipController {
     @RequestMapping(value = "/dozip")
     public String dozip(){
         return "/dozip/index";
-    };
+    }
 }
