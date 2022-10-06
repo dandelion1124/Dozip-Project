@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<title>두꺼비집</title>
-	<link rel="stylesheet" type="text/css" href="/Admin/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/admin/main.css" />
 	
 	<script src="https://kit.fontawesome.com/3624917c4f.js" crossorigin="anonymous"></script>
 	
@@ -20,7 +20,7 @@
 			<nav class="header_nav">
 				<!-- 로고 -->
 				<div class="logo">
-					<a href="./index.jsp"> <img src="/Admin/images/logo.png"/>
+					<a href="./index.jsp"> <img src="/images/admin/logo.png"/>
 					</a>
 				</div>
 				

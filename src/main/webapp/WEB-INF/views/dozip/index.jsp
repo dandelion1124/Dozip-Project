@@ -11,18 +11,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<title>두꺼비집</title>
-	<link rel="stylesheet" type="text/css" href="/DoZip/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="/DoZip/css/portfolio.css" />
+	<link rel="stylesheet" type="text/css" href="/css/dozip/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/dozip/portfolio.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
 	
 	<script src="https://kit.fontawesome.com/3624917c4f.js" crossorigin="anonymous"></script>
-	<script src ="./js/header.js" defer></script>
-	<script src ="./js/map.js" defer></script>
-	<script src="./js/portfolio.js"defer></script>
-	<script src="./js/jquery.js"></script>
+	<script src ="/js/dozip/header.js" defer></script>
+	<script src ="./js/dozip/map.js" defer></script>
+	<script src="./js/dozip/portfolio.js"defer></script>
+	<script src="./js/dozip/jquery.js"></script>
 	<script>
 	    function openLogin(){
 	        window.open("member_login.do", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0" );
@@ -36,7 +36,7 @@
 			<nav class="header_nav">
 				<!-- 로고 -->
 				<div class="logo">
-					<a href="home.do"> <img src="./images/main_logo.png"/>
+					<a href="home.do"> <img src="/images/dozip/main_logo.png"/>
 					</a>
 				</div>
 				
@@ -50,12 +50,12 @@
 			
 				<ul class="icons">
 				<c:if test="${empty id}"> <!-- 로그인 전 -->
-					<li><a href="#none" onclick="openLogin();"><img src="./images/user.png" width="30" height="30" /></a></li>
+					<li><a href="#none" onclick="openLogin();"><img src="/images/dozip/user.png" width="30" height="30" /></a></li>
 				</c:if>
 				<c:if test="${!empty id}"> <!-- 로그인 후 -->
-					<li><a href="mypage_go.do"><img src="./images/user.png" width="30" height="30" /></a></li>
+					<li><a href="mypage_go.do"><img src="/images/dozip/ser.png" width="30" height="30" /></a></li>
 				</c:if>
-					<li><a href="counsel.do"><img src="./images/counsel.png" width="30" height="30" /></a></li>
+					<li><a href="counsel.do"><img src="/images/dozip/counsel.png" width="30" height="30" /></a></li>
 				</ul>
 				<a href="#" class="toggleBtn"><i class="fas fa-bars"></i></a> <!-- 반응형 메뉴 토글 버튼-->
 			</nav>
@@ -73,19 +73,19 @@
 			      <div id="slider-wrap">
 			          <ul id="slider">
 			             <li>                
-							<img src="/DoZip/images/main_b2_1.jpg">
+							<img src="/images/dozip/main_b2_1.jpg">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/main_b3_1.png">
+							<img src="/images/dozip/main_b3_1.png">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/main_b1.png">
+							<img src="/images/dozip/main_b1.png">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/main_b4.png">
+							<img src="/images/dozip/main_b4.png">
 			             </li>
 			          </ul>
 			          
@@ -138,7 +138,7 @@
 			<div id="part3">
 				<span class="part_title"><p>인테리어, 왜 두집에 맡겨야 할까요?</p></span>
 				<span id="part3_img">
-					<a id="part3_image" href="#"><img src="./images/part3.png" /></a>
+					<a id="part3_image" href="#"><img src="/images/dozip/part3.png" /></a>
 				</span>
 			</div>
 			
@@ -184,7 +184,7 @@
 				
 					<div class="part5_inner">
 						<div><a class="part5_img" href="review_detail.do">
-							<img src="/DoZip/images/review1.jpg"/>
+							<img src="/images/dozip/review1.jpg"/>
 						</a></div>
 						<div class="part5_title"><p>깔끔한 주방 인테리어</p></div>
 						<div class="part5_cont">
@@ -194,7 +194,7 @@
 					</div>
 					<div class="part5_inner">
 						<div><a class="part5_img" href="review_detail.do">
-							<img src="/DoZip/images/review2.jpg"/>
+							<img src="/images/dozip/review2.jpg"/>
 						</a></div>
 						<div class="part5_title"><p>아늑하고 분위기 있는 침실</p></div>
 						<div class="part5_cont">
@@ -204,7 +204,7 @@
 					</div>
 					<div class="part5_inner">
 						<div><a class="part5_img" href="review_detail.do">
-							<img src="/DoZip/images/review3.jpg"/>
+							<img src="/images/dozip/review3.jpg"/>
 						</a></div>
 						<div class="part5_title"><p>작업을 위한 작업실 공사</p></div>
 						<div class="part5_cont">
