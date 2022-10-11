@@ -251,6 +251,14 @@ public class DozipController {
 
     @RequestMapping(value = "/dozip/comp_detail")
     public String comp(){return "/dozip/portfolio/comp_detail";}
- 
- 
-}
+
+    @GetMapping("/apply")
+    public String apply() {
+        return "/dozip/apply/applicationSheet";
+    }
+    @GetMapping("/apply2")
+    public String apply2(){
+        return "/dozip/apply/applicationSheet2";
+    }
+
+}//DozipController

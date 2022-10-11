@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
-<link rel="stylesheet" href="./css/apply_style.css" />
-<script src="./js/apply.js" defer></script>
+<link rel="stylesheet" href="/css/dozip/apply_style.css" />
+<script src="/js/dozip/apply.js" defer></script>
 <script src="./js/jquery.js"></script>
 <script src="./js/sessionStorage.js"></script>
 
@@ -10,7 +10,7 @@
     <title>인테리어 견적 신청서</title>
   <body>
     <article id="estimate_step01">
-     <form method="post" action="estimate_apply_ok.do" onsubmit='return apply01_check()'>
+     <form method="get" action="/dozip/apply2" onsubmit='return apply01_check()'>
       <div>
         <section aria-label="공간 유형 선택" class="building_types">
           <div class="title">
@@ -21,8 +21,8 @@
           <h3>공간 유형</h3>
             <input type="radio" value="주거" id="1" name="est_zoning" checked><label for="1">주거</label>
             <input type="radio" value="상가" id="2" name="est_zoning"><label for="2">상가</label>
+          </div>
         </section>
-        </div>
       </div>
       <div class="estimate_box">
         <h3>건물 유형</h3>
@@ -223,7 +223,7 @@
       <input type="checkbox" id="group_kitchen_item_5" name="group_kitchen_item" value="아일랜드식탁">
       <label for="group_kitchen_item_5">
           <span class="h4 select_detail__title">아일랜드식탁</span>
-          <span class="expect_price">120만원~</p>
+          <span class="expect_price">120만원~</span>
       </label></li>
 </ul>
 </div>
