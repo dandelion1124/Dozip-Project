@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
-<link rel = "stylesheet" type = "text/css" href = "../css/myscrap.css"/>
+<link rel = "stylesheet" type = "text/css" href = "/css/dozip/myscrap.css"/>
+<link rel = "stylesheet" type = "text/css" href = "/css/dozip/mypage.css"/>
 
 <div class="mypage_wrap">
 	<%--상단 메뉴부분 --%>
@@ -42,7 +43,7 @@
 		<%-- 내정보 --%>
 		<div class="mypage_body" id="my_info">
 			<div class="my_info_wrap">
-				<div id="mp"><span>${id} 님 활동</span> <button id="logout_btn" onclick="location='member_logout.do';">로그아웃</button></div>
+				<div id="mp"><span>${id} 님 활동</span> <button id="logout_btn" onclick="location='/dozip/logout_ok';">로그아웃</button></div>
 				<hr />
 				<div id="span_box"><span>신청내역<span class="num_text">2 건</span></span>
 				<span>|</span>

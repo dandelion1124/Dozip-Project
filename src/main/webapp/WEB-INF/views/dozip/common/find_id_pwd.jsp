@@ -5,9 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>아이디/비밀번호 찾기</title>
-	<link rel="stylesheet" type="text/css" href="/DoZip/css/login.css" />
-	<script src="/DoZip/js/jquery.js"></script>
-	<script src="/DoZip/js/member.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
+	<script src="/js/dozip/jquery.js"></script>
+	<script src="/js/dozip/member.js"></script>
 	<script>
 		function on_find_id() {
 			$('.find_pwd').hide();
@@ -26,8 +26,9 @@
 		<button class="select_btn"  type="button" onclick="on_find_id()" >아이디 찾기</button>
 		<button class="select_btn"  type="button"  onclick="on_find_pw()">비밀번호 찾기</button>
 	</div>
-	
-	<form class="find_id" method="post" action="member_find_id.do">
+
+	<%--아이디 찾기--%>
+	<form class="find_id" method="post" action="/dozip/find_id">
 	<table style="width:100%;">
 	<tr><td style="height:70px;">
 		<input class="find_id_input"  type="text" name="mem_name2"  id="mem_name2" placeholder="이름" oninput="name_check2();" />		
@@ -40,8 +41,9 @@
 	</table>
 		<button id="find_id_btn" type="submit" disabled="disabled">아이디 찾기</button>
 	</form>
-	
-	<form class="find_pwd" method="post" action="member_find_pw.do"   style="display: none;">
+
+	<%--비밀번호 찾기--%>
+	<form class="find_pwd" method="post" action="find_pw"   style="display: none;">
 	<table style="width:100%;">
 	<tr><td style="height:70px;">
 		<input class="find_pwd_input"  type="text" name="mem_id" id="mem_id" placeholder="아이디" oninput="id_check2();"/>
