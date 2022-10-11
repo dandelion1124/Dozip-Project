@@ -59,12 +59,18 @@
    		display:inline-block;
    }
    #business_num, #businessName, #pName, #pTel{
-   		background-color:#F9FFFF;
+   		background-color:#E8F5FF;
    		border:1px solid lightgray;
    		height:30px;
    		width:300px;
    }
-   
+   #pAddress,#deposit_money,#pRes_person_name,#pRes_person_tel,#pCom_person_name,
+   #pCom_person_tel,#pAccount_bank,#pAccount_name,#pAccount_num{
+       border:1px solid lightgray;
+       height:30px;
+       width:300px;
+   }
+
    .business-01-1 {
    		/*display:inline-block;*/
    		float:left;
@@ -79,6 +85,7 @@
       width: 95%;
       padding:5px 10px;
       line-height: 1.5;
+      border: 1px solid lightgray;
    }
    .additional-02{
       display:inline-block;
@@ -132,6 +139,7 @@
      padding: 5px 10px;
      line-height: 1.5;
      resize:vertical;
+      border: 1px solid lightgray;
   }
   .additional-06, .additional-07{
      display:inline-block;
@@ -217,12 +225,30 @@
   }
   
   .data_edit_button_tag{
- 		width: 95%;
-    margin: 30px 2%;
-    padding: 0 2%;
+      width: 95%;
+      margin: 30px 2%;
+      padding: 0 2%;
+      margin:auto;
   }
-  .data_edit_button{
-  	padding: 5px;
+  #data_edit_button{
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 10% 0 10%;
+      text-align: center;
+      text-decoration-line: none;
+      display: block;
+      height: 50px;
+      width: 200px;
+      line-height: 30px;
+      border-radius: 5px;
+      background: #00BFFF;
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: -0.025em;
+  	  padding: 5px;
+
+
   }
   .money1, .money2{
   	display:inline-block;

@@ -1,7 +1,8 @@
 <%@ page  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
-<%@ page import="com.partners.dao.PartnersDAO" %>
-<%@ page import="com.partners.dto.PartnersDTO" %>
+<link rel="stylesheet" href="/css/partners/partners_style2.css">
+<%@ page import="com.dozip.dao.PartnersDAO" %>
+<%@ page import="com.dozip.vo.PartnersVO" %>
 <%
 
 	/* String [] value= request.getParameterValues("pService");
@@ -69,7 +70,7 @@
 			</div>
 		</div>
 		<div class="all_information">
-			<form method="post" action="data_manage_edit_ok.do">
+			<form method="post" action="data_manage_edit_ok">
 				<fieldset id="business">
 					<legend>
 						<b>사업자 정보</b>
@@ -393,8 +394,8 @@
 				</fieldset>
 
 				<div class="data_edit_button_tag">
-					<input type="submit" id="data_edit_bu mtton" value="정보수정" /> <!-- onclick="location.href='date_manage.do'" -->
-				</div>
+					<input type="submit" id="data_edit_button" value="정보수정" /> <!-- onclick="location.href='date_manage.do'" -->
+				</div></br>
 			</form>
 		</div>
 	</div>
