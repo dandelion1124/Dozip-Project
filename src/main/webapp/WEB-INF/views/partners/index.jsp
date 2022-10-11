@@ -43,13 +43,13 @@ $(window).resize(function (){
 			<div id="signin_title">
 					<div><a href="#"><img src="/images/partners/partners_logo.png" alt="메인로고"></a></div>
 			</div>
-			<form action="partners_login_ok.do" method="post" id="로그인 폼" onsubmit="return login_check();">
+			<form action="login_ok" method="post" id="로그인 폼" onsubmit="return login_check();">
 				<div>
-					<input type="text" name="login_pId" id="signin_id" placeholder="아이디">
+					<input type="text" name="pId" id="signin_id" placeholder="아이디">
 					<span id="idcheck"></span>
 				</div>
 				<div>
-					<input type="password" name="login_pPw" id="signin_pw" placeholder="비밀번호">
+					<input type="password" name="pPw" id="signin_pw" placeholder="비밀번호">
 					<span id="pwcheck"></span>
 				</div>
 				<div>

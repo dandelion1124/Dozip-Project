@@ -67,10 +67,10 @@ if(session.getAttribute("id")==null){
 			<ul id="side_menu">
 			<li style="height: 100px;">
 			</li>
-				<li><a href="/Partners/index.jsp">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
+				<li><a href="/partners/">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;요&nbsp;&nbsp;금&nbsp;&nbsp;제</a>
 					<ul>
-						<li><a href="/Partners/interior_Plan/plan.jsp">요금제안내</a></li>
+						<li><a href="/partners/planning">요금제안내</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;의뢰</a>
 					<ul>
@@ -80,27 +80,27 @@ if(session.getAttribute("id")==null){
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;관리</a>
 					<ul>
-						<li><a href="/Partners/estimate_list.do">견적목록</a></li>
+						<li><a href="/partners/estimate_list">견적목록</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;공&nbsp;&nbsp;사</a>
 					<ul>
-						<li><a href="/Partners/interior_List.do">공사내역</a></li>
-						<li><a href="/Partners/myinterior/schedule_List.jsp">일정관리</a></li>
-						<li><a href="/Partners/myinterior/settlement_details.jsp">정산내역</a></li>
+						<li><a href="/partners/interior_list">공사내역</a></li>
+						<li><a href="/partners/schedule_list">일정관리</a></li>
+						<li><a href="/partners/balance_details">정산내역</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;시공&nbsp;사례</a>
 					<ul>
-						<li><a href="/Partners/upload.do">등록</a></li>
-						<li><a href="/Partners/portfolio_list.do">수정/삭제</a></li>
+						<li><a href="/partners/upload">등록</a></li>
+						<li><a href="/partners/portfolio_list">수정/삭제</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;광고&nbsp;관리</a>
 					<ul>
-						<li><a href="/Partners/marketing/marketing.jsp">노출프로모션</a></li>
+						<li><a href="/partners/marketing">노출프로모션</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;고객&nbsp;관리</a>
 					<ul>
-						<li><a href="/Partners/customer_qna.do">고객문의</a></li>
-						<li><a href="/Partners/customer_review.do">고객후기</a></li>
+						<li><a href="/partners/qna">고객문의</a></li>
+						<li><a href="/partners/review">고객후기</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;My&nbsp;Page</a>
 					<ul>
