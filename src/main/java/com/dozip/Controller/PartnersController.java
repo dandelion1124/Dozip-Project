@@ -98,17 +98,22 @@ public class PartnersController {
 
     /*견적 의뢰
     *
-    *
-    * */
-
-
-
+    */
+    @RequestMapping(value="/bid") //입찰의뢰
+    public String bid() { return "/partners/estimate_request/bid"; }
+    @RequestMapping(value="/bid_detail") //입찰 상세목록
+    public String bid_detail() { return "/partners/estimate_request/bid_detail"; }
+    @RequestMapping(value="/my_bid") //내 입찰
+    public String my_bid() { return "/partners/estimate_request/my_bid"; }
+    @RequestMapping(value="/construct_request") //시공요청
+    public String construct_request() { return "/partners/estimate_request/construct_request";}
+    @RequestMapping(value="/request_detail") //시공요청 상세목록
+    public String construct_request_detail() { return "/partners/estimate_request/construct_request_detail";}
 
     /*견적 관리
     *
     *
     *  */
-
     @RequestMapping(value="/estimate_list")
     public String estimate_list(){  // 포트폴리오 등록
         return "/partners/estimate/estimate_list";
@@ -255,15 +260,13 @@ public class PartnersController {
     }
 
 
-
-
-
-
-
     /*My page
     *
-    *   */
-
+    */
+    @RequestMapping(value="/data_manage")
+    public String data_manage() { return "/partners/mypage/data_manage"; }
+    @RequestMapping(value="/pw_change")
+    public String pw_change() { return "/partners/mypage/pw_change"; }
 
 
 

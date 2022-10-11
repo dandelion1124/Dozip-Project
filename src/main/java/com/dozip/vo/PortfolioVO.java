@@ -53,4 +53,5 @@ public class PortfolioVO {
         this.pf_introduction = pf_introduction;
         this.pf_closing = pf_closing;
     }
+
 }

@@ -1,14 +1,13 @@
 package com.dozip.Controller;
 
 import com.dozip.service.DozipService;
+import com.dozip.service.PortfolioService;
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +24,7 @@ public class DozipController {
 
     @Autowired
     private DozipService dozipService;
+    private PortfolioService portfolioService;
 
     @RequestMapping(value = "home") //두집 홈 화면
 
@@ -242,15 +241,32 @@ public class DozipController {
         mv.setViewName("/dozip/mypage/mypage_Pqna");
         return mv;
     }
+    
+    //포트폴리오 리스트 출력
+    @RequestMapping(value = "/dozip/port", method = RequestMethod.GET) //get으로 접근하는 매핑주소 처리
+    public ModelAndView port(ModelAndView mv, HttpServletRequest request, PortfolioVO p) {
 
-    @RequestMapping(value = "/dozip/port")
-    public String port() {return "/dozip/portfolio/port_main";}
+        List<PortfolioVO>plist = new ArrayList<PortfolioVO>(); //포트폴리오 목록
+        plist = this.portfolioService.getPlist(p);
+        mv.addObject("plist",plist);
+
+        mv.setViewName("/dozip/portfolio/port_main");
+        return mv;
+    }
 
     @RequestMapping(value = "/dozip/port_detail")
     public String detail(){return "/dozip/portfolio/port_detail";}
 
     @RequestMapping(value = "/dozip/comp_detail")
     public String comp(){return "/dozip/portfolio/comp_detail";}
- 
- 
-}
+
+    @GetMapping("/apply")
+    public String apply() {
+        return "/dozip/apply/applicationSheet";
+    }
+    @GetMapping("/apply2")
+    public String apply2(){
+        return "/dozip/apply/applicationSheet2";
+    }
+
+}//DozipController

@@ -41,7 +41,7 @@
 				</div>
 				
 				<ul class="menu">
-					<li><a href="estimate_apply.do">견적신청</a></li>
+					<li><a href="/dozip/apply">견적신청</a></li>
 					<li><a href="portfolio.do">포트폴리오</a></li>
 					<li><a href="review.do">고객후기</a></li>
 					<li><a href="#">스토리</a></li>
