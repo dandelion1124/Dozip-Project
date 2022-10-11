@@ -8,7 +8,7 @@
 	<div id=uploda_photo_cont>
 		<div>
 			<div class="photo_inputfile">
-				<input  type="file" name="photos" id="photo01" onchange="loadFile1(this)">
+				<input  type="file" name="photos" id="photo01"  multiple="multiple">
 			</div>
 
 

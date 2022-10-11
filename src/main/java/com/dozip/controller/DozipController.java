@@ -1,4 +1,4 @@
-package com.dozip.Controller;
+package com.dozip.controller;
 
 import com.dozip.service.DozipService;
 import com.dozip.service.PortfolioService;
