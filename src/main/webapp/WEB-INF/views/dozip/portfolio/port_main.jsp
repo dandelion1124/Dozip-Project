@@ -5,7 +5,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <jsp:include page = "../common/header.jsp"/>
 <%-- 상단 공통부분 끝--%>
-<link rel="stylesheet" type="text/css" href="/DoZip/css/portfolio.css" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/portfolio.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
@@ -13,8 +13,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<script src="./js/portfolio.js"defer></script>
-<script src="/DoZip/js/jquery.js"></script>
+<script src="/js/dozip/portfolio.js" defer></script>
+<script src="/js/dozip/jquery.js"></script>
 
 
 	<div class="clear"></div>
@@ -30,19 +30,19 @@
 			      <div id="slider-wrap">
 			          <ul id="slider">
 			             <li>                
-							<img src="/DoZip/images/portfolio/banner/final_bannerH.png">
+							<img src="/images/dozip/portfolio/banner/final_bannerH.png">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/portfolio/banner/final_bannerJ.png">
+							<img src="/images/dozip/portfolio/banner/final_bannerJ.png">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/portfolio/banner/final_bannerM.png">
+							<img src="/images/dozip/portfolio/banner/final_bannerM.png">
 			             </li>
 			             
 			             <li>
-							<img src="/DoZip/images/portfolio/banner/final_bannerS.png">
+							<img src="/images/dozip/portfolio/banner/final_bannerS.png">
 			             </li>
 			          </ul>
 			          

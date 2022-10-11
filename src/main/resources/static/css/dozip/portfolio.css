@@ -301,8 +301,8 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 	display : flex;
 	font-size : 2.0rem;
 	color : #347844;
-	margin: 0 auto ; 
-	font-weight: 200px;
+	justify-content: center;
+	font-weight: bold;
 	margin-top: 50px;
 	
 }
