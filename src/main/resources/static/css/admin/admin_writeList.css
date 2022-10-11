@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+.wrap{
+    width : 95%;
+    margin : 0 auto;
+}
+
+.table_type{
+    display: flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+    border-bottom : 2px solid;
+    border-bottom-color:black;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+#table_info{
+    font-size : 1.4rem;
+    font-family : 'Malgun-Gothic';
+    color : black;
+}
+
+/* 본문 테이블 */
+.table_btn{
+    display : flex;
+    justify-content: center;
+    margin-top : 30px;
+}
+
+#port_btn{
+    margin-right : 40px;
+    border : 0;
+    border-radius : 5px;
+    font-size : 18px;
+    text-align : center;
+    width : 10%;
+    height : 40px;
+    background-color :#0A6EFF ;
+    font-family : 'Malgun-Gothic';
+    color : white;
+}
+
+#review_btn{
+    border : 0;
+    border-radius : 5px;
+    font-size : 18px;
+    text-align : center;
+    width : 8%;
+    height : 40px;
+    background-color : #0A6EFF ;
+    font-family : 'Malgun-Gothic';
+    color : white;
+}
+
+/* 검색필터 */
+.text-center{
+    display : flex;
+    justify-content: right;
+    margin-right: 390px;
+}
+
+.input-group{
+    display : flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-right: 150px;
+}
+
+.search_toggle{
+    width : 100%;
+    height : 30px;
+}
+
+.search_btn{
+    width:100%;
+    height :30px;
+    background-color: white;
+    color:black;
+    border-color: darkblue;
+    border-radius: 2px;
+}
+
+#rsearch_filter{
+    display:none;
+}
+
+/* 포트폴리오 테이블*/
+.port_table{
+    display : flex;
+    justify-content: center;
+}
+
+#tb_port{
+    margin-top : 50px;
+    display : flex;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    border-bottom : 1px solid #ccc;
+    text-align: center;
+    line-height : 1.5;
+    border-collapse: collapse;
+}
+
+#tb_port th{
+    padding : 8px;
+    font-weight : bold;
+    background-color: #0064CD;
+    color : white;
+    border:none;
+}
+
+#del_btn , #del_btn2{
+    background-color: red;
+    color:white;
+    border : none;
+    border-radius: 2px;
+}
+
+#tb_port tr{
+    border-bottom : 1px solid black;
+}
+
+#tb_port td{
+    border:none;
+}
+
+/* 고객후기 테이블 */
+
+#tb_review{
+    margin-top : 50px;
+    display : none;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    border-bottom : 1px solid #ccc;
+    text-align: center;
+    line-height : 1.5;
+    border-collapse: collapse;
+}
+
+#tb_review th{
+    padding : 8px;
+    font-weight : bold;
+    background-color: #0064CD;
+    color : white;
+    border:none;
+}
+
+#review_del{
+    background-color: red;
+    color:white;
+    border : none;
+    border-radius: 2px;
+}
+
+#tb_review tr{
+    border-bottom : 1px solid black;
+}
+
+#tb_review td{
+    border:none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -28,10 +28,10 @@ public class DozipController {
     private DozipService dozipService;
 
     @RequestMapping(value = "home") //두집 홈 화면
+
     public String dozip(){
         return "/dozip/index";
     }
-
     @GetMapping("login")//로그인페이지 이동
     public String login() { return "/dozip/common/login"; }
 
@@ -242,4 +242,15 @@ public class DozipController {
         mv.setViewName("/dozip/mypage/mypage_Pqna");
         return mv;
     }
+
+    @RequestMapping(value = "/dozip/port")
+    public String port() {return "/dozip/portfolio/port_main";}
+
+    @RequestMapping(value = "/dozip/port_detail")
+    public String detail(){return "/dozip/portfolio/port_detail";}
+
+    @RequestMapping(value = "/dozip/comp_detail")
+    public String comp(){return "/dozip/portfolio/comp_detail";}
+ 
+ 
 }

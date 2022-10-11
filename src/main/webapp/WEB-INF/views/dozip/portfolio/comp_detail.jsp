@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <jsp:include page = "../common/header.jsp"/>
 <%-- 상단 공통부분 끝 --%>
-<link rel="stylesheet" type="text/css" href="/DoZip/css/comp_det.css" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/comp_det.css" />
 	<div class = "clear"></div>
 	
 	<!-- 본문영역 -->
@@ -10,7 +10,7 @@
 		<%-- 업체 명함 부분 --%>
 		<div class = "comp_card">
 			<div class=	"comp_img">
-				<img id = "comp_logo" src = "/DoZip/images/portfolio/detail/frog.png"/>
+				<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
 			</div>
 			<div class = "comp_name">
 				<h2>${pc.businessName}</h2>
@@ -28,13 +28,13 @@
 		<div class = "comp_service">
 			<p id = service_title>제공 서비스</p>
 			<div class = "service_images">
-				<img id = "insu" src = "/DoZip/images/portfolio/detail/insurance.png"/>
+				<img id = "insu" src = "/images/dozip/portfolio/detail/insurance.png"/>
 				
-				<img id = "scetch" src = "/DoZip/images/portfolio/detail/scetch.png"/>
+				<img id = "scetch" src = "/images/dozip/portfolio/detail/scetch.png"/>
 				
-				<img id = "3d" src = "/DoZip/images/portfolio/detail/3D.png"/>
+				<img id = "3d" src = "/images/dozip/portfolio/detail/3D.png"/>
 				
-				<img id = "credit" src = "/DoZip/images/portfolio/detail/credit.png"/>
+				<img id = "credit" src = "/images/dozip/portfolio/detail/credit.png"/>
 				
 			</div>
 			<ul class = "service_cont">
