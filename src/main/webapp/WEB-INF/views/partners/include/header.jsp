@@ -67,7 +67,7 @@ if(session.getAttribute("id")==null){
 			<ul id="side_menu">
 			<li style="height: 100px;">
 			</li>
-				<li><a href="/partners/">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
+				<li><a href="/partners/main">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;요&nbsp;&nbsp;금&nbsp;&nbsp;제</a>
 					<ul>
 						<li><a href="/partners/planning">요금제안내</a></li>
@@ -169,13 +169,12 @@ if(session.getAttribute("id")==null){
 							id="timer"></span></span> <span class="hide_2"><input
 							type="button" value="로그아웃" onclick="logout_check()"></span>
 
-
 						<script>
 							function logout_check() {
 								var x = confirm('로그아웃 하시겠습니까?');
 
 								if (x)
-									location = '/Partners/partners_logout.do'
+									location = '/partners/logout'
 								else
 									return;
 							}
