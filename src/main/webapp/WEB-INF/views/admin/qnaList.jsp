@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<jsp:include page = "../include/header.jsp"/>
+<jsp:include page = "./include/header.jsp"/>
 <%-- 상단 공통부분 끝 --%>
-<link rel="stylesheet" type="text/css" href="/Admin/css/admin_qnaList.css" />
+<link rel="stylesheet" type="text/css" href="/css/admin_qnaList.css" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -98,4 +98,4 @@
 
 
 <%-- 하단 공통부분--%>
-<jsp:include page = "../include/footer.jsp"/>
+<jsp:include page = "./include/footer.jsp"/>
