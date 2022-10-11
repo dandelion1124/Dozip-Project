@@ -1,4 +1,4 @@
-package com.dozip.Controller;
+package com.dozip.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
