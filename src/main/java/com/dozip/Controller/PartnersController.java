@@ -264,9 +264,14 @@ public class PartnersController {
     *
     */
     @RequestMapping(value="/data_manage")
-    public String data_manage() { return "/partners/mypage/data_manage"; }
+    public String data_manage() {
+
+        return "/partners/mypage/data_manage"; }
+
+
     @RequestMapping(value="/pw_change")
     public String pw_change() { return "/partners/mypage/pw_change"; }
+
 
 
 
