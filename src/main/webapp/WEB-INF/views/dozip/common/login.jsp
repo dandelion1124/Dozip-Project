@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>간편로그인</title>
-	<link rel="stylesheet" type="text/css" href="/DoZip/css/login.css" />
+	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
 	<!-- 카카오 스크립트 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<script>
@@ -73,7 +73,7 @@
 <!-- 아이디로 로그인 -->
 	<script>
     function openIdLogin(){
-        window.open("member_id_login.do", "_self", "toolbar=no, menubar=no, scrollbars=yes, resizable=no" );
+        window.open("id_login", "_self", "toolbar=no, menubar=no, scrollbars=yes, resizable=no" );
     }
 	</script>
 
@@ -83,7 +83,7 @@
 	var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "2X8n1s3lCX9_JCYqBMBc", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
-				callbackUrl: "http://localhost:8080/index.jsp", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+				callbackUrl: "http://localhost:8084/dozip/home", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
 				isPopup: true,
 				callbackHandle: true
 			}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dozip">
+    <!--로그인(아이디에 해당하는 비밀번호 가져오기)-->
+    <select id="login_check" resultType="String">
+        select mem_pwd from memberT where mem_id=#{mem_id} and mem_withdraw=0
+    </select>
+
+    <!--아이디 찾기-->
+    <select id="find_id" resultType="String">
+        select mem_id from memberT where mem_name=#{mem_name} and mem_tel=#{mem_tel}
+    </select>
+
+    <!--회원정보 불러오기-->
+    <select id="m_info" parameterType="String" resultMap="vo">
+        select * from memberT where mem_id=#{mem_id}
+    </select>
+
+    <!--회원정보 수정-->
+    <update id="m_update">
+        update memberT set mem_name=#{mem_name}, mem_tel=#{mem_tel}, mem_email=#{mem_email}, mem_domain=#{mem_domain},
+                           mem_zip=#{mem_zip}, mem_addr1=#{mem_addr1}, mem_addr2=#{mem_addr2} where mem_id=#{mem_id}
+    </update>
+
+    <!--문의글 총 개수(해당 아이디의 작성 글 개수 확인 - 관리자)-->
+    <select id="list_count" resultType="int">
+        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (business_num is null)
+    </select>
+
+    <!--관리자 문의글 리스트-->
+    <select id="get_Qlist" resultMap="qo">
+        select * from (
+        select rowNum r, qna_no, mem_id, business_num, qna_type,qna_title,
+        qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
+        qna_level,reply_state,reply_date
+        from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc)
+        where (business_num is null)
+        )where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+    <!--문의글 총 개수(해당 아이디의 작성 글 개수 확인 - 업체)-->
+    <select id="listP_count" resultType="int">
+        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (business_num is not null)
+    </select>
+
+    <!--관리자 문의글 리스트-->
+    <select id="get_Plist" resultMap="qo">
+        select * from (
+        select rowNum r, qna_no, mem_id, q.business_num, qna_type,qna_title,
+        qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
+        qna_level,reply_state,reply_date, p.businessName
+        from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q, partnersT p
+        where q.business_num=p.business_num(+) and (q.business_num is not null)
+        )where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+
+
+    <!--resultType에 경로넣어서 하려니, 못잡고 계속 null값이 나와서 resultMap을 사용함-->
+    <resultMap id="vo" type="com.dozip.vo.MemberVO">
+        <result column="mem_id" property="mem_id" />
+        <result column="mem_pwd" property="mem_pwd" />
+        <result column="mem_name" property="mem_name" />
+        <result column="mem_tel" property="mem_tel" />
+        <result column="mem_email" property="mem_email" />
+        <result column="mem_domain" property="mem_domain" />
+        <result column="mem_zip" property="mem_zip" />
+        <result column="mem_addr1" property="mem_addr1" />
+        <result column="mem_addr2" property="mem_addr2" />
+        <result column="mem_joinType" property="mem_joinType" />
+        <result column="mem_joinDate" property="mem_joinDate" />
+        <result column="mem_withdraw" property="mem_withdraw" />
+        <result column="mem_withdrawDate" property="mem_withdrawDate" />
+    </resultMap>
+
+    <resultMap id="qo" type="com.dozip.vo.QnaVO">
+        <result column="qna_no" property="qna_no" />
+        <result column="mem_id" property="mem_id" />
+        <result column="business_num" property="business_num" />
+        <result column="qna_type" property="qna_type" />
+        <result column="qna_title" property="qna_title" />
+        <result column="qna_cont" property="qna_cont" />
+        <result column="qna_date" property="qna_date" />
+        <result column="edit_date" property="edit_date" />
+        <result column="qna_state" property="qna_state" />
+        <result column="qna_ref" property="qna_ref" />
+        <result column="qna_step" property="qna_step" />
+        <result column="qna_level" property="qna_level" />
+        <result column="reply_state" property="reply_state" />
+        <result column="reply_date" property="reply_date" />
+        <result column="businessName" property="businessName" />
+        <result column="mem_name" property="mem_name" />
+        <result column="startrow" property="startrow" />
+        <result column="endrow" property="endrow" />
+    </resultMap>
+    
+</mapper>
+

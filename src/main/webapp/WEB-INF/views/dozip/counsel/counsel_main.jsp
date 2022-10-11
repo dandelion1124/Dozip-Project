@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <script src="/DoZip/js/jquery.js" ></script>
-
+<link rel="stylesheet" type="text/css" href="/css/dozip/counsel.css" />
 <%-- 상단 공통부분 끝 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>

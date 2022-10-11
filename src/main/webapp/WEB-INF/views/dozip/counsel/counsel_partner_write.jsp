@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/counsel.css" />
 <%-- 상단 공통부분 끝 --%>
 <script>
 function openSearch(){

@@ -25,7 +25,7 @@
 	<script src="./js/dozip/jquery.js"></script>
 	<script>
 	    function openLogin(){
-	        window.open("member_login.do", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0" );
+	        window.open("/dozip/login", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0" );
 	    }/* width=400, height=550 */
 	</script>
 </head>
@@ -36,7 +36,7 @@
 			<nav class="header_nav">
 				<!-- 로고 -->
 				<div class="logo">
-					<a href="home.do"> <img src="/images/dozip/main_logo.png"/>
+					<a href="/dozip/home"> <img src="/images/dozip/main_logo.png"/>
 					</a>
 				</div>
 				
@@ -53,7 +53,7 @@
 					<li><a href="#none" onclick="openLogin();"><img src="/images/dozip/user.png" width="30" height="30" /></a></li>
 				</c:if>
 				<c:if test="${!empty id}"> <!-- 로그인 후 -->
-					<li><a href="mypage_go.do"><img src="/images/dozip/ser.png" width="30" height="30" /></a></li>
+					<li><a href="/dozip/mypage"><img src="/images/dozip/ser.png" width="30" height="30" /></a></li>
 				</c:if>
 					<li><a href="counsel.do"><img src="/images/dozip/counsel.png" width="30" height="30" /></a></li>
 				</ul>
