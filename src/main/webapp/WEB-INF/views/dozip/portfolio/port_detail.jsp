@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <jsp:include page = "../common/header.jsp"/>
 <%-- 상단 공통부분 끝--%>
-<link rel="stylesheet" type="text/css" href="/DoZip/css/port_detail.css" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/port_detail.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -19,7 +19,7 @@
             <div class = "d_main">
                <h2 id = "d_title">${pf.pf_title}</h2>
                <br>
-               <pre id = "d_location"><img id = "d_loca" src = "/DoZip/images/portfolio/location_icon.png"/>${pf.pf_addr1}</pre>
+               <pre id = "d_location"><img id = "d_loca" src = "/images/dozip/portfolio/location_icon.png"/>${pf.pf_addr1}</pre>
                <br>
                <div class = "d_tags">
                   <button type = "button" id = "type">${pf.pf_concept}</button>
@@ -82,7 +82,7 @@
    <%-- 업체 명함 부분 --%>
    <div class = "comp_card">
       <div class=   "comp_img">
-         <img id = "comp_logo" src = "/DoZip/images/portfolio/detail/frog.png"/>
+         <img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
       </div>
       <div class = "comp_name">
          <div class = "name">${pt.businessName}</div>
