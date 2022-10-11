@@ -1,16 +1,17 @@
-<%@ page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
 <div id=photo_upload_title>
 <h1>사진등록페이지</h1>
 <p>포트폴리오에 등록할 사진을 첨부해주세요. 최대 5장까지 가능합니다</p>
 </div>
-<form action="upload_photo_ok.do" method="post"	enctype="multipart/form-data">
+<form action="upload_photo_ok" method="post" enctype="multipart/form-data">
 	<div id=uploda_photo_cont>
 		<div>
 			<div class="photo_inputfile">
-				<input type="file" name="photo01" id="photo01" onchange="loadFile1(this)">
+				<input  type="file" name="photos" id="photo01" onchange="loadFile1(this)">
 			</div>
+
+
 			<div>
 				<img alt="미리보기1" id="preview1" style="display: none;">
 			</div>
