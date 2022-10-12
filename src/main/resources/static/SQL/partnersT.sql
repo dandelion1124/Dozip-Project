@@ -1,13 +1,13 @@
 --회원가입시 필요한 파트너스의 정보를 담는 테이블
 create table partnersT (
-    business_num nvarchar2(12)primary key, --사업자번호
+    businessNum nvarchar2(12)primary key, --사업자번호
     businessName nvarchar2(20) not null, --상호명
     pId	nvarchar2(20) not null, --아이디
     pPw	nvarchar2(20) not null, --비밀번호
     pName nvarchar2(10) not null, --대표자이름
     pTel nvarchar2(12) not null, --대표자 연락처
-    pMail_id nvarchar2(30) not null, --대표자 이메일 ID
-    pMail_domain nvarchar2(30) not null, --대표자 이메일 DOMAIN
+    pMailId nvarchar2(30) not null, --대표자 이메일 ID
+    pMailDomain nvarchar2(30) not null, --대표자 이메일 DOMAIN
     pAddress nvarchar2(500), --영업장 주소
     pDate nvarchar2(15), --가입날짜
     PDeldate nvarchar2(15), --탈퇴날짜
@@ -30,7 +30,7 @@ select * from partnersT where pId='shc729';
 --포트폴리오에 대한 정보를 담는 테이블					
 create table portfolioT(
 	pf_no number(38) primary key, --글번호
-	business_num nvarchar2(12) not null, --파트너스 사업자번호(외래키)
+	businessNum nvarchar2(12) not null, --파트너스 사업자번호(외래키)
 	pf_title nvarchar2(50) not null, --제목
 	pf_type nvarchar2(20) not null, --공사유형
 	pf_subtype nvarchar2(5) not null, --공사 세부유형

@@ -215,8 +215,8 @@ padding: 20px;
       
       
         <div class="nextpage">
-          <button class="button" id="go-back" onclick="location.href='estimate_apply3.do'">이전</button>
-          <button class="button" id="go-next" onclick="location.href='estimate_apply5.do'">다음</button>
+          <button class="button" id="go-back" onclick="location='/dozip/apply3'">이전</button>
+          <button class="button" id="go-next" onclick="location='/dozip/apply5'">다음</button>
         </div>
     </div>
  </section>

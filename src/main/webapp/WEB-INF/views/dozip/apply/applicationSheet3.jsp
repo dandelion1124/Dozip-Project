@@ -2,14 +2,14 @@
 	pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
-  <link rel="stylesheet" href="./css/apply_style_03.css">  
-  <script src="./js/apply.js" defer></script>
-  <script src="./js/jquery.js"></script>
+  <link rel="stylesheet" href="/css/dozip/apply_style_03.css">
+  <script src="/js/dozip/apply.js" defer></script>
+  <script src="/js/dozip/jquery.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/> <!--달력css-->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
-  <script src="./js/sessionStorage.js"></script>
+  <script src="/js/dozip/sessionStorage.js"></script>
   <script>
    function check(){
 	   var est_name = document.getElementById("name");
@@ -22,27 +22,28 @@
 		   name.focus();
 		   return false;
 	   }
-	   if(est_phone.value == ""){
-		   alert('전화번호을 알려주세요!');
-		   phone.focus();
-		   return false;
-	   if(est_phone.value == ""){
-		   alert('주소를 알려주세요!');
-		   phone.focus();
-		   return false;
-	   }
-	   if(est_desc.value == ""){
-		   alert('세부 스타일을 알려주세요!');
-		   paragraph.focus();
-		   return false;
-	   }
-   }
+	   if(est_phone.value == "") {
+         alert('전화번호을 알려주세요!');
+         phone.focus();
+         return false;
+       }if (est_phone.value == "") {
+           alert('주소를 알려주세요!');
+           phone.focus();
+           return false;
+         }
+         if (est_desc.value == "") {
+           alert('세부 스타일을 알려주세요!');
+           paragraph.focus();
+           return false;
+         }
+         SessionStorage_page03();
+       }
   </script>
   
   <title>Step 3</title>
 </head>
 <body>
-<form method="post" onsubmit="return check()" action="estimate_apply3_ok.do">
+<form method="get" onsubmit="return check()" action="/dozip/apply4">
 
   <div id="estimate_step03">
     <section aria-label="예산 선택" class="estimate_yourcost">
@@ -74,8 +75,8 @@
              name : 컨트롤 요소값(value)을 서버로 전송하기위함-->
 
   <div class="nextpage">
-    <button class="button" id="go-back" onclick="location.href='estimate_apply2.do'">이전</button>
-    <button class="button" type="submit" id="go-next" onclick="SessionStorage_page03()">다음</button>
+    <button class="button" id="go-back" onclick="location='/dozip/apply2'">이전</button>
+    <button class="button" type="submit" id="go-next">다음</button>
   </div>
   </div>
   </form>

@@ -3,8 +3,8 @@
 <%-- 상단 공통부분 끝 --%>
 <link rel="stylesheet" href="/css/dozip/apply_style.css" />
 <script src="/js/dozip/apply.js" defer></script>
-<script src="./js/jquery.js"></script>
-<script src="./js/sessionStorage.js"></script>
+<script src="/js/dozip/jquery.js"></script>
+<script src="/js/dozip/sessionStorage.js"></script>
 
   </head>
     <title>인테리어 견적 신청서</title>
@@ -17,7 +17,7 @@
           <h2>어떤 공간의 시공을 원하시나요?</h2><h3>1/4</h3>
           </div>
           <br/>
-          <div class="estimate_box">
+          <div class="estimate_box">/
           <h3>공간 유형</h3>
             <input type="radio" value="주거" id="1" name="est_zoning" checked><label for="1">주거</label>
             <input type="radio" value="상가" id="2" name="est_zoning"><label for="2">상가</label>
@@ -440,7 +440,7 @@ function apply01_check() {
 		return false;
 
 	}
-	SessionStorage_page01();
+	SessionStorage_page01(); //SessionStorage 에 값 저장
 }
 
 </script>

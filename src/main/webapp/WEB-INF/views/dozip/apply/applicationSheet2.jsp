@@ -2,14 +2,14 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
- <link rel="stylesheet" href="./css/apply_style_02.css">  
-  <script src="./js/apply.js" defer></script>
-  <script src="./js/jquery.js"></script>
+ <link rel="stylesheet" href="/css/dozip/apply_style_02.css">
+  <script src="/js/dozip/apply.js" defer></script>
+  <script src="/js/dozip/jquery.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/> <!--달력css-->
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script>
-  <script src="./js/sessionStorage.js"></script>
+  <script src="/js/dozip/sessionStorage.js"></script>
  <script>
  function check(){
 	var est_bud = document.getElementById("estimate_cost");
@@ -31,13 +31,13 @@
 		est_end.focus();
 		return false;
 	}
+    SessionStorage_page02(); //SessionStorage 에 값 저장
  }
  </script>
  
   <title>Step 2</title>
 </head>
-
- <form method="post" onsubmit="return check();" action="estimate_apply2_ok.do">
+<form method="get" action="/dozip/apply3" onsubmit="return check()">
 <body>
 
   <div id="estimate_step02">
@@ -77,11 +77,11 @@
              name : 컨트롤 요소값(value)을 서버로 전송하기위함-->
 
              <div class="nextpage">
-              <button class="button" id="go-back" onclick="location.href='estimate_apply.do'">이전</button>
-              <button class="button" type="submit" id="go-next" onclick="SessionStorage_page02()">다음</button>
+              <button class="button" id="go-back" onclick="location='/dozip/apply'">이전</button>
+              <button class="button" id="go-next" type="submit">다음</button>
             </div>
   </div>
 </body>
- </form>
+</form>
  <%-- 하단 공통부분 --%>
 <jsp:include page="../common/footer.jsp" />

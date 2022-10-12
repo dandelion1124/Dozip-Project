@@ -2,17 +2,17 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
-  <link rel="stylesheet" href="./css/apply_style_05.css">  
-  <script src="./js/apply.js" defer></script>
-  <script src="./js/jquery.js"></script>
+  <link rel="stylesheet" href="/css/dozip/apply_style_05.css">
+  <script src="/js/dozip/apply.js" defer></script>
+  <script src="/js/dozip/jquery.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="./js/sessionStorage.js"></script>
+  <script src="/js/dozip/sessionStorage.js"></script>
 
   <title>Step 5</title>
 </head>
 
 <body>
-<form method="post">
+<form method="post" action="apply_ok">
 
   <div id="estimate_step05">
     <section aria-label="견적요청" class="estimate_yourcost">
@@ -39,7 +39,7 @@
       </div>
       </section>    
    <div class="nextpage">
-    <button class="button" id="go-back" onclick="location.href='estimate_apply4.do'">이전</button>
+    <button class="button" id="go-back" onclick="location='/dozip/apply4'">이전</button>
     <button class="button" type="submit" id="go-next" onclick="test()">진행하기</button>
    </div>
   </div>
