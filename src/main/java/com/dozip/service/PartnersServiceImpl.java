@@ -21,9 +21,10 @@ public class PartnersServiceImpl implements PartnersService {
         partnersDao.addPortfolio(pv);
         return partnersDao.getPort_num(pv); //수정작업 필요 . 가끔2개가 조회됨
     }
-
+    @Override
     public PartnersVO getMember(String business_num) {
         return this.partnersDao.getMember(business_num);
+    }
     @Override
     public void insertPartners(PartnersVO pv) {
         partnersDao.insertPartners(pv);
