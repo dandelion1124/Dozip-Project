@@ -6,5 +6,10 @@
     <select id="partners_info" resultType="PartnersVO">
         select * from partnersT where pId=#{pId}
     </select>
+
+    <select id="data_manage" resultType="PartnersVO">
+        <!--select * from partnersT where business_num=#{business_num} -->
+        select * from partnersT where business_num=105
+    </select>
 </mapper>
 

@@ -14,5 +14,10 @@ public class PartnersServiceImpl implements PartnersService {
     public PartnersVO getPartnersInfo(String pId) {
         return partnersDao.getPartnersInfo(pId);
     }
+
+    @Override
+    public PartnersVO getMember(String business_num) {
+        return this.partnersDao.getMember(business_num);
+    }
 }
 

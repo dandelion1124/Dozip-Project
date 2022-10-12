@@ -15,4 +15,9 @@ public class PartnersDAOImpl implements PartnersDAO {
     public PartnersVO getPartnersInfo(String pId) {
         return sqlSession.selectOne("partners_info",pId);
     }
+
+    @Override
+    public PartnersVO getMember(String business_num) {
+        return sqlSession.selectOne("data_manage",business_num);
+    }
 }

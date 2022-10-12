@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -190,9 +191,26 @@ public class PartnersController {
     *
     */
     @RequestMapping(value="/data_manage")
-    public String data_manage() {
+    public ModelAndView data_manage(HttpServletResponse response, HttpSession session) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
 
-        return "/partners/mypage/data_manage"; }
+        String business_num=(String)session.getAttribute("business_num");
+//        if(business_num==null) {
+//            out.println("<script>");
+//            out.println("alert('다시 로그인하세요!');");
+//            out.println("location='/partners';");
+//            out.println("</script>");
+//        }else {
+
+        PartnersVO p=this.partnersService.getMember(business_num);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
+
+            ModelAndView m=new ModelAndView();
+            m.addObject("p", p);//p 키이름에 p객체 저장
+            m.setViewName("partners/mypage/data_manage");
+            return m;
+//        }
+    }//data_manage()
 
 
     @RequestMapping(value="/pw_change")
