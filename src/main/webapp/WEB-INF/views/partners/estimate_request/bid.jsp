@@ -13,12 +13,12 @@
 						<div class="search_box">
 					    <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요">
 					    <button class="search-btn" type="submit">
-					    	<img src=".../resources/static/images/partners/search.png" width="20px" height="20px">
+					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
 						</div>
 					<div class="my_bid_icon">
 						<a href="/partners/my_bid"
-							class="to_my_bid" target="_blank"><img src="./images/bid_list.png" width="55px" height="55px"></a>
+							class="to_my_bid"><img src="/images/partners/bid_list.png" width="55px" height="55px"></a>
 					</div>
 			</div>
 			<div class="request_list_container">

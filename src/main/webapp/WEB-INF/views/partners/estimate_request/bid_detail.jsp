@@ -19,13 +19,13 @@ $(function() {
 
 	<div class="request_detail_page">
 		<div class="my_bid_detail_icon">
-			<a href="./my_bid.do"
-				class="to_my_bid" target="_blank"><img src="./images/bid_list.png" width="55px" height="55px"></a>
+			<a href="./my_bid"
+				class="to_my_bid" target="_blank"><img src="/images/partners/bid_list.png" width="55px" height="55px"></a>
 		</div>		
 		<div class="request_list_detail_container">
 			<div class="go_bid_detail">
-				<a href="./bid.do" class="list_go">
-					<span class="ico_back"><img src="./images/list-arrow.png"></span>
+				<a href="./bid" class="list_go">
+					<span class="ico_back"><img src="/images/partners/list-arrow.png"></span>
 					<span class="list_go_text">목록으로</span>
 				</a>
 			</div>
@@ -86,8 +86,14 @@ $(function() {
 								<ul class="file-list">
 									<li class="attach_file_list">
 										<a href="javascript:void(0);" class="btn-file">
-										<span class="download_mark"><img src="./images/downloadmark.png" width="20px" height="20px"></span>
-										 프로젝트 첨부파일
+										<div class="download_mark">
+											<label for="project_img" class="file_label" style="cursor:pointer;">  <!-- label for과 input id가 같아야 적용됨 -->
+												<img src="/images/partners/downloadmark.png" width="20px" height="20px" >
+												프로젝트 첨부파일
+											</label>
+											<input type="file" id="project_img" name="project_img" accept="image/*" style="visibility: hidden;">
+										</div>
+
 										</a>
 									</li>
 								</ul>
@@ -147,7 +153,7 @@ $(function() {
 									외부시트지 디자인작업이 필요합니다.
 								</dd>
 							</dl>
-							<form method="post" action="bid_detail_ok.do">
+							<form method="post" action="bid_detail_ok">
 								<div>
 									<div class="bid_part_div">
 										<button type="button" id="bid_participate">입찰 신청하기</button>

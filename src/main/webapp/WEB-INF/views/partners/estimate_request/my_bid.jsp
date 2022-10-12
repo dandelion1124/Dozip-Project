@@ -20,12 +20,12 @@
 		</tr>
 		<tr class="my_bid_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:14px;">
 			<td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td>  <td>2022.07.25</td>
-			<td><div class="bid_detail"><a href="./bid_detail.do" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+			<td><div class="bid_detail"><a href="bid_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<td class="bid_result"><span class="success1">성공</span></td>
 		</tr>
 		<tr class="my_bid_cont" style="background-color:#FDF5E6; /*#FDF5E6*/ font-size:14px;">
 			<td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td>  <td>2022.07.25</td>
-			<td><div class="bid_detail"><a href="./bid_detail.do" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+			<td><div class="bid_detail"><a href="bid_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<td class="bid_result"><span class="fail1">실패</span></td>
 		</tr>
 	</table>
@@ -37,7 +37,7 @@
 		</tr>
 		<tr class="my_bid_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:14px;">
 			<td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td>  <td>2022.07.25</td>
-			<td><div class="bid_detail"><a href="./bid_detail.do" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+			<td><div class="bid_detail"><a href="bid_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<td><a href="#" class="btn-cancel" onclick="confirm('입찰을 취소하시겠습니까?')" >취소</a></td>
 		</tr>
 

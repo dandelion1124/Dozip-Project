@@ -16,16 +16,16 @@
 
 	<section>
 		<h3>월정액 요금제</h3>
-		<img src="../images/plan1.png" alt="월정액" class="cont_img">
+		<img src="/images/partners/plan1.png" alt="월정액" class="cont_img">
 		<p>고객이 상담 접수 시 작성한 공사 예산을 기준으로 매월 종합 인테리어 고객을 소개해드리는 상품입니다.</p>
-		<input type="button" value="자세히보기" onclick="location='monthly.jsp'">
+		<input type="button" value="자세히보기" onclick="location='plan_monthly'">
 	</section>
 	<div class=clear></div>
 	<section>
 		<h3>부분 시공 요금제</h3>
-		<img src="../images/plan2.png" alt="부분시공" class="cont_img">
+		<img src="/images/partners/plan2.png" alt="부분시공" class="cont_img">
 		<p>고객 예산 1천만원 미만의 예산으로 부분 시공 및 소규모 종합 시공 견적 의뢰를 받을 수 있는 상품입니다.</p>
-		<input type="button" value="자세히보기" onclick="location='part.jsp'">
+		<input type="button" value="자세히보기" onclick="location='plan_part'">
 	</section>
 </div>
 

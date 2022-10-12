@@ -3,21 +3,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="partners">
+    <!--파트너스 정보 조회 -->
     <select id="partners_info" resultType="PartnersVO">
         select * from partnersT where pId=#{pId}
     </select>
 
-    <insert id="portfolio_in" parameterType="PortfolioVO">
-    insert into portfolioT (pf_no, business_num, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
-                            pf_concept, pf_introduction, pf_closing, pf_regdate)
-    values (portfolioT_no_seq.nextval, #{business_num}, #{pf_title}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
-            #{pf_addr3}, #{pf_area}, #{pf_cost}, #{pf_period}, #{pf_concept}, #{pf_introduction}, #{pf_closing}, sysdate)
+    <!--파트너스 회원가입 -->
+    <insert id="partners_in">
+        insert into partnersT (businessNum, businessName, pId, pPw, pName, pTel, pMailId, pMailDomain, pDate)
+        values(#{businessNum}, #{businessName}, #{pId}, #{pPw}, #{pName}, #{pTel}, #{pMailId}, #{pMailDomain}, sysdate)
     </insert>
+
+    <!-- 파트너스 아이디 찾기위한 정보조회 -->
+    <select id="findinfo_id" resultType="PartnersVO">
+        select * from partnersT where businessNum=#{businessNum}
+    </select>
     
-    <select id="portfolio_num" resultType="int">
-        select pf_no from portfolioT where business_num=#{business_num} and pf_title=#{pf_title}
+    <select id="data_manage" resultType="PartnersVO">
+        <!--select * from partnersT where business_num=#{business_num} -->
+        select * from partnersT where business_num=105
     </select>
 
+    
 
 </mapper>
 

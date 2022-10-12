@@ -50,7 +50,7 @@ div#interior_list_searchBar label {
 }
 </style>
 <div id='interiorList_top_cont'>
-	<div id='interiorList_title'>내 공사내역<a id="go_scheduleList" href="schedule_list.do">일정관리</a>
+	<div id='interiorList_title'>내 공사내역<a id="go_scheduleList" href="schedule_list">일정관리</a>
 	</div>
 	<div id='interiorList_msg'>
 		현재 시공중인 공사, 완료된 공사등 모든 공사내역을 확인할 수 있는 페이지
