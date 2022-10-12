@@ -18,7 +18,7 @@ $(window).resize(function (){
 
   var width_size = window.outerWidth;
 
-  
+
 
   // 800 이하인지 if문으로 확인
 
@@ -38,7 +38,7 @@ $(window).resize(function (){
 </script>
 <body>
 	<c:if test="${empty id}">
-	<article id="join_wrap">		
+	<article id="join_wrap">
 		<div id= signin_cont>
 			<div id="signin_title">
 					<div><a href="#"><img src="/images/partners/partners_logo.png" alt="메인로고"></a></div>
@@ -56,20 +56,66 @@ $(window).resize(function (){
 					<input type="submit" value="로그인" id="login"></div>
 				<div id=bottom_button1>
 					<div id=id_save>
-						<div><input type="checkbox" id=id_save_checkbox></div>		
+						<div><input type="checkbox" id=id_save_checkbox></div>
 						<div><button type="button" id=id_save_button>아이디 저장</button></div>
 					</div>
-					<div> <input type="button" id="signup_button" value="회원가입" onclick="location='partners_signup.do'"></div>
+					<div> <input type="button" id="signup_button" value="회원가입" onclick="location='/partners/signup'"></div>
 				</div>
 			</form>
 			<div id=bottom_button2>
 				<div> 아이디 또는 비밀번호를 잃어버리셨다면 ?</div>
-				<div><input type="button" id="" value="문의하기" onclick="location='partners_findinfo.do'"></div>
+				<div><input type="button" id="" value="문의하기" onclick="location='partners_findinfo'"></div>
 			</div></div>
 	</c:if>
 	<c:if test="${!empty id }">
 		<jsp:include page="include/header.jsp" />
-	</c:if>	
+		<style>
+			/* 잠시 옮겨놓음 */
+			@media all and (max-width:930px){
+				span.hide_1{
+					display: none;
+				}
+			}
+			#pmain_cont>div{
+
+				border:1px solid black;
+				width: 400px;
+				height: 300px;
+				margin: 20px;
+				padding: 30px;
+			}
+
+			#pmain_cont {
+				display: flex;
+				flex-wrap: wrap;
+			}
+		</style>
+
+
+
+		<div id='pmain_title'>
+			<h1>대시보드</h1>
+
+		</div>
+		<div id='pmain_cont'>
+			<div>현재 시공중인 공사 완성도<br>
+				월별 총 시공계약 : 60건<br>
+				현재 진행중 시공 : 20건/60건<br>
+				월별 시공 중단  : 1건<br>
+
+			</div>
+			<div> 월별 견적 신청 내역</div>
+			<div> 월별 입찰 내역</div>
+			<div>월별  시공 내역</div>
+			<div> 공지사항</div>
+			<div> 정산 예정 금액</div>
+
+		</div>
+
+
+
+
+	</c:if>
 <jsp:include page="include/footer.jsp" />
 
 

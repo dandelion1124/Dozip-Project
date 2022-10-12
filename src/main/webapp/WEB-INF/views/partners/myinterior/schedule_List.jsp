@@ -75,7 +75,7 @@
 				start : '2022-09-28'
 			}, {
 				title : '테스트중',
-				url : 'http://localhost:8084/DoZip/home.do',
+				url : 'http://localhost:8084/dozip/home',
 				start : '2022-10-15'
 			}  ]
 		});
@@ -93,7 +93,7 @@
 </script>
 
 <div id="scheduleList_title">
-일정관리<a href="interior_List.do">내공사내역</a>		</div>
+일정관리<a href="interior_list">내공사내역</a>		</div>
 
 
 <div id='calendar' style="width: 90%; margin: 20px;"></div>
