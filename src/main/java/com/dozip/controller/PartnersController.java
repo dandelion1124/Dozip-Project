@@ -2,6 +2,7 @@ package com.dozip.controller;
 
 import com.dozip.service.PartnersService;
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -299,7 +300,7 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
-        String business_num=(String)session.getAttribute("business_num");
+        String businessNum=(String)session.getAttribute("businessNum");
 //        if(business_num==null) {
 //            out.println("<script>");
 //            out.println("alert('다시 로그인하세요!');");
@@ -307,16 +308,34 @@ public class PartnersController {
 //            out.println("</script>");
 //        }else {
 
-        PartnersVO p=this.partnersService.getMember(business_num);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-
+        PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
+        Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+                
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
-            m.setViewName("partners/mypage/data_manage");
+            m.addObject("ps",ps);//ps 키이름에 ps객체 저장
+            m.setViewName("/partners/mypage/data_manage");
             return m;
 //        }
     }//data_manage()
 
+    @RequestMapping(value="/data_manage_edit_ok")
+    public String data_manage_edit_ok(HttpServletResponse response,HttpServletRequest request,
+        HttpSession session, Partners_subVO p) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
+        String business_num = (String)session.getAttribute("business_num");
+//        if(business_num == null) {
+//            out.println("<script>");
+//            out.println("alert('다시 로그인 하세요!');");
+//            out.println("location='index';");
+//            out.println("</script>");
+//        }else {
+
+//        }
+        return null;
+    }
     @RequestMapping(value="/pw_change")
     public String pw_change() { return "/partners/mypage/pw_change"; }
 

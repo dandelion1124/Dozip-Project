@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,13 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public PartnersVO getMember(String business_num) {
-        return sqlSession.selectOne("data_manage",business_num);
+    public Partners_subVO getPartnersSub(String businessNum) {
+        return sqlSession.selectOne("select_subdata");
+    }
+
+    @Override
+    public PartnersVO getMember(String businessNum) {
+        return sqlSession.selectOne("select_data",businessNum);
     }
 }
 

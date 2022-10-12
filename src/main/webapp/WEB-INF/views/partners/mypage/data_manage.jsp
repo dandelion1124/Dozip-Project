@@ -79,7 +79,7 @@
 						<div class="business-01-1">
 							<label><b>사업자등록번호</b></label><br />
 							<div>
-								<input type="text" id="business_num" name="business_num" value="${p.business_num}" size="30">
+								<input type="text" id="businessNum" name="businessNum" value="${p.businessNum}" size="30">
 								<!--  <input type="text" id="business_num" name="business_num" size="5">
                                 <input type="text" id="business_num" name="business_num" size="5"> -->
 							</div>
@@ -115,7 +115,7 @@
                             <button type="button">변경</button> -->
 						</div>
 						<div>
-							<input type="text"  id="pAddress" name="pAddress" value="${p.pAddress}" size="30">
+							<input type="text"  id="pAddress" name="pAddress"  size="30" value="${p.pAddress}">
 						</div>
 						<br />
 					</div>
@@ -163,7 +163,7 @@
 						<label for="service4" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service4" value="쇼룸">쇼룸</label>
 						<label for="service5" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service5" value="정부지원사업">정부지원사업</label></br>
 						<label for="service6" class="lbl-checkbox-disabled"><input type="checkbox" name="pService" id="service6" value="두집예치제">두집예치제</label>
-						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="pBalance" value="${ps.pBalance}" >
+						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="pBalance" <%--value="${ps.pBalance}"--%> >
 						<p id="red">* 두집예치제는 두집(****-****)으로 추가 문의주세요.</p>
 						<div class="current-service">
 							<label>현재 제공하는 서비스</label>
@@ -175,7 +175,7 @@
 
 					<div class="additional-05">
 						<label><b>홈페이지</b></label><br />
-						<textarea class="homepage" autocomplete="off" name="pHomepg" id="pHomepg" placeholder="홈페이지를 입력하세요" rows="3">${ps.pHomepg}</textarea>
+						<textarea class="homepage" autocomplete="off" name="pHomepg" id="pHomepg" placeholder="홈페이지를 입력하세요" rows="3"><%--${ps.pHomepg}--%></textarea>
 					</div>
 					<br />
 
@@ -221,10 +221,10 @@
 						<div class="residence">
 							<label for="res_build_all" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type_all" id="res_build_all" value="" onclick="selectAll1(this)"></input> 전체</label><br />
 							<div>
-								<label for="res_build01" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build01" value="아파트">아파트</input></label>
-								<label for="res_build02" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build02" value="빌라">빌라</input></label>
-								<label for="res_build03" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build03" value="주택">주택</input></label>
-								<label for="res_build04" class="lbl-checkbox"> <input type="checkbox"name="pRes_build_type" id="res_build04" value="오피스텔">오피스텔</input></label>
+								<label for="res_build01" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build01" value="아파트">아파트</label>
+								<label for="res_build02" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build02" value="빌라">빌라</label>
+								<label for="res_build03" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type" id="res_build03" value="주택">주택</label>
+								<label for="res_build04" class="lbl-checkbox"> <input type="checkbox"name="pRes_build_type" id="res_build04" value="오피스텔">오피스텔</label>
 							</div> <!-- label의 for와 input의 id가 같아야 label값 눌러도 선택됨 -->
 						</div>
 						<br />
@@ -237,14 +237,14 @@
 							<!-- <h5 class="sigong">시공</h5>  -->
 							<div>
 								<!--  <input type="checkbox" id="wall" name="check" data-name="도배/벽"  class ="checkbox"/> -->
-								<label for="res_space01" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space01" value="도배/벽">도배/벽</input></label>
-								<label for="res_space02" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space02" value="바닥">바닥</input></label>
-								<label for="res_space03" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space03" value="주방">주방</input></label>
-								<label for="res_space04" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space04" value="욕실">욕실</input></label>
-								<label for="res_space05" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space05" value="현관">현관</input></label>
-								<label for="res_space06" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space06" value="발코니/샷시">발코니/샷시</input></label>
-								<label for="res_space07" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space07" value="조명">조명</input></label>
-								<label for="res_space08" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space08" value="문">문</input></label>
+								<label for="res_space01" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space01" value="도배/벽">도배/벽</label>
+								<label for="res_space02" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space02" value="바닥">바닥</label>
+								<label for="res_space03" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space03" value="주방">주방</label>
+								<label for="res_space04" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space04" value="욕실">욕실</label>
+								<label for="res_space05" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space05" value="현관">현관</label>
+								<label for="res_space06" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space06" value="발코니/샷시">발코니/샷시</label>
+								<label for="res_space07" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space07" value="조명">조명</label>
+								<label for="res_space08" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type" id="res_space08" value="문">문</label>
 								<!--  			<label for="check22" class="lbl-checkbox"> <input type="checkbox" id="check22">도장</input></label>
                                             <label for="check23" class="lbl-checkbox"> <input type="checkbox" id="check23">필름</input></label>
                                             <label for="check24" class="lbl-checkbox"> <input type="checkbox" id="check24">목공</input></label>
@@ -278,13 +278,13 @@
 						<div class="commercial" >
 							<label for="com_build_all" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type_all" id="com_build_all" value="" onclick="selectAll3(this)"></input> 전체</label><br />
 							<div>
-								<label for="com_build01" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build01" value="사무실">사무실</input></label>
-								<label for="com_build02" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build02" value="상가/매장">상가/매장</input></label>
-								<label for="com_build03" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build03" value="카페/식당">카페/식당</input></label>
-								<label for="com_build04" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build04" value="학원/교육">학원/교육</input></label>
-								<label for="com_build05" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build05" value="숙박/병원">숙박/병원</input></label>
-								<label for="com_build06" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build06" value="간판">간판</input></label>
-								<label for="com_build07" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build07" value="기타">기타</input></label>
+								<label for="com_build01" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build01" value="사무실">사무실</label>
+								<label for="com_build02" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build02" value="상가/매장">상가/매장</label>
+								<label for="com_build03" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build03" value="카페/식당">카페/식당</label>
+								<label for="com_build04" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build04" value="학원/교육">학원/교육</label>
+								<label for="com_build05" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build05" value="숙박/병원">숙박/병원</label>
+								<label for="com_build06" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build06" value="간판">간판</label>
+								<label for="com_build07" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type" id="com_build07" value="기타">기타</label>
 							</div>
 						</div>
 						<br />
@@ -297,14 +297,14 @@
 							</label><br />
 							<!--  <h5 class="sigong">시공</h5> -->
 							<div id="representative-link">
-								<label for="com_space01" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space01" value="도배/벽">도배/벽</input></label>
-								<label for="com_space02" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space02" value="바닥">바닥</input></label>
-								<label for="com_space03" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space03" value="주방">주방</input></label>
-								<label for="com_space04" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space04" value="욕실">욕실</input></label>
-								<label for="com_space05" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space05" value="현관">현관</input></label>
-								<label for="com_space06" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space06" value="발코니/샷시">발코니/샷시</input></label>
-								<label for="com_space07" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space07" value="조명">조명</input></label>
-								<label for="com_space08" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space08" value="문">문</input></label>
+								<label for="com_space01" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space01" value="도배/벽">도배/벽</label>
+								<label for="com_space02" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space02" value="바닥">바닥</label>
+								<label for="com_space03" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space03" value="주방">주방</label>
+								<label for="com_space04" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space04" value="욕실">욕실</label>
+								<label for="com_space05" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space05" value="현관">현관</label>
+								<label for="com_space06" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space06" value="발코니/샷시">발코니/샷시</label>
+								<label for="com_space07" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space07" value="조명">조명</label>
+								<label for="com_space08" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type" id="com_space08" value="문">문</label>
 							</div>
 							<!--  		<h5 class="gicho">기초공사</h5>
                                     <div>
@@ -329,9 +329,9 @@
 					<div>
 						<div>
 							<label><b>주거 담당자</b></label>
-							<div><input type="text" size="20" id="pRes_person_name" name="pRes_person_name" value="${ps.pRes_person_name}" placeholder="담당자명"></div></br>
+							<div><input type="text" size="20" id="pRes_person_name" name="pRes_person_name" <%--value="${ps.pRes_person_name}"--%> placeholder="담당자명"></div></br>
 							<label><b>담당자 연락처</b></label>
-							<div><input type="text" size="20" id="pRes_person_tel" name="pRes_person_tel" value="${ps.pRes_person_tel}" placeholder="담당자 연락처"></div>
+							<div><input type="text" size="20" id="pRes_person_tel" name="pRes_person_tel" <%--value="${ps.pRes_person_tel}"--%> placeholder="담당자 연락처"></div>
 							<label>
 								<input type="checkbox" aria-hidden="false">
 								<span class="">대표자 정보와 동일 <!----></span>
@@ -339,9 +339,9 @@
 						</div></br>
 						<div>
 							<label><b>상업 담당자</b></label>
-							<div><input type="text" size="20" id="pCom_person_name" name="pCom_person_name" value="${ps.pCom_person_name}" placeholder="담당자명"></div></br>
+							<div><input type="text" size="20" id="pCom_person_name" name="pCom_person_name" <%--value="${ps.pCom_person_name}"--%> placeholder="담당자명"></div></br>
 							<label id="payment-link"><b>담당자 연락처</b></label>
-							<div><input type="text" size="20" id="pCom_person_tel" name="pCom_person_tel" value="${ps.pCom_person_tel}" placeholder="담당자 연락처"></div>
+							<div><input type="text" size="20" id="pCom_person_tel" name="pCom_person_tel" <%--value="${ps.pCom_person_tel}"--%> placeholder="담당자 연락처"></div>
 							<label>
 								<input type="checkbox" aria-hidden="false">
 								<span class="">대표자 정보와 동일 <!----></span>
@@ -363,9 +363,9 @@
 
 					<div>
 						<label><b>입금계좌</b></label>
-						<div><input type="text" size="20" id="pAccount_bank" name="pAccount_bank" value="${ps.pAccount_bank}" placeholder="은행명"></div>
-						<div><input type="text" size="20" id="pAccount_name"name="pAccount_name" value="${ps.pAccount_name}" placeholder="예금주"></div>
-						<div><input type="text" size="20" id="pAccount_num" name="pAccount_num" value="${ps.pAccount_num}" placeholder="계좌번호"></div>
+						<div><input type="text" size="20" id="pAccount_bank" name="pAccount_bank" <%--value="${ps.pAccount_bank}"--%> placeholder="은행명"></div>
+						<div><input type="text" size="20" id="pAccount_name"name="pAccount_name" <%--value="${ps.pAccount_name}"--%> placeholder="예금주"></div>
+						<div><input type="text" size="20" id="pAccount_num" name="pAccount_num" <%--value="${ps.pAccount_num}"--%> placeholder="계좌번호"></div>
 					</div></br>
 					<div>
 						<div class="representative-01">

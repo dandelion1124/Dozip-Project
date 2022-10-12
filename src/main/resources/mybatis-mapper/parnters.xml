@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="partners">
-    <!--파트너스 정보 조회 -->
-    <select id="partners_info" resultType="PartnersVO">
+    <mapper namespace="partners">
+        <!--파트너스 정보 조회 -->
+        <select id="partners_info" resultType="PartnersVO">
         select * from partnersT where pId=#{pId}
     </select>
 
@@ -19,12 +19,13 @@
         select * from partnersT where businessNum=#{businessNum}
     </select>
     
-    <select id="data_manage" resultType="PartnersVO">
-        <!--select * from partnersT where business_num=#{business_num} -->
-        select * from partnersT where business_num=105
+    <select id="select_data" resultType="PartnersVO">
+        select * from partnersT where businessNum=#{businessNum, jdbcType=VARCHAR}
+        <!--select * from partnersT where businessNum=105 -->
     </select>
 
-    
-
+    <select id="select_subdata" resultType="Partners_subVO">
+        select * from partners_subT where businessNum=#{businessNum, jdbcType=VARCHAR}
+    </select>
 </mapper>
 

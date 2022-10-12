@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Partners_subVO {
-	private String business_num;
+	private String businessNum;
 	private String pShortstate;
 	private String pInt_img;
 	private String pComp_logo;
