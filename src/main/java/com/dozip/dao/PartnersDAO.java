@@ -3,6 +3,9 @@ package com.dozip.dao;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
+import com.dozip.vo.QnaVO;
+
+import java.util.List;
 
 public interface PartnersDAO {
     PartnersVO getPartnersInfo(String pId);
@@ -19,5 +22,21 @@ public interface PartnersDAO {
     void insertPort_Photos(PortfolioVO pv);
 
     Partners_subVO getPartnersSub(String businessNum);
+
+    int getListCount(QnaVO findQ);
+
+    List<QnaVO> getQnaList(QnaVO findQ);
+
+    void updateLevel(QnaVO qdto);
+
+    void updateState(QnaVO qdto);
+
+    int insertQna(QnaVO qdto);
+
+    int deleteReply(QnaVO dv);
+
+    int selqnaRef(QnaVO dv);
+
+    void returnState(QnaVO dv);
 }
 

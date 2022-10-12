@@ -56,6 +56,7 @@ public class HochulTestController {
 
 
     //고객문의글 삭제
+    @ResponseBody
     @GetMapping("/customer_qna_del_ok")
     public String customer_qna_del_ok(QnaVO dv){
         int result=partnersService.deleteReply(dv);

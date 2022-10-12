@@ -6,7 +6,7 @@ import lombok.Data;
 public class QnaVO {
     private int qna_no;
     private String mem_id;
-    private String business_num;
+    private String businessNum;
     private String qna_type;
     private String qna_title;
     private String qna_cont;
