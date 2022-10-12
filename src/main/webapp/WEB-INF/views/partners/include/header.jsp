@@ -67,16 +67,15 @@ if(session.getAttribute("id")==null){
 			<ul id="side_menu">
 			<li style="height: 100px;">
 			</li>
-				<li><a href="/partners/">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
+				<li><a href="/partners/main">&nbsp;&nbsp;&nbsp;PARTNERS</a></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;요&nbsp;&nbsp;금&nbsp;&nbsp;제</a>
 					<ul>
 						<li><a href="/partners/planning">요금제안내</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;의뢰</a>
 					<ul>
-						<li><a href="/Partners/bid.do">입찰의뢰</a></li>
-						<li><a
-							href="/Partners/estimate_request/construct_request.jsp">시공요청</a></li>
+						<li><a href="/partners/bid">입찰의뢰</a></li>
+						<li><a href="/partners/construct_request">시공요청</a></li>
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;관리</a>
 					<ul>
@@ -104,8 +103,8 @@ if(session.getAttribute("id")==null){
 					</ul></li>
 				<li><a href="#">&nbsp;&nbsp;&nbsp;My&nbsp;Page</a>
 					<ul>
-						<li><a href="/Partners/data_manage.do">내 정보관리</a></li>
-						<li><a href="/Partners/pw_change.do">비밀번호 변경</a></li>
+						<li><a href="/partners/data_manage">내 정보관리</a></li>
+						<li><a href="/partners/pw_change">비밀번호 변경</a></li>
 					</ul></li>
 				<%-- --%>
 			</ul>
@@ -169,13 +168,12 @@ if(session.getAttribute("id")==null){
 							id="timer"></span></span> <span class="hide_2"><input
 							type="button" value="로그아웃" onclick="logout_check()"></span>
 
-
 						<script>
 							function logout_check() {
 								var x = confirm('로그아웃 하시겠습니까?');
 
 								if (x)
-									location = '/Partners/partners_logout.do'
+									location = '/partners/logout'
 								else
 									return;
 							}

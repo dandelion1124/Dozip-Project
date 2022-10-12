@@ -13,11 +13,11 @@
 						<div class="search_box">
 					    <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요">
 					    <button class="search-btn" type="submit">
-					    	<img src="./images/search.png" width="20px" height="20px">
+					    	<img src=".../resources/static/images/partners/search.png" width="20px" height="20px">
 					    </button>
 						</div>
 					<div class="my_bid_icon">
-						<a href="./my_bid.do"
+						<a href="/partners/my_bid"
 							class="to_my_bid" target="_blank"><img src="./images/bid_list.png" width="55px" height="55px"></a>
 					</div>
 			</div>
@@ -94,7 +94,7 @@
 									<p class="val"><b>3</b></p></li>
 							</ul>
 							<div class="bid_detail">
-								<a href="./bid_detail.do" class="btn-d-view" >자세히 보기</a>
+								<a href="/partners/bid_detail" class="btn-d-view" >자세히 보기</a>
 							</div>
 						</div>						
 					</div></br>
@@ -159,7 +159,7 @@
 									<p class="val"><b>3</b></p></li>
 							</ul>
 							<div class="bid_detail">
-								<a href="./bid_detail.do" class="btn-d-view" >자세히 보기</a>
+								<a href="/partners/bid_detail" class="btn-d-view" >자세히 보기</a>
 							</div>
 						</div>						
 					</div></br>
@@ -224,7 +224,7 @@
 									<p class="val"><b>3</b></p></li>
 							</ul>
 							<div class="bid_detail">
-								<a href="./bid_detail.do" class="btn-d-view" >자세히 보기</a>
+								<a href="/partners/bid_detail" class="btn-d-view" >자세히 보기</a>
 							</div>
 						</div>						
 					</div></br>

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 /* data_manage */
    .item_title{
@@ -59,13 +58,26 @@
    .business-01{
    		display:inline-block;
    }
+   #business_num, #businessName, #pName, #pTel{
+   		background-color:#E8F5FF;
+   		border:1px solid lightgray;
+   		height:30px;
+   		width:300px;
+   }
+   #pAddress,#deposit_money,#pRes_person_name,#pRes_person_tel,#pCom_person_name,
+   #pCom_person_tel,#pAccount_bank,#pAccount_name,#pAccount_num{
+       border:1px solid lightgray;
+       height:30px;
+       width:300px;
+   }
+
    .business-01-1 {
-   		display:inline-block;
+   		/*display:inline-block;*/
    		float:left;
    }
    .business-01-2{
- 	  	display:inline-block;
- 	  	float:right;
+ 	  	/*display:inline-block;*/
+ 	  	float:left;
    }
   
    #pShortstate{
@@ -73,6 +85,7 @@
       width: 95%;
       padding:5px 10px;
       line-height: 1.5;
+      border: 1px solid lightgray;
    }
    .additional-02{
       display:inline-block;
@@ -126,6 +139,7 @@
      padding: 5px 10px;
      line-height: 1.5;
      resize:vertical;
+      border: 1px solid lightgray;
   }
   .additional-06, .additional-07{
      display:inline-block;
@@ -211,12 +225,30 @@
   }
   
   .data_edit_button_tag{
- 		width: 95%;
-    margin: 30px 2%;
-    padding: 0 2%;
+      width: 95%;
+      margin: 30px 2%;
+      padding: 0 2%;
+      margin:auto;
   }
-  .data_edit_button{
-  	padding: 5px;
+  #data_edit_button{
+      cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0 10% 0 10%;
+      text-align: center;
+      text-decoration-line: none;
+      display: block;
+      height: 50px;
+      width: 200px;
+      line-height: 30px;
+      border-radius: 5px;
+      background: #00BFFF;
+      color: #fff;
+      font-size: 16px;
+      letter-spacing: -0.025em;
+  	  padding: 5px;
+
+
   }
   .money1, .money2{
   	display:inline-block;
@@ -698,6 +730,7 @@
 	 	width: 50%;
 	 	margin:5px 0;
 	 	display: inline-block;
+	 	color:#4398ed;
 	 }
 	 .bid_detail_text01, .bid_detail_text02{
 	 	width: 48%;
@@ -720,7 +753,8 @@
    
    }
    .my_bid_title1, .my_bid_title2{
-      width: 100%;
+      width: 170px;
+      display:inline-block;
    }
    #bid_fin, #bid_proc{
       padding: 40px 0 10px 50px;
@@ -738,34 +772,34 @@
       height: 50px;
    }
    .my_bid_btn-d-view{
-       overflow:hidden;  
+     overflow:hidden;  
      text-overflow: ellipsis;
-       margin: 0 5% 0 5%;
-    text-align: center;
-    text-decoration-line:none;
-    display: block;
-    height: 42px;
-    line-height: 42px;
-    border-radius: 5px;
-    background: #00BFFF;
-    color: #fff;
-    font-size: 15px;
-    letter-spacing: -0.025em;   
+     margin: 0 10% 0 10%;
+     text-align: center;
+     text-decoration-line:none;
+     display: block;
+     height: 30px;
+     line-height: 30px;
+     border-radius: 5px;
+     background: #00BFFF;
+     color: #fff;
+     font-size: 12px;
+     letter-spacing: -0.025em;   
    }
     .btn-cancel{
-       overflow:hidden;  
+     overflow:hidden;  
      text-overflow: ellipsis;
-       margin: 0 25% 0 25%;
-    text-align: center;
-    text-decoration-line:none;
-    display: block;
-    height: 42px;
-    line-height: 42px;
-    border-radius: 5px;
-    background: red;
-    color: #fff;
-    font-size: 15px;
-    letter-spacing: -0.025em;   
+     margin: 0 25% 0 25%;
+     text-align: center;
+     text-decoration-line:none;
+     display: block;
+     height: 30px;
+     line-height: 30px;
+     border-radius: 5px;
+     background: red;
+     color: #fff;
+     font-size: 12px;
+     letter-spacing: -0.025em;   
     }
     
  /*construct-request */
@@ -785,9 +819,10 @@
       display:table-cell;
    }
    .req_accept .accept, .req_accept .deny{
-      width:40%;
-      height:40px;
+      width:50px;
+      height:30px;
       border:0;
+      border-radius: 5px;
       color:white;
       cursor:pointer;
    }
@@ -836,9 +871,27 @@
    		margin-bottom:10px;
    }
    .pw_change01, .pw_change02, .pw_change03{
-  	width: 97%;
+  	width: 80%;
+  	height: 30px;
     padding: 1px 0px 1px 10px;
-    border: 2.5px solid gray;
+    border: 1.5px solid black;
+    
    }
-   
+   .pw_change_complete{
+   	 cursor:pointer;
+     overflow:hidden;  
+     text-overflow: ellipsis;
+     margin: 0 10% 0 10%;
+     text-align: center;
+     text-decoration-line:none;
+     display: block;
+     height: 40px;
+     width: 100px;
+     line-height: 30px;
+     border-radius: 5px;
+     background: #00BFFF;
+     color: #fff;
+     font-size: 16px;
+     letter-spacing: -0.025em;   
+   }
    
