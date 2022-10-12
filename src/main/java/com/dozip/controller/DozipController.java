@@ -262,14 +262,20 @@ public class DozipController {
     
     //포트폴리오 리스트 출력
     @GetMapping(value = "port") //get으로 접근하는 매핑주소 처리
-    public ModelAndView port(ModelAndView mv, HttpServletRequest request, PortfolioVO p) throws Exception {
+    public String port()  {
 
-        List<PortfolioVO>plist = new ArrayList<PortfolioVO>(); //포트폴리오 목록
-        plist = this.portfolioService.getPlist(p);
-        mv.addObject("plist",plist);
+        //List<PortfolioVO>plist = this.portfolioService.getPlist();
 
-        mv.setViewName("/dozip/portfolio/port_main");
-        return mv;
+
+       // portfolioService.getOnelist(2);
+
+        String id ="3";
+       portfolioService.testVO(id);
+
+        //mv.addObject("plist",plist);
+
+
+        return "/dozip/portfolio/port_main";
     }
 
     @GetMapping(value = "port_detail")

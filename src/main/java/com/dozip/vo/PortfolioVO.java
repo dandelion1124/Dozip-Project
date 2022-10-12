@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PortfolioVO {
     private int pf_no;
-    private String business_num;
+    private String businessNum;
     private String pf_title;
     private String pf_type;
     private String pf_subtype;
@@ -34,11 +34,11 @@ public class PortfolioVO {
 
     //포트폴리오 정보 담기를 위한 생성자 오버로딩
 
-    public PortfolioVO(String business_num, String pf_title, String pf_type, String pf_subtype, String pf_range,
+    public PortfolioVO(String businessNum, String pf_title, String pf_type, String pf_subtype, String pf_range,
                        String pf_zipcode, String pf_addr1, String pf_addr2, String pf_addr3, int pf_area, int pf_cost,
                        int pf_period, String pf_concept, String pf_introduction, String pf_closing) {
         super();
-        this.business_num = business_num;
+        this.businessNum = businessNum;
         this.pf_title = pf_title;
         this.pf_type = pf_type;
         this.pf_subtype = pf_subtype;
