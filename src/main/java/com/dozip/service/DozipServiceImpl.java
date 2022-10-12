@@ -41,4 +41,13 @@ public class DozipServiceImpl implements DozipService{
 
     @Override
     public List<QnaVO> getPlist(QnaVO q) { return this.dozipDAO.getPlist(q); }
+
+    @Override
+    public void insertQna(QnaVO q) { this.dozipDAO.insertQna(q); }
+
+    @Override
+    public String getBnum(String businessName) { return this.dozipDAO.getBnum(businessName); }
+
+    @Override
+    public List<String> getPartners() { return this.dozipDAO.getPartners(); }
 }

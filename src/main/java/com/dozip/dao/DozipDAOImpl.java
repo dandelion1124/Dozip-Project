@@ -16,12 +16,12 @@ public class DozipDAOImpl implements DozipDAO{
 
     @Override
     public String loginCheck(String mem_id) {
-        return this.sqlSession.selectOne("login_check", mem_id);
+        return this.sqlSession.selectOne("mlogin_check", mem_id);
     }
 
     @Override
     public String getFindID(MemberVO vo) {
-        return this.sqlSession.selectOne("find_id", vo);
+        return this.sqlSession.selectOne("find_mid", vo);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class DozipDAOImpl implements DozipDAO{
     public int updateMember(MemberVO m) { return this.sqlSession.update("m_update", m); }
 
     @Override
-    public int getListCount(String id) { return this.sqlSession.selectOne("list_count", id); }
+    public int getListCount(String id) { return this.sqlSession.selectOne("listQ_count", id); }
 
     @Override
     public List<QnaVO> getQlist(QnaVO q) { return this.sqlSession.selectList("get_Qlist", q); }
@@ -41,4 +41,13 @@ public class DozipDAOImpl implements DozipDAO{
 
     @Override
     public List<QnaVO> getPlist(QnaVO q) { return this.sqlSession.selectList("get_Plist", q); }
+
+    @Override
+    public void insertQna(QnaVO q) { this.sqlSession.insert("in_Qna", q); }
+
+    @Override
+    public String getBnum(String businessName) { return this.sqlSession.selectOne("get_Bnum", businessName); }
+
+    @Override
+    public List<String> getPartners() { return this.sqlSession.selectList("get_P"); }
 }

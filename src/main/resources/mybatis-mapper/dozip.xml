@@ -4,12 +4,12 @@
 
 <mapper namespace="dozip">
     <!--로그인(아이디에 해당하는 비밀번호 가져오기)-->
-    <select id="login_check" resultType="String">
+    <select id="mlogin_check" resultType="String">
         select mem_pwd from memberT where mem_id=#{mem_id} and mem_withdraw=0
     </select>
 
     <!--아이디 찾기-->
-    <select id="find_id" resultType="String">
+    <select id="find_mid" resultType="String">
         select mem_id from memberT where mem_name=#{mem_name} and mem_tel=#{mem_tel}
     </select>
 
@@ -25,7 +25,7 @@
     </update>
 
     <!--문의글 총 개수(해당 아이디의 작성 글 개수 확인 - 관리자)-->
-    <select id="list_count" resultType="int">
+    <select id="listQ_count" resultType="int">
         select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (business_num is null)
     </select>
 
@@ -52,10 +52,26 @@
         qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
         qna_level,reply_state,reply_date, p.businessName
         from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q, partnersT p
-        where q.business_num=p.business_num(+) and (q.business_num is not null)
+        where q.business_num=p.businessNum(+) and (q.business_num is not null)
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
+    <!--문의글 작성 (관리자/업체 둘 다)-->
+    <insert id="in_Qna">
+        insert into qnaT
+		(qna_no, mem_id, business_num, qna_type, qna_title, qna_cont, qna_date, qna_ref, qna_step, qna_level, reply_state)
+		values (qnaT_no_seq.nextval,#{mem_id},#{business_num, jdbcType = VARCHAR},#{qna_type},#{qna_title},#{qna_cont},sysdate,qnaT_no_seq.nextval,0,0,'미답변')
+    </insert>
+
+    <!--사업자번호 찾기-->
+    <select id="get_Bnum" resultType="String">
+        select businessNum from partnersT where businessName=#{businessName}
+    </select>
+
+    <!--업체명 불러오기-->
+    <select id="get_P" resultType="String">
+        select businessName from partnersT
+    </select>
 
 
     <!--resultType에 경로넣어서 하려니, 못잡고 계속 null값이 나와서 resultMap을 사용함-->

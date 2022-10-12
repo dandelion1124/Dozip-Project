@@ -6,6 +6,7 @@ import com.dozip.vo.MemberVO;
 import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -64,7 +65,7 @@ public class DozipController {
                 session.invalidate();//세션 만료 => 로그아웃
 
                 out.println("<script>");
-                out.println("opener.parent.location.href='/admin/home';"); //admin 쪽 controller로 연결 (아직 연결X)
+                out.println("opener.parent.location.href='/admin/';"); //admin 쪽 controller로 연결
                 out.println("window.close();");
                 out.println("</script>");
             } else { //일반 회원이라면 창을 닫고 메인화면을 새로고침 한다.
@@ -204,15 +205,18 @@ public class DozipController {
         return mv;
     }
 
-    @GetMapping("qna_write") //문의글 등록
+    @GetMapping("qna_write") //(관리자)문의글 작성 페이지 이동
     public String qnaWrite(){ return "/dozip/counsel/counsel_write"; }
 
-    @PostMapping("qna_write_ok") //문의글 등록 완료
-    public String qnaWriteOK(HttpServletRequest request, HttpServletResponse response, QnaVO q, HttpSession session) throws Exception {
-        String id = (String)session.getAttribute("id");
+    @RequestMapping(value = "qna_write_ok",  method = RequestMethod.POST, produces = "application/json") //문의글 등록 완료
+    public void qnaWriteOK(QnaVO q, HttpSession session) throws Exception {
+        q.setMem_id((String)session.getAttribute("id"));
 
+        if(q.getBusinessName()!=null){ //업체문의등록
+            q.setBusiness_num(this.dozipService.getBnum(q.getBusinessName()));
+        }
 
-        return null;
+        this.dozipService.insertQna(q);
     }
 
     @GetMapping("my_Pqna") //마이페이지-업체 문의글 목록
@@ -252,7 +256,19 @@ public class DozipController {
         mv.setViewName("/dozip/mypage/mypage_Pqna");
         return mv;
     }
-    
+
+    @GetMapping("pqna_write") //업체 문의글 작성 페이지 이동
+    public String pqnaWrite(){ return "/dozip/counsel/counsel_partner_write"; }
+
+    @GetMapping("find_partners") //업체 검색
+    public ModelAndView findPartners(ModelAndView mv) {
+        List<String> list = new ArrayList<String>();
+        list = this.dozipService.getPartners();
+        mv.addObject("list",list);
+        mv.setViewName("/dozip/counsel/counsel_find_partner");
+        return mv;
+    }
+
     //포트폴리오 리스트 출력
     @RequestMapping(value = "/dozip/port", method = RequestMethod.GET) //get으로 접근하는 매핑주소 처리
     public ModelAndView port(ModelAndView mv, HttpServletRequest request, PortfolioVO p) {

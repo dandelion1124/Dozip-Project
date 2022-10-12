@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="mqw_box"><button id="my_P_qna_write_btn">
-        <a href="counsel_partner_write.do" >업체 문의글 작성하기</a>
+        <a href="/dozip/pqna_write" >업체 문의글 작성하기</a>
     </button></div>
 </div>
 

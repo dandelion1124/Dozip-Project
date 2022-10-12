@@ -16,7 +16,7 @@
 	</div>
 	<hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
 	<div class="counsel_write_form_box">
-		<form id="counsel_write_form" action="qna_write_ok" method="post">
+		<form id="counsel_write_form" action="/dozip/qna_write_ok" method="post">
 			<p style="width: 80%; font-weight: bold;">문의글 작성</p>
 			<table class="write_table">
 				<tr>
@@ -48,6 +48,52 @@
 	</div>
 
 	</div>
+
+	<script>
+		$(document).on('click', '#qna_btn', function(e){
+			const qna_title = $("#qna_title").val().trim();
+			const qna_type = $("#qna_type").val().trim();
+			const qna_cont = $("#qna_cont").val().trim();
+
+			if (qna_title === '') {
+				alert('제목을 입력해주세요.');
+				return false;
+			}
+			if (qna_type === '문의유형') {
+				alert('문의유형을 선택해주세요.');
+				return false;
+			}
+			if (qna_cont === '') {
+				alert('내용을 입력해주세요.');
+				return false;
+			}
+
+			var formData = new FormData();
+			formData.append("qna_title", qna_title);
+			formData.append("qna_type", qna_type);
+			formData.append("qna_cont", qna_cont);
+
+			$.ajax({
+				enctype : 'multipart/form-data',
+				processData : false,
+				contentType : false,
+				cache : false,
+				data : formData,
+				success : function() {
+					alert('글이 작성되었습니다.');
+					var myReferer = document.referrer;
+					if(myReferer.substring(0,34)==="http://localhost:8084/dozip/my_qna"){
+						location.replace("/dozip/my_qna");
+					}else if(myReferer.substring(0,36)==="http://localhost:8084/dozip/qna_main"){
+						location.replace("/dozip/qna_main");
+					}
+				},
+				error:function(){
+					alert("글 저장에 실패했습니다.");
+				}
+			});
+		});
+	</script>
 
 </div>
 
