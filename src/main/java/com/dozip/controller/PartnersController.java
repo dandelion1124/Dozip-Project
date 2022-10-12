@@ -252,7 +252,7 @@ public class PartnersController {
     @RequestMapping(value = "/upload_photo") // 포트폴리오 등록
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
                                         HttpServletRequest request) {
-        pv.setBusiness_num((String) session.getAttribute("business_num"));
+        pv.setBusinessNum((String) session.getAttribute("business_num"));
         if (pv.getPf_addr2().isEmpty()) {
             pv.setPf_addr2(" ");
         }

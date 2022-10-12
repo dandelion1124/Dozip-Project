@@ -6,13 +6,20 @@
 <mapper namespace="Port">
 
     <!-- ????? ??? ???? (??? ????? resultMap ??)-->
-    <select id = "port_list" resultMap="pvo">
-        select * from (
+    <select id = "port_list" resultType="PortfolioVO">
+       <!-- select * from (
             select pf_no, pf.businessNum, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2,pf_addr3,
             pf_area, pf_cost, pf_period, pf_concept, pf_introduction, pf_closing, pf_photo1, pf_photo2, pf_photo3, pf_photo4,
-            pf_photo5, pf_premium, pf_regdate, pt.businessName from portfolioT pf, partnersT pt where pf.businessNum=pt.businessNum(+) order by pf_no desc and (pf.businesssNum is not null)
-                      )
+            pf_photo5, pf_premium, pf_regdate, pt.businessName from portfolioT pf, partnersT pt where pf.businessNum=pt.businessNum(+) order by pf_no desc) -->
+
+        select * from portfolioT;
+
     </select>
+
+
+<select id="test" resultType="PortfolioVO">
+    select * from portfolioT where pf_no=3
+</select>
 
     <!-- ?? ???? ????? ???? -->
     <select id="pf_list" resultType="PortfolioVO">
@@ -58,15 +65,15 @@
 
     <!--????? ?? ??-->
     <insert id="portfolio_in" parameterType="PortfolioVO">
-        insert into portfolioT (pf_no, business_num, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
+        insert into portfolioT (pf_no, businessNum, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
                                 pf_concept, pf_introduction, pf_closing, pf_regdate)
-        values (portfolioT_no_seq.nextval, #{business_num}, #{pf_title}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
+        values (portfolioT_no_seq.nextval, #{businessNum}, #{pf_title}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
                 #{pf_addr3}, #{pf_area}, #{pf_cost}, #{pf_period}, #{pf_concept}, #{pf_introduction}, #{pf_closing}, sysdate)
     </insert>
 
     <!-- ????? ?? ?? -->
     <select id="portfolio_num" resultType="int">
-        select pf_no from portfolioT where business_num=#{business_num} and pf_title=#{pf_title}
+        select pf_no from portfolioT where businessNum=#{businessNum} and pf_title=#{pf_title}
     </select>
     
     <!--????? ?? ?? -->

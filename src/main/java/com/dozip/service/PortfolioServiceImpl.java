@@ -15,8 +15,8 @@ public class PortfolioServiceImpl implements PortfolioService {
     private PortfolioDAO portfolioDao;
 
     @Override
-    public List<PortfolioVO> getPlist(PortfolioVO p) {
-        return this.portfolioDao.getPlist(p);
+    public List<PortfolioVO> getPlist() {
+        return this.portfolioDao.getPlist();
     }
 
     @Override
@@ -32,5 +32,10 @@ public class PortfolioServiceImpl implements PortfolioService {
     @Override
     public PartnersVO getOnecomp(String businessName) {
         return this.portfolioDao.getOnecomp(businessName);
+    }
+
+    @Override
+    public PortfolioVO testVO(String id) {
+        return portfolioDao.testVO(id);
     }
 }

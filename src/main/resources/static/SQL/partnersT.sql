@@ -30,9 +30,9 @@ select * from partnersT where pId='shc729';
 --포트폴리오에 대한 정보를 담는 테이블					
 create table portfolioT(
 	pf_no number(38) primary key, --글번호
-	business_num nvarchar2(12) not null, --파트너스 사업자번호(외래키)
+	businessNum nvarchar2(12) not null, --파트너스 사업자번호(외래키)
 	pf_title nvarchar2(50) not null, --제목
-	pf_type nvarchar2(20) not null, --공사유형
+	pf_type nvarchar2(40) not null, --공사유형
 	pf_subtype nvarchar2(5) not null, --공사 세부유형
 	pf_range nvarchar2(10) not null, -- 시공범위
 	pf_zipcode nvarchar2(7) not null, --우편번호
@@ -52,7 +52,7 @@ create table portfolioT(
 	pf_photo5 nvarchar2(70), --사진5
 	pf_premium number(5) default 0, --프리미엄여부
 	pf_regdate nvarchar2(20) not null, --작성일자
-	foreign key(business_num) references partnersT(business_num)
+	foreign key(businessNum) references partnersT(businessNum)
 );					
 
 drop table portfolioT;
