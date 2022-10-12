@@ -33,15 +33,16 @@
 .slideshow-container {
     position: relative;
   }
+.mySlideDiv img{
+    height: 100vh;
+    width: 100%;
+}
 .slideshow-container.mySlideDiv{
     background-repeat:no-repeat;
 	background-size:cover;
 	background-position:center top;
-	height:100vh;
 	text-align:center;
-	width:100%;
 }
-  
   /*Slideshow effect */
   .fade {
     -webkit-animation-name: fade;

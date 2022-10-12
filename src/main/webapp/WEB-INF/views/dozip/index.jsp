@@ -46,7 +46,7 @@
 				<nav class="clearfix">
 					<ul class="main-menu">
 						<li><a href="/dozip/home" class="active">Home</a></li>
-						<li><a href="">견적신청</a></li>
+						<li><a href="/dozip/apply">견적신청</a></li>
 						<li><a href="/dozip/port">포트폴리오</a></li>
 						<li><a href="">고객후기</a></li>
 						<li><a href="">스토리</a></li>

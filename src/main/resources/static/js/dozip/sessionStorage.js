@@ -86,14 +86,14 @@ function SessionStorage_page01(){ /*1페이지*/
 	sessionStorage.setItem('areaP', document.getElementById("cal1").value);
 	sessionStorage.setItem('areaM', document.getElementById("cal2").value);
 
-
-	/*alert ("작동!");*/
+	//alert(sessionStorage.getItem('est_zoning'));
 }
 
 function SessionStorage_page02(){ /*2페이지*/
    sessionStorage.setItem('est_bud', document.getElementById("estimate_cost").value);
    sessionStorage.setItem('est_start', document.getElementById("est_start").value);
    sessionStorage.setItem('est_end', document.getElementById("est_end").value);
+   //alert(sessionStorage.getItem('est_bud'));
 	}
 
 function SessionStorage_page03(){ /*3페이지*/
@@ -101,6 +101,7 @@ function SessionStorage_page03(){ /*3페이지*/
    sessionStorage.setItem('est_phone', document.getElementById("phone").value);
    sessionStorage.setItem('est_addr', document.getElementById("addr").value);
    sessionStorage.setItem('est_desc', document.getElementById("paragraph").value);
+
 	}
 
 
@@ -127,10 +128,10 @@ function test(){
 	var est_phone = sessionStorage.getItem('est_phone'); 
 	var est_addr = sessionStorage.getItem('est_addr');
 	var est_desc = sessionStorage.getItem('est_desc'); 
-	
+
 	$.ajax({
 		type:"post", 
-		url:'estimate_apply5_ok.do', 
+		url:'/dozip/apply_ok',
 		datatype: "text",
 		data:{
 			est_zoning : est_zoning,
@@ -156,9 +157,10 @@ function test(){
 			est_addr : est_addr,
 			est_desc : est_desc
 		}
-		
-		
-		
+
+
+
+
 		/*, success : function(result){
 			alert('sessionStorage는 작동!');
 			location.reload();

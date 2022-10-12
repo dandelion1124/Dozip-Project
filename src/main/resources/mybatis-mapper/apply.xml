@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ApplyEstimate">
+    <insert id="a_insert">
+    insert into estimateT
+    (est_num, mem_id, est_zoning, est_use, est_areaP, est_areaM, est_detail, est_detail01, est_detail02
+    , est_detail03, est_detail04, est_detail05, est_detail06, est_detail07, est_detail08
+    , est_bud, est_start, est_end, est_date, est_dateEnd, est_name, est_phone, est_desc, est_file)
+     values(est_num_seq.nextval, #{mem_id},#{est_zoning},#{est_use},#{est_areaP},#{est_areaM},#{est_detail}
+         ,#{est_detail01},#{est_detail02},#{est_detail03},#{est_detail04},#{est_detail05},#{est_detail06},#{est_detail07}
+         ,#{est_detail08},#{est_bud},#{est_start},#{est_end},sysdate,1,#{est_name},#{est_phone},#{est_desc},#{est_file})
+    </insert>
+</mapper>
