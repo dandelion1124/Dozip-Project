@@ -5,24 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>파트너스 회원가입</title>
-<link rel="stylesheet" href="/Partners/css/join_style.css">
-<script src="/Partners/js/jquery.js"></script>
+<link rel="stylesheet" href="/css/partners/join_style.css">
+<script src="/js/partners/jquery.js"></script>
 
 </head>
 <body>
 	<article id="join_wrap">
 		<div id="signup_form">
 			<div id="signup_title">
-				<a href="/Partners/index.do"> <img src="images/join/signup_logo.png" alt="메인로고"></a>
+				<a href="/partners/index"> <img src="/images/partners/signup_logo.png" alt="메인로고"></a>
 			</div>
-			<form action="partners_signup_ok.do" method="post" onsubmit="return signup_check();">
+			<form action="partners_join_ok" method="post" onsubmit="return signup_check();">
 				<div class="info">
 					<label for="businessName">사업자명</label> 
 					<input type="text" id="businessName" name="businessName" placeholder="업체명을 입력해주세요">
 				</div>
 				<div class="info">
-					<label for="business_num">사업자번호</label> 
-					<input type="text"	id="business_num" name="business_num" placeholder="000-00-00000">
+					<label for="business_num">사업자번호</label>
+					<input type="text"	id="business_num" name="businessNum" placeholder="000-00-00000">
 				<div id="business_num_box">
 					<span id="business_num_check"></span>
 				</div></div>
@@ -35,10 +35,10 @@
 					<span id="pTel_check"></span>
 				</div></div>
 				<div class="info">
-					<label for="pMail">대표자 이메일</label>
+					<label for="pMail_id">대표자 이메일</label>
 					<div class="email_info">
-						<input type="text" id="pMail_id" name="pMail_id" placeholder="이메일 아이디"><span style="margin: 0px 3px;">@</span>
-						<input type="text" id="pMail_domain" name="pMail_domain" placeholder="이메일 도메인">
+						<input type="text" id="pMail_id" name="pMailId" placeholder="이메일 아이디"><span style="margin: 0px 3px;">@</span>
+						<input type="text" id="pMail_domain" name="pMailDomain" placeholder="이메일 도메인">
 					</div>
 					<select id="email_adr" name="email_adr">
 						<c:forEach var="e" items="${email}">
@@ -96,6 +96,6 @@
 			</form>
 		</div>
 		<jsp:include page="../include/footer.jsp" />
-		<script src="/Partners/js/join.js"></script>
+		<script src="/js/partners/join.js"></script>
 </body>
 </html>

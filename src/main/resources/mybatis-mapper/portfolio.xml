@@ -4,4 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Port">
+    <!--????? ?? ??-->
+    <insert id="portfolio_in" parameterType="PortfolioVO">
+        insert into portfolioT (pf_no, business_num, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
+                                pf_concept, pf_introduction, pf_closing, pf_regdate)
+        values (portfolioT_no_seq.nextval, #{business_num}, #{pf_title}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
+                #{pf_addr3}, #{pf_area}, #{pf_cost}, #{pf_period}, #{pf_concept}, #{pf_introduction}, #{pf_closing}, sysdate)
+    </insert>
+
+    <!-- ????? ?? ?? -->
+    <select id="portfolio_num" resultType="int">
+        select pf_no from portfolioT where business_num=#{business_num} and pf_title=#{pf_title}
+    </select>
+    
+    <!--????? ?? ?? -->
+    <insert id="insert_photo">
+        update portfolioT set  pf_photo1=#{pf_photo1}, pf_photo2=#{pf_photo2}, pf_photo3=#{pf_photo3}, pf_photo4=#{pf_photo4}, pf_photo5=#{pf_photo5} where pf_no=#{pf_no}
+    </insert>
+
 </mapper>

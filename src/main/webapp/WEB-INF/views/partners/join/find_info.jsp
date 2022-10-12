@@ -4,15 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 찾기</title>
-<link rel="stylesheet" href="/Partners/css/join_style.css">
-<script src="/Partners/js/jquery.js"></script>
-<script src="/Partners/js/join.js"></script>
+<link rel="stylesheet" href="/css/partners/join_style.css">
+<script src="/js/partners/jquery.js"></script>
+<script src="/js/partners/join.js"></script>
 </head>
 <body>
 	<article id="join_wrap">
 		<div id="findinfo_cont">
 			<div id="findinfo_title">
-					<a href="index.do"> <img src="./images/join/findinfo_logo.png"
+					<a href="/partners/main"> <img src="/images/partners/findinfo_logo.png"
 						alt="메인로고"></a>
 			</div>
 			<div id="findinfo_menu">
@@ -21,26 +21,26 @@
 			</div>
 
 			<div id=findinfo_form>
-				<form id="findid_form" action="partners_findid.do" method="post">
+				<form id="findid_form" action="partners_findid" method="post">
 					<div>
 						<div class="findinfo_label">
 							<label>사업자 등록번호</label>
 						</div><div>
-							<input type="text" name="findid_business_num" placeholder="000-00-00000">
+							<input type="text" name="findid_business_num" placeholder="000-00-00000" required>
 						</div>
 					</div>
 					<div>
 						<div class="findinfo_label">
 							<label>가입시 등록한 핸드폰 번호</label>
 						</div><div>
-							<input type="text" name="findid_pTel" placeholder="000-0000-0000">
+							<input type="text" name="findid_pTel" placeholder="000-0000-0000" required>
 						</div>
 					</div>
 					<div>
 						<div class="findinfo_label">
 							<label>이메일</label>
 						</div><div>
-							<input type="email" name="findid_email">
+							<input type="email" name="findid_email" required>
 						</div>
 					</div>
 					<div class="findinfo_findbtn">
@@ -52,25 +52,25 @@
 						</div>
 					</div>
 				</form>
-				<form action="partners_findpwd.do" id="findpwd_form" method="post">
+				<form action="partners_findpwd" id="findpwd_form" method="post">
 					<div>
 						<div class="findinfo_label">
 							<label>사업자 등록번호</label>
 						</div><div>
-							<input type="text" name="findpwd_business_num" placeholder="000-00-00000">
+							<input type="text" name="findpwd_business_num" placeholder="000-00-00000" required>
 						</div>
 					</div>
 					<div>
 						<div class="findinfo_label">
 							<label>계정 ID</label>
 						</div><div>
-							<input type="text" name="findpwd_pId">
+							<input type="text" name="findpwd_pId" required>
 						</div></div>
 					<div>
 						<div class="findinfo_label">
 							<label>계정 사용자명</label>
 						</div><div>
-							<input type="text" name="findpwd_pName">
+							<input type="text" name="findpwd_pName" required>
 						</div>
 					</div>
 					<p>*가입시 등록한 이메일로 전송됩니다.</p>

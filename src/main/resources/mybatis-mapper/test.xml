@@ -4,7 +4,8 @@
 
 <mapper namespace="test">
     <insert id="insert_db">
-        insert into test values (#{id},#{pw})
+        insert into test
+        values (#{id}, #{pw})
     </insert>
 
 
