@@ -206,20 +206,18 @@
 }
 
 #businessName {
-	width: 86%;
-	border-radius: 5px;
+	width: 80%;
 	height: 30px;
-	margin: 5px 0 20px 10px;
+	margin: auto 20px;
 }
 #cw_search_btn {
 	width: 8%;
 	border: 0;
-	border-radius: 5px;
-	height: 35px;
+	height: 30px;
 	background-color: #347844;
 	color: white;
 	text-align: center;
-	font-size: 1.1rem;
+	font-size: 1.0rem;
 	font-weight: bold;
 }
 #counsel_write_form span {

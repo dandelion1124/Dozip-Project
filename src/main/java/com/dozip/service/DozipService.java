@@ -23,4 +23,9 @@ public interface DozipService {
 
     List<QnaVO> getPlist(QnaVO q);
 
+    void insertQna(QnaVO q);
+
+    String getBnum(String businessName);
+
+    List<String> getPartners();
 }
