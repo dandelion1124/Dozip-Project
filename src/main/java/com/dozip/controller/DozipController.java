@@ -3,10 +3,12 @@ package com.dozip.controller;
 import com.dozip.service.DozipService;
 import com.dozip.service.PortfolioService;
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -254,8 +256,8 @@ public class DozipController {
     }
     
     //포트폴리오 리스트 출력
-    @RequestMapping(value = "/dozip/port", method = RequestMethod.GET) //get으로 접근하는 매핑주소 처리
-    public ModelAndView port(ModelAndView mv, HttpServletRequest request, PortfolioVO p) {
+    @GetMapping(value = "port") //get으로 접근하는 매핑주소 처리
+    public ModelAndView port(ModelAndView mv, HttpServletRequest request, PortfolioVO p) throws Exception {
 
         List<PortfolioVO>plist = new ArrayList<PortfolioVO>(); //포트폴리오 목록
         plist = this.portfolioService.getPlist(p);
@@ -265,11 +267,30 @@ public class DozipController {
         return mv;
     }
 
-    @RequestMapping(value = "/dozip/port_detail")
-    public String detail(){return "/dozip/portfolio/port_detail";}
+    @GetMapping(value = "port_detail")
+    public ModelAndView detail(@RequestParam("pf_no") int pf_no, HttpServletRequest request, PortfolioVO p, PartnersVO pv) throws Exception{
 
-    @RequestMapping(value = "/dozip/comp_detail")
-    public String comp(){return "/dozip/portfolio/comp_detail";}
+        PortfolioVO pf = this.portfolioService.getOnelist(pf_no);
+        PartnersVO pt = this.portfolioService.getComplist(pf_no);
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("pf",pf);
+        mv.addObject("pt",pt);
+
+        mv.setViewName("/dozip/portfolio/port_detail");
+        return mv;
+    }
+
+    @GetMapping(value = "comp_detail")
+    public ModelAndView comp(@RequestParam("businessName") String businessName, HttpServletRequest request, PartnersVO p) throws Exception{
+
+        PartnersVO pc = this.portfolioService.getOnecomp(businessName);
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("pc",pc);
+        mv.setViewName("/dozip/portfolio/comp_detail");
+        return mv;
+    }
 
     @GetMapping("/apply")
     public String apply() {

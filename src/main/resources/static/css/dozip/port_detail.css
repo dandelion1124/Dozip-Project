@@ -126,7 +126,7 @@
 	align-items:center;
 }
 	
-#d_imgs{
+#d_imgs1, #d_imgs2, #d_imgs3, #d_imgs4, #d_imgs5{
   margin : 30px;
   width: 60%;
   border-radius: 9px; 

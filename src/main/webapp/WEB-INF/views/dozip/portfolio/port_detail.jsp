@@ -65,11 +65,11 @@
             </pre>
          </div>
          <div class = "detail_imgs">
-            <img id = "d_imgs" src = "${pf.pf_photo1}"/>
-            <img id = "d_imgs" src = "${pf.pf_photo2}"/>
-            <img id = "d_imgs" src = "${pf.pf_photo3}"/>
-            <img id = "d_imgs" src = "${pf.pf_photo4}"/>
-            <img id = "d_imgs" src = "${pf.pf_photo5}"/>
+            <img id = "d_imgs1" src = "${pf.pf_photo1}"/>
+            <img id = "d_imgs2" src = "${pf.pf_photo2}"/>
+            <img id = "d_imgs3" src = "${pf.pf_photo3}"/>
+            <img id = "d_imgs4" src = "${pf.pf_photo4}"/>
+            <img id = "d_imgs5" src = "${pf.pf_photo5}"/>
          </div>
          <div class = "detail_cont2">
             <pre id = "end_cont">
@@ -89,7 +89,7 @@
          <pre id = "comp_loca">${pt.pAddress}</pre>
       </div>   
       <div class = "comp_detail">
-         <button type = "button" id = "comp" onclick = "location = 'comp_detail.do?businessName=${pt.businessName}'">더보러가기</button>
+         <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}'">더보러가기</button>
       </div>
    </div>
    <br><br>
