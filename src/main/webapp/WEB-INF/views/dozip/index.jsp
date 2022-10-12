@@ -20,9 +20,16 @@
 	
 	<script src="https://kit.fontawesome.com/3624917c4f.js" crossorigin="anonymous"></script>
 	<script src ="/js/dozip/header.js" defer></script>
-	<script src ="./js/dozip/map.js" defer></script>
-	<script src="./js/dozip/portfolio.js"defer></script>
-	<script src="./js/dozip/jquery.js"></script>
+	<script src ="/js/dozip/map.js" defer></script>
+	<script src="/js/dozip/portfolio.js"defer></script>
+	<script src="/js/dozip/jquery.js"></script>
+
+	<%--new 헤더--%>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="/js/dozip/header.js"></script>
+	<script src="https://kit.fontawesome.com/6f3edb2719.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="/css/dozip/header.css"/>
+
 	<script>
 	    function openLogin(){
 	        window.open("/dozip/login", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0" );
@@ -31,34 +38,31 @@
 </head>
 <body>
 		<!-- header 영역 -->
-		<header id="header">
-			<!-- 상단 메뉴 바 -->
-			<nav class="header_nav">
-				<!-- 로고 -->
-				<div class="logo">
-					<a href="/dozip/home"> <img src="/images/dozip/main_logo.png"/>
-					</a>
-				</div>
-				
-				<ul class="menu">
-					<li><a href="/dozip/apply">견적신청</a></li>
-					<li><a href="portfolio.do">포트폴리오</a></li>
-					<li><a href="review.do">고객후기</a></li>
-					<li><a href="#">스토리</a></li>
-					<li><a href="partners.do">파트너스</a></li>
-				</ul>
-			
-				<ul class="icons">
-				<c:if test="${empty id}"> <!-- 로그인 전 -->
-					<li><a href="#none" onclick="openLogin();"><img src="/images/dozip/user.png" width="30" height="30" /></a></li>
-				</c:if>
-				<c:if test="${!empty id}"> <!-- 로그인 후 -->
-					<li><a href="/dozip/mypage"><img src="/images/dozip/ser.png" width="30" height="30" /></a></li>
-				</c:if>
-					<li><a href="counsel.do"><img src="/images/dozip/counsel.png" width="30" height="30" /></a></li>
-				</ul>
-				<a href="#" class="toggleBtn"><i class="fas fa-bars"></i></a> <!-- 반응형 메뉴 토글 버튼-->
-			</nav>
+		<header>
+			<div class="container clearfix">
+				<h1 class="logo">
+					<a href="/dozip/home"></a>
+				</h1>
+				<nav class="clearfix">
+					<ul class="main-menu">
+						<li><a href="/dozip/home" class="active">Home</a></li>
+						<li><a href="">견적신청</a></li>
+						<li><a href="/dozip/port">포트폴리오</a></li>
+						<li><a href="">고객후기</a></li>
+						<li><a href="">스토리</a></li>
+						<li><a href="/partners/">파트너스</a></li>
+					</ul>
+					<ul class="top-icons">
+						<c:if test="${empty id}"> <!-- 로그인 전 -->
+							<li><a href="#none" onclick="openLogin();"><i class="fas fa-user"></i></a></li>
+						</c:if>
+						<c:if test="${!empty id}"> <!-- 로그인 후 -->
+							<li><a href="/dozip/mypage"><i class="fas fa-user"></i></a></li>
+						</c:if>
+						<li><a href=""><i class="fa-solid fa-comments"></i></a></li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 		<!-- header 영역 끝 -->
 
@@ -69,45 +73,30 @@
 		<div id="part">
 			<div id="part1">
 				<%--배너 시작 --%>
-				<div id="wrapper">
-			      <div id="slider-wrap">
-			          <ul id="slider">
-			             <li>                
-							<img src="/images/dozip/main_b2_1.jpg">
-			             </li>
-			             
-			             <li>
-							<img src="/images/dozip/main_b3_1.png">
-			             </li>
-			             
-			             <li>
-							<img src="/images/dozip/main_b1.png">
-			             </li>
-			             
-			             <li>
-							<img src="/images/dozip/main_b4.png">
-			             </li>
-			          </ul>
-			          
-			           <!--controls-->
-			          <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
-			          <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
-			          <div id="counter"></div>
-			          
-			          <div id="pagination-wrap">
-			            <ul>
-			            </ul>
-			          </div>
-			          <!--controls-->  
-                 
-      			</div>
-   			</div>
-   			<%-- 배너 종료 --%>				
+					<div class="slideshow-container">
+
+						<div class="mySlideDiv fade active">
+							<img src="/images/dozip/mainslide_01.jpg">
+						</div>
+
+						<div class="mySlideDiv fade">
+							<img src="/images/dozip/partners_bg.jpg">
+						</div>
+
+						<div class="mySlideDiv fade">
+							<img src="/images/dozip/mainslide_03.jpg">
+						</div>
+
+						<a class="prev" onclick="prevSlide()">&#10094;</a>
+						<a class="next" onclick="nextSlide()">&#10095;</a>
+
+					</div>
+   				<%-- 배너 종료 --%>
 			</div>
 			
 			<div class="clear"></div>
 			
-			<div id="part2">
+			<div id="part2" style="background-color: white;">
 				<div id="part21">
 					<p id="part2_title">주변의 인테리어 업체를 찾아보세요</p>
 					<p id="part2_info">검색하고자 하는 키워드를 입력하세요. (예. 관악구 인테리어, 역삼동 인테리어)</p>
@@ -144,7 +133,7 @@
 			
 			<div class="clear"></div>
 			
-
+			<div class="part4" style="background-color: white;">
 			<span class="part_title">
 				<a id="part4_link" href="portfolio.do"><p>포트폴리오 보러가기</p></a>
 			</span>
@@ -172,8 +161,8 @@
 				</c:if>
 			</div>			
 			
-			</div>	
-			
+			</div>
+			</div>
 			<div class="clear"></div>
 			
 			<div id="part5">
@@ -226,7 +215,7 @@
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">개인정보처리방침</a></li>
 					<li><a href="#">이용약관</a></li>
-					<li><a href="partners.do">파트너스 페이지</a></li>
+					<li><a href="/partners/">파트너스 페이지</a></li>
 				</ul>
 			</nav>
 

@@ -18,13 +18,14 @@ a:hover {
 }
 
 /* 헤더시작 */
-#header {
-	position: fixed; /* 헤더부분 상단 고정 */
+/* 기존 헤더 주석처리 */
+/*#header {
+	position: fixed; !* 헤더부분 상단 고정 *!
 	width: 100%;
 	background-color: #D5D0B5;
-	z-index: 1; /* 항상 제일 위에 위치하도록 설정 */
+	z-index: 1; !* 항상 제일 위에 위치하도록 설정 *!
 }
-#header + div{ /* 헤더 다음에 오는 div 에 패딩을 주어 가려짐 문제 해결 */
+#header + div{ !* 헤더 다음에 오는 div 에 패딩을 주어 가려짐 문제 해결 *!
   padding-top: 100px;
 }
 .header_nav{
@@ -40,27 +41,27 @@ a:hover {
 }
 .logo img{
     height: 60px;
-    object-fit: cover; /*가로세로 비율유지한채 사이즈조절.*/
+    object-fit: cover; !*가로세로 비율유지한채 사이즈조절.*!
 }
 .menu{
     display:flex;
     list-style: none;
-    padding-left: 0; /*왼쪽여백을 0을 줘서 중앙에 정렬*/
+    padding-left: 0; !*왼쪽여백을 0을 줘서 중앙에 정렬*!
     font-size: 1.3rem;
 }
 .menu li{
     padding: 8px 25px;
 }
-/* .menu li:hover{
+!* .menu li:hover{
     border-radius: 4px;
-} */
+} *!
 .menu>li>a:hover{
     color: green;
     text-decoration: underline;
 }
 
 .icons{
-    list-style: none; /*옆에 토글을 지움*/
+    list-style: none; !*옆에 토글을 지움*!
     padding-left: 0;
     color: black;
     display: flex;
@@ -84,10 +85,10 @@ a:hover {
         padding: 8px 24px;
     }
     .menu{
-        display: none; /*스크린 가로가 600px미만일때 메뉴가 보이지 않게*/
+        display: none; !*스크린 가로가 600px미만일때 메뉴가 보이지 않게*!
         flex-direction: column;
-        align-items: center; /*메뉴바만 가운데 정렬*/
-        width: 100%; /*메뉴바의 가운데 정렬을위해 너비를 늘림*/
+        align-items: center; !*메뉴바만 가운데 정렬*!
+        width: 100%; !*메뉴바의 가운데 정렬을위해 너비를 늘림*!
     }
     .menu li{
         width:100%;
@@ -102,12 +103,12 @@ a:hover {
         display: block;
     }
 
-    /*active 요소 추가*/
+    !*active 요소 추가*!
     .menu.active,
     .icons.active{
         display: flex;
     }
-}
+}*/
 .clear{ clear:both; /*float속성을 제거해서 잘못된 ui 적용을 막아준다. */}
 /* 헤더끝 */
 
@@ -128,9 +129,9 @@ a:hover {
 	justify-content:center;	
 	position: relative;
 }
-#btn_group {
+/*#btn_group {
 	position: absolute;
-	/* background-color: orange; */
+	!* background-color: orange; *!
 	left:1.75em;
 	bottom:0.75em;
 }
@@ -138,7 +139,7 @@ a:hover {
 #btn1 , #btn2 {
 	background-color: transparent;
 	border: none;
-}
+}*/
 
 /*part2 부분*/
 #part2 {
@@ -240,7 +241,7 @@ a:hover {
 
 /*part4 부분*/
 #part4 {
-	width: 90%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	padding-top: 10px;	

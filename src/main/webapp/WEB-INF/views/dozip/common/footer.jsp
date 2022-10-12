@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-</div> <!-- #wrap 끝 -->    
+</div> <!-- #wrap 끝 -->
 
 		<!-- footer영역 -->
 		<div class="clear"></div>
@@ -13,7 +13,7 @@
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">개인정보처리방침</a></li>
 					<li><a href="#">이용약관</a></li>
-					<li><a href="partners.do">파트너스 페이지</a></li>
+					<li><a href="/partners/">파트너스 페이지</a></li>
 				</ul>
 			</nav>
 
@@ -23,15 +23,15 @@
 						<p class="footer_company_call_info">
 							<span>월 - 금: 09:00 - 18:00 (주말/공휴일 제외) | </span>
 							<span class="_modis">팩스 : 02-1111-1111 | </span>
-							<span class="_modis">고객문의: <a class="footer_mail" href="mailto:5140lovely@naver.com">5140lovely@naver.com</a> | </span> 
+							<span class="_modis">고객문의: <a class="footer_mail" href="mailto:5140lovely@naver.com">5140lovely@naver.com</a> | </span>
 							<span class="_modis">제휴문의: <a class="footer_mail" href="mailto:5140lovely@naver.com">5140lovely@naver.com</a> | </span>
 						</p>
 					</div>
-					
+
 					<div class="footer_company_text" >
 							<span>두집주식회사 대표이사 : 1조 | </span>
-							<span>주소 : 서울 강남구 | </span> 
-							<span>사업자등록번호 : 000-81-12345 | </span> 
+							<span>주소 : 서울 강남구 | </span>
+							<span>사업자등록번호 : 000-81-12345 | </span>
 							<span>통신판매번호 : 2022-서울강남-11111호</span>
 					</div>
 					<div class="footer_company_copyright">

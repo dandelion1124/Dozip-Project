@@ -27,10 +27,10 @@ public class DozipController {
     private PortfolioService portfolioService;
 
     @RequestMapping(value = "home") //두집 홈 화면
-
     public String dozip(){
         return "/dozip/index";
     }
+
     @GetMapping("login")//로그인페이지 이동
     public String login() { return "/dozip/common/login"; }
 
@@ -105,7 +105,7 @@ public class DozipController {
         return null;
     }
 
-    @GetMapping("mypage") //마이페이지로 이동
+    @GetMapping("mypage") // 기존 마이페이지 (나중에 삭제예정)
     public String mypage() { return "/dozip/mypage/mypage_main"; }
 
     @GetMapping("logout_ok") //로그아웃
@@ -125,7 +125,7 @@ public class DozipController {
         return null;
     }
 
-    @GetMapping("mypage_test") //기존 마이페이지 (나중에 삭제예정)
+    @GetMapping("mypage_test") //마이페이지(임시-디자인테스트)
     public String mypagetest() { return "/dozip/mypage/mypage"; }
 
     @GetMapping("my_edit") //마이페이지-회원정보수정 이동(로그인된 정보 불러오기)
@@ -203,6 +203,9 @@ public class DozipController {
         mv.setViewName("/dozip/mypage/mypage_qna");
         return mv;
     }
+
+    @GetMapping("qna_write") //문의글 등록
+    public String qnaWrite(){ return "/dozip/counsel/counsel_write"; }
 
     @GetMapping("my_Pqna") //마이페이지-업체 문의글 목록
     public ModelAndView myPQna(ModelAndView mv, QnaVO q, HttpServletRequest request) throws Exception {
