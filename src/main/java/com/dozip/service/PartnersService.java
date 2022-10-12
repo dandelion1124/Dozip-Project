@@ -15,4 +15,5 @@ public interface PartnersService {
     PartnersVO getPartnersInfo2(String findid_business_num);
 
     void insertPort_Photos(PortfolioVO pv);
+
 }

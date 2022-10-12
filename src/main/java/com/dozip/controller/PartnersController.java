@@ -9,14 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @RequestMapping("partners/*") //컨트롤러 자체 URL 매핑주소 등록
@@ -216,7 +220,7 @@ public class PartnersController {
      *
      *  */
     @RequestMapping(value = "/estimate_list")
-    public String estimate_list() {  // 포트폴리오 등록
+    public String estimate_list() {  // 견적목록 
         return "/partners/estimate/estimate_list";
     }
     /*내 공사
@@ -245,7 +249,7 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/upload")
-    public String portfolioUpload() {  // 포트폴리오 등록
+    public String portfolioUpload() {  // 포트폴리오 페이지
         return "/partners/portfolio/p_upload";
     }
 
@@ -260,6 +264,55 @@ public class PartnersController {
         response.addCookie(cookie);
         return "/partners/portfolio/p_upload_photo";
     }
+
+    //포트폴리오 사진등록
+    @RequestMapping(value = "/upload_photo_ok")
+    public String upload_photo_ok(PortfolioVO pv, @RequestParam List<MultipartFile> photos,
+                                  HttpServletResponse response, HttpServletRequest request) throws IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        int pf_no = 0;
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c : cookies) {
+            if (c.getName().equals("pf_no")) {
+                pf_no = Integer.parseInt(c.getValue()); //쿠키에서 포트폴리오 번호 가져옴 -> 사진 삽입 위해
+            }
+        }
+
+        String uploadPath = "C:/dozip/portfolio/" + pf_no;
+        File dir = new File(uploadPath);
+
+        if (!dir.isDirectory()) { //폴더가 없다면 생성
+            dir.mkdirs();
+        }
+        int i = 1;
+        for (MultipartFile photo : photos) {
+
+            System.out.println(photo.getOriginalFilename());
+            photo.transferTo(new File(uploadPath+ "/photo0" + i + ".jpg"));
+            if(i==1){
+                pv.setPf_photo1(uploadPath+ "/photo0" + i + ".jpg");
+            }
+            if(i==2){
+                pv.setPf_photo2(uploadPath+ "/photo0" + i + ".jpg");
+            }
+            if(i==3){
+                pv.setPf_photo3(uploadPath+ "/photo0" + i + ".jpg");
+            }
+            if(i==4){
+                pv.setPf_photo4(uploadPath+ "/photo0" + i + ".jpg");
+            }
+            if(i==5){
+                pv.setPf_photo5(uploadPath+ "/photo0" + i + ".jpg");
+            }
+            i++;
+        }
+        System.out.println(uploadPath+ "/photo0" + i + ".jpg");
+
+        pv.setPf_no(pf_no);
+        partnersService.insertPort_Photos(pv);
+        return "/partners/index";
+    }//upload_photo_ok
 
 
     @RequestMapping(value = "/portfolio_list")  //견적목록

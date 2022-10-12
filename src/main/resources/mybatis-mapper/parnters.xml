@@ -24,7 +24,5 @@
         select * from partnersT where business_num=105
     </select>
 
-    
-
 </mapper>
 

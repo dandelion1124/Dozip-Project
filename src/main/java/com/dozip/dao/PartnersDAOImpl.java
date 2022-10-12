@@ -46,5 +46,7 @@ public class PartnersDAOImpl implements PartnersDAO {
     public PartnersVO getMember(String business_num) {
         return sqlSession.selectOne("data_manage",business_num);
     }
+
+
 }
 

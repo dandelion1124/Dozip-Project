@@ -39,5 +39,6 @@ public class PartnersServiceImpl implements PartnersService {
     public void insertPort_Photos(PortfolioVO pv) {
         partnersDao.insertPort_Photos(pv);
     }
+
 }
 
