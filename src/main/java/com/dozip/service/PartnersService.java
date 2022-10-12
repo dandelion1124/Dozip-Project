@@ -4,6 +4,9 @@ package com.dozip.service;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
+import com.dozip.vo.QnaVO;
+
+import java.util.List;
 
 public interface PartnersService {
     PartnersVO getPartnersInfo(String pId);
@@ -18,4 +21,16 @@ public interface PartnersService {
     void insertPort_Photos(PortfolioVO pv);
 
     Partners_subVO getPartnersSub(String businessNum);
+
+    int getListCount(QnaVO findQ);
+
+    List<QnaVO> getQnaList(QnaVO findQ);
+
+    int insertQna(QnaVO qdto);
+
+    int deleteReply(QnaVO dv);
+
+    int selqnaRef(QnaVO dv);
+
+    void returnState(QnaVO dv);
 }

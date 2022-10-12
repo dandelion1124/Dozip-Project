@@ -361,7 +361,7 @@ function qna_reply($number, $id, $title, $step, $level, $type, $pagenum) { //답
 	$replytext = ($($textarea_id).val()); //댓글내용
 	$.ajax({
 		type: "post",
-		url: 'customer_reply_ok.do?page=$page',
+		url: 'customer_reply_ok?page=$page',
 		data: {
 			qna_ref: $qna_no, //  그룹번호 = 원본글번호
 			qna_cont: $replytext, // 답글 내용
@@ -370,11 +370,9 @@ function qna_reply($number, $id, $title, $step, $level, $type, $pagenum) { //답
 			qna_level: $qna_level, //정렬순서
 			qna_type: $qna_type //질문 유형
 		},
-		datatype: "text",
-
-		success: function(result) {
+		datatype: "int",
+		success: function(data) {
 			alert('댓글등록완료!');
-			
 			location.reload();
 		}
 	});
@@ -382,13 +380,10 @@ function qna_reply($number, $id, $title, $step, $level, $type, $pagenum) { //답
 function reply_del($del_qna_no, $del_qna_ref) {
 	$.ajax({
 		type: "get",
-		url: 'customer_qna_del_ok.do?qna_no=' + $del_qna_no + '&qna_ref=' + $del_qna_ref,
-		datatype: "text",
-		success: function(result) {
+		url: 'customer_qna_del_ok?qna_no=' + $del_qna_no + '&qna_ref=' + $del_qna_ref,
+		datatype: "int",
+		success: function(data) {
 			alert('댓글삭제완료!');
-			
-			
-			
 			location.reload();
 		}
 	});
