@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 
 public interface PartnersDAO {
@@ -9,7 +10,7 @@ public interface PartnersDAO {
     void addPortfolio(PortfolioVO pv);
 
     int getPort_num(PortfolioVO pv);
-    PartnersVO getMember(String business_num); //data_manage 회원정보
+    PartnersVO getMember(String businessNum); //data_manage 회원정보
 
     void insertPartners(PartnersVO pv);
 
@@ -17,6 +18,6 @@ public interface PartnersDAO {
 
     void insertPort_Photos(PortfolioVO pv);
 
-
+    Partners_subVO getPartnersSub(String businessNum);
 }
 

@@ -2,6 +2,7 @@ package com.dozip.service;
 
 import com.dozip.dao.PartnersDAO;
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,9 @@ public class PartnersServiceImpl implements PartnersService {
         partnersDao.addPortfolio(pv);
         return partnersDao.getPort_num(pv); //수정작업 필요 . 가끔2개가 조회됨
     }
-
-    public PartnersVO getMember(String business_num) {
-        return this.partnersDao.getMember(business_num);
+    @Override
+    public PartnersVO getMember(String businessNum) {
+        return this.partnersDao.getMember(businessNum);
     }
     @Override
     public void insertPartners(PartnersVO pv) {
@@ -40,5 +41,9 @@ public class PartnersServiceImpl implements PartnersService {
         partnersDao.insertPort_Photos(pv);
     }
 
+    @Override
+    public Partners_subVO getPartnersSub(String businessNum) {
+        return partnersDao.getPartnersSub(businessNum);
+    }
 }
 
