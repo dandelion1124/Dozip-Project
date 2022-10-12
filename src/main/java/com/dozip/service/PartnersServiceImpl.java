@@ -24,6 +24,7 @@ public class PartnersServiceImpl implements PartnersService {
 
     public PartnersVO getMember(String business_num) {
         return this.partnersDao.getMember(business_num);
+    }
     @Override
     public void insertPartners(PartnersVO pv) {
         partnersDao.insertPartners(pv);
