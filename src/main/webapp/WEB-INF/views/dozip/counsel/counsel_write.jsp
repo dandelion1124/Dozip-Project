@@ -3,40 +3,7 @@
 <jsp:include page="../common/header.jsp" />
 <link rel="stylesheet" type="text/css" href="/css/dozip/counsel.css" />
 <%-- 상단 공통부분 끝 --%>
-<style>
-	.write_info {
-		width: 100%;
-		text-align: left;
-		margin-left: 30px;
-	}
-	.write_info>ul>li {
-		list-style: none;
-		padding-left: 10px;
-	}
-	.content_box {
-		width: 80%;
-		margin: 40px auto;
-		border: 1px dotted #7f8c8d;
-		border-top: 5px #2b2a29 solid;
-	}
-	.write_table {
-		width: 100%;
-		border-top: 2px solid #1d1d1d;
-	}
-	.write_table th {
-		font-size: 0.9rem;
-		width: 20%;
-		height: 70px;
-		border-bottom: 1px solid #B3B9BE;
-		background-color: #f8f8f8;
-	}
-	.write_table td {
-		border: none;
-		text-decoration: none;
-		border-bottom: 1px solid #B3B9BE;
-		background-color: white;
-	}
-</style>
+
 <div class="counsel_write_wrap">
 	<div class="content_box">
 	<div class="write_info">
@@ -49,7 +16,7 @@
 	</div>
 	<hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
 	<div class="counsel_write_form_box">
-		<form id="counsel_write_form" action="counsel_write_ok.do" method="post">
+		<form id="counsel_write_form" action="qna_write_ok" method="post">
 			<p style="width: 80%; font-weight: bold;">문의글 작성</p>
 			<table class="write_table">
 				<tr>

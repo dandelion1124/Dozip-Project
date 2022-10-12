@@ -208,6 +208,14 @@ public class DozipController {
     @GetMapping("qna_write") //문의글 등록
     public String qnaWrite(){ return "/dozip/counsel/counsel_write"; }
 
+    @PostMapping("qna_write_ok") //문의글 등록 완료
+    public String qnaWriteOK(HttpServletRequest request, HttpServletResponse response, QnaVO q, HttpSession session) throws Exception {
+        String id = (String)session.getAttribute("id");
+
+
+        return null;
+    }
+
     @GetMapping("my_Pqna") //마이페이지-업체 문의글 목록
     public ModelAndView myPQna(ModelAndView mv, QnaVO q, HttpServletRequest request) throws Exception {
         HttpSession session=request.getSession();
