@@ -3,8 +3,8 @@
 
 	<div class="request_detail_page">
 		<div class="my_bid_detail_icon">
-			<a href="./construct_request.jsp;"
-				class="to_my_bid" target="_blank"><img src="../images/bid_list.png" width="65px" height="65px"></a>
+			<a href="/partners/construct_request"
+				class="to_my_bid"><img src="/images/partners/bid_list.png" width="65px" height="65px"></a>
 		</div>		
 		<div class="request_list_detail_container">
 			<div class="go_bid_detail"></div>
@@ -56,7 +56,7 @@
 								<ul class="file-list">
 									<li class="attach_file_list">
 										<a href="javascript:void(0);" class="btn-file">
-										<span class="download_mark"><img src="../images/downloadmark.png" width="20px" height="20px"></span>
+										<span class="download_mark"><img src="/images/partners/downloadmark.png" width="20px" height="20px"></span>
 										 프로젝트 첨부파일
 										</a>
 									</li>

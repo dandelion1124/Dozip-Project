@@ -23,5 +23,8 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.getPort_num(pv);
     }
 
+    public PartnersVO getMember(String business_num) {
+        return this.partnersDao.getMember(business_num);
+    }
 }
 

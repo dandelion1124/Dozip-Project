@@ -9,4 +9,5 @@ public interface PartnersService {
 
     int addPortfolio(PortfolioVO pv);
 
+    PartnersVO getMember(String business_num); //data_manage 회원정보 가져오기
 }

@@ -26,5 +26,10 @@ public class PartnersDAOImpl implements PartnersDAO {
     public int getPort_num(PortfolioVO pv) {
         return sqlSession.selectOne("portfolio_num", pv);
     }
+
+    @Override
+    public PartnersVO getMember(String business_num) {
+        return sqlSession.selectOne("data_manage",business_num);
+    }
 }
 

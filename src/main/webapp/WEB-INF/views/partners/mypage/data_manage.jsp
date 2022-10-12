@@ -136,7 +136,7 @@
 						<div class="upload_image_size">(권장 이미지 사이즈 750 x 600)</div>
 						<div tabindex="0" class="upload_image" >
 							<label for="pInt_img" class="upload_lbl">  <!-- label for과 input id가 같아야 적용됨 -->
-								<img src="./images/upload_plus.png" width="40px" height="40px">
+								<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 							</label>
 							<input type="file" id="pInt_img" name="pInt_img" accept="image/*">
 						</div>
@@ -147,7 +147,7 @@
 						<div class="upload_image_size">(권장 이미지 사이즈 300 x 300)</div>
 						<div tabindex="0" class="upload_image" >
 							<label for="pComp_logo" class="upload_lbl">
-								<img src="./images/upload_plus.png" width="40px" height="40px">
+								<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 							</label>
 							<input type="file" id="pComp_logo" name="pComp_logo" accept="image/*">
 						</div>
@@ -372,7 +372,7 @@
 							<label class="upload_image_title"><b>통장 사본</b></label><br>
 							<div tabindex="0" class="upload_image">
 								<label for="pAccount_file" class="upload_lbl">
-									<img src="./images/upload_plus.png" width="40px" height="40px">
+									<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 								</label>
 								<input type="file" id="pAccount_file" name="pAccount_file" accept="image/*">
 							</div>
@@ -382,7 +382,7 @@
 							<label class="upload_image_title"><b>사업자 등록증 사본</b></label><br>
 							<div tabindex="0" class="upload_image">
 								<label for="pBusiness_lic_file" class="upload_lbl">
-									<img src="./images/upload_plus.png" width="40px" height="40px">
+									<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 								</label>
 								<input type="file" id="pBusiness_lic_file" name="pBusiness_lic_file" accept="image/*">
 							</div>
@@ -394,7 +394,7 @@
 				</fieldset>
 
 				<div class="data_edit_button_tag">
-					<input type="submit" id="data_edit_button" value="정보수정" /> <!-- onclick="location.href='date_manage.do'" -->
+					<input type="submit" id="data_edit_button" value="정 보 수 정" /> <!-- onclick="location.href='date_manage.do'" -->
 				</div></br>
 			</form>
 		</div>

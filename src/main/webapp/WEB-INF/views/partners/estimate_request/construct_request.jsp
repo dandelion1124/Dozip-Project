@@ -11,7 +11,7 @@
 		</tr>
 		<tr class="my_req_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:14px;">
 			<td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td> <td>2022.07.25</td>
-			<td><div class="req_detail"><a href="./construct_request_detail.jsp;" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+			<td><div class="req_detail"><a href="/partners/request_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<td class="req_accept">
 				<button class="accept" onclick="confirm('수용하시겠습니까?')">수용</button>
 				<button class="deny" onclick="confirm('취소하시겠습니까?')">취소</button>
@@ -19,7 +19,7 @@
 		</tr>
 		<tr class="my_req_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:14px;">
 			<td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td>  <td>2022.07.25</td>
-			<td><div class="req_detail"><a href="./construct_request_detail.jsp;" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+			<td><div class="req_detail"><a href="/partners/request_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<td class="req_accept">
 				<button class="accept" onclick="confirm('수용하시겠습니까?')">수용</button>
 				<button class="deny" onclick="confirm('취소하시겠습니까?')">취소</button>
