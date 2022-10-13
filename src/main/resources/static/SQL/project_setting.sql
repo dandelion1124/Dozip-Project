@@ -44,8 +44,8 @@ drop table portfolioT;
 select * from PORTFOLIOT;
 create table portfolioT
 (
-    pf_no           number(38) primary key,   --글번호
-    businessNum     nvarchar2(12)   not null, --파트너스 사업자번호(외래키)
+    pf_no           number(38) primary key,   --글번호(PK)
+    businessNum     nvarchar2(12)   not null, --파트너스 사업자번호(FK)
     pf_title        nvarchar2(50)   not null, --제목
     pf_type         nvarchar2(10)   not null, --공사유형
     pf_subtype      nvarchar2(5)    not null, --공사 세부유형
@@ -80,7 +80,7 @@ drop table partners_subT;
 select * from partners_subT;
 create table partners_subT
 (
-    businessNum       nvarchar2(12) not null, --사업자번호
+    businessNum       nvarchar2(12) not null, --사업자번호(FK)
     pShortstate        nvarchar2(2000),
     pInt_img           nvarchar2(70),
     pComp_logo         nvarchar2(70),
@@ -108,9 +108,9 @@ drop table bidT;
 select * from bidT;
 create table bidT
 (
-    bid_num     varchar2(12) primary key,
-    businessNum nvarchar2(12)  not null,
-    est_num     varchar2(12)   not null,
+    bid_num     varchar2(12) primary key, --입찰번호(PK)
+    businessNum nvarchar2(12)  not null, --사업자번호(FK)
+    est_num     varchar2(12)   not null, --견적서 번호(FK)
     bid_price   number(20)     not null,
     bid_period  number(5)      null,
     bid_detail  varchar2(3000) null,
@@ -126,12 +126,12 @@ create table estimateT
 (
     est_num      varchar2(25) primary key, --고유번호(primary key)
     mem_id       varchar2(20),             --회원아이디 fk
-    business_num nvarchar2(50),            -- 사업자 번호 fk
+    businessNum nvarchar2(50),            -- 사업자 번호 fk
     est_check    varchar2(50),             -- est_check 견적 직접신청 수락/거절 확인 컬럼 -> Number로 1,0으로 값받아서수락/거절 확인
     est_zoning   varchar2(20),             --공간유형(주거, 상가)
     est_use      varchar2(20),             --건물유형
     est_areaP    varchar2(50),             --평수(평) Number
-    st_areaM     varchar2(50),             --제곱미터 Number
+    est_areaM     varchar2(50),             --제곱미터 Number
     est_detail   varchar2(500),            -- 원하는 공간(도배/벽,바닥,주방,욕실,현관,발코니/샷시,조명,문)
     est_detail01 varchar2(30),             -- 도배/벽 의 디테일
     est_detail02 varchar2(30),             -- 바닥 의 디테일
@@ -150,7 +150,9 @@ create table estimateT
     est_phone    varchar2(50),             --의뢰인 휴대폰 번호
     est_addr     varchar2(35),             -- 의뢰인 주소    (추가됨)
     est_desc     varchar2(3000),           --스타일 설명
-    est_file     varchar2(200)            --파일첨부
+    est_file     varchar2(200),            --파일첨부
+    foreign key (businessNum) references partnersT (businessNum),
+    foreign key (mem_id) references memberT (mem_id)
 );
 
 -- 견적서 테이블 시퀀스

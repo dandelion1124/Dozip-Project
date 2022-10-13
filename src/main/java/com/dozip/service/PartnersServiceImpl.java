@@ -39,10 +39,6 @@ public class PartnersServiceImpl implements PartnersService {
         partnersDao.insertPort_Photos(pv);
     }
     @Override
-    public Partners_subVO getPartnersSub(String businessNum) {
-        return partnersDao.getPartnersSub(businessNum);
-    }
-    @Override
     public int getListCount(QnaVO findQ) {
         return partnersDao.getListCount(findQ);
     }

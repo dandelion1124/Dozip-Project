@@ -326,12 +326,12 @@ public class DozipController {
     @RequestMapping("apply_ok")
     public String apply_ok(HttpServletRequest request, HttpSession session) {
 
-        //e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
         EstimateVO e = new EstimateVO();
 
+        e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
 
 
-        e.setMem_id("aaaa");
+       // e.setMem_id("aaaa"); 테스트용
         e.setEst_zoning(request.getParameter("est_zoning"));
         e.setEst_use(request.getParameter("est_use"));
         e.setEst_areaP(request.getParameter("areaP"));
