@@ -33,4 +33,6 @@ public interface PartnersService {
     int selqnaRef(QnaVO dv);
 
     void returnState(QnaVO dv);
+
+    int checkBusinessNum(PartnersVO pv);
 }

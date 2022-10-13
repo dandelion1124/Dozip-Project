@@ -18,22 +18,28 @@
 	
 	<script>
 		function loadPortfolioInfo(){
-			$business_num='${business_num}'
+
+
+			window.open( "./load_info?businessNum=${businessNum}", "Child", "width=800, height=300, top=500, left=500");
+
+
+			/*$business_num=$('#businessNum').val();
 			$.ajax({
 				type:"post",
-				url:'loadportfolio_info.do',
+				url:'loadportfolio_info',
 				data:{
 					business_num:$business_num
 				},
 				datatype:"text",
 				success: function(result){
-					window.open( "./portfolio/load_info.jsp", "Child", "width=800, height=300, top=500, left=500");
+					window.open( "./load_info", "Child", "width=800, height=300, top=500, left=500");
 				}
-			});
+			});*/
 		}
 	</script>
 </div>
 <form action="upload_photo" id="portfolio_form" method="post" onsubmit="return portfoilio_check()">
+	<input type="hidden" id="businessNum" value="${businessNum}">
 	<%-- 제목, 공사 유형, 시공범위, 주소 ,평수, 공사비용, 공사기간--%>
 	<fieldset id="first_area">
 		<legend>기본정보</legend>

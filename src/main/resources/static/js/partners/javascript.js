@@ -26,28 +26,10 @@ $(document).ready(function() {
 		}
 	});
 });
-$('#menu_show_hide_img').click(function () {
-	//1180px
-	var margin = $('#top_bar').css('margin-left');
-	if (window.innerWidth > 1173) {
-		if (margin == '0px') {
-			$('#side_wrap').css({'display': 'block'});
-			$('#top_bar').css({'margin-left': '161px'});
-			$('#footer_mediaquery').css({'margin-left': '160px'});
-			$('#main_cont').css({'margin-left': '160px'});
-			$('#fotter_setting').css({'display': 'block'});
-		} else {
-			$('#side_wrap').css({'display': 'none'});
-			$('#top_bar').css({'margin-left': '0px'});
-			$('#footer_mediaquery').css({'margin-left': '0px'});
-			$('#main_cont').css({'margin-left': '0px'});
-			$('#fotter_setting').css({'display': 'none'});
-		}
-	}
-});
+
 $(window).resize(function () {
 	// width값을 가져오기
-	var width_size = window.innerWidth;
+	let width_size = window.innerWidth;
 	if (width_size <= 1173) {
 		$('#side_wrap').css({'display': 'none'});
 		$('#top_bar').css({'margin-left': '0px'});

@@ -63,12 +63,22 @@ public class PartnersController {
     public String partners_join_ok(PartnersVO pv,HttpServletResponse response) throws Exception {
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out =response.getWriter();
-        partnersService.insertPartners(pv);
 
-        out.println("<script>");
-        out.println("alert('회원가입에 성공하였습니다.')");
-        out.println("location='/partners/main';");
-        out.println("</script>");
+        int result=partnersService.checkBusinessNum(pv);
+        System.out.println(result);
+        if(result==1){
+            out.println("<script>");
+            out.println("alert('이미 가입된 사업자번호가 있습니다')");
+            out.println("history.go(-1);");
+            out.println("</script>");
+        }
+        else{
+            partnersService.insertPartners(pv);
+            out.println("<script>");
+            out.println("alert('회원가입에 성공하였습니다.')");
+            out.println("location='/partners/main';");
+            out.println("</script>");
+        }
         return null;
     }//partners_join_ok
 
@@ -250,12 +260,13 @@ public class PartnersController {
     /* 시공사례 관리
      *
      */
+    // 포트폴리오 페이지
     @RequestMapping(value = "/upload")
-    public String portfolioUpload() {  // 포트폴리오 페이지
+    public String portfolioUpload() {
         return "/partners/portfolio/p_upload";
     }
-
-    @RequestMapping(value = "/upload_photo") // 포트폴리오 등록
+    // 포트폴리오 등록
+    @RequestMapping(value = "/upload_photo")
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
                                         HttpServletRequest request) {
         pv.setBusinessNum((String) session.getAttribute("businessNum"));

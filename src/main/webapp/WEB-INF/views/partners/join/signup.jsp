@@ -13,7 +13,7 @@
 	<article id="join_wrap">
 		<div id="signup_form">
 			<div id="signup_title">
-				<a href="/partners/index"> <img src="/images/partners/signup_logo.png" alt="메인로고"></a>
+				<a href="/partners/main"> <img src="/images/partners/signup_logo.png" alt="메인로고"></a>
 			</div>
 			<form action="partners_join_ok" method="post" onsubmit="return signup_check();">
 				<div class="info">

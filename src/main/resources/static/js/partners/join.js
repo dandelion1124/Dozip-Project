@@ -66,6 +66,7 @@ function signup_check() {
         $('#pPw').focus();
         return false;
     }
+
 }
 //사업자 번호 형식 체크
 $('#business_num').on('keyup', function(event) {

@@ -13,6 +13,10 @@
         insert into partnersT (businessNum, businessName, pId, pPw, pName, pTel, pMailId, pMailDomain, pDate)
         values(#{businessNum}, #{businessName}, #{pId}, #{pPw}, #{pName}, #{pTel}, #{pMailId}, #{pMailDomain}, sysdate)
     </insert>
+    <!--사업자번호 중복체크 -->
+    <select id="check_bnum" resultType="int">
+        select count(*) from PARTNERST where businessNum=#{businessNum}
+    </select>
 
     <!-- 파트너스 아이디 찾기위한 정보조회 -->
     <select id="findinfo_id" resultType="PartnersVO">
