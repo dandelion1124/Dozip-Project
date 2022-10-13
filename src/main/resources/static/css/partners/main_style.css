@@ -41,7 +41,7 @@ header {
 	margin: -10px 7px;
 }
 div#menu_show_hide img {
-    margin: 12px 0px 0px 10px;
+    margin: 3px 0px 0px 10px;
     width: 30px;
 }
 button#logo_button {
@@ -53,11 +53,11 @@ header .msg {
     font-size: 18px;
 }
 div#top_title {
-    margin: 7px;
+    margin: 16px;
 }
 #header_main_logo {
     width: 33px;
-    margin: 10px 0px 0px 25px;
+    margin: 1px 0px 0px 25px;
 }
 .hide_2, .hide_1{
 	margin-right: 15px;
