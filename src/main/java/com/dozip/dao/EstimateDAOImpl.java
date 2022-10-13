@@ -10,8 +10,8 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Autowired
     private SqlSession sqlSession;
 
+
     @Override
-    public void applyOk(String id) {
-        this.sqlSession.insert("a_insert",id);
-    }
+    public void applyOk(EstimateVO e) {
+        this.sqlSession.insert("a_insert", e);  }
 }

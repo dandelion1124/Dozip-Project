@@ -4,20 +4,24 @@
 <link rel="stylesheet" href="/css/dozip/apply_style.css" />
 <script src="/js/dozip/apply.js" defer></script>
 <script src="/js/dozip/jquery.js"></script>
-<script src="/js/dozip/sessionStorage.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> <%-- 달력 --%>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/> <!--달력css-->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script> <%-- 달력 --%>
 
   </head>
+<body>
+<form method="post" action="apply_ok">
+<div class="page1" >
     <title>인테리어 견적 신청서</title>
-  <body>
+
     <article id="estimate_step01">
-     <form method="get" action="/dozip/apply2" onsubmit='return apply01_check()'>
       <div>
         <section aria-label="공간 유형 선택" class="building_types">
           <div class="title">
           <h2>어떤 공간의 시공을 원하시나요?</h2><h3>1/4</h3>
           </div>
           <br/>
-          <div class="estimate_box">/
+          <div class="estimate_box">
           <h3>공간 유형</h3>
             <input type="radio" value="주거" id="1" name="est_zoning" checked><label for="1">주거</label>
             <input type="radio" value="상가" id="2" name="est_zoning"><label for="2">상가</label>
@@ -401,25 +405,236 @@
         </li>
 </ul>
 </div>
-</article>
-
-
+    </article>
 
 <%-- 다음페이지 버튼 --%>
       <div class="nextpage">
- <%--   <button class="button" type="submit" onclick="SessionStorage_page01()">다음단계</button>--%>
-        <button class="button" type="submit">다음단계</button>
+        <button type="button" onclick="apply01_check()">다음단계</button>
       </div>
-      </div>
-      </form>
     </article>
+</div>
+
+  <%-- 2페이지 --%>
+    <div class="page2" hidden>
+    <title>Step 2</title>
+        <div id="estimate_step02">
+            <section aria-label="예산 선택" class="estimate_yourcost">
+                <div class="title">
+                    <h1>예산과 일정을 알려주세요.</h1><h3>2/4</h3>
+                </div>
+                <div>
+                    <p>단 한번 입력으로 조건에 맞는 전문가들과 간편하게 상담 하세요.</p><br />
+                </div>
+            </section>
+            <div class="estimate_box">
+                <br/><h2>예산</h2>
+                <div class="your_cost">
+                    <input type="text" id="estimate_cost" name="est_bud" maxlength="7" placeholder="0" onkeyup="inputNumberFormat(this);" />
+                    <h3>만원</h3>
+                </div>
+                <br/><br/><br/><br/><hr/>
+            </div>
+            <div class="estimate_date">
+               <br/><br/> <h2>희망 시공일정</h2><br/><br/>
+                <span style="font-size:20px">오늘 날짜 : <span id="today"></span></span>
+                <br>
+                <br>
+                    <br/>
+                    <label for="est_start">시작일</label>&nbsp;
+                    <input type="text" name="est_start" id="est_start">
+                    ~
+                    <label for="est_end">종료일</label>&nbsp;
+                    <input type="text" name="est_end" id="est_end">
+            </div>
+
+            <!-- id : 고유한 식별 목적
+                       class : 재사용을 목적
+                       name : 컨트롤 요소값(value)을 서버로 전송하기위함-->
+
+            <div class="nextpage">
+                <button type="button" class="go_back" onclick="page_back02()">이전</button>
+                <button type="button" class="go_next" onclick="apply02_check()">다음</button>
+            </div>
+        </div>
+    </div>
+
+  <%-- 3 페이지 --%>
+    <div class = "page3" hidden>
+    <title>Step 3</title>
+        <div class="estimate_step03">
+            <section aria-label="예산 선택" class="estimate_yourcost">
+                <div class="title">
+                    <h2>상세 내용을 알려주세요</h2><h3>3/4</h3>
+                </div>
+                <p class="subtitle">단 한번 입력으로 조건에 맞는 전문가들과 간편하게 상담 하세요</p><br />
+                <div class="estimate_box_page3">
+                    <h3>의뢰인 정보 입력</h3>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력해주세요">
+                    <input type="text" id="phone" name="phone" placeholder="휴대폰 번호를 입력해 주세요">
+                    <button type="button" id="certify_phone" >인증하기</button>
+                    <input type="text" id="addr" name="addr" placeholder="주소를 입력해 주세요">
+                    <button type="button" id="address_btn" >주소찾기</button>
+
+                    <div class="para">
+                        <h3>스타일을 알려주세요(1500자 내외)</h3>
+                        <p class="textCount">0자</p><p class="textTotal">/1500자</p>
+                    </div>
+                    <textarea id="paragraph" name="paragraph" maxlength="1500" placeholder="원하는 스타일에 대해 자유롭게 써주세요"></textarea>
+
+                </div>
+                <div class="nextpage">
+                    <button type="button" class="go_back" onclick="page_back03()" >이전</button>
+                    <button type="button" class="go_next" onclick="apply03_check()">다음</button>
+                </div>
+            </section>
+
+            <!-- id : 고유한 식별 목적
+                       class : 재사용을 목적
+                       name : 컨트롤 요소값(value)을 서버로 전송하기위함-->
+        </div>
+    </div>
+  <%-- 4페이지 --%>
+    <div class= "page4" hidden>
+        <section aria-label="주소 선택& 근처 업체" class="youraddr">
+            <div class="title">
+                <h2>근처의 인테리어업체와 직접 연락할 수 있어요.</h2><h3>4/4</h3>
+            </div>
+            <div id="msg2">
+                <p id="p1"><b>${vo.mem_name }</b> 님 근처에 <b>${count} </b>개의 인테리어 업체가 있습니다.<br/>
+                    클릭해서 직접 상담해 볼 수 있어요.</p>
+            </div>
+            <div class = "estimate_box">
+                <div class = "companies">
+                    <%--
+                            pdto.setBusiness_num(rs.getString("business_num"));
+                            pdto.setBusinessName(rs.getString("businessName"));
+                            pdto.setpTel(rs.getNString("pTel"));
+                            pdto.setpAddress(rs.getString("pAddress")); --%>
+
+                    <c:forEach var ="p" items="${list }">
+
+                        <div id=partners_info>
+                            <input id="${p.businessName }" type="checkbox"> <label for="${p.businessName }"> ${p.businessName }	</label><br>
+                            전화번호 : ${p.pTel }<br>
+                            주소 :${p.pAddress}<br>
+                            사업자 번호 : ${p.business_num }
+
+                        </div>
+
+                    </c:forEach>
+
+                </div>
+
+                <div class="nextpage">
+                    <button type="button" class="go_back" onclick="page_back04()">이전</button>
+                    <button type="button" class="go_next" onclick="apply04_check()">다음</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <%-- 5페이지 --%>
+    <div class = "page5" hidden>
+    <title>Step 5</title>
+
+        <div id="estimate_step05">
+            <section aria-label="견적요청" class="estimate_yourcost">
+                <div class="title">
+                    <h2>고객님의 견적요청내용입니다.</h2><h3></h3>
+                </div>
+                <p class="subtitle">견적요청내용을 확인하시고 맞다면 요청을 보내주세요.</p><br />
+                <div class="estimate_box_page4">
+                    <h3>고객님의 요청내용</h3>
+
+                    <h4>고객</h4> ${est_name}
+                    <h4>전화번호</h4>
+                    <h4>공간 유형</h4>
+                    <p>주거</p>
+                    <h4>건물 유형</h4>
+                    <p>아파트</p>
+                    <h4>면적 (공급면적)</h4>
+                    <p>123평 (3.3m2)</p>
+                    <h4>세부선택</h4>
+                    <p>바닥 : 장판</p>
+                    <p>조명 : 전체교체</p>
+                    <h4>고객님 예산</h4>
+                    <p>123,123만원</p>
+                </div>
+                <input type="hidden" id="d" name="d">
+                <input type="hidden" id="d3" name="d3">
+                <input type="hidden" id="d4" name="d4">
+                <input type="hidden" id="d5" name="d5">
+                <div class="nextpage">
+                    <button type="button" class="go_back" onclick="page_back05()">이전</button>
+                    <button class="go_next" >진행하기</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</form>
 </body>
 
 
 
 
 <script>
-function apply01_check() {
+
+    function apply04_check(){ /*4 페이지 유효성 검증 */
+        $('.page4').hide();
+        $('.page5').show();
+    }
+    function apply03_check(){ /*3 페이지 유효성 검증 */
+        var est_name = document.getElementById("name");
+        var est_phone = document.getElementById("phone");
+        var est_addr = document.getElementById("addr");
+        var est_desc = document.getElementById("paragraph");
+
+        if(est_name.value == ""){
+            alert('성함을 알려주세요!');
+            name.focus();
+            return false;
+        }
+        if(est_phone.value == "") {
+            alert('전화번호을 알려주세요!');
+            phone.focus();
+            return false;
+        }if (est_phone.value == "") {
+            alert('주소를 알려주세요!');
+            phone.focus();
+            return false;
+        }
+        if (est_desc.value == "") {
+            alert('세부 스타일을 알려주세요!');
+            paragraph.focus();
+            return false;
+        }
+        $('.page3').hide();
+        $('.page4').show();
+    }
+    function apply02_check() { /*2 페이지 유효성 검증 */
+        var est_bud = document.getElementById("estimate_cost");
+        var est_start = document.getElementById("est_start");
+        var est_end = document.getElementById("est_end");
+
+        if(est_bud.value == "") {
+            alert('예산을 입력해주세요!');
+            estimate_cost.focus();
+            return false;
+        }
+        else if(est_start.value == "") {
+            alert('시작일을 알려주세요!');
+            est_start.focus();
+            return false;
+        }
+        else if(est_end.value == "") {
+            alert('종료일을 알려주세요!');
+            est_end.focus();
+            return false;
+        }
+        $('.page2').hide();
+        $('.page3').show();
+    }
+function apply01_check() { /*1 페이지 유효성 검증 */
 	if ($(':radio[name="est_use"]:checked').length < 1) {
 		alert('건물 유형을 선택해 주세요!');
 		return false;
@@ -438,10 +653,71 @@ function apply01_check() {
 	if ($(':checkbox[name="check"]:checked').length < 1) {
 		alert('원하는 공간을 선택 주세요!');
 		return false;
-
 	}
-	SessionStorage_page01(); //SessionStorage 에 값 저장
+
+    /*체크박스 배열로 값받기*/
+    var all = '';
+    var detail_val = document.getElementsByName("check");
+    for(var i=0; i<detail_val.length; i++){
+        if(detail_val[i].checked){
+            all+=detail_val[i].value+"/";
+        }
+    }
+
+    document.getElementById("d").value = all;
+
+    var all2 = '';
+    var detail03_val = document.getElementsByName("group_kitchen_item");
+    for(var i=0; i<detail03_val.length; i++){
+        if(detail03_val[i].checked){
+            all2+=detail03_val[i].value+"/";
+        }
+    }
+
+    document.getElementById("d3").value = all2;
+
+    var all3 = '';
+    var detail04_val = document.getElementsByName("group_washroom_item");
+    for(var i=0; i<detail04_val.length; i++){
+        if(detail04_val[i].checked){
+            all3+=detail04_val[i].value+"/";
+        }
+    }
+
+    document.getElementById("d4").value = all3;
+
+    var all4 = '';
+    var detail05_val = document.getElementsByName("group_porch_item");
+    for(var i=0; i<detail05_val.length; i++){
+        if(detail05_val[i].checked){
+            all4+=detail05_val[i].value+"/";
+        }
+    }
+
+    document.getElementById("d5").value = all4;
+    /*체크박스 배열로 값받기 끝*/
+
+    $('.page1').hide();
+    $('.page2').show();
 }
+
+    <%-- 뒤로가기 버튼 --%>
+    function page_back02() {
+        $('.page2').hide();
+        $('.page1').show();
+    }
+    function page_back03() {
+        $('.page3').hide();
+        $('.page2').show();
+    }
+    function page_back04() {
+        $('.page4').hide();
+        $('.page3').show();
+    }
+    function page_back05() {
+        $('.page5').hide();
+        $('.page4').show();
+    }
 
 </script>
  <%-- 하단 공통부분 --%>

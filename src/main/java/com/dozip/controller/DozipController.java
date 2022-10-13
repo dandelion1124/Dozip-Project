@@ -31,7 +31,9 @@ public class DozipController {
 
     @Autowired
     private DozipService dozipService;
+    @Autowired
     private PortfolioService portfolioService;
+    @Autowired
     private EstimateService estimateService;
 
     @RequestMapping(value = "home") //두집 홈 화면
@@ -320,91 +322,46 @@ public class DozipController {
     }
 
     @GetMapping("/apply")
-    public String apply() {
+    public String apply(){
         return "/dozip/apply/applicationSheet";
     }
 
-    @GetMapping("/apply2")
-    public String apply2(){
-        return "/dozip/apply/applicationSheet2";
-    }
-    @GetMapping("/apply3")
-    public String apply3(){
-        return "/dozip/apply/applicationSheet3";
-    }
-    @GetMapping("/apply4")
-    public String apply4(){
-        return "/dozip/apply/applicationSheet4";
-    }
-    @GetMapping("/apply5")
-    public String apply5(){
-        return "/dozip/apply/applicationSheet5";
-    }
-    @RequestMapping("/apply_ok")
-    public String apply_ok(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
+    @RequestMapping("apply_ok")
+    public String apply_ok(HttpServletRequest request, HttpSession session) {
 
-        String id = (String) session.getAttribute("id"); //현재 로그인된 세션의 아이디 값
-
+        //e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
         EstimateVO e = new EstimateVO();
-        e.setMem_id(id);
+
+
+
+        e.setMem_id("aaaa");
         e.setEst_zoning(request.getParameter("est_zoning"));
         e.setEst_use(request.getParameter("est_use"));
         e.setEst_areaP(request.getParameter("areaP"));
         e.setEst_areaM(request.getParameter("areaM"));
-        e.setEst_detail(request.getParameter("detail"));
-        e.setEst_detail01(request.getParameter("detail01"));
-        e.setEst_detail02(request.getParameter("detail02"));
-        e.setEst_detail03(request.getParameter("detail03"));
-        e.setEst_detail04(request.getParameter("detail04"));
-        e.setEst_detail05(request.getParameter("detail05"));
-        e.setEst_detail06(request.getParameter("detail06"));
-        e.setEst_detail07(request.getParameter("detail07"));
-        e.setEst_detail08(request.getParameter("detail08"));
+        e.setEst_detail(request.getParameter("d")); //배열
+        e.setEst_detail01(request.getParameter("group_wallpaper_item"));
+        e.setEst_detail02(request.getParameter("group_floor_item"));
+        e.setEst_detail03(request.getParameter("d3")); //배열
+        e.setEst_detail04(request.getParameter("d4")); //배열
+        e.setEst_detail05(request.getParameter("d5")); //배열
+        e.setEst_detail06(request.getParameter("group_window_item"));
+        e.setEst_detail07(request.getParameter("group_light_item"));
+        e.setEst_detail08(request.getParameter("group_door_item"));
 
         e.setEst_bud(request.getParameter("est_bud"));
         e.setEst_start(request.getParameter("est_start"));
         e.setEst_end(request.getParameter("est_end"));
 
-        e.setEst_name(request.getParameter("est_name"));
-        e.setEst_phone(request.getParameter("est_phone"));
-        e.setEst_addr(request.getParameter("est_addr"));
-        e.setEst_desc(request.getParameter("est_desc"));
+        e.setEst_name(request.getParameter("name"));
+        e.setEst_phone(request.getParameter("phone"));
+        e.setEst_addr(request.getParameter("addr"));
+        e.setEst_desc(request.getParameter("paragraph"));
 
-        String mem_id = e.getMem_id();
-        String est_zoning = e.getEst_zoning();
-        String est_use = e.getEst_use();
-        String est_areaP = e.getEst_areaP();
-        String est_areaM = e.getEst_areaM();
-        String est_detail = e.getEst_detail();
-        String est_detail01 = e.getEst_detail01();
-        String est_detail02 = e.getEst_detail02();
-        String est_detail03 = e.getEst_detail03();
-        String est_detail04 = e.getEst_detail04();
-        String est_detail05 = e.getEst_detail05();
-        String est_detail06 = e.getEst_detail06();
-        String est_detail07 = e.getEst_detail07();
-        String est_detail08 = e.getEst_detail08();
+        System.out.println(e.toString());
+        this.estimateService.applyOk(e);
 
-        String est_bud = e.getEst_bud();
-        String est_start = e.getEst_start();
-        String est_end = e.getEst_end();
-
-        String est_name = e.getEst_name();
-        String est_phone = e.getEst_phone();
-        String est_desc = e.getEst_desc();
-        String est_file = e.getEst_file();
-
-
-        //test
-        System.out.println(est_zoning);
-        System.out.println(est_use);
-        System.out.println(request.getParameter("est_zoning"));
-
-        this.estimateService.applyOk(id);
-
-        return "/dozip/home";
+        return "/dozip/index";
     }
 
 }//DozipController

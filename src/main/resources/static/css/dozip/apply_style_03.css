@@ -11,7 +11,7 @@
   width: 600px;
   margin: 0 auto;
 }
-.estimate_box{
+.estimate_box_page3{
   background-color: none;
   width: 600px;
   height: 500px;
@@ -56,22 +56,18 @@ button#certify_phone:hover, button#address_btn:hover{
 	background: #444;
 }
 /*your_cost, proposed_cost*/
-.proposed_cost{
-  display:flex;
-}
+
 .your_cost{
   display: flex;
 }
 
-.estimate_box input[type=text]{
+.estimate_box_page3 input[type=text]{
   font-size: large;
   margin: 10px 10px 0px 10px;  /*아래 오른쪽 위 왼쪽*/
   height: 35px;
   width: 450px;
 }
-.estimate_box input[type=text]:hover{
-	
-}
+
 /*다음 페이지 넘김 버튼*/
 .nextpage{
   background-color: none;
