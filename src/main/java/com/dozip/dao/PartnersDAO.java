@@ -13,7 +13,6 @@ public interface PartnersDAO {
     void addPortfolio(PortfolioVO pv);
 
     int getPort_num(PortfolioVO pv);
-    PartnersVO getMember(String businessNum); //data_manage 회원정보
 
     void insertPartners(PartnersVO pv);
 
@@ -21,7 +20,6 @@ public interface PartnersDAO {
 
     void insertPort_Photos(PortfolioVO pv);
 
-    Partners_subVO getPartnersSub(String businessNum);
 
     int getListCount(QnaVO findQ);
 
@@ -38,5 +36,13 @@ public interface PartnersDAO {
     int selqnaRef(QnaVO dv);
 
     void returnState(QnaVO dv);
+
+
+    /* minwoo */
+    PartnersVO getMember(String businessNum); //data_manage 회원정보
+
+    Partners_subVO getPartnersSub(String businessNum);
+
+    void updatePartners(String businessNum);
 }
 

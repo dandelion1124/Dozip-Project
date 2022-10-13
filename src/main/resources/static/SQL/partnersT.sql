@@ -14,13 +14,14 @@ create table partnersT (
     pDelcont nvarchar2(400), --탈퇴사유
     pState number(5) default 1 --탈퇴여부(가입 1, 탈퇴 2)
 );
-update partnersT set business_num='111' where business_num='105';
-insert into partnersT (business_num, businessName, pId, pPw, pName, pTel, pMail_id, 
-pMail_domain,pAddress, pDate,PDeldate,pDelcont,pState) values(105, '민우', 'baba', 123, 'ㅇ', 010, 'baba@naver','주소주소', '역삼동', 510,520,530,1);
+update partnersT set businessNum='111' where businessNum='105';
+insert into partnersT (businessNum, businessName, pId, pPw, pName, pTel, pMailId,
+pMailDomain,pAddress, pDate,PDeldate,pDelcont,pState) values(105, '민우', 'baba', 123, 'ㅇ', 010, 'baba@naver','주소주소', '역삼동', 510,520,530,1);
 select * from partnersT;
 drop table partnersT;
 delete from PARTNERST;
 select * from partnersT where pId='shc729';
+
 
 
 
@@ -66,11 +67,11 @@ update PORTFOLIOT set pf_title = '모던한 포토 스튜디오' where pf_no=32;
 update portfolioT set pf_subtype = '스튜디오' where pf_no=27;
 
 select * from (select pf.*, pt.businessName from portfolioT pf, partnersT pt 
-where pf.business_num = pt.business_num(+) order by pf_no desc) 
+where pf.businessNum = pt.businessNum(+) order by pf_no desc)
 where ((pf_no is not null) and pf_subtype='아파트');
 
 select * from (select pf.*, pt.businessName from portfolioT pf, partnersT pt 
-where pf.business_num = pt.business_num(+) order by pf_no desc) 
+where pf.businessNum = pt.businessNum(+) order by pf_no desc)
 where ((pf_no is not null)  and where pf_subtype='모던');
 
 
@@ -87,12 +88,12 @@ select portfolioT_no_seq.nextval from dual;
 
 update PARTNERST set  pAddress = '서울시 강남구 선릉로' where  pName = '구동민';
 
-select * from portfolioT where business_num = (select business_num from partnersT where businessName like '%동민%');
+select * from portfolioT where businessNum = (select businessNum from partnersT where businessName like '%동민%');
 
 
 
 create table partners_subT (
-	business_num nvarchar2(12) not null,  --사업자번호
+	businessNum nvarchar2(12) not null,  --사업자번호
 	pShortstate nvarchar2(2000),
 	pInt_img nvarchar2(70),
 	pComp_logo nvarchar2(70),
@@ -112,11 +113,15 @@ create table partners_subT (
 	pAccount_num nvarchar2(20),
 	pAccount_file nvarchar2(70),
 	pBusiness_lic_file nvarchar2(70),
-	foreign key(business_num) references partnersT(business_num)
+	foreign key(businessNum) references partnersT(businessNum)
 );
+insert into partners_subT (businessNum,pShortstate,pHomepg) values('155-23-14423','짧은 언급','홈피');
 
 select * from partners_subT;
 drop table partners_subT;
 delete  from partners_subT;
 
+
+
+commit;
 
