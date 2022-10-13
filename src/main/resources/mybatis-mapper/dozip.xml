@@ -14,7 +14,7 @@
     </select>
 
     <!--회원정보 불러오기-->
-    <select id="m_info" parameterType="String" resultMap="vo">
+    <select id="m_info" parameterType="String" resultType="MemberVO">
         select * from memberT where mem_id=#{mem_id}
     </select>
 
@@ -26,41 +26,41 @@
 
     <!--문의글 총 개수(해당 아이디의 작성 글 개수 확인 - 관리자)-->
     <select id="listQ_count" resultType="int">
-        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (business_num is null)
+        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (businessNum is null)
     </select>
 
     <!--관리자 문의글 리스트-->
-    <select id="get_Qlist" resultMap="qo">
+    <select id="get_Qlist" resultType="QnaVO">
         select * from (
-        select rowNum r, qna_no, mem_id, business_num, qna_type,qna_title,
+        select rowNum r, qna_no, mem_id, businessNum, qna_type,qna_title,
         qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
         qna_level,reply_state,reply_date
         from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc)
-        where (business_num is null)
+        where (businessNum is null)
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
     <!--문의글 총 개수(해당 아이디의 작성 글 개수 확인 - 업체)-->
     <select id="listP_count" resultType="int">
-        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (business_num is not null)
+        select count(qna_no) from qnaT where mem_id=#{mem_id} and qna_state=1 and (businessNum is not null)
     </select>
 
-    <!--관리자 문의글 리스트-->
-    <select id="get_Plist" resultMap="qo">
+    <!--업체 문의글 리스트-->
+    <select id="get_Plist" resultType="QnaVO">
         select * from (
-        select rowNum r, qna_no, mem_id, q.business_num, qna_type,qna_title,
+        select rowNum r, qna_no, mem_id, q.businessNum, qna_type,qna_title,
         qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
         qna_level,reply_state,reply_date, p.businessName
         from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q, partnersT p
-        where q.business_num=p.businessNum(+) and (q.business_num is not null)
+        where q.businessNum=p.businessNum(+) and (q.businessNum is not null)
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
     <!--문의글 작성 (관리자/업체 둘 다)-->
     <insert id="in_Qna">
         insert into qnaT
-		(qna_no, mem_id, business_num, qna_type, qna_title, qna_cont, qna_date, qna_ref, qna_step, qna_level, reply_state)
-		values (qnaT_no_seq.nextval,#{mem_id},#{business_num, jdbcType = VARCHAR},#{qna_type},#{qna_title},#{qna_cont},sysdate,qnaT_no_seq.nextval,0,0,'미답변')
+		(qna_no, mem_id, businessNum, qna_type, qna_title, qna_cont, qna_date, qna_ref, qna_step, qna_level, reply_state)
+		values (qnaT_no_seq.nextval,#{mem_id},#{businessNum, jdbcType = VARCHAR},#{qna_type},#{qna_title},#{qna_cont},sysdate,qnaT_no_seq.nextval,0,0,'미답변')
     </insert>
 
     <!--사업자번호 찾기-->
@@ -94,7 +94,7 @@
     <resultMap id="qo" type="com.dozip.vo.QnaVO">
         <result column="qna_no" property="qna_no" />
         <result column="mem_id" property="mem_id" />
-        <result column="business_num" property="business_num" />
+        <result column="businessNum" property="businessNum" />
         <result column="qna_type" property="qna_type" />
         <result column="qna_title" property="qna_title" />
         <result column="qna_cont" property="qna_cont" />
