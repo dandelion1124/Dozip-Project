@@ -273,6 +273,7 @@ public class PartnersController {
         if (pv.getPf_addr2().isEmpty()) {
             pv.setPf_addr2(" ");
         }
+        System.out.println(pv.getPf_type());
         Cookie cookie = new Cookie("pf_no", String.valueOf(partnersService.addPortfolio(pv)));
         response.addCookie(cookie);
         return "/partners/portfolio/p_upload_photo";

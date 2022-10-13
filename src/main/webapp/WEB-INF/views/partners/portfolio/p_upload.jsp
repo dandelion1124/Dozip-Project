@@ -58,17 +58,17 @@
 				<label>공사 유형</label>
 			</div>
 			<!-- 공사유형 -->
-			<select id="sel_type" name="pf_type" id="pf_type">
+			<select id="sel_type" name="pf_type">
 				<option value="none" selected>선택</option>
 				<option value="주거공간">주거공간</option>
 				<option value="상업공간">상업공간</option>
-			</select> <select id="sel_house" name="pf_subtype" id="pf_subtype" disabled>
+			</select> <select id="sel_house" name="pf_subtype" disabled>
 				<option value="none" selected>선택</option>
 				<option value="아파트">아파트</option>
 				<option value="빌라">빌라</option>
 				<option value="주택">주택</option>
 				<option value="오피스텔">오피스텔&nbsp;</option>
-			</select> <select id="sel_business" name="pf_subtype" id="pf_subtype" style="display: none;">
+			</select> <select id="sel_business" name="pf_subtype"  style="display: none;">
 				<option value="none" selected>선택</option>
 				<option value="사무실">사무실</option>
 				<option value="상가/매장">상가/매장</option>

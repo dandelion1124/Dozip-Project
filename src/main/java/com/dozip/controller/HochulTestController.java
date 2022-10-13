@@ -21,10 +21,6 @@ public class HochulTestController {
     @Autowired
     private PartnersService partnersService;
 
-    @GetMapping("/test_upload")
-    public String test() {
-        return "/partners/portfolio/p_upload_photo";
-    }
 
     //파트너스 비번찾기
     @PostMapping("/partners_findpwd")
@@ -40,6 +36,12 @@ public class HochulTestController {
 
         return null;
     }//partners_findpwd()
+
+
+    @RequestMapping("/test")
+    public String p_upload_photo(){
+        return "/partners/portfolio/p_upload_photo";
+    }
 
 
 

@@ -29,7 +29,7 @@
     <insert id="portfolio_in" parameterType="PortfolioVO">
         insert into portfolioT (pf_no, businessNum, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
                                 pf_concept, pf_introduction, pf_closing, pf_regdate)
-        values (portfolioT_no_seq.nextval, #{businessNum}, #{pf_title}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
+        values (portfolioT_no_seq.nextval, #{businessNum}, #{pf_title}, #{pf_type}, #{pf_subtype}, #{pf_range}, #{pf_zipcode}, #{pf_addr1}, #{pf_addr2},
                 #{pf_addr3}, #{pf_area}, #{pf_cost}, #{pf_period}, #{pf_concept}, #{pf_introduction}, #{pf_closing}, sysdate)
     </insert>
 
