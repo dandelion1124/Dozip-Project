@@ -466,38 +466,66 @@ public class PartnersController {
 //            out.println("location='/partners';");
 //            out.println("</script>");
 //        }else {
-
+        //System.out.println(businessNum);
         PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-        Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
-                
+        //Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+
+           //System.out.println(p.toString());
+           //System.out.println(p.getPName()+" "+p.getPTel());
+           //System.out.println(ps.getBusinessNum()+" "+ps.getPShortstate()+" "+ps.getPHomepg());
+
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
-            m.addObject("ps",ps);//ps 키이름에 ps객체 저장
+            m.addObject("pName",p.getPName());
+            m.addObject("pTel",p.getPTel());
+
+            //m.addObject("ps", ps);
+
             m.setViewName("/partners/mypage/data_manage");
             return m;
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage_edit_ok")
+    @RequestMapping(value="/data_manage_ok")
     public String data_manage_edit_ok(HttpServletResponse response,HttpServletRequest request,
-        HttpSession session, Partners_subVO p) throws Exception {
+        HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String business_num = (String)session.getAttribute("business_num");
-        if(business_num == null) {
-            out.println("<script>");
-            out.println("alert('다시 로그인 하세요!');");
-            out.println("location='index';");
-            out.println("</script>");
-        }else {
+        String pAddress=request.getParameter("pAddress");
+        String pShortstate=request.getParameter("pShortstate");
+        String pHomepg=request.getParameter("pHomepg");
+        String pRes_person_name=request.getParameter("pRes_person_name");
+        String pRes_person_tel=request.getParameter("pRes_person_tel");
+        String pCom_person_name=request.getParameter("pCom_person_name");
+        String pCom_person_tel=request.getParameter("pCom_person_tel");
+        //Int pBalance=Integer.parseInt(request.getParameter("pBalance"));
+        String pAccount_bank=request.getParameter("pAccount_bank");
+        String pAccount_name=request.getParameter("pAccount_name");
+        String pAccount_num=request.getParameter("pAccount_num");
 
-        }
-        return null;
+        System.out.println(pAddress);
+        System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
+
+        PartnersVO p=new PartnersVO();
+        Partners_subVO ps=new Partners_subVO();
+
+        p.setPAddress(pAddress);
+        ps.setPShortstate(pShortstate); ps.setPHomepg(pHomepg); ps.setPRes_person_name(pRes_person_name);
+        ps.setPRes_person_tel(pRes_person_tel); ps.setPCom_person_name(pCom_person_name); ps.setPCom_person_tel(pCom_person_tel);
+        //ps.setPBalance(pBalance);
+        ps.setPAccount_bank(pAccount_bank); ps.setPAccount_name(pAccount_name); ps.setPAccount_num(pAccount_num);
+
+
+        String businessNum = (String)session.getAttribute("business_num");
+        this.partnersService.updatePartners(businessNum);
+
+
+        out.println("alert('정보수정에 성공하였습니다.')");
+        return "redirect:/partners/data_manage";
     }
     @RequestMapping(value="/pw_change")
     public String pw_change() { return "/partners/mypage/pw_change"; }
-
 
 
 

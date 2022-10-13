@@ -15,6 +15,7 @@ import java.util.List;
 public class PartnersServiceImpl implements PartnersService {
     @Autowired
     private PartnersDAO partnersDao;
+
     @Override
     public PartnersVO getPartnersInfo(String pId) {
         return partnersDao.getPartnersInfo(pId);
@@ -24,10 +25,7 @@ public class PartnersServiceImpl implements PartnersService {
         partnersDao.addPortfolio(pv);
         return partnersDao.getPort_num(pv); //수정작업 필요 . 가끔2개가 조회됨
     }
-    @Override
-    public PartnersVO getMember(String businessNum) {
-        return this.partnersDao.getMember(businessNum);
-    }
+
     @Override
     public void insertPartners(PartnersVO pv) {
         partnersDao.insertPartners(pv);
@@ -70,6 +68,21 @@ public class PartnersServiceImpl implements PartnersService {
     @Override
     public void returnState(QnaVO dv) {
         partnersDao.returnState(dv);
+    }
+
+
+    /* minwoo */
+    @Override
+    public PartnersVO getMember(String businessNum) {
+        return this.partnersDao.getMember(businessNum);
+    }
+    @Override
+    public Partners_subVO getPartnersSub(String businessNum) {
+        return partnersDao.getPartnersSub(businessNum);
+    }
+    @Override
+    public void updatePartners(String businessNum) {
+        partnersDao.updatePartners(businessNum);
     }
     @Override
     public int checkBusinessNum(PartnersVO pv) {

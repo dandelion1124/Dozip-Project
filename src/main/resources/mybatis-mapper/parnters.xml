@@ -22,17 +22,8 @@
     <select id="findinfo_id" resultType="PartnersVO">
         select * from partnersT where businessNum=#{businessNum}
     </select>
-    
-    <select id="select_data" resultType="PartnersVO">
-        select * from partnersT where businessNum=#{businessNum, jdbcType=VARCHAR}
-        <!--select * from partnersT where businessNum=105 -->
-    </select>
 
-    <select id="select_subdata" resultType="Partners_subVO">
-        select * from partners_subT where businessNum=#{businessNum, jdbcType=VARCHAR}
-    </select>
-    
-    
+
     <!-- 고객문의글 개수 조회 -->
     <select id="qna_count" resultType="int">
         select count(qna_no) from qnaT Left Join memberT On qnaT.mem_id = memberT.mem_id where businessNum=#{businessNum} and qna_state=1
@@ -61,8 +52,8 @@
         update qnat set reply_state='답변완료' where qna_ref=#{qna_ref}
     </update>
     <!-- 고객문의 글답변 -->
-    <insert id="partners_reply_in">
-        insert into qnaT (qna_no, mem_id, businessNum, qna_type, qna_title, qna_cont, qna_ref, qna_step, qna_level, reply_state, reply_date)
+    <insert id="partners_reply_in"> <!--,실수! -->
+        insert into qnaT (qna_no, mem_id businessNum, qna_type, qna_title, qna_cont, qna_ref, qna_step, qna_level, reply_state, reply_date)
         values (qnaT_no_seq.nextval, #{mem_id}, #{businessNum}, #{qna_type}, #{qna_title}, #{qna_cont}, #{qna_ref}, #{qna_step}+1, #{qna_level}+1, '답변완료', sysdate)
     </insert>
 
@@ -77,6 +68,23 @@
     <!-- 원본글을 다시 미답변 상태로-->
     <update id="returnState">
         update qnaT set reply_state='미답변' where qna_no=#{qna_ref}
+    </update>
+
+    <!-- data_manage 정보수정 -->
+    <select id="select_data" resultType="PartnersVO">
+        select * from partnersT where businessNum=#{businessNum, jdbcType=VARCHAR}
+        <!--select * from partnersT where businessNum=105 -->
+    </select>
+
+    <select id="select_subdata" resultType="Partners_subVO">
+        select * from partners_subT where businessNum=#{businessNum, jdbcType=VARCHAR}
+    </select>
+
+    <update id="update_subdata">
+        update Partners_subT set pShortstate=#{pShortstate},pHomepg=#{pHomepg},pRes_person_name=#{pRes_person_name}
+        <!--,pRes_person_tel=#{pRes_person_tel},pCom_person_name=#{pCom_person_name},pCom_person_tel=#{pCom_person_tel},
+        pBalance=#{pBalance},pAccount_bank=#{pAccount_bank},pAccount_name=#{pAccount_name},pAccount_num=#{pAccount_num}-->
+        where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 </mapper>
 

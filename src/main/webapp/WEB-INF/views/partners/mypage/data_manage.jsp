@@ -1,8 +1,6 @@
 <%@ page  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
 <link rel="stylesheet" href="/css/partners/partners_style2.css">
-<%@ page import="com.dozip.dao.PartnersDAO" %>
-<%@ page import="com.dozip.vo.PartnersVO" %>
 <%
 
 	/* String [] value= request.getParameterValues("pService");
@@ -70,7 +68,7 @@
 			</div>
 		</div>
 		<div class="all_information">
-			<form method="post" action="data_manage_edit_ok">
+			<form method="post" action="data_manage_ok">
 				<fieldset id="business">
 					<legend>
 						<b>사업자 정보</b>
@@ -79,7 +77,7 @@
 						<div class="business-01-1">
 							<label><b>사업자등록번호</b></label><br />
 							<div>
-								<input type="text" id="businessNum" name="businessNum" value="${p.businessNum}" size="30">
+								<input type="text" id="businessNum" name="businessNum" value="${p.businessNum}" readonly size="30">
 								<!--  <input type="text" id="business_num" name="business_num" size="5">
                                 <input type="text" id="business_num" name="business_num" size="5"> -->
 							</div>
@@ -88,7 +86,7 @@
 						<div class="business-01-2">
 							<label><b>상호</b></label><br />
 							<div>
-								<input type="text" id="businessName" name="businessName" value="${p.businessName}" size="30">
+								<input type="text" id="businessName" name="businessName" value="${p.businessName}" readonly size="30">
 							</div>
 						</div>
 					</div>
@@ -96,14 +94,14 @@
 					<div class="business-03">
 						<label><b>대표자 이름</b></label><br />
 						<div>
-							<input type="text" id="pName" name="pName" value="${p.pName}" size="30">
+							<input type="text" id="pName" name="pName" value="${pName}" readonly size="30">
 						</div>
 						<br />
 					</div>
 					<div class="business-04">
 						<label><b>대표자 연락처</b></label><br />
 						<div>
-							<input type="text" id="pTel" name="pTel" value="${p.pTel}" size="30">
+							<input type="text" id="pTel" name="pTel" value="${pTel}" size="30">
 						</div>
 						<br />
 					</div>
@@ -115,7 +113,7 @@
                             <button type="button">변경</button> -->
 						</div>
 						<div>
-							<input type="text"  id="pAddress" name="pAddress"  size="30" value="${p.pAddress}">
+							<input type="text"  id="pAddress" name="pAddress"  size="30" value="">
 						</div>
 						<br />
 					</div>
@@ -164,7 +162,7 @@
 						<label for="service5" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service5" value="정부지원사업">정부지원사업</label></br>
 						<label for="service6" class="lbl-checkbox-disabled"><input type="checkbox" name="pService" id="service6" value="두집예치제">두집예치제</label>
 						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="pBalance" <%--value="${ps.pBalance}"--%> >
-						<p id="red">* 두집예치제는 두집(****-****)으로 추가 문의주세요.</p>
+						<p class="red">* 두집예치제는 두집(****-****)으로 추가 문의주세요.</p>
 						<div class="current-service">
 							<label>현재 제공하는 서비스</label>
 
@@ -216,7 +214,7 @@
 
 					<div class="residence-wrap">
 						<div>
-							<b><span id="red">*</span></b><span> <b>건물 유형(최소 2개 이상)</b></span>
+							<b><span class="red">*</span></b><span> <b>건물 유형(최소 2개 이상)</b></span>
 						</div>
 						<div class="residence">
 							<label for="res_build_all" class="lbl-checkbox"> <input type="checkbox" name="pRes_build_type_all" id="res_build_all" value="" onclick="selectAll1(this)"></input> 전체</label><br />
@@ -230,7 +228,7 @@
 						<br />
 
 						<div>
-							<b><span id="red">*</span></b><span> <b>가능한 공간</b></span>
+							<b><span class="red">*</span></b><span> <b>가능한 공간</b></span>
 						</div>
 						<div class="residence" >
 							<label for="res_space_all" class="lbl-checkbox"> <input type="checkbox" name="pRes_space_type_all" id="res_space_all" value="" onclick="selectAll2(this)"></input>전체</label><br />
@@ -273,7 +271,7 @@
 
 					<div class=''>
 						<div>
-							<b><span id="red">*</span></b><span> <b>건물 유형(최소 3개 이상)</b></span>
+							<b><span class="red">*</span></b><span> <b>건물 유형(최소 3개 이상)</b></span>
 						</div>
 						<div class="commercial" >
 							<label for="com_build_all" class="lbl-checkbox"> <input type="checkbox" name="pCom_build_type_all" id="com_build_all" value="" onclick="selectAll3(this)"></input> 전체</label><br />
@@ -290,7 +288,7 @@
 						<br />
 
 						<div>
-							<b><span id="red">*</span></b><span> <b>가능한 공간</b></span>
+							<b><span class="red">*</span></b><span> <b>가능한 공간</b></span>
 						</div>
 						<div class="commercial" >
 							<label for="com_space_all" class="lbl-checkbox"> <input type="checkbox" name="pCom_space_type_all" id="com_space_all" value="" onclick="selectAll4(this)"></input> 전체
@@ -388,7 +386,7 @@
 							</div>
 							<br>
 						</div>
-						<p id="red">* 입금계좌, 통장 사본, 사업자 등록증 사본은 1회만 입력 가능합니다.
+						<p class="red">* 입금계좌, 통장 사본, 사업자 등록증 사본은 1회만 입력 가능합니다.
 							수정희망 시 집닥담당자 (1600-3069) 에게 문의 해주세요.</p>
 					</div>
 				</fieldset>

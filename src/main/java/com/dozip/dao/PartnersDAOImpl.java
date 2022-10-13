@@ -43,10 +43,6 @@ public class PartnersDAOImpl implements PartnersDAO {
         sqlSession.insert("insert_photo",pv);
     }
     @Override
-    public Partners_subVO getPartnersSub(String businessNum) {
-        return sqlSession.selectOne("select_subdata");
-    }
-    @Override
     public int getListCount(QnaVO findQ) {
         return sqlSession.selectOne("qna_count",findQ);
     }
@@ -83,11 +79,21 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectList("partners_qna_list", findQ);
     }
 
+
+    /* minwoo */
     @Override
     public PartnersVO getMember(String businessNum) {
         return sqlSession.selectOne("select_data",businessNum);
     }
 
+    @Override
+    public Partners_subVO getPartnersSub(String businessNum) {
+        return sqlSession.selectOne("select_subdata",businessNum);
+    }
+    @Override
+    public void updatePartners(String businessNum) {
+        sqlSession.update("update_subdata",businessNum);
+    }
 
 }
 

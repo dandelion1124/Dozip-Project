@@ -1,7 +1,6 @@
 package com.dozip.service;
 
 import com.dozip.vo.MemberVO;
-import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 
 import java.util.List;

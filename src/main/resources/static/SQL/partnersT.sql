@@ -25,11 +25,11 @@ update PORTFOLIOT set pf_title = '모던한 포토 스튜디오' where pf_no=32;
 update portfolioT set pf_subtype = '스튜디오' where pf_no=27;
 
 select * from (select pf.*, pt.businessName from portfolioT pf, partnersT pt 
-where pf.BUSINESSNUM = pt.business_num(+) order by pf_no desc)
+where pf.businessNum = pt.businessNum(+) order by pf_no desc)
 where ((pf_no is not null) and pf_subtype='아파트');
 
 select * from (select pf.*, pt.businessName from portfolioT pf, partnersT pt 
-where pf.BUSINESSNUM = pt.business_num(+) order by pf_no desc)
+where pf.businessNum = pt.businessNum(+) order by pf_no desc)
 where ((pf_no is not null)  and where pf_subtype='모던');
 
 select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, p.pf_zipcode, p.pf_addr1, p.pf_addr2, p.pf_addr3, p.pf_area,
@@ -41,11 +41,13 @@ delete from portfolioT where businessNum='222-22-22222';
 
 update PARTNERST set  pAddress = '서울시 강남구 선릉로' where  pName = '구동민';
 
-select * from portfolioT where BUSINESSNUM = (select BUSINESSNUM from partnersT where businessName like '%동민%');
+select * from portfolioT where businessNum = (select businessNum from partnersT where businessName like '%동민%');
 
-
-
+insert into partners_subT (businessNum,pShortstate,pHomepg) values('155-23-14423','짧은 언급','홈피');
 
 delete  from partners_subT;
 
+
+
+commit;
 

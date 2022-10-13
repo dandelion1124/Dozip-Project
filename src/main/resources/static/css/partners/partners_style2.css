@@ -160,7 +160,7 @@
       display:table-cell;
       vertical-align:middle;
    }  
-  #red{
+  .red{
     color:red;
     font-size: 12px;
     font-weight: bold;
