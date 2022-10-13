@@ -20,10 +20,18 @@ public class QnaVO {
     private String reply_date;
 
     //추가로 필요한 정보
+
+    
     private String businessName; //사업자명
     private String mem_name; //고객명
 
     //페이징. 쪽나누기 관련변수
     private int startrow; //시작행번호
     private int endrow; //끝행 번호
+
+
+    //검색하기
+    private String find_field; //검색 필드
+    private String find_text; //검색어
+    private String answer; //답변여부
 }

@@ -7,7 +7,7 @@ public class EstimateVO {
     
         private String est_num;
         private String mem_id;
-        private String business_num;
+        private String businessNum;
         private String est_check;
         private String est_zoning;
         private String est_use;
