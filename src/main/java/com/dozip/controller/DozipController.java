@@ -220,7 +220,7 @@ public class DozipController {
         q.setMem_id((String)session.getAttribute("id"));
 
         if(q.getBusinessName()!=null){ //업체문의등록
-            q.setBusiness_num(this.dozipService.getBnum(q.getBusinessName()));
+            q.setBusinessNum(this.dozipService.getBnum(q.getBusinessName()));
         }
 
         this.dozipService.insertQna(q);

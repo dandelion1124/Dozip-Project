@@ -3,9 +3,12 @@ package com.dozip.dao;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
+import com.dozip.vo.QnaVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class PartnersDAOImpl implements PartnersDAO {
@@ -46,6 +49,46 @@ public class PartnersDAOImpl implements PartnersDAO {
     @Override
     public Partners_subVO getPartnersSub(String businessNum) {
         return sqlSession.selectOne("select_subdata");
+    }
+
+    @Override
+    public int getListCount(QnaVO findQ) {
+        return sqlSession.selectOne("qna_count",findQ);
+    }
+
+    @Override
+    public void updateState(QnaVO qdto) {
+        sqlSession.update("change_state",qdto);
+    }
+
+    @Override
+    public void updateLevel(QnaVO qdto) {
+        sqlSession.update("reply_levelUp",qdto);
+    }
+
+    @Override
+    public int insertQna(QnaVO qdto) {
+        return sqlSession.insert("partners_reply_in", qdto);
+    }
+
+    @Override
+    public int deleteReply(QnaVO dv) {
+        return sqlSession.delete("del_reply",dv);
+    }
+
+    @Override
+    public int selqnaRef(QnaVO dv) {
+        return sqlSession.selectOne("sel_qnaRef", dv);
+    }
+
+    @Override
+    public void returnState(QnaVO dv) {
+        sqlSession.update("returnState", dv);
+    }
+
+    @Override
+    public List<QnaVO> getQnaList(QnaVO findQ) {
+        return sqlSession.selectList("partners_qna_list", findQ);
     }
 
     @Override

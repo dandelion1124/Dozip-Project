@@ -379,14 +379,14 @@ public class PartnersController {
         PrintWriter out = response.getWriter();
 
         String business_num = (String)session.getAttribute("business_num");
-//        if(business_num == null) {
-//            out.println("<script>");
-//            out.println("alert('다시 로그인 하세요!');");
-//            out.println("location='index';");
-//            out.println("</script>");
-//        }else {
+        if(business_num == null) {
+            out.println("<script>");
+            out.println("alert('다시 로그인 하세요!');");
+            out.println("location='index';");
+            out.println("</script>");
+        }else {
 
-//        }
+        }
         return null;
     }
     @RequestMapping(value="/pw_change")
