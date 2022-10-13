@@ -5,14 +5,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원가입</title>
-	<link rel="stylesheet" type="text/css" href="/DoZip/css/login.css" />
-	<script src="/DoZip/js/jquery.js"></script>
-	<script src="/DoZip/js/member.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
+	<script src="/js/dozip/jquery.js"></script>
+	<script src="/js/dozip/member.js"></script>
 </head>
 <body>
 <div id="join_wrap">
 	<div id="join_title"><p>회원가입</p></div>
-	<form id="join_form_box" method="post"  name="m"  onsubmit="return join_check();" action="member_join_ok.do">
+	<form id="join_form_box" method="post"  name="m"  onsubmit="return join_check();" action="/dozip/member_join_ok">
 		<table id="join_form_table">
 			<tr>
 				<th>아이디</th>

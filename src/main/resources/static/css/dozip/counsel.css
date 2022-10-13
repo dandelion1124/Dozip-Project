@@ -30,13 +30,12 @@
 	display: flex;
 	margin: 0 auto;
 	width: 50%;
+	margin-top: 20px;
 }
 .btn_group button {
 	border: 0;
-	border-radius: 5px;
 	font-size: 1.2rem;
 	font-weight:bold;
-	/* font-family: '여기어때 잘난체'; */
 	background-color: #347844;
 	text-align: center;
 	width: 45%;
@@ -97,10 +96,8 @@
 }
 .qna_btn_group button {
 	border: 0;
-	border-radius: 20px;
 	font-size: 0.9rem;
 	font-weight: bold;
-	background-color: #d3e4ad;
 	text-align: center;
 	width: 12%;
 	height: 30px;

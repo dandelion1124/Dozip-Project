@@ -31,7 +31,9 @@ public class DozipController {
 
     @Autowired
     private DozipService dozipService;
+    @Autowired
     private PortfolioService portfolioService;
+    @Autowired
     private EstimateService estimateService;
 
     @RequestMapping(value = "home") //두집 홈 화면
@@ -85,11 +87,43 @@ public class DozipController {
         return null;
     }
 
+    @GetMapping("member_join") //회원가입창 이동
+    public String memberJoin(){ return "/dozip/common/mem_join"; }
+
+    @PostMapping("member_join_ok") //회원가입 완료
+    public void memberJoinOK(MemberVO m, HttpServletResponse response) throws IOException {
+        int res = this.dozipService.insertMem(m);
+
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        if(res == 1) { //회원가입 성공시 창을 닫는다.
+            out.println("<script>");
+            out.println("alert('가입이 완료되었습니다.');");
+            out.println("window.close();");
+            out.println("</script>");
+        } else { //회원가입 실패시
+            out.println("<script>");
+            out.println("alert('회원가입에 실패했습니다.');");
+            out.println("history.back();");
+            out.println("</script>");
+        }
+    }
+
+    @RequestMapping(value = "mIDcheck",  method = RequestMethod.POST, produces = "application/json")//회원가입-아이디중복체크
+    @ResponseBody
+    public int mIDcheck(HttpServletRequest request){
+        String id = request.getParameter("mem_id");
+        System.out.println("아이디값:"+id);
+        int res = this.dozipService.checkID(id);
+        return res;
+    }
+
     @GetMapping("find_login")//아이디, 비번찾기 이동
     public String findLogin() { return "/dozip/common/find_id_pwd"; }
 
     @PostMapping("find_id")//아이디 찾기
-    public String findID(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String findID(HttpServletRequest request, HttpServletResponse response) throws Exception {
         MemberVO vo = new MemberVO();
         vo.setMem_name(request.getParameter("mem_name2"));
         vo.setMem_tel(request.getParameter("mem_tel2"));
@@ -173,10 +207,42 @@ public class DozipController {
     @GetMapping("my_pwd") //마이페이지-비밀번호수정 이동
     public String myPwd() { return "/dozip/mypage/mypage_pwd"; }
 
-    @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
-    public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request) throws Exception {
+    @PostMapping("edit_pwd_ok") //마이페이지-비밀번호수정완료
+    public void editPwdOK(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
 
-        HttpSession session=request.getSession();
+        MemberVO m = new MemberVO();
+        m.setMem_id((String)session.getAttribute("id")); //현재 로그인 되어있는 세션의 아이디 값
+        String current_pwd = request.getParameter("current_pwd"); //기존 비번
+        m.setMem_pwd(request.getParameter("new_pwd"));//새 비번
+
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        int res = 0;
+
+        if(current_pwd.equals(this.dozipService.loginCheck(m.getMem_id()))){//아이디로 비번찾아오기(로그인에 사용한 쿼리문 재사용)
+            res = this.dozipService.updatePwd(m);//비밀번호 변경
+            if(res==1) {
+                out.println("<script>");
+                out.println("alert('비밀번호 변경이 완료되었습니다.');");
+                out.println("location.href = '/dozip/my_pwd';");
+                out.println("</script>");
+            }else {
+                out.println("<script>");
+                out.println("alert('변경에 실패했습니다.');");
+                out.println("history.back();");
+                out.println("</script>");
+            }
+        }else{
+            out.println("<script>");
+            out.println("alert('기존 비밀번호를 확인해주세요.');");
+            out.println("history.back();");
+            out.println("</script>");
+        }
+    }
+
+    @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
+    public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
+
         String id = (String)session.getAttribute("id");
 
         //쪽나누기
@@ -273,6 +339,43 @@ public class DozipController {
         list = this.dozipService.getPartners();
         mv.addObject("list",list);
         mv.setViewName("/dozip/counsel/counsel_find_partner");
+        return mv;
+    }
+
+    @GetMapping("counsel_main") //문의메인페이지 이동
+    public ModelAndView counselMain(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session){
+        q.setMem_id((String)session.getAttribute("id"));
+
+        if(q.getMem_id()!=null) {
+            //쪽나누기
+            int page = 1; //현재 쪽번호
+            int limit = 5; //한 페이지에 보여지는 개수
+
+            if (request.getParameter("page") != null) {
+                page = Integer.parseInt(request.getParameter("page"));
+            }
+
+            int listcount = this.dozipService.getListCount(q.getMem_id());
+            int maxpage = (int) ((double) listcount / limit + 0.95); //총페이지
+            int startpage = (((int) ((double) page / 5 + 0.9)) - 1) * 5 + 1; //시작페이지
+            int endpage = maxpage; //마지막페이지
+
+            if (endpage > startpage + 5 - 1) endpage = startpage + 5 - 1;
+
+            mv.addObject("page", page);
+            mv.addObject("startpage", startpage);
+            mv.addObject("endpage", endpage);
+            mv.addObject("maxpage", maxpage);
+            mv.addObject("listcount", listcount);
+
+            //문의 리스트 출력(관리자)
+            List<QnaVO> qlist = new ArrayList<QnaVO>();
+            q.setStartrow((page - 1) * 5 + 1);
+            q.setEndrow(q.getStartrow() + limit - 1);
+            qlist = this.dozipService.getQlist(q);
+            mv.addObject("qlist", qlist);
+        }
+        mv.setViewName("/dozip/counsel/counsel_main");
         return mv;
     }
 

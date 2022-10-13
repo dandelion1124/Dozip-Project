@@ -88,7 +88,7 @@
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
         <p style="width: 80%; font-weight: bold;">비밀번호 변경</p>
-        <form method="post"  onsubmit="return pwd_check();" action="mypage_pwd.do" class="my_pwd_modify_box"  >
+        <form method="post"  onsubmit="return pwd_check();" action="/dozip/edit_pwd_ok" class="my_pwd_modify_box"  >
             <table class="mpm_table">
                 <tr>
                     <th>기존 비밀번호</th>

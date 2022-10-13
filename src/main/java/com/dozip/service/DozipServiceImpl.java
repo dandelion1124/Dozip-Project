@@ -50,4 +50,14 @@ public class DozipServiceImpl implements DozipService{
 
     @Override
     public List<String> getPartners() { return this.dozipDAO.getPartners(); }
+
+    @Override
+    public int insertMem(MemberVO m) { return this.dozipDAO.insertMem(m); }
+
+    @Override
+    public int checkID(String id) { return this.dozipDAO.checkID(id); }
+
+    @Override
+    public int updatePwd(MemberVO m) { return this.dozipDAO.updatePwd(m); }
+
 }

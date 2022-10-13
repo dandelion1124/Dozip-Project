@@ -84,8 +84,8 @@
 					var myReferer = document.referrer;
 					if(myReferer.substring(0,34)==="http://localhost:8084/dozip/my_qna"){
 						location.replace("/dozip/my_qna");
-					}else if(myReferer.substring(0,36)==="http://localhost:8084/dozip/qna_main"){
-						location.replace("/dozip/qna_main");
+					}else if(myReferer.substring(0,40)==="http://localhost:8084/dozip/counsel_main"){
+						location.replace("/dozip/counsel_main");
 					}
 				},
 				error:function(){

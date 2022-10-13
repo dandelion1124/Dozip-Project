@@ -50,4 +50,14 @@ public class DozipDAOImpl implements DozipDAO{
 
     @Override
     public List<String> getPartners() { return this.sqlSession.selectList("get_P"); }
+
+    @Override
+    public int insertMem(MemberVO m) { return this.sqlSession.insert("in_m", m); }
+
+    @Override
+    public int checkID(String id) { return this.sqlSession.selectOne("check_id", id); }
+
+    @Override
+    public int updatePwd(MemberVO m) { return this.sqlSession.update("change_pwd", m); }
+
 }

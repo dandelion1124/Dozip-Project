@@ -28,4 +28,10 @@ public interface DozipService {
     String getBnum(String businessName);
 
     List<String> getPartners();
+
+    int insertMem(MemberVO m);
+
+    int checkID(String id);
+
+    int updatePwd(MemberVO m);
 }

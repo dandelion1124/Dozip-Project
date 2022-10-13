@@ -61,7 +61,7 @@
 						<c:if test="${!empty id}"> <!-- 로그인 후 -->
 							<li><a href="/dozip/mypage"><i class="fas fa-user"></i></a></li>
 						</c:if>
-						<li><a href=""><i class="fa-solid fa-comments"></i></a></li>
+						<li><a href="/dozip/counsel_main"><i class="fa-solid fa-comments"></i></a></li>
 					</ul>
 				</nav>
 			</div>

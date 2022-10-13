@@ -25,7 +25,7 @@ function checkSelectAll()  {
 
 /* 회원가입 창 띄우기 */
 function openJoin(){
-	window.open("member_join.do", "_blank", "toolbar=no, menubar=no, scrollbars=no, resizable=no, width=550, height=750, left=0, top=0" );
+	window.open("/dozip/member_join", "_blank", "toolbar=no, menubar=no, scrollbars=no, resizable=no, width=550, height=750, left=0, top=0" );
 }
 
 /* 회원가입 아이디 유효성 검증 */
@@ -73,7 +73,7 @@ function id_check(){
 	//아이디 중복확인
     $.ajax({
         type:"POST",
-        url:"member_id_check.do", 
+        url:"/dozip/mIDcheck",
         data: {"mem_id":$mem_id},
         datatype:"int",
         success: function (data) {
