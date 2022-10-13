@@ -122,7 +122,7 @@ div#qna_cont_box {
 	
 
 </div>--%>
-<form action="customer_qna.do" method="get" onsubmit='return search_check();'>
+<form action="customer_qna" method="get" onsubmit='return search_check();'>
 <input type="hidden" id="board_ref" value="${q.qna_ref }">
 <input type="hidden" id="board_step" value="${q.qna_step }">
 <input type="hidden" id="board_level" value="${q.qna_level }">
@@ -209,7 +209,7 @@ div#qna_cont_box {
 	<c:if test="${(empty find_field ) && (empty find_text)}"><%--검색 필드와 검색어가 없을떄 --%>
 		<%--이전 버튼 --%>
 		<c:if test="${page <= 1 }">	&lt;이전</c:if>
-		<c:if test="${page>1 }"><a href="customer_qna.do?page=${page-1 }"> &lt;이전 </a></c:if>
+		<c:if test="${page>1 }"><a href="customer_qna?page=${page-1 }"> &lt;이전 </a></c:if>
 		
 		<%--현재 쪽번호 출력 --%>
 		<c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
@@ -217,7 +217,7 @@ div#qna_cont_box {
 				<span style="color:orange;"> &nbsp; ${a } &nbsp;</span>
 			</c:if>
 			<c:if test="${a!=page }"> <%--현재 페이지가 선택 안된 경우 --%>
-				<a href="customer_qna.do?page=${a}">&nbsp; ${a } &nbsp;</a>
+				<a href="customer_qna?page=${a}">&nbsp; ${a } &nbsp;</a>
 			</c:if>
 		</c:forEach>
 			<%--다음 버튼 --%>
@@ -225,24 +225,24 @@ div#qna_cont_box {
 				다음&gt;
 			</c:if>
 			<c:if test="${page < maxpage }">
-				<a href="customer_qna.do?page=${page+1 }"> 다음&gt;</a>
+				<a href="customer_qna?page=${page+1 }"> 다음&gt;</a>
 			</c:if>
 </c:if>
 
 <%--검색이후 페이징 (쪽나누기) --%>
 <c:if test="${(!empty find_field ) || (!empty find_name)}">
 	<c:if test="${page<=1 }"> &lt;이전 &nbsp; </c:if>
-	<c:if test="${page>1 }"> <a href="customer_qna.do?page=${page-1}&find_field=${find_field}&find_text=${find_text}">&lt;이전</a>&nbsp; </c:if>
+	<c:if test="${page>1 }"> <a href="customer_qna?page=${page-1}&find_field=${find_field}&find_text=${find_text}">&lt;이전</a>&nbsp; </c:if>
 		
 	<%--현재 쪽번호 출력 --%>
 	<c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
 		<%--현재 페이지가 선택된 경우 --%>
 		<c:if test="${a == page }"> &nbsp; ${a } &nbsp;	</c:if>
 		<%--현재 페이지가 선택 안된 경우 --%>
-		<c:if test="${a!= page }"> <a href="customer_qna.do?page=${a}&find_field=${find_field}&find_text=${find_text}">&nbsp; ${a } &nbsp;</a>&nbsp;</c:if>
+		<c:if test="${a!= page }"> <a href="customer_qna?page=${a}&find_field=${find_field}&find_text=${find_text}">&nbsp; ${a } &nbsp;</a>&nbsp;</c:if>
 	</c:forEach>
 	<c:if test="${page >= maxpage }">	다음&gt;	</c:if>
-	<c:if test="${page< maxpage }">	<a href="customer_qna.do?page=${page+1 }">다음&gt;</a>	</c:if>
+	<c:if test="${page< maxpage }">	<a href="customer_qna?page=${page+1 }">다음&gt;</a>	</c:if>
 </c:if>
 	
 	
