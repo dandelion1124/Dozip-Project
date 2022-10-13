@@ -31,7 +31,9 @@ public class DozipController {
 
     @Autowired
     private DozipService dozipService;
+    @Autowired
     private PortfolioService portfolioService;
+    @Autowired
     private EstimateService estimateService;
 
     @RequestMapping(value = "home") //두집 홈 화면
@@ -278,24 +280,19 @@ public class DozipController {
 
     //포트폴리오 리스트 출력
     @GetMapping(value = "port") //get으로 접근하는 매핑주소 처리
-    public String port()  {
+    public ModelAndView port(ModelAndView mv)  {
 
-        //List<PortfolioVO>plist = this.portfolioService.getPlist();
-
-
-       // portfolioService.getOnelist(2);
-
-        String id ="3";
-       portfolioService.testVO(id);
-
-        //mv.addObject("plist",plist);
+        List<PortfolioVO> plist = new ArrayList<PortfolioVO>();
+        plist = this.portfolioService.getAllList();
+        mv.addObject("plist",plist);
+        mv.setViewName("/dozip/portfolio/port_main");
 
 
-        return "/dozip/portfolio/port_main";
+        return mv;
     }
 
     @GetMapping(value = "port_detail")
-    public ModelAndView detail(@RequestParam("pf_no") int pf_no, HttpServletRequest request, PortfolioVO p, PartnersVO pv) throws Exception{
+    public ModelAndView detail(@RequestParam("pf_no") int pf_no, HttpServletRequest request) throws Exception{
 
         PortfolioVO pf = this.portfolioService.getOnelist(pf_no);
         PartnersVO pt = this.portfolioService.getComplist(pf_no);
@@ -304,6 +301,8 @@ public class DozipController {
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
 
+        System.out.println(pf);
+        System.out.println(pt.getPAddress());
         mv.setViewName("/dozip/portfolio/port_detail");
         return mv;
     }

@@ -6,7 +6,7 @@ import com.dozip.vo.PortfolioVO;
 import java.util.List;
 
 public interface PortfolioDAO {
-    List<PortfolioVO> getPlist();
+
 
     PortfolioVO getOnelist(int pf_no);
 
@@ -14,5 +14,5 @@ public interface PortfolioDAO {
 
     PartnersVO getOnecomp(String businessName);
 
-    PortfolioVO testVO(String id);
+    List<PortfolioVO> getAllList();
 }

@@ -14,10 +14,8 @@ public class PortfolioDAOImpl implements PortfolioDAO{
     @Autowired
     private SqlSession sqlSession;
 
-    @Override
-    public List<PortfolioVO> getPlist() {
-        return this.sqlSession.selectList("port_list");
-    }
+
+
 
     @Override
     public PortfolioVO getOnelist(int pf_no) {
@@ -35,7 +33,6 @@ public class PortfolioDAOImpl implements PortfolioDAO{
     }
 
     @Override
-    public PortfolioVO testVO(String id) {
-        return sqlSession.selectOne("test",id);
-    }
+    public List<PortfolioVO> getAllList() {return this.sqlSession.selectList("port_list");}
+
 }

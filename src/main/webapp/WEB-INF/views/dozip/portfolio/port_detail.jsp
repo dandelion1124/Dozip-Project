@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/css/dozip/port_detail.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 	
 	 <div class="clear"></div>
@@ -86,11 +86,15 @@
       </div>
       <div class = "comp_name">
          <div class = "name">${pt.businessName}</div>
+         <%--
+         현재 주소 불러오는데 오류가 생김
          <pre id = "comp_loca">${pt.pAddress}</pre>
-      </div>   
+         --%>
+      </div>
       <div class = "comp_detail">
          <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}'">더보러가기</button>
       </div>
+
    </div>
    <br><br>
    

@@ -14,10 +14,8 @@ public class PortfolioServiceImpl implements PortfolioService {
     @Autowired
     private PortfolioDAO portfolioDao;
 
-    @Override
-    public List<PortfolioVO> getPlist() {
-        return this.portfolioDao.getPlist();
-    }
+
+
 
     @Override
     public PortfolioVO getOnelist(int pf_no) {
@@ -35,7 +33,7 @@ public class PortfolioServiceImpl implements PortfolioService {
     }
 
     @Override
-    public PortfolioVO testVO(String id) {
-        return portfolioDao.testVO(id);
-    }
+    public List<PortfolioVO> getAllList() { return this.portfolioDao.getAllList();}
+
+
 }
