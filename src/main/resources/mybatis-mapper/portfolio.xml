@@ -5,63 +5,25 @@
 
 <mapper namespace="Port">
 
-    <!-- ????? ??? ???? (??? ????? resultMap ??)-->
+
     <select id = "port_list" resultType="PortfolioVO">
-       <!-- select * from (
-            select pf_no, pf.businessNum, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2,pf_addr3,
-            pf_area, pf_cost, pf_period, pf_concept, pf_introduction, pf_closing, pf_photo1, pf_photo2, pf_photo3, pf_photo4,
-            pf_photo5, pf_premium, pf_regdate, pt.businessName from portfolioT pf, partnersT pt where pf.businessNum=pt.businessNum(+) order by pf_no desc) -->
-
-        select * from portfolioT;
-
+        select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, p.pf_zipcode, p.pf_addr1, p.pf_addr2, p.pf_addr3, p.pf_area,
+               p.pf_cost, p.pf_period, p.pf_concept, p.pf_introduction, p.pf_closing, p.pf_photo1, p.pf_photo2, p.pf_photo3, p.pf_photo4, p.pf_photo5,
+               p.pf_premium, p.pf_regdate, pt.businessName from portfolioT p JOIN partnersT pT on pT.businessNum = p.businessNum order by p.pf_no desc
     </select>
 
-
-<select id="test" resultType="PortfolioVO">
-    select * from portfolioT where pf_no=3
-</select>
-
-    <!-- ?? ???? ????? ???? -->
     <select id="pf_list" resultType="PortfolioVO">
         select * from portfolioT where pf_no = #{pf_no}
     </select>
 
-    <!-- ?? ???? ?? ?? ????-->
     <select id="pt_list" resultType="PartnersVO">
         select * from partnersT where businessNum = (select businessNum from portfolioT where pf_no = #{pf_no})
     </select>
 
-    <!-- ?? ???? ?? ????-->
     <select id="pc_list" resultType="PartnersVO">
         select * from partnersT where businessName = #{businessName}
     </select>
 
-    <resultMap id="pvo" type="com.dozip.vo.PortfolioVO">
-        <result column = "pf_no" property="pf_no"/>
-        <result column = "businessNum" property="businessNum"/>
-        <result column = "pf_title" property="pf_title"/>
-        <result column = "pf_type" property="pf_type"/>
-        <result column = "pf_subtype" property="pf_subtype"/>
-        <result column = "pf_range" property="pf_range"/>
-        <result column="pf_zipcode" property="pf_zipcode"/>
-        <result column="pf_addr1" property="pf_addr1"/>
-        <result column="pf_addr2" property="pf_addr2"/>
-        <result column="pf_addr3" property="pf_addr3"/>
-        <result column="pf_area" property="pf_area"/>
-        <result column="pf_cost" property="pf_cost"/>
-        <result column="pf_period" property="pf_period"/>
-        <result column="pf_concept" property="pf_concept"/>
-        <result column="pf_introduction" property="pf_introduction"/>
-        <result column="pf_closing" property="pf_closing"/>
-        <result column="pf_photo1" property="pf_photo1"/>
-        <result column="pf_photo2" property="pf_photo2"/>
-        <result column="pf_photo3" property="pf_photo3"/>
-        <result column="pf_photo4" property="pf_photo4"/>
-        <result column="pf_photo5" property="pf_photo5"/>
-        <result column="pf_premium" property="pf_premium"/>
-        <result column="pf_regdate" property="pf_regdate"/>
-        <result column="businessName" property="businessName"/>
-    </resultMap>
 
     <!--????? ?? ??-->
     <insert id="portfolio_in" parameterType="PortfolioVO">
@@ -80,5 +42,7 @@
     <insert id="insert_photo">
         update portfolioT set  pf_photo1=#{pf_photo1}, pf_photo2=#{pf_photo2}, pf_photo3=#{pf_photo3}, pf_photo4=#{pf_photo4}, pf_photo5=#{pf_photo5} where pf_no=#{pf_no}
     </insert>
+
+
 
 </mapper>

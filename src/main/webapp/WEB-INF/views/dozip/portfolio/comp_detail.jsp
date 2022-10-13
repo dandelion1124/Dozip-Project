@@ -14,7 +14,10 @@
 			</div>
 			<div class = "comp_name">
 				<h2>${pc.businessName}</h2>
+				<%--
+				현재 pAddress 불러오지 못하는 오류 생김
 				<pre id = "comp_loca">${pc.pAddress}</pre>
+				--%>
 			</div>	
 			<div class = "comp_detail">
 				<button type = "button" id = "comp">보증업체 (i)
