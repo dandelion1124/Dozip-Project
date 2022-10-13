@@ -1,3 +1,15 @@
+/**********
+ * 로그아웃 묻기
+ */
+function logout_check() {
+	var x = confirm('로그아웃 하시겠습니까?');
+
+	if (x)
+		location = '/partners/logout'
+	else
+		return;
+}
+
 /***********/
 /*좌측 메뉴  */
 /***********/
@@ -14,23 +26,58 @@ $(document).ready(function() {
 		}
 	});
 });
-
-
-
+$('#menu_show_hide_img').click(function () {
+	//1180px
+	var margin = $('#top_bar').css('margin-left');
+	if (window.innerWidth > 1173) {
+		if (margin == '0px') {
+			$('#side_wrap').css({'display': 'block'});
+			$('#top_bar').css({'margin-left': '161px'});
+			$('#footer_mediaquery').css({'margin-left': '160px'});
+			$('#main_cont').css({'margin-left': '160px'});
+			$('#fotter_setting').css({'display': 'block'});
+		} else {
+			$('#side_wrap').css({'display': 'none'});
+			$('#top_bar').css({'margin-left': '0px'});
+			$('#footer_mediaquery').css({'margin-left': '0px'});
+			$('#main_cont').css({'margin-left': '0px'});
+			$('#fotter_setting').css({'display': 'none'});
+		}
+	}
+});
+$(window).resize(function () {
+	// width값을 가져오기
+	var width_size = window.innerWidth;
+	if (width_size <= 1173) {
+		$('#side_wrap').css({'display': 'none'});
+		$('#top_bar').css({'margin-left': '0px'});
+		$('#footer_mediaquery').css({'margin-left': '0px'});
+		$('#main_cont').css({'margin-left': '0px'});
+		$('#fotter_setting').css({'display': 'none'});
+	} else {
+		$('#side_wrap').css({'display': 'block'});
+		$('#top_bar').css({'margin-left': '161px'});
+		$('#footer_mediaquery').css({'margin-left': '160px'});
+		$('#main_cont').css({'margin-left': '160px'});
+		$('#fotter_setting').css({'display': 'block'});
+	}
+});
 
 /**************/
 /*로그인 시간 */
 /**************/
 
-var iSecond; //초단위로 환산
+var iSecond; //초단위로 환산
 var timerchecker = null;
 window.onload = function() {
+	$('#main_cont').hide();
+	$('#main_cont').fadeIn(900);
 	fncClearTime();
 	initTimer();
 }
 function fncClearTime() {
 
-	iSecond = 1000; 		//로그인 시간 설정
+	iSecond = 1800; 		//로그인 시간 설정
 }
 
 Lpad = function(str, len) {
@@ -48,9 +95,9 @@ initTimer = function() {
 	rMinute = rMinute % 60;
 	rSecond = iSecond % 60;
 	if (iSecond > 0) {
-		timer.innerHTML = "&nbsp;" + Lpad(rMinute, 2) + "분 " + Lpad(rSecond, 2) + "초 ";
+		timer.innerHTML = "&nbsp;" + Lpad(rMinute, 2) + "분" + Lpad(rSecond, 2) + "초";
 		iSecond--;
-		timerchecker = setTimeout("initTimer()", 1000); // 1초 간격으로 체크    
+		timerchecker = setTimeout("initTimer()", 1000); //1초 간격으로 체크
 	} else {
 		logoutUser();
 	}
@@ -77,16 +124,17 @@ function logoutUser() {
 }
 
 
-
-function initAjax() { // 브라우저에 따른 AjaxObject 인스턴스 분기 처리    
+function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처리
 	var xmlhttp;
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari        
+	if (window.XMLHttpRequest) {//code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp = new XMLHttpRequest();
-	} else {// code for IE6, IE5        
+	} else {//code for IE6, IE5
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	return xmlhttp;
 }
+
+
 /*******************/
 /***** 주소 검색 ***/
 /*******************/

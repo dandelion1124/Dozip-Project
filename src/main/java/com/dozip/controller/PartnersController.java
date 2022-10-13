@@ -4,13 +4,11 @@ import com.dozip.service.PartnersService;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
+import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -141,7 +139,7 @@ public class PartnersController {
             } else {
                 session.setAttribute("id", pInfo.getPId());
                 session.setAttribute("businessName", pInfo.getBusinessName());
-                session.setAttribute("business_num", pInfo.getBusinessNum());
+                session.setAttribute("businessNum", pInfo.getBusinessNum());
                 session.setMaxInactiveInterval(-1);   //세션을 통해 로그인 시간 설정
                 return new ModelAndView("redirect:/partners/main");
             }
@@ -224,6 +222,9 @@ public class PartnersController {
     public String estimate_list() {  // 견적목록 
         return "/partners/estimate/estimate_list";
     }
+
+
+
     /*내 공사
      *
      *
@@ -257,7 +258,7 @@ public class PartnersController {
     @RequestMapping(value = "/upload_photo") // 포트폴리오 등록
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
                                         HttpServletRequest request) {
-        pv.setBusinessNum((String) session.getAttribute("business_num"));
+        pv.setBusinessNum((String) session.getAttribute("businessNum"));
         if (pv.getPf_addr2().isEmpty()) {
             pv.setPf_addr2(" ");
         }
@@ -334,10 +335,104 @@ public class PartnersController {
     /*고객 관리
      *
      * */
-    @RequestMapping(value = "/qna")
-    public String customerQna() {  // 고객문의 글 보기
+
+
+    // 검색 전,후 고객문의 글 보기
+    @RequestMapping(value = "/customer_qna")
+    public String customerQna(Model model, HttpSession session, HttpServletRequest request, QnaVO findQ) throws Exception {
+        request.setCharacterEncoding("UTF-8");
+        // 로그인한 파트너스 사업자 번호(세션에 저장되 있음) 불러오기
+        String businessNum = (String) session.getAttribute("businessNum");
+
+        int page =1; //쪽번호
+        int limit = 8; //한페이지에 보여질 개수
+
+        String find_field = null;
+        String find_text = null;
+        String answer = null;
+
+        if(request.getParameter("page")!= null)
+            page=Integer.parseInt(request.getParameter("page"));
+        if(request.getParameter("answer")!=null)
+            answer=request.getParameter("answer");
+
+        System.out.println("answer : " + request.getParameter("answer"));
+
+        if(request.getParameter("find_text")!= null && request.getParameter("find_field") != null) {
+            find_text = request.getParameter("find_text").trim();
+            find_field = request.getParameter("find_field");
+            if (find_field.equals("customer_name")) {
+                findQ.setFind_text(find_text);
+            } else if (find_field.equals("qna_type")) {
+                findQ.setFind_text("%" + find_text + "%");
+            }
+        }
+        findQ.setFind_field(find_field);
+        findQ.setAnswer(answer);
+        findQ.setBusinessNum(businessNum);
+
+        int listcount = partnersService.getListCount(findQ); //검색전후 레코드 개수
+
+        int startrow=(page-1)*8+1; //읽기 시작할 행번호
+        int endrow = startrow+limit-1; //읽을 마지막 행번호
+        findQ.setStartrow(startrow);     findQ.setEndrow(endrow);
+
+        List<QnaVO> qlist = partnersService.getQnaList(findQ); // 검색 전후 목록
+
+        int maxpage = (int)((double)listcount/limit+0.95); //총 페이지 수
+        System.out.println("============================");
+        int startpage = (((int)((double)page/10+0.9))-1)*10+1; //시작 페이지
+        int endpage = maxpage; //마지막 페이지
+
+        if(endpage>startpage+10-1) endpage=startpage+10-1;
+
+        model.addAttribute("page", page);
+        model.addAttribute("startpage", startpage);
+        model.addAttribute("endpage", endpage);
+        model.addAttribute("maxpage", maxpage);
+        model.addAttribute("listcount", listcount); //레코드 개수
+        model.addAttribute("answer", answer);
+        model.addAttribute("find_text", find_text);
+        model.addAttribute("find_field", find_field);
+        model.addAttribute("qlist", qlist);
+
         return "/partners/customer/qna";
-    }
+    }//customerQna()
+
+    //고객문의글 답변
+    @ResponseBody
+    @PostMapping("/customer_reply_ok")
+    public String customer_reply_ok(HttpSession session, QnaVO qv) {
+        qv.setBusinessNum((String) session.getAttribute("businessNum")); //사업자번호
+        qv.setQna_title(" "); //마이바티스 널값 insert 시 오류로 인해 추가
+
+        int result=partnersService.insertQna(qv);
+        System.out.println(result);
+
+        return null;
+    }//customer_reply_ok
+
+
+    //고객문의글 삭제
+    @ResponseBody
+    @GetMapping("/customer_qna_del_ok")
+    public String customer_qna_del_ok(QnaVO dv){
+        int result=partnersService.deleteReply(dv);
+
+        int r = partnersService.selqnaRef(dv);
+        if(r==1){
+            partnersService.returnState(dv);
+        }
+        System.out.println(result);
+
+        return null;
+        /*
+        삭제시 아작스 실행 확인해야함
+
+
+
+         */
+    }//customer_qna_del_ok()
 
     @RequestMapping(value = "/review")
     public String customerReview() {  // 고객문의 글 보기
@@ -354,7 +449,7 @@ public class PartnersController {
         PrintWriter out=response.getWriter();
 
         String businessNum=(String)session.getAttribute("businessNum");
-//        if(business_num==null) {
+//        if(businessNum==null) {
 //            out.println("<script>");
 //            out.println("alert('다시 로그인하세요!');");
 //            out.println("location='/partners';");

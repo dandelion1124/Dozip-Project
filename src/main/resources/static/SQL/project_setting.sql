@@ -47,7 +47,7 @@ create table portfolioT
     pf_no           number(38) primary key,   --글번호
     businessNum     nvarchar2(12)   not null, --파트너스 사업자번호(외래키)
     pf_title        nvarchar2(50)   not null, --제목
-    pf_type         nvarchar2(30)   not null, --공사유형
+    pf_type         nvarchar2(10)   not null, --공사유형
     pf_subtype      nvarchar2(5)    not null, --공사 세부유형
     pf_range        nvarchar2(10)   not null, -- 시공범위
     pf_zipcode      nvarchar2(7)    not null, --우편번호
