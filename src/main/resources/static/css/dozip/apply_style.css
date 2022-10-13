@@ -1,5 +1,4 @@
 .building_types {
-  background-color: none;
   width: 600px;
   height: 270px;
   margin: 0 auto;
@@ -20,7 +19,6 @@ input#cal2, input#cal1 {
   margin-top: 17px;
 }
 .estimate_box{
-  background-color: none;
   width: 600px;
   height: 200px;
   margin: 0 auto;
@@ -57,14 +55,12 @@ input#cal2, input#cal1 {
 
 
 .estimate_calculator {
-  background-color: none;
   width: 600px;
   height: 140px;
   margin: 0 auto;
 }
 
 .areaBoxComponent {
-  background-color: none;
   width: 600px;
   height: 300px;
   margin: 0 auto;
@@ -238,7 +234,6 @@ input[type=checkbox]{
 
 /*다음 페이지 넘김 버튼*/
 .nextpage{
-  background-color: none;
   width: 600px;
   height: 100px;
   margin: 0 auto;
@@ -254,4 +249,140 @@ input[type=checkbox]{
 }
 .nextpage button:hover{
   cursor: pointer;
+}
+#go-back{
+  margin-top: 5%;
+  width: 30%;
+  height: 45px;
+  border-radius: 10px;
+  background-color: rgb(247, 226, 169);
+  border:none;
+  font: bolder;
+}
+#go-next{
+  margin-top: 5%;
+  width: 69%;
+  height: 45px;
+  border-radius: 10px;
+  background-color: rgb(235, 103, 3);
+  border:none;
+  font: bolder;
+  color: white;
+}
+
+/*2 페이지 css */
+.estimate_yourcost {
+  background-color: none;
+  width: 600px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+input#est_start, input#est_end {
+  width: 180px;
+  height: 23px;
+  font-size: 20px;
+  padding: 5px;
+}
+.estimate_date{
+  background-color: none;
+  width: 600px;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 18px;
+}
+
+/* 3페이지 css */
+.estimate_step03{
+  width: 600px;
+  height: 800px;
+  margin: 0 auto;
+}
+button#certify_phone, button#address_btn {
+  height: 35px;
+  background: #EB6703;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bolder;
+  padding-top: 2px;
+}
+button#certify_phone:hover, button#address_btn:hover{
+  background: #444;
+}
+[type="file"]{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.para p{
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size:small;
+}
+.estimate_box_page3 input[type=text]{
+  font-size: large;
+  margin: 10px 10px 0px 10px;  /*아래 오른쪽 위 왼쪽*/
+  height: 35px;
+  width: 450px;
+}
+.para{
+  display: flex;
+}
+.para p{
+  margin-left: 10px;
+  margin-top: 20px;
+  font-size:small;
+}
+#paragraph{
+  width: 550px;
+  height: 250px;
+}
+
+/*4페이지*/
+#p1 {
+  text-align: center;
+}
+#p1 b{
+  color:#27562b
+
+}
+#p1 b:hover{
+  color:#eb6703;
+  text-decoration: underline;
+}
+#msg2{
+  margin:0 auto;
+}
+#li_01>img{
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
+.title {
+  background-color: none;
+  width: 600px;
+  /* height: 100px; */
+  margin: 0 auto;
+  margin-top: 18px;
+}
+.estimate_box_page4{
+  background-color: none;
+  width: 600px;
+  /* height: 500px; */
+  margin: 0 auto;
+  margin-top: 18px;
+}
+.companies{
+  background-color: rgb(248, 246, 246);
+}
+
+#p1 {
+  font-weight: bolder;
+  font-size: larger;
+  margin-top: 50px;
+}
+
+/* 5페이지 css */
+#estimate_step05 {
+  height: 900px;
 }
