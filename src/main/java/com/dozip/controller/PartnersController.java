@@ -270,10 +270,20 @@ public class PartnersController {
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
                                         HttpServletRequest request) {
         pv.setBusinessNum((String) session.getAttribute("businessNum"));
-        if (pv.getPf_addr2().isEmpty()) {
+        if (pv.getPf_addr2().isEmpty())  //마이바티스에 널 값 insert시 오류나서 문자열 처리
             pv.setPf_addr2(" ");
+
+        if(pv.getPf_subtype().contains(",")){
+
+        String[] str =pv.getPf_subtype().split(",");
+        if(pv.getPf_type().equals("주거공간")){
+            pv.setPf_subtype(str[0]);
+            System.out.println("주거공간 //" +str[0] );
+        }else if(pv.getPf_type().equals("상업공간")){
+            pv.setPf_subtype(str[1]);
+            System.out.println("상업공간 //" +str[1] );
         }
-        System.out.println(pv.getPf_type());
+        }
         Cookie cookie = new Cookie("pf_no", String.valueOf(partnersService.addPortfolio(pv)));
         response.addCookie(cookie);
         return "/partners/portfolio/p_upload_photo";
@@ -293,14 +303,49 @@ public class PartnersController {
             }
         }
 
-        String uploadPath = "C:/dozip/portfolio/" + pf_no;
+
+
+
+    /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
+        1. 아래 uploadPath 주소를 자신의 프로젝트 주소의 upload 폴더로 바꿉니다.
+
+            String uploadPath = "upload폴더 경로 주소" + pf_no;
+        2. 사진 등록후 서버 한번 재시작 해야 포트폴리오가 불러와집니다
+        3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
+        */
+
+       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";
+       String uploadDBPath ="/upload/"+ pf_no+"/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
         int i = 1;
-        for (MultipartFile photo : photos) {
+        System.out.println("등록된 사진 수: "+ photos.size());
+        
+        
+        String dbFilename[]=new String[5];
+        String saveFilename[]=new String[5];
+
+        for(int j=1; j<=photos.size();j++) {
+            dbFilename[j-1]=uploadDBPath+ "photo0" + j + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[j-1]=uploadPath+ "photo0" + j + ".jpg";   //String 객체에 실제 파일명 저장
+            photos.get(j-1).transferTo(new File(saveFilename[j-1])); //실제 파일저장.
+            System.out.println(dbFilename[j-1]);
+
+        }
+        pv.setPf_photo1(dbFilename[0]);
+        pv.setPf_photo2(dbFilename[1]);
+        pv.setPf_photo3(dbFilename[2]);
+        pv.setPf_photo4(dbFilename[3]);
+        pv.setPf_photo5(dbFilename[4]);
+
+
+
+
+
+        /*for (MultipartFile photo : photos) {
 
             System.out.println(photo.getOriginalFilename());
             photo.transferTo(new File(uploadPath+ "/photo0" + i + ".jpg"));
@@ -320,12 +365,11 @@ public class PartnersController {
                 pv.setPf_photo5(uploadPath+ "/photo0" + i + ".jpg");
             }
             i++;
-        }
-        System.out.println(uploadPath+ "/photo0" + i + ".jpg");
+        } */
 
         pv.setPf_no(pf_no);
         partnersService.insertPort_Photos(pv);
-        return "/partners/index";
+        return "redirect:/partners/main";
     }//upload_photo_ok
 
 
