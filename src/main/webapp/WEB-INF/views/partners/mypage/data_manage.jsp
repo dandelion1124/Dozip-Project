@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<div class="all_information">
-			<form method="post" action="data_manage_ok">
+			<form method="post" action="data_manage">
 				<fieldset id="business">
 					<legend>
 						<b>사업자 정보</b>
@@ -113,7 +113,7 @@
                             <button type="button">변경</button> -->
 						</div>
 						<div>
-							<input type="text"  id="pAddress" name="pAddress"  size="30" value="">
+							<input type="text"  id="pAddress" name="pAddress"  size="30" value="" />
 						</div>
 						<br />
 					</div>
@@ -126,7 +126,7 @@
 					<div class="additional-01">
 						<label><b>전문가 한마디</b></label><br />
 						<textarea id="pShortstate" name="pShortstate" autocomplete="off"
-								  placeholder="(EX. 따듯함이 느껴지는 원목과 화이트 컬러의 내추럴 스타일, 33평 아파트 인테리어입니다.)" rows="5">${ps.pShortstate}</textarea>
+								  placeholder="(EX. 따듯함이 느껴지는 원목과 화이트 컬러의 내추럴 스타일, 33평 아파트 인테리어입니다.)" rows="5">${pShortstate}</textarea>
 						<span class="text">0/2000</span>
 					</div>
 					<div class="additional-02">
@@ -173,7 +173,7 @@
 
 					<div class="additional-05">
 						<label><b>홈페이지</b></label><br />
-						<textarea class="homepage" autocomplete="off" name="pHomepg" id="pHomepg" placeholder="홈페이지를 입력하세요" rows="3"><%--${ps.pHomepg}--%></textarea>
+						<textarea class="homepage" autocomplete="off" name="pHomepg" id="pHomepg" placeholder="홈페이지를 입력하세요" rows="3">${ps.pHomepg}</textarea>
 					</div>
 					<br />
 
@@ -327,7 +327,7 @@
 					<div>
 						<div>
 							<label><b>주거 담당자</b></label>
-							<div><input type="text" size="20" id="pRes_person_name" name="pRes_person_name" <%--value="${ps.pRes_person_name}"--%> placeholder="담당자명"></div></br>
+							<div><input type="text" size="20" id="pRes_person_name" name="pRes_person_name" value="${ps.pRes_person_name}" placeholder="담당자명"></div></br>
 							<label><b>담당자 연락처</b></label>
 							<div><input type="text" size="20" id="pRes_person_tel" name="pRes_person_tel" <%--value="${ps.pRes_person_tel}"--%> placeholder="담당자 연락처"></div>
 							<label>

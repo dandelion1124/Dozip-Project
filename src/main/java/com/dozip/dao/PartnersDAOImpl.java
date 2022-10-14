@@ -91,9 +91,18 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectOne("select_subdata",businessNum);
     }
     @Override
-    public void updatePartners(String businessNum) {
+    public void updatePartnersSub(String businessNum) {
         sqlSession.update("update_subdata",businessNum);
     }
 
+    @Override
+    public void updatePartners(String businessNum) { sqlSession.update("update_data",businessNum); }
+
+    @Override
+    public void insertPartnersSub(String businessNum) {
+        sqlSession.insert("insert_subdata",businessNum);
+    }
+
 }
+
 

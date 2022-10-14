@@ -40,6 +40,9 @@ public interface PartnersService {
 
     Partners_subVO getPartnersSub(String businessNum);
 
-    void updatePartners(String businessNum);//data_manage sub회원정보 추가/수정
-    
+    void updatePartnersSub(String businessNum);//data_manage sub회원정보 추가/수정
+
+    void updatePartners(String businessNum);//data_manage 회원정보 추가/수정(address)
+
+    void insertPartnersSub(String businessNum);
 }
