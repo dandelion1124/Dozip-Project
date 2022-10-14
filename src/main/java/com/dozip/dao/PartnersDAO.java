@@ -33,6 +33,10 @@ public interface PartnersDAO {
 
     Partners_subVO getPartnersSub(String businessNum);
 
+    void updatePartnersSub(String businessNum);
+
     void updatePartners(String businessNum);
+
+    void insertPartnersSub(String businessNum);
 }
 

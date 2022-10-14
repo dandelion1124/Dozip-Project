@@ -80,11 +80,21 @@
         select * from partners_subT where businessNum=#{businessNum, jdbcType=VARCHAR}
     </select>
 
-    <update id="update_subdata">
-        update Partners_subT set pShortstate=#{pShortstate},pHomepg=#{pHomepg},pRes_person_name=#{pRes_person_name}
+    <update id="update_subdata" parameterType="Partners_subVO">
+        update Partners_subT set businessNum=#{businessNum, jdbcType=VARCHAR}, pShortstate=#{pShortstate, jdbcType=VARCHAR},pHomepg=#{pHomepg, jdbcType=VARCHAR},
+        pRes_person_name=#{pRes_person_name, jdbcType=VARCHAR}
         <!--,pRes_person_tel=#{pRes_person_tel},pCom_person_name=#{pCom_person_name},pCom_person_tel=#{pCom_person_tel},
         pBalance=#{pBalance},pAccount_bank=#{pAccount_bank},pAccount_name=#{pAccount_name},pAccount_num=#{pAccount_num}-->
         where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
+
+    <update id="update_data">
+        update PartnersT set pAddress=#{pAddress, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insert_subdata">
+        insert into Partners_subT (pShortstate,pHomepg,pRes_person_name)
+        values(#{pShortstate, jdbcType=VARCHAR},#{pHomepg, jdbcType=VARCHAR},#{pRes_person_name, jdbcType=VARCHAR})
+    </insert>
 </mapper>
 

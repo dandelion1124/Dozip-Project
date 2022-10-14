@@ -200,8 +200,13 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public String bid() {
-        return "/partners/estimate_request/bid";
+    public ModelAndView bid(HttpServletResponse response, HttpSession session) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        ModelAndView m= new ModelAndView();
+        m.setViewName("/partners/estimate_request/bid");
+        return m;
     }
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
@@ -472,7 +477,7 @@ public class PartnersController {
     /*My page
     *
     */
-    @RequestMapping(value="/data_manage")
+    @RequestMapping(value="/data_manage",method=RequestMethod.GET)
     public ModelAndView data_manage(HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
@@ -486,31 +491,37 @@ public class PartnersController {
 //        }else {
         //System.out.println(businessNum);
         PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-        //Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
 
-           //System.out.println(p.toString());
+        Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+
+           System.out.println(p.toString());
            //System.out.println(p.getPName()+" "+p.getPTel());
-           //System.out.println(ps.getBusinessNum()+" "+ps.getPShortstate()+" "+ps.getPHomepg());
+            //System.out.println(p.getPAddress()); paddress가 처음에 null이어서??
+            //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
+            //m.addObject("ps",ps);
             m.addObject("pName",p.getPName());
             m.addObject("pTel",p.getPTel());
+            //m.addObject("pShortstate",0);
 
-            //m.addObject("ps", ps);
+            //ps.setPShortstate(); ps객체가 null인 상태라 안되는중.
 
             m.setViewName("/partners/mypage/data_manage");
             return m;
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage_ok")
-    public String data_manage_edit_ok(HttpServletResponse response,HttpServletRequest request,
+    @RequestMapping(value="/data_manage",method=RequestMethod.POST)
+    public String data_manage_ok(Model m,HttpServletResponse response,HttpServletRequest request,
         HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         String pAddress=request.getParameter("pAddress");
+
+        String pBusinessNum=request.getParameter("businessNum");
         String pShortstate=request.getParameter("pShortstate");
         String pHomepg=request.getParameter("pHomepg");
         String pRes_person_name=request.getParameter("pRes_person_name");
@@ -522,25 +533,61 @@ public class PartnersController {
         String pAccount_name=request.getParameter("pAccount_name");
         String pAccount_num=request.getParameter("pAccount_num");
 
-        System.out.println(pAddress);
-        System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
+        String businessNum = (String)session.getAttribute("business_num");
+        //System.out.println(pAddress);
+        //System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
 
         PartnersVO p=new PartnersVO();
         Partners_subVO ps=new Partners_subVO();
 
         p.setPAddress(pAddress);
+        ps.setBusinessNum(pBusinessNum);
         ps.setPShortstate(pShortstate); ps.setPHomepg(pHomepg); ps.setPRes_person_name(pRes_person_name);
         ps.setPRes_person_tel(pRes_person_tel); ps.setPCom_person_name(pCom_person_name); ps.setPCom_person_tel(pCom_person_tel);
         //ps.setPBalance(pBalance);
         ps.setPAccount_bank(pAccount_bank); ps.setPAccount_name(pAccount_name); ps.setPAccount_num(pAccount_num);
 
+        //System.out.println(p.getPAddress());
+        //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
+        System.out.println(ps.toString());
 
-        String businessNum = (String)session.getAttribute("business_num");
-        this.partnersService.updatePartners(businessNum);
+        //여기까진 잘나오는데 sql문이 제대로 실행이 안되고 있음!!!
+        //this.partnersService.updatePartners(businessNum);
+        //this.partnersService.updatePartnersSub(businessNum);
+        this.partnersService.insertPartnersSub(businessNum);
+
+        //System.out.println(ps.getPShortstate());
+        //ps=this.partnersService.getPartnersSub(businessNum);
+        //System.out.println(p.toString());
 
 
-        out.println("alert('정보수정에 성공하였습니다.')");
-        return "redirect:/partners/data_manage";
+        //m.addAttribute("p",p);
+        m.addAttribute("pShortstate",ps.getPShortstate());
+        m.addAttribute("ps",ps);
+//        if(ps.getPShortstate().equals("null")){
+//            this.partnersService.updatePartners(businessNum);
+//
+//
+//        }else { //없으면
+//            int re = psdao.insertPartnersSub(psdto);
+//            if(re==1) {
+//                request.setAttribute("pd", re);
+//
+//                out.println("<script>");
+//                out.println("alert('정보 입력 성공!');");
+//                out.println("history.back();");
+//                out.println("</script>");
+//            }
+//        }
+        out.println("<script>");
+        out.println("alert('정보 입력 성공!');");
+        out.println("history.back();");
+        out.println("</script>");
+
+        return null;
+       // return "redirect:/partners/data_manage;";
+        //return new ModelAndView("redirect:/partners/data_manage;");
+
     }
     @RequestMapping(value="/pw_change")
     public String pw_change() { return "/partners/mypage/pw_change"; }
