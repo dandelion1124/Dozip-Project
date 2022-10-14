@@ -314,64 +314,37 @@ public class PartnersController {
         3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
         */
 
-       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";
-       String uploadDBPath ="/upload/"+ pf_no+"/";
+       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //호철 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
+
+
+        String uploadDBPath ="/upload/"+ pf_no+"/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        int i = 1;
         System.out.println("등록된 사진 수: "+ photos.size());
-        
-        
+
         String dbFilename[]=new String[5];
         String saveFilename[]=new String[5];
 
-        for(int j=1; j<=photos.size();j++) {
-            dbFilename[j-1]=uploadDBPath+ "photo0" + j + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-            saveFilename[j-1]=uploadPath+ "photo0" + j + ".jpg";   //String 객체에 실제 파일명 저장
-            photos.get(j-1).transferTo(new File(saveFilename[j-1])); //실제 파일저장.
-            System.out.println(dbFilename[j-1]);
-
+        for(int i=1; i<=photos.size();i++) {
+            dbFilename[i-1]=uploadDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i-1]=uploadPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            photos.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
+            System.out.println(dbFilename[i-1]);
         }
-        pv.setPf_photo1(dbFilename[0]);
-        pv.setPf_photo2(dbFilename[1]);
-        pv.setPf_photo3(dbFilename[2]);
-        pv.setPf_photo4(dbFilename[3]);
-        pv.setPf_photo5(dbFilename[4]);
-
-
-
-
-
-        /*for (MultipartFile photo : photos) {
-
-            System.out.println(photo.getOriginalFilename());
-            photo.transferTo(new File(uploadPath+ "/photo0" + i + ".jpg"));
-            if(i==1){
-                pv.setPf_photo1(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==2){
-                pv.setPf_photo2(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==3){
-                pv.setPf_photo3(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==4){
-                pv.setPf_photo4(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==5){
-                pv.setPf_photo5(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            i++;
-        } */
+        pv.setPf_photo1(dbFilename[0]);        pv.setPf_photo2(dbFilename[1]);        pv.setPf_photo3(dbFilename[2]);
+        pv.setPf_photo4(dbFilename[3]);        pv.setPf_photo5(dbFilename[4]);
 
         pv.setPf_no(pf_no);
         partnersService.insertPort_Photos(pv);
         return "redirect:/partners/main";
     }//upload_photo_ok
-
 
     @RequestMapping(value = "/portfolio_list")  //견적목록
     public String portfolio_list() {
