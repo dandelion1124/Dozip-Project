@@ -72,7 +72,7 @@
 				<nav class="clearfix">
 					<ul class="main-menu">
 						<li><a href="/dozip/home" class="active">Home</a></li>
-						<li><a href="">견적신청</a></li>
+						<li><a href="/dozip/apply">견적신청</a></li>
 						<li><a href="/dozip/port">포트폴리오</a></li>
 						<li><a href="">고객후기</a></li>
 						<li><a href="">스토리</a></li>
@@ -85,7 +85,7 @@
 						<c:if test="${!empty id}"> <!-- 로그인 후 -->
 							<li><a href="/dozip/mypage"><i class="fas fa-user"></i></a></li>
 						</c:if>
-						<li><a href=""><i class="fa-solid fa-comments"></i></a></li>
+						<li><a href="/dozip/counsel_main"><i class="fa-solid fa-comments"></i></a></li>
 					</ul>
 				</nav>
 			</div>
