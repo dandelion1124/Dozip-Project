@@ -103,23 +103,7 @@ create table partners_subT
     foreign key (businessNum) references partnersT (businessNum)
 );
 
---5. 입찰 테이블 --
-drop table bidT;
-select * from bidT;
-create table bidT
-(
-    bid_num     varchar2(12) primary key, --입찰번호(PK)
-    businessNum nvarchar2(12)  not null, --사업자번호(FK)
-    est_num     varchar2(12)   not null, --견적서 번호(FK)
-    bid_price   number(20)     not null,
-    bid_period  number(5)      null,
-    bid_detail  varchar2(3000) null,
-    bid_end     number(5)      not null,
-    foreign key (businessNum) references partnersT (businessNum),
-    foreign key (est_num) references estimateT (est_num)
-);
-
---6. 견적서 테이블 --
+--5. 견적서 테이블 --
 drop table estimateT;
 select * from estimateT;
 create table estimateT
@@ -160,6 +144,22 @@ DROP SEQUENCE est_num_seq; --삭제
 select est_num_seq.nextval from dual; --시퀀스 확인
 create sequence est_num_seq start with 1 increment by 1 nocache; --생성
 
+
+--6. 입찰 테이블 --
+drop table bidT;
+select * from bidT;
+create table bidT
+(
+    bid_num     varchar2(12) primary key, --입찰번호(PK)
+    businessNum nvarchar2(12)  not null, --사업자번호(FK)
+    est_num     varchar2(12)   not null, --견적서 번호(FK)
+    bid_price   number(20)     not null,
+    bid_period  number(5)      null,
+    bid_detail  varchar2(3000) null,
+    bid_end     number(5)      not null,
+    foreign key (businessNum) references partnersT (businessNum),
+    foreign key (est_num) references estimateT (est_num)
+);
 
 --7. 고객문의 테이블 --
 drop table qnaT;

@@ -250,7 +250,7 @@ input[type=checkbox]{
 .nextpage button:hover{
   cursor: pointer;
 }
-#go-back{
+[type="button"].go_back{
   margin-top: 5%;
   width: 30%;
   height: 45px;
@@ -259,20 +259,18 @@ input[type=checkbox]{
   border:none;
   font: bolder;
 }
-#go-next{
+[type="button"].go_next{
   margin-top: 5%;
   width: 69%;
   height: 45px;
   border-radius: 10px;
   background-color: rgb(235, 103, 3);
   border:none;
-  font: bolder;
   color: white;
 }
 
 /*2 페이지 css */
 .estimate_yourcost {
-  background-color: none;
   width: 600px;
   height: 100px;
   margin: 0 auto;
@@ -386,3 +384,15 @@ button#certify_phone:hover, button#address_btn:hover{
 #estimate_step05 {
   height: 900px;
 }
+
+/* COUNTERS */
+.counters {
+  background: url("/images/dozip/wallpaper01.png") no-repeat;
+  text-align:center;
+}
+.counters ul { display:inline-block;}
+.counters ul li {width:170px; float:left; }
+
+.counters ul li h3 {font-size:56px; margin:30px 0 20px; color:#fff;}
+.counters ul li h4 {font-size:16px; margin-bottom:30px; color:black; font-family:"Montserrat", sans-serif; text-transform:uppercase; }
+.counters ul li .bar {width:30px;height:2px; background:#fff; display:inline-block;}

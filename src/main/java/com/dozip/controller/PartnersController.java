@@ -200,8 +200,13 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public String bid() {
-        return "/partners/estimate_request/bid";
+    public ModelAndView bid(HttpServletResponse response, HttpSession session) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        ModelAndView m= new ModelAndView();
+        m.setViewName("/partners/estimate_request/bid");
+        return m;
     }
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
@@ -270,10 +275,20 @@ public class PartnersController {
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
                                         HttpServletRequest request) {
         pv.setBusinessNum((String) session.getAttribute("businessNum"));
-        if (pv.getPf_addr2().isEmpty()) {
+        if (pv.getPf_addr2().isEmpty())  //마이바티스에 널 값 insert시 오류나서 문자열 처리
             pv.setPf_addr2(" ");
+
+        if(pv.getPf_subtype().contains(",")){
+
+        String[] str =pv.getPf_subtype().split(",");
+        if(pv.getPf_type().equals("주거공간")){
+            pv.setPf_subtype(str[0]);
+            System.out.println("주거공간 //" +str[0] );
+        }else if(pv.getPf_type().equals("상업공간")){
+            pv.setPf_subtype(str[1]);
+            System.out.println("상업공간 //" +str[1] );
         }
-        System.out.println(pv.getPf_type());
+        }
         Cookie cookie = new Cookie("pf_no", String.valueOf(partnersService.addPortfolio(pv)));
         response.addCookie(cookie);
         return "/partners/portfolio/p_upload_photo";
@@ -293,41 +308,48 @@ public class PartnersController {
             }
         }
 
-        String uploadPath = "C:/dozip/portfolio/" + pf_no;
+
+
+
+    /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
+        1. 아래 uploadPath 주소를 자신의 프로젝트 주소의 upload 폴더로 바꿉니다.
+
+            String uploadPath = "upload폴더 경로 주소" + pf_no;
+        2. 사진 등록후 서버 한번 재시작 해야 포트폴리오가 불러와집니다
+        3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
+        */
+
+       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //호철 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
+
+
+        String uploadDBPath ="/upload/"+ pf_no+"/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        int i = 1;
-        for (MultipartFile photo : photos) {
+        System.out.println("등록된 사진 수: "+ photos.size());
 
-            System.out.println(photo.getOriginalFilename());
-            photo.transferTo(new File(uploadPath+ "/photo0" + i + ".jpg"));
-            if(i==1){
-                pv.setPf_photo1(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==2){
-                pv.setPf_photo2(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==3){
-                pv.setPf_photo3(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==4){
-                pv.setPf_photo4(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            if(i==5){
-                pv.setPf_photo5(uploadPath+ "/photo0" + i + ".jpg");
-            }
-            i++;
+        String dbFilename[]=new String[5];
+        String saveFilename[]=new String[5];
+
+        for(int i=1; i<=photos.size();i++) {
+            dbFilename[i-1]=uploadDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i-1]=uploadPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            photos.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
+            System.out.println(dbFilename[i-1]);
         }
-        System.out.println(uploadPath+ "/photo0" + i + ".jpg");
+        pv.setPf_photo1(dbFilename[0]);        pv.setPf_photo2(dbFilename[1]);        pv.setPf_photo3(dbFilename[2]);
+        pv.setPf_photo4(dbFilename[3]);        pv.setPf_photo5(dbFilename[4]);
 
         pv.setPf_no(pf_no);
         partnersService.insertPort_Photos(pv);
-        return "/partners/index";
+        return "redirect:/partners/main";
     }//upload_photo_ok
-
 
     @RequestMapping(value = "/portfolio_list")  //견적목록
     public String portfolio_list() {
@@ -455,7 +477,7 @@ public class PartnersController {
     /*My page
     *
     */
-    @RequestMapping(value="/data_manage")
+    @RequestMapping(value="/data_manage",method=RequestMethod.GET)
     public ModelAndView data_manage(HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
@@ -469,31 +491,37 @@ public class PartnersController {
 //        }else {
         //System.out.println(businessNum);
         PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-        //Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
 
-           //System.out.println(p.toString());
+        Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+
+           System.out.println(p.toString());
            //System.out.println(p.getPName()+" "+p.getPTel());
-           //System.out.println(ps.getBusinessNum()+" "+ps.getPShortstate()+" "+ps.getPHomepg());
+            //System.out.println(p.getPAddress()); paddress가 처음에 null이어서??
+            //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
+            //m.addObject("ps",ps);
             m.addObject("pName",p.getPName());
             m.addObject("pTel",p.getPTel());
+            //m.addObject("pShortstate",0);
 
-            //m.addObject("ps", ps);
+            //ps.setPShortstate(); ps객체가 null인 상태라 안되는중.
 
             m.setViewName("/partners/mypage/data_manage");
             return m;
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage_ok")
-    public String data_manage_edit_ok(HttpServletResponse response,HttpServletRequest request,
+    @RequestMapping(value="/data_manage",method=RequestMethod.POST)
+    public String data_manage_ok(Model m,HttpServletResponse response,HttpServletRequest request,
         HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         String pAddress=request.getParameter("pAddress");
+
+        String pBusinessNum=request.getParameter("businessNum");
         String pShortstate=request.getParameter("pShortstate");
         String pHomepg=request.getParameter("pHomepg");
         String pRes_person_name=request.getParameter("pRes_person_name");
@@ -505,25 +533,61 @@ public class PartnersController {
         String pAccount_name=request.getParameter("pAccount_name");
         String pAccount_num=request.getParameter("pAccount_num");
 
-        System.out.println(pAddress);
-        System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
+        String businessNum = (String)session.getAttribute("business_num");
+        //System.out.println(pAddress);
+        //System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
 
         PartnersVO p=new PartnersVO();
         Partners_subVO ps=new Partners_subVO();
 
         p.setPAddress(pAddress);
+        ps.setBusinessNum(pBusinessNum);
         ps.setPShortstate(pShortstate); ps.setPHomepg(pHomepg); ps.setPRes_person_name(pRes_person_name);
         ps.setPRes_person_tel(pRes_person_tel); ps.setPCom_person_name(pCom_person_name); ps.setPCom_person_tel(pCom_person_tel);
         //ps.setPBalance(pBalance);
         ps.setPAccount_bank(pAccount_bank); ps.setPAccount_name(pAccount_name); ps.setPAccount_num(pAccount_num);
 
+        //System.out.println(p.getPAddress());
+        //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
+        System.out.println(ps.toString());
 
-        String businessNum = (String)session.getAttribute("business_num");
-        this.partnersService.updatePartners(businessNum);
+        //여기까진 잘나오는데 sql문이 제대로 실행이 안되고 있음!!!
+        //this.partnersService.updatePartners(businessNum);
+        //this.partnersService.updatePartnersSub(businessNum);
+        this.partnersService.insertPartnersSub(businessNum);
+
+        //System.out.println(ps.getPShortstate());
+        //ps=this.partnersService.getPartnersSub(businessNum);
+        //System.out.println(p.toString());
 
 
-        out.println("alert('정보수정에 성공하였습니다.')");
-        return "redirect:/partners/data_manage";
+        //m.addAttribute("p",p);
+        m.addAttribute("pShortstate",ps.getPShortstate());
+        m.addAttribute("ps",ps);
+//        if(ps.getPShortstate().equals("null")){
+//            this.partnersService.updatePartners(businessNum);
+//
+//
+//        }else { //없으면
+//            int re = psdao.insertPartnersSub(psdto);
+//            if(re==1) {
+//                request.setAttribute("pd", re);
+//
+//                out.println("<script>");
+//                out.println("alert('정보 입력 성공!');");
+//                out.println("history.back();");
+//                out.println("</script>");
+//            }
+//        }
+        out.println("<script>");
+        out.println("alert('정보 입력 성공!');");
+        out.println("history.back();");
+        out.println("</script>");
+
+        return null;
+       // return "redirect:/partners/data_manage;";
+        //return new ModelAndView("redirect:/partners/data_manage;");
+
     }
     @RequestMapping(value="/pw_change")
     public String pw_change() { return "/partners/mypage/pw_change"; }

@@ -10,6 +10,21 @@
 
   </head>
 <body>
+
+<!-- counters -->
+<section class="counters">
+    <div class="container">
+        <ul class="clearfix">
+            <li>
+                <h3>3,587</h3>
+                <h4>누적 견적신청수</h4>
+                <span class="bar"></span>
+            </li>
+        </ul>
+    </div>
+</section><!--//counters -->
+
+
 <form method="post" action="apply_ok">
 <div class="page1" >
     <title>인테리어 견적 신청서</title>
@@ -429,7 +444,7 @@
             <div class="estimate_box">
                 <br/><h2>예산</h2>
                 <div class="your_cost">
-                    <input type="text" id="estimate_cost" name="est_bud" maxlength="7" placeholder="0" onkeyup="inputNumberFormat(this);" />
+                    <input type="text" id="estimate_cost" name="est_bud" maxlength="7" placeholder="예산을 입력해주세요" onkeyup="inputNumberFormat(this);"/>
                     <h3>만원</h3>
                 </div>
                 <br/><br/><br/><br/><hr/>

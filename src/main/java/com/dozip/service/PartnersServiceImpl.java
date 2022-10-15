@@ -77,9 +77,19 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.getPartnersSub(businessNum);
     }
     @Override
-    public void updatePartners(String businessNum) {
-        partnersDao.updatePartners(businessNum);
+    public void updatePartnersSub(String businessNum) {
+        partnersDao.updatePartnersSub(businessNum);
     }
+
+    @Override
+    public void updatePartners(String businessNum) { partnersDao.updatePartners(businessNum); }
+
+    @Override
+    public void insertPartnersSub(String businessNum) {
+        partnersDao.insertPartnersSub(businessNum);
+    }
+
+
     @Override
     public int checkBusinessNum(PartnersVO pv) {
         return partnersDao.checkBusinessNum(pv);

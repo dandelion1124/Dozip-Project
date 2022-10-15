@@ -40,7 +40,7 @@
     
     <!--????? ????-->
     <insert id="insert_photo">
-        update portfolioT set  pf_photo1=#{pf_photo1}, pf_photo2=#{pf_photo2}, pf_photo3=#{pf_photo3}, pf_photo4=#{pf_photo4}, pf_photo5=#{pf_photo5} where pf_no=#{pf_no}
+        update portfolioT set  pf_photo1=#{pf_photo1 ,jdbcType=VARCHAR}, pf_photo2=#{pf_photo2 ,jdbcType=VARCHAR}, pf_photo3=#{pf_photo3 ,jdbcType=VARCHAR}, pf_photo4=#{pf_photo4 ,jdbcType=VARCHAR}, pf_photo5=#{pf_photo5 ,jdbcType=VARCHAR} where pf_no=#{pf_no}
     </insert>
 
 
