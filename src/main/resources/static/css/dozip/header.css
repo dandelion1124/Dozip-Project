@@ -35,7 +35,7 @@
   }
 .mySlideDiv img{
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 .slideshow-container.mySlideDiv{
     background-repeat:no-repeat;
