@@ -39,6 +39,7 @@ header {
 #top_title div{
 	float:left;
 	margin: -10px 7px;
+	line-height: 1.3em;
 }
 div#menu_show_hide img {
     margin: 3px 0px 0px 10px;
