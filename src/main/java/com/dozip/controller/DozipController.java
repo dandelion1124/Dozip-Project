@@ -425,10 +425,11 @@ public class DozipController {
     }
 
     @RequestMapping("apply_ok")
-    public String apply_ok(HttpServletRequest request, HttpSession session) {
+    public String apply_ok(HttpServletRequest request,HttpServletResponse response, HttpSession session) throws Exception{
 
+        response.setContentType("text/html;charset=UTF-8");
         EstimateVO e = new EstimateVO();
-
+        PrintWriter out=response.getWriter();
         e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
 
 
@@ -459,7 +460,12 @@ public class DozipController {
         System.out.println(e.toString());
         this.estimateService.applyOk(e);
 
-        return "/dozip/index";
+        out.println("<script>");
+        out.println("alert('견적 신청이 완료되었습니다.');");
+        out.println("location.href = '/dozip/home';");
+        out.println("</script>");
+
+        return null;
     }
 
 }//DozipController
