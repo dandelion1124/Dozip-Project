@@ -7,9 +7,9 @@
         insert into estimateT
         (est_num, mem_id, est_zoning, est_use, est_areaP, est_areaM, est_detail, est_detail01, est_detail02
         , est_detail03, est_detail04, est_detail05, est_detail06, est_detail07, est_detail08
-        , est_bud, est_start, est_end, est_name, est_phone, est_desc, est_file)
+        , est_bud, est_start, est_end, est_name, est_phone, est_addr, est_desc, est_file)
         values(est_num_seq.nextval, #{mem_id, jdbcType = VARCHAR},#{est_zoning, jdbcType = VARCHAR},#{est_use, jdbcType = VARCHAR},#{est_areaP, jdbcType = VARCHAR},#{est_areaM, jdbcType = VARCHAR},#{est_detail, jdbcType = VARCHAR}
               ,#{est_detail01, jdbcType = VARCHAR},#{est_detail02, jdbcType = VARCHAR},#{est_detail03, jdbcType = VARCHAR},#{est_detail04, jdbcType = VARCHAR},#{est_detail05, jdbcType = VARCHAR},#{est_detail06, jdbcType = VARCHAR},#{est_detail07, jdbcType = VARCHAR}
-              ,#{est_detail08, jdbcType = VARCHAR},#{est_bud, jdbcType = VARCHAR},#{est_start, jdbcType = VARCHAR},#{est_end, jdbcType = VARCHAR},#{est_name, jdbcType = VARCHAR},#{est_phone, jdbcType = VARCHAR},#{est_desc, jdbcType = VARCHAR},#{est_file, jdbcType = VARCHAR})
+              ,#{est_detail08, jdbcType = VARCHAR},#{est_bud, jdbcType = VARCHAR},#{est_start, jdbcType = VARCHAR},#{est_end, jdbcType = VARCHAR},#{est_name, jdbcType = VARCHAR},#{est_phone, jdbcType = VARCHAR},#{est_addr},#{est_desc, jdbcType = VARCHAR},#{est_file, jdbcType = VARCHAR})
     </insert>
 </mapper>
