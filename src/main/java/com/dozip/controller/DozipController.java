@@ -401,9 +401,10 @@ public class DozipController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
+        mv.addObject("pt.pAddress",pt.getPAddress());
 
-        System.out.println(pf);
-        System.out.println(pt.getPAddress());
+        //System.out.println(pt);
+        //System.out.println(pt.getPAddress());
         mv.setViewName("/dozip/portfolio/port_detail");
         return mv;
     }

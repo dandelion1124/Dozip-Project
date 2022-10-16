@@ -2,16 +2,17 @@
 
 /* 상단 명함 부분 */
 .comp_card {
-	width : 500px;
+	width : 400px;
 	height: 150px;
+	float : left;
+	margin-top: 50px;
+	margin-left: 300px;
 	background-color : #fff;
 	display:flex;
-	/* flex-direction : row; */
 	justify-content: space-evenly;
 	align-items : center;
 	flex-grow : 1;
 	flex-wrap : wrap;
-	margin: 0 auto;	
 	outline : 3px solid #347844; 
 	border-radius : 5px;
 }
@@ -77,72 +78,11 @@ h2{
 }
 
 
-/* 카드리스트 */
-.cards-list {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items:center;
-}
-
-/* 개별카드 */
-.card-list {
-	width : 100%;
-	word-break:break-all;
-	word-wrap:break-word;
-}
-
-.card {
-	width: 30%;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-}  
-
-
-
-.card_image img {
-	width: 100%;
-	height: 280px;
-	border-radius: 5px 5px 5px 5px;
-	object-fit: cover;
-	display: flex;
-}
-
-.card_title {
-	border-radius: 0px 0px 5px 5px;
-	/* background-color:#92d1fc; */
-	height: 70px;
-	width: 100%;
-}
-
-.type {
-	list-style: none;
-	text-align: center;
-}
-
-.corp {
-	list-style: none;
-	text-align: center;
-	font-size: 1.3rem;
-	font-family:'Malgun-Gothic';
-	color : #347844;
-	line-height: 1.9;
-	font-weight : 1000;
-}
-
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
-
-.card:hover {
-  transform: scale(0.98, 0.98);
-}
-
 /*제공 서비스 부분*/
+.comp_service{
+	float:right;
+	margin-right: 200px;
+}
 
 #service_title {
 	font-family : 'Malgun Gothic';
@@ -177,6 +117,7 @@ h2{
 
 /* 업체 정보 */
 #comp_title {
+	margin-top:150px;
 	font-family : 'Malgun Gothic';
 	font-weight : 1000;
 	font-size: 1.6rem;
@@ -187,7 +128,8 @@ h2{
 .comp_cont {
 	display:flex;
 	flex-direction : column;
-	/* text-align : center; */
+	float:left;
+	margin-left: 300px;
 	align-items : center;
 	font-family : 'Malgun Gothic';
 }
@@ -197,35 +139,10 @@ h2{
 	font-weight : 500;
 }
 
-
-/* 전문가 한마디 */
-#comp_ment_title {
-	font-family : 'Malgun Gothic';
-	font-weight : 1000;
-	font-size: 1.6rem;
-	color : #347844;
-	text-align : center;
-	padding-bottom: 20px;
-}
-
-#comp_ment1 {
-	display : flex;
-	margin : 0 auto;
-	font-family : 'Malgun Gothic';
-	font-size: 1.0rem;
-	font-weight : 500;
-	line-height: 20px;
-	justify-content: center;
-	padding-right : 60px;
-}
-
-/* 시공사례 모아보기*/
-
-#port_title {
-	font-family : 'Malgun Gothic';
-	font-weight : 1000;
-	font-size: 1.6rem;
-	color : #347844;
-	text-align : center;
-	padding-bottom: 20px;
+/* 지도 */
+#map{
+	display:flex;
+	float:right;
+	margin-right:150px;
+	margin-top:50px;
 }
