@@ -212,3 +212,10 @@ $('#paragraph').keyup(function (e) {
     	$('.textCount').text(content.length + '자');
     }
 });
+
+//전화번호 010-1111-1111 하이픈 넣기
+const hypenTel = (target) => {
+    target.value = target.value
+        .replace(/[^0-9]/g, '')
+        .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+}

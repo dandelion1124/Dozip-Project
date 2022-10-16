@@ -485,7 +485,7 @@
                 <div class="estimate_box_page3">
                     <h3>의뢰인 정보 입력</h3>
                     <input type="text" id="name" name="name" placeholder="이름을 입력해주세요">
-                    <input type="text" id="phone" name="phone" placeholder="휴대폰 번호를 입력해 주세요">
+                    <input type="text" id="phone" name="phone" oninput="hypenTel(this)" placeholder="휴대폰 번호를 입력해 주세요" maxlength="13"/>
                     <button type="button" id="certify_phone" >인증하기</button>
                     <input type="text" id="addr" name="addr" placeholder="주소를 입력해 주세요">
                     <button type="button" id="address_btn" >주소찾기</button>
