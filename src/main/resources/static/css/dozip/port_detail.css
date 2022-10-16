@@ -89,13 +89,15 @@
 }
 
 #start_cont{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp : 3;
+	overflow:hidden;
 	position : relative;
-	right:40px;
+	width : 800px;
 	font-family : 'Malgun Gothic';
 	font-size : 18px;
 	line-height:40px;
-	margin : 0px auto;
-	
 }
 
 .detail_cont2 {
@@ -111,13 +113,15 @@
 }
 
 #end_cont{
-	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
 	position : relative;
-	right:40px;
+	width : 800px;
 	font-family : 'Malgun Gothic';
 	font-size : 18px;
-	line-height:40px; 
-	margin :  10px, 0px,0px,0px;
+	line-height:40px;
 }
 
 .detail_imgs{

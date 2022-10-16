@@ -60,9 +60,9 @@
       <br><br>
       <div class = "detail_2">
          <div class = "detail_cont1">
-            <pre id = "start_cont"> 
+            <p id = "start_cont">
             ${pf.pf_introduction}
-            </pre>
+            </p>
          </div>
          <div class = "detail_imgs">
             <img id = "d_imgs1" src = "${pf.pf_photo1}"/>
@@ -72,9 +72,9 @@
             <img id = "d_imgs5" src = "${pf.pf_photo5}"/>
          </div>
          <div class = "detail_cont2">
-            <pre id = "end_cont">
+            <p id = "end_cont">
             ${pf.pf_closing}
-            </pre>
+            </p>
          </div>
       </div>
    </div>
@@ -86,10 +86,16 @@
       </div>
       <div class = "comp_name">
          <div class = "name">${pt.businessName}</div>
+
          <%--
-         현재 주소 불러오는데 오류가 생김
-         <pre id = "comp_loca">${pt.pAddress}</pre>
-         --%>
+        <c:if test="${pt.pAddress !=''||pt.pAddress ne null}">
+           <pre id = "comp_loca">${pt.pAddress}</pre>
+        </c:if>
+
+        <c:if test = "${pt.pAddress eq null}">
+           <pre id = "comp_loca_no"> </pre>
+        </c:if>
+     --%>
       </div>
       <div class = "comp_detail">
          <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}'">더보러가기</button>
