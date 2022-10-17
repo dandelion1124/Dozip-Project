@@ -25,17 +25,17 @@ create table partnersT
 (
     businessNum  nvarchar2(12) primary key, --사업자번호
     businessName nvarchar2(20) not null,    --상호명
-    pId          nvarchar2(20) not null,    --아이디
-    pPw          nvarchar2(20) not null,    --비밀번호
-    pName        nvarchar2(10) not null,    --대표자이름
-    pTel         nvarchar2(12) not null,    --대표자 연락처
-    pMailId      nvarchar2(30) not null,    --대표자 이메일 ID
-    pMailDomain  nvarchar2(30) not null,    --대표자 이메일 DOMAIN
-    pAddress     nvarchar2(500),            --영업장 주소
-    pDate        nvarchar2(15),             --가입날짜
-    PDeldate     nvarchar2(15),             --탈퇴날짜
-    pDelcont     nvarchar2(400),            --탈퇴사유
-    pState       number(5) default 1        --탈퇴여부(가입 1, 탈퇴 2)
+    p_Id          nvarchar2(20) not null,    --아이디
+    p_Pw          nvarchar2(20) not null,    --비밀번호
+    p_Name        nvarchar2(10) not null,    --대표자이름
+    p_Tel         nvarchar2(12) not null,    --대표자 연락처
+    p_MailId      nvarchar2(30) not null,    --대표자 이메일 ID
+    p_MailDomain  nvarchar2(30) not null,    --대표자 이메일 DOMAIN
+    p_Address     nvarchar2(500),            --영업장 주소
+    p_Date        nvarchar2(15),             --가입날짜
+    P_Deldate     nvarchar2(15),             --탈퇴날짜
+    p_Delcont     nvarchar2(400),            --탈퇴사유
+    p_State       number(5) default 1        --탈퇴여부(가입 1, 탈퇴 2)
 );
 
 
@@ -81,25 +81,25 @@ select * from partners_subT;
 create table partners_subT
 (
     businessNum       nvarchar2(12) not null, --사업자번호(FK)
-    pShortstate        nvarchar2(2000),
-    pInt_img           nvarchar2(70),
-    pComp_logo         nvarchar2(70),
-    pService           nvarchar2(50),
-    pHomepg            nvarchar2(100),
-    pRes_build_type    nvarchar2(100),
-    pRes_space_type    nvarchar2(400),
-    pCom_build_type    nvarchar2(100),
-    pCom_space_type    nvarchar2(400),
-    pRes_person_name   nvarchar2(10),
-    pRes_person_tel    nvarchar2(15),
-    pCom_person_name   nvarchar2(10),
-    pCom_person_tel    nvarchar2(15),
-    pBalance           number(20),
-    pAccount_bank      nvarchar2(10),
-    pAccount_name      nvarchar2(10),
-    pAccount_num       nvarchar2(20),
-    pAccount_file      nvarchar2(70),
-    pBusiness_lic_file nvarchar2(70),
+    p_Shortstate        nvarchar2(2000),
+    p_Int_img           nvarchar2(70),
+    p_Comp_logo         nvarchar2(70),
+    p_Service           nvarchar2(50),
+    p_Homepg            nvarchar2(100),
+    p_Res_build_type    nvarchar2(100),
+    p_Res_space_type    nvarchar2(400),
+    p_Com_build_type    nvarchar2(100),
+    p_Com_space_type    nvarchar2(400),
+    p_Res_person_name   nvarchar2(10),
+    p_Res_person_tel    nvarchar2(15),
+    p_Com_person_name   nvarchar2(10),
+    p_Com_person_tel    nvarchar2(15),
+    p_Balance           number(20),
+    p_Account_bank      nvarchar2(10),
+    p_Account_name      nvarchar2(10),
+    p_Account_num       nvarchar2(20),
+    p_Account_file      nvarchar2(70),
+    p_Business_lic_file nvarchar2(70),
     foreign key (businessNum) references partnersT (businessNum)
 );
 
@@ -129,7 +129,7 @@ create table estimateT
     est_start    varchar2(50),             -- 희망공사 시작일
     est_end      varchar2(50),             -- 희망공사 종료일
     est_date     date default sysdate,     --견적신청 일자
-    est_dateEnd  date,                     --견적신청 마감일자 +10일 (date)
+    est_dateEnd date default sysdate+10, --견적신청 마감일자 +10일 (date) 디폴트값 추가하기
     est_name     varchar2(50),             --의뢰인 이름
     est_phone    varchar2(50),             --의뢰인 휴대폰 번호
     est_addr     varchar2(35),             -- 의뢰인 주소    (추가됨)
@@ -156,7 +156,7 @@ create table bidT
     bid_price   number(20)     not null,
     bid_period  number(5)      null,
     bid_detail  varchar2(3000) null,
-    bid_end     number(5)      not null,
+    bid_state   varchar2(20)   default '진행중',
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (est_num) references estimateT (est_num)
 );

@@ -9,11 +9,8 @@ import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.QnaVO;
-import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -401,7 +398,6 @@ public class DozipController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
-        mv.addObject("pt.pAddress",pt.getPAddress());
 
         //System.out.println(pt);
         //System.out.println(pt.getPAddress());

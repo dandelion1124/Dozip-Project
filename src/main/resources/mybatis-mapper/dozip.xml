@@ -89,45 +89,6 @@
     <select id="get_P" resultType="String">
         select businessName from partnersT
     </select>
-
-
-    <!--resultType에 경로넣어서 하려니, 못잡고 계속 null값이 나와서 resultMap을 사용함-->
-    <resultMap id="vo" type="com.dozip.vo.MemberVO">
-        <result column="mem_id" property="mem_id" />
-        <result column="mem_pwd" property="mem_pwd" />
-        <result column="mem_name" property="mem_name" />
-        <result column="mem_tel" property="mem_tel" />
-        <result column="mem_email" property="mem_email" />
-        <result column="mem_domain" property="mem_domain" />
-        <result column="mem_zip" property="mem_zip" />
-        <result column="mem_addr1" property="mem_addr1" />
-        <result column="mem_addr2" property="mem_addr2" />
-        <result column="mem_joinType" property="mem_joinType" />
-        <result column="mem_joinDate" property="mem_joinDate" />
-        <result column="mem_withdraw" property="mem_withdraw" />
-        <result column="mem_withdrawDate" property="mem_withdrawDate" />
-    </resultMap>
-
-    <resultMap id="qo" type="com.dozip.vo.QnaVO">
-        <result column="qna_no" property="qna_no" />
-        <result column="mem_id" property="mem_id" />
-        <result column="businessNum" property="businessNum" />
-        <result column="qna_type" property="qna_type" />
-        <result column="qna_title" property="qna_title" />
-        <result column="qna_cont" property="qna_cont" />
-        <result column="qna_date" property="qna_date" />
-        <result column="edit_date" property="edit_date" />
-        <result column="qna_state" property="qna_state" />
-        <result column="qna_ref" property="qna_ref" />
-        <result column="qna_step" property="qna_step" />
-        <result column="qna_level" property="qna_level" />
-        <result column="reply_state" property="reply_state" />
-        <result column="reply_date" property="reply_date" />
-        <result column="businessName" property="businessName" />
-        <result column="mem_name" property="mem_name" />
-        <result column="startrow" property="startrow" />
-        <result column="endrow" property="endrow" />
-    </resultMap>
     
 </mapper>
 

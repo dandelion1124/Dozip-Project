@@ -98,17 +98,17 @@ public class PartnersController {
         //넘어온 정보와 db 값 비교
         try {
             //이메일 정보를 가공한후
-            String dbEmail = fv.getPMailId() + "@" + fv.getPMailDomain();
+            String dbEmail = fv.getP_MailId() + "@" + fv.getP_MailDomain();
             String db_business_num = fv.getBusinessNum();
-            String db_pTel = fv.getPTel();
+            String db_pTel = fv.getP_Tel();
 
-            String email_id = fv.getPMailId();
-            String email_domain = fv.getPMailDomain();
+            String email_id = fv.getP_MailId();
+            String email_domain = fv.getP_MailDomain();
             String db_email = email_id + "@" + email_domain;
 
             if (db_business_num.equals(findid_business_num) && db_pTel.equals(findid_pTel) && db_email.equals(findid_email)) {
                 out.println("<script>");
-                out.println("alert('당신의 아이디는 " + fv.getPId() + " 입니다.')");
+                out.println("alert('당신의 아이디는 " + fv.getP_Id() + " 입니다.')");
                 out.println("location='/partners/main'");
                 out.println("</script>");
             } else {
@@ -132,7 +132,7 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        PartnersVO pInfo = partnersService.getPartnersInfo(vo.getPId()); //파트너스 아이디를 기준으로 파트너스 정보를 가져옴
+        PartnersVO pInfo = partnersService.getPartnersInfo(vo.getP_Id()); //파트너스 아이디를 기준으로 파트너스 정보를 가져옴
 
 
         if (pInfo == null) {
@@ -141,13 +141,13 @@ public class PartnersController {
             out.println("history.back()");
             out.println("</script>");
         } else {
-            if (!pInfo.getPPw().equals(vo.getPPw())) {
+            if (!pInfo.getP_Pw().equals(vo.getP_Pw())) {
                 out.println("<script>");
                 out.println("alert('비밀번호가 일치하지 않습니다')");
                 out.println("history.back()");
                 out.println("</script>");
             } else {
-                session.setAttribute("id", pInfo.getPId());
+                session.setAttribute("p_id", pInfo.getP_Id());
                 session.setAttribute("businessName", pInfo.getBusinessName());
                 session.setAttribute("businessNum", pInfo.getBusinessNum());
                 session.setMaxInactiveInterval(-1);   //세션을 통해 로그인 시간 설정
@@ -502,8 +502,8 @@ public class PartnersController {
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
             //m.addObject("ps",ps);
-            m.addObject("pName",p.getPName());
-            m.addObject("pTel",p.getPTel());
+            m.addObject("pName",p.getP_Name());
+            m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
 
             //ps.setPShortstate(); ps객체가 null인 상태라 안되는중.
@@ -540,12 +540,12 @@ public class PartnersController {
         PartnersVO p=new PartnersVO();
         Partners_subVO ps=new Partners_subVO();
 
-        p.setPAddress(pAddress);
+        p.setP_Address(pAddress);
         ps.setBusinessNum(pBusinessNum);
-        ps.setPShortstate(pShortstate); ps.setPHomepg(pHomepg); ps.setPRes_person_name(pRes_person_name);
-        ps.setPRes_person_tel(pRes_person_tel); ps.setPCom_person_name(pCom_person_name); ps.setPCom_person_tel(pCom_person_tel);
+        ps.setP_Shortstate(pShortstate); ps.setP_Homepg(pHomepg); ps.setP_Res_person_tel(pRes_person_name);
+        ps.setP_Res_person_tel(pRes_person_tel); ps.setP_Com_person_name(pCom_person_name); ps.setP_Com_person_tel(pCom_person_tel);
         //ps.setPBalance(pBalance);
-        ps.setPAccount_bank(pAccount_bank); ps.setPAccount_name(pAccount_name); ps.setPAccount_num(pAccount_num);
+        ps.setP_Account_bank(pAccount_bank); ps.setP_Account_name(pAccount_name); ps.setP_Account_num(pAccount_num);
 
         //System.out.println(p.getPAddress());
         //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
@@ -562,7 +562,7 @@ public class PartnersController {
 
 
         //m.addAttribute("p",p);
-        m.addAttribute("pShortstate",ps.getPShortstate());
+        m.addAttribute("pShortstate",ps.getP_Shortstate());
         m.addAttribute("ps",ps);
 //        if(ps.getPShortstate().equals("null")){
 //            this.partnersService.updatePartners(businessNum);

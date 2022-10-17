@@ -17,7 +17,7 @@
 </head>
 
     <%
-if(session.getAttribute("id")==null) {
+if(session.getAttribute("p_id")==null) {
 	out.println("<script>");
 	out.println("alert('시간이 만료되어 로그아웃되었습니다!')");
 	out.println("location='/partners/main'");

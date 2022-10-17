@@ -6,17 +6,17 @@ import lombok.Data;
 public class PartnersVO {
     private String businessNum;
     private String businessName;
-    private String pId;
-    private String pPw;
-    private String pName;
-    private String pTel;
-    private String pMailId;
-    private String pMailDomain;
-    private String pAddress;
-    private String pDate;
-    private String PDeldate;
-    private String pDelcont;
-    private int pState;
+    private String p_Id;
+    private String p_Pw;
+    private String p_Name;
+    private String p_Tel;
+    private String p_MailId;
+    private String p_MailDomain;
+    private String p_Address;
+    private String p_Date;
+    private String P_Deldate;
+    private String p_Delcont;
+    private int p_State;
 
 
 }
