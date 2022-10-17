@@ -2,6 +2,7 @@ package com.dozip.service;
 
 import com.dozip.dao.DozipDAO;
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -82,4 +83,13 @@ public class DozipServiceImpl implements DozipService{
         javaMailSender.send(message);
     }
 
+    @Override
+    public List<PartnersVO> search_part(String p_address) {
+        return dozipDAO.search_part(p_address);
+    }
+
+    @Override
+    public int count_partners(String p_address) {
+        return dozipDAO.count_partners(p_address);
+    }
 }

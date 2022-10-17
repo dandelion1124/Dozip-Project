@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 
 import java.util.List;
@@ -35,4 +36,8 @@ public interface DozipDAO {
     int updatePwd(MemberVO m);
 
     int checkInfo(MemberVO m);
+
+    List<PartnersVO> search_part(String p_address);
+
+    int count_partners(String p_address);
 }

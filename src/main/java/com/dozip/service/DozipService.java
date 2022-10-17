@@ -1,6 +1,7 @@
 package com.dozip.service;
 
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 
 import java.util.List;
@@ -37,4 +38,8 @@ public interface DozipService {
     int checkInfo(MemberVO m);
 
     void sendEmail(MemberVO m);
+
+    List<PartnersVO> search_part(String p_address);
+
+    int count_partners(String s);
 }

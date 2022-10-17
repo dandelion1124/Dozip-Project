@@ -41,6 +41,12 @@ dependencies {
    // implementation 'org.springframework.boot:spring-boot-starter-security'
 
 
+    //JSON 라이브러리
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.4'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.4'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.4'
+
 }
 
 tasks.named('test') {

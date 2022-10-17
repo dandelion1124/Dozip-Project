@@ -95,6 +95,16 @@
     <select id="get_P" resultType="String">
         select businessName from partnersT
     </select>
-    
+
+
+    <!-- 근처의 파트너스 불러오기 -->
+    <select id="search_p" resultType="PartnersVO">
+        select * from PARTNERST where p_address like #{p_address}
+    </select>
+
+    <!-- 근처 파트너스 숫자 -->
+    <select id="counter_partners" resultType="int">
+        select count(*) from PARTNERST where p_address like #{p_address}
+    </select>
 </mapper>
 
