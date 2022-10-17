@@ -10,4 +10,8 @@ public interface EstimateDAO {
     int getPListCount(String mem_id);
 
     List<EstimateVO> getPElist(EstimateVO e);
+
+    int getListCount(String mem_id);
+
+    List<EstimateVO> getElist(EstimateVO e);
 }

@@ -21,10 +21,25 @@
     <!--업체지정 견적신청 리스트-->
     <select id="p_list" resultType="EstimateVO">
         select * from (
-        select rowNum r, est_num, mem_id, e.businessNum, est_check,est_use,
+        select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
         est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
         from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
         where e.businessNum=p.businessNum(+) and (e.businessNum is not null)
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+    <!--총 개수(해당 아이디의 작성 글 개수 확인 - 업체지정)-->
+    <select id="e_count" resultType="int">
+        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is null)
+    </select>
+
+    <!--업체지정 견적신청 리스트-->
+    <select id="e_list" resultType="EstimateVO">
+        select * from (
+        select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
+        est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
+        from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
+        where e.businessNum=p.businessNum(+) and (e.businessNum is null)
         ) where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 

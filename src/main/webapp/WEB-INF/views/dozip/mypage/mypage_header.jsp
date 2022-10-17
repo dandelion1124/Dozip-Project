@@ -87,7 +87,7 @@
                 <ul>
                     <li><a>나의계약</a></li>
                     <li><a href="/dozip/my_est">견적신청관리(지정)</a></li>
-                    <li><a>견적신청관리(자유)</a></li>
+                    <li><a href="/dozip/my_est2">견적신청관리(자유)</a></li>
                 </ul>
             </li>
             <li>

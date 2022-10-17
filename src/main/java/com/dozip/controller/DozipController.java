@@ -4,11 +4,8 @@ import com.dozip.dao.EstimateDAO;
 import com.dozip.service.DozipService;
 import com.dozip.service.EstimateService;
 import com.dozip.service.PortfolioService;
-import com.dozip.vo.EstimateVO;
-import com.dozip.vo.MemberVO;
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
+import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -276,8 +273,8 @@ public class DozipController {
         }
     }
 
-    @GetMapping("my_est") //마이페이지-계약관리 리스트
-    public ModelAndView myCont(ModelAndView mv, EstimateVO e,HttpServletRequest request,HttpSession session) {
+    @GetMapping("my_est") //마이페이지-견적서 리스트
+    public ModelAndView myEst(ModelAndView mv, EstimateVO e,HttpServletRequest request,HttpSession session) {
         e.setMem_id((String)session.getAttribute("id"));
 
         //쪽나누기
@@ -309,6 +306,49 @@ public class DozipController {
         mv.addObject("elist", elist);
 
         mv.setViewName("/dozip/mypage/mypage_est");
+        return mv;
+    }
+
+    @GetMapping("my_est2") //마이페이지-견적서 리스트(입찰)
+    public ModelAndView myEst2(ModelAndView mv, EstimateVO e, HttpServletRequest request, HttpSession session) {
+        e.setMem_id((String)session.getAttribute("id"));
+
+        //쪽나누기
+        int page = 1; //현재 쪽번호
+        int limit = 5; //한 페이지에 보여지는 개수
+
+        if(request.getParameter("page")!=null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+
+        int listcount=this.estimateService.getListCount(e.getMem_id());
+        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
+        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
+        int endpage = maxpage; //마지막페이지
+
+        if(endpage>startpage+5-1) endpage=startpage+5-1;
+
+        mv.addObject("page", page);
+        mv.addObject("startpage", startpage);
+        mv.addObject("endpage",endpage);
+        mv.addObject("maxpage",maxpage);
+        mv.addObject("listcount",listcount);
+
+        //리스트 출력
+        List<EstimateVO> elist = new ArrayList<EstimateVO>();
+        e.setStartrow((page-1)*5+1);
+        e.setEndrow(e.getStartrow()+limit-1);
+        elist = this.estimateService.getElist(e);
+        mv.addObject("elist", elist);
+
+        //견적서 번호를 담음 (입찰업체 확인에 사용)
+        List<String> numlist = new ArrayList<>();
+        for(int i=0; i<elist.size(); i++){
+            numlist.add(elist.get(i).getEst_num());
+        }
+        mv.addObject("numlist",numlist);
+
+        mv.setViewName("/dozip/mypage/mypage_est2");
         return mv;
     }
 

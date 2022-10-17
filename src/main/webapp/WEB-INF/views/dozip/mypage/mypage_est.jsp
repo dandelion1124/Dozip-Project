@@ -72,7 +72,7 @@
             </ul>
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
-        <p style="width: 90%; font-weight: bold;">${listcount}건의 문의내역이 있습니다.</p>
+        <p style="width: 90%; font-weight: bold;">${listcount}건의 신청내역이 있습니다.</p>
         <div class="my_apply_cont">
             <table class="my_apply_table">
                 <tr>
@@ -103,15 +103,15 @@
             <!-- 쪽번호 출력 -->
             <div class="page_area">
                 <c:if test="${page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
-                <c:if test="${page>1}"><a href="/dozip/my_cont?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
+                <c:if test="${page>1}"><a href="/dozip/my_est?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
 
                 <c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
                     <c:if test="${p==page}"><span style="color: #347844; font-weight: bold;">${p}</span></c:if>
-                    <c:if test="${p!=page}"><a href="/dozip/my_cont?page=${p}">${p}</a></c:if>
+                    <c:if test="${p!=page}"><a href="/dozip/my_est?page=${p}">${p}</a></c:if>
                 </c:forEach>
 
                 <c:if test="${page>=maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
-                <c:if test="${page<maxpage}"><a href="/dozip/my_cont?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
+                <c:if test="${page<maxpage}"><a href="/dozip/my_est?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
             </div>
         </div>
 

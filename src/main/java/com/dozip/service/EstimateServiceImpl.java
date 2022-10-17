@@ -23,4 +23,10 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public List<EstimateVO> getPElist(EstimateVO e) { return this.estimateDAO.getPElist(e); }
 
+    @Override
+    public int getListCount(String mem_id) { return this.estimateDAO.getListCount(mem_id); }
+
+    @Override
+    public List<EstimateVO> getElist(EstimateVO e) { return this.estimateDAO.getElist(e); }
+
 }
