@@ -1,6 +1,7 @@
 package com.dozip.service;
 
 import com.dozip.dao.EstimateDAO;
+import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,8 @@ public class EstimateServiceImpl implements EstimateService {
 
     @Override
     public List<EstimateVO> getElist(EstimateVO e) { return this.estimateDAO.getElist(e); }
+
+    @Override
+    public List<BidVO> getBidList(String est_num) { return this.estimateDAO.getBidList(est_num); }
 
 }

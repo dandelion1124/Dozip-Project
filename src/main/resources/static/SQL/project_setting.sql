@@ -156,10 +156,15 @@ create table bidT
     bid_price   number(20)     not null,
     bid_period  number(5)      null,
     bid_detail  varchar2(3000) null,
-    bid_state   varchar2(20)   default '진행중',
+    bid_state   varchar2(20)   default '진행중', --상태
+    bid_date date default sysdate --입찰신청일자
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (est_num) references estimateT (est_num)
 );
+-- 입찰 테이블 시퀀스
+DROP SEQUENCE bid_num_seq; --삭제
+select bid_num_seq.nextval from dual; --시퀀스 확인
+create sequence bid_num_seq start with 1 increment by 1 nocache; --생성
 
 --7. 고객문의 테이블 --
 drop table qnaT;

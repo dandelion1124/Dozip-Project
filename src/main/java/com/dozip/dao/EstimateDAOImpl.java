@@ -1,5 +1,6 @@
 package com.dozip.dao;
 
+import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,7 @@ public class EstimateDAOImpl implements EstimateDAO {
 
     @Override
     public List<EstimateVO> getElist(EstimateVO e) { return this.sqlSession.selectList("e_list", e); }
+
+    @Override
+    public List<BidVO> getBidList(String est_num) { return this.sqlSession.selectList("bid_list", est_num); }
 }
