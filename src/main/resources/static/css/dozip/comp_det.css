@@ -8,7 +8,14 @@
 	perspective: 1100px; /* 원근감 */
 }
 
+.comp_wrap{
+	display: flex;
+	flex-direction: row;
+}
+
 .comp_card {
+	position:relative;
+	display: flex;
 	width : 100%;
 	height: 100%;
 	margin-left: 150px;
@@ -17,14 +24,14 @@
 	background-color : #fff;
 	flex-grow : 1;
 	flex-wrap : wrap;
-	outline : 3px solid #347844; 
+	outline : 3px solid #347844;
 	border-radius : 5px;
 }
 
 
 /* backface-visibility 요소 뒷면을 보여줄지 결정*/
 .front,.back{
-	/*position: absolute;*/
+	position: absolute;
 	width : 100%;
 	height : 100%;
 	backface-visibility: hidden;
@@ -122,9 +129,9 @@ h2{
 
 #service_title {
 	font-family : 'Malgun Gothic';
-	font-size: 1.6rem;
+	font-size: 1.5rem;
 	font-weight : 1000;
-	color : #347844;
+	color : dodgerblue;
 	text-align : center;
 	padding-bottom: 20px;
 }
@@ -150,13 +157,19 @@ h2{
 	padding: 5px 15px;
 }
 
-/* 업체 정보 */
-
+/* 카드 뒷면 업체 정보*/
+.comp_cont{
+	margin-top:150px;
+	text-align: center;
+	font-family: "맑은 고딕";
+	font-size: 1.5rem;
+	color: black;
+	font-weight: bold;
+}
 
 /* 지도 */
 #map{
-	display:flex;
-	float:right;
-	margin-right:150px;
-	margin-top:50px;
+	display: flex;
+	margin-left: 300px;
+	margin-top:100px;
 }

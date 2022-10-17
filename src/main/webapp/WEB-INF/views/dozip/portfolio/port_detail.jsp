@@ -87,15 +87,15 @@
       <div class = "comp_name">
          <div class = "name">${pt.businessName}</div>
 
-         <%--
-        <c:if test="${pt.pAddress !=''||pt.pAddress ne null}">
-           <pre id = "comp_loca">${pt.pAddress}</pre>
+
+        <c:if test="${pt.p_Address !=''||pt.p_Address ne null}">
+           <pre id = "comp_loca">${pt.p_Address}</pre>
         </c:if>
 
-        <c:if test = "${pt.pAddress eq null}">
+        <c:if test = "${pt.p_Address eq null}">
            <pre id = "comp_loca_no"> </pre>
         </c:if>
-     --%>
+
       </div>
       <div class = "comp_detail">
          <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}'">더보러가기</button>
