@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ public class DozipDAOImpl implements DozipDAO{
 
     @Autowired
     private SqlSession sqlSession;
+
+    @Override
+    public List<PartnersVO> search_part(String p_address) {
+        return sqlSession.selectList("search_p",p_address);
+    }
 
     @Override
     public String loginCheck(String mem_id) {
@@ -63,4 +69,8 @@ public class DozipDAOImpl implements DozipDAO{
     @Override
     public int checkInfo(MemberVO m) { return this.sqlSession.selectOne("check_m", m); }
 
+    @Override
+    public int count_partners(String p_address) {
+        return sqlSession.selectOne("counter_partners",p_address);
+    }
 }

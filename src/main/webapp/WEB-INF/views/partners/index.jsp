@@ -9,7 +9,7 @@
     <script src="/js/partners/jquery.js"></script>
     <script src="/js/partners/join.js"></script>
 </head>
-<body>x`
+<body>
 <c:if test="${empty p_id}">
 <article id="join_wrap">
     <div id=signin_cont>

@@ -13,6 +13,8 @@
     <script src="/js/partners/javascript.js"></script>
     <script src="/js/partners/javascript2.js"></script>
     <script src='/js/partners/calendar.js'></script>
+    <script src='/js/address.js'></script>
+
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
