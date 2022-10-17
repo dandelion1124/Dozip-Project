@@ -4,8 +4,11 @@ import com.dozip.dao.DozipDAO;
 import com.dozip.vo.MemberVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +16,8 @@ public class DozipServiceImpl implements DozipService{
 
     @Autowired
     private DozipDAO dozipDAO;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Override
     public String loginCheck(String mem_id) {
@@ -59,5 +64,22 @@ public class DozipServiceImpl implements DozipService{
 
     @Override
     public int updatePwd(MemberVO m) { return this.dozipDAO.updatePwd(m); }
+
+    @Override
+    public int checkInfo(MemberVO m) { return this.dozipDAO.checkInfo(m); }
+
+    @Override
+    public void sendEmail(MemberVO m) {
+        String toEmail = m.getMem_email()+"@"+m.getMem_domain();
+        String msg = "";
+        msg += m.getMem_name() + "님의 임시 비밀번호입니다.\n 비밀번호를 변경하여 사용하세요.";
+        msg += "\n임시 비밀번호 : "+m.getMem_pwd();
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(toEmail);
+        message.setSubject("[두꺼비집] 임시비밀번호 발송메일입니다.");
+        message.setText(msg);
+        javaMailSender.send(message);
+    }
 
 }

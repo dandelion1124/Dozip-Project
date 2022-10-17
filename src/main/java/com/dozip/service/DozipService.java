@@ -33,4 +33,8 @@ public interface DozipService {
     int checkID(String id);
 
     int updatePwd(MemberVO m);
+
+    int checkInfo(MemberVO m);
+
+    void sendEmail(MemberVO m);
 }

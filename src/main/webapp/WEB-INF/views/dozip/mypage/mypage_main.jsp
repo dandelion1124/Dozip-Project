@@ -36,10 +36,10 @@
 	<%--상단 메뉴부분 끝--%>
 
 	<div class="clear"></div>
-	
+
 	<%--본문 내용부분--%>
 	<div class="mypage_body_wrap">
-	
+
 		<%-- 내정보 --%>
 		<div class="mypage_body" id="my_info">
 			<div class="my_info_wrap">
@@ -51,10 +51,10 @@
 			</div>
 			<div class="notice_wrap">
 				<p>알림내역</p>
-				<p>${m.mem_name }</p>					
+				<p>${m.mem_name }</p>
 			</div>
 		</div>
-		
+
 		<%-- 정보수정 --%>
 		<div class="mypage_body" id="my_info_modify">
 		<div id="mim_wrap">
@@ -99,7 +99,7 @@
 			</form>
 		</div>
 		</div>
-		
+
 		<%-- 비밀번호변경 --%>
 		<div class="mypage_body" id="my_pwd_modify">
 			<div class="mpm_wrap">
@@ -116,7 +116,7 @@
 				</form>
 			</div>
 		</div>
-		
+
 		<%-- 내스크랩 확인 --%>
 		<div class="mypage_body" id="my_scrap_view">
 			<div class="scrap_wrap">
@@ -192,7 +192,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<%-- 견적신청내역 --%>
 		<div class="mypage_body" id="my_apply_list">
 			<div class="my_apply_wrap">
@@ -215,7 +215,7 @@
 						<%} %>
 					</table>
 				</div>
-				
+
 				<div class="my_apply_title">
 					<p>간편신청내역</p>
 				</div>
@@ -233,7 +233,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<%-- 계약관리 --%>
 		<div class="mypage_body" id="my_contract">
 			<div class="my_contract_wrap">
@@ -313,7 +313,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<%-- 고객센터문의 --%>
 		<div class="mypage_body" id="my_counsel_list">
 			<div class="my_qna">
@@ -325,9 +325,9 @@
 					</tr>
 					<c:if test="${fn:length(qlist) == 0}">
 						<tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
-					</c:if>	
+					</c:if>
 					<c:if test="${fn:length(qlist) != 0}">
-					<c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">		
+					<c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">
 						<tr>
 							<td id="num">
 								<c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
@@ -342,17 +342,17 @@
 					</c:forEach>
 					</c:if>
 				</table>
-				
+
 				<!-- 쪽번호 출력 -->
 				<div class="page_area">
 					<c:if test="${page<=1}">[이전]</c:if>
 					<c:if test="${page>1}"><a href="mypage_go.do?page=${page-1}">[이전]</a></c:if>
-					
+
 					<c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
 						<c:if test="${p==page}">${p}</c:if>
 						<c:if test="${p!=page}"><a href="mypage_go.do?page=${p}">[${p}]</a></c:if>
 					</c:forEach>
-					
+
 					<c:if test="${page>=maxpage}">[다음]</c:if>
 					<c:if test="${page<maxpage}"><a href="mypage_go.do?page=${page+1}">[다음]</a></c:if>
 				</div>
@@ -363,7 +363,7 @@
 			</button></div>
 			<p id="my_qna_text">더 많은 질문을 확인하고 싶다면? <a href="../counsel/counsel_main.jsp">자주하는 질문 보러가기</a></p>
 		</div>
-		
+
 		<%-- 업체문의 --%>
 		<div class="mypage_body" id="my_partner_qna">
 			<div class="my_P_qna">
@@ -375,8 +375,8 @@
 					</tr>
 					<c:if test="${fn:length(qlist2) == 0}">
 						<tr><td colspan="5"> 등록된 글이 없습니다.</td> </tr>
-					</c:if>	
-					<c:if test="${fn:length(qlist2) != 0}">					
+					</c:if>
+					<c:if test="${fn:length(qlist2) != 0}">
 					<c:forEach var="i" begin="0" end="${fn:length(qlist2)-1}" step="1">
 						<tr>
 							<td id="num">
@@ -386,7 +386,7 @@
 							<td id="partner_name">
 								<c:if test="${qlist2[i].qna_level != 0}"><span></span></c:if>
 								<c:if test="${qlist2[i].qna_level == 0}"><a href="#">${qlist2[i].businessName}</a></c:if>
-							</td> 
+							</td>
 							<td id="title">
 								<c:if test="${qlist2[i].qna_level != 0}">
 								<span style="color:blue; font-weight:bold;">=> Re: </span><a href="#">${qlist2[i].qna_cont}</a> <%-- 발표용으로 잠시 내용을 노출함 --%>
@@ -396,23 +396,23 @@
 							<td id="state">
 								<c:if test="${qlist2[i].qna_level != 0}"><span></span></c:if>
 								<c:if test="${qlist2[i].qna_level == 0}">${qlist2[i].reply_state}</c:if>
-							</td> 
+							</td>
 							<td id="date">${qlist2[i].qna_date}</td>
 						</tr>
 					</c:forEach>
 					</c:if>
 				</table>
-				
+
 				<!-- 쪽번호 출력 -->
 				<div class="page_area">
 					<c:if test="${pageP<=1}">[이전]</c:if>
 					<c:if test="${pageP>1}"><a href="mypage_go.do?pageP=${pageP-1}">[이전]</a></c:if>
-					
+
 					<c:forEach var="p" begin="${startpageP}" end="${endpageP}" step="1">
 						<c:if test="${p==pageP}">${p}</c:if>
 						<c:if test="${p!=pageP}"><a href="mypage_go.do?pageP=${p}">[${p}]</a></c:if>
 					</c:forEach>
-					
+
 					<c:if test="${pageP>=maxpageP}">[다음]</c:if>
 					<c:if test="${pageP<maxpageP}"><a href="mypage_go.do?pageP=${pageP+1}">[다음]</a></c:if>
 				</div>
@@ -422,7 +422,7 @@
 				<a href="counsel_partner_write.do" >업체 문의글 작성하기</a>
 			</button></div>
 		</div>
-		
+
 	</div>
 
 </div>

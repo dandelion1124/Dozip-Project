@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class EstimateDAOImpl implements EstimateDAO {
     @Autowired
@@ -14,4 +16,10 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Override
     public void applyOk(EstimateVO e) {
         this.sqlSession.insert("a_insert", e);  }
+
+    @Override
+    public int getPListCount(String mem_id) { return this.sqlSession.selectOne("p_count", mem_id); }
+
+    @Override
+    public List<EstimateVO> getPElist(EstimateVO e) { return this.sqlSession.selectList("p_list", e); }
 }

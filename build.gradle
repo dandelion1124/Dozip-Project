@@ -27,18 +27,18 @@ dependencies {
     //오라클 DB
     runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
     //이진파일 업로드위한 lib 주입
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation group: 'commons-io', name: 'commons-io', version: '2.7'
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 
-
-
+    //임시번호 메일로 보내기
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
     //jsp view 페이지 설정
     implementation('org.apache.tomcat.embed:tomcat-embed-jasper')
     implementation('javax.servlet:jstl')
 
-    implementation 'org.springframework.boot:spring-boot-devtools:2.7.4'
+    //spring-security -> 개발 중
+   // implementation 'org.springframework.boot:spring-boot-starter-security'
 
 
 }
