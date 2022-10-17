@@ -5,13 +5,13 @@
     <mapper namespace="partners">
         <!--파트너스 정보 조회 -->
         <select id="partners_info" resultType="PartnersVO">
-        select * from partnersT where pId=#{pId}
+        select * from partnersT where p_Id=#{p_Id}
     </select>
 
     <!--파트너스 회원가입 -->
     <insert id="partners_in">
-        insert into partnersT (businessNum, businessName, pId, pPw, pName, pTel, pMailId, pMailDomain, pDate)
-        values(#{businessNum}, #{businessName}, #{pId}, #{pPw}, #{pName}, #{pTel}, #{pMailId}, #{pMailDomain}, sysdate)
+        insert into partnersT (businessNum, businessName, p_Id, p_Pw, p_Name, p_Tel, p_MailId, p_MailDomain, p_Date)
+        values(#{businessNum}, #{businessName}, #{p_Id}, #{p_Pw}, #{p_Name}, #{p_Tel}, #{p_MailId}, #{p_MailDomain}, sysdate)
     </insert>
     <!--사업자번호 중복체크 -->
     <select id="check_bnum" resultType="int">
@@ -81,20 +81,20 @@
     </select>
 
     <update id="update_subdata" parameterType="Partners_subVO">
-        update Partners_subT set businessNum=#{businessNum, jdbcType=VARCHAR}, pShortstate=#{pShortstate, jdbcType=VARCHAR},pHomepg=#{pHomepg, jdbcType=VARCHAR},
-        pRes_person_name=#{pRes_person_name, jdbcType=VARCHAR}
-        <!--,pRes_person_tel=#{pRes_person_tel},pCom_person_name=#{pCom_person_name},pCom_person_tel=#{pCom_person_tel},
-        pBalance=#{pBalance},pAccount_bank=#{pAccount_bank},pAccount_name=#{pAccount_name},pAccount_num=#{pAccount_num}-->
+        update Partners_subT set businessNum=#{businessNum, jdbcType=VARCHAR}, p_Shortstate=#{p_Shortstate, jdbcType=VARCHAR},p_Homepg=#{p_Homepg, jdbcType=VARCHAR},
+        p_Res_person_name=#{p_Res_person_name, jdbcType=VARCHAR}
+        <!--,p_Res_person_tel=#{p_Res_person_tel},p_Com_person_name=#{p_Com_person_name},p_Com_person_tel=#{p_Com_person_tel},
+        p_Balance=#{pBalance},p_Account_bank=#{p_Account_bank},p_Account_name=#{p_Account_name},p_Account_num=#{p_Account_num}-->
         where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
     <update id="update_data">
-        update PartnersT set pAddress=#{pAddress, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
+        update PartnersT set p_Address=#{pAddress, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
     <insert id="insert_subdata">
-        insert into Partners_subT (pShortstate,pHomepg,pRes_person_name)
-        values(#{pShortstate, jdbcType=VARCHAR},#{pHomepg, jdbcType=VARCHAR},#{pRes_person_name, jdbcType=VARCHAR})
+        insert into Partners_subT (p_Shortstate,p_Homepg,p_Res_person_name)
+        values(#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR})
     </insert>
 </mapper>
 
