@@ -1,10 +1,7 @@
 package com.dozip.service;
 
 import com.dozip.dao.PartnersDAO;
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.Partners_subVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,16 +74,26 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.getPartnersSub(businessNum);
     }
     @Override
-    public void updatePartnersSub(String businessNum) {
-        partnersDao.updatePartnersSub(businessNum);
+    public void updatePartnersSub(Partners_subVO ps) {
+        partnersDao.updatePartnersSub(ps);
     }
 
     @Override
-    public void updatePartners(String businessNum) { partnersDao.updatePartners(businessNum); }
+    public void updatePartners(PartnersVO p) { partnersDao.updatePartners(p); }
 
     @Override
-    public void insertPartnersSub(String businessNum) {
-        partnersDao.insertPartnersSub(businessNum);
+    public void insertPartnersSub(Partners_subVO ps) {
+        partnersDao.insertPartnersSub(ps);
+    }
+
+    @Override
+    public EstimateVO selectEstimate(String mem_id) {
+        return partnersDao.selectEstimate(mem_id);
+    }
+
+    @Override
+    public int checkSub(String businessNum) {
+        return partnersDao.checkSub(businessNum);
     }
 
 

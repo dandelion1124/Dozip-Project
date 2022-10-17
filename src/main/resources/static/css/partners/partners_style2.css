@@ -58,13 +58,13 @@
    .business-01{
    		display:inline-block;
    }
-   #businessNum, #businessName, #pName, #pTel{
+   #businessNum, #businessName, #p_Name, #p_Tel{
    		background-color:#E8F5FF;
    		border:1px solid lightgray;
    		height:30px;
    		width:300px;
    }
-   #pAddress,#deposit_money,#pRes_person_name,#pRes_person_tel,#pCom_person_name,
+   #p_Address,#deposit_money,#pRes_person_name,#pRes_person_tel,#pCom_person_name,
    #pCom_person_tel,#pAccount_bank,#pAccount_name,#pAccount_num{
        border:1px solid lightgray;
        height:30px;

@@ -1,10 +1,7 @@
 package com.dozip.controller;
 
 import com.dozip.service.PartnersService;
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.Partners_subVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -203,8 +200,18 @@ public class PartnersController {
     public ModelAndView bid(HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
+        String mem_id=(String) session.getAttribute("id");
 
-        ModelAndView m= new ModelAndView();
+        EstimateVO e=this.partnersService.selectEstimate(mem_id);
+
+        //System.out.println(e.toString());
+        //System.out.println(e.getMem_id());
+        System.out.println(e.getEst_check());
+
+
+        ModelAndView m=new ModelAndView();
+        m.addObject("e", e);//e 키이름에 e객체 저장
+
         m.setViewName("/partners/estimate_request/bid");
         return m;
     }
@@ -495,15 +502,15 @@ public class PartnersController {
         Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
 
            //System.out.println(p.toString());
-           //System.out.println(p.getPName()+" "+p.getPTel());
+           //System.out.println(p.getP_Name()+" "+p.getP_Tel());
             //System.out.println(p.getPAddress()); paddress가 처음에 null이어서??
             //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
             //m.addObject("ps   ",ps);
-            m.addObject("pName",p.getP_Name());
-            m.addObject("pTel",p.getP_Tel());
+            //m.addObject("pName",p.getP_Name());
+            //m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
 
             //ps.setPShortstate(); ps객체가 null인 상태라 안되는중.
@@ -513,13 +520,13 @@ public class PartnersController {
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage_ok",method=RequestMethod.POST)
-    public String data_manage_ok(Model m,HttpServletResponse response,HttpServletRequest request,
+    @RequestMapping(value="/data_manage_ok",method=RequestMethod.POST) //data_manage
+    public String data_manage_ok(Model m, Partners_subVO ps, HttpServletResponse response,HttpServletRequest request,
         HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String pAddress=request.getParameter("pAddress");
+        /*String pAddress=request.getParameter("pAddress");
 
         String pBusinessNum=request.getParameter("businessNum");
         String pShortstate=request.getParameter("pShortstate");
@@ -550,11 +557,26 @@ public class PartnersController {
         //System.out.println(p.getPAddress());
         //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
         System.out.println(ps.toString());
+        */
 
         //여기까진 잘나오는데 sql문이 제대로 실행이 안되고 있음!!!
         //this.partnersService.updatePartners(businessNum);
         //this.partnersService.updatePartnersSub(businessNum);
-        this.partnersService.insertPartnersSub(businessNum);
+
+        if(request.getParameter("pAddress")!=null) {
+            PartnersVO p = new PartnersVO();
+            p.setP_Address(request.getParameter("pAddress"));
+            p.setBusinessNum(ps.getBusinessNum());
+            this.partnersService.updatePartners(p);
+        }
+
+        int res = this.partnersService.checkSub(ps.getBusinessNum()); //select count(getBusinessNum) from t where getBusinessNum=#{getBusinessNum}
+        System.out.println("res");
+        if(res==1) {
+            this.partnersService.insertPartnersSub(ps);
+        }else{
+            this.partnersService.updatePartnersSub(ps);
+        }
 
         //System.out.println(ps.getPShortstate());
         //ps=this.partnersService.getPartnersSub(businessNum);
