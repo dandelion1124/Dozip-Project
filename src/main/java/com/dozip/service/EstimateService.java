@@ -1,5 +1,6 @@
 package com.dozip.service;
 
+import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface EstimateService {
     int getListCount(String mem_id);
 
     List<EstimateVO> getElist(EstimateVO e);
+
+    List<BidVO> getBidList(String est_num);
 }

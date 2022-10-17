@@ -7,6 +7,7 @@ import com.dozip.service.PortfolioService;
 import com.dozip.vo.*;
 import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -351,6 +352,15 @@ public class DozipController {
         mv.setViewName("/dozip/mypage/mypage_est2");
         return mv;
     }
+
+    @RequestMapping(value="/my_est2/{est_num}",produces="application/json") //입찰리스트 불러오기
+    @ResponseBody
+    public List<BidVO> bidList(@PathVariable("est_num") String est_num){
+        List<BidVO> list = new ArrayList<>();
+        list = this.estimateService.getBidList(est_num);
+        System.out.println(list.toString());
+        return list;
+    }//bidList()
 
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
     public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
