@@ -559,21 +559,52 @@
                 </div>
                 <p class="subtitle">견적요청내용을 확인하시고 맞다면 요청을 보내주세요.</p><br />
                 <div class="estimate_box_page4">
-                    <h3>고객님의 요청내용</h3>
+                    <table class="tg" style= "table-layout: fixed; width: 460px">
+                        <colgroup>
+                            <col style="width: 300px">
+                            <col style="width: 200px">
+                        </colgroup>
 
-                    <h4>고객</h4> ${est_name}
-                    <h4>전화번호</h4>
-                    <h4>공간 유형</h4>
-                    <p>주거</p>
-                    <h4>건물 유형</h4>
-                    <p>아파트</p>
-                    <h4>면적 (공급면적)</h4>
-                    <p>123평 (3.3m2)</p>
-                    <h4>세부선택</h4>
-                    <p>바닥 : 장판</p>
-                    <p>조명 : 전체교체</p>
-                    <h4>고객님 예산</h4>
-                    <p>123,123만원</p>
+                        <tbody>
+                        <tr class="table">
+                            <td class="left">고객님 성함</td>
+                            <td class="right"><div id="get_name"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">전화번호</td>
+                            <td class="right"><div id="get_phone"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">주소</td>
+                            <td class="right"><div id="get_addr"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">공간유형</td>
+                            <td class="right"><div id="get_zoning"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">건물유형</td>
+                            <td class="right"><div id="get_use"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">면적 (공급면적)</td>
+                            <td class="right"><div id="get_area"></div>평</td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">세부선택</td>
+                            <td class="right"><div id="get_detail"></div></td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">고객님의 예산</td>
+                            <td class="right"><div id="get_cost"></div>만원</td>
+                        </tr>
+                        <tr class="table">
+                            <td class="left">날짜</td>
+                            <td class="right"><div id="get_start"></div> ~ <div id="get_end"></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                 </div>
                 <input type="hidden" id="d" name="d">
                 <input type="hidden" id="d3" name="d3">
@@ -599,26 +630,30 @@
         $('.page5').show();
     }
     function apply03_check(){ /*3 페이지 유효성 검증 */
-        var est_name = document.getElementById("name");
-        var est_phone = document.getElementById("phone");
-        var est_addr = document.getElementById("addr");
-        var est_desc = document.getElementById("paragraph");
+        var est_name = document.getElementById("name").value;
+        var est_phone = document.getElementById("phone").value;
+        var est_addr = document.getElementById("addr").value;
+        var est_desc = document.getElementById("paragraph").value;
+        document.getElementById("get_name").innerText = est_name;
+        document.getElementById("get_phone").innerText = est_phone;
+        document.getElementById("get_addr").innerText = est_addr;
+        //document.getElementById("get_desc").innerText = est_desc;
 
-        if(est_name.value == ""){
+        if(est_name == ""){
             alert('성함을 알려주세요!');
             name.focus();
             return false;
         }
-        if(est_phone.value == "") {
+        if(est_phone == "") {
             alert('전화번호을 알려주세요!');
             phone.focus();
             return false;
-        }if (est_phone.value == "") {
+        }if(est_addr == "") {
             alert('주소를 알려주세요!');
-            phone.focus();
+            addr.focus();
             return false;
         }
-        if (est_desc.value == "") {
+        if (est_desc == "") {
             alert('세부 스타일을 알려주세요!');
             paragraph.focus();
             return false;
@@ -627,21 +662,23 @@
         $('.page4').show();
     }
     function apply02_check() { /*2 페이지 유효성 검증 */
-        var est_bud = document.getElementById("estimate_cost");
-        var est_start = document.getElementById("est_start");
-        var est_end = document.getElementById("est_end");
+        var est_bud = document.getElementById("estimate_cost").value;
+        var est_start = document.getElementById("est_start").value;
+        var est_end = document.getElementById("est_end").value;
+        document.getElementById("get_cost").innerText = est_bud;
+        document.getElementById("get_start").innerText = est_start;
+        document.getElementById("get_end").innerText = est_end;
 
-        if(est_bud.value == "") {
+        if(est_bud == "") {
             alert('예산을 입력해주세요!');
-            estimate_cost.focus();
             return false;
         }
-        else if(est_start.value == "") {
+        else if(est_start == "") {
             alert('시작일을 알려주세요!');
             est_start.focus();
             return false;
         }
-        else if(est_end.value == "") {
+        else if(est_end == "") {
             alert('종료일을 알려주세요!');
             est_end.focus();
             return false;
@@ -650,6 +687,9 @@
         $('.page3').show();
     }
 function apply01_check() { /*1 페이지 유효성 검증 */
+        var area = document.getElementById('cal1').value
+        document.getElementById("get_area").innerText = area;
+
 	if ($(':radio[name="est_use"]:checked').length < 1) {
 		alert('건물 유형을 선택해 주세요!');
 		return false;
@@ -671,6 +711,24 @@ function apply01_check() { /*1 페이지 유효성 검증 */
 	}
 
     /*체크박스 배열로 값받기*/
+    var a ='';
+    var zoning = document.getElementsByName('est_zoning');
+    for(var i=0; i<zoning.length; i++){
+        if(zoning[i].checked){
+            a+=zoning[i].value;
+        }
+    }
+    document.getElementById("get_zoning").innerText = a;
+
+    var est_use ='';
+    var use = document.getElementsByName('est_use');
+    for(var i=0; i<use.length; i++){
+        if(use[i].checked){
+            est_use += use[i].value;
+        }
+    }
+    document.getElementById("get_use").innerText = est_use;
+
     var all = '';
     var detail_val = document.getElementsByName("check");
     for(var i=0; i<detail_val.length; i++){
@@ -680,6 +738,7 @@ function apply01_check() { /*1 페이지 유효성 검증 */
     }
 
     document.getElementById("d").value = all;
+    document.getElementById("get_detail").innerText = all;
 
     var all2 = '';
     var detail03_val = document.getElementsByName("group_kitchen_item");

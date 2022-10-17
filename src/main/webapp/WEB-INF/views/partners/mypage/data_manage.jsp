@@ -94,14 +94,14 @@
 					<div class="business-03">
 						<label><b>대표자 이름</b></label><br />
 						<div>
-							<input type="text" id="pName" name="pName" value="${pName}" readonly size="30">
+							<input type="text" id="pName" name="p_Name" value="${pName}" readonly size="30">
 						</div>
 						<br />
 					</div>
 					<div class="business-04">
 						<label><b>대표자 연락처</b></label><br />
 						<div>
-							<input type="text" id="pTel" name="pTel" value="${pTel}" size="30">
+							<input type="text" id="pTel" name="p_Tel" value="${pTel}" size="30">
 						</div>
 						<br />
 					</div>

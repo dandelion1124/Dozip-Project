@@ -32,4 +32,10 @@ public class EstimateVO {
         private String est_addr;
         private String est_desc;
         private String est_file;
+
+        //페이징. 쪽나누기 관련변수
+        private int startrow; //시작행번호
+        private int endrow; //끝행 번호
+
+        private String businessName; //사업자명
 }

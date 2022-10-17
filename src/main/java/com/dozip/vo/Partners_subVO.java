@@ -5,25 +5,23 @@ import lombok.Data;
 @Data
 public class Partners_subVO {
 	private String businessNum;
-	private String pShortstate;
-	private String pInt_img;
-	private String pComp_logo;
-	private String pService;
-	private String pHomepg;
-	private String pRes_build_type;
-	private String pRes_space_type;
-	private String pCom_build_type;
-	private String pCom_space_type;
-	private String pRes_person_name;
-	private String pRes_person_tel;
-	private String pCom_person_name;
-	private String pCom_person_tel;
-	private int pBalance;
-	private String pAccount_bank;
-	private String pAccount_name;
-	private String pAccount_num;
-	private String pAccount_file;
-	private String pBusiness_lic_file;
-
-	
+	private String p_Shortstate;
+	private String p_Int_img;
+	private String p_Comp_logo;
+	private String p_Service;
+	private String p_Homepg;
+	private String p_Res_build_type;
+	private String p_Res_space_type;
+	private String p_Com_build_type;
+	private String p_Com_space_type;
+	private String p_Res_person_name;
+	private String p_Res_person_tel;
+	private String p_Com_person_name;
+	private String p_Com_person_tel;
+	private int p_Balance;
+	private String p_Account_bank;
+	private String p_Account_name;
+	private String p_Account_num;
+	private String p_Account_file;
+	private String p_Business_lic_file;
 }
