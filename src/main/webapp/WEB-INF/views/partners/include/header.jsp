@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>파트너스 메인</title>
+    <title>DOZIP PARTNERS</title>
     <link rel="stylesheet" href="/css/partners/main_style.css">
     <link rel='stylesheet' href="/css/partners/calendar.css"/>
     <link rel="stylesheet" href="/css/partners/partners_style.css">
