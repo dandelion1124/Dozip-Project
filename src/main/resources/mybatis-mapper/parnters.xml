@@ -88,13 +88,22 @@
         where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
-    <update id="update_data">
+    <update id="update_data" parameterType="PartnersVO">
         update PartnersT set p_Address=#{pAddress, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
     <insert id="insert_subdata">
-        insert into Partners_subT (p_Shortstate,p_Homepg,p_Res_person_name)
-        values(#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR})
+        insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Res_person_name)
+        values(#{businessNum},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR})
     </insert>
+
+    <!-- 입찰 리스트 -->
+    <select id="select_estdata" resultType="EstimateVO">
+        select * from estimateT where mem_id=#{mem_id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="res_check" resultType="int">
+        select count(businessNum) from Partners_subT where businessNum=#{businessNum}
+    </select>
 </mapper>
 

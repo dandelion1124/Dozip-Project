@@ -5,7 +5,7 @@
 
 	/* String [] value= request.getParameterValues("pService");
 	for(String val: value){
-		out.print(val+"<br>");
+		out.print(val+"<br>");`
 	} */
 %>
 <script>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 		<div class="all_information">
-			<form method="post" action="data_manage">
+			<form method="post" action="data_manage_ok">
 				<fieldset id="business">
 					<legend>
 						<b>사업자 정보</b>
@@ -94,14 +94,14 @@
 					<div class="business-03">
 						<label><b>대표자 이름</b></label><br />
 						<div>
-							<input type="text" id="pName" name="p_Name" value="${pName}" readonly size="30">
+							<input type="text" id="p_Name" name="p_Name" value="${p.p_Name}" readonly size="30">
 						</div>
 						<br />
 					</div>
 					<div class="business-04">
 						<label><b>대표자 연락처</b></label><br />
 						<div>
-							<input type="text" id="pTel" name="p_Tel" value="${pTel}" size="30">
+							<input type="text" id="p_Tel" name="p_Tel" value="${p.p_Tel}" size="30">
 						</div>
 						<br />
 					</div>
@@ -113,7 +113,7 @@
                             <button type="button">변경</button> -->
 						</div>
 						<div>
-							<input type="text"  id="pAddress" name="pAddress"  size="30" value="" />
+							<input type="text"  id="p_Address" name="p_Address"  size="30" value="" />
 						</div>
 						<br />
 					</div>

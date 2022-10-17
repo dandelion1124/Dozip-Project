@@ -1,9 +1,6 @@
 package com.dozip.dao;
 
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.Partners_subVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -91,16 +88,26 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectOne("select_subdata",businessNum);
     }
     @Override
-    public void updatePartnersSub(String businessNum) {
-        sqlSession.update("update_subdata",businessNum);
+    public void updatePartnersSub(Partners_subVO ps) {
+        sqlSession.update("update_subdata",ps);
     }
 
     @Override
-    public void updatePartners(String businessNum) { sqlSession.update("update_data",businessNum); }
+    public void updatePartners(PartnersVO p) { sqlSession.update("update_data",p); }
 
     @Override
-    public void insertPartnersSub(String businessNum) {
-        sqlSession.insert("insert_subdata",businessNum);
+    public void insertPartnersSub(Partners_subVO ps) {
+        sqlSession.insert("insert_subdata",ps);
+    }
+
+    @Override
+    public EstimateVO selectEstimate(String mem_id) {
+        return sqlSession.selectOne("select_estdata",mem_id);
+    }
+
+    @Override
+    public int checkSub(String businessNum) {
+        return sqlSession.selectOne("res_check",businessNum);
     }
 
 }

@@ -1,9 +1,6 @@
 package com.dozip.dao;
 
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.Partners_subVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
 
 import java.util.List;
 
@@ -33,10 +30,14 @@ public interface PartnersDAO {
 
     Partners_subVO getPartnersSub(String businessNum);
 
-    void updatePartnersSub(String businessNum);
+    void updatePartnersSub(Partners_subVO ps);
 
-    void updatePartners(String businessNum);
+    void updatePartners(PartnersVO p);
 
-    void insertPartnersSub(String businessNum);
+    void insertPartnersSub(Partners_subVO ps);
+
+    EstimateVO selectEstimate(String mem_id);
+
+    int checkSub(String businessNum);
 }
 

@@ -1,10 +1,7 @@
 package com.dozip.service;
 
 
-import com.dozip.vo.PartnersVO;
-import com.dozip.vo.Partners_subVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.QnaVO;
+import com.dozip.vo.*;
 
 import java.util.List;
 
@@ -40,9 +37,13 @@ public interface PartnersService {
 
     Partners_subVO getPartnersSub(String businessNum);
 
-    void updatePartnersSub(String businessNum);//data_manage sub회원정보 추가/수정
+    void updatePartnersSub(Partners_subVO ps);//data_manage sub회원정보 추가/수정
 
-    void updatePartners(String businessNum);//data_manage 회원정보 추가/수정(address)
+    void updatePartners(PartnersVO p);//data_manage 회원정보 추가/수정(address)
 
-    void insertPartnersSub(String businessNum);
+    void insertPartnersSub(Partners_subVO ps);
+
+    EstimateVO selectEstimate(String mem_id);
+
+    int checkSub(String businessNum);
 }
