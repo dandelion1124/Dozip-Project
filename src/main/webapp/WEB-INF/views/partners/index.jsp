@@ -9,8 +9,8 @@
     <script src="/js/partners/jquery.js"></script>
     <script src="/js/partners/join.js"></script>
 </head>
-<body>
-<c:if test="${empty id}">
+<body>x`
+<c:if test="${empty p_id}">
 <article id="join_wrap">
     <div id=signin_cont>
         <div id="signin_title">
@@ -18,11 +18,11 @@
         </div>
         <form action="login_ok" method="post" id="로그인 폼" onsubmit="return login_check();">
             <div>
-                <input type="text" name="pId" id="signin_id" placeholder="아이디">
+                <input type="text" name="p_Id" id="signin_id" placeholder="아이디">
                 <span id="idcheck"></span>
             </div>
             <div>
-                <input type="password" name="pPw" id="signin_pw" placeholder="비밀번호">
+                <input type="password" name="p_Pw" id="signin_pw" placeholder="비밀번호">
                 <span id="pwcheck"></span>
             </div>
             <div>
@@ -43,7 +43,7 @@
         </div>
     </div>
     </c:if>
-    <c:if test="${!empty id }">
+    <c:if test="${!empty p_id }">
         <jsp:include page="include/header.jsp"/>
     <style>
         /* 잠시 옮겨놓음 */

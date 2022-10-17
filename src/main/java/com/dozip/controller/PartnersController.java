@@ -494,14 +494,14 @@ public class PartnersController {
 
         Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
 
-           System.out.println(p.toString());
+           //System.out.println(p.toString());
            //System.out.println(p.getPName()+" "+p.getPTel());
             //System.out.println(p.getPAddress()); paddress가 처음에 null이어서??
             //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
-            //m.addObject("ps",ps);
+            //m.addObject("ps   ",ps);
             m.addObject("pName",p.getP_Name());
             m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
@@ -513,7 +513,7 @@ public class PartnersController {
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage",method=RequestMethod.POST)
+    @RequestMapping(value="/data_manage_ok",method=RequestMethod.POST)
     public String data_manage_ok(Model m,HttpServletResponse response,HttpServletRequest request,
         HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
