@@ -60,4 +60,7 @@ public class DozipDAOImpl implements DozipDAO{
     @Override
     public int updatePwd(MemberVO m) { return this.sqlSession.update("change_pwd", m); }
 
+    @Override
+    public int checkInfo(MemberVO m) { return this.sqlSession.selectOne("check_m", m); }
+
 }

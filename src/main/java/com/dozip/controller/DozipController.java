@@ -9,11 +9,8 @@ import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.QnaVO;
-import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -136,11 +133,50 @@ public class DozipController {
         if(mem_id != null) {
             out.println("<script>");
             out.println("alert('고객님의 아이디는 "+mem_id+" 입니다.');");
-            out.println("history.back();");
+            out.println("location='/dozip/id_login';");
             out.println("</script>");
         }else {
             out.println("<script>");
             out.println("alert('입력하신 정보와 일치하는 아이디가 없습니다.');");
+            out.println("history.back();");
+            out.println("</script>");
+        }
+        return null;
+    }
+
+    @PostMapping("find_pwd") //비밀번호 찾기
+    public String findPwd(MemberVO m, HttpServletResponse response) throws Exception {
+        int res = this.dozipService.checkInfo(m); //작성한 내용과 db의 정보가 일치하는지 확인
+
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        if(res==1) {
+            String imsiPwd = "";
+            for (int i = 0; i < 12; i++) {
+                imsiPwd += (char) ((Math.random() * 26) + 97);
+            }
+            m.setMem_pwd(imsiPwd);
+
+            int result = this.dozipService.updatePwd(m);
+            if(result==1) {
+                try {
+                    this.dozipService.sendEmail(m);
+                    out.println("<script>");
+                    out.println("alert('임시비밀번호가 메일로 발송되었습니다.');");
+                    out.println("location='/dozip/id_login';");
+                    out.println("</script>");
+                }catch (Exception e){
+                    System.out.println("메일발송 실패 : " + e);
+                    out.println("<script>");
+                    out.println("alert('메일발송에 실패했습니다.');");
+                    out.println("history.back();");
+                    out.println("</script>");
+                }
+            }
+        }else {
+            out.println("<script>");
+            out.println("alert('입력하신 정보와 일치하는 정보가 없습니다.');");
             out.println("history.back();");
             out.println("</script>");
         }
@@ -167,7 +203,7 @@ public class DozipController {
         return null;
     }
 
-    @GetMapping("mypage_test") //마이페이지(임시-디자인테스트)
+    @GetMapping("mypage_main") //마이페이지 메인화면
     public String mypagetest() { return "/dozip/mypage/mypage"; }
 
     @GetMapping("my_edit") //마이페이지-회원정보수정 이동(로그인된 정보 불러오기)
@@ -238,6 +274,42 @@ public class DozipController {
             out.println("history.back();");
             out.println("</script>");
         }
+    }
+
+    @GetMapping("my_est") //마이페이지-계약관리 리스트
+    public ModelAndView myCont(ModelAndView mv, EstimateVO e,HttpServletRequest request,HttpSession session) {
+        e.setMem_id((String)session.getAttribute("id"));
+
+        //쪽나누기
+        int page = 1; //현재 쪽번호
+        int limit = 5; //한 페이지에 보여지는 개수
+
+        if(request.getParameter("page")!=null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+
+        int listcount=this.estimateService.getPListCount(e.getMem_id());
+        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
+        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
+        int endpage = maxpage; //마지막페이지
+
+        if(endpage>startpage+5-1) endpage=startpage+5-1;
+
+        mv.addObject("page", page);
+        mv.addObject("startpage", startpage);
+        mv.addObject("endpage",endpage);
+        mv.addObject("maxpage",maxpage);
+        mv.addObject("listcount",listcount);
+
+        //리스트 출력
+        List<EstimateVO> elist = new ArrayList<EstimateVO>();
+        e.setStartrow((page-1)*5+1);
+        e.setEndrow(e.getStartrow()+limit-1);
+        elist = this.estimateService.getPElist(e);
+        mv.addObject("elist", elist);
+
+        mv.setViewName("/dozip/mypage/mypage_est");
+        return mv;
     }
 
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
@@ -401,7 +473,6 @@ public class DozipController {
         ModelAndView mv = new ModelAndView();
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
-        mv.addObject("pt.pAddress",pt.getPAddress());
 
         //System.out.println(pt);
         //System.out.println(pt.getPAddress());

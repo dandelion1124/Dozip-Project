@@ -28,11 +28,11 @@
                 </div>
             </div>
             <div class="info">
-                <label for="pName">대표자 이름</label> <input type="text" id="pName" name="pName"
+                <label for="pName">대표자 이름</label> <input type="text" id="pName" name="p_Name"
                                                          placeholder="대표자 이름을 입력해주세요">
             </div>
             <div class="info">
-                <label for="pTel">대표자 연락처</label> <input type="text" id="pTel" name="pTel" placeholder="핸드폰번호('-')제외">
+                <label for="pTel">대표자 연락처</label> <input type="text" id="pTel" name="p_Tel" placeholder="핸드폰번호('-')제외">
                 <div id="pTel_check_box">
                     <span id="pTel_check"></span>
                 </div>
@@ -40,9 +40,9 @@
             <div class="info">
                 <label for="pMail_id">대표자 이메일</label>
                 <div class="email_info">
-                    <input type="text" id="pMail_id" name="pMailId" placeholder="이메일 아이디"><span
+                    <input type="text" id="pMail_id" name="p_MailId" placeholder="이메일 아이디"><span
                         style="margin: 0px 3px;">@</span>
-                    <input type="text" id="pMail_domain" name="pMailDomain" placeholder="이메일 도메인">
+                    <input type="text" id="pMail_domain" name="p_MailDomain" placeholder="이메일 도메인">
                 </div>
                 <select id="email_adr" name="email_adr">
                     <c:forEach var="e" items="${email}">
@@ -53,7 +53,7 @@
             <div class="info">
                 <label for="pId">아이디</label>
                 <div class=signup_idchk>
-                    <input type="text" id="pId" name="pId" placeholder="4~16자 영문, 숫자">
+                    <input type="text" id="pId" name="p_Id" placeholder="4~16자 영문, 숫자">
                     <input type="button" name="idchk" value="중복확인" onclick="id_check();">
                 </div>
                 <div id="idcheck_box">
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="signup_pwd">
-                <label for="pPw">비밀번호</label> <input type="password" id="pPw" name="pPw"
+                <label for="pPw">비밀번호</label> <input type="password" id="pPw" name="p_Pw"
                                                      placeholder="10~16자 영문, 숫자, 특수문자 조합">
                 <input type="password" id="pwchk" placeholder="비밀번호 다시 입력">
                 <div id="password_check_box">

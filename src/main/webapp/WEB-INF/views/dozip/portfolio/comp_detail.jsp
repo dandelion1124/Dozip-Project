@@ -8,60 +8,64 @@
 	<br><br>
 	<div class = "comp_wrap">
 		<%-- 업체 명함 부분 --%>
-		<div class = "comp_card">
-			<div class=	"comp_img">
-				<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
-			</div>
-			<div class = "comp_name">
-				<h2>${pc.businessName}</h2>
-				<%--
-				현재 pAddress 불러오지 못하는 오류 생김
-				<pre id = "comp_loca">${pc.pAddress}</pre>
-				--%>
-			</div>	
-			<div class = "comp_detail">
-				<button type = "button" id = "comp">보증업체 (i)
-					<span class = "tooltip-text">5000만원 예치금 보증회사</span>
-				</button>
+		<div class = "flip">
+			<div class = "comp_card">
+				<div class = "front">
+					<div class=	"comp_img">
+						<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
+						<button type = "button" id = "comp">보증업체 (i)
+							<span class = "tooltip-text">5000만원 예치금 보증회사</span>
+						</button>
+					</div>
+
+					<div class = "comp_name">
+						<h2>${pc.businessName}</h2>
+						<%--
+						현재 pAddress 불러오지 못하는 오류 생김
+						<pre id = "comp_loca">${pc.pAddress}</pre>
+						--%>
+					</div>
+
+					<%-- 제공 서비스 --%>
+					<div class = "comp_service">
+						<p id = service_title>제공 서비스</p>
+						<div class = "service_images">
+							<img id = "insu" src = "/images/dozip/portfolio/detail/insurance.png"/>
+
+							<img id = "scetch" src = "/images/dozip/portfolio/detail/scetch.png"/>
+
+							<img id = "3d" src = "/images/dozip/portfolio/detail/3D.png"/>
+
+							<img id = "credit" src = "/images/dozip/portfolio/detail/credit.png"/>
+
+						</div>
+						<ul class = "service_cont">
+							<li class = "insu_cont">보증보험</li>
+							<li class = "scetch_cont">일반도면</li>
+							<li class = "3d_cont">3D 도면</li>
+							<li class = "credit_cont">카드결제</li>
+						</ul>
+					</div>
+				</div>
+				<div class = "back">
+					<%-- 업체 정보 --%>
+					<div class = "comp_cont">
+						<p id = "comp_title">업체정보</p>
+						<%--
+						<p id = "comp_ceo">대표자 : ${pc.pName}</p>
+						--%>
+						<p id = "comp_cont">전문분야 : 주거공간 / 상업공간</p>
+						<p id = "comp_place">시공지역 : 서울/경기</p>
+						<p id = "comp_year">경력 : 7년</p>
+						<%--
+						<p id = "comp_where">주소 : ${pc.pAddress}</p>
+						--%>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 
-
-		<%-- 제공 서비스 --%>
-		<div class = "comp_service">
-			<p id = service_title>제공 서비스</p>
-			<div class = "service_images">
-				<img id = "insu" src = "/images/dozip/portfolio/detail/insurance.png"/>
-				
-				<img id = "scetch" src = "/images/dozip/portfolio/detail/scetch.png"/>
-				
-				<img id = "3d" src = "/images/dozip/portfolio/detail/3D.png"/>
-				
-				<img id = "credit" src = "/images/dozip/portfolio/detail/credit.png"/>
-				
-			</div>
-			<ul class = "service_cont">
-				<li class = "insu_cont">보증보험</li>
-				<li class = "scetch_cont">일반도면</li>
-				<li class = "3d_cont">3D 도면</li>
-				<li class = "credit_cont">카드결제</li>
-			</ul>
-		</div>
-		<br><br>
-
-		<%-- 업체 정보 --%>
-		<div class = "comp_cont">
-			<p id = "comp_title">업체정보</p>
-			<%--
-			<p id = "comp_ceo">대표자 : ${pc.pName}</p>
-			--%>
-			<p id = "comp_cont">전문분야 : 주거공간 / 상업공간</p>
-			<p id = "comp_place">시공지역 : 서울/경기</p>
-			<p id = "comp_year">경력 : 7년</p>
-			<%--
-			<p id = "comp_where">주소 : ${pc.pAddress}</p>
-			--%>
-		</div>
 			<div id="map" style="width:40%;height:400px;"></div>
 
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	3d8bfa3cbe8aabf2dd47e365262af246"></script>

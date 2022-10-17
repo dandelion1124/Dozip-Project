@@ -33,4 +33,6 @@ public interface DozipDAO {
     int checkID(String id);
 
     int updatePwd(MemberVO m);
+
+    int checkInfo(MemberVO m);
 }

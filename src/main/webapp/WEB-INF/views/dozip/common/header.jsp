@@ -83,7 +83,7 @@
 							<li><a href="#none" onclick="openLogin();"><i class="fas fa-user"></i></a></li>
 						</c:if>
 						<c:if test="${!empty id}"> <!-- 로그인 후 -->
-							<li><a href="/dozip/mypage"><i class="fas fa-user"></i></a></li>
+							<li><a href="/dozip/mypage_main"><i class="fas fa-user" style="color:#7e9e7f;"></i></a></li>
 						</c:if>
 						<li><a href="/dozip/counsel_main"><i class="fa-solid fa-comments"></i></a></li>
 					</ul>
