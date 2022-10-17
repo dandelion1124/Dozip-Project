@@ -474,8 +474,7 @@ public class DozipController {
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
 
-        //System.out.println(pt);
-        //System.out.println(pt.getPAddress());
+
         mv.setViewName("/dozip/portfolio/port_detail");
         return mv;
     }
