@@ -2,13 +2,13 @@
 
 
 update partnersT set business_num='111' where business_num='105';
-insert into partnersT (business_num, businessName, pId, pPw, pName, pTel, pMail_id, 
-pMail_domain,pAddress, pDate,PDeldate,pDelcont,pState) values(105, '민우', 'baba', 123, 'ㅇ', 010, 'baba@naver','주소주소', '역삼동', 510,520,530,1);
+insert into partnersT (business_num, businessName, P_ID, P_PW, P_NAME, P_TEL, pMail_id,
+pMail_domain,P_ADDRESS, P_DATE,P_DELDATE,P_DELCONT,P_STATE) values(105, '민우', 'baba', 123, 'ㅇ', 010, 'baba@naver','주소주소', '역삼동', 510,520,530,1);
 select * from partnersT;
-update partnersT set pAddress = '강남구 역삼동' where businessNum = '111-11-11111';
+update partnersT set P_ADDRESS = '강남구 역삼동' where businessNum = '111-11-11111';
 drop table partnersT;
 delete from PARTNERST;
-select * from partnersT where pId='shc729';
+select * from partnersT where P_ID='shc729';
 
 
 
@@ -39,7 +39,7 @@ select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, 
 
 delete from portfolioT where businessNum='222-22-22222';
 
-update PARTNERST set  pAddress = '서울시 강남구 선릉로' where  pName = '구동민';
+update PARTNERST set  P_ADDRESS = '서울시 강남구 선릉로' where  P_NAME = '구동민';
 
 select * from portfolioT where businessNum = (select businessNum from partnersT where businessName like '%동민%');
 
