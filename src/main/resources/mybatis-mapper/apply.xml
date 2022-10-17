@@ -12,4 +12,21 @@
               ,#{est_detail01, jdbcType = VARCHAR},#{est_detail02, jdbcType = VARCHAR},#{est_detail03, jdbcType = VARCHAR},#{est_detail04, jdbcType = VARCHAR},#{est_detail05, jdbcType = VARCHAR},#{est_detail06, jdbcType = VARCHAR},#{est_detail07, jdbcType = VARCHAR}
               ,#{est_detail08, jdbcType = VARCHAR},#{est_bud, jdbcType = VARCHAR},#{est_start, jdbcType = VARCHAR},#{est_end, jdbcType = VARCHAR},#{est_name, jdbcType = VARCHAR},#{est_phone, jdbcType = VARCHAR},#{est_desc, jdbcType = VARCHAR},#{est_file, jdbcType = VARCHAR})
     </insert>
+
+    <!--총 개수(해당 아이디의 작성 글 개수 확인 - 업체지정)-->
+    <select id="p_count" resultType="int">
+        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is not null)
+    </select>
+
+    <!--업체지정 견적신청 리스트-->
+    <select id="p_list" resultType="EstimateVO">
+        select * from (
+        select rowNum r, est_num, mem_id, e.businessNum, est_check,est_use,
+        est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
+        from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
+        where e.businessNum=p.businessNum(+) and (e.businessNum is not null)
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+
 </mapper>

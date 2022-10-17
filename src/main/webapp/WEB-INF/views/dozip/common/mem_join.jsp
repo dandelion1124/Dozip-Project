@@ -8,6 +8,19 @@
 	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
 	<script src="/js/dozip/jquery.js"></script>
 	<script src="/js/dozip/member.js"></script>
+	<style>
+		#join_form_table label {
+			font-weight: bold;
+			font-size: 0.9rem;
+			display: inline-block;
+			text-align: left;
+			width: 92%;
+			margin-bottom: 5px;
+		}
+		#join_form_table span {
+			margin-bottom: 0px;
+		}
+	</style>
 </head>
 <body>
 <div id="join_wrap">
@@ -15,44 +28,50 @@
 	<form id="join_form_box" method="post"  name="m"  onsubmit="return join_check();" action="/dozip/member_join_ok">
 		<table id="join_form_table">
 			<tr>
-				<th>아이디</th>
+				<%--<th>아이디</th>--%>
 				<td id="id_box">
+					<label for="mem_id">아이디</label>
 					<input type="text"  name="mem_id"  id="mem_id" placeholder="아이디를 입력해주세요" oninput="id_check();"/><br/>
 					<!-- <button type="button"  onclick="id_check();">아이디체크</button><br/> -->
 					<span class="idcheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
+				<%--<th>비밀번호</th>--%>
 				<td>
+					<label for="mem_pwd">비밀번호</label>
 					<input type="password"  name="mem_pwd"  id="mem_pwd" placeholder="비밀번호를 입력해주세요(4자이상)" oninput="pw_check();"/><br/>
 					<span class="pwdcheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호확인</th>
+				<%--<th>비밀번호확인</th>--%>
 				<td>
+					<label for="mem_pwd_check">비밀번호확인</label>
 					<input type="password"  name="mem_pwd_check"  id="mem_pwd_check" placeholder="비밀번호를 다시 입력해주세요" oninput="double_check();"/><br/>
 					<span class="doublecheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<th>이름</th>
+				<%--<th>이름</th>--%>
 				<td>
+					<label for="mem_name">이름</label>
 					<input type="text"  name="mem_name"  id="mem_name" placeholder="이름을 입력해주세요" oninput="name_check();"/><br/>
 					<span class="namecheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<th>연락처</th>
+				<%--<th>연락처</th>--%>
 				<td>
+					<label for="mem_tel">연락처</label>
 					<input type="text"  name="mem_tel"  id="mem_tel" placeholder="-없이 숫자만 입력해주세요" oninput="tel_check();"/><br/>
 					<span class="telcheck"></span>
 				</td>
 			</tr>
 			<tr>
-				<th>이메일주소</th>
+				<%--<th>이메일주소</th>--%>
 				<td id="emailbox">
+					<label for="mem_email">이메일주소</label>
 					<input type="text"  name="mem_email"  id="mem_email" placeholder="이메일주소를 입력해주세요" oninput="email_check();"/>
 					<span>@</span>
 					<input type="text"  name="mem_domain"  id="mem_domain" placeholder="도메인주소를 입력해주세요" oninput="email_check();"/>

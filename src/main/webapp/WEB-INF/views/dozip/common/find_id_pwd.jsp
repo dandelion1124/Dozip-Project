@@ -43,7 +43,7 @@
 	</form>
 
 	<%--비밀번호 찾기--%>
-	<form class="find_pwd" method="post" action="find_pw"   style="display: none;">
+	<form class="find_pwd" method="post" action="/dozip/find_pwd"   style="display: none;">
 	<table style="width:100%;">
 	<tr><td style="height:70px;">
 		<input class="find_pwd_input"  type="text" name="mem_id" id="mem_id" placeholder="아이디" oninput="id_check2();"/>

@@ -30,6 +30,12 @@
         select * from memberT where mem_id=#{mem_id}
     </select>
 
+    <!--비번찾기(회원정보일치여부확인)-->
+    <select id="check_m" resultType="int">
+        select count(mem_pwd) from memberT where mem_id=#{mem_id} and mem_name=#{mem_name}
+        and mem_tel=#{mem_tel} and mem_email=#{mem_email} and mem_domain=#{mem_domain}
+    </select>
+
     <!--회원정보 수정-->
     <update id="m_update">
         update memberT set mem_name=#{mem_name}, mem_tel=#{mem_tel}, mem_email=#{mem_email}, mem_domain=#{mem_domain},
