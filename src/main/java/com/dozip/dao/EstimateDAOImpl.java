@@ -22,4 +22,10 @@ public class EstimateDAOImpl implements EstimateDAO {
 
     @Override
     public List<EstimateVO> getPElist(EstimateVO e) { return this.sqlSession.selectList("p_list", e); }
+
+    @Override
+    public int getListCount(String mem_id) { return this.sqlSession.selectOne("e_count", mem_id); }
+
+    @Override
+    public List<EstimateVO> getElist(EstimateVO e) { return this.sqlSession.selectList("e_list", e); }
 }
