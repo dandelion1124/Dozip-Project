@@ -111,7 +111,7 @@ create table estimateT
     est_num      varchar2(25) primary key, --고유번호(primary key)
     mem_id       varchar2(20),             --회원아이디 fk
     businessNum nvarchar2(50),            -- 사업자 번호 fk
-    est_check    varchar2(50),             -- est_check 견적 직접신청 수락/거절 확인 컬럼 -> Number로 1,0으로 값받아서수락/거절 확인
+    est_check    varchar2(50) default '대기중', -- est_check 견적 직접신청 수락/거절/대기중/계약요청 (default)확인 컬럼
     est_zoning   varchar2(20),             --공간유형(주거, 상가)
     est_use      varchar2(20),             --건물유형
     est_areaP    varchar2(50),             --평수(평) Number

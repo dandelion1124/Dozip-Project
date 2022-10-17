@@ -1,33 +1,66 @@
 @charset "UTF-8";
 
-/* 상단 명함 부분 */
+/* 상단 명함 부분 뒤집기 추가 */
+/* 원근감으로 3D 환경 만들어줌*/
+.flip {
+	width : 500px;
+	height : 600px;
+	perspective: 1100px; /* 원근감 */
+}
+
 .comp_card {
-	width : 400px;
-	height: 150px;
-	float : left;
-	margin-top: 50px;
-	margin-left: 300px;
+	width : 100%;
+	height: 100%;
+	margin-left: 150px;
+	transition: .4s;
+	transform-style: preserve-3d;
 	background-color : #fff;
-	display:flex;
-	justify-content: space-evenly;
-	align-items : center;
 	flex-grow : 1;
 	flex-wrap : wrap;
 	outline : 3px solid #347844; 
 	border-radius : 5px;
 }
 
+
+/* backface-visibility 요소 뒷면을 보여줄지 결정*/
+.front,.back{
+	/*position: absolute;*/
+	width : 100%;
+	height : 100%;
+	backface-visibility: hidden;
+}
+
+/* 뒷면 사전에 뒤집기 */
+.back{
+	transform: rotateY(180deg);
+}
+
+/* 호버시 뒤집기 */
+/* 요소를 Y축 기준으로 회전시킴*/
+.flip:hover .comp_card{
+	transform: rotateY(180deg);
+}
+
 #comp_logo {
   width: 100px;
   height: 100px;
+  margin-top:30px;
+  margin-left: 80px;
   object-fit: cover;
-  border-radius: 100%;	
+  border-radius: 100%;
+  justify-content: left;
 }
 
 .comp_img {
 	display:flex;
-	justify-content:flex-start; 
-	
+	justify-content: left;
+}
+
+.comp_name{
+	display:flex;
+	justify-content: center;
+	margin-top:30px;
+	margin-bottom: 10px;
 }
 
 h2{
@@ -40,13 +73,15 @@ h2{
 	font-size : 1.0rem;
 }
 #comp {
-	display: inline-block;
+	/*display: inline-block;*/
 	border:0;
 	border-radius : 5px;
 	font-size : 18px;
 	text-align : center;
 	width : 120px;
 	height : 50px;
+	margin-top:60px;
+	margin-left: 40px;
 	background-color : #347844;
 	font-family : 'Malgun Gothic';	
 	color : white;
@@ -80,8 +115,9 @@ h2{
 
 /*제공 서비스 부분*/
 .comp_service{
-	float:right;
-	margin-right: 200px;
+	margin-top:20px;
+	margin-left: 10px;
+	justify-content: left;
 }
 
 #service_title {
@@ -97,7 +133,6 @@ h2{
 	display : flex;
 	flex-direction : row;
 	justify-content: space-evenly;
-	padding: 0px, 30px;
 }
 
 .service_cont {
@@ -116,28 +151,7 @@ h2{
 }
 
 /* 업체 정보 */
-#comp_title {
-	margin-top:150px;
-	font-family : 'Malgun Gothic';
-	font-weight : 1000;
-	font-size: 1.6rem;
-	color : #347844;
-	text-align : center;
-}
 
-.comp_cont {
-	display:flex;
-	flex-direction : column;
-	float:left;
-	margin-left: 300px;
-	align-items : center;
-	font-family : 'Malgun Gothic';
-}
-
-#comp_ceo, #comp_cont, #comp_place, #comp_year, #comp_where{
-	font-size : 1.3rem;
-	font-weight : 500;
-}
 
 /* 지도 */
 #map{
