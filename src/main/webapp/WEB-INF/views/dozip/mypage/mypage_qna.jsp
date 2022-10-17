@@ -137,7 +137,7 @@
     <div class="mqw_box"><button id="my_qna_write_btn">
         <a href="/dozip/qna_write" >문의글 작성하기</a>
     </button></div>
-    <p id="my_qna_text">더 많은 질문을 확인하고 싶다면? <a href="../counsel/counsel_main.jsp">자주하는 질문 보러가기</a></p>
+    <p id="my_qna_text">더 많은 질문을 확인하고 싶다면? <a href="/dozip/counsel_main">자주하는 질문 보러가기</a></p>
 </div>
 
 

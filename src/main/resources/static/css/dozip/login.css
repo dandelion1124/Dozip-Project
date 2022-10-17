@@ -130,14 +130,16 @@
 	align-items: center;
 	width:90%;
 	margin: 0 auto;
-	border-spacing: 0 15px;
-	background-color: #d5eaca;
-	border-radius: 5px;
+	border-spacing: 0 3px;
+	/*background-color: #d5eaca;*/
+	border: 1px dotted #7f8c8d;
+	border-top: 5px #347844 solid;
+	padding: 20px;
 }
-#join_form_table th {
+/*#join_form_table th {
 	text-align: center;
 	font-size: 1.0rem;
-}
+}*/
 
 #join_form_table input {
 	height: 30px;
@@ -151,19 +153,19 @@
 	margin-right: 10px;
 } */
 #emailbox>input, #emailbox>select{
-	width: 26%;
+	width: 27%;
 	height: 30px;
 }
 #join_btn {
 	width: 75%;
 	font-size: 1.3rem;
 	font-weight:bold;
-	height: 50px;
-	border-radius: 5px;
+	height: 40px;
 	border: 0;
 	background-color: #347844;
 	color: white;
-	margin-top: 20px;
+	margin: 20px auto;
+	border-radius: 5px;
 }
 .join_agree {
 	width:90%;

@@ -31,8 +31,8 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.7'
     implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 
-
-
+    //임시번호 메일로 보내기
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
     //jsp view 페이지 설정
     implementation('org.apache.tomcat.embed:tomcat-embed-jasper')

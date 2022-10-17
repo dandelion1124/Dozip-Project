@@ -5,6 +5,8 @@ import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EstimateServiceImpl implements EstimateService {
 
@@ -14,5 +16,11 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public void applyOk(EstimateVO e) {
         this.estimateDAO.applyOk(e);  }
+
+    @Override
+    public int getPListCount(String mem_id) { return this.estimateDAO.getPListCount(mem_id); }
+
+    @Override
+    public List<EstimateVO> getPElist(EstimateVO e) { return this.estimateDAO.getPElist(e); }
 
 }
