@@ -103,6 +103,7 @@ create table partners_subT
     foreign key (businessNum) references partnersT (businessNum)
 );
 
+
 --5. 견적서 테이블 --
 drop table estimateT;
 select * from estimateT;

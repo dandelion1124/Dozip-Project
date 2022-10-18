@@ -27,4 +27,5 @@ create table partners_subT
 
 drop table partners_subT;
 select * from partners_subT;
-DELETE FROM partners_subT WHERE p_shortstate=null;
+DELETE FROM partners_subT 
+commit;

@@ -200,13 +200,12 @@ public class PartnersController {
     public ModelAndView bid(HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        String mem_id=(String) session.getAttribute("id");
+        String mem_id=(String) session.getAttribute("p_id");
 
         EstimateVO e=this.partnersService.selectEstimate(mem_id);
 
-        //System.out.println(e.toString());
+        System.out.println(e.toString());
         //System.out.println(e.getMem_id());
-        System.out.println(e.getEst_check());
 
 
         ModelAndView m=new ModelAndView();
@@ -497,18 +496,19 @@ public class PartnersController {
 //            out.println("</script>");
 //        }else {
         //System.out.println(businessNum);
+          //this.partnersService.insertPartnersSub(businessNum);
         PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
 
         Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
 
            //System.out.println(p.toString());
            //System.out.println(p.getP_Name()+" "+p.getP_Tel());
-            //System.out.println(p.getPAddress()); paddress가 처음에 null이어서??
+            //System.out.println(p.getP_Address());
             //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
-            //m.addObject("ps   ",ps);
+            m.addObject("ps",ps);
             //m.addObject("pName",p.getP_Name());
             //m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
@@ -526,7 +526,9 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        /*String pAddress=request.getParameter("pAddress");
+       //String businessNum = (String)session.getAttribute("businessNum");
+/*
+        String pAddress=request.getParameter("pAddress");
 
         String pBusinessNum=request.getParameter("businessNum");
         String pShortstate=request.getParameter("pShortstate");
@@ -540,39 +542,40 @@ public class PartnersController {
         String pAccount_name=request.getParameter("pAccount_name");
         String pAccount_num=request.getParameter("pAccount_num");
 
-        String businessNum = (String)session.getAttribute("business_num");
+
         //System.out.println(pAddress);
         //System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
 
         PartnersVO p=new PartnersVO();
-        Partners_subVO ps=new Partners_subVO();
+        //Partners_subVO ps=new Partners_subVO();
 
-        p.setP_Address(pAddress);
+       p.setP_Address(pAddress);
         ps.setBusinessNum(pBusinessNum);
         ps.setP_Shortstate(pShortstate); ps.setP_Homepg(pHomepg); ps.setP_Res_person_tel(pRes_person_name);
         ps.setP_Res_person_tel(pRes_person_tel); ps.setP_Com_person_name(pCom_person_name); ps.setP_Com_person_tel(pCom_person_tel);
         //ps.setPBalance(pBalance);
         ps.setP_Account_bank(pAccount_bank); ps.setP_Account_name(pAccount_name); ps.setP_Account_num(pAccount_num);
-
+*/
         //System.out.println(p.getPAddress());
         //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
-        System.out.println(ps.toString());
-        */
+        //System.out.println(ps.toString());
 
-        //여기까진 잘나오는데 sql문이 제대로 실행이 안되고 있음!!!
         //this.partnersService.updatePartners(businessNum);
         //this.partnersService.updatePartnersSub(businessNum);
 
-        if(request.getParameter("pAddress")!=null) {
+        if(request.getParameter("p_Address")!=null) {
             PartnersVO p = new PartnersVO();
-            p.setP_Address(request.getParameter("pAddress"));
+            p.setP_Address(request.getParameter("p_Address"));
             p.setBusinessNum(ps.getBusinessNum());
+            System.out.println(p.getP_Address());
+            System.out.println(p.getBusinessNum());
+            System.out.println(p.toString());
             this.partnersService.updatePartners(p);
         }
 
         int res = this.partnersService.checkSub(ps.getBusinessNum()); //select count(getBusinessNum) from t where getBusinessNum=#{getBusinessNum}
-        System.out.println("res");
-        if(res==1) {
+        System.out.println(res);
+        if(res==0) {
             this.partnersService.insertPartnersSub(ps);
         }else{
             this.partnersService.updatePartnersSub(ps);
@@ -590,17 +593,6 @@ public class PartnersController {
 //            this.partnersService.updatePartners(businessNum);
 //
 //
-//        }else { //없으면
-//            int re = psdao.insertPartnersSub(psdto);
-//            if(re==1) {
-//                request.setAttribute("pd", re);
-//
-//                out.println("<script>");
-//                out.println("alert('정보 입력 성공!');");
-//                out.println("history.back();");
-//                out.println("</script>");
-//            }
-//        }
         out.println("<script>");
         out.println("alert('정보 입력 성공!');");
         out.println("history.back();");
