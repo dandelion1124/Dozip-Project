@@ -504,7 +504,6 @@ public class PartnersController {
            //System.out.println(p.toString());
            //System.out.println(p.getP_Name()+" "+p.getP_Tel());
             //System.out.println(p.getP_Address());
-            //System.out.println(ps.toString());
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
@@ -513,7 +512,9 @@ public class PartnersController {
             //m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
 
-            //ps.setPShortstate(); ps객체가 null인 상태라 안되는중.
+
+
+            //m.addObject("");
 
             m.setViewName("/partners/mypage/data_manage");
             return m;
@@ -543,6 +544,7 @@ public class PartnersController {
         String pAccount_num=request.getParameter("pAccount_num");
 
 
+
         //System.out.println(pAddress);
         //System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
 
@@ -563,13 +565,22 @@ public class PartnersController {
         //this.partnersService.updatePartners(businessNum);
         //this.partnersService.updatePartnersSub(businessNum);
 
+        String pf_addr1=request.getParameter("pf_addr1");
+        String pf_addr2=request.getParameter("pf_addr2");
+        String pf_addr3=request.getParameter("pf_addr3");
+        String p_address=pf_addr1+" "+pf_addr2+""+pf_addr3;
+
+        System.out.println(pf_addr1+" "+pf_addr2+""+pf_addr3);
+
+
         if(request.getParameter("p_Address")!=null) {
             PartnersVO p = new PartnersVO();
-            p.setP_Address(request.getParameter("p_Address"));
+            //p.setP_Address(request.getParameter("p_Address"));
+            p.setP_Address(p_address);
             p.setBusinessNum(ps.getBusinessNum());
             System.out.println(p.getP_Address());
-            System.out.println(p.getBusinessNum());
-            System.out.println(p.toString());
+            //System.out.println(p.getBusinessNum());
+            //System.out.println(p.toString());
             this.partnersService.updatePartners(p);
         }
 
@@ -577,6 +588,7 @@ public class PartnersController {
         System.out.println(res);
         if(res==0) {
             this.partnersService.insertPartnersSub(ps);
+
         }else{
             this.partnersService.updatePartnersSub(ps);
         }

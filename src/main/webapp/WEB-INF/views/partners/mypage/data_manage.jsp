@@ -117,16 +117,14 @@
                             <button type="button">변경</button> -->
 						</div>
 						<div>
-							<input type="text"  id="p_Address" name="p_Address"  size="30" value="${p.p_Address}" />
-
-
                             <%--주소 검색 API 코드 --%>
 
+							<input type="text" id="p_Address" name="p_Address"  size="30" value="${p.p_Address}" readonly />
+							<input type="button" class="address_button" value="주소검색" onclick="sample6_execDaumPostcode()">
 							<input type="text" id="sample6_postcode" readonly placeholder="우편번호"  size="4" name="pf_zipcode">
-                            <input type="text" id="sample6_address"  name ="pf_addr1" readonly  placeholder="주소" size="30">
-                            <input type="text" id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소">
-                            <input type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목" size=10>
-                            <input type="button" value="주소검색" onclick="sample6_execDaumPostcode()">
+							<input type="text" id="sample6_address"  name ="pf_addr1" readonly  placeholder="주소" size="30">
+							<input type="text" id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소">
+							<input type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목" size=10>
 
 
 
@@ -348,7 +346,7 @@
 							<label><b>주거 담당자</b></label>
 							<div><input type="text" size="20" id="p_Res_person_name" name="p_Res_person_name" value="${ps.p_Res_person_name}" placeholder="담당자명"></div></br>
 							<label><b>담당자 연락처</b></label>
-							<div><input type="text" size="20" id="p_Res_person_tel" name="p_Res_person_tel" <%--value="${ps.pRes_person_tel}"--%> placeholder="담당자 연락처"></div>
+							<div><input type="text" size="20" id="p_Res_person_tel" name="p_Res_person_tel" value="${ps.p_Res_person_tel}" placeholder="담당자 연락처"></div>
 							<label>
 								<input type="checkbox" aria-hidden="false">
 								<span class="">대표자 정보와 동일 <!----></span>
@@ -356,9 +354,9 @@
 						</div></br>
 						<div>
 							<label><b>상업 담당자</b></label>
-							<div><input type="text" size="20" id="p_Com_person_name" name="p_Com_person_name" <%--value="${ps.pCom_person_name}"--%> placeholder="담당자명"></div></br>
+							<div><input type="text" size="20" id="p_Com_person_name" name="p_Com_person_name" value="${ps.p_Com_person_name}" placeholder="담당자명"></div></br>
 							<label id="payment-link"><b>담당자 연락처</b></label>
-							<div><input type="text" size="20" id="p_Com_person_tel" name="p_Com_person_tel" <%--value="${ps.pCom_person_tel}"--%> placeholder="담당자 연락처"></div>
+							<div><input type="text" size="20" id="p_Com_person_tel" name="p_Com_person_tel" value="${ps.p_Com_person_tel}" placeholder="담당자 연락처"></div>
 							<label>
 								<input type="checkbox" aria-hidden="false">
 								<span class="">대표자 정보와 동일 <!----></span>
@@ -380,9 +378,9 @@
 
 					<div>
 						<label><b>입금계좌</b></label>
-						<div><input type="text" size="20" id="p_Account_bank" name="p_Account_bank" <%--value="${ps.pAccount_bank}"--%> placeholder="은행명"></div>
-						<div><input type="text" size="20" id="p_Account_name"name="p_Account_name" <%--value="${ps.pAccount_name}"--%> placeholder="예금주"></div>
-						<div><input type="text" size="20" id="p_Account_num" name="p_Account_num" <%--value="${ps.pAccount_num}"--%> placeholder="계좌번호"></div>
+						<div><input type="text" size="20" id="p_Account_bank" name="p_Account_bank" value="${ps.p_Account_bank}" placeholder="은행명"></div>
+						<div><input type="text" size="20" id="p_Account_name"name="p_Account_name" value="${ps.p_Account_name}" placeholder="예금주"></div>
+						<div><input type="text" size="20" id="p_Account_num" name="p_Account_num" value="${ps.p_Account_num}" placeholder="계좌번호"></div>
 					</div></br>
 					<div>
 						<div class="representative-01">
