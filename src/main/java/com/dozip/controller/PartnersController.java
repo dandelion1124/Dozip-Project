@@ -560,10 +560,54 @@ public class PartnersController {
         //System.out.println(p.getPAddress());
         //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
         //System.out.println(ps.toString());
+        PartnersVO p = new PartnersVO();
+        String[] p_Service = {};
+        String[] p_Res_build_type = {};
+        String[] p_Res_space_type = {};
+        String[] p_Com_build_type = {};
+        String[] p_Com_space_type = {};
 
+        p_Service= request.getParameterValues("p_Service");
+        p_Res_build_type=request.getParameterValues("p_Res_build_type");
+        p_Res_space_type=request.getParameterValues("p_Res_space_type");
+        p_Com_build_type=request.getParameterValues("p_Com_build_type");
+        p_Com_space_type=request.getParameterValues("p_Com_space_type");
+
+        //ps.setP_Service( request.getParameterValues("p_Service"));
+        String pservice="";
+        for(int i=0;i<p_Service.length;i++){
+            pservice+=p_Service[i]+"/";
+        }
+        System.out.println(pservice);
+
+        String pRes_build_type="";
+        for(int i=0;i<p_Res_build_type.length;i++){
+            pRes_build_type+=p_Res_build_type[i]+"/";
+        }
+        System.out.println(pRes_build_type);
+
+        String pRes_space_type="";
+        for(int i=0;i<p_Res_space_type.length;i++){
+            pRes_space_type+=p_Res_space_type[i]+"/";
+        }
+        System.out.println(pRes_space_type);
+
+        String pCom_build_type="";
+        for(int i=0;i<p_Res_space_type.length;i++){
+            pservice+=p_Res_space_type[i]+"/";
+        }
+        System.out.println(pCom_build_type);
+
+        String pCom_space_type="";
+        for(int i=0;i<p_Com_space_type.length;i++){
+            pCom_space_type+=p_Com_space_type[i]+"/";
+        }
+        System.out.println(pCom_space_type);
+
+
+        //ps.setP_Service();
 
         if(request.getParameter("p_Addr1")!=null) {
-            PartnersVO p = new PartnersVO();
             //p.setP_Address(request.getParameter("p_Address"));
             p.setP_Addr1(request.getParameter("p_Addr1"));
             p.setP_Addr2(request.getParameter("p_Addr2"));
