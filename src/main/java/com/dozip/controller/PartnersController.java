@@ -204,7 +204,7 @@ public class PartnersController {
 
         EstimateVO e=this.partnersService.selectEstimate(mem_id);
 
-        System.out.println(e.toString());
+      //  System.out.println(e.toString());
         //System.out.println(e.getMem_id());
 
 
@@ -239,11 +239,6 @@ public class PartnersController {
      *
      *
      *  */
-    @RequestMapping(value = "/estimate_list")
-    public String estimate_list() {  // 견적목록 
-        return "/partners/estimate/estimate_list";
-    }
-
 
 
     /*내 공사

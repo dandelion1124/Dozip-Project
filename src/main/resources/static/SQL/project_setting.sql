@@ -115,8 +115,8 @@ create table estimateT
     est_check    varchar2(50) default '대기중', -- est_check 견적 직접신청 수락/거절/대기중/계약요청 (default)확인 컬럼
     est_zoning   varchar2(20),             --공간유형(주거, 상가)
     est_use      varchar2(20),             --건물유형
-    est_areaP    varchar2(50),             --평수(평) Number
-    est_areaM     varchar2(50),             --제곱미터 Number
+    est_areaP    varchar2(50),             --평수(평)
+    est_areaM     varchar2(50),             --제곱미터
     est_detail   varchar2(500),            -- 원하는 공간(도배/벽,바닥,주방,욕실,현관,발코니/샷시,조명,문)
     est_detail01 varchar2(30),             -- 도배/벽 의 디테일
     est_detail02 varchar2(30),             -- 바닥 의 디테일
@@ -126,7 +126,7 @@ create table estimateT
     est_detail06 varchar2(30),             --발코니/샷시 의 디테일
     est_detail07 varchar2(30),             --조명 의 디테일
     est_detail08 varchar2(30),             --문 의 디테일
-    est_bud      varchar2(50),             --예산 Number
+    est_bud      varchar2(50),             --예산
     est_start    varchar2(50),             -- 희망공사 시작일
     est_end      varchar2(50),             -- 희망공사 종료일
     est_date     date default sysdate,     --견적신청 일자
