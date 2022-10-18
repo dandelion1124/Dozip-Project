@@ -484,7 +484,7 @@ public class PartnersController {
     *
     */
     @RequestMapping(value="/data_manage",method=RequestMethod.GET)
-    public ModelAndView data_manage(HttpServletResponse response, HttpSession session) throws Exception {
+    public ModelAndView data_manage(HttpServletResponse response,HttpServletRequest request, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
@@ -498,19 +498,25 @@ public class PartnersController {
         //System.out.println(businessNum);
           //this.partnersService.insertPartnersSub(businessNum);
         PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-
         Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+
+//        String pf_addr1=request.getParameter("pf_addr1");
+//        String pf_addr2=request.getParameter("pf_addr2");
+//        String pf_addr3=request.getParameter("pf_addr3");
 
            //System.out.println(p.toString());
            //System.out.println(p.getP_Name()+" "+p.getP_Tel());
             //System.out.println(p.getP_Address());
+            //System.out.println(pf_addr1);
 
             ModelAndView m=new ModelAndView();
             m.addObject("p", p);//p 키이름에 p객체 저장
             m.addObject("ps",ps);
+
             //m.addObject("pName",p.getP_Name());
             //m.addObject("pTel",p.getP_Tel());
             //m.addObject("pShortstate",0);
+
 
 
 
@@ -543,8 +549,6 @@ public class PartnersController {
         String pAccount_name=request.getParameter("pAccount_name");
         String pAccount_num=request.getParameter("pAccount_num");
 
-
-
         //System.out.println(pAddress);
         //System.out.println(pShortstate);System.out.println(pHomepg);System.out.println(pRes_person_name);
 
@@ -562,25 +566,15 @@ public class PartnersController {
         //System.out.println(ps.getPShortstate());//+" "+ps.getPHomepg());
         //System.out.println(ps.toString());
 
-        //this.partnersService.updatePartners(businessNum);
-        //this.partnersService.updatePartnersSub(businessNum);
 
-        String pf_addr1=request.getParameter("pf_addr1");
-        String pf_addr2=request.getParameter("pf_addr2");
-        String pf_addr3=request.getParameter("pf_addr3");
-        String p_address=pf_addr1+" "+pf_addr2+""+pf_addr3;
-
-        System.out.println(pf_addr1+" "+pf_addr2+""+pf_addr3);
-
-
-        if(request.getParameter("p_Address")!=null) {
+        if(request.getParameter("p_Addr1")!=null) {
             PartnersVO p = new PartnersVO();
             //p.setP_Address(request.getParameter("p_Address"));
-            p.setP_Address(p_address);
+            p.setP_Addr1(request.getParameter("p_Addr1"));
+            p.setP_Addr2(request.getParameter("p_Addr2"));
+            p.setP_Addr3(request.getParameter("p_Addr3"));
             p.setBusinessNum(ps.getBusinessNum());
-            System.out.println(p.getP_Address());
-            //System.out.println(p.getBusinessNum());
-            //System.out.println(p.toString());
+            System.out.println(p.getP_Addr1()+p.getP_Addr2()+p.getP_Addr3());
             this.partnersService.updatePartners(p);
         }
 
@@ -598,13 +592,11 @@ public class PartnersController {
         //System.out.println(p.toString());
 
 
-        //m.addAttribute("p",p);
-        m.addAttribute("pShortstate",ps.getP_Shortstate());
+//        m.addAttribute("p_addr1",p_addr1);
+//        m.addAttribute("p_addr2",p_addr2);
+//        m.addAttribute("p_addr3",p_addr3);
         m.addAttribute("ps",ps);
-//        if(ps.getPShortstate().equals("null")){
-//            this.partnersService.updatePartners(businessNum);
-//
-//
+
         out.println("<script>");
         out.println("alert('정보 입력 성공!');");
         out.println("history.back();");

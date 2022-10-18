@@ -12,7 +12,9 @@ public class PartnersVO {
     private String p_Tel;
     private String p_MailId;
     private String p_MailDomain;
-    private String p_Address;
+    private String p_Addr1;
+    private String p_Addr2;
+    private String p_Addr3;
     private String p_Date;
     private String P_Deldate;
     private String p_Delcont;
