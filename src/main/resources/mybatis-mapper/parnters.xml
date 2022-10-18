@@ -83,7 +83,7 @@
     <update id="update_subdata" parameterType="Partners_subVO">
         update Partners_subT set businessNum=#{businessNum,jdbcType=VARCHAR}, p_Shortstate=#{p_Shortstate,jdbcType=VARCHAR},p_Homepg=#{p_Homepg,jdbcType=VARCHAR},
         p_Res_person_name=#{p_Res_person_name,jdbcType=VARCHAR},p_Res_person_tel=#{p_Res_person_tel,jdbcType=VARCHAR},p_Com_person_name=#{p_Com_person_name,jdbcType=VARCHAR},
-        p_Com_person_tel=#{p_Com_person_tel,jdbcType=VARCHAR},p_Balance=#{p_Balance,jdbcType=VARCHAR},p_Account_bank=#{p_Account_bank,jdbcType=VARCHAR},
+        p_Com_person_tel=#{p_Com_person_tel,jdbcType=VARCHAR},p_Account_bank=#{p_Account_bank,jdbcType=VARCHAR},p_Balance=#{p_Balance,jdbcType=VARCHAR},
         p_Account_name=#{p_Account_name,jdbcType=VARCHAR},p_Account_num=#{p_Account_num,jdbcType=VARCHAR}
         where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
@@ -94,10 +94,10 @@
 
     <insert id="insert_subdata">
         insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Res_person_name,p_Res_person_tel,p_Com_person_name,p_Com_person_tel,p_Balance,
-            p_Account_bank,p_Account_name,p_Account_num)
-        values(#{businessNum},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
+            p_Account_bank,p_Account_name,p_Account_num) <!---->
+        values(#{businessNum,jdbcType=VARCHAR},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
             #{p_Com_person_name, jdbcType=VARCHAR},#{p_Com_person_tel, jdbcType=VARCHAR},#{p_Balance,jdbcType=VARCHAR},#{p_Account_bank, jdbcType=VARCHAR},
-            #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR})
+            #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR}) <!---->
     </insert>
 
     <!-- 입찰 리스트 -->

@@ -181,7 +181,7 @@
 						<label for="service4" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service4" value="쇼룸">쇼룸</label>
 						<label for="service5" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service5" value="정부지원사업">정부지원사업</label></br>
 						<label for="service6" class="lbl-checkbox-disabled"><input type="checkbox" name="pService" id="service6" value="두집예치제">두집예치제</label>
-						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="p_Balance" value="${ps.p_Balance}" >
+						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="p_Balance" value="" >
 						<p class="red">* 두집예치제는 두집(****-****)으로 추가 문의주세요.</p>
 						<div class="current-service">
 							<label>현재 제공하는 서비스</label>

@@ -18,7 +18,7 @@ public class Partners_subVO {
 	private String p_Res_person_tel;
 	private String p_Com_person_name;
 	private String p_Com_person_tel;
-	private int p_Balance;
+	private String p_Balance;
 	private String p_Account_bank;
 	private String p_Account_name;
 	private String p_Account_num;

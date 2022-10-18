@@ -97,7 +97,7 @@ create table partners_subT
     p_Res_person_tel    nvarchar2(15),
     p_Com_person_name   nvarchar2(10),
     p_Com_person_tel    nvarchar2(15),
-    p_Balance           number(20),
+    p_Balance           nvarchar2(20),
     p_Account_bank      nvarchar2(10),
     p_Account_name      nvarchar2(10),
     p_Account_num       nvarchar2(20),
