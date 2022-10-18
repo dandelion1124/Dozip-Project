@@ -150,8 +150,8 @@
 
             $(data).each(function () {//each()함수로 반복
                 result += "<tr><td>" + this.businessName + "</td>"
-                    + "<td>" + this.bid_period + "</td>"
-                    + "<td>" + this.bid_price + "</td>"
+                    + "<td>" + this.bid_period + "주</td>"
+                    + "<td>" + this.bid_price + "만원</td>"
                     + "<td>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date + "</td>"
                     + "<td>" + this.bid_state + "</td>"
