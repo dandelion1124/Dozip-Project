@@ -1,6 +1,10 @@
 <%@ page  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
 <link rel="stylesheet" href="/css/partners/partners_style2.css">
+<%--주소검색 API --%>
+<script src='/js/address.js'></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <%
 
 	/* String [] value= request.getParameterValues("pService");
@@ -114,7 +118,22 @@
 						</div>
 						<div>
 							<input type="text"  id="p_Address" name="p_Address"  size="30" value="${p.p_Address}" />
-						</div>
+
+
+                            <%--주소 검색 API 코드 --%>
+
+							<input type="text" id="sample6_postcode" readonly placeholder="우편번호"  size="4" name="pf_zipcode">
+                            <input type="text" id="sample6_address"  name ="pf_addr1" readonly  placeholder="주소" size="30">
+                            <input type="text" id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소">
+                            <input type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목" size=10>
+                            <input type="button" value="주소검색" onclick="sample6_execDaumPostcode()">
+
+
+
+
+
+                            <%--주소 검색 API 코드 --%>
+                             </div>
 						<br />
 					</div>
 				</fieldset>
