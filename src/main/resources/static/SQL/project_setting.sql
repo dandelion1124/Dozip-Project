@@ -20,6 +20,7 @@ create table memberT
 
 -- 2. 파트너스 테이블 --
 drop table partnersT;
+delete from PARTNERST;
 select * from PARTNERST;
 create table partnersT
 (
@@ -31,7 +32,9 @@ create table partnersT
     p_Tel         nvarchar2(12) not null,    --대표자 연락처
     p_MailId      nvarchar2(30) not null,    --대표자 이메일 ID
     p_MailDomain  nvarchar2(30) not null,    --대표자 이메일 DOMAIN
-    p_Address     nvarchar2(500),            --영업장 주소
+    p_Addr1       nvarchar2(50),             --기본주소
+    p_Addr2       nvarchar2(30),             --상세주소
+    p_Addr3       nvarchar2(20),             --참고주소
     p_Date        nvarchar2(15),             --가입날짜
     P_Deldate     nvarchar2(15),             --탈퇴날짜
     p_Delcont     nvarchar2(400),            --탈퇴사유
