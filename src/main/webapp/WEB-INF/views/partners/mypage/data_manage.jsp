@@ -15,7 +15,7 @@
 <script>
 	function selectAll1(selectAll)  {
 		const checkboxes
-				= document.getElementsByName('pRes_build_type');
+				= document.getElementsByName('p_Res_build_type');
 
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
@@ -23,7 +23,7 @@
 	}
 	function selectAll2(selectAll)  {
 		const checkboxes
-				= document.getElementsByName('pRes_space_type');
+				= document.getElementsByName('p_Res_space_type');
 
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
@@ -31,7 +31,7 @@
 	}
 	function selectAll3(selectAll)  {
 		const checkboxes
-				= document.getElementsByName('pCom_build_type');
+				= document.getElementsByName('p_Com_build_type');
 
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
@@ -39,7 +39,7 @@
 	}
 	function selectAll4(selectAll)  {
 		const checkboxes
-				= document.getElementsByName('pCom_space_type');
+				= document.getElementsByName('p_Com_space_type');
 
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll.checked;
@@ -175,13 +175,13 @@
 						<label><b>제공 서비스</b></label><br />
 						<div>제공하는 서비스를 모두 선택해 주세요.</div>
 
-						<label for="service1" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service1" value="3D도면">3D도면</label>
-						<label for="service2" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service2" value="일반도면">일반도면</label>
-						<label for="service3" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service3" value="카드결제">카드결제</label>
-						<label for="service4" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service4" value="쇼룸">쇼룸</label>
-						<label for="service5" class="lbl-checkbox"> <input type="checkbox" name="pService" id="service5" value="정부지원사업">정부지원사업</label></br>
+						<label for="service1" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service1" value="3D도면">3D도면</label>
+						<label for="service2" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service2" value="일반도면">일반도면</label>
+						<label for="service3" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service3" value="카드결제">카드결제</label>
+						<label for="service4" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service4" value="쇼룸">쇼룸</label>
+						<label for="service5" class="lbl-checkbox"> <input type="checkbox" name="p_Service" id="service5" value="정부지원사업">정부지원사업</label></br>
 						<label for="service6" class="lbl-checkbox-disabled"><input type="checkbox" name="pService" id="service6" value="두집예치제">두집예치제</label>
-						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="pBalance" <%--value="${ps.pBalance}"--%> >
+						<label class="deposit_label">예치금</label> <input type="text" id="deposit_money" name="p_Balance" value="${ps.p_Balance}" >
 						<p class="red">* 두집예치제는 두집(****-****)으로 추가 문의주세요.</p>
 						<div class="current-service">
 							<label>현재 제공하는 서비스</label>
