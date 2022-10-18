@@ -608,7 +608,7 @@ public class DozipController {
         e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
 
 
-       // e.setMem_id("aaaa"); 테스트용
+
         e.setEst_zoning(request.getParameter("est_zoning"));
         e.setEst_use(request.getParameter("est_use"));
         e.setEst_areaP(request.getParameter("areaP"));
@@ -632,13 +632,27 @@ public class DozipController {
         e.setEst_addr(request.getParameter("addr"));
         e.setEst_desc(request.getParameter("paragraph"));
 
-        System.out.println(e.toString());
-        this.estimateService.applyOk(e);
 
+
+        String bn = request.getParameter("bNum");
+        System.out.println("선택한 회사 : "+request.getParameter("bNum"));
+
+        if(bn != null) {
+            String[] array=bn.split("/");
+            for (int i = 0; i < array.length; i++) {
+                e.setBusinessNum(array[i]);
+                this.estimateService.applyOk(e);
+            }
+        }
+        else {
+            this.estimateService.applyOk(e);
+        }
         out.println("<script>");
         out.println("alert('견적 신청이 완료되었습니다.');");
         out.println("location.href = '/dozip/home';");
         out.println("</script>");
+
+        System.out.println(e.toString());
 
         return null;
     }
