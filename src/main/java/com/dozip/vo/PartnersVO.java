@@ -19,4 +19,11 @@ public class PartnersVO {
     private int p_State;
 
 
+
+
+
+    //추가 필요정보
+    private int p_count;
+
+
 }

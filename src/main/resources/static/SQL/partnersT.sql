@@ -43,7 +43,7 @@ update PARTNERST set  P_ADDRESS = '서울시 강남구 선릉로' where  P_NAME 
 
 select * from portfolioT where businessNum = (select businessNum from partnersT where businessName like '%동민%');
 
-insert into partners_subT (businessNum,pShortstate,pHomepg) values('155-23-14423','짧은 언급','홈피');
+insert into partners_subT (businessNum,P_SHORTSTATE,P_HOMEPG) values('155-23-14423','짧은 언급','홈피');
 
 delete  from partners_subT;
 
@@ -51,3 +51,6 @@ delete  from partners_subT;
 
 commit;
 
+
+
+select count(*) from PARTNERST where P_ADDRESS like '%서%';

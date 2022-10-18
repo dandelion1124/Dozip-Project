@@ -5,6 +5,7 @@ import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
