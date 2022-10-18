@@ -356,7 +356,7 @@ public class DozipController {
     @RequestMapping(value="/my_est2/{est_num}",produces="application/json") //입찰리스트 불러오기
     @ResponseBody
     public List<BidVO> bidList(@PathVariable("est_num") String est_num){
-        List<BidVO> list = new ArrayList<>();
+        List<BidVO> list = new ArrayList<BidVO>();
         list = this.estimateService.getBidList(est_num);
         System.out.println(list.toString());
         return list;
