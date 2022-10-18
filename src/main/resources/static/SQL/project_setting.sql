@@ -157,7 +157,7 @@ create table bidT
     bid_period  number(5)      null,
     bid_detail  varchar2(3000) null,
     bid_state   varchar2(20)   default '진행중', --상태
-    bid_date date default sysdate --입찰신청일자
+    bid_date date default sysdate, --입찰신청일자
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (est_num) references estimateT (est_num)
 );
