@@ -124,33 +124,13 @@
                     <option value="${numlist[n]}">${numlist[n]}</option>
                 </c:forEach>
             </select>
-            <span style="font-weight: bold; float:right; ">${listcount}건의 입찰내역이 있습니다.</span>
+            <span style="font-weight: bold; float:right; "><span id="count">0</span>건의 입찰내역이 있습니다.</span>
         </div>
         <div class="my_apply_cont">
-            <table class="my_apply_table">
+            <table class="my_apply_table"id="print">
                 <tr>
                     <th>업체명</th> <th>공사기간</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th>
                 </tr>
-                <tr id="print"></tr>
-                <%--<c:if test="${fn:length(elist) == 0}">
-                    <tr id=""><td colspan="6"> 입찰에 참여한 업체가 없습니다.</td> </tr>
-                </c:if>
-                <c:if test="${fn:length(elist) != 0}">
-                    <c:forEach var="i" begin="0" end="${fn:length(elist)-1}" step="1">
-                        <tr>
-                            <td id="num">&lt;%&ndash;번호&ndash;%&gt;
-                                <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                <c:out value="${number}"/>
-                            </td>
-                            <td id="date">${elist[i].businessName}</td>&lt;%&ndash;업체명&ndash;%&gt;
-                            <td id="date">${elist[i].est_detail}</td>&lt;%&ndash;공사기간&ndash;%&gt;
-                            <td id="date">${elist[i].est_areaP} 평</td>&lt;%&ndash;공사금액&ndash;%&gt;
-                            <td id="date">${elist[i].est_areaP} 평</td>&lt;%&ndash;설명&ndash;%&gt;
-                            <td id="date">${elist[i].est_bud} 원</td>&lt;%&ndash;신청일자&ndash;%&gt;
-                            <td id="date">${elist[i].est_check}</td>&lt;%&ndash;선택(수락/거절)&ndash;%&gt;
-                        </tr>
-                    </c:forEach>
-                </c:if>--%>
             </table>
 
         </div>
@@ -161,22 +141,24 @@
 <script>
 
     $('#selectNum').change(function(){
-        alert("함수실행");
         var est_num = $('#selectNum').val();
         alert("선택값"+est_num);
 
         $.getJSON("/dozip/my_est2/"+est_num, function(data){//json데이터를 get방식으로 처리,비동기식으로 가져온 데이터는 data매개변수에 저장
-            var result="";
+            var count = data.length;
+            var result="<tr><th>업체명</th> <th>공사기간</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th></tr>"
 
-            $(data).each(function(){//each()함수로 반복
-                result += "<td>"+this.businessName+"</td>"
-                    + "<td>"+this.bid_period+"</td>"
-                    + "<td>"+this.bid_price+"</td>"
-                    + "<td>"+this.bid_detail+"</td>"
-                    + "<td>"+this.bid_date+"</td>"
-                    + "<td>"+this.bid_state+"</td>"
-                    + "<td><button type='button'>수락</button><button type='button'>거절</button></td>"
+            $(data).each(function () {//each()함수로 반복
+                result += "<tr><td>" + this.businessName + "</td>"
+                    + "<td>" + this.bid_period + "</td>"
+                    + "<td>" + this.bid_price + "</td>"
+                    + "<td>" + this.bid_detail + "</td>"
+                    + "<td>" + this.bid_date + "</td>"
+                    + "<td>" + this.bid_state + "</td>"
+                    + "<td><button type='button'>수락</button><button type='button'>거절</button></td></tr>"
             });
+
+            $('#count').html(count);
             $('#print').html(result);//해당영역에 html()함수로 문자와 태그를 함께 변경 적용.
         });
     });
