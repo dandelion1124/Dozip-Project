@@ -93,7 +93,7 @@
                     "<input type=checkbox id="+this.businessName+" style='appearance: revert;'> <label for="+this.businessName+">"+this.businessName+"</label><br>" +
                     "전화번호 : " +this.p_Tel+"<br>" +
                     "주소 :" +this.p_Address+"<br></div>" +
-                    "<input type='hidden' id="+this.businessNum+"value="+this.businessNum+">"
+                    "<input type='hidden' name='businessNum' value="+this.businessNum+">"
             });
             $('#partners_info').html(result); //해당영역에 html() 함수로 문자와 태그를 함께 변경 적용.
         });
