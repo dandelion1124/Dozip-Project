@@ -89,7 +89,7 @@
     </update>
 
     <update id="update_data" parameterType="PartnersVO">
-        update PartnersT set p_Address=#{pAddress, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
+        update PartnersT set p_Address=#{p_Address, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
     <insert id="insert_subdata">
