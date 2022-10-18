@@ -361,6 +361,14 @@ public class DozipController {
         return list;
     }//bidList()
 
+    //입찰업체 중 하나를 선택하면 선택한 업체는 상태가 계약요청으로, 나머지는 거절 상태로 변경되도록 함 + 견적서테이블의 상태도 계약요청으로 변경
+    @RequestMapping(value = "my_est2_select",  method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public void bidSelect(String bid_num) {
+        System.out.println("출력 : "+bid_num);
+        this.estimateService.updateState(bid_num);
+    }
+
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
     public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
 
