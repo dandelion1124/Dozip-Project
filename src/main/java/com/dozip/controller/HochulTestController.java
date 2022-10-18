@@ -2,8 +2,10 @@ package com.dozip.controller;
 
 import com.dozip.service.DozipService;
 import com.dozip.service.PartnersService;
+import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -41,6 +43,25 @@ public class HochulTestController {
         return "/partners/portfolio/p_upload_photo";
     }
 
+
+    @RequestMapping(value = "/estimate_list")
+    public String estimate_list(EstimateVO ev, Model model) {  // 견적목록
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return "/partners/estimate/estimate_list";
+    }
 
 
 
