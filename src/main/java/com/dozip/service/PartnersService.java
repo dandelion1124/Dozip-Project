@@ -43,12 +43,17 @@ public interface PartnersService {
 
     void insertPartnersSub(Partners_subVO ps);
 
-    EstimateVO selectEstimate(String mem_id);
+    List<EstimateVO> selectEstimateList();
+
 
     int checkSub(String businessNum);
+
 
     List<EstimateVO> getAllEstList();
 
     List<BidVO> getBidList();
+
+
+
 //    void checkremaindate(EstimateVO vo);
 }
