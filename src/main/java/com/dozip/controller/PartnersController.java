@@ -204,12 +204,9 @@ public class PartnersController {
     public ModelAndView bid(EstimateVO vo,HttpServletResponse response,HttpSession session) throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
         //String p_id=(String) session.getAttribute("p_id");
 
         List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
-        //System.out.println(e.toString());
-        //System.out.println(e.getMem_id());
 
         //Date dminusdate = e.getEst_dateEnd()-e.getEst_date();
         //System.out.println(e.getEst_dateEnd()-e.getEst_date());
@@ -243,24 +240,35 @@ public class PartnersController {
     public String bid_detail(Model m,EstimateVO e,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        //String mem_id=(String) session.getAttribute("p_id");
 
-        //String estnum=e.getEst_num();
-        //System.out.println(estnum);
-        System.out.println(bid_no);
+        //System.out.println(bid_no);
         e=this.partnersService.selectEstimate(bid_no);
 
-
-
-        //m.addObject("e", e);//e 키이름에 e객체 저장
         m.addAttribute("e",e);
+
 
         return "/partners/estimate_request/bid_detail";
     }
     @RequestMapping(value = "/bid_detail_ok") //입찰 상세목록
-    public String bid_detail_ok(EstimateVO e,HttpServletResponse response) throws Exception {
+    public String bid_detail_ok(BidVO bid,EstimateVO vo,HttpServletRequest request,HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        //bid.setEst_num(vo.getEst_num());
+        bid.setBid_price(Integer.parseInt(request.getParameter("bid_price"))); //가져온 string값을 int로 형변환해줘야
+        bid.setBid_start(request.getParameter("bid_start")); //주소 부분 api로 변경해줄것
+        bid.setBid_end(request.getParameter("bid_end"));
+        bid.setBid_detail(request.getParameter("bid_detail"));
+
+        this.partnersService.insertbid(bid);
 
 
+        System.out.println(bid.getBid_price());
+
+        out.println("<script>");
+        out.println("alert('입찰 성공!');");
+        out.println("history.back();");
+        out.println("</script>");
 
         return null;
     }
@@ -607,18 +615,18 @@ public class PartnersController {
         //System.out.println(ps.toString());
 
         PartnersVO p = new PartnersVO();
-        System.out.println(p.getBusinessNum());
-        String[] p_Service = {};
-        String[] p_Res_build_type = {};
-        String[] p_Res_space_type = {};
-        String[] p_Com_build_type = {};
-        String[] p_Com_space_type = {};
-
-        p_Service= request.getParameterValues("p_Service");
-        p_Res_build_type=request.getParameterValues("p_Res_build_type");
-        p_Res_space_type=request.getParameterValues("p_Res_space_type");
-        p_Com_build_type=request.getParameterValues("p_Com_build_type");
-        p_Com_space_type=request.getParameterValues("p_Com_space_type");
+//        System.out.println(p.getBusinessNum());
+//        String[] p_Service = {};
+//        String[] p_Res_build_type = {};
+//        String[] p_Res_space_type = {};
+//        String[] p_Com_build_type = {};
+//        String[] p_Com_space_type = {};
+//
+//        p_Service= request.getParameterValues("p_Service");
+//        p_Res_build_type=request.getParameterValues("p_Res_build_type");
+//        p_Res_space_type=request.getParameterValues("p_Res_space_type");
+//        p_Com_build_type=request.getParameterValues("p_Com_build_type");
+//        p_Com_space_type=request.getParameterValues("p_Com_space_type");
 
         //ps.setP_Service( request.getParameterValues("p_Service"));
 //        System.out.println(p_Service);
@@ -652,8 +660,6 @@ public class PartnersController {
 //        }
 //        System.out.println(pCom_space_type);
 
-
-
         if(request.getParameter("p_Addr1")!=null) {
 
             //p.setP_Address(request.getParameter("p_Address"));
@@ -673,11 +679,6 @@ public class PartnersController {
         }else{
             this.partnersService.updatePartnersSub(ps);
         }
-
-        //System.out.println(ps.getPShortstate());
-        //ps=this.partnersService.getPartnersSub(businessNum);
-        //System.out.println(p.toString());
-
 
         m.addAttribute("ps",ps);
 

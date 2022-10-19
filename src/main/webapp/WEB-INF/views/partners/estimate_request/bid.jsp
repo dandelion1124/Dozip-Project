@@ -2,6 +2,7 @@
 <jsp:include page="../include/header.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -54,7 +55,7 @@
 								</span>
 							</p>
 							<p class="request_title">
-								<a href="/partners/bid_detail">주소 ${e.est_use} ${est_detail} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 -->
+								<a href="/partners/bid_detail">주소 ${e.est_use} ${est_detail} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 --%>
 							</p>
 							<div class="request_desc_div">
 								<p class="request_desc">${e.est_desc}</p>

@@ -33,6 +33,8 @@ public interface PartnersService {
     void insertContract(ContractVO cv);
     EstimateVO selectEstimate(String bid_no);
 
+    void insertbid(BidVO bid);
+
 
 
 
