@@ -35,4 +35,9 @@ public class PortfolioDAOImpl implements PortfolioDAO{
     @Override
     public List<PortfolioVO> getAllList() {return this.sqlSession.selectList("port_list");}
 
+    @Override
+    public List<PortfolioVO> getSearchList(PortfolioVO p) {
+        return this.sqlSession.selectList("search_list", p);
+    }
+
 }

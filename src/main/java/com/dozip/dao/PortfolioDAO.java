@@ -15,4 +15,6 @@ public interface PortfolioDAO {
     PartnersVO getOnecomp(String businessName);
 
     List<PortfolioVO> getAllList();
+
+    List<PortfolioVO> getSearchList(PortfolioVO p);
 }

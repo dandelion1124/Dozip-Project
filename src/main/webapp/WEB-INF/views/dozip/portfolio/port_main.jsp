@@ -112,6 +112,7 @@
 				<option value="60">60평 이상</option>
 			</select>
 			<button onclick = "clear_btn()" class = "clear_btn">초기화</button>
+			<button type="button" name = "submit">필터검색</button>
 			<!-- 리스트 검색창 -->
 			<div class = "search_wrap2">
 				<div class = "search_list">
@@ -224,8 +225,57 @@
 			</c:if>
  		</div>
  		<br><br>
- 		
-				
+
+<script>
+	//검색기능
+	$(document).on("click", "button[name='submit']", function (){
+		var pf_subtype1 = $('#dd_group1').val();
+		var pf_subtype2 = $('#dd_group2').val();
+		var pf_concept = $('#dd_group3').val();
+		var pf_cost = $('#dd_group4').val();
+		var pf_area = $('#dd_group5').val();
+
+		alert(pf_subtype1 +" "+pf_subtype2+" "+pf_concept+" "+pf_cost+" "+pf_area);
+
+		$.ajax({
+			url: '/dozip/port_search',
+			type : 'get',
+			async : false,
+			data : {
+				pf_subtype1: pf_subtype1,
+				pf_subtype2: pf_subtype2,
+				pf_concept: pf_concept,
+				pf_cost: pf_cost,
+				pf_area:pf_area
+			} ,
+			dataType : "json",
+			cache: false,
+			success: function (data) {
+				var result="";
+
+				$(data).each(function () {//each()함수로 반복
+					result += "<div class='card'>"
+					+ "<div class='card_image'>"
+					+ "<img class = 'ho' onclick = 'location.href='port_detail?pf_no='"+this.pf_no+"';' src= '"+this.pf_photo1+"'/>"
+					+ "</div> <div class='card_title'>"
+					+ "<li id = 'bname' style='display: none'>"+this.businessName+"</li>"
+					+ "<li class = 'corp' id='pf_title'>"+this.pf_title+"</li>"
+					+ "<li class = 'card_tag'><span id='pf_subtype'>"+this.pf_subtype+"</span>"
+					+ "<span id='pf_concept'>"+this.pf_concept+"</span>"
+					+ "<span id='pf_area'>"+this.pf_area+"평</span>"
+					+ "<span id='pf_cost'>"+this.pf_cost+"만원대</span>"
+					+ "</li></div></div>"
+				});
+
+				$('.cards-list').html(result);//해당영역에 html()함수로 문자와 태그를 함께 변경 적용.
+			},
+			error: function () {
+				alert('실패');
+			}
+		});
+
+	});
+</script>
  		
 
 <%--하단 공통부분 --%>	

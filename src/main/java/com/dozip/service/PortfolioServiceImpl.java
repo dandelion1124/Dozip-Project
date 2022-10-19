@@ -35,5 +35,8 @@ public class PortfolioServiceImpl implements PortfolioService {
     @Override
     public List<PortfolioVO> getAllList() { return this.portfolioDao.getAllList();}
 
+    @Override
+    public List<PortfolioVO> getSearchList(PortfolioVO p) { return this.portfolioDao.getSearchList(p); }
+
 
 }
