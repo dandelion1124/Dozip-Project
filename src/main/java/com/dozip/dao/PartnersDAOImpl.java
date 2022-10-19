@@ -101,8 +101,8 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public EstimateVO selectEstimate(String mem_id) {
-        return sqlSession.selectOne("select_estdata",mem_id);
+    public List<EstimateVO> selectEstimateList() {
+        return sqlSession.selectList("select_estdata");
     }
 
     @Override

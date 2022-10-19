@@ -87,9 +87,10 @@ public class PartnersServiceImpl implements PartnersService {
     }
 
     @Override
-    public EstimateVO selectEstimate(String mem_id) {
-        return partnersDao.selectEstimate(mem_id);
+    public List<EstimateVO> selectEstimateList() {
+        return partnersDao.selectEstimateList();
     }
+
 
     @Override
     public int checkSub(String businessNum) {

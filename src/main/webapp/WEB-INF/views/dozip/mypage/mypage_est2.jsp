@@ -129,7 +129,7 @@
         <div class="my_apply_cont">
             <table class="my_apply_table"id="print">
                 <tr>
-                    <th>업체명</th> <th>공사기간</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th>
+                    <th>업체명</th> <th>공사시작일</th> <th>공사종료일</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th>
                 </tr>
             </table>
 
@@ -146,11 +146,12 @@
 
         $.getJSON("/dozip/my_est2/"+est_num, function(data){//json데이터를 get방식으로 처리,비동기식으로 가져온 데이터는 data매개변수에 저장
             var count = data.length;
-            var result="<tr><th>업체명</th> <th>공사기간</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th></tr>"
+            var result="<tr><th>업체명</th> <th>공사시작일</th> <th>공사종료일</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th></tr>"
 
             $(data).each(function () {//each()함수로 반복
                 result += "<tr><td>" + this.businessName + "</td>"
-                    + "<td>" + this.bid_period + "일</td>"
+                    + "<td>" + this.bid_start + "</td>"
+                    + "<td>" + this.bid_end + "</td>"
                     + "<td>" + this.bid_price + "만원</td>"
                     + "<td>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date + "</td>"

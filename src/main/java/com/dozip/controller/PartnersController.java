@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
@@ -200,13 +201,13 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public ModelAndView bid(EstimateVO vo,HttpServletResponse response, HttpSession session) throws Exception {
+    public ModelAndView bid(EstimateVO vo,HttpServletResponse response,HttpSession session) throws Exception {
+        //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        String mem_id=(String) session.getAttribute("p_id");
+        //String p_id=(String) session.getAttribute("p_id");
 
-        EstimateVO e=this.partnersService.selectEstimate(mem_id);
-
+        List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
         //System.out.println(e.toString());
         //System.out.println(e.getMem_id());
 
@@ -218,32 +219,51 @@ public class PartnersController {
 //        String now = format1.format(time);
 //        System.out.println(now);
 
-
-        String[] estdateEnd = e.getEst_dateEnd().split(" ");
-        System.out.println(estdateEnd[0]);
+//        String[] estdateEnd = e.getEst_dateEnd().split(" ");
+//        System.out.println(estdateEnd[0]);
 //        this.partnersService.checkremaindate(vo);
 
-
-
         //System.out.println(sysdate);
-        String estdetail = e.getEst_detail().replaceFirst(".$","");
-        System.out.println(estdetail);
-        String estareaM = e.getEst_areaM().replaceFirst(".$","");
+//        String estdetail = e.getEst_detail().replaceFirst(".$","");
+//        System.out.println(estdetail);
+//        String estareaM = e.getEst_areaM().replaceFirst(".$","");
 
 
         ModelAndView m=new ModelAndView();
-        m.addObject("e", e);//e 키이름에 e객체 저장
-        m.addObject("estdateEnd",estdateEnd[0]);
-        m.addObject("estdetail",estdetail);
-        m.addObject("estareaM",estareaM);
+        m.addObject("elist", elist);//e 키이름에 e객체 저장
+//        m.addObject("estdateEnd",estdateEnd[0]);
+//        m.addObject("estdetail",estdetail);
+//        m.addObject("estareaM",estareaM);
 
         m.setViewName("/partners/estimate_request/bid");
         return m;
     }
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
-    public String bid_detail() {
-        return "/partners/estimate_request/bid_detail";
+    public ModelAndView bid_detail(EstimateVO e,HttpServletResponse response,HttpSession session) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+        //String mem_id=(String) session.getAttribute("p_id");
+
+        String estnum=e.getEst_num();
+        System.out.println(estnum);
+        //e=this.partnersService.selectEstimate(e);
+
+//        String[] estdateEnd = e.getEst_dateEnd().split(" ");
+//        System.out.println(estdateEnd[0]);
+//        this.partnersService.checkremaindate(vo);
+
+//        String estdetail = e.getEst_detail().replaceFirst(".$","");
+//        System.out.println(estdetail);
+//        String estareaM = e.getEst_areaM().replaceFirst(".$","");
+
+
+        ModelAndView m=new ModelAndView();
+        //m.addObject("e", e);//e 키이름에 e객체 저장
+
+
+        m.setViewName("/partners/estimate_request/bid_detail");
+        return m;
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
