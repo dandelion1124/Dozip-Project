@@ -123,6 +123,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<BidVO> getBidList() {
         return sqlSession.selectList("est_list2");
     }
+
+    @Override
+    public EstimateVO write_contract(int est_num) {
+        return sqlSession.selectOne("write_contract",est_num);
+    }
 }
 
 

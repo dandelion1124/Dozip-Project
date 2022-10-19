@@ -50,5 +50,7 @@ public interface PartnersService {
     List<EstimateVO> getAllEstList();
 
     List<BidVO> getBidList();
+
+    EstimateVO write_contract(int est_num);
 //    void checkremaindate(EstimateVO vo);
 }

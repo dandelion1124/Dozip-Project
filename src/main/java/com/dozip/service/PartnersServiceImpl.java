@@ -116,5 +116,12 @@ public class PartnersServiceImpl implements PartnersService {
     public List<BidVO> getBidList() {
         return partnersDao.getBidList();
     }
+
+
+    @Override
+    public EstimateVO write_contract(int est_num) {
+
+        return partnersDao.write_contract(est_num);
+    }
 }
 

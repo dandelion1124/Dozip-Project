@@ -1,7 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link rel="stylesheet" href="/partners/css/partners_style2.css">
 
 
 <style>
@@ -133,7 +132,7 @@
                 <td>${b.bid_price}</td>
                 <td>${b.bid_start} ~ ${b.bid_end}</td>
                 <td>
-                    <button id="write_contract_btn" onclick="write_contract()"> 계약서작성하기</button>
+                    <button id="write_contract_btn" onclick="write_contract(${e.est_num})"> 계약서작성하기</button>
                 </td>
                 <td>계약서 작성전</td>
                 <td><button onclick="est_cancel()" id="cancel_contract_btn">계약해지</button></td>
@@ -145,8 +144,8 @@
     </c:forEach>
 </c:if>
     <script>
-        function write_contract(){
-            window.open('/partners/write_contract','Child','width=920, height=955, top=0, left=100')
+        function write_contract(est_num){
+            window.open('/partners/write_contract?est_num='+est_num,'Child','width=920, height=955, top=0, left=100')
         }
     </script>
 

@@ -12,6 +12,11 @@
     <select id="est_list2" resultType="BidVO">
         select * from bidT where bid_state='계약요청'
     </select>
+
+    <!--계약서에 입력할 정보 불러오기 -->
+    <select id="write_contract" resultType="EstimateVO">
+        select * from estimateT where est_num=#{est_num} and est_check='계약요청'
+    </select>
 </mapper>
 
 
