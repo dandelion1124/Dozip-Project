@@ -40,6 +40,45 @@
 	outline: 1px solid #00704a;
 	border-radius : 2px;
 }
+/* 리스트 검색창 부분 */
+.search_wrap2{
+    margin-top:10px;
+}
+
+.search_list {
+    width:100%;
+    float: right;
+    display: flex;
+    margin-top : 10px;
+}
+
+#key_list{
+    width: 380px;
+    border-bottom: 1px solid #00704a;
+    border-top : none;
+    border-left : none;
+    border-right: none;
+    text-align : center;
+    padding: 5px;
+    height: 20px;
+    outline: none;
+    color: #00704a;
+}
+
+#key_list:focus{
+    color: #00704a;
+}
+
+.list_btn {
+    margin-left : 2px;
+    text-align: center;
+    color: #00704a;
+    /*cursor: pointer;*/
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
 
 /*검색창 부분*/
 .search {
@@ -53,9 +92,8 @@
 	list-style:none;
 }
 
-#keyword {
+#keyword{
   width: 400px;
-  
   border-bottom: 1px solid #00704a;
   border-top : none;
   border-left : none;
@@ -87,7 +125,7 @@
 	color : #347844;
 	margin: 0 auto ; 
 	justify-content: center;
-	font-weight: 200px;
+	font-weight: bold;
 	margin-top: 50px;
 	margin-bottom : 100px;
 }

@@ -66,14 +66,14 @@
 	<!-- 드롭다운 버튼 -->
 	<div class = "port_wrap">
 		<div class = "dropdown">
-			<select name="d1" id="dd_group1">
+			<select name="d1" id="dd_group1" onchange="handleOnChange(this)">
 				<option selected>주거유형</option>
 				<option value="아파트">아파트</option>
 				<option value="빌라">빌라</option>
 				<option value="주택">주택</option>
 				<option value="오피스텔">오피스텔</option>
 			</select>
-			<select name="d2" id="dd_group2">
+			<select name="d2" id="dd_group2" onchange="handleOnChange(this)">
 				<option selected>상업유형</option>
 				<option value="카페/식당">카페/식당</option>
 				<option value="상가/매장">상가/매장</option>
@@ -83,7 +83,7 @@
 				<option value = "간판">간판</option>
 				<option value = "기타">기타</option>
 			</select>
-			<select name="d3" id="dd_group3">
+			<select name="d3" id="dd_group3" onchange="handleOnChange(this)">
 				<option selected>스타일</option>
 				<option value="모던">모던</option>
 				<option value="미니멀">미니멀</option>
@@ -92,7 +92,7 @@
 				<option value="심플">심플</option>
 				<option value="럭셔리">럭셔리</option>
 			</select>
-			<select name="d4" id="dd_group4">
+			<select name="d4" id="dd_group4" onchange="handleOnChange(this)">
 				<option value="0" selected>비용</option>
 				<option value="999">1000만원 이하</option>
 				<option value="1000">1000만원대</option>
@@ -102,7 +102,7 @@
 				<option value="5000">5000만원대</option>
 				<option value="6000">6000만원 이상</option>
 			</select>
-			<select name="d5" id="dd_group5">
+			<select name="d5" id="dd_group5" onchange="handleOnChange(this)">
 				<option value="0" selected>평수</option>
 				<option value="10">10평</option>
 				<option value="20">20평</option>
@@ -110,11 +110,31 @@
 				<option value="40">40평</option>
 				<option value="50">50평</option>
 				<option value="60">60평 이상</option>
-				
 			</select>
-			
-			<button onclick = "clear_btn()" class = "clear_btn">초기화</button>			
-		</div>	
+			<button onclick = "clear_btn()" class = "clear_btn">초기화</button>
+			<!-- 리스트 검색창 -->
+			<div class = "search_wrap2">
+				<div class = "search_list">
+					<div id ="key_list">선택한 리스트 값</div>
+					<button class = "list_btn">리스트 검색</button>
+				</div>
+			</div>
+		</div>
+
+		<%-- 드롭다운 선택한 값 리스트 검색창에 찍어 내기--%>
+		<script>
+			function handleOnChange(e) {
+				// 선택된 데이터의 텍스트값 가져오기
+				const text = e.options[e.selectedIndex].text;
+
+				console.log(e.options);
+
+				// 선택한 텍스트 출력
+				document.getElementById('key_list').innerText
+						= text;
+			}
+		</script>
+
 		<!-- 드롭다운 끝 -->
 		
 		<%-- 초기화 버튼 클릭시 select 버튼 초기화 + 검색 초기화--%>
@@ -125,44 +145,14 @@
 				document.getElementById("dd_group3").value = "스타일";
 				document.getElementById("dd_group4").value = 0;
 				document.getElementById("dd_group5").value = 0;
+				document.getElementById("key_list").innerText = "선택한 리스트 값";
 				$('#dd_group1').show();
 				$('#dd_group2').show();
 				$('.card').show();
 			}
 		</script>
-		
-		<%-- select 옵션 클릭시 해당 업체만 나오게 --%>
-		<script>
-			function searchTag(){
-				var sub1 = document.getElementById("dd_group1").value;
-				var sub2 = document.getElementById("dd_group2").value;
-				var con = document.getElementById("dd_group3").value;
-				var cost = document.getElementById("dd_group4").value;
-				var area = document.getElementById("dd_group5").value;
-				
-				$.ajax({
-					type:"post", 
-					url:'port_search.do', 
-					datatype: "json",
-					data:{
-						sub1 : sub1,
-						sub2 : sub2,
-						con : con,
-						area : area,
-						cost : cost
-					}, success: function(data) {
-						alert('댓글등록완료!');
-						var result = data.json;
-						$.each(result,function(idx,val){
-							console.log(idx+" "+val.con);
-						});
-						
-					}
-				});
-			}
-		</script>
-		
-		
+
+
 		<%-- 업체 검색시 해당 업체 출력--%>
 		<script type="text/javascript">
 		jQuery(function(event) {
@@ -180,19 +170,20 @@
 		        }
 		    });
 		});
-		</script> 
+		</script>
+
 		<!-- 검색창 -->
 		<div class = "search_wrap">
 			<div class = "search">
-				<input type = "text" name = "keyword" id="keyword" placeholder="업체명을 입력하세요">
+				<input type = "text" name = "keyword" id="keyword" placeholder="통합검색">
 				<button  class = "search_Btn">
 					<i class = "fas fa-search"></i>
 				</button>
 			</div>
 		</div>
-	</div>		
-			
-		
+	</div>
+
+
 		<!-- 카드 리스트 -->
 		<div class="construction_list">
 			<div class="top_utile">
@@ -228,8 +219,7 @@
 				<div id = "none_pf">포트폴리오 목록이 없습니다</div>
 			</c:if>
  		</div>
- 		<br>
- 		<br>
+ 		<br><br>
  		
 				
  		

@@ -55,10 +55,10 @@
 							<p id = "comp_cont">전문분야 : 주거공간 / 상업공간</p>
 							<p id = "comp_place">시공지역 : 서울/경기</p>
 							<p id = "comp_year">경력 : 7년</p>
-							<c:if test = "${pc.p_Address != ''||pc.p_Address ne null}">
-								<p id = "comp_where">주소 : ${pc.p_Address}</p>
+							<c:if test = "${pc.p_Addr1 != ''||pc.p_Addr1 ne null}">
+								<p id = "comp_where">주소 : ${pc.p_Addr1}</p>
 							</c:if>
-							<c:if test = "${pc.p_Address eq null}">
+							<c:if test = "${pc.p_Addr1 eq null}">
 								<p id = "comp_where_none"></p>
 							</c:if>
 

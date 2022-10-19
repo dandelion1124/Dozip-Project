@@ -88,11 +88,11 @@
          <div class = "name">${pt.businessName}</div>
 
 
-        <c:if test="${pt.p_Address !=''||pt.p_Address ne null}">
-           <pre id = "comp_loca">${pt.p_Address}</pre>
+        <c:if test="${pt.p_Addr1 !=''||pt.p_Addr1 ne null}">
+           <pre id = "comp_loca">${pt.p_Addr1}</pre>
         </c:if>
 
-        <c:if test = "${pt.p_Address eq null}">
+        <c:if test = "${pt.p_Addr1 eq null}">
            <pre id = "comp_loca_no"> </pre>
         </c:if>
 
