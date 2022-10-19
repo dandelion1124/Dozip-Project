@@ -43,6 +43,10 @@ public class EstimateServiceImpl implements EstimateService {
         this.estimateDAO.updateEstate(est_num); //estimateT 상태 : 계약요청
     }
 
+    @Override
+    public int counter() {
+        return estimateDAO.counter();
+    }
 
 
 }

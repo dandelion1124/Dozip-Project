@@ -21,4 +21,5 @@ public interface EstimateService {
 
     void updateState(String bid_num);
 
+    int counter();
 }
