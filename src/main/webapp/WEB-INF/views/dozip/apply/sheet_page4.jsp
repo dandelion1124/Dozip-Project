@@ -25,6 +25,7 @@
     function apply04_check(){ /*4 페이지 유효성 검증 */
         $('.page4').hide();
         $('.page5').show();
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
         var bNum = '';
         var bNum_val = document.getElementsByName("businessName");
@@ -33,8 +34,8 @@
                 bNum+=bNum_val[i].value+"/";
             }
         }
-        document.getElementById("bNum").innerText = bNum;
-        const it = document.querySelector('#bNum').innerText
+        document.getElementById("bNum").value = bNum;
+        const it = document.querySelector('#bNum').value
         console.log(it);
     }
 </script>

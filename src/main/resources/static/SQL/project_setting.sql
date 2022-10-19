@@ -41,6 +41,7 @@ create table partnersT
     p_State       number(5) default 1        --탈퇴여부(가입 1, 탈퇴 2)
 );
 
+insert into partnersT (businessNum,businessName,p_Id,p_Pw,p_Tel,p_Name,p_MailId,p_MailDomain,p_Addr1) values('a','a','a','a','a','a','a','a','a');
 
 --3. 포트폴리오 테이블 --
 drop table portfolioT;
@@ -105,7 +106,6 @@ create table partners_subT
     p_Business_lic_file nvarchar2(70),
     foreign key (businessNum) references partnersT (businessNum)
 );
-
 
 --5. 견적서 테이블 --
 drop table estimateT;

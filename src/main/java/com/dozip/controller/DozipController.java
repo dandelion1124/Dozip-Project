@@ -640,10 +640,8 @@ public class DozipController {
         e.setEst_addr(request.getParameter("addr"));
         e.setEst_desc(request.getParameter("paragraph"));
 
-
-
         String bn = request.getParameter("bNum");
-        System.out.println("선택한 회사 : "+request.getParameter("bNum"));
+        System.out.println("선택한 회사 : "+bn);
 
         if(bn != null) {
             String[] array=bn.split("/");

@@ -524,6 +524,7 @@ function apply01_check() { /*1 페이지 유효성 검증 */
 
     $('.page1').hide();
     $('.page2').show();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
     <%-- 뒤로가기 버튼 --%>

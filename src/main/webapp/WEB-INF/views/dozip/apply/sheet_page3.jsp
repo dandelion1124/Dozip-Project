@@ -85,6 +85,7 @@
         }
         $('.page3').hide();
         $('.page4').show();
+        window.scrollTo({ top: 0, behavior: "smooth" });
 
         $.getJSON("/dozip/search_part/"+est_addr, function(data){ //json 데이터를 get방식으로 처리, 비동기식으로 가져온 데이터는 data매개변수에 저장
             var result="";
