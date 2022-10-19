@@ -63,9 +63,20 @@ public class HochulTestController {
         return "/partners/estimate/estimate_list";
     }
 
-    @RequestMapping("/write_contract")
+    @RequestMapping("/write_contract") //계약서 보기
     public String write_contract(){
-     return "/partners/estimate/contract";
+        /* 계약서에 담을 내용들을 불러와서 model 객체에 담아야함*/
+
+
+
+     return "/partners/estimate/contract";  //계약서 view 페이지
+    }
+
+    @PostMapping("/write_contract_ok")
+    public String write_contract_ok(){
+        //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
+
+        return null;
     }
 
 

@@ -129,7 +129,7 @@
             <tr>
                 <td><input type="checkbox"></td>
                 <td>${e.est_num}</td>
-                <td><input type="button" value="${est_addr}" onclick="est_detail()"></td>
+                <td><input type="button" value="${e.est_name} (테스트)" onclick="est_detail()"></td>
                 <td>${b.bid_price}</td>
                 <td>${b.bid_start} ~ ${b.bid_end}</td>
                 <td>
