@@ -66,14 +66,14 @@
 	<!-- 드롭다운 버튼 -->
 	<div class = "port_wrap">
 		<div class = "dropdown">
-			<select name="d1" id="dd_group1" onchange="handleOnChange(this)">
+			<select name="d1" id="dd_group1" onchange="input(this)">
 				<option selected>주거유형</option>
 				<option value="아파트">아파트</option>
 				<option value="빌라">빌라</option>
 				<option value="주택">주택</option>
 				<option value="오피스텔">오피스텔</option>
 			</select>
-			<select name="d2" id="dd_group2" onchange="handleOnChange(this)">
+			<select name="d2" id="dd_group2" onchange="input(this)">
 				<option selected>상업유형</option>
 				<option value="카페/식당">카페/식당</option>
 				<option value="상가/매장">상가/매장</option>
@@ -83,7 +83,7 @@
 				<option value = "간판">간판</option>
 				<option value = "기타">기타</option>
 			</select>
-			<select name="d3" id="dd_group3" onchange="handleOnChange(this)">
+			<select name="d3" id="dd_group3" onchange="input(this)">
 				<option selected>스타일</option>
 				<option value="모던">모던</option>
 				<option value="미니멀">미니멀</option>
@@ -92,7 +92,7 @@
 				<option value="심플">심플</option>
 				<option value="럭셔리">럭셔리</option>
 			</select>
-			<select name="d4" id="dd_group4" onchange="handleOnChange(this)">
+			<select name="d4" id="dd_group4" onchange="input(this)">
 				<option value="0" selected>비용</option>
 				<option value="999">1000만원 이하</option>
 				<option value="1000">1000만원대</option>
@@ -102,7 +102,7 @@
 				<option value="5000">5000만원대</option>
 				<option value="6000">6000만원 이상</option>
 			</select>
-			<select name="d5" id="dd_group5" onchange="handleOnChange(this)">
+			<select name="d5" id="dd_group5" onchange="input(this)">
 				<option value="0" selected>평수</option>
 				<option value="10">10평</option>
 				<option value="20">20평</option>
@@ -121,24 +121,21 @@
 			</div>
 		</div>
 
-		<%-- 드롭다운 선택한 값 리스트 검색창에 찍어 내기--%>
+		<%-- 드롭다운 선택한 값 받아오기--%>
 		<script>
-			function handleOnChange(e) {
-				// 선택된 데이터의 텍스트값 가져오기
-				const text = e.options[e.selectedIndex].text;
+			let arr = [];
+			function input(e){
 
-				console.log(e.options);
-
-				// 선택한 텍스트 출력
-				document.getElementById('key_list').innerText
-						= text;
+				for(let i=0; i < e.options.length;i++){
+					const option = e.options[i];
+					if(option.selected){
+						arr.push(option.text);
+					}
+				}
+				document.getElementById('key_list').innerText = arr;
 			}
-		</script>
 
-		<!-- 드롭다운 끝 -->
-		
-		<%-- 초기화 버튼 클릭시 select 버튼 초기화 + 검색 초기화--%>
-		<script>
+
 			function clear_btn(){
 				document.getElementById("dd_group1").value = "주거유형";
 				document.getElementById("dd_group2").value = "상업유형";
@@ -146,11 +143,18 @@
 				document.getElementById("dd_group4").value = 0;
 				document.getElementById("dd_group5").value = 0;
 				document.getElementById("key_list").innerText = "선택한 리스트 값";
+				arr = [];
 				$('#dd_group1').show();
 				$('#dd_group2').show();
 				$('.card').show();
 			}
 		</script>
+
+
+		<!-- 드롭다운 끝 -->
+		
+		<%-- 초기화 버튼 클릭시 select 버튼 초기화 + 검색 초기화--%>
+
 
 
 		<%-- 업체 검색시 해당 업체 출력--%>
