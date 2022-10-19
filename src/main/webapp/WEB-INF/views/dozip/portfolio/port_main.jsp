@@ -111,7 +111,8 @@
 				<option value="50">50평</option>
 				<option value="60">60평 이상</option>
 			</select>
-			<button onclick = "clear_btn()" class = "clear_btn">초기화</button>
+			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
+
 			<button type="button" name = "submit">필터검색</button>
 			<!-- 리스트 검색창 -->
 			<div class = "search_wrap2">
@@ -154,7 +155,7 @@
 
 		<!-- 드롭다운 끝 -->
 		
-		<%-- 초기화 버튼 클릭시 select 버튼 초기화 + 검색 초기화--%>
+		
 
 
 
