@@ -62,7 +62,7 @@
             <input type="hidden" id="d3" name="d3">
             <input type="hidden" id="d4" name="d4">
             <input type="hidden" id="d5" name="d5">
-            <div id="bNum"></div>
+            <input type="hidden" id="bNum" name="bNum">
             <div class="nextpage">
                 <button type="button" class="go_back" onclick="page_back05()">이전</button>
                 <button class="go_next" >진행하기</button>

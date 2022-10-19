@@ -71,6 +71,6 @@
         }
         $('.page2').hide();
         $('.page3').show();
-
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 </script>
