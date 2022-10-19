@@ -7,7 +7,7 @@
 
 
 		<div class="request_page">
-			<form method="post" action="bid_board_list.do">
+			<form method="post" action="">
 			<div class="request_spot">
 				<h2 class="item_title">입찰의뢰</h2>
 						<div class="search_box">
@@ -40,8 +40,8 @@
 								모집중 D-<span>2</span>
 							</p>
 							<p class="label_badge">
-								<span class="label_val1">사무실</span>
-								<span class="label_val2">도배/바닥/욕실 공사</span>
+								<span class="label_val1">${e.est_use}</span>
+								<span class="label_val2">${estdetail}</span>
 							</p>
 							<p class="request_title">
 								<a href="./bid_detail.jsp">목동 사무실 원상복구 견적 문의</a>
@@ -55,25 +55,25 @@
 									<li class="info">
 										<p class="request_info_tit">희망 예산</p>
 										<p class="request_info_val">
-											<span><b>5000000</b></span>
+											<span><b>${e.est_bud}0000원</b></span>
 										</p>
 									</li>
 									<li class="info">
 										<p class="request_info_tit">모집 마감일</p>
 										<p class="request_info_val">
-											<span><b>2022.08.31</b></span>
+											<span><b>${estdateEnd}</b></span>
 										</p>
 									</li>
 									<li class="info">
 										<p class="request_info_tit">희망 시공시작일</p>
 										<p class="request_info_val">
-											<span><b>2022.09.01</b></span>
+											<span><b>${e.est_start}</b></span>
 										</p>
 									</li>
 									<li class="info">
 										<p class="request_info_tit">희망 시공종료일</p>
 										<p class="request_info_val">
-											<span><b>2022.09.12</b></span>
+											<span><b>${e.est_end}</b></span>
 										</p>
 									</li>
 								</ul>
@@ -82,13 +82,13 @@
 							<ul class="company_profile">
 								<li class="info2">
 									<p class="key">시공규모</p>
-									<p class="val"><b>21.96m<sup>2</sup>(10평)</b></p></li>
+									<p class="val"><b>${e.est_areaM}m<sup>2</sup>(${e.est_areaP})</b></p></li>
 								<li class="info2">
 									<p class="key">시공주소</p>
-									<p class="val"><b>경기 성남시</b></p></li>
+									<p class="val"><b>${e.est_addr}</b></p></li>
 								<li class="info2">
 									<p class="key">참여 파트너수</p>
-									<p class="val"><b>3</b></p></li>
+									<p class="val"><b></b></p></li>
 							</ul>
 							<div class="bid_detail">
 								<a href="/partners/bid_detail" class="btn-d-view" >자세히 보기</a>
@@ -99,14 +99,14 @@
 					<div class="request_list_card">
 						<div class="request_list_item01">
 							<p class="request_day">
-								모집중 D-<span>2</span>
+								모집중 D-<span></span>
 							</p>
 							<p class="label_badge">
 								<span class="label_val1">사무실</span>
 								<span class="label_val2">도배/바닥/욕실 공사</span>
 							</p>
 							<p class="request_title">
-								<a href="./bid_detail.jsp">목동 사무실 원상복구 견적 문의</a>
+								<a href="/partners/bid_detail">목동 사무실 원상복구 견적 문의</a>
 							</p>
 							<div class="request_desc_div">
 								<p class="request_desc">

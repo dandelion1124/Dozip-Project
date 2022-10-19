@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -204,11 +206,35 @@ public class PartnersController {
 
         EstimateVO e=this.partnersService.selectEstimate(mem_id);
 
+        //System.out.println(e.toString());
         //System.out.println(e.getMem_id());
 
+        //Date dminusdate = e.getEst_dateEnd()-e.getEst_date();
+        //System.out.println(e.getEst_dateEnd()-e.getEst_date());
+
+        Date time = new Date();
+
+        System.out.println(time);
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+        String time1 = format1.format(time);
+        System.out.println(time1);
+
+
+        String[] estdateEnd = e.getEst_dateEnd().split(" ");
+        System.out.println(estdateEnd[0]);
+
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
+        Date dateend= format.parse(estdateEnd[0]);
+
+
+        //System.out.println(sysdate);
+        String estdetail = e.getEst_detail().replaceFirst(".$","");
+        System.out.println(estdetail);
 
         ModelAndView m=new ModelAndView();
         m.addObject("e", e);//e 키이름에 e객체 저장
+        m.addObject("estdateEnd",estdateEnd[0]);
+        m.addObject("estdetail",estdetail);
 
         m.setViewName("/partners/estimate_request/bid");
         return m;
