@@ -1,12 +1,20 @@
 <%@ page contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
-<jsp:include page="../../../../../../../../teamproject/Partners/src/main/webapp/include/header.jsp" />
+<style>
+	#contract_table{
+	border:1px solid gray;
+	border-collapse: collapse;
+	background-color:white;
+	margin:7px 0; font-size:16px;"
+	}
 
+
+</style>
 
 	<div class="contract_page">
 		<div class="contract_title"><h1>인테리어 표준계약서</h1></div></br>
 			<div class="contract_summary">
 				<span><b>(공사개요)</b></span>
-				<table border="1" style="width: 70%; border:1px solid gray; border-collapse: collapse; background-color:white; margin:7px 0; font-size:16px;">
+				<table id="contract_table">
 					<tr style="height:40px;">
 						<th style="width:20%;">공사명</th> <th colspan="2"></th> 
 					</tr>
@@ -76,8 +84,7 @@
 				</div></br>
 				
 			</div>
-		
-			
+		<input type="submit" value="계약하기">
+		<input type="button" value="닫기" onclick="window.close()">
 
 	</div>
-<jsp:include page="../../../../../../../../teamproject/Partners/src/main/webapp/include/footer.jsp" />
