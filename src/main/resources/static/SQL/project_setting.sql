@@ -116,19 +116,19 @@ create table estimateT
     mem_id       varchar2(20),             --회원아이디 fk
     businessNum nvarchar2(50),            -- 사업자 번호 fk
     est_check    varchar2(50) default '대기중', -- est_check 견적 직접신청 수락/거절/대기중/계약요청 (default)확인 컬럼
-    est_zoning   varchar2(20),             --공간유형(주거, 상가)
-    est_use      varchar2(20),             --건물유형
-    est_areaP    varchar2(50),             --평수(평)
-    est_areaM     varchar2(50),             --제곱미터
-    est_detail   varchar2(500),            -- 원하는 공간(도배/벽,바닥,주방,욕실,현관,발코니/샷시,조명,문)
-    est_detail01 varchar2(30),             -- 도배/벽 의 디테일
-    est_detail02 varchar2(30),             -- 바닥 의 디테일
-    est_detail03 varchar2(30),             -- 주방 의 디테일
-    est_detail04 varchar2(30),             --욕실 의 디테일
-    est_detail05 varchar2(30),             --현관 의 디테일
-    est_detail06 varchar2(30),             --발코니/샷시 의 디테일
-    est_detail07 varchar2(30),             --조명 의 디테일
-    est_detail08 varchar2(30),             --문 의 디테일
+    est_zoning   varchar2(200),             --공간유형(주거, 상가)
+    est_use      varchar2(200),             --건물유형
+    est_areaP    varchar2(200),             --평수(평)
+    est_areaM     varchar2(200),             --제곱미터
+    est_detail   varchar2(300),            -- 원하는 공간(도배/벽,바닥,주방,욕실,현관,발코니/샷시,조명,문)
+    est_detail01 varchar2(300),             -- 도배/벽 의 디테일
+    est_detail02 varchar2(300),             -- 바닥 의 디테일
+    est_detail03 varchar2(300),             -- 주방 의 디테일
+    est_detail04 varchar2(300),             --욕실 의 디테일
+    est_detail05 varchar2(300),             --현관 의 디테일
+    est_detail06 varchar2(300),             --발코니/샷시 의 디테일
+    est_detail07 varchar2(300),             --조명 의 디테일
+    est_detail08 varchar2(300),             --문 의 디테일
     est_bud      varchar2(50),             --예산
     est_start    varchar2(50),             -- 희망공사 시작일
     est_end      varchar2(50),             -- 희망공사 종료일
@@ -136,7 +136,7 @@ create table estimateT
     est_dateEnd date default sysdate+10, --견적신청 마감일자 +10일 (date) 디폴트값 추가하기
     est_name     varchar2(50),             --의뢰인 이름
     est_phone    varchar2(50),             --의뢰인 휴대폰 번호
-    est_addr     varchar2(35),             -- 의뢰인 주소    (추가됨)
+    est_addr     varchar2(50),             -- 의뢰인 주소    (추가됨)
     est_desc     varchar2(3000),           --스타일 설명
     est_file     varchar2(200),            --파일첨부
     foreign key (businessNum) references partnersT (businessNum),

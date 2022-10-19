@@ -35,19 +35,17 @@ $(document).ready(function(){
 });
 
 /*라디오*/
+$("input[name='est_zoning']").change(function(){
+    var test = $("input[name='est_zoning']:checked").val();
+    if (test === '주거') {
+        $('#type01').show();
+        $('#type02').hide();
+    }else if (test === '상가'){
+        $('#type02').show();
+        $('#type01').hide();
+    }
+});
 
-$('#1').change(function () {
-  if ($('#1').val() == 'on') {
-    $('#type01').show();
-    $('#type02').hide();
-  }
-});
-$('#2').change(function () {
-  if ($('#2').val() == 'on') {
-    $('#type02').show();
-    $('#type01').hide();
-  }
-});
 
 /*토글*/
 /*$('#wall').click(function () {

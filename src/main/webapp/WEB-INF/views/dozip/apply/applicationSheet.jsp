@@ -263,7 +263,7 @@
             <span class="h4 select_detail__title">전체교체</span>
             <span class="expect_price">420만원~</span>
         </label>
-        <input type="checkbox" id="group_washroom_item_1" name="group_washroom_item" value="수납장/선반">
+        <input type="checkbox" id="group_washroom_item_1" name="group_washroom_item" value="수납장">
         <label for="group_washroom_item_1">
             <span class="h4 select_detail__title">수납장/선반</span>
             </label></li>

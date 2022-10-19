@@ -637,7 +637,7 @@ public class DozipController {
 
         e.setEst_name(request.getParameter("name"));
         e.setEst_phone(request.getParameter("phone"));
-        e.setEst_addr(request.getParameter("addr"));
+        e.setEst_addr(request.getParameter("pf_addr1"));
         e.setEst_desc(request.getParameter("paragraph"));
 
         String bn = request.getParameter("bNum");
