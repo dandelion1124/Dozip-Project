@@ -43,6 +43,20 @@
         update portfolioT set  pf_photo1=#{pf_photo1 ,jdbcType=VARCHAR}, pf_photo2=#{pf_photo2 ,jdbcType=VARCHAR}, pf_photo3=#{pf_photo3 ,jdbcType=VARCHAR}, pf_photo4=#{pf_photo4 ,jdbcType=VARCHAR}, pf_photo5=#{pf_photo5 ,jdbcType=VARCHAR} where pf_no=#{pf_no}
     </insert>
 
+    <!--???-->
+    <select id="search_list" resultType="PortfolioVO">
+        select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, p.pf_zipcode, p.pf_addr1,
+        p.pf_addr2, p.pf_addr3, p.pf_area,
+        p.pf_cost, p.pf_period, p.pf_concept, p.pf_introduction, p.pf_closing, p.pf_photo1, p.pf_photo2, p.pf_photo3,
+        p.pf_photo4, p.pf_photo5,
+        p.pf_premium, p.pf_regdate, pt.businessName from portfolioT p JOIN partnersT pT on pT.businessNum =
+        p.businessNum
+        where ((pf_no > 0)
+        <if test="pf_subtype != null">and pf_subtype=#{pf_subtype}</if>
+        <if test="pf_concept != null">and pf_concept=#{pf_concept}</if>
+        <if test="pf_cost != 0">and pf_cost&lt;=#{pf_cost}</if>
+        )order by p.pf_no desc
+    </select>
 
 
 </mapper>

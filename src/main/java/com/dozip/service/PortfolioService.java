@@ -14,4 +14,6 @@ public interface PortfolioService {
     PartnersVO getOnecomp(String businessName);
 
     List<PortfolioVO> getAllList();
+
+    List<PortfolioVO> getSearchList(PortfolioVO p);
 }
