@@ -100,6 +100,10 @@
             #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR}) <!---->
     </insert>
 
+    <select id="res_check" resultType="int">
+        select count(businessNum) from Partners_subT where businessNum=#{businessNum}
+    </select>
+
     <!-- 입찰 리스트 -->
     <select id="select_estdata" resultType="EstimateVO">
         select * from estimateT
@@ -107,12 +111,11 @@
     <select id="select_est" resultType="EstimateVO">
         select * from estimateT where est_num=#{bid_no}
     </select>
-
-    <select id="res_check" resultType="int">
-        select count(businessNum) from Partners_subT where businessNum=#{businessNum}
-    </select>
-
-
+    <!--입찰 상세페이지 입찰하기 -->
+    <insert id="insert_bid_detail">
+        insert into bidT (bid_price,bid_start,bid_end,bid_detail) values(#{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},
+             #{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR})
+    </insert>
 <!--    <select id="check_date" resultType="date">-->
 <!--        select to_char(sysdate,'YYYY-MM-DD') today from dual-->
 

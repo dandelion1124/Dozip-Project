@@ -129,7 +129,7 @@ $(function() {
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 규모(평 수)</dt>
-								<dd class="sec-cont">${e.est_areaM}m<sup>2</sup>(${e.est_areaP})</dd>
+								<dd class="sec-cont">${e.est_areaM}m<sup>2</sup>(${e.est_areaP}평)</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 주소</dt>
