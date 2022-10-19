@@ -3,11 +3,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="partEstimate">
+    <!--계약 요청중인 견적서 -->
     <select id="est_list" resultType="EstimateVO">
         select * from estimateT where est_check != '대기중'
     </select>
 
-
+    <!--계약 요청중인 입찰테이블 -->
+    <select id="est_list2" resultType="BidVO">
+        select * from bidT where bid_state='계약요청'
+    </select>
 </mapper>
 
 

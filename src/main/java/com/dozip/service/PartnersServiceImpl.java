@@ -113,7 +113,7 @@ public class PartnersServiceImpl implements PartnersService {
     }
 
     @Override
-    public BidVO getBidList() {
+    public List<BidVO> getBidList() {
         return partnersDao.getBidList();
     }
 }
