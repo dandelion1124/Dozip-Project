@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -199,7 +200,7 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public ModelAndView bid(HttpServletResponse response, HttpSession session) throws Exception {
+    public ModelAndView bid(EstimateVO vo,HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
         String mem_id=(String) session.getAttribute("p_id");
@@ -212,29 +213,29 @@ public class PartnersController {
         //Date dminusdate = e.getEst_dateEnd()-e.getEst_date();
         //System.out.println(e.getEst_dateEnd()-e.getEst_date());
 
-        Date time = new Date();
-
-        System.out.println(time);
-        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
-        String time1 = format1.format(time);
-        System.out.println(time1);
+//        Date time = new Date();
+//        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+//        String now = format1.format(time);
+//        System.out.println(now);
 
 
         String[] estdateEnd = e.getEst_dateEnd().split(" ");
         System.out.println(estdateEnd[0]);
+//        this.partnersService.checkremaindate(vo);
 
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-mm-dd");
-        Date dateend= format.parse(estdateEnd[0]);
 
 
         //System.out.println(sysdate);
         String estdetail = e.getEst_detail().replaceFirst(".$","");
         System.out.println(estdetail);
+        String estareaM = e.getEst_areaM().replaceFirst(".$","");
+
 
         ModelAndView m=new ModelAndView();
         m.addObject("e", e);//e 키이름에 e객체 저장
         m.addObject("estdateEnd",estdateEnd[0]);
         m.addObject("estdetail",estdetail);
+        m.addObject("estareaM",estareaM);
 
         m.setViewName("/partners/estimate_request/bid");
         return m;

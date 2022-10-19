@@ -48,4 +48,5 @@ public interface PartnersService {
     int checkSub(String businessNum);
 
     List<EstimateVO> getAllEstList();
+//    void checkremaindate(EstimateVO vo);
 }

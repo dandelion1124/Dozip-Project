@@ -108,5 +108,10 @@
     <select id="res_check" resultType="int">
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
+
+<!--    <select id="check_date" resultType="date">-->
+<!--        select to_char(sysdate,'YYYY-MM-DD') today from dual-->
+
+<!--    </select>-->
 </mapper>
 

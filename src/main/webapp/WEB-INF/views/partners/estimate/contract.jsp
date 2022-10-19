@@ -1,12 +1,18 @@
 <%@ page contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <style>
-	#contract_table{
+	#contract_table1{
 	border:1px solid gray;
 	border-collapse: collapse;
 	background-color:white;
-	margin:7px 0; font-size:16px;"
+	margin:7px 0; font-size:16px;
+		width:100%;
 	}
-
+	#contract_table2 {
+		width: 100%;
+		border-collapse: collapse;
+		background-color:white;
+		margin:7px 0;
+	}
 
 </style>
 
@@ -14,13 +20,13 @@
 		<div class="contract_title"><h1>인테리어 표준계약서</h1></div></br>
 			<div class="contract_summary">
 				<span><b>(공사개요)</b></span>
-				<table id="contract_table">
+				<table id="contract_table1" border="1">
 					<tr style="height:40px;">
 						<th style="width:20%;">공사명</th> <th colspan="2"></th> 
 					</tr>
 					<tr style="height:40px;">
 						<th >공사장소(면적)</th> 
-						<th colspan="2"><p style="text-align:right;">(면적 : <input type="text" style="width:100px;"> m<sup>2</sup>) </p></th>
+						<th colspan="2"><p style="text-align:right;">(면적 : <input type="text"> m<sup>2</sup>) </p></th>
 					</tr>
 					<tr style="height:40px;">
 						<th rowspan="2">공사기간</th> <th style="width:20%;">착 공</th> 
@@ -36,10 +42,10 @@
 			<div class="contract_money">
 				<span><b>(공사대금)</b></span>
 				<div>
-					<p>①총 공사금액 (￦[<input type="text">] 원정(부가가치세 별도임)</br></p>
+					<p>①총 공사금액 (￦[<input type="text">] 원정(부가가치세 별도임)<br></p>
 				</div>
 				<div>
-					<table border="1" style="width: 70%; border-collapse: collapse; background-color:white; margin:7px 0;">
+					<table id="contract_table2" border="1">
 						<tr style="height:40px;">
 							<th rowspan="4" style="width:12%;">대금 지급 시기</th> <th style="width:8%;">횟 수</th> <th style="width:25%;">금 액</th> <th style="width:25%;">년 월 일</th> <th style="width:8%;">내 역</th> 
 						</tr>
@@ -54,13 +60,13 @@
 						</tr>
 					</table>
 				</div>
-				<div style="width: 70%;">
+				<div>
 					<p>②"갑"은 전항의 공사대금지급과 관련하여 정당한 사유 없이 지급을 지연하여서는 안되며, 지연 시에는 미지급액에 대하여 지급일 다음 날로부터 완제일까지 연 6%의 지연이자를 지급하여야 한다.</p>
 				</div></br>
-				<div style="width: 70%;">
+				<div>
 					<p> &nbsp;"갑"과 "을"은 상호 신의와 성실을 원칙으로 이 계약서에 의하여 공사계약을 체결하고 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
 				</div></br>
-				<div style="width: 70%;">
+				<div>
 					<p style="text-align:center;"><input type="text" style="width:70px;">년 <input type="text" style="width:70px;">월 <input type="text" style="width:70px;">일</p>
 				</div></br>
 				<div>

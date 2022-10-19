@@ -114,6 +114,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<EstimateVO> getAllEstList() {
         return sqlSession.selectList("est_list");
     }
+//    @Override
+//    public void checkremaindate(EstimateVO vo) {
+//        sqlSession.selectOne("check_date");
+//    }
+
 }
 
 
