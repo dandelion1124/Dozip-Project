@@ -38,8 +38,8 @@ $(function() {
 					모집중 D-<span></span>
 				</p>
 				<p class="label_badge">
-					<span class="label_val1">사무실</span>
-					<span class="label_val2">도배/바닥/욕실 공사</span>
+					<span class="label_val1">${e.est_use}</span>
+					<span class="label_val2">${e.est_detail}</span>
 				</p>
 				<div class="request_detail_title">
 				<h3> 견적 문의</h3>
@@ -52,25 +52,25 @@ $(function() {
 								<div class="dt">
 									<p class="ico1">희망 예산</p>
 								</div>
-								<div class="dd">0000원</div> <!-- 500만원 -->
+								<div class="dd">${e.est_bud}0000원</div> <!-- 500만원 -->
 							</li>
 							<li class="detail_info">
 								<div class="dt">
 									<p class="ico2">모집마감일</p>
 								</div>
-								<div class="dd"></div>
+								<div class="dd">${e.est_dateEnd}</div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
 									<p class="ico3">희망 시공시작일</p>
 								</div>
-								<div class="dd"></div>
+								<div class="dd">${e.est_start}</div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
 									<p class="ico4">희망 시공종료일</p>
 								</div>
-								<div class="dd"></div>
+								<div class="dd">${e.est_end}</div>
 							</li>							
 							<li class="detail_info_ex">
 								<div class="dt">
@@ -113,44 +113,44 @@ $(function() {
 						<div class="sec-cont-wrap">
 							<dl class="sec-item">
 								<dt class="sec-title">공간유형</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_zoning}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">건물유형</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_use}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">인테리어 종류</dt>
-								<dd class="sec-cont">[]</dd>
+								<dd class="sec-cont">[${e.est_detail}]</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">세부 선택</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_detail01}/</dd> <!-- 가공필요 -->
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 규모(평 수)</dt>
-								<dd class="sec-cont">21.96m<sup>2</sup>(10평)</dd>
+								<dd class="sec-cont">${e.est_areaM}m<sup>2</sup>(${e.est_areaP})</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 주소</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_addr}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 예산</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_bud}0000원</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공시작일</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_start}</dd>
 							</dl>							
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공완료일</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_end}</dd>
 							</dl>							
 							<dl class="sec-item">
 								<dt class="sec-title">희망 스타일</dt>
 								<dd class="sec-cont">
-
+									${e.est_desc}
 								</dd>
 							</dl>
 

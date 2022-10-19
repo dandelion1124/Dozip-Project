@@ -128,5 +128,10 @@ public class PartnersServiceImpl implements PartnersService {
     public void insertContract(ContractVO cv) {
         partnersDao.insertContract(cv);
     }
+    
+    @Override
+    public EstimateVO selectEstimate(String bid_no) {
+        return partnersDao.selectEstimate(bid_no);
+    }
 }
 

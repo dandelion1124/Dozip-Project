@@ -133,6 +133,10 @@ public class PartnersDAOImpl implements PartnersDAO {
     public void insertContract(ContractVO cv) {
         sqlSession.insert("contract_in",cv);
     }
+    @Override
+    public EstimateVO selectEstimate(String bid_no) {
+        return sqlSession.selectOne("select_est",bid_no);
+    }
 }
 
 

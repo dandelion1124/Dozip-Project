@@ -240,30 +240,29 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
-    public ModelAndView bid_detail(EstimateVO e,HttpServletResponse response,HttpSession session) throws Exception {
+    public String bid_detail(Model m,EstimateVO e,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
         //String mem_id=(String) session.getAttribute("p_id");
 
-        String estnum=e.getEst_num();
-        System.out.println(estnum);
-        //e=this.partnersService.selectEstimate(e);
-
-//        String[] estdateEnd = e.getEst_dateEnd().split(" ");
-//        System.out.println(estdateEnd[0]);
-//        this.partnersService.checkremaindate(vo);
-
-//        String estdetail = e.getEst_detail().replaceFirst(".$","");
-//        System.out.println(estdetail);
-//        String estareaM = e.getEst_areaM().replaceFirst(".$","");
+        //String estnum=e.getEst_num();
+        //System.out.println(estnum);
+        System.out.println(bid_no);
+        e=this.partnersService.selectEstimate(bid_no);
 
 
-        ModelAndView m=new ModelAndView();
+
         //m.addObject("e", e);//e 키이름에 e객체 저장
+        m.addAttribute("e",e);
+
+        return "/partners/estimate_request/bid_detail";
+    }
+    @RequestMapping(value = "/bid_detail_ok") //입찰 상세목록
+    public String bid_detail_ok(EstimateVO e,HttpServletResponse response) throws Exception {
 
 
-        m.setViewName("/partners/estimate_request/bid_detail");
-        return m;
+
+        return null;
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
