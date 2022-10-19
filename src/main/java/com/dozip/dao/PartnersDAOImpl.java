@@ -119,10 +119,9 @@ public class PartnersDAOImpl implements PartnersDAO {
 //        sqlSession.selectOne("check_date");
 //    }
 
-
     @Override
-    public BidVO getBidList() {
-        return sqlSession.selectOne("bid_list");
+    public List<BidVO> getBidList() {
+        return sqlSession.selectList("est_list2");
     }
 }
 

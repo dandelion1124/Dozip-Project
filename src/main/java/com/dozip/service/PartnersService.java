@@ -49,6 +49,6 @@ public interface PartnersService {
 
     List<EstimateVO> getAllEstList();
 
-    BidVO getBidList();
+    List<BidVO> getBidList();
 //    void checkremaindate(EstimateVO vo);
 }

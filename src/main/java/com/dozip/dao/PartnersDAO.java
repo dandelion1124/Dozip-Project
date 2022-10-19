@@ -42,7 +42,7 @@ public interface PartnersDAO {
 
     List<EstimateVO> getAllEstList();
 
-    BidVO getBidList();
+    List<BidVO> getBidList();
 //    void checkremaindate(EstimateVO vo);
 }
 

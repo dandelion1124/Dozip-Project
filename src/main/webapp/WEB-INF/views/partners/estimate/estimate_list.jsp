@@ -108,6 +108,10 @@
         est_check    견적 직접신청 수락/거절/계약요청
     1. 계약 요청일 경우 - 계약서 작성하기 버튼
     2. 지불완료되면 다르게 출력
+
+    bidT 을 동시에 사용해야함
+        1.bid_state 가 계약 요청
+        2.est_num가 같은경우
 --%>
 
 
@@ -120,18 +124,22 @@
 
     <c:forEach var="e" items="${ elist}">
         <c:if test="${e.est_check=='계약요청'}">  <%--계약서 작성 전단계 --%>
+            <c:forEach var="b" items="${blist}">
+                <c:if test="${e.est_num==b.est_num}">
             <tr>
                 <td><input type="checkbox"></td>
                 <td>${e.est_num}</td>
-                <td><input type="button" value="sample" onclick="est_detail()"></td>
-                <td>5,000</td>
-                <td>2022.09.01 ~ 2022.09.12</td>
+                <td><input type="button" value="${est_addr}" onclick="est_detail()"></td>
+                <td>${b.bid_price}</td>
+                <td>${b.bid_start} ~ ${b.bid_end}</td>
                 <td>
                     <button id="write_contract_btn" onclick="write_contract()"> 계약서작성하기</button>
                 </td>
                 <td>계약서 작성전</td>
                 <td><button onclick="est_cancel()" id="cancel_contract_btn">계약해지</button></td>
             </tr>
+                </c:if>
+            </c:forEach>
         </c:if>
 
     </c:forEach>

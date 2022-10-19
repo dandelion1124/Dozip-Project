@@ -48,15 +48,17 @@ public class HochulTestController {
 
     @RequestMapping(value = "/estimate_list")
     public String estimate_list(Model model) {  // 견적목록
-        
-        
-        
+
         //est_check 이 대기중이 아니라면 견적 목록 가져옴
         List<EstimateVO> elist = partnersService.getAllEstList();
 
         //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
-        BidVO bv = partnersService.getBidList();
+        List<BidVO> blist = partnersService.getBidList();
 
+
+        model.addAttribute("blist",blist);
+
+        System.out.println(blist);
         model.addAttribute("elist",elist);
         return "/partners/estimate/estimate_list";
     }
