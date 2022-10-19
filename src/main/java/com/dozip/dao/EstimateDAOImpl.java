@@ -46,4 +46,9 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Override
     public void updateEstate(String est_num) { this.sqlSession.update("est_state", est_num); }
 
+    @Override
+    public int counter() {
+        return this.sqlSession.selectOne("cCounter");
+    }
+
 }

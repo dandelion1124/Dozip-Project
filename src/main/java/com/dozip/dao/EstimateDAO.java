@@ -25,4 +25,6 @@ public interface EstimateDAO {
     void updateState2(String est_num);
 
     void updateEstate(String est_num);
+
+    int counter();
 }

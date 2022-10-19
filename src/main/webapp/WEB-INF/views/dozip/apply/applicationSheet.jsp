@@ -20,7 +20,7 @@
     <div class="container">
         <ul class="clearfix">
             <li>
-                <h3>3,587</h3>
+                <h3>${count}</h3>
                 <h4>누적 견적신청수</h4>
                 <span class="bar"></span>
             </li>
@@ -84,12 +84,12 @@
         <h3>원하는 공간 선택</h3>
         <div class="123">
           <input type="checkbox" id="allCk" name="checkAll" class="checkbox" data-name="전체선택">
-          <input type="checkbox" id="wall" name="check" data-name="도배/벽" value="도배/벽" class ="checkbox"/>
+          <input type="checkbox" id="wall" name="check" data-name="도배/벽" value="도배,벽" class ="checkbox"/>
           <input type="checkbox" id="floor" name="check" data-name="바닥" value="바닥" class ="checkbox"/>
           <input type="checkbox" id="kitchen" name="check" data-name="주방" value="주방" class ="checkbox"/>
           <input type="checkbox" id="washroom" name="check" data-name="욕실" value="욕실" class ="checkbox"/>
           <input type="checkbox" id="porch" name="check" data-name="현관" value="현관" class ="checkbox"/>
-          <input type="checkbox" id="window" name="check" data-name="발코니/샷시" value="발코니/샷시" class ="checkbox"/>
+          <input type="checkbox" id="window" name="check" data-name="발코니/샷시" value="발코니,샷시" class ="checkbox"/>
           <input type="checkbox" id="light" name="check" data-name="조명" value="조명" class ="checkbox"/>
           <input type="checkbox" id="door" name="check" data-name="문" value="문" class ="checkbox"/>
         </div>

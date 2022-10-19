@@ -583,9 +583,13 @@ public class DozipController {
      */
 
 
-    @GetMapping("/apply")
-    public String apply(){
-        return "/dozip/apply/applicationSheet";
+    @RequestMapping("/apply")
+    public ModelAndView apply(ModelAndView mv){
+        int count = this.estimateService.counter();
+        System.out.println(count);
+        mv.addObject("count",count);
+        mv.setViewName("/dozip/apply/applicationSheet");
+        return mv;
     }
 
     //근처에 존재하는 파트너스 목록
@@ -682,6 +686,11 @@ public class DozipController {
         else {
             this.estimateService.applyOk(e);
         }
+
+//        int count = this.estimateService.counter();
+//        e.setStartrow(count);
+//        System.out.println(count);
+
         out.println("<script>");
         out.println("alert('견적 신청이 완료되었습니다.');");
         out.println("location.href = '/dozip/home';");
