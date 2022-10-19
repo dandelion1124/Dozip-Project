@@ -110,6 +110,10 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectOne("res_check",businessNum);
     }
 
+    @Override
+    public List<EstimateVO> getAllEstList() {
+        return sqlSession.selectList("est_list");
+    }
 }
 
 

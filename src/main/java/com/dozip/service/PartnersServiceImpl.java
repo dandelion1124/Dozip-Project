@@ -101,5 +101,10 @@ public class PartnersServiceImpl implements PartnersService {
     public int checkBusinessNum(PartnersVO pv) {
         return partnersDao.checkBusinessNum(pv);
     }
+
+    @Override
+    public List<EstimateVO> getAllEstList() {
+        return partnersDao.getAllEstList();
+    }
 }
 

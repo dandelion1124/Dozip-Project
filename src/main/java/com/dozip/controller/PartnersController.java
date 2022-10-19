@@ -204,7 +204,6 @@ public class PartnersController {
 
         EstimateVO e=this.partnersService.selectEstimate(mem_id);
 
-        System.out.println(e.toString());
         //System.out.println(e.getMem_id());
 
 

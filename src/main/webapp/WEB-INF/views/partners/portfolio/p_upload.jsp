@@ -32,7 +32,7 @@
 				},
 				datatype:"text",
 				success: function(result){
-					window.open( "./load_info", "Child", "width=800, height=300, top=500, left=500");
+					window.open( "./load_info", "Child", "width=920, height=955, top=500, left=500");
 				}
 			});*/
 		}

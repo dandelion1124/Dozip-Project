@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
-//@RequestMapping("/partners/*")
-@RequestMapping("/dozip/*")
+@RequestMapping("/partners/*")
+//@RequestMapping("/dozip/*")
 public class HochulTestController {
     @Autowired
     private PartnersService partnersService;
@@ -46,21 +47,19 @@ public class HochulTestController {
 
     @RequestMapping(value = "/estimate_list")
     public String estimate_list(EstimateVO ev, Model model) {  // 견적목록
+        
+        
+        
+        //est_check 이 대기중이 아니라면 견적 목록 가져옴
+        List<EstimateVO> elist = partnersService.getAllEstList();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        model.addAttribute("elist",elist);
         return "/partners/estimate/estimate_list";
+    }
+
+    @RequestMapping("/write_contract")
+    public String write_contract(){
+     return "/partners/estimate/contract";
     }
 
 
