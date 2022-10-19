@@ -128,6 +128,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public EstimateVO write_contract(int est_num) {
         return sqlSession.selectOne("write_contract",est_num);
     }
+
+    @Override
+    public EstimateVO selectEstimate(String bid_no) {
+        return sqlSession.selectOne("select_est",bid_no);
+    }
 }
 
 

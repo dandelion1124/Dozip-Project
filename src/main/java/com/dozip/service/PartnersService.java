@@ -55,6 +55,8 @@ public interface PartnersService {
 
     EstimateVO write_contract(int est_num);
 
+    EstimateVO selectEstimate(String bid_no);
+
 
 //    void checkremaindate(EstimateVO vo);
 }

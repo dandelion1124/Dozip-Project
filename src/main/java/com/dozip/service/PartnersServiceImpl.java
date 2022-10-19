@@ -124,5 +124,10 @@ public class PartnersServiceImpl implements PartnersService {
 
         return partnersDao.write_contract(est_num);
     }
+
+    @Override
+    public EstimateVO selectEstimate(String bid_no) {
+        return partnersDao.selectEstimate(bid_no);
+    }
 }
 

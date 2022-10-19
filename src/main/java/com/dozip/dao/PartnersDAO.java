@@ -45,6 +45,8 @@ public interface PartnersDAO {
     List<BidVO> getBidList();
 
     EstimateVO write_contract(int est_num);
+
+    EstimateVO selectEstimate(String bid_no);
 //    void checkremaindate(EstimateVO vo);
 }
 
