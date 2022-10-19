@@ -204,12 +204,9 @@ public class PartnersController {
     public ModelAndView bid(EstimateVO vo,HttpServletResponse response,HttpSession session) throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
         //String p_id=(String) session.getAttribute("p_id");
 
         List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
-        //System.out.println(e.toString());
-        //System.out.println(e.getMem_id());
 
         //Date dminusdate = e.getEst_dateEnd()-e.getEst_date();
         //System.out.println(e.getEst_dateEnd()-e.getEst_date());
@@ -243,24 +240,24 @@ public class PartnersController {
     public String bid_detail(Model m,EstimateVO e,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        //String mem_id=(String) session.getAttribute("p_id");
 
-        //String estnum=e.getEst_num();
-        //System.out.println(estnum);
         System.out.println(bid_no);
         e=this.partnersService.selectEstimate(bid_no);
 
-
-
-        //m.addObject("e", e);//e 키이름에 e객체 저장
         m.addAttribute("e",e);
+
 
         return "/partners/estimate_request/bid_detail";
     }
     @RequestMapping(value = "/bid_detail_ok") //입찰 상세목록
     public String bid_detail_ok(EstimateVO e,HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
 
-
+        out.println("<script>");
+        out.println("alert('입찰 성공!');");
+        out.println("history.back();");
+        out.println("</script>");
 
         return null;
     }
