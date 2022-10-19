@@ -36,7 +36,7 @@ public interface PartnersDAO {
 
     void insertPartnersSub(Partners_subVO ps);
 
-    EstimateVO selectEstimate(String mem_id);
+    List<EstimateVO> selectEstimateList();
 
     int checkSub(String businessNum);
 
