@@ -120,9 +120,13 @@ public class PartnersServiceImpl implements PartnersService {
 
 
     @Override
-    public EstimateVO write_contract(int est_num) {
-
+    public EstimateVO write_contract(int est_num){
         return partnersDao.write_contract(est_num);
+    }
+
+    @Override
+    public void insertContract(ContractVO cv) {
+        partnersDao.insertContract(cv);
     }
 }
 

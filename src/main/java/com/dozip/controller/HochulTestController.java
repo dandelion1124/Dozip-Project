@@ -3,6 +3,7 @@ package com.dozip.controller;
 import com.dozip.service.DozipService;
 import com.dozip.service.PartnersService;
 import com.dozip.vo.BidVO;
+import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -51,19 +53,36 @@ public class HochulTestController {
     }
 
     @RequestMapping("/write_contract") //계약서 보기
-    public String write_contract(int est_num,EstimateVO ev, Model model){
+    public String write_contract(int est_num, EstimateVO ev, Model model, HttpSession session){
         /* 계약서에 담을 내용들을 불러와서 model 객체에 담아야함 */
-
+        String businessNum = (String)session.getAttribute("businessNum");
         //est_num, 계약 요청 기준으로 select
         ev=partnersService.write_contract(est_num);
         model.addAttribute("ev", ev);
+        model.addAttribute("businessNum",businessNum);
 
      return "/partners/estimate/contract";  //계약서 view 페이지
     }
 
+
+
+
     @PostMapping("/write_contract_ok")
-    public String write_contract_ok(){
+    public String write_contract_ok(ContractVO cv, HttpServletResponse response) throws Exception{
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
+        cv.setCustomer_number(" ");
+
+
+        partnersService.insertContract(cv);
+        //고객정보는 안넣어야함
+        out.println("<script>");
+        out.println("alert('계약서 작성 완료!')");
+        out.println(" window.opener.location.href='/partners/estimate_list'");
+        out.println("self.close()");
+        out.println("</script>");
+
 
         return null;
     }

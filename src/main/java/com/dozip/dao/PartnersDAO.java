@@ -45,6 +45,25 @@ public interface PartnersDAO {
     List<BidVO> getBidList();
 
     EstimateVO write_contract(int est_num);
+
+    void insertContract(ContractVO cv);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    void checkremaindate(EstimateVO vo);
 }
 

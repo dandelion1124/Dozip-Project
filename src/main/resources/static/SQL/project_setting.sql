@@ -171,7 +171,44 @@ DROP SEQUENCE bid_num_seq; --삭제
 select bid_num_seq.nextval from dual; --시퀀스 확인
 create sequence bid_num_seq start with 1 increment by 1 nocache; --생성
 
---7. 고객문의 테이블 --
+--7. 계약서 테이블 --
+drop table contractT;
+select * from contractT;
+create table contractT
+(
+        cont_no nvarchar2(15) primary key, --고유번호(C000000)
+        mem_id varchar2(20) not null, --고객 회원아이디
+        businessNum nvarchar2(50) not null, --업체 사업자번호
+        cont_title nvarchar2(50) not null, --공사명
+        cont_location nvarchar2(50) not null, --공사장소
+        cont_area nvarchar2(50) not null, --공사면적
+        cont_start nvarchar2(50) not null, --착공일
+        cont_end nvarchar2(50) not null, --준공일
+        cont_total nvarchar2(50) not null, --총공사대금
+        cont_cost1 nvarchar2(50) not null, --계약금
+        cont_date1 nvarchar2(50) not null, --계약급 지급일자
+        cont_cost2 nvarchar2(50) not null, --중도금
+        cont_date2 nvarchar2(50) not null, --중도금 지급일자
+        cont_cost3 nvarchar2(50) not null, --잔금
+        cont_date3 nvarchar2(50) not null, --잔금 지급일자
+        cont_date nvarchar2(50) not null, --계약일자
+        customer_name nvarchar2(50) not null, -- 고객 이름
+        customer_addr nvarchar2(50) not null, -- 고객 주소
+        customer_number nvarchar2(50) not null, -- 고객 주민번호(사업자번호)
+        customer_tel nvarchar2(50) not null, -- 고객 연락처
+        partners_name nvarchar2(50) not null, -- 업체명
+        partners_addr nvarchar2(50) not null, -- 업체주소
+        partners_tel nvarchar2(50) not null, -- 업체전화번호
+        foreign key (mem_id) references memberT (mem_id),
+        foreign key (businessNum) references partnersT (businessNum)
+);
+
+--계약서 테이블 시퀀스
+drop sequence contractT_no_seq; --삭제
+select contractT_no_seq.nextval from dual; --시퀀스 확인
+create sequence contractT_no_seq start with 1 increment by 1 nocache; --생성
+
+--8. 고객문의 테이블 --
 drop table qnaT;
 select * from qnaT;
 create table qnaT

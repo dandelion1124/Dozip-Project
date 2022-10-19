@@ -145,7 +145,7 @@
 </c:if>
     <script>
         function write_contract(est_num){
-            window.open('/partners/write_contract?est_num='+est_num,'Child','width=920, height=955, top=0, left=100')
+            window.open('/partners/write_contract?est_num='+est_num,'계약서','width=745, height=955, top=0, left=100, resizable=no')
         }
     </script>
 
@@ -216,13 +216,12 @@
         var popupWidth = 910;
         var popupHeight = 1000;
 
-        var popupX = (window.screen.width / 2) - (popupWidth / 2);
+            var popupX = (window.screen.width / 2) - (popupWidth / 2);
         // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
         var popupY= (window.screen.height / 2) - (popupHeight / 2);
         // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-        window.open('./estimate/estimate_detail.jsp', 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX);
+        window.open('./estimate/estimate_detail.jsp', 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX + 'resizable=no');
         /*
-
         겟 방식으로 받아서 아작스 처리
         $.ajax({
         type:"post",
