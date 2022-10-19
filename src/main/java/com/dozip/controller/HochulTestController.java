@@ -2,6 +2,7 @@ package com.dozip.controller;
 
 import com.dozip.service.DozipService;
 import com.dozip.service.PartnersService;
+import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,12 +47,15 @@ public class HochulTestController {
 
 
     @RequestMapping(value = "/estimate_list")
-    public String estimate_list(EstimateVO ev, Model model) {  // 견적목록
+    public String estimate_list(Model model) {  // 견적목록
         
         
         
         //est_check 이 대기중이 아니라면 견적 목록 가져옴
         List<EstimateVO> elist = partnersService.getAllEstList();
+
+        //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
+        BidVO bv = partnersService.getBidList();
 
         model.addAttribute("elist",elist);
         return "/partners/estimate/estimate_list";

@@ -158,7 +158,8 @@ create table bidT
     businessNum nvarchar2(12)  not null, --사업자번호(FK)
     est_num     varchar2(12)   not null, --견적서 번호(FK)
     bid_price   number(20)     not null,
-    bid_period  number(5)      null,
+    bid_start  varchar2(50) not null,
+    bid_end  varchar2(50) not null,
     bid_detail  varchar2(3000) null,
     bid_state   varchar2(50)   default '진행중', --상태
     bid_date date default sysdate, --입찰신청일자

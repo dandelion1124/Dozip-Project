@@ -41,6 +41,8 @@ public interface PartnersDAO {
     int checkSub(String businessNum);
 
     List<EstimateVO> getAllEstList();
+
+    BidVO getBidList();
 //    void checkremaindate(EstimateVO vo);
 }
 

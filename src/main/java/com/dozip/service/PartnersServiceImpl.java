@@ -111,5 +111,10 @@ public class PartnersServiceImpl implements PartnersService {
     public List<EstimateVO> getAllEstList() {
         return partnersDao.getAllEstList();
     }
+
+    @Override
+    public BidVO getBidList() {
+        return partnersDao.getBidList();
+    }
 }
 
