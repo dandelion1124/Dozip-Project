@@ -17,4 +17,12 @@ public interface EstimateDAO {
     List<EstimateVO> getElist(EstimateVO e);
 
     List<BidVO> getBidList(String est_num);
+
+    void updateState(String bid_num);
+
+    String getEnum(String bid_num);
+
+    void updateState2(String est_num);
+
+    void updateEstate(String est_num);
 }

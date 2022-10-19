@@ -50,5 +50,24 @@
         where b.businessNum=p.businessNum(+)
     </select>
 
+    <!--입찰상태변경(계약요청)-->
+    <update id="state_up">
+        update bidT set bid_state='계약요청' where bid_num=#{bid_num}
+    </update>
+
+    <!--est_num 확인-->
+    <select id="find_Enum" resultType="String">
+        select est_num from bidT where bid_num=#{bid_num}
+    </select>
+
+    <!--입찰상태변경(거절)-->
+    <update id="state_down">
+        update bidT set bid_state='거절' where est_num=#{est_num} and bid_state!='계약요청'
+    </update>
+
+    <!--estT의 상태를 계약요청으로 변경-->
+    <update id="est_state">
+        update estimateT set est_check='계약요청' where est_num=#{est_num}
+    </update>
 
 </mapper>

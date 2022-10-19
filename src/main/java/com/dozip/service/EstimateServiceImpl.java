@@ -5,6 +5,7 @@ import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,5 +33,16 @@ public class EstimateServiceImpl implements EstimateService {
 
     @Override
     public List<BidVO> getBidList(String est_num) { return this.estimateDAO.getBidList(est_num); }
+
+    @Override
+    @Transactional //트랜잭션 적용
+    public void updateState(String bid_num) {
+        this.estimateDAO.updateState(bid_num); //bidT 상태 : 계약요청
+        String est_num = this.estimateDAO.getEnum(bid_num); // 선택한 bid_num의 est_num을 가져옴
+        this.estimateDAO.updateState2(est_num); //나머지 bidT 상태 : 거절
+        this.estimateDAO.updateEstate(est_num); //estimateT 상태 : 계약요청
+    }
+
+
 
 }

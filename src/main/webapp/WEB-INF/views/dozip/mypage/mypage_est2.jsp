@@ -119,7 +119,7 @@
         <div style="margin-top: 40px; width: 90%; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">입찰참여 업체 리스트 확인</span>
             <select id="selectNum">
-                <option value="">견적서 번호를 선택해주세요.</option>
+                <option value="0">견적서 번호를 선택해주세요.</option>
                 <c:forEach var="n" begin="0" end="${numlist.size()-1}" step="1">
                     <option value="${numlist[n]}">${numlist[n]}</option>
                 </c:forEach>
@@ -142,7 +142,7 @@
 
     $('#selectNum').change(function(){
         var est_num = $('#selectNum').val();
-        alert("선택값"+est_num);
+        //alert("선택값"+est_num);
 
         $.getJSON("/dozip/my_est2/"+est_num, function(data){//json데이터를 get방식으로 처리,비동기식으로 가져온 데이터는 data매개변수에 저장
             var count = data.length;
@@ -150,17 +150,46 @@
 
             $(data).each(function () {//each()함수로 반복
                 result += "<tr><td>" + this.businessName + "</td>"
-                    + "<td>" + this.bid_period + "주</td>"
+                    + "<td>" + this.bid_period + "일</td>"
                     + "<td>" + this.bid_price + "만원</td>"
                     + "<td>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date + "</td>"
                     + "<td>" + this.bid_state + "</td>"
-                    + "<td><button type='button'>수락</button><button type='button'>거절</button></td></tr>"
+                    + "<td><button type='button' class='permit' name='permit' value='"+this.bid_num+"'>수락</button>"
+                    + "<button type='button' value='"+this.bid_num+"'>거절</button></td></tr>"
             });
 
             $('#count').html(count);
             $('#print').html(result);//해당영역에 html()함수로 문자와 태그를 함께 변경 적용.
         });
+    });
+
+    $(document).on("click", "button[name='permit']", function (){
+        var bid_num = $(this).val();
+        //alert("bid_num" + bid_num);
+        var result = confirm("선택하신 업체와 계약하시겠습니까?");
+
+        if(result) {
+            var formData = new FormData();
+            formData.append("bid_num", bid_num);
+
+            $.ajax({
+                type: 'post',
+                url: '/dozip/my_est2_select',//URL 매핑주소
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: formData,
+                success: function () {
+                    //alert('성공');
+                    location.replace("/dozip/my_est2");
+                },
+                error: function () {
+                    alert('실패');
+                }
+            });
+        }
     });
 </script>
 <%-- 하단 공통부분 --%>

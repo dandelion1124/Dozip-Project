@@ -5,6 +5,7 @@ import com.dozip.vo.EstimateVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,4 +33,17 @@ public class EstimateDAOImpl implements EstimateDAO {
 
     @Override
     public List<BidVO> getBidList(String est_num) { return this.sqlSession.selectList("bid_list", est_num); }
+
+    @Override
+    public void updateState(String bid_num) { this.sqlSession.update("state_up", bid_num); }
+
+    @Override
+    public String getEnum(String bid_num) { return this.sqlSession.selectOne("find_Enum", bid_num); }
+
+    @Override
+    public void updateState2(String est_num) { this.sqlSession.update("state_down", est_num); }
+
+    @Override
+    public void updateEstate(String est_num) { this.sqlSession.update("est_state", est_num); }
+
 }

@@ -18,4 +18,7 @@ public interface EstimateService {
     List<EstimateVO> getElist(EstimateVO e);
 
     List<BidVO> getBidList(String est_num);
+
+    void updateState(String bid_num);
+
 }
