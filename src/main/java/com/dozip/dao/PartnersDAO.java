@@ -39,5 +39,7 @@ public interface PartnersDAO {
     EstimateVO selectEstimate(String mem_id);
 
     int checkSub(String businessNum);
+
+//    void checkremaindate(EstimateVO vo);
 }
 

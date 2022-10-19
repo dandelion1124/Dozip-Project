@@ -110,6 +110,11 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectOne("res_check",businessNum);
     }
 
+//    @Override
+//    public void checkremaindate(EstimateVO vo) {
+//        sqlSession.selectOne("check_date");
+//    }
+
 }
 
 

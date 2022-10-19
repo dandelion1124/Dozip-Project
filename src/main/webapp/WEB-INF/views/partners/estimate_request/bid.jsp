@@ -37,14 +37,14 @@
 					<div class="request_list_card">
 						<div class="request_list_item01">
 							<p class="request_day">
-								모집중 D-<span>2</span>
+								모집중 D-<span></span>
 							</p>
 							<p class="label_badge">
 								<span class="label_val1">${e.est_use}</span>
 								<span class="label_val2">${estdetail}</span>
 							</p>
 							<p class="request_title">
-								<a href="./bid_detail.jsp">목동 사무실 원상복구 견적 문의</a>
+								<a href="/partners/bid_detail"> ${e.est_use} ${estdetail} 견적 문의</a>
 							</p>
 							<div class="request_desc_div">
 								<p class="request_desc">
@@ -82,7 +82,7 @@
 							<ul class="company_profile">
 								<li class="info2">
 									<p class="key">시공규모</p>
-									<p class="val"><b>${e.est_areaM}m<sup>2</sup>(${e.est_areaP})</b></p></li>
+									<p class="val"><b>${estareaM}m<sup>2</sup>(${e.est_areaP}평)</b></p></li>
 								<li class="info2">
 									<p class="key">시공주소</p>
 									<p class="val"><b>${e.est_addr}</b></p></li>

@@ -96,6 +96,11 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.checkSub(businessNum);
     }
 
+//    @Override
+//    public void checkremaindate(EstimateVO vo) {
+//        partnersDao.checkremaindate(vo);
+//    }
+
 
     @Override
     public int checkBusinessNum(PartnersVO pv) {

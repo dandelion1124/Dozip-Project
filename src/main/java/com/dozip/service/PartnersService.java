@@ -46,4 +46,6 @@ public interface PartnersService {
     EstimateVO selectEstimate(String mem_id);
 
     int checkSub(String businessNum);
+
+//    void checkremaindate(EstimateVO vo);
 }
