@@ -586,7 +586,7 @@ public class DozipController {
     @RequestMapping("/apply")
     public ModelAndView apply(ModelAndView mv){
         int count = this.estimateService.counter();
-        System.out.println(count);
+
         mv.addObject("count",count);
         mv.setViewName("/dozip/apply/applicationSheet");
         return mv;
@@ -702,10 +702,11 @@ public class DozipController {
     }
 
     //고객후기
-    @GetMapping("review_main") //마이페이지-업체 문의글 목록
-    public ModelAndView review_main(ModelAndView mv, HttpServletRequest request) throws Exception {
-        HttpSession session = request.getSession();
+    @GetMapping("review_main") //고객 후기 메인페이지
+    public ModelAndView review_main(ModelAndView mv, HttpServletRequest request, HttpSession session) throws Exception {
         String id = (String) session.getAttribute("id");
+
+        
 
         mv.setViewName("/dozip/review/review_main");
         return mv;
