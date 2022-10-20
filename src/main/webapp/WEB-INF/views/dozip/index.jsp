@@ -217,17 +217,18 @@
 <!-- footer영역 -->
 <div class="clear"></div>
 
-<footer id="footer">
-    <nav class="footer_nav">
-        <ul class="footer_menu">
-            <li><a href="#">회사소개</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="/partners/main>파트너스 페이지</a></li>
-				</ul>
-			</nav>
+        <footer id="footer">
+            <hr/>
+            <nav class="footer_nav">
+                <ul class="footer_menu">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="/partners/main">파트너스 페이지</a></li>
+                </ul>
+            </nav>
 
-			<div id=" footer_company">
+            <div id="footer_company">
                 <div class="footer_company_call">
                     <p class="footer_company_call_number">1600 - 0000</p>
                     <p class="footer_company_call_info">
@@ -238,7 +239,7 @@
                     </p>
                 </div>
 
-                <div class="footer_company_text">
+                <div class="footer_company_text" >
                     <span>두집주식회사 대표이사 : 1조 | </span>
                     <span>주소 : 서울 강남구 | </span>
                     <span>사업자등록번호 : 000-81-12345 | </span>
@@ -249,7 +250,7 @@
                         시공 서비스에 대해 일체 책임을 지지 않습니다.</p>
                     <p>copyright © DOZIP</p>
                 </div>
-                </div>
-</footer>
+            </div>
+        </footer>
 </body>
 </html>
