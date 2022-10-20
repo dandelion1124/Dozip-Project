@@ -260,6 +260,7 @@ public class PartnersController {
         bid.setBusinessNum(businessNum);
         bid.setEst_num(e.getEst_num());
 
+        //bid.setBid_num();
         bid.setBid_price(Integer.parseInt(request.getParameter("bid_price"))); //가져온 string값을 int로 형변환해줘야
         bid.setBid_start(request.getParameter("bid_start")); //주소 부분 api로 변경해줄것
         bid.setBid_end(request.getParameter("bid_end"));
@@ -278,18 +279,22 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
-    public ModelAndView my_bid(String bid_num,HttpServletResponse response,HttpSession session) throws Exception {
+    public ModelAndView my_bid(HttpServletResponse response,HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
 
-        List<EstimateVO> elist=this.partnersService.selectEstimateList();
+        String businessNum = (String) session.getAttribute("businessNum");
 
-        BidVO bid= this.partnersService.selectbid(bid_num);
+        //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
 
-        //bid.setBid_state(bid);
-        System.out.println(bid.getBid_state());
-        System.out.println(elist.toString());
+        List<BidVO> list= this.partnersService.selectJoinList(businessNum);
+
+
+        //bid.setBid_state(blist);
+        System.out.println(list.toString());
+        //System.out.println(blist.toString());
         ModelAndView m= new ModelAndView();
-        m.addObject("elist",elist);
+        //m.addObject("elist",elist);
+        m.addObject("list",list);
 
         m.setViewName("/partners/estimate_request/my_bid");
         return m;

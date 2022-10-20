@@ -144,9 +144,21 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public BidVO selectbid(String bid_num) {
-        return sqlSession.selectOne("select_bid",bid_num);
+    public List<BidVO> selectBidList() {
+        return sqlSession.selectList("select_bidList");
     }
+
+    @Override
+    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
+        return sqlSession.selectList("select_est_bnum",businessNum);
+    }
+
+    @Override
+    public List<BidVO> selectJoinList(String businessNum) {
+        return this.sqlSession.selectList("sel_All", businessNum);
+    }
+
+
 }
 
 

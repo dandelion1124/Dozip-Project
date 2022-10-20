@@ -17,4 +17,7 @@ public class BidVO {
 
     //추가필요내용
     private String businessName; //사업자명
+    private String est_use; //건물유형
+    private String est_dateEnd;
+    private String est_addr;
 }

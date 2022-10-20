@@ -118,10 +118,15 @@
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
 
-    <select id="select_bid" resultType="bidVO">
-        select * from bidT where bid_num=#{bid_num,jdbcType=VARCHAR}
+    <select id="select_bidList" resultType="bidVO">
+        select * from bidT
     </select>
 
+    <select id="sel_All" resultType="bidVO">
+        select b.*, e.est_use, e.est_dateEnd, e.est_addr from
+        (select * from bidT where businessNum=#{businessNum}) b, estimateT e
+        where b.est_num = e.est_num(+)
+    </select>
 <!--    <select id="check_date" resultType="date">-->
 <!--        select to_char(sysdate,'YYYY-MM-DD') today from dual-->
 
