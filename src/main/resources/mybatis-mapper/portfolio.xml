@@ -52,9 +52,9 @@
         p.pf_premium, p.pf_regdate, pt.businessName from portfolioT p JOIN partnersT pT on pT.businessNum =
         p.businessNum
         where ((pf_no > 0)
-        <if test="pf_subtype != null">and pf_subtype=#{pf_subtype}</if>
-        <if test="pf_concept != null">and pf_concept=#{pf_concept}</if>
-        <if test="pf_cost != 0">and pf_cost&lt;=#{pf_cost}</if>
+        <if test = "pf_concept != null"> and pf_concept=#{pf_concept}</if>
+        <if test ="pf_subtype != null"> and pf_subtype=#{pf_subtype}</if>
+
         )order by p.pf_no desc
     </select>
 

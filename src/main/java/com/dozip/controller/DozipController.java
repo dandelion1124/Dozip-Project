@@ -367,20 +367,20 @@ public class DozipController {
         PortfolioVO p = new PortfolioVO();
         String pf_subtype1 = request.getParameter("pf_subtype1");
         String pf_subtype2 = request.getParameter("pf_subtype2");
-
-        if(pf_subtype1.equals("주거유형")){
-            p.setPf_subtype(pf_subtype2);
-        }else if(pf_subtype2.equals("상업유형")){
-            p.setPf_subtype(pf_subtype1);
-        }else if(pf_subtype1.equals("주거유형")&&pf_subtype2.equals("상업유형")){
-            p.setPf_subtype(null);
-        }
         p.setPf_concept(request.getParameter("pf_concept"));
-        if(p.getPf_concept().equals("스타일")){
-            p.setPf_concept(null);
-        }
         p.setPf_cost(Integer.parseInt(request.getParameter("pf_cost")));
         p.setPf_area(Integer.parseInt(request.getParameter("pf_area")));
+
+        if(pf_subtype1.equals("주거유형") && !pf_subtype2.equals("상업유형")){
+            p.setPf_subtype(pf_subtype2);
+        }else if(pf_subtype2.equals("상업유형") && !pf_subtype1.equals("주거유형")){
+            p.setPf_subtype(pf_subtype1);
+        }else if(pf_subtype1.equals("주거유형") && pf_subtype2.equals("상업유형")){
+            p.setPf_subtype(null);
+        }
+        System.out.println(p.getPf_concept());
+        System.out.println(p.getPf_cost());
+        System.out.println(p.getPf_area());
 
         System.out.println("확인" + p);
         
@@ -388,7 +388,7 @@ public class DozipController {
         list = this.portfolioService.getSearchList(p);
         System.out.println("리스트 값" + list.toString());
         return list;
-    }//bidList()
+    }//searchList()
 
     //입찰업체 중 하나를 선택하면 선택한 업체는 상태가 계약요청으로, 나머지는 거절 상태로 변경되도록 함 + 견적서테이블의 상태도 계약요청으로 변경
     @RequestMapping(value = "my_est2_select",  method = RequestMethod.POST, produces = "application/json")
