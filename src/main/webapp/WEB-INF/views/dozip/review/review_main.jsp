@@ -54,7 +54,7 @@
 		
 		<%-- 본문 --%>
 		<div class="review_write">
-			<button type="button" onclick="location.href='review_write.do'">후기 작성하기 >></button>
+			<button type="button" onclick="location.href='/dozip/review_write'">후기 작성하기 >></button>
 		</div>
 		
 		<!-- part1  -->
@@ -68,7 +68,7 @@
 					<p id="review_cont">집닥을 통해 여러군데 견적을 받았어요. 그 중에 여기가 견적서도 빨리 보내주고 제가 원하는 가격에 최대한 맞춰서 인테리어를 도와주셨어요! 요즘 인테리어 사기가 많아서 고민하고 걱정했는데 확실하게 일 처리 해주시고 전기부터 소방까지 꼼꼼하게 챙겨주셨어요. 벽지나 타일을 고르는데 고민이 많은데 추천도 잘 해주시고 지금도 대 만족 하고 있습니다</p>
 					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>
 					<p id="review_info">글쓴이 고객님 | 2022.04.23</p>
-					<div id="revie_go_box"><a href="review_detail.do" id="revie_go">해당 리뷰보러 가기 >> </a></div>
+					<div id="review_go_box"><a href="/dozip/review_detail" id="review_go">해당 리뷰보러 가기 >> </a></div>
 				</div>
 			</div>
 		</div>
