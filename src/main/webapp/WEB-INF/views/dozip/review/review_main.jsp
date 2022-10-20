@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 
@@ -73,46 +74,34 @@
 			</div>
 		</div>
 	
-		<!-- part2 -->
-		<div class="part2">
-		<div id="part5_area">
-			<div class="part5_inner">
-				<div><a class="part5_img" href="review_detail.do">
-					<img src="/DoZip/images/review1.jpg"/>
-				</a></div>
-				<div class="part5_title"><p>깔끔한 주방 인테리어</p></div>
-				<div class="part5_cont">
-					<p>싱크대 상판을 세라믹으로 하고 화장대의 상판과 수납장 하나의 상판도 세라믹으로 해서 효율적으로 세라믹을 사용할 수 있어서 만족합니다. 인조대리석보다 비싸지만 아주 만족합니다.</p>
+		<!-- part2 반복문 -->
+		<div class="review_list">
+			<c:if test = "${!empty reviewList}">
+				<c:forEach var="i" begin="0" end="${fn:length(reviewList)}" step="1">
+			<div id="card">
+				<div class="card_inner">
+					<div>
+						<img class = "ho" onclick = "location.href='review_detail?re_no=${reviewList[i].re_no}';" src= '${reviewList[i].re_photo1}'/>
+							<%-- onclick으로 클릭시 글번호를 넣어 상세로 연결되게 --%>
+					</div>
+					<div class="card_title"><p>${reviewList[i].re_title}</p></div>
+					<div class="card_cont">
+						<p>${reviewList[i].re_cont}</p>
+					</div>
+					<p></p>
 				</div>
-				<p></p>					
 			</div>
-			<div class="part5_inner">
-				<div><a class="part5_img" href="review_detail.do">
-					<img src="/DoZip/images/review2.jpg"/>
-				</a></div>
-				<div class="part5_title"><p>아늑하고 분위기 있는 침실</p></div>
-				<div class="part5_cont">
-					<p>편안하고 분위기 있는 침실을 원했어요. 업체와 여러번의 이야기를 통해 제가 원하는 느낌을 찾을 수 잇었어요. 소통이 원활해서 큰 스트레스를 받지 않고 공사를 진행할 수 있었습니다. 군더더기 없이 침실공간을 만들고 싶었는데 제가 원하던대로 잘 나온거 같아요.</p>
-				</div>
-				<p></p>					
-			</div>
-			<div class="part5_inner">
-				<div><a class="part5_img" href="review_detail.do">
-					<img src="/DoZip/images/review3.jpg"/>
-				</a></div>
-				<div class="part5_title"><p>작업을 위한 작업실 공사</p></div>
-				<div class="part5_cont">
-					<p>프리랜서로 일하고 있는데, 이번에 두집을 통해 작업실 공사를 맡겨봤어요. 어떻게 해야할지 몰랐는데 전문가분들이 여러가지 시안을 보여주시면서 선택할 수 있도록 도와주셔서 더 좋은 결과물이 나온거 같아요. 만족합니다.</p>
-				</div>
-				<p></p>					
-			</div>
+				</c:forEach>
+			</c:if>
 		</div>
-	</div>	
-	
+
+		<c:if test="${empty reviewList}">
+			<div id = "none_re">목록이 없습니다.</div>
+		</c:if>
+
 	<div class="part3">
 		<button id="more" type="button">더 보기</button>
 	</div>
-		
 	</div>
 	
 <%-- 하단 공통부분 --%>

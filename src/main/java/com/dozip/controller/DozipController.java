@@ -3,6 +3,7 @@ package com.dozip.controller;
 import com.dozip.service.DozipService;
 import com.dozip.service.EstimateService;
 import com.dozip.service.PortfolioService;
+import com.dozip.service.ReviewService;
 import com.dozip.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,9 @@ public class DozipController {
     private PortfolioService portfolioService;
     @Autowired
     private EstimateService estimateService;
+
+    @Autowired
+    private ReviewService reviewService;
 
     @RequestMapping(value = "home") //두집 홈 화면
     public String dozip(){
@@ -701,12 +705,16 @@ public class DozipController {
         return null;
     }
 
+
     //고객후기
     @GetMapping("review_main") //고객 후기 메인페이지
     public ModelAndView review_main(ModelAndView mv, HttpServletRequest request, HttpSession session) throws Exception {
         String id = (String) session.getAttribute("id");
 
-        
+        List<ReviewVO> ReviewList = new ArrayList<ReviewVO>();
+        ReviewList = this.reviewService.getAllReview();
+        System.out.println(ReviewList);
+        mv.addObject("reviewList",ReviewList);
 
         mv.setViewName("/dozip/review/review_main");
         return mv;
