@@ -19,20 +19,21 @@
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
 				margin:0 5% 40px 5%; background-color:white;">
 		<tr class="my_bid_label" style="border-bottom:1px solid lightgray; border-top:1px solid lightgray/*#0064CD*/; height:50px; font-size:15px;">
-			<th>입찰 내용</th> <th>예상 계약금액</th> <th>모집 마감일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>입찰상태</th>
+			<th>입찰 내용</th> <th>입찰가</th> <th>모집 마감일</th> <th>예상 시공시작일</th> <th>예상 시공종료일</th> <th>세부정보</th> <th>입찰상태</th>
 		</tr>
-	<c:if test="${empty elist}">
+	<c:if test="${empty list}">
 		<tr class="no_bid_list">
 			<td colspan="7" style="font-size:25px; height:100px; background-color: aliceblue;">조회된 입찰 리스트가 없습니다.</td>
 		</tr>
 	</c:if>
 
-	<c:if test="${!empty elist}">
-		<c:forEach var="e" items="${elist}">
+	<c:if test="${!empty list}">
+		<c:forEach var="e" items="${list}">
 		<tr class="my_bid_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:13px;">
-			<td>주소 ${e.est_use} 견적 문의</td> <td>${e.est_bud}0000원</td> <td>2022.07.13</td>  <td>${e.est_start}</td> <td>${e.est_end}</td>
+			<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
+			<td>${e.est_addr} ${e.est_use} 견적 문의</td> <td>${e.bid_price}</td> <td>${est_dateEnd[0]}</td>  <td>${e.bid_start}</td> <td>${e.bid_end}</td>
 			<td><div class="bid_detail"><a href="/partners/bid_detail?no=${e.est_num}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
-			<td class="bid_result"><span class="success1"> </span></td>
+			<td class="bid_result"><span class="success1">${e.bid_state}</span></td>
 		</tr>
 		</c:forEach>
 	</c:if>

@@ -36,7 +36,12 @@ public interface PartnersDAO {
     EstimateVO selectEstimate(String bid_no);
 
     void insertbid(BidVO bid);
-    BidVO selectbid(String bid_num);
+
+    List<BidVO> selectBidList();
+
+    List<EstimateVO> selectEstimateListBnum(String businessNum);
+
+    List<BidVO> selectJoinList(String businessNum);
 
 
 //    void checkremaindate(EstimateVO vo);
