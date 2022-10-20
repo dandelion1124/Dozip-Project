@@ -28,7 +28,7 @@
 			left: 0;
 			right: 0;
 			display: block;
-			padding:0 180px;
+			/*padding:0 180px;*/
 			height: 80px;
 			margin-top: -8px;
 		}
@@ -54,6 +54,10 @@
 		}
 		header ol, ul {
 			list-style: none;
+		}
+		.container {
+			width: 1170px;
+			margin: 0 auto;
 		}
 	</style>
 	<script>

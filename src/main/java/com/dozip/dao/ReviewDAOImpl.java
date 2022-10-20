@@ -15,6 +15,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     @Override
     public List<ReviewVO> getAllReview() {
-        return sqlSession.selectList("allReview");
+        return this.sqlSession.selectList("allReview");
     }
 }
