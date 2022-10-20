@@ -255,7 +255,6 @@ public class PartnersController {
         PrintWriter out=response.getWriter();
 
         String businessNum = (String) session.getAttribute("businessNum");
-
         EstimateVO e=this.partnersService.selectEstimate(bid_no);
 
         bid.setBusinessNum(businessNum);
@@ -266,13 +265,9 @@ public class PartnersController {
         bid.setBid_end(request.getParameter("bid_end"));
         bid.setBid_detail(request.getParameter("bid_detail"));
 
-
         this.partnersService.insertbid(bid);
 
         System.out.println(bid.toString());
-//        System.out.println(bid.getBid_price());
-//        System.out.println(bid.getBusinessNum());
-//        System.out.println(bid.getEst_num());
 
         out.println("<script>");
         out.println("alert('입찰 성공!');");
@@ -283,8 +278,21 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
-    public String my_bid() {
-        return "/partners/estimate_request/my_bid";
+    public ModelAndView my_bid(String bid_num,HttpServletResponse response,HttpSession session) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+
+        List<EstimateVO> elist=this.partnersService.selectEstimateList();
+
+        BidVO bid= this.partnersService.selectbid(bid_num);
+
+        //bid.setBid_state(bid);
+        System.out.println(bid.getBid_state());
+        System.out.println(elist.toString());
+        ModelAndView m= new ModelAndView();
+        m.addObject("elist",elist);
+
+        m.setViewName("/partners/estimate_request/my_bid");
+        return m;
     }
 
     @RequestMapping(value = "/construct_request") //시공요청

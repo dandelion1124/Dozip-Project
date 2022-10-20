@@ -22,7 +22,7 @@ $(function() {
 	<div class="request_detail_page">
 		<div class="my_bid_detail_icon">
 			<a href="./my_bid"
-				class="to_my_bid" target="_blank"><img src="/images/partners/bid_list.png" width="55px" height="55px"></a>
+				class="to_my_bid"><img src="/images/partners/bid_list.png" width="55px" height="55px"></a>
 		</div>		
 		<div class="request_list_detail_container">
 			<div class="go_bid_detail">
@@ -39,10 +39,14 @@ $(function() {
 				</p>
 				<p class="label_badge">
 					<span class="label_val1">${e.est_use}</span>
-					<span class="label_val2">${e.est_detail}</span>
+					<span class="label_val2">
+						<c:set var = "length" value = "${fn:length(e.est_detail)}"/>
+						<c:set var = "est_detail" value = "${fn:substring(e.est_detail,0,length-1)}"/>
+						${est_detail}
+					</span>
 				</p>
 				<div class="request_detail_title">
-				<h3> 견적 문의</h3>
+				<h3> 주소 ${e.est_use} 견적 문의</h3>
 				</div>
 				
 				<div class="greeb_box_container">
@@ -58,7 +62,8 @@ $(function() {
 								<div class="dt">
 									<p class="ico2">모집마감일</p>
 								</div>
-								<div class="dd">${e.est_dateEnd}</div>
+							<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
+								<div class="dd">${est_dateEnd[0]}</div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
@@ -121,11 +126,15 @@ $(function() {
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">인테리어 종류</dt>
-								<dd class="sec-cont">[${e.est_detail}]</dd>
+								<dd class="sec-cont">[${est_detail}]</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">세부 선택</dt>
-								<dd class="sec-cont">${e.est_detail01}/</dd> <!-- 가공필요 -->
+								<dd class="sec-cont">
+									${e.est_detail01} / ${e.est_detail02} / ${e.est_detail03} / ${e.est_detail04} /
+									${e.est_detail05} / ${e.est_detail06} / ${e.est_detail07} / ${e.est_detail08}
+								</dd> <!-- 가공필요 -->
+
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 규모(평 수)</dt>

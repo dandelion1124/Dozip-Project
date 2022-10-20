@@ -46,3 +46,6 @@ create table bidT
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (est_num) references estimateT (est_num)
 );
+
+delete from estimateT;
+commit;

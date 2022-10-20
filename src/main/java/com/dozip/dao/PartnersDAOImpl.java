@@ -138,9 +138,14 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectOne("select_est",bid_no);
     }
 
-    @Override
+    @Override //파트너스 입찰 신청
     public void insertbid(BidVO bid) {
         sqlSession.insert("insert_bid_detail",bid);
+    }
+
+    @Override
+    public BidVO selectbid(String bid_num) {
+        return sqlSession.selectOne("select_bid",bid_num);
     }
 }
 
