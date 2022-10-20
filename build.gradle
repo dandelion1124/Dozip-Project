@@ -47,6 +47,8 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1'
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.4'
 
+
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.named('test') {
