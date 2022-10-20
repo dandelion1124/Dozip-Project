@@ -155,7 +155,7 @@ $(function() {
 							</dl>
 
 
-							<form method="post" action="bid_detail_ok">
+							<form method="post" action="bid_detail_ok?no=${e.est_num}">
 								<div>
 									<div class="bid_part_div">
 										<button type="button" id="bid_participate">입찰 신청하기</button>
