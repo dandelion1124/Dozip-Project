@@ -138,5 +138,10 @@ public class PartnersServiceImpl implements PartnersService {
     public void insertbid(BidVO bid) {
         partnersDao.insertbid(bid);
     }
+
+    @Override
+    public BidVO selectbid(String bid_num) {
+        return partnersDao.selectbid(bid_num);
+    }
 }
 

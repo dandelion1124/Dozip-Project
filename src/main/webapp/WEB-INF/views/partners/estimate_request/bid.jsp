@@ -36,7 +36,8 @@
 					</div>
 				<c:if test="${empty elist}">
 					<div class="request_list_card">
-						<p style="font-size:25px; height:100px; background-color: aliceblue;">조회된 입찰 리스트가 없습니다.</p>
+						<p style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">
+							조회된 입찰 리스트가 없습니다.</p>
 					</div>
 				</c:if>
 				<c:if test="${!empty elist}">
@@ -55,7 +56,7 @@
 								</span>
 							</p>
 							<p class="request_title">
-								<a href="/partners/bid_detail">주소 ${e.est_use} ${est_detail} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 --%>
+								<a href="/partners/bid_detail">주소 ${e.est_use} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 --%>
 							</p>
 							<div class="request_desc_div">
 								<p class="request_desc">${e.est_desc}</p>
