@@ -741,7 +741,14 @@ public class DozipController {
     public ModelAndView myall_contract(ModelAndView mv,HttpSession session,HttpServletRequest request) throws Exception{
 
         String id = (String) session.getAttribute("id");
+        ContractVO c = new ContractVO();
 
+
+        List<ContractVO> clist = new ArrayList<ContractVO>();
+//        c.setMem_id(id);
+        clist = this.reviewService.getClist(id);
+        mv.addObject("clist", clist);
+        System.out.println(clist);
         mv.setViewName("/dozip/review/myall_contract");
         return mv;
     }

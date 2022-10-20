@@ -6,4 +6,8 @@
     <select id="allReview" resultType="ReviewVO">
         select * from reviewT order by re_no desc
     </select>
+
+    <select id = "getClist" resultType="ContractVO">
+        select * from contractT where mem_id=#{mem_id}
+    </select>
 </mapper>
