@@ -701,4 +701,29 @@ public class DozipController {
         return null;
     }
 
+    //고객후기
+    @GetMapping("review_main") //마이페이지-업체 문의글 목록
+    public ModelAndView review_main(ModelAndView mv, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        String id = (String) session.getAttribute("id");
+
+        mv.setViewName("/dozip/review/review_main");
+        return mv;
+    }
+
+    @GetMapping("review_detail")
+    public ModelAndView review_detail(ModelAndView mv, HttpSession session, HttpServletRequest request) throws Exception{
+        String id = (String) session.getAttribute("id");
+
+        mv.setViewName("/dozip/review/review_detail");
+        return mv;
+    }
+
+    @GetMapping("review_write")
+    public ModelAndView review_write(ModelAndView mv, HttpSession session, HttpServletRequest request) throws Exception{
+        String id = (String) session.getAttribute("id");
+
+        mv.setViewName("/dozip/review/review_write");
+        return mv;
+    }
 }//DozipController
