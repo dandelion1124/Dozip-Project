@@ -26,6 +26,7 @@ public interface PartnersService {
     void updatePartners(PartnersVO p);//data_manage 회원정보 추가/수정(address)
     void insertPartnersSub(Partners_subVO ps);
     List<EstimateVO> selectEstimateList();
+
     int checkSub(String businessNum);
     List<EstimateVO> getAllEstList();
     List<BidVO> getBidList();
@@ -34,15 +35,8 @@ public interface PartnersService {
     EstimateVO selectEstimate(String bid_no);
 
     void insertbid(BidVO bid);
+    BidVO selectbid(String bid_num);
 
-
-
-
-
-
-
-
-    
 
 //    void checkremaindate(EstimateVO vo);
 }

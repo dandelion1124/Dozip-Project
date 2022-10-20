@@ -34,26 +34,9 @@ public interface PartnersDAO {
     EstimateVO write_contract(int est_num);
     void insertContract(ContractVO cv);
     EstimateVO selectEstimate(String bid_no);
+
     void insertbid(BidVO bid);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    BidVO selectbid(String bid_num);
 
 
 //    void checkremaindate(EstimateVO vo);

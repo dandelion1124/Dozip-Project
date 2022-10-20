@@ -117,6 +117,11 @@
         values(bid_num_seq.nextval,#{businessNum,jdbcType=VARCHAR},#{est_num,jdbcType=VARCHAR},
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
+
+    <select id="select_bid" resultType="bidVO">
+        select * from bidT where bid_num=#{bid_num,jdbcType=VARCHAR}
+    </select>
+
 <!--    <select id="check_date" resultType="date">-->
 <!--        select to_char(sysdate,'YYYY-MM-DD') today from dual-->
 
