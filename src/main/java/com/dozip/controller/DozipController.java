@@ -735,4 +735,14 @@ public class DozipController {
         mv.setViewName("/dozip/review/review_write");
         return mv;
     }
+    
+    //나의 계약서 불러오기
+    @RequestMapping ("myall_contract")
+    public ModelAndView myall_contract(ModelAndView mv,HttpSession session,HttpServletRequest request) throws Exception{
+
+        String id = (String) session.getAttribute("id");
+
+        mv.setViewName("/dozip/review/myall_contract");
+        return mv;
+    }
 }//DozipController
