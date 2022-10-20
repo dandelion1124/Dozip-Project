@@ -111,6 +111,7 @@
 				<option value="50">50평</option>
 				<option value="60">60평 이상</option>
 			</select>
+			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침 --%>
 			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
 
 			<button type="button" name = "submit">필터검색</button>
@@ -123,7 +124,7 @@
 			</div>
 		</div>
 
-		<%-- 드롭다운 선택한 값 받아오기--%>
+		<%-- 드롭다운 선택한 값 받아오기 추후 삭제예정--%>
 		<script>
 			let arr = [];
 			function input(e){
@@ -151,13 +152,8 @@
 				$('.card').show();
 			}
 		</script>
-
-
 		<!-- 드롭다운 끝 -->
 		
-		
-
-
 
 		<%-- 업체 검색시 해당 업체 출력--%>
 		<script type="text/javascript">
