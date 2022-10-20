@@ -246,24 +246,32 @@ public class PartnersController {
 
         m.addAttribute("e",e);
 
-
         return "/partners/estimate_request/bid_detail";
     }
     @RequestMapping(value = "/bid_detail_ok") //입찰 상세목록
-    public String bid_detail_ok(BidVO bid,EstimateVO vo,HttpServletRequest request,HttpServletResponse response) throws Exception {
+    public String bid_detail_ok(BidVO bid,EstimateVO vo,@RequestParam("no") String bid_no,HttpServletRequest request,HttpServletResponse response,HttpSession session)
+            throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
+        String businessNum = (String) session.getAttribute("businessNum");
+
         //bid.setEst_num(vo.getEst_num());
+        bid.setBusinessNum(businessNum);
+        bid.setEst_num(vo.getEst_num());
+
         bid.setBid_price(Integer.parseInt(request.getParameter("bid_price"))); //가져온 string값을 int로 형변환해줘야
         bid.setBid_start(request.getParameter("bid_start")); //주소 부분 api로 변경해줄것
         bid.setBid_end(request.getParameter("bid_end"));
         bid.setBid_detail(request.getParameter("bid_detail"));
 
+
         this.partnersService.insertbid(bid);
 
 
         System.out.println(bid.getBid_price());
+        System.out.println(bid.getBusinessNum());
+        System.out.println(bid.getEst_num());
 
         out.println("<script>");
         out.println("alert('입찰 성공!');");

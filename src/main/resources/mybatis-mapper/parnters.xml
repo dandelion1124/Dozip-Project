@@ -113,7 +113,7 @@
     </select>
     <!--입찰 상세페이지 입찰하기 -->
     <insert id="insert_bid_detail">
-        insert into bidT (bid_price,bid_start,bid_end,bid_detail) values(#{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},
+        insert into bidT (bid_num,businessNum,bid_price,bid_start,bid_end,bid_detail) values(bid_num_seq.nextval,#{businessNum,jdbcType=VARCHAR},#{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},
              #{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR})
     </insert>
 <!--    <select id="check_date" resultType="date">-->
