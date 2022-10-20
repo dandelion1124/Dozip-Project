@@ -31,6 +31,7 @@
 			/*padding:0 180px;*/
 			height: 80px;
 			margin-top: -8px;
+			box-shadow:0 2px 2px rgba(0,0,0,.3);
 		}
 		header .logo a{width:171px ; height:56px; background:url(/images/dozip/HomeLogo01.png) no-repeat; display:block; text-indent:-9999em;}
 		header .logo{float:left;}
