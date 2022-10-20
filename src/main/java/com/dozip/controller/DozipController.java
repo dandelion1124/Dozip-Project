@@ -708,13 +708,12 @@ public class DozipController {
 
     //고객후기
     @GetMapping("review_main") //고객 후기 메인페이지
-    public ModelAndView review_main(ModelAndView mv, HttpServletRequest request, HttpSession session) throws Exception {
-        String id = (String) session.getAttribute("id");
+    public ModelAndView review_main(ModelAndView mv) throws Exception {
 
-        List<ReviewVO> ReviewList = new ArrayList<ReviewVO>();
-        ReviewList = this.reviewService.getAllReview();
-        System.out.println(ReviewList);
-        mv.addObject("reviewList",ReviewList);
+        List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
+        reviewList = this.reviewService.getAllReview();
+        System.out.println(reviewList);
+        mv.addObject("reviewList",reviewList);
 
         mv.setViewName("/dozip/review/review_main");
         return mv;
