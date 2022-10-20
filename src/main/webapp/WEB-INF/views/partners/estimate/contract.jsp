@@ -62,6 +62,8 @@
 
 <form action="/partners/write_contract_ok" method="post">
     <input type="hidden" value="${ev.mem_id}" name="mem_id">
+    <input type="hidden" value="${ev.est_num}" name="est_num">
+    <h4>${ev.est_num} 번견적서 (테스트)</h4>
     <div class="contract_title">인테리어 표준계약서</div>
     <div class="contract_summary">
         <span><b>(공사개요)</b></span>

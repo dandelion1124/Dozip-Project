@@ -177,8 +177,9 @@ select * from contractT;
 create table contractT
 (
         cont_no nvarchar2(15) primary key, --고유번호(C000000)
-        mem_id varchar2(20) not null, --고객 회원아이디
-        businessNum nvarchar2(50) not null, --업체 사업자번호
+        est_num varchar2(25) not null, --견적번호 FK
+        mem_id varchar2(20) not null, --고객 회원아이디 FK
+        businessNum nvarchar2(50) not null, --업체 사업자번호 FK
         cont_title nvarchar2(50) not null, --공사명
         cont_location nvarchar2(50) not null, --공사장소
         cont_area nvarchar2(50) not null, --공사면적
@@ -200,6 +201,7 @@ create table contractT
         partners_addr nvarchar2(50) not null, -- 업체주소
         partners_tel nvarchar2(50) not null, -- 업체전화번호
         foreign key (mem_id) references memberT (mem_id),
+        foreign key (est_num) references estimateT (est_num),
         foreign key (businessNum) references partnersT (businessNum)
 );
 

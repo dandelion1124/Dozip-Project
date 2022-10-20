@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ContractVO {
     private String cont_no;
+    private String est_num;
     private String mem_id;
     private String businessNum;
     private String cont_title;
