@@ -1,0 +1,148 @@
+
+.follow_title_wrap {
+    display: flex;
+    width: 90%;
+}
+#follow_title {
+    font-size: 1.5rem;
+    /* font-family: '여기어때 잘난체'; */
+    font-weight:bold;
+    margin-right: 20px;
+}
+.progress_bar {
+    width: 300px;
+    height: 30px;
+    background-color: #dedede;
+    font-weight: 600;
+    font-size: .8rem;
+    margin-top: 20px;
+}
+.progress_bar .progress {
+    width: 45%;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    background-color: #4F98FF;
+    color: #111;
+}
+#progress_percent {
+    font-size: 1.5rem;
+    /* font-family: '여기어때 잘난체'; */
+    font-weight:bold;
+    margin-left: 10px;
+}
+.my_contract_info2 {
+    border: 5px solid #3a7232;
+    border-radius: 20px;
+    /* font-family: '여기어때 잘난체'; */
+    font-weight:bold;
+    /* background-color: #d9eede; */
+    text-align: center;
+    width: 90%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0 auto;
+}
+.my_contract_info2 table, td, th {
+    border: none;
+    margin: 0 auto;
+}
+.my_contract_info2 table {
+    width: 100%;
+}
+.my_contract_info2 th, td {
+    font-size: 1.3rem;
+}
+.my_contract_info2 td {
+    /* color: blue; 해당 진행상태일 경우만 블루*/
+    border: none;
+}
+.next_arrow {
+     color: red;
+ }
+.my_contract_cont2 p {
+    font-size: 1.5rem;
+    /* font-family: '여기어때 잘난체'; */
+    font-weight:bold;
+}
+.my_contract_cont2 {
+    width: 50%;
+}
+.contract_summary {
+    border: 5px solid #3a7232;
+    border-radius: 20px;
+    /* background-color: #d9eede; */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 95%;
+}
+#contract_summary_table {
+    width: 90%;
+    margin: 0 auto;
+}
+.cst_th, .cst_td {
+    font-size: 1.0rem;
+}
+.contract_view_wrap {
+    text-align: center;
+}
+#contract_view , #apply_view{
+    margin-top: 15px;
+    border: 0;
+    border-radius: 20px;
+    background-color: #008000;
+    color: white;
+    height: 30px;
+    width: 30%;
+}
+
+.contract_pay {
+    width: 50%;
+}
+.contract_pay p {
+    font-size: 1.5rem;
+    /* font-family: '여기어때 잘난체'; */
+    font-weight:bold;
+}
+.contarct_pay_wrap {
+    border-radius: 20px;
+    border: 5px solid #3a7232;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 95%;
+}
+.contarct_pay_table {
+    width: 90%;
+    margin: 20px auto;
+}
+.cpt_th , .cpt_td {
+    font-size: 1.0rem;
+    text-align: center;
+}
+#ttt {
+    background-color: #d5ebd1;
+}
+#total_pay {
+    color: red;
+    font-size: 1.1rem;
+}
+
+.ppp {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 90%;
+}
+.pay_wrap {
+    text-align: center;
+    margin-top: 5px;
+}
+#pay_btn{
+    margin-left: 10px;
+    border: 0;
+    border-radius: 20px;
+    background-color: #008000;
+    color: white;
+    height: 30px;
+    width: 20%;
+}

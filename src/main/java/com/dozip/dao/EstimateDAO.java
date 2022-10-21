@@ -32,4 +32,6 @@ public interface EstimateDAO {
     int getCListCount(String mem_id);
 
     List<ContractVO> getContList(ContractVO c);
+
+    ContractVO getCont(String cont_no);
 }

@@ -68,8 +68,8 @@
         <div class="my_contract_cont">
             <table class="my_contract_table">
                 <tr>
-                    <th>계약번호</th> <th>업체명</th> <th>내용</th> <th>공사시작일</th> <th>공사종료일</th>
-                    <th>총금액</th> <th>견적서확인</th> <th>계약서확인</th>
+                    <th>계약번호</th> <th>업체명</th> <th>공사내용</th> <th>공사시작일</th> <th>공사종료일</th>
+                    <th>총금액</th> <th>진행상태</th> <th>계약서</th>
                 </tr>
                 <c:if test="${fn:length(clist) == 0}">
                     <tr><td colspan="8"> 등록된 글이 없습니다.</td> </tr>
@@ -77,14 +77,21 @@
                 <c:if test="${fn:length(clist) != 0}">
                     <c:forEach var="i" begin="0" end="${fn:length(clist)-1}" step="1">
                         <tr>
-                            <td id="num"><a href="/dozip/my_contD">${clist[i].cont_no}</a></td><%--계약번호--%>
+                            <td id="num"><a href="/dozip/my_contD?cont_no=${clist[i].cont_no}">${clist[i].cont_no}</a></td><%--계약번호--%>
                             <td id="date">${clist[i].businessName}</td><%--업체명--%>
                             <td id="date">${clist[i].cont_title}</td><%--계약제목--%>
                             <td id="date">${clist[i].cont_start}</td><%--시작일--%>
                             <td id="date">${clist[i].cont_end}</td><%--종료일--%>
                             <td id="date">${clist[i].cont_total}</td><%--총금액--%>
-                            <td id="date"><button type="button">견적서보기</button></td><%--견적서확인--%>
-                            <td id="date"><button type="button">계약서보기</button></td><%--계약서확인--%>
+                            <td id="date">
+                                <c:if test="${clist[i].cont_no != null}">계약요청</c:if>
+                                <c:if test="${clist[i].cont_no == null}">계약서작성완료</c:if>
+                            </td><%--진행상태--%>
+                            <td id="date">
+                                <c:if test="${clist[i].cont_no != null}">
+                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">작성하기</button></c:if>
+                                <c:if test="${clist[i].cont_no == null}">계약서작성완료</c:if>
+                            </td><%--계약서--%>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -108,5 +115,10 @@
     </div>
 </div>
 
+<script>
+    function cont_view(cont_no){
+        window.open('/dozip/my_cont_view?cont_no='+cont_no,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
+</script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

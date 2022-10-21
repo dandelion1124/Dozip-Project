@@ -314,9 +314,22 @@ public class DozipController {
         return mv;
     }
 
-    @GetMapping("my_contD")
-    public ModelAndView myContD(ModelAndView mv){
+    @GetMapping("my_cont_view") //마이페이지-계약서확인
+    public ModelAndView myContView(ModelAndView mv, String cont_no, ContractVO c){
+        System.out.println("출력"+cont_no);
+        c = this.estimateService.getCont(cont_no);
+        mv.addObject("c",c);
+        mv.setViewName("/dozip/mypage/contract");
+        return mv;
+    }
 
+    @GetMapping("my_contD") //마이페이지 - 견적내용 상세보기
+    public ModelAndView myContD(ModelAndView mv, String cont_no){
+        System.out.println("번호확인:"+cont_no);
+
+        ContractVO cont = this.estimateService.getCont(cont_no);
+
+        mv.addObject("c", cont);
         mv.setViewName("/dozip/mypage/mypage_cont_detail");
         return mv;
     }
