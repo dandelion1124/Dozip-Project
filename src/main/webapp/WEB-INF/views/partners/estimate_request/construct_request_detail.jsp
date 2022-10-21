@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 	<div class="request_detail_page">
 		<div class="my_bid_detail_icon">
@@ -14,7 +16,7 @@
 					<span class="label_val2">도배/바닥/욕실 공사</span>
 				</p>
 				<div class="request_detail_title">
-				<h3>목동 사무실 원상복구 견적 문의</h3>
+				<h3>${e.addr} ${e.est_use} 원상복구 견적 문의</h3>
 				</div>
 				
 				<div class="greeb_box_container">
@@ -24,25 +26,25 @@
 								<div class="dt">
 									<p class="ico1">희망 예산</p>
 								</div>
-								<div class="dd">500만원</div>
+								<div class="dd">${e.est_bud}</div>
 							</li>
 							<li class="detail_info_cons">
 								<div class="dt">
 									<p class="ico2">견적 신청일</p>
 								</div>
-								<div class="dd">2022.07.10</div>
+								<div class="dd">${e.est_date}</div>
 							</li>
 							<li class="detail_info_cons">
 								<div class="dt">
 									<p class="ico3">희망 시공시작일</p>
 								</div>
-								<div class="dd">2022.07.13</div>
+								<div class="dd">${e.est_start}</div>
 							</li>
 							<li class="detail_info_cons_ex">
 								<div class="dt">
 									<p class="ico4">희망 시공종료일</p>
 								</div>
-								<div class="dd">2022.07.25</div>
+								<div class="dd">${e.est_end}</div>
 							</li>
 						</ul>
 					</div>
@@ -73,43 +75,43 @@
 						<div class="sec-cont-wrap">
 							<dl class="sec-item">
 								<dt class="sec-title">공간유형</dt>
-								<dd class="sec-cont">주거</dd>
+								<dd class="sec-cont">${e.est_zoning}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">건물유형</dt>
-								<dd class="sec-cont">사무실</dd>
+								<dd class="sec-cont">${e.est_use}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">인테리어 종류</dt>
-								<dd class="sec-cont">[도배/바닥/욕실]</dd>
+								<dd class="sec-cont">[${e.est_detail}]</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">세부 선택</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_detail01}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 규모 (평 수)</dt>
-								<dd class="sec-cont">21.96평</dd>
+								<dd class="sec-cont">${e.est_areaM}m<sup>2</sup>(${e.est_areaP}평)</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 주소</dt>
-								<dd class="sec-cont">경기도 성남시 수정구 위례서일로22</dd>
+								<dd class="sec-cont">${e.est_addr}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 예산</dt>
-								<dd class="sec-cont">500만원</dd>
+								<dd class="sec-cont">${e.est_bud}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공시작일</dt>
-								<dd class="sec-cont">2022.08.13</dd>
+								<dd class="sec-cont">${e.est_start}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공완료일</dt>
-								<dd class="sec-cont">2022.08.28</dd>
+								<dd class="sec-cont">${e.est_end}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 스타일</dt>
-								<dd class="sec-cont"></dd>
+								<dd class="sec-cont">${e.est_desc}</dd>
 							</dl>
 						</div>
 					</div>

@@ -119,14 +119,14 @@
 						<div>
                             <%--주소 검색 API 코드 --%>
 
-							<input type="text" id="sample6_address"  name ="p_Addr1" readonly  placeholder="주소" size="30" value="${p.p_Addr1}" style="margin-bottom:8px;"></br>
-							<input type="text" id="sample6_extraAddress" name ="p_Addr2" readonly placeholder="참고주소" size=10 value="${p.p_Addr2}">
-							<input type="text" id="sample6_detailAddress" name ="p_Addr3" placeholder="상세주소" size=10 value="${p.p_Addr3}">
+							<input type="text" id="sample6_address" class="p_Addr1"  name ="p_Addr1" readonly  placeholder="주소" size="30" value="${p.p_Addr1}" style="margin-bottom:8px;"></br>
+							<input type="text" id="sample6_extraAddress" class="p_Addr2" name ="p_Addr2" readonly placeholder="참고주소" size=10 value="${p.p_Addr2}">
+							<input type="text" id="sample6_detailAddress" class="p_Addr3" name ="p_Addr3" placeholder="상세주소" size=10 value="${p.p_Addr3}">
 
 							<input type="button" class="address_button" value="주소검색" onclick="sample6_execDaumPostcode()">
 
 							<!--<input type="text" id="p_Address" name="p_Address"  size="30" value="" readonly /> -->
-							<input type="text" id="sample6_postcode" name="pf_zipcode" readonly placeholder="우편번호"  size="4" value="${pf_zipcode}" style="visibility: hidden;">
+							<input type="text" id="sample6_postcode" class="pf_zipcode" name="pf_zipcode" readonly placeholder="우편번호"  size="4" value="${pf_zipcode}" style="visibility: hidden;">
 
 
 

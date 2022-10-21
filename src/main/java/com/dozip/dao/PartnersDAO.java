@@ -39,11 +39,9 @@ public interface PartnersDAO {
 
     List<BidVO> selectBidList();
 
-    List<EstimateVO> selectEstimateListBnum(String businessNum);
 
     List<BidVO> selectJoinList(String businessNum);
 
-
-//    void checkremaindate(EstimateVO vo);
+    List<EstimateVO> selectEstimateListBnum(String businessNum);
 }
 

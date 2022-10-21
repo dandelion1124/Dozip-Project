@@ -114,10 +114,7 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<EstimateVO> getAllEstList() {
         return sqlSession.selectList("est_list");
     }
-//    @Override
-//    public void checkremaindate(EstimateVO vo) {
-//        sqlSession.selectOne("check_date");
-//    }
+
 
     @Override
     public List<BidVO> getBidList() {
@@ -148,14 +145,15 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectList("select_bidList");
     }
 
-    @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
-        return sqlSession.selectList("select_est_bnum",businessNum);
-    }
 
     @Override
     public List<BidVO> selectJoinList(String businessNum) {
         return this.sqlSession.selectList("sel_All", businessNum);
+    }
+
+    @Override
+    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
+        return this.sqlSession.selectList("select_est_bnum",businessNum);
     }
 
 

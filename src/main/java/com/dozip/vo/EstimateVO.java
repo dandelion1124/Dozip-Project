@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class EstimateVO {
-    
+
         private String est_num;
         private String mem_id;
         private String businessNum;
@@ -38,4 +38,6 @@ public class EstimateVO {
         private int endrow; //끝행 번호
 
         private String businessName; //사업자명
+        private String addr;
+        private long remaindate;
 }

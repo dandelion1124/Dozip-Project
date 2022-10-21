@@ -35,7 +35,7 @@ $(function() {
 			<%--<c:forEach var="e" items="${elist}"> --%>
 			<div class="request_detail">
 				<p class="request_detail_day">
-					모집중 D-<span></span>
+					모집중 D-<span>${e.remaindate}</span>
 				</p>
 				<p class="label_badge">
 					<span class="label_val1">${e.est_use}</span>
@@ -56,7 +56,7 @@ $(function() {
 								<div class="dt">
 									<p class="ico1">희망 예산</p>
 								</div>
-								<div class="dd">${e.est_bud}0000원</div> <!-- 500만원 -->
+								<div class="dd">${e.est_bud}만원</div> <!-- 500만원 -->
 							</li>
 							<li class="detail_info">
 								<div class="dt">
@@ -171,7 +171,7 @@ $(function() {
 									</div>
 									<div id="bid_part_detail">
 											<div class="bid_detail01">입찰가</div>
-											<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/><br/></div>
+											<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></div>
 											<div class="bid_detail02" >예상 공사시작일</div>
 											<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start"  size="10"/><br/></div>
 											<div class="bid_detail04" >예상 공사종료일</div>

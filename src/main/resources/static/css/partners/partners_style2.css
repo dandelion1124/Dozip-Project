@@ -58,7 +58,7 @@
    .business-01{
    		display:inline-block;
    }
-   #businessNum, #businessName, #p_Name, #p_Tel, #sample6_address{
+   #businessNum, #businessName, #p_Name, #p_Tel, .p_Addr1{
    		background-color:#E8F5FF; /*파란색 칸*/
    		border:1px solid lightgray;
    		height:30px;
@@ -70,13 +70,13 @@
        height:30px;
        width:300px;
    }
-   #sample6_extraAddress{
+   .p_Addr2{
        background-color:#E8F5FF;
        border:1px solid lightgray;
        height:30px;
        width:140px;
     }
-    #sample6_detailAddress,#sample6_postcode{
+    .p_Addr3,.pf_zipcode{
        border:1px solid lightgray;
        height:30px;
        width:100px;
