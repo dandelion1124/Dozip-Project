@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.BidVO;
+import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,11 @@ public class EstimateDAOImpl implements EstimateDAO {
     public int counter() {
         return this.sqlSession.selectOne("cCounter");
     }
+
+    @Override
+    public int getCListCount(String mem_id) { return this.sqlSession.selectOne("c_count", mem_id); }
+
+    @Override
+    public List<ContractVO> getContList(ContractVO c) { return this.sqlSession.selectList("cont_list", c); }
 
 }

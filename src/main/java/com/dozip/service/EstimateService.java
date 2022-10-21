@@ -1,6 +1,7 @@
 package com.dozip.service;
 
 import com.dozip.vo.BidVO;
+import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
 
 import java.util.List;
@@ -22,4 +23,8 @@ public interface EstimateService {
     void updateState(String bid_num);
 
     int counter();
+
+    int getCListCount(String mem_id);
+
+    List<ContractVO> getContList(ContractVO c);
 }

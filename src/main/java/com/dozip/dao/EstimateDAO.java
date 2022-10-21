@@ -1,6 +1,7 @@
 package com.dozip.dao;
 
 import com.dozip.vo.BidVO;
+import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
 
 import java.util.List;
@@ -27,4 +28,8 @@ public interface EstimateDAO {
     void updateEstate(String est_num);
 
     int counter();
+
+    int getCListCount(String mem_id);
+
+    List<ContractVO> getContList(ContractVO c);
 }

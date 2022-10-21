@@ -2,6 +2,7 @@ package com.dozip.service;
 
 import com.dozip.dao.EstimateDAO;
 import com.dozip.vo.BidVO;
+import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,12 @@ public class EstimateServiceImpl implements EstimateService {
     public int counter() {
         return estimateDAO.counter();
     }
+
+    @Override
+    public int getCListCount(String mem_id) { return this.estimateDAO.getCListCount(mem_id); }
+
+    @Override
+    public List<ContractVO> getContList(ContractVO c) { return this.estimateDAO.getContList(c); }
 
 
 }
