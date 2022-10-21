@@ -127,9 +127,9 @@
         (select * from bidT where businessNum=#{businessNum}) b, estimateT e
         where b.est_num = e.est_num(+)
     </select>
-<!--    <select id="check_date" resultType="date">-->
-<!--        select to_char(sysdate,'YYYY-MM-DD') today from dual-->
 
-<!--    </select>-->
+    <select id="select_est_bnum" resultType="EstimateVO">
+        select * from estimateT where businessNum=#{businessNum}
+    </select>
 </mapper>
 

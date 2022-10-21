@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -208,42 +209,57 @@ public class PartnersController {
 
         List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
 
-        //Date dminusdate = e.getEst_dateEnd()-e.getEst_date();
-        //System.out.println(e.getEst_dateEnd()-e.getEst_date());
 
-//        Date time = new Date();
-//        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
-//        String now = format1.format(time);
-//        System.out.println(now);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
 
-//        String[] estdateEnd = e.getEst_dateEnd().split(" ");
-//        System.out.println(estdateEnd[0]);
-//        this.partnersService.checkremaindate(vo);
+        //System.out.println(elist.toString());
 
-        //System.out.println(sysdate);
-//        String estdetail = e.getEst_detail().replaceFirst(".$","");
-//        System.out.println(estdetail);
-//        String estareaM = e.getEst_areaM().replaceFirst(".$","");
+        for(int i=0; i<elist.size(); i++){
+            elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
 
+            Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
+            long remaindate = (parseddate.getTime() - now.getTime());
+            elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
+        }
+        System.out.println("변경된 elist 출력 " + elist);
 
         ModelAndView m=new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
-//        m.addObject("estdateEnd",estdateEnd[0]);
-//        m.addObject("estdetail",estdetail);
-//        m.addObject("estareaM",estareaM);
 
         m.setViewName("/partners/estimate_request/bid");
         return m;
     }
+
+    private String est_addr_change(String est_addr) {
+        String str[]=est_addr.split(" ");
+        if(est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
+                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")){
+            //System.out.println("광역시 테스트");
+            est_addr=str[0]+" "+str[1];
+        }
+        else{
+            //System.out.println("그외 테스트");
+            est_addr=str[1]+" "+str[2];
+        }
+        return est_addr;
+    }//주소 변환
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
     public String bid_detail(Model m,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
+
         //System.out.println(bid_no);
         EstimateVO e=this.partnersService.selectEstimate(bid_no);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date now = new Date();
+        Date parseddate = formatter.parse(e.getEst_dateEnd());
+        long remaindate = (parseddate.getTime() - now.getTime());
+        e.setRemaindate(remaindate/(24*60*60*1000));
+        System.out.println(remaindate);
         m.addAttribute("e",e);
 
         return "/partners/estimate_request/bid_detail";
@@ -301,12 +317,31 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/construct_request") //시공요청
-    public String construct_request() {
-        return "/partners/estimate_request/construct_request";
-    }
+    public ModelAndView construct_request(HttpSession session) throws Exception {
+        String businessNum=(String)session.getAttribute("businessNum");
 
+        List<EstimateVO> ereqlist=this.partnersService.selectEstimateListBnum(businessNum);
+
+        for(int i=0; i<ereqlist.size(); i++) {
+            ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
+        }
+        //System.out.println(ereqlist.toString());
+        System.out.println(ereqlist.get(0).getAddr());
+
+        ModelAndView m= new ModelAndView();
+        m.addObject("ereq",ereqlist);
+
+        m.setViewName( "/partners/estimate_request/construct_request");
+        return m;
+    }
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
-    public String construct_request_detail() {
+    public String construct_request_detail(Model m,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
+            response.setContentType("text/html;charset=UTF-8");
+
+        EstimateVO e=this.partnersService.selectEstimate(bid_no);
+
+        m.addAttribute("e",e);
+
         return "/partners/estimate_request/construct_request_detail";
     }
 
@@ -674,11 +709,11 @@ public class PartnersController {
             p.setP_Addr2(request.getParameter("p_Addr2"));
             p.setP_Addr3(request.getParameter("p_Addr3"));
             p.setBusinessNum(ps.getBusinessNum());
-            System.out.println(p.getP_Addr1()+p.getP_Addr2()+p.getP_Addr3());
+            //System.out.println(p.getP_Addr1()+p.getP_Addr2()+p.getP_Addr3());
             this.partnersService.updatePartners(p);
         }
 
-        int res = this.partnersService.checkSub(ps.getBusinessNum()); //select count(getBusinessNum) from t where getBusinessNum=#{getBusinessNum}
+        int res = this.partnersService.checkSub(ps.getBusinessNum());
         System.out.println(res);
         if(res==0) {
             this.partnersService.insertPartnersSub(ps);

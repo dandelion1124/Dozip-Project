@@ -144,14 +144,15 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.selectBidList();
     }
 
-    @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
-        return partnersDao.selectEstimateListBnum(businessNum);
-    }
 
     @Override
     public List<BidVO> selectJoinList(String businessNum) {
         return this.partnersDao.selectJoinList(businessNum);
+    }
+
+    @Override
+    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
+        return this.partnersDao.selectEstimateListBnum(businessNum);
     }
 
 
