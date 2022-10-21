@@ -150,9 +150,6 @@
     </script>
 
 
-
-
-
 <%--
         <tr>
         <td><input type="checkbox"></td>
@@ -220,7 +217,7 @@
         // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
         var popupY= (window.screen.height / 2) - (popupHeight / 2);
         // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-        window.open('./estimate/estimate_detail.jsp', 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX + 'resizable=no');
+        window.open('./detail', 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX + 'resizable=no');
         /*
         겟 방식으로 받아서 아작스 처리
         $.ajax({

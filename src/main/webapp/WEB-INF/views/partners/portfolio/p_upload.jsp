@@ -10,31 +10,15 @@
 		<h4>1. 정보입력 ---> 2. 사진등록 ---> 3. 완료</h4>
 	</div>
 	<div>
-		<span><b>두집</b>에서 계약한 인테리어를 조회하면 쉽게 주요정보를 입력 할 수 있습니다.</span> 
+		<span><b>두집</b>에서 계약한 인테리어를 조회하면 쉽게 주요정보를 입력 할 수 있습니다.</span>
 		<input type="button" value="불러오기" onclick="loadPortfolioInfo()">
 	</div>
-	
+
 	<%--계약 불러오기 개발중 --%>
-	
+
 	<script>
 		function loadPortfolioInfo(){
-
-
-			window.open( "./load_info?businessNum=${businessNum}", "Child", "width=800, height=300, top=500, left=500");
-
-
-			/*$business_num=$('#businessNum').val();
-			$.ajax({
-				type:"post",
-				url:'loadportfolio_info',
-				data:{
-					business_num:$business_num
-				},
-				datatype:"text",
-				success: function(result){
-					window.open( "./load_info", "Child", "width=920, height=955, top=500, left=500");
-				}
-			});*/
+			window.open( "./load_info", "Child", "width=800, height=300, top=500, left=500")
 		}
 	</script>
 </div>
@@ -105,7 +89,8 @@
 			<div id="form_sub_title">
 				<label>평수</label>
 			</div>
-			<input name="pf_area" id="pf_area" size="10" id="parentValue1"> 평
+			<input name="pf_area" id="pf_area" size="10"> 평
+
 		</div>
 		<div class="inline_div">
 			<div id="form_sub_title">
@@ -149,8 +134,8 @@
 		<textarea rows="7" cols=100% name="pf_closing" id="pf_closing" style="width: 100%; resize: none;">(EX. 지금까지 서울 강남구 논현동 33평 아파트 인테리어 였습니다.)</textarea>
 	</fieldset>
 	<fieldset id="f_button">
-		<input type="submit" value="사진등록"> <input type="reset"
-			value="초기화">
+		<input type="submit" value="사진등록"> <input type="reset" value="초기화">
 	</fieldset>
 </form>
+
 <jsp:include page="../include/footer.jsp" />
