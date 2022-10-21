@@ -9,4 +9,8 @@ public interface ReviewDAO {
     List<ReviewVO> getAllReview();
 
     List<ContractVO> getClist(String id);
+
+    int count();
+
+    ReviewVO getDetail(int re_no);
 }

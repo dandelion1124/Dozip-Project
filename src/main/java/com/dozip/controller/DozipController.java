@@ -711,17 +711,26 @@ public class DozipController {
     public ModelAndView review_main(ModelAndView mv) throws Exception {
 
         List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
-        reviewList = this.reviewService.getAllReview();
-        System.out.println(reviewList);
+        reviewList = this.reviewService.getAllReview(); //리뷰 리스트
+
+        int count = this.reviewService.count(); //리뷰 개수
+
+        //this.reviewService.best(); // Best 리뷰
+
         mv.addObject("reviewList",reviewList);
+        mv.addObject("count", count);
 
         mv.setViewName("/dozip/review/review_main");
         return mv;
     }
 
     @GetMapping("review_detail")
-    public ModelAndView review_detail(ModelAndView mv, HttpSession session, HttpServletRequest request) throws Exception{
-        String id = (String) session.getAttribute("id");
+    public ModelAndView review_detail(@RequestParam("re_no") int re_no, ModelAndView mv) {
+        //String id = (String) session.getAttribute("id");
+
+        ReviewVO getDetail = this.reviewService.getDetail(re_no); //리뷰 정보 re_no기준으로 가져오기
+
+        mv.addObject("re",getDetail);
 
         mv.setViewName("/dozip/review/review_detail");
         return mv;

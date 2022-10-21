@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
-.review_wrap {
-	width: 100%;
-	margin: 0 auto;
-}
+/*.review_wrap {*/
+/*	width: 100%;*/
+/*	margin: 0 auto;*/
+/*}*/
 
 /*드롭다운*/
 .dropdown {
@@ -38,6 +38,9 @@
 }
 
 /* part1 */
+.part1 {
+	margin-top: 30px;
+}
 .review_write button {
 	border: 0;
 	border-radius: 5px;
@@ -72,6 +75,7 @@
 	/* border: 1px solid; */
 	display: flex;
 	margin: 0 auto;
+	margin-bottom: 50px;
 	justify-content: space-between;
 	background-color: #F8F8F8;
 }
@@ -132,75 +136,80 @@
 }
 
 /* part2 */
-.part2 {
+* {
+	box-sizing: border-box;
+}
+
+img {
+
+
+}
+
+.card_inner {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding-top: 40px;
-	padding-bottom: 20px;
-	text-align: center;
+
+	margin: 0;
+	padding: 0;
+}
+.gallery {
+	background: #F8F8F8;
+	margin: 10px;
+	float: left;
+	width: 400px;
+	height: 100%;
 }
 
-#part2_area {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	/* background-color: #cdd8e9; */
-	margin: 0 auto; /* 가운데 정렬 */
-}
-
-.part2_inner {
-	border: 2px solid #78cbe7;
-	border-radius: 10px;
-	width: 30%;
-	padding: 10px;
-	background-color: #dff3f9;
-}
-.part2_inner>div>a>img {
-	width: 280px;
-	height: 150px;
-}
-.part2_title {
-	font-size: 1.3rem;
-	font-weight:bold;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
-	height: 50px;
-	margin-top: 0;
-}
-
-.part2_cont {
-	width: 90%;
-	margin: 0 auto; /* 가운데 정렬 */
-	font-size: 0.8rem;
-	text-overflow: ellipsis;
-	/* white-space: nowrap; */
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-}
-#none_re {
-	padding: 50px;
-	text-align: center;
-}
-
-/* 더보기 버튼 */
-.part3 {
-	display: flex;
-	justify-content: center;
-}
-
-#more {
-	width: 30%;
-	height: 50px;
-	font-size: 1.5rem;
-	border: 0;
+.images img {
 	border-radius: 5px;
+	width: 400px;
+	height: auto;
+	transition: opacity .3s ease-in-out;
 }
+
+.images img:hover {
+	opacity: .75;
+}
+.card_title {
+	height: 10%;
+	font-weight: bold;
+	text-align: center;
+	width: 400px;
+	padding: 5px;
+}
+.card_cont {
+	text-align: center;
+	width: 400px;
+
+}
+
+
+
+/*  리뷰 보기 페이지  */
+.review_detail_wrap {
+	margin-top: 30px;
+}
+.review_detail {
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.rp_img img{
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.review_img img{
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+
+
+
 
 /* 리뷰작성페이지 */
 .review_write_wrap {

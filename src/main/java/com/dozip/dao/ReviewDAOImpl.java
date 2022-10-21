@@ -21,4 +21,16 @@ public class ReviewDAOImpl implements ReviewDAO {
 
     @Override
     public List<ContractVO> getClist(String id) {return sqlSession.selectList("getClist",id);}
+
+    @Override
+    public int count() {
+        return sqlSession.selectOne("count");
+    }
+
+    @Override
+    public ReviewVO getDetail(int re_no) {
+        return this.sqlSession.selectOne("details",re_no);
+    }
+
+
 }

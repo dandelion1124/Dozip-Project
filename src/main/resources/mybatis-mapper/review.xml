@@ -3,8 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="review">
+    <!-- 리뷰목록 가져오기 -->
     <select id="allReview" resultType="ReviewVO">
         select * from reviewT order by re_no desc
+    </select>
+    <!-- 리뷰목록 개수 가져오기 -->
+    <select id="count" resultType="int">
+        select count(*) from reviewT
+    </select>
+    <!-- 리뷰보기 -->
+    <select id="details" resultType="ReviewVO">
+        select * from reviewT where re_no = #{re_no}
     </select>
 
     <select id = "getClist" resultType="ContractVO">
