@@ -10,4 +10,8 @@
     <select id = "getClist" resultType="ContractVO">
         select * from contractT where mem_id=#{mem_id}
     </select>
+
+    <select id="getCont" resultType="ContractVO">
+        select * from contractT where cont_no=#{cont_no}
+    </select>
 </mapper>

@@ -14,6 +14,21 @@ cont_date1,cont_cost2,cont_date2,cont_cost3,cont_date3,cont_date,customer_name,c
 partners_addr,partners_tel) values ('C000000','2','dozip','111-11-11111','포쉐린 타일 공사','서울 강남구 선릉로6길 5','도배/벽','2022-10-25','2022-10-31',
 '3,000','1000','2022-10-25','1000','2022-10-26','1000','2022-10-27','2022-10-25','구동민','서울 강남구 선릉로 6길 5','960908','010-7672-9299',
 '신호철','강남구 선릉로9','01033233232');
+
+update contractT set cont_area ='34' where businessNum = '111-11-11111';
+update contractT set cont_area = '50' where businessNum = '222-22-22222';
+update contractT set partners_name='호철인테리어' where businessNum='111-11-11111';
+update contractT set partners_name='호철인테리어' where businessNum='222-22-22222';
+
+insert into contractT(cont_no, est_num, mem_id, businessNum, cont_title, cont_location, cont_area, cont_start, cont_end,
+                      cont_total, cont_cost1,
+                      cont_date1, cont_cost2, cont_date2, cont_cost3, cont_date3, cont_date, customer_name,
+                      customer_addr, customer_number, customer_tel, partners_name,
+                      partners_addr, partners_tel)
+values ('C111111', '2', 'dozip', '222-22-22222', '포쉐린 화장실 공사', '서울 강남구 선릉로6길 6', '욕실', '2022-10-25', '2022-10-31',
+        '4,000', '1500', '2022-10-25', '1000', '2022-10-26', '1500', '2022-10-27', '2022-10-25', '구동민',
+        '수원시 영통구 7', '880215', '010-7672-9299',
+        '신호철', '강남구 선릉로9', '01033233232');
 commit;
 select * from CONTRACTT;
 delete from CONTRACTT;

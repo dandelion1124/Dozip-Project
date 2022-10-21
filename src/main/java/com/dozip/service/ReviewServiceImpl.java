@@ -21,4 +21,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ContractVO> getClist(String id) {return this.reviewDAO.getClist(id);}
+
+    @Override
+    public ContractVO getOneCont(String cont_no) {return this.reviewDAO.getOneCont(cont_no);}
 }

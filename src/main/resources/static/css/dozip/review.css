@@ -242,7 +242,7 @@
 }
 
 .review_write_form td {
-	font-size: 0.8rem;
+	font-size: 0.6rem;
 }
 
 .review_write_form td input {
@@ -251,9 +251,18 @@
 	border-radius: 5px;
 }
 
+#load_btn,#search_cont_btn{
+	width: 130px;
+	height : 30px;
+}
+
 #load_cont {
 	border: 1px solid;
 	border-radius: 5px;
+}
+
+#load_cont th{
+	font-size: 1.0rem;
 }
 
 #r_cont {

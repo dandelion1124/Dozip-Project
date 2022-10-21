@@ -382,9 +382,9 @@ public class DozipController {
         }else if(pf_subtype1.equals("주거유형") && pf_subtype2.equals("상업유형")){
             p.setPf_subtype(null);
         }
-        System.out.println(p.getPf_concept());
-        System.out.println(p.getPf_cost());
-        System.out.println(p.getPf_area());
+        //System.out.println(p.getPf_concept());
+        //System.out.println(p.getPf_cost());
+        //System.out.println(p.getPf_area());
 
         System.out.println("확인" + p);
         
@@ -743,12 +743,24 @@ public class DozipController {
         ContractVO c = new ContractVO();
 
 
+
         List<ContractVO> clist = new ArrayList<ContractVO>();
-//        c.setMem_id(id);
         clist = this.reviewService.getClist(id);
         mv.addObject("clist", clist);
         System.out.println(clist);
         mv.setViewName("/dozip/review/myall_contract");
         return mv;
+    }
+
+    //계약번호를 기준으로 계약정보 불러오기
+
+    @RequestMapping(value="search_cont", method = RequestMethod.GET, produces="application/json")
+    @ResponseBody
+    public ContractVO cSearchList(String cont_no){
+        System.out.println("넘어왔나" + cont_no);
+        ContractVO cv = this.reviewService.getOneCont(cont_no);
+        System.out.println("cv값"+cv.toString());
+
+        return cv;
     }
 }//DozipController
