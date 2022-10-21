@@ -53,7 +53,7 @@
     </update>
     <!-- 고객문의 글답변 -->
     <insert id="partners_reply_in"> <!--,실수! -->
-        insert into qnaT (qna_no, mem_id businessNum, qna_type, qna_title, qna_cont, qna_ref, qna_step, qna_level, reply_state, reply_date)
+        insert into qnaT (qna_no, mem_id, businessNum, qna_type, qna_title, qna_cont, qna_ref, qna_step, qna_level, reply_state, reply_date)
         values (qnaT_no_seq.nextval, #{mem_id}, #{businessNum}, #{qna_type}, #{qna_title}, #{qna_cont}, #{qna_ref}, #{qna_step}+1, #{qna_level}+1, '답변완료', sysdate)
     </insert>
 

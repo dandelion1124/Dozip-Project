@@ -213,7 +213,7 @@ function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처
     function qna_reply($number, $id, $title, $step, $level, $type, $pagenum) { //답변 입력 함수
         $qna_no = $number;  //글번호
         $mem_id = $id; //글작성한 회원아이디
-        $qna_title = $title; //원본글제목
+        $qna_title = 'RE:'+$title; //원본글제목
         $qna_step = $step; //몇번째 답글인지
         $qna_level = $level; //정렬순서
         $qna_type = $type; //질문 유형
@@ -226,6 +226,7 @@ function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처
             data: {
                 qna_ref: $qna_no, //  그룹번호 = 원본글번호
                 qna_cont: $replytext, // 답글 내용
+                qna_title: $qna_title, //원본글제목
                 mem_id: $mem_id, //원본글 작성 회원 아이디
                 qna_step: $qna_step, //몇번째 답글인지
                 qna_level: $qna_level, //정렬순서

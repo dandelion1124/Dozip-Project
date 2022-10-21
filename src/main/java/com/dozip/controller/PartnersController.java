@@ -513,42 +513,27 @@ public class PartnersController {
     @ResponseBody
     @PostMapping("/customer_reply_ok")
     public String customer_reply_ok(HttpSession session, QnaVO qv) {
-        qv.setBusinessNum((String) session.getAttribute("businessNum")); //사업자번호
-        qv.setQna_title(" "); //마이바티스 널값 insert 시 오류로 인해 추가
-
+        qv.setBusinessNum((String) session.getAttribute("businessNum"));
         int result=partnersService.insertQna(qv);
         System.out.println(result);
-
         return null;
     }//customer_reply_ok
-
 
     //고객문의글 삭제
     @ResponseBody
     @GetMapping("/customer_qna_del_ok")
     public String customer_qna_del_ok(QnaVO dv){
-        int result=partnersService.deleteReply(dv);
-
+        partnersService.deleteReply(dv);
         int r = partnersService.selqnaRef(dv);
-        if(r==1){
-            partnersService.returnState(dv);
-        }
-        System.out.println(result);
-
+        if(r==1)  partnersService.returnState(dv);
         return null;
-        /*
-        삭제시 아작스 실행 확인해야함
 
-
-
-         */
     }//customer_qna_del_ok()
 
     @RequestMapping(value = "/review")
     public String customerReview() {  // 고객문의 글 보기
         return "/partners/customer/review";
     }
-
 
     /*My page
     *

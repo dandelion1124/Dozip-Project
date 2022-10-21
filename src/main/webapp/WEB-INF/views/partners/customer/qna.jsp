@@ -4,86 +4,7 @@
 <jsp:include page="../include/header.jsp" />
 
 <style>
-#qna_table {
-	border-top:2px solid black;
-	border-bottom:1px solid #2C2A29;
-	height: 200px;
-	width: 99%;
-	margin: 50px 10px;
-	border-collapse: collapse;
-}
-tr.qna_first_tr{
-	border-bottom:1px solid #2C2A29;
-}
 
-tr.qna_tr>td{
-	padding:2px 5px;
-}
-.qna_table_date{
-	max-width:100px;
-}
-.reply_textarea{
-	border:none;
-}
-
-td#reply_cont{
-	background:#e1deca;
-}
-span.reply_date_text{
-	font-weight: bold;
-}
-#qna_table th{
-	height:50px;
-}
-#write_date {
-    border: none;
-    background: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.not_serach_msg {
-	text-align: center;
-}
-.reply_btn>input {
-	margin-left:26%;
-	padding:5px;
-}
-td.third_reply_td>input {
-	margin-left:45%;
-}
-div#qna_paging {
-   	float: left;
-    margin-bottom: 60px;
-    margin-left: 40%;
-}
-th#paging_th a{
-	text-decoration: none;
-	color:black;
-	
-}
-th#paging_th a:visited{
-	color:black;
-}
-th#paging_th a:hover{
-	color:orange;
-}
-
-div#qna_cont_box {
-    background: #64bbed38;
-    width: 86%;
-    min-height: 60px;
-    margin-top: 15px;
-    padding: 7px;
-    border-radius: 3px;
-    font-family: '고딕';
-}
-#qna_table textarea {
-    border: 1px solid gainsboro;
-    background: #dcdcdc42;
-    border-radius: 3px;
-    min-height: 80px;
-    padding:7px;
-}
 
 
 </style>
@@ -131,7 +52,7 @@ div#qna_cont_box {
 
 <select id="search_condition" name="find_field">
 				<option value="default" selected>검색옵션</option>
-				<option value="customer_name" <c:if test="${find_field =='customer_name' }"> ${'selected' }</c:if>>고객명</option>
+				<option value="customer_name" <c:if test="${find_field =='customer_name' }"> ${'selected' }</c:if>>작성자</option>
 				<option value="qna_type" <c:if test="${find_field =='qna_type' }"> ${'selected' }</c:if>>문의유형</option>
 			</select> <input type="search" name="find_text" id="search_text" value="${find_text }" placeholder="입력해주세요">
 							<input type="submit" value="검색">
@@ -141,30 +62,29 @@ div#qna_cont_box {
 				<option value="yes">미답변</option>
 				<option value="no">답변완료</option>
 			</select>
-			
-			
-			
-			
-			
+
+
+
+
+
 			</div>
 <table id="qna_table">
-		
-	<tr class="qna_first_tr">	
+
+	<tr class="qna_first_tr">
 		<th style="width:10%">답변상태</th>
 		<th style="width:42%">제목</th>
 		<th style="width:15%">문의유형</th>
-		<th style="width:10%">고객명</th>
+		<th style="width:10%">작성자</th>
 		<th style="width:13%">등록일시</th>
-		
+
 	</tr>
-	
 	<c:if test="${empty qlist }">
 		<tr>
 			<td colspan="6" class="not_serach_msg"> 조회된 문의 내용이 없습니다.</td>
 		</tr>
 	</c:if>
 	<c:if test="${!empty qlist }">
-		
+
 		<c:forEach var="q" items="${ qlist}">
 			<c:if test="${q.qna_step ==0}"> <%--원본글 부분 --%>
 			<tr class="qna_tr">
@@ -184,10 +104,10 @@ div#qna_cont_box {
 				<td class="qna_table_date">${fn:substring(q.qna_date,0,10)}</td>
 			</tr>
 			</c:if>
-			<c:if test="${q.qna_step==1 }">  <%--답변 부분 --%>
+			<c:if test="${q.qna_step==1 }">  <%--답변글 출력 부분 --%>
 			<tr>
 			<td></td>
-			<td class="second_reply_td"><span style="color:blue; font-weight:bolder;">${q.qna_title} </span>  &nbsp; ${q.qna_cont } </td>
+			<td class="second_reply_td"><span style="color:blue; font-weight:bolder;">	<img src="/images/dozip/arrow.png"></span>  &nbsp; ${q.qna_cont } </td>
 			<td  class="third_reply_td"><input type="button" value="삭제" onclick="reply_del(${q.qna_no }, ${q.qna_ref })"></td>
 			<td class="first_reply_td"><span class="reply_date_text"> ${businessName } </span></td>
 			<td class="first_reply_td"><span class="reply_date_text"> ${fn:substring(q.reply_date,0,10)} </span></td>
@@ -195,9 +115,9 @@ div#qna_cont_box {
 			</c:if>
 			<tr>
 			<td></td>
-			 <td colspan="4" style="display:none;" id="reply_${q.qna_no }"> <div id="qna_cont_box">${q.qna_cont }</div><br>
-			 
-				<textarea rows="3" cols="100%" id="reply_${q.qna_no }_textarea" style="width: 86%; resize: none;"></textarea>
+			 <td colspan="4" style="display:none;" id="reply_${q.qna_no }"> <div id="qna_cont_box">${q.qna_cont }</div><br> <%--원본글 내용 --%>
+
+				<textarea rows="3" cols="100%" id="reply_${q.qna_no }_textarea" style="width: 86%; resize: none;"></textarea> <%--답변글 작성 부분 --%>
 				<input type="button" value="등록" onclick="qna_reply(${q.qna_no }, '${q.mem_id }', '${q.qna_title }',${q.qna_step }, ${q.qna_level },'${q.qna_type }',${page })">
 			</td>
 			</tr>
@@ -210,7 +130,7 @@ div#qna_cont_box {
 		<%--이전 버튼 --%>
 		<c:if test="${page <= 1 }">	&lt;이전</c:if>
 		<c:if test="${page>1 }"><a href="customer_qna?page=${page-1 }"> &lt;이전 </a></c:if>
-		
+
 		<%--현재 쪽번호 출력 --%>
 		<c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
 			<c:if test="${a==page }"> <%--현재 쪽번호가 선택된 경우 --%>
@@ -233,7 +153,7 @@ div#qna_cont_box {
 <c:if test="${(!empty find_field ) || (!empty find_name)}">
 	<c:if test="${page<=1 }"> &lt;이전 &nbsp; </c:if>
 	<c:if test="${page>1 }"> <a href="customer_qna?page=${page-1}&find_field=${find_field}&find_text=${find_text}">&lt;이전</a>&nbsp; </c:if>
-		
+
 	<%--현재 쪽번호 출력 --%>
 	<c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
 		<%--현재 페이지가 선택된 경우 --%>
@@ -244,8 +164,8 @@ div#qna_cont_box {
 	<c:if test="${page >= maxpage }">	다음&gt;	</c:if>
 	<c:if test="${page< maxpage }">	<a href="customer_qna?page=${page+1 }">다음&gt;</a>	</c:if>
 </c:if>
-	
-	
+
+
 	</th>
 	</tr>
 </table>

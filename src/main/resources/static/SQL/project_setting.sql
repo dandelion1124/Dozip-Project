@@ -1,5 +1,6 @@
 -- 1. 두집 회원테이블 --
 drop table memberT;
+delete memberT;
 select * from MEMBERT;
 create table memberT
 (
@@ -81,6 +82,7 @@ create sequence portfolioT_no_seq start with 1 increment by 1 nocache; --생성
 
 --4. 파트너스 sub 테이블 --
 drop table partners_subT;
+delete partners_subT;
 select * from partners_subT;
 create table partners_subT
 (
@@ -109,6 +111,7 @@ create table partners_subT
 
 --5. 견적서 테이블 --
 drop table estimateT;
+delete estimateT;
 select * from estimateT;
 create table estimateT
 (
@@ -151,6 +154,7 @@ create sequence est_num_seq start with 1 increment by 1 nocache; --생성
 
 --6. 입찰 테이블 --
 drop table bidT;
+delete bidT;
 select * from bidT;
 create table bidT
 (
@@ -173,6 +177,7 @@ create sequence bid_num_seq start with 1 increment by 1 nocache; --생성
 
 --7. 계약서 테이블 --
 drop table contractT;
+delete from contractT;
 select * from contractT;
 create table contractT
 (
@@ -212,6 +217,7 @@ create sequence contractT_no_seq start with 1 increment by 1 nocache; --생성
 
 --8. 고객문의 테이블 --
 drop table qnaT;
+delete qnaT;
 select * from qnaT;
 create table qnaT
 (
@@ -240,6 +246,7 @@ create sequence qnaT_no_seq start with 1 increment by 1 nocache; --생성
 
 -- 9. 고객후기 테이블 --
 drop table reviewT;
+delete reviewT;
 select * from reviewT;
 create table reviewT
 (
