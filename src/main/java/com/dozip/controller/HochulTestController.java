@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -89,4 +90,16 @@ public class HochulTestController {
 
 
 
+    @RequestMapping("/detail") //견적 상세정보
+    public String estimate_detail(){
+
+        return "/partners/estimate/estimate_detail";
+    }
+
+
+    @RequestMapping("load_info")
+    public String load_info(Model model) {
+        model.addAttribute("cost", 40);
+        return "/partners/portfolio/load_info";
+    }
 }
