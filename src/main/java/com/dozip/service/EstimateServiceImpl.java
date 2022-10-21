@@ -55,5 +55,8 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public List<ContractVO> getContList(ContractVO c) { return this.estimateDAO.getContList(c); }
 
+    @Override
+    public ContractVO getCont(String cont_no) { return this.estimateDAO.getCont(cont_no); }
+
 
 }

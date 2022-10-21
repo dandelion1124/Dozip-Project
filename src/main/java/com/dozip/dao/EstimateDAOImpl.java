@@ -58,4 +58,7 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Override
     public List<ContractVO> getContList(ContractVO c) { return this.sqlSession.selectList("cont_list", c); }
 
+    @Override
+    public ContractVO getCont(String cont_no) { return this.sqlSession.selectOne("get_cont", cont_no); }
+
 }
