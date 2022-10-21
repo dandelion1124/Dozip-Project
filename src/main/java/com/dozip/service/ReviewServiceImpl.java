@@ -32,4 +32,5 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewDAO.getDetail(re_no);
     }
 
+    public ContractVO getOneCont(String cont_no) {return this.reviewDAO.getOneCont(cont_no);}
 }

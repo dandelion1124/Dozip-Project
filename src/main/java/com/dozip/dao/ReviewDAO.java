@@ -13,4 +13,5 @@ public interface ReviewDAO {
     int count();
 
     ReviewVO getDetail(int re_no);
+    ContractVO getOneCont(String cont_no);
 }

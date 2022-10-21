@@ -33,4 +33,5 @@ public class ReviewDAOImpl implements ReviewDAO {
     }
 
 
+    public ContractVO getOneCont(String cont_no) {return sqlSession.selectOne("getCont",cont_no);}
 }
