@@ -119,10 +119,13 @@
         <div style="margin-top: 40px; width: 90%; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">입찰참여 업체 리스트 확인</span>
             <select id="selectNum">
-                <option value="0">견적서 번호를 선택해주세요.</option>
-                <c:forEach var="n" begin="0" end="${numlist.size()-1}" step="1">
-                    <option value="${numlist[n]}">${numlist[n]}</option>
-                </c:forEach>
+                <c:if test="${elist.size()==0}"><option value="0">견적서 번호를 선택해주세요.</option></c:if>
+                <c:if test="${elist.size()!=0}">
+                    <option value="0">견적서 번호를 선택해주세요.</option>
+                    <c:forEach var="n" begin="0" end="${elist.size()-1}" step="1">
+                        <option value="${elist[n].est_num}">${elist[n].est_num}</option>
+                    </c:forEach>
+                </c:if>
             </select>
             <span style="font-weight: bold; float:right; "><span id="count">0</span>건의 입찰내역이 있습니다.</span>
         </div>

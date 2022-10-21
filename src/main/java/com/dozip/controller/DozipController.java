@@ -277,6 +277,49 @@ public class DozipController {
         }
     }
 
+    @GetMapping("my_cont") //마이페이지-계약 리스트
+    public ModelAndView myCont(ModelAndView mv, ContractVO c, HttpServletRequest request, HttpSession session){
+        c.setMem_id((String)session.getAttribute("id"));
+
+        //쪽나누기
+        int page = 1; //현재 쪽번호
+        int limit = 5; //한 페이지에 보여지는 개수
+
+        if(request.getParameter("page")!=null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+
+        int listcount=this.estimateService.getCListCount(c.getMem_id());
+        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
+        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
+        int endpage = maxpage; //마지막페이지
+
+        if(endpage>startpage+5-1) endpage=startpage+5-1;
+
+        mv.addObject("page", page);
+        mv.addObject("startpage", startpage);
+        mv.addObject("endpage",endpage);
+        mv.addObject("maxpage",maxpage);
+        mv.addObject("listcount",listcount);
+
+        //리스트 출력
+        List<ContractVO> clist = new ArrayList<ContractVO>();
+        c.setStartrow((page-1)*5+1);
+        c.setEndrow(c.getStartrow()+limit-1);
+        clist = this.estimateService.getContList(c);
+        mv.addObject("clist", clist);
+
+
+        mv.setViewName("/dozip/mypage/mypage_cont");
+        return mv;
+    }
+
+    @GetMapping("my_contD")
+    public ModelAndView myContD(ModelAndView mv){
+
+        mv.setViewName("/dozip/mypage/mypage_cont_detail");
+        return mv;
+    }
     @GetMapping("my_est") //마이페이지-견적서 리스트
     public ModelAndView myEst(ModelAndView mv, EstimateVO e,HttpServletRequest request,HttpSession session) {
         e.setMem_id((String)session.getAttribute("id"));
@@ -345,12 +388,12 @@ public class DozipController {
         elist = this.estimateService.getElist(e);
         mv.addObject("elist", elist);
 
-        //견적서 번호를 담음 (입찰업체 확인에 사용)
+        /*//견적서 번호를 담음 (입찰업체 확인에 사용)
         List<String> numlist = new ArrayList<>();
         for(int i=0; i<elist.size(); i++){
             numlist.add(elist.get(i).getEst_num());
         }
-        mv.addObject("numlist",numlist);
+        mv.addObject("numlist",numlist);*/
 
         mv.setViewName("/dozip/mypage/mypage_est2");
         return mv;
