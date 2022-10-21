@@ -21,6 +21,7 @@
     
     header nav ul li a:hover, header nav ul li a.active{
         color:#7e9e7f;
+        transition: 0.2s ease;
     }
     
     header .logo a{width:171px ; height:56px; background:url(/images/dozip/HomeLogo01.png) no-repeat; display:block; text-indent:-9999em;}

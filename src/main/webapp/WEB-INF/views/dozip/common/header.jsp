@@ -52,6 +52,7 @@
 
 		header nav ul li a:hover, header nav ul li a.active{
 			color:#7e9e7f;
+			transition: 0.2s ease;
 		}
 		header ol, ul {
 			list-style: none;
