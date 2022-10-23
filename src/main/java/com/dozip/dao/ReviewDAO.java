@@ -14,4 +14,8 @@ public interface ReviewDAO {
 
     ReviewVO getDetail(int re_no);
     ContractVO getOneCont(String cont_no);
+
+    void addReview(ReviewVO rv);
+
+    int getReview_num(ReviewVO rv);
 }

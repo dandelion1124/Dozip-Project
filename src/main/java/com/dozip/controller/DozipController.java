@@ -10,11 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -822,10 +825,64 @@ public class DozipController {
     @RequestMapping(value="search_cont", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
     public ContractVO cSearchList(String cont_no){
-        System.out.println("넘어왔나" + cont_no);
+        //System.out.println("넘어왔나" + cont_no);
         ContractVO cv = this.reviewService.getOneCont(cont_no);
-        System.out.println("cv값"+cv.toString());
+        //System.out.println("cv값"+cv.toString());
 
         return cv;
     }
+    
+    //고객후기 내용등록하기
+    @RequestMapping(value = "/upload_review_ok")
+    public String upload_review(ReviewVO rv, HttpSession session, HttpServletResponse response, HttpServletRequest request){
+        rv.setMem_id((String) session.getAttribute("id"));
+
+        Cookie cookie = new Cookie("re_no", String.valueOf(reviewService.addReview(rv)));
+        response.addCookie(cookie);
+        System.out.println(rv);
+        return "/dozip/review/upload_review_photo";
+    }
+    
+    //고객후기 사진 등록하기
+    /*
+    @RequestMapping(value = "/upload_rphoto_ok")
+    public String upload_rphoto(ReviewVO rv, @RequestParam List<MultipartFile>photos,HttpServletResponse response, HttpServletRequest request)throws Exception{
+        response.setContentType("text/html;charset=UTF-8");
+
+        int re_no = 0;
+        Cookie[] cookies = request.getCookies();
+        for(Cookie c:cookies){
+            if(c.getName().equals("re_no")){
+                re_no = Integer.parseInt(c.getValue());
+            }
+        }
+
+        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 학원 PC upload 경로
+        String uploadDBPath ="/r_upload/"+ re_no+"/";
+        File dir = new File(uploadPath);
+
+        if (!dir.isDirectory()) { //폴더가 없다면 생성
+            dir.mkdirs();
+        }
+        System.out.println("등록된 사진 수: "+ photos.size());
+
+        String dbFilename[]=new String[5];
+        String saveFilename[]=new String[5];
+
+        for(int i=1; i<=photos.size();i++) {
+            dbFilename[i-1]=uploadDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i-1]=uploadPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            photos.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
+            System.out.println(dbFilename[i-1]);
+        }
+        rv.setRe_photo1(dbFilename[0]);
+        rv.setRe_photo2(dbFilename[1]);        rv.setRe_photo3(dbFilename[2]);
+        rv.setRe_photo4(dbFilename[3]);       rv.setRe_photo5(dbFilename[4]);
+
+        rv.setRe_no(re_no);
+        //reviewService.insertReview_Photos(rv);
+        return "redirect:/review_main";
+    }*/
+
+
 }//DozipController

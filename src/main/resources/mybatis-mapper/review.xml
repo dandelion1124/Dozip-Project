@@ -23,4 +23,14 @@
     <select id="getCont" resultType="ContractVO">
         select * from contractT where cont_no=#{cont_no}
     </select>
+
+    <insert id="review_upload" parameterType="ReviewVO">
+        insert into reviewT(re_no,mem_id,cont_no,re_title,re_cont,re_star,re_count,re_date,re_state)
+        values (re_no_seq.nextval,#{mem_id},#{cont_no},#{re_title},#{re_cont},#{re_star,jdbcType=INTEGER},0,sysdate,1)
+    </insert>
+
+    <select id="review_num" parameterType="ReviewVO">
+        select re_no from reviewT where mem_id = #{mem_id} and re_title = #{re_title}
+    </select>
+
 </mapper>
