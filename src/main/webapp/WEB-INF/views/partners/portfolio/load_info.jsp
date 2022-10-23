@@ -7,9 +7,7 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h2>하이</h2>
-
-<h1>Child</h1>
+<h1>포트폴리오 불러오기</h1>
 <p>
     <input type="text" id=childValue>
     <input type="text" id="childValue1">

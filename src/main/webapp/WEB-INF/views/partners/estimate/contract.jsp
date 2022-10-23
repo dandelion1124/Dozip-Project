@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<script src="/js/partners/jquery.js"></script>
+
 <style>
     div.contract_title {
         font-size: 33px;
@@ -59,8 +61,8 @@
         margin: 9px;
     }
 </style>
-
-<form action="/partners/write_contract_ok" method="post">
+<%--action="/partners/write_contract_ok" --%>
+<form  method="post" id="contract_form">
     <input type="hidden" value="${ev.mem_id}" name="mem_id">
     <input type="hidden" value="${ev.est_num}" name="est_num">
     <h4>${ev.est_num} 번견적서 (테스트)</h4>
@@ -179,4 +181,34 @@
     <input type="button" value="닫기" onclick="window.close()">
     <input type="button" value="계약하기" onclick="test()">
     </div>
+
+    <script>
+
+            $('#contract_form').submit(function (event){
+                function params_list() {
+                    var params = {};
+                    var data = $("#contract_form").serializeArray();
+
+                    $.each(data, function() {
+                        var name = $.trim(this.name);
+                        var value = $.trim(this.value);
+                        params[name] = value;
+                    });
+                    return params;
+                }
+                $.ajax({
+
+                    type: "post",
+                    url: 'write_contract_ok',
+                    data: {
+                        data:JSON.stringify(params_list())
+                    },
+                    datatype: "text",
+                    success: function (data) {
+                        //넘어오는 값에 따라 로직 처리 예정
+                    }
+                });
+            });
+
+    </script>
 </form>

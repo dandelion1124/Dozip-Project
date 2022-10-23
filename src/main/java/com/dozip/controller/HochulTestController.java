@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -67,9 +68,9 @@ public class HochulTestController {
 
 
 
-
     @PostMapping("/write_contract_ok")
-    public @ResponseBody String write_contract_ok(int result, ContractVO cv, HttpServletResponse response) throws Exception{
+    @ResponseBody
+    public String write_contract_ok(ContractVO cv, HttpServletResponse response, @RequestParam String data) throws Exception{
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
@@ -77,12 +78,14 @@ public class HochulTestController {
 
 
         result=partnersService.insertContract(cv);
+        System.out.println(cv.getCont_area());
+        System.out.println(data);
         //고객정보는 안넣어야함
-        out.println("<script>");
-        out.println("alert('계약서 작성 완료!')");
-        out.println(" window.opener.location.href='/partners/estimate_list'");
-        out.println("self.close()");
-        out.println("</script>");
+//        out.println("<script>");
+//        out.println("alert('계약서 작성 완료!')");
+//        out.println(" window.opener.location.href='/partners/estimate_list'");
+//        out.println("self.close()");
+//        out.println("</script>");
 
 
         return null;
