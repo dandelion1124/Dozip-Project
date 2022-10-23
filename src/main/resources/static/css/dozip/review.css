@@ -218,79 +218,98 @@ img {
 }
 
 .review_guide {
-	width: 80%;
+	width: 90%;
 	border-radius: 5px;
-	border: 0;
-	background-color: #cae3f4;
+	border: 4px solid #dcdcdc;
 	margin: 20px auto;
 	padding: 8px;
 }
 
-.review_guide p {
+.review_guide #r_guide {
 	font-size: 1.3rem;
-	margin-left: 20px;
+	margin-left: 40px;
+	font-weight: bold;
 }
 
 .review_guide li {
 	font-family: 'Malgun Gothic';
-	font-weight: 500;
+	line-height: 28px;
+	font-size : 1.1rem;
 }
 
+.review_guide #cont_guide{
+	padding-top : 10px;
+	font-weight: bold;
+	font-size : 1.3rem;
+}
+
+#cont_rguide{
+	color : #0064CD;
+	font-weight : bold;
+}
 .review_write_form {
 	margin-top: 50px;
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
 }
 
-.review_write_form table {
-	width: 100%;
+
+.review_write_form #r_title {
+	width: 20%;
+	height: 30px;
+	border-radius: 2px;
 }
 
-.review_write_form th {
-	height: 40px;
+.cont_inform_c{
+	display:flex;
+	flex-direction: row;
 }
 
-.review_write_form td {
-	font-size: 0.6rem;
-}
-
-.review_write_form td input {
-	width: 90%;
-	height: 25px;
-	border-radius: 5px;
+.cont_inform_c input{
+	width : 200px;
+	height: 30px;
+	border-radius: 2px;
+	margin-right: 10px;
 }
 
 #load_btn,#search_cont_btn{
 	width: 130px;
 	height : 30px;
+	border:none;
+	background-color: #0A6EFF;
+	color : white;
+	border-radius: 2px;
+}
+
+#search_cont_btn{
+	margin-left: 10px;
+}
+
+#onload_cont{
+	margin-top: 20px;
 }
 
 #load_cont {
-	border: 1px solid;
-	border-radius: 5px;
+	height: 120px;
+	display : flex;
+	flex-wrap: wrap;
+	flex-direction : row;
+	justify-content: space-evenly;
+	border: 3px solid #0A6EFF;
+	border-radius: 3px;
+	align-content: center;
 }
 
-#load_cont th{
-	font-size: 1.0rem;
-}
 
 #r_cont {
-	width: 90%;
-	height: 100px;
+	width: 60%;
+	height: 150px;
 	resize: none;
 	font-family: 'Malgun Gothic';
-	border-radius: 5px;
+	border : 3px solid;
+	border-radius: 3px;
 }
 
-#image_container {
-	border: 1px solid;
-	width: 70%;
-}
-
-#image_container img {
-	max-width: 20%;
-	height: auto;
-}
 
 .choice_group {
 	width: 100px;
@@ -298,7 +317,7 @@ img {
 	border: 1px solid #747474;
 	box-sizing: border-box;
 	border-radius: 10px;
-	font-family: '여기어때 잘난체';
+	font-family: 'Malgun-Gothic';
 	font-size: 14px;
 	line-height: 50px;
 }
@@ -313,7 +332,11 @@ img {
 
 /* 별점 */
 #test {
-	background-color: #fdefcc;
+	/*
+	border: 2px solid;
+	border-radius: 3px;*/
+	width:12%;
+	height: 30px;
 }
 .star-rating {
 	display: flex;
@@ -363,14 +386,18 @@ img {
 
 
 #r_submit_btn {
+	margin-left: 500px;
+	margin-top: 20px;
+	margin-bottom: 5px;
 	border: 0;
 	border-radius: 5px;
 	font-size: 1.3rem;
-	background-color: #347844;
+	background-color: #0A6EFF;
 	color: white;
 	text-align: center;
-	width: 45%;
+	width: 20%;
 	height: 40px;
+	justify-content: center;
 }
 
 #btn_cell {

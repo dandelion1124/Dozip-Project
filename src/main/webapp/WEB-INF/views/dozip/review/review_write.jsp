@@ -6,75 +6,74 @@
 	<div class="review_write_wrap">
 	<hr/>
 		<div class="review_guide">
-			<p>후기 작성 가이드</p>
+			<p id = "r_guide">후기 작성 가이드</p>
 			<ul>
-				<li>필수 항목을 모두 채워주세요.</li>
-				<li>계약정보 불러오기를 클릭하면 계약서 정보를 편하게 불러올 수 있어요</li>
+				<li>필수 항목을 모두 채워주세요</li>
+				<li>계약정보 불러오기를 클릭하면 계약서 정보를 편하게 불러올 수 있어요!</li>
+				<p id = "cont_guide">계약정보 불러오기 가이드</p>
+				<li id = "cont_rguide">계약번호 불러오기 버튼 클릭 => 계약 번호 선택 => 해당 정보 불러오기 클릭</li>
 				<li>상세히 적어주시면 많은 사람들에게 큰 도움이 될 수 있습니다!</li>
 			</ul>
 		</div>
 		
 		
-		<form class="review_write_form" method="post" enctype="multipart/form-data">
-			<table>
-				<tr>
-					<th>제목</th> <td><input type="text" name="r_title" id="r_title" placeholder="제목을 입력해주세요"/></td>
-				</tr>
-				<tr>
-					<th>시공정보</th>
-					<td id = "t_cont_no"><input type="text" id="tcont_no"  readonly placeholder="계약번호"/></td>
-					<td><button type="button" id="load_btn" onclick="openCont()">계약번호 불러오기</button></td>
-					<td><button type = "button" id = "search_cont_btn" name="submit">해당정보 불러오기</button></td>
-					<script>
-						function openCont(){
-							window.open("/dozip/myall_contract","_blank",
-									"toolbar = no, menubar = no, scrollbars=no, resizable=no, width=900, height=500, left=0, top=0");
-						}
-					</script>
-				</tr>
+		<form action="upload_review_ok" class="review_write_form" id = "review_form" method="post" onsubmit="return review_check()">
+			<div class = "review_write_start">
+				<div class = "review_title">
+					<h3>제목</h3>
+					<div><input type="text" name="r_title" id="r_title" placeholder="제목을 입력해주세요"/></div>
+				</div>
+				<div class = "cont_inform">
+					<h3>시공정보</h3>
+					<div class = "cont_inform_c">
+						<div id = "t_cont_no"><input type="text" id="tcont_no"  readonly placeholder="계약번호"/></div>
+						<div><button type="button" id="load_btn" onclick="openCont()">계약번호 불러오기</button></div>
+						<div><button type = "button" id = "search_cont_btn" name="submit">해당정보 불러오기</button></div>
+						<script>
+							function openCont(){
+								window.open("/dozip/myall_contract","_blank",
+										"toolbar = no, menubar = no, scrollbars=no, resizable=no, width=900, height=500, left=0, top=0");
+							}
+						</script>
+					</div>
+				</div>
 
 			<div id = "onload_cont">
-					<tr id="load_cont">
-						<th>업체명</th>
-						<td id = "tp_name">
+					<div id="load_cont">
+						<div id = "tp_name">
+							<h4>업체명</h4>
 							<input type="text" id="tcont_name"  readonly placeholder="업체명"/>
-						</td>
-						<th>공간정보</th>
-						<td id = "t_title">
+						</div>
+						<div id = "t_title">
+							<h4>공간정보</h4>
 							<input type="text" id="tcont_title"  readonly placeholder="공간정보"/>
-						</td>
-						<th>착공날짜</th>
-						<td id = "t_start">
+						</div>
+						<div id = "t_start">
+							<h4>착공일</h4>
 							<input type="text" id="tcont_st"  readonly placeholder="공사시작 날짜"/>
-						</td>
-						<th>완공날짜</th>
-						<td id = "t_end">
+						</div>
+						<div id = "t_end">
+							<h4>완공일</h4>
 							<input type="text" id="tcont_end"  readonly placeholder="공사종료 날짜"/>
-						</td>
-						<th>평수</th>
-						<td id = "t_area">
+						</div>
+						<div id = "t_area">
+							<h4>평수</h4>
 							<input type="text" id="tcont_area"  readonly placeholder="공사 평수"/>
-						</td>
-						<th>총 공사금액</th>
-						<td>
+						</div>
+						<div id= "t_money">
+							<h4>총 공사금액</h4>
 							<input type="text" id="tcont_total"  readonly placeholder="총 공사 금액"/>
-						</td>
-					</tr>
+						</div>
+					</div>
 			</div>
+				<div class = "r_cont_main">
+					<h3>내용</h3>
+					<div class="review_cont"><textarea  name="r_cont" id="r_cont"  placeholder="내용을 입력해주세요"></textarea></div>
+				</div>
 
-				<tr>
-					<th>내용</th><td><textarea  name="r_cont" id="r_cont"  placeholder="내용을 입력해주세요"></textarea></td>
-				</tr>
-				<tr>
-					<th>사진첨부</th>
-					<td>
-						<input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
-    					<div id="image_container"></div>
-					</td>
-				</tr>
-				<tr>
-					<th>종합별점</th>
-					<td id="test">
+				<div class = "star">
+					<h2>종합별점</h2>
+					<div id="test">
 						<div class="star_area">
 						<div class="star-rating space-x-4 mx-auto">
 							<input type="radio" id="5-stars" name="rating" value="5"	v-model="ratings"  onclick="getScore(event);"/>
@@ -99,29 +98,39 @@
 							점
 						</div>
 					</div>
-					</td>
-				</tr>
-				<tr><td colspan="2" id="btn_cell"><button type="submit" disabled = 'disabled' id="r_submit_btn">후기등록하기</button></td></tr>
-			</table>
+					</div>
+				</div>
+				<div><button type="submit" id="r_submit_btn">내용 등록하기</button></div>
+			</div>
 		</form>
-
-	
 	</div>
-<%-- 스크립트 --%>
-	 <script>
-      function setThumbnail(event) {
-        var reader = new FileReader();
 
-        reader.onload = function(event) {
-          var img = document.createElement("img");
-          img.setAttribute("src", event.target.result);
-          document.querySelector("div#image_container").appendChild(img);
-        };
+	<%-- 스크립트 --%>
 
-        reader.readAsDataURL(event.target.files[0]);
-      }
-    </script>
-
+	<script>
+		function review_check(){
+			if($.trim($('#r_title').val()) == ''){
+				alert('제목을 입력해주세요');
+				$('#r_title').focus();
+				return false;
+			}
+			if($.trim($('#tcont_no').val()) == ''){
+				alert('계약번호를 선택해주세요');
+				$('#tcont_no').focus();
+				return false;
+			}
+			if($.trim($('#tcont_name').val()) == ''){
+				alert('계약정보를 불러와주세요');
+				$('#tcont_name').focus();
+				return false;
+			}
+			if($.trim($('#r_cont').val()) == ''){
+				alert('내용을 입력해주세요');
+				$('#r_cont').focus();
+				return false;
+			}
+		}
+	</script>
 	<!-- 계약번호를 기준으로 데이터 불러오기 -->
 	<script>
 		$(document).on("click","button[name='submit']",function(){
@@ -139,23 +148,22 @@
 				dataType: "json",
 				cache: false,
 				success: function (data){
-					test = data;
 					var result = "";
 
 					$(data).each(function () {
 						result+=
-						"<th>업체명</th>"
-						+" <td id = 'tp_name'><input type='text' id='tcont_name'  readonly value='"+this.partners_name+"'/> </td>"
-						+ "<th>공간정보</th>"
-						+"<td id = 't_title'><input type='text' id='tcont_title'  readonly value='"+this.cont_title+"'/></td>"
-						+"<th>착공날짜</th>"
-						+"<td id = 't_start'> <input type='text' id='tcont_st'  readonly value='"+this.cont_start+"'/></td>"
-						+"<th>완공날짜</th>"
-						+"<td id = 't_end'> <input type='text' id='tcont_end'  readonly value='"+this.cont_end+"'/></td>"
-						+"<th>평수</th>"
-						+"<td id = 't_area'> <input type='text' id='tcont_area'  readonly value='"+this.cont_area+"'/></td>"
-						+"<th>총 공사금액</th>"
-						+"<td><input type='text' id='tcont_total'  readonly value='"+this.cont_total+"'/></td>"
+						" <div id = 'tp_name'>" + "<h3>업체명</h3>"+
+								"<input type='text' id='tcont_name'  readonly value='"+this.partners_name+"'/> </div>"
+						+"<div id = 't_title'>" + "<h3>공간정보</h3>"+
+								"<input type='text' id='tcont_title'  readonly value='"+this.cont_title+"'/></div>"
+						+"<div id = 't_start'> " + "<h3>착공일</h3>"+
+								"<input type='text' id='tcont_st'  readonly value='"+this.cont_start+"'/></div>"
+						+"<div id = 't_end'> " + "<h3>완공일</h3>"+
+								"<input type='text' id='tcont_end'  readonly value='"+this.cont_end+"'/></div>"
+						+"<div id = 't_area'> " + "<h3>평수</h3>"+
+								"<input type='text' id='tcont_area'  readonly value='"+this.cont_area+"'/></div>"
+						+"<div id= 't_money'>" + "<h3>총 공사금액</h3>"+
+								"<input type='text' id='tcont_total'  readonly value='"+this.cont_total+"'/></div>"
 					});
 
 					$('#load_cont').html(result); //해당 영역에 html 함수로 문자태그 변경적용
@@ -166,6 +174,8 @@
 			});
 		});
 	</script>
+
+
     
 <%-- 하단 공통부분 --%>
 <jsp:include page="../common/footer.jsp" />

@@ -8,6 +8,10 @@ select * from contractT;
 
 select * from contractT where mem_id = 'dozip';
 
+insert into reviewT(re_no,mem_id,cont_no,re_title,re_cont,re_star,re_count,re_date,re_state)
+values (re_no_seq.nextval,'dozip','C111111','테스트입니다','테스트내용',3,0,sysdate,1);
+delete from reviewT where mem_id='dozip';
+commit;
 update estimateT set BUSINESSNUM = '111-11-11111' where MEM_ID ='dozip';
 insert into contractT(cont_no,est_num,mem_id,businessNum,cont_title,cont_location,cont_area,cont_start,cont_end,cont_total,cont_cost1,
 cont_date1,cont_cost2,cont_date2,cont_cost3,cont_date3,cont_date,customer_name,customer_addr,customer_number,customer_tel,partners_name,

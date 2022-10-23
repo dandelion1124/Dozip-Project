@@ -34,4 +34,12 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 
     public ContractVO getOneCont(String cont_no) {return sqlSession.selectOne("getCont",cont_no);}
+
+    @Override
+    public void addReview(ReviewVO rv) {sqlSession.insert("review_upload",rv);}
+
+    @Override
+    public int getReview_num(ReviewVO rv) {return sqlSession.selectOne("review_num",rv);}
+
+
 }
