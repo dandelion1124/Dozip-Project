@@ -41,4 +41,6 @@ public interface PartnersService {
     List<BidVO> selectJoinList(String businessNum);
 
     List<EstimateVO> selectEstimateListBnum(String businessNum);
+
+    int getListCount2(String businessNum);
 }

@@ -155,6 +155,11 @@ public class PartnersServiceImpl implements PartnersService {
         return this.partnersDao.selectEstimateListBnum(businessNum);
     }
 
+    @Override
+    public int getListCount2(String businessNum) {
+        return partnersDao.getListCount2(businessNum);
+    }
+
 
 }
 
