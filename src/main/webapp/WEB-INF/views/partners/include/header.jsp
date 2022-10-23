@@ -106,19 +106,22 @@ if(session.getAttribute("p_id")==null) {
                 //1180px
                 let margin = $('#top_bar').css('margin-left');
                 if (window.innerWidth > 1173) {
-                    if (margin == '0px') {
-                        $('#side_wrap').css({'display': 'block'});
-                        $('#top_bar').css({'margin-left': '161px'});
-                        $('#footer_mediaquery').css({'margin-left': '160px'});
-                        $('#main_cont').css({'margin-left': '160px'});
-                        $('#fotter_setting').css({'display': 'block'});
-                    } else {
-                        $('#side_wrap').css({'display': 'none'});
-                        $('#top_bar').css({'margin-left': '0px'});
-                        $('#footer_mediaquery').css({'margin-left': '0px'});
-                        $('#main_cont').css({'margin-left': '0px'});
-                        $('#fotter_setting').css({'display': 'none'});
-                    }
+                    $('#side_wrap').toggle(400);
+
+
+                    // if (margin == '0px') {
+                    //     $('#side_wrap').css({'display': 'block'});
+                    //    // $('#top_bar').css({'margin-left': '161px'});
+                    //     //$('#footer_mediaquery').css({'margin-left': '160px'});
+                    //     //$('#main_cont').css({'margin-left': '160px'});
+                    //     //$('#fotter_setting').css({'display': 'block'});
+                    // } else {
+                    //     $('#side_wrap').css({'display': 'none'});
+                    //   //  $('#top_bar').css({'margin-left': '0px'});
+                    //    // $('#footer_mediaquery').css({'margin-left': '0px'});
+                    //    // $('#main_cont').css({'margin-left': '0px'});
+                    //    // $('#fotter_setting').css({'display': 'none'});
+                    // }
                 }
             });
         </script>

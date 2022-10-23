@@ -127,8 +127,8 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public void insertContract(ContractVO cv) {
-        sqlSession.insert("contract_in",cv);
+    public int insertContract(ContractVO cv) {
+        return sqlSession.insert("contract_in",cv);
     }
     @Override
     public EstimateVO selectEstimate(String bid_no) {

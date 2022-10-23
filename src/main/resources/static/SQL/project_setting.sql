@@ -42,8 +42,6 @@ create table partnersT
     p_State       number(5) default 1        --탈퇴여부(가입 1, 탈퇴 2)
 );
 
-insert into partnersT (businessNum,businessName,p_Id,p_Pw,p_Tel,p_Name,p_MailId,p_MailDomain,p_Addr1) values('a','a','a','a','a','a','a','a','a');
-
 --3. 포트폴리오 테이블 --
 drop table portfolioT;
 select * from PORTFOLIOT;
@@ -269,10 +267,9 @@ create table reviewT
     --foreign key (cont_no) references contractT (cont_no)
 );
 
-insert into reviewT (re_no,mem_id,cont_no,re_title,re_cont,re_star) values(re_no_seq.nextval,'ㅊㅊ62ㅊ','aㅊ37','글제목 입니다246.','글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용글내용','5');
 select * from reviewT order by re_no desc;
-commit;
---고객문의 테이블 시퀀스
+
+--고객후기 테이블 시퀀스
 drop sequence re_no_seq; --삭제
 select re_no_seq.nextval from dual; --시퀀스 확인
 create sequence re_no_seq start with 1 increment by 1 nocache; --생성

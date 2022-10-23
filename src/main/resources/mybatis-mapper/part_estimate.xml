@@ -19,7 +19,7 @@
     </select>
 
     <!--계약서 정보 insert -->
-    <select id="contract_in">
+    <select id="contract_in" resultType="int">
         insert into CONTRACTT values(contractT_no_seq.nextval, #{est_num}, #{mem_id}, #{businessNum},#{cont_title},#{cont_location},#{cont_area},#{cont_start},#{cont_end},#{cont_total},#{cont_cost1},#{cont_date1},#{cont_cost2},#{cont_date2},#{cont_cost3},#{cont_date3},#{cont_date},#{customer_name},#{customer_addr},#{customer_number},#{customer_tel},#{partners_name},#{partners_addr},#{partners_tel})
     </select>
 </mapper>

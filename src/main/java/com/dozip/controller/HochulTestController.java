@@ -69,14 +69,14 @@ public class HochulTestController {
 
 
     @PostMapping("/write_contract_ok")
-    public String write_contract_ok(ContractVO cv, HttpServletResponse response) throws Exception{
+    public @ResponseBody String write_contract_ok(int result, ContractVO cv, HttpServletResponse response) throws Exception{
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
         cv.setCustomer_number(" ");
 
 
-        partnersService.insertContract(cv);
+        result=partnersService.insertContract(cv);
         //고객정보는 안넣어야함
         out.println("<script>");
         out.println("alert('계약서 작성 완료!')");
