@@ -156,6 +156,12 @@ public class PartnersDAOImpl implements PartnersDAO {
         return this.sqlSession.selectList("select_est_bnum",businessNum);
     }
 
+    @Override
+    public int getListCount2(String businessNum) {
+        return this.sqlSession.selectOne("my_bid_count",businessNum);
+
+    }
+
 
 }
 

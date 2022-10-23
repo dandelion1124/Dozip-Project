@@ -295,21 +295,51 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
-    public ModelAndView my_bid(HttpServletResponse response,HttpSession session) throws Exception {
+    public ModelAndView my_bid(EstimateVO e,HttpServletResponse response,HttpServletRequest request,HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
 
         String businessNum = (String) session.getAttribute("businessNum");
-
         //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
-
         List<BidVO> list= this.partnersService.selectJoinList(businessNum);
 
+        int page=1;//쪽번호
+        int limit=10;//한페이지에 보여지는 목록개수
+        if(request.getParameter("page") != null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+//        String find_name=request.getParameter("find_name");//검색어
+//        String find_field=request.getParameter("find_field");//검색
+//        //필드
+//        e.setFind_field(find_field);
+//        e.setFind_name("%"+find_name+"%");
+//        //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
+//        //매핑 대응
 
-        //bid.setBid_state(blist);
+        int listcount=this.partnersService.getListCount2(businessNum);
+        //전체 레코드 개수 또는 검색전후 레코드 개수
+        System.out.println("총 게시물수:"+listcount+"개");
+
+        e.setStartrow((page-1)*10+1);//시작행번호
+        e.setEndrow(e.getStartrow()+limit-1);//끝행번호
+
+        //총페이지수
+        int maxpage=(int)((double)listcount/limit+0.95);
+        //현재 페이지에 보여질 시작페이지 수(1,11,21)
+        int startpage=(((int)((double)page/10+0.9))-1)*10+1;
+        //현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
+        int endpage=maxpage;
+        if(endpage > startpage+10-1) endpage=startpage+10-1;
+
+        ModelAndView m=new ModelAndView();
+        m.addObject("page",page);
+        m.addObject("startpage",startpage);
+        m.addObject("endpage",endpage);
+        m.addObject("maxpage",maxpage);
+        m.addObject("listcount",listcount);
+//        m.addObject("find_field",find_field);
+//        m.addObject("find_name", find_name);
+
         System.out.println(list.toString());
-        //System.out.println(blist.toString());
-        ModelAndView m= new ModelAndView();
-        //m.addObject("elist",elist);
         m.addObject("list",list);
 
         m.setViewName("/partners/estimate_request/my_bid");

@@ -131,5 +131,9 @@
     <select id="select_est_bnum" resultType="EstimateVO">
         select * from estimateT where businessNum=#{businessNum}
     </select>
+
+    <select id="my_bid_count" resultType="int">
+        select count(bid_num) from bidT where BusinessNum=#{BusinessNum}
+    </select>
 </mapper>
 
