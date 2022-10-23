@@ -125,8 +125,8 @@ public class PartnersServiceImpl implements PartnersService {
     }
 
     @Override
-    public void insertContract(ContractVO cv) {
-        partnersDao.insertContract(cv);
+    public int insertContract(ContractVO cv) {
+        return partnersDao.insertContract(cv);
     }
     
     @Override

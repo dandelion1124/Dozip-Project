@@ -179,7 +179,7 @@
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-    <input type="submit" value="계약하기">
+    <input type="button" value="계약하기" onclick="test()">
     </div>
 
     <script>

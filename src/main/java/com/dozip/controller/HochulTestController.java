@@ -75,9 +75,11 @@ public class HochulTestController {
         PrintWriter out = response.getWriter();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
         cv.setCustomer_number(" ");
+
+
+        result=partnersService.insertContract(cv);
         System.out.println(cv.getCont_area());
         System.out.println(data);
-       // partnersService.insertContract(cv);
         //고객정보는 안넣어야함
 //        out.println("<script>");
 //        out.println("alert('계약서 작성 완료!')");

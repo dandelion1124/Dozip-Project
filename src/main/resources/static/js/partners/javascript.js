@@ -26,18 +26,23 @@ $(document).ready(function () {
 $(window).resize(function () {
     // width값을 가져오기
     let width_size = window.innerWidth;
+
     if (width_size <= 1173) {
-        $('#side_wrap').css({'display': 'none'});
-        $('#top_bar').css({'margin-left': '0px'});
-        $('#footer_mediaquery').css({'margin-left': '0px'});
-        $('#main_cont').css({'margin-left': '0px'});
-        $('#fotter_setting').css({'display': 'none'});
-    } else {
-        $('#side_wrap').css({'display': 'block'});
-        $('#top_bar').css({'margin-left': '161px'});
-        $('#footer_mediaquery').css({'margin-left': '160px'});
-        $('#main_cont').css({'margin-left': '160px'});
-        $('#fotter_setting').css({'display': 'block'});
+        $('#side_wrap').hide(400);
+        // $('#side_wrap').css({'display': 'none'});
+        // $('#top_bar').css({'margin-left': '0px'});
+        // $('#footer_mediaquery').css({'margin-left': '0px'});
+        // $('#main_cont').css({'margin-left': '0px'});
+        // $('#fotter_setting').css({'display': 'none'});
+    }
+    else {
+        $('#side_wrap').show(400);
+
+//         $('#side_wrap').css({'display': 'block'});
+//        $('#top_bar').css({'margin-left': '161px'});
+//         $('#footer_mediaquery').css({'margin-left': '160px'});
+//         $('#main_cont').css({'margin-left': '160px'});
+//        $('#fotter_setting').css({'display': 'block'});
     }
 });
 /**************/

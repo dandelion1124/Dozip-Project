@@ -32,7 +32,7 @@ public interface PartnersDAO {
     List<EstimateVO> getAllEstList();
     List<BidVO> getBidList();
     EstimateVO write_contract(int est_num);
-    void insertContract(ContractVO cv);
+    int insertContract(ContractVO cv);
     EstimateVO selectEstimate(String bid_no);
 
     void insertbid(BidVO bid);
