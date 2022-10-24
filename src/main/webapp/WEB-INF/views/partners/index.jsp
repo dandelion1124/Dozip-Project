@@ -16,7 +16,7 @@
         <div id="signin_title">
             <div><a href="#"><img src="/images/partners/partners_logo.png" alt="메인로고"></a></div>
         </div>
-        <form action="login_ok" method="post" id="로그인 폼" onsubmit="return login_check();">
+        <form id="login_form"> <%--onsubmit="return login_check();"--%>
             <div>
                 <input type="text" name="p_Id" id="signin_id" placeholder="아이디">
                 <span id="idcheck"></span>
@@ -42,6 +42,40 @@
             <div><input type="button" id="" value="문의하기" onclick="location='partners_findinfo'"></div>
         </div>
     </div>
+    <script>
+        $('#login_form').submit(function (event){
+            function params_list() {
+                var params = new Object();
+                params.p_Id=$('#signin_id').val();
+                params.p_Pw=$('#signin_pw').val();
+                return params;
+                };
+            $.ajax({
+                type: 'post',
+                url: 'login_ok',
+                data: {
+                    data:JSON.stringify(params_list())
+                },
+                datatype: "json",
+                success: function (data) {
+                    let res=data.status;
+                    if(res ==1){
+                        alert('존재하지 않는 아이디입니다');
+                        history.back();
+                    }
+                    else if(res==2){
+                        alert('비밀번호가 일치하지 않습니다.')
+                        history.back();
+                    }
+                    else if(res==0){
+                        alert('환영합니다.')
+                        location.href='/partners/main';
+                    }
+                }
+            });
+        });
+
+    </script>
     </c:if>
     <c:if test="${!empty p_id }">
         <jsp:include page="include/header.jsp"/>

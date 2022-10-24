@@ -61,8 +61,7 @@
         margin: 9px;
     }
 </style>
-<%--action="/partners/write_contract_ok" --%>
-<form  method="post" id="contract_form">
+<form method="post" id="contract_form">
     <input type="hidden" value="${ev.mem_id}" name="mem_id">
     <input type="hidden" value="${ev.est_num}" name="est_num">
     <h4>${ev.est_num} 번견적서 (테스트)</h4>
@@ -175,41 +174,41 @@
             </table>
         </div>
         </br>
-
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-    <input type="submit" value="계약하기">
+    <input type="button" value="계약하기" id="contract_write">
     </div>
     <script>
-            $('#contract_form').submit(function (event){
+            $('#contract_write').onclick(function (event){
                 function params_list() {
-                    var params = {};
-                    var data = $("#contract_form").serializeArray();
+                    var params = {};  //배열 선언
+                    var data = $("#contract_form").serializeArray(); //폼태그에 있는 데이터 담기
 
-                    $.each(data, function() {
-                        var name = $.trim(this.name);
-                        var value = $.trim(this.value);
-                        params[name] = value;
+                    $.each(data, function() { //반복문
+                        var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+                        var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+                        params[name] = value; //params 배열에 키, 값 쌍으로 저장
                     });
                     return params;
                 }
                 $.ajax({
-                    type: "post",
+                    type: 'post',
                     url: 'write_contract_ok',
                     data: {
                         data:JSON.stringify(params_list())
                     },
                   datatype: "json",
                     success: function (data) {
-                        alert("흠")
                         alert(data.status);
 
-
-
+                        if(data.status ==1){
+                            alert('계약서 작성 완료!')
+                            window.opener.location.href='/partners/estimate_list'
+                            self.close()
+                        }
                     }
                 });
             });
-
     </script>
 </form>
