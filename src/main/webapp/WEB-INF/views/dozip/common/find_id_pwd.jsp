@@ -93,7 +93,7 @@
 			},
 			success : function(data) {
 				if(data != null){
-					alert('고객님의 아이디는'+data+'입니다.');
+					alert("고객님의 아이디는 "+data+" 입니다.");
 					location='/dozip/id_login';
 				}else{
 					alert('입력하신 정보와 일치하는 아이디가 없습니다.');

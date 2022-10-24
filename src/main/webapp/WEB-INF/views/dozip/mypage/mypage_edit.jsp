@@ -114,7 +114,7 @@
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
         <p style="width: 80%; font-weight: bold;">나의 정보관리</p>
-        <form class="mim_table_box" method="post"  action="/dozip/my_edit_ok" >
+        <form class="mim_table_box">
             <table class="mim_table">
                 <tr>
                     <th>아이디</th><td><input type="text" name="mem_id" id="mem_id" readonly value="${id}"></td>
@@ -151,7 +151,7 @@
                     </td>
                 </tr>
             </table>
-            <button type="submit" id="mim_btn">수정하기</button>
+            <button type="button" id="mim_btn">수정하기</button>
         </form>
     </div>
 </div>
@@ -166,6 +166,43 @@
                 document.getElementById("mem_addr2").focus(); //상세입력 포커싱
             }
         }).open();
+    }
+
+    document.getElementById('mim_btn').onclick = function (){
+
+        function params_list() {
+            var params = {};  //배열 선언
+            var data = $(".mim_table_box").serializeArray(); //폼태그에 있는 데이터 담기
+
+            $.each(data, function () { //반복문
+                var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+                var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+                params[name] = value; //params 배열에 키, 값 쌍으로 저장
+            });
+            return params;
+            alert(params);
+        }
+
+        $.ajax({
+            url : '/dozip/my_edit_ok',
+            type : 'post',
+            dataType : 'json',
+            data : {
+                member : JSON.stringify(params_list())
+            },
+            success : function(data) {
+                if(parseInt(data)==1){
+                    alert("회원정보 수정이 완료되었습니다.");
+                    location.reload();
+                }else{
+                    alert("회원정보 수정에 실패했습니다.");
+                    location.reload();
+                }
+            },
+            error:function(){
+                alert("실패");
+            }
+        })
     }
 </script>
 

@@ -159,8 +159,8 @@
                 </tr>
                 <tr>
                     <th colspan="2">사업자번호 / 주민번호 :
-                        <c:if test="${c.customer_number == null}"><input size="20" style="background-color: #92d1fc" name="customer_number"></c:if>
-                        <c:if test="${c.customer_number!= null}">${c.customer_number}</c:if>
+                        <c:if test="${c.customer_number == ' '}"><input size="20" style="background-color: #92d1fc" name="customer_number"></c:if>
+                        <c:if test="${c.customer_number!= ' '}">${c.customer_number}</c:if>
                     </th>
                     <%-- 고객 --%>
                     <th colspan="2">사업자번호 / 주민번호 : ${c.businessNum}</th>
@@ -179,7 +179,7 @@
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-        <c:if test="${c.customer_number == null}"><input type="submit" value="계약하기"></c:if>
-        <c:if test="${c.customer_number != null}">  </c:if>
+        <c:if test="${c.customer_number == ' '}"><input type="submit" value="계약하기"></c:if>
+        <c:if test="${c.customer_number != ' '}">  </c:if>
     </div>
 </form>

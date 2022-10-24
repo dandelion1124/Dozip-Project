@@ -73,4 +73,7 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Override
     public PayVO getPay(String cont_no) { return this.sqlSession.selectOne("get_pay", cont_no); }
 
+    @Override
+    public int payState(PayVO p) { return this.sqlSession.update("pay_state", p); }
+
 }

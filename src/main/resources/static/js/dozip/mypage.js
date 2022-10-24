@@ -65,7 +65,7 @@ function validate_pwd($new_pwd)
 }
 
 /* 비밀번호 변경 확인 */
-function pwd_check(){
+function change_pwd(){
 	$current_pwd=$.trim($("#current_pwd").val());
 	$new_pwd=$.trim($("#new_pwd").val());
 	$new_pwd_check=$.trim($("#new_pwd_check").val());
@@ -98,5 +98,27 @@ function pwd_check(){
 		alert("비밀번호 확인이 일치하지 않습니다.");
 		$("#new_pwd_check").val("").focus();
 		return false;
+	}
+	else{ // 유효성을 다 통과하고나면 ajax 실행
+		var current_pwd = $.trim($("#current_pwd").val());
+		var new_pwd = $.trim($("#new_pwd").val());
+
+		$.ajax({
+			url : '/dozip/edit_pwd_ok',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				current_pwd : current_pwd,
+				new_pwd : new_pwd
+			},
+			success : function(data) {
+				alert(data.text);
+				location.reload();
+			},
+			error:function(request,status,error){
+				//alert("code="+request.status+"message="+request.responseText+"error="+error);
+				alert("실패했습니다.");
+			}
+		});
 	}
 }

@@ -118,12 +118,11 @@
 		$.ajax({
 			url : '/dozip/member_join_ok',
 			type : 'post',
-			dataType : 'json',
 			data : {
 				data:JSON.stringify(params_list())
 			},
 			success : function(data) {
-				alert(data.message);
+				alert(data);
 				window.close();
 			},
 			error:function(){
