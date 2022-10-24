@@ -5,6 +5,7 @@ import com.dozip.service.PartnersService;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/partners/*")
@@ -66,29 +69,18 @@ public class HochulTestController {
      return "/partners/estimate/contract";  //계약서 view 페이지
     }
 
-
-
-    @PostMapping("/write_contract_ok")
+    @PostMapping("/write_contract_ok") //계약서 작성 확인메서드
     @ResponseBody
-    public String write_contract_ok(ContractVO cv, HttpServletResponse response, @RequestParam String data) throws Exception{
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
+    public HashMap<String, Object> write_contract_ok(@RequestParam String data) throws Exception {
+        HashMap<String, Object> resultMap = new HashMap<>();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
-        cv.setCustomer_number(" ");
-
-
-        result=partnersService.insertContract(cv);
-        System.out.println(cv.getCont_area());
-        System.out.println(data);
         //고객정보는 안넣어야함
-//        out.println("<script>");
-//        out.println("alert('계약서 작성 완료!')");
-//        out.println(" window.opener.location.href='/partners/estimate_list'");
-//        out.println("self.close()");
-//        out.println("</script>");
-
-
-        return null;
+        ObjectMapper mapper = new ObjectMapper();
+        ContractVO cv = mapper.readValue(data, ContractVO.class);
+        cv.setCustomer_number(" ");
+        int result=partnersService.insertContract(cv);
+        resultMap.put("status",result);
+        return resultMap;
     }
 
 

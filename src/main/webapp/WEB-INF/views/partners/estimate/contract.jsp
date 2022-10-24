@@ -179,11 +179,9 @@
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-    <input type="button" value="계약하기" onclick="test()">
+    <input type="submit" value="계약하기">
     </div>
-
     <script>
-
             $('#contract_form').submit(function (event){
                 function params_list() {
                     var params = {};
@@ -197,15 +195,18 @@
                     return params;
                 }
                 $.ajax({
-
                     type: "post",
                     url: 'write_contract_ok',
                     data: {
                         data:JSON.stringify(params_list())
                     },
-                    datatype: "text",
+                  datatype: "json",
                     success: function (data) {
-                        //넘어오는 값에 따라 로직 처리 예정
+                        alert("흠")
+                        alert(data.status);
+
+
+
                     }
                 });
             });
