@@ -208,6 +208,9 @@ public class PartnersController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
 
+
+
+
         //System.out.println(elist.toString());
 
         for (int i = 0; i < elist.size(); i++) {
@@ -242,15 +245,21 @@ public class PartnersController {
     }//주소 변환
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
-    public String bid_detail(Model m, @RequestParam("no") String bid_no, HttpServletResponse response) throws Exception {
+    public String bid_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
 
 
-        EstimateVO e=this.partnersService.selectEstimate(bid_no);
+        EstimateVO e=this.partnersService.selectEstimate(est_num);
         System.out.println(e.toString());
-        int bcount=this.partnersService.countBid(bid_no);
+        BidVO b = new BidVO();
+        b.setBusinessNum((String)session.getAttribute("businessNum"));
+        System.out.println(b.getBusinessNum());
+        b.setEst_num(est_num);
+        int bcount=this.partnersService.countBid(est_num);
+        int res=this.partnersService.checkBid(b);
+        System.out.println(res);
         //System.out.println(bcount);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -261,18 +270,19 @@ public class PartnersController {
         //System.out.println(remaindate);
         m.addAttribute("e",e);
         m.addAttribute("bcount",bcount);
+        m.addAttribute("res",res);
 
         return "/partners/estimate_request/bid_detail";
     }
 
     @RequestMapping(value = "/bid_detail_ok") //입찰 신청
-    public String bid_detail_ok(BidVO bid, @RequestParam("no") String bid_no, HttpServletRequest request, HttpServletResponse response, HttpSession session)
+    public String bid_detail_ok(BidVO bid, @RequestParam("no") String est_num, HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
         String businessNum = (String) session.getAttribute("businessNum");
-        EstimateVO e = this.partnersService.selectEstimate(bid_no);
+        EstimateVO e = this.partnersService.selectEstimate(est_num);
 
         bid.setBusinessNum(businessNum);
         bid.setEst_num(e.getEst_num());
@@ -288,8 +298,8 @@ public class PartnersController {
         //System.out.println(bid.toString());
 
         //int listcount=this.partnersService.getListCount2(businessNum);
-        int res=this.partnersService.checkBid(businessNum);
-        System.out.println(res);
+
+//        System.out.println(res);
 //        if(res==0) {
 //            this.partnersService.insertPartnersSub(ps);
 //
@@ -311,7 +321,7 @@ public class PartnersController {
 
         String businessNum = (String) session.getAttribute("businessNum");
         //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
-        List<BidVO> list = this.partnersService.selectJoinList(businessNum);
+
 
         int page=1;//쪽번호
         int limit=5;//한페이지에 보여지는 목록개수
@@ -330,11 +340,12 @@ public class PartnersController {
         //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 
+        e.setBusinessNum(businessNum);
         e.setStartrow((page-1)*5+1);//시작행번호
         e.setEndrow(e.getStartrow()+limit-1);//끝행번호
-        System.out.println(e.getStartrow());
-        System.out.println(e.getEndrow());
-
+        //System.out.println(e.getStartrow());
+        //System.out.println(e.getEndrow());
+        System.out.println(e.toString());
 
         int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
         int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
@@ -350,6 +361,7 @@ public class PartnersController {
 //        m.addObject("find_field",find_field);
 //        m.addObject("find_name", find_name);
 
+        List<BidVO> list = this.partnersService.selectJoinList(e);
         System.out.println(list.toString());
         m.addObject("list", list);
 
@@ -377,10 +389,10 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
-    public String construct_request_detail(Model m, @RequestParam("no") String bid_no, HttpServletResponse response) throws Exception {
+    public String construct_request_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
 
-        EstimateVO e = this.partnersService.selectEstimate(bid_no);
+        EstimateVO e = this.partnersService.selectEstimate(est_num);
 
         m.addAttribute("e", e);
 

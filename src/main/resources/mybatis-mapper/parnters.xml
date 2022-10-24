@@ -109,7 +109,7 @@
         select * from estimateT
     </select>
     <select id="select_est" resultType="EstimateVO">
-        select * from estimateT where est_num=#{bid_no}
+        select * from estimateT where est_num=#{est_num}
     </select>
     <!--입찰 상세페이지 입찰하기 -->
     <insert id="insert_bid_detail">
@@ -119,13 +119,16 @@
     </insert>
 
     <select id="count_bid" resultType="int">  <!--상세페이지 파트너스 수 -->
-        select count(businessNum) from bidT where est_num=#{bid_no}
+        select count(businessNum) from bidT where est_num=#{est_num}
     </select>
 
     <select id="sel_All" resultType="bidVO"> <!--내 입찰 목록 -->
-        select b.*, e.est_use, e.est_dateEnd, e.est_addr from
+        select * from (
+        select rowNum r, b.bid_num, b.businessNum , b.est_num,  b.bid_price, b.bid_start  ,
+        b.bid_end  , b.bid_detail  ,  b.bid_state   , b.bid_date, e.est_use, e.est_dateEnd, e.est_addr from
         (select * from bidT where businessNum=#{businessNum}) b, estimateT e
-        where b.est_num = e.est_num(+)
+        where b.est_num = e.est_num(+) order by bid_num desc
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
     <select id="select_est_bnum" resultType="EstimateVO">
@@ -133,11 +136,11 @@
     </select>
 
     <select id="my_bid_count" resultType="int">
-        select count(bid_num) from bidT where BusinessNum=#{BusinessNum}
+        select count(bid_num) from bidT where businessNum=#{businessNum}
     </select>
 
     <select id="check_bid" resultType="int">
-        select count(bid_num) from bidT where BusinessNum=#{BusinessNum} and est_num=#{bid_no}
+        select count(bid_num) from bidT where businessNum=#{businessNum} and est_num=#{est_num}
     </select>
 </mapper>
 

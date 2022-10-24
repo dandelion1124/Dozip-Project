@@ -141,14 +141,14 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public int countBid(String bid_no) {
-        return sqlSession.selectOne("count_bid",bid_no);
+    public int countBid(String est_num) {
+        return sqlSession.selectOne("count_bid",est_num);
     }
 
 
     @Override
-    public List<BidVO> selectJoinList(String businessNum) {
-        return this.sqlSession.selectList("sel_All", businessNum);
+    public List<BidVO> selectJoinList(EstimateVO e) {
+        return this.sqlSession.selectList("sel_All", e);
     }
 
     @Override
@@ -163,8 +163,8 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public int checkBid(String businessNum) {
-        return this.sqlSession.selectOne("check_bid",businessNum);
+    public int checkBid(BidVO b) {
+        return this.sqlSession.selectOne("check_bid",b);
     }
 
 
