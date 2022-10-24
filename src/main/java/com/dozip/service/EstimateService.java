@@ -34,4 +34,6 @@ public interface EstimateService {
     void contractOK(ContractVO c);
 
     PayVO getPay(String cont_no);
+
+    int payState(PayVO p);
 }

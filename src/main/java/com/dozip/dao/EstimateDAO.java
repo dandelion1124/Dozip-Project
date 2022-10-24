@@ -43,4 +43,6 @@ public interface EstimateDAO {
     void insertPay(ContractVO c);
 
     PayVO getPay(String cont_no);
+
+    int payState(PayVO p);
 }

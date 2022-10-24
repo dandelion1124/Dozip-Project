@@ -186,7 +186,6 @@
                 cache: false,
                 data: formData,
                 success: function () {
-                    //alert('성공');
                     location.replace("/dozip/my_est2");
                 },
                 error: function () {

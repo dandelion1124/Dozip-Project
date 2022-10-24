@@ -113,4 +113,13 @@
         select * from payT where cont_no=#{cont_no}
     </select>
 
+    <!--결제-->
+    <update id="pay_state">
+        update payT set
+        <if test="pay_cost1!=null"> pay_cost1=#{pay_cost1}, pay_date1=sysdate, pay_state='계약금결제완료'</if>
+        <if test="pay_cost2!=null"> pay_cost2=#{pay_cost2}, pay_date2=sysdate, pay_state='중도금결제완료'</if>
+        <if test="pay_cost3!=null"> pay_cost3=#{pay_cost3}, pay_date3=sysdate, pay_state='잔금결제완료'</if>
+        where cont_no=#{cont_no}
+    </update>
+
 </mapper>

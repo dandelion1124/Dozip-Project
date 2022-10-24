@@ -88,7 +88,7 @@
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
         <p style="width: 80%; font-weight: bold;">비밀번호 변경</p>
-        <form method="post"  onsubmit="return pwd_check();" action="/dozip/edit_pwd_ok" class="my_pwd_modify_box"  >
+        <form class="my_pwd_modify_box"  >
             <table class="mpm_table">
                 <tr>
                     <th>기존 비밀번호</th>
@@ -106,10 +106,34 @@
                     <td><input type="password" name="new_pwd_check" id="new_pwd_check" placeholder="다시 한 번 입력해주세요."/></td>
                 </tr>
             </table>
-            <div id="mpm_btn_wrap"><button type="submit" id="mpm_btn" >비밀번호 변경</button></div>
+            <div id="mpm_btn_wrap"><button type="button" id="mpm_btn" onclick="return change_pwd();" >비밀번호 변경</button></div>
         </form>
     </div>
 </div>
+
+<script>
+    /*document.getElementById("mpm_btn").onclick = function() {
+        var current_pwd = $.trim($("#current_pwd").val());
+        var new_pwd = $.trim($("#new_pwd").val());
+
+        $.ajax({
+            url : '/dozip/edit_pwd_ok',
+            type : 'post',
+            dataType : 'json',
+            data : {
+                current_pwd : current_pwd,
+                new_pwd : new_pwd
+            },
+            success : function(data) {
+                alert(data.message);
+                location.reload();
+            },
+            error:function(){
+                alert("실패했습니다.");
+            }
+        });
+    }*/
+</script>
 
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

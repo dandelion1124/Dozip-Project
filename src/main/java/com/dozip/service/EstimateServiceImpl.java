@@ -87,5 +87,8 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public PayVO getPay(String cont_no) { return this.estimateDAO.getPay(cont_no); }
 
+    @Override
+    public int payState(PayVO p) { return this.estimateDAO.payState(p); }
+
 
 }

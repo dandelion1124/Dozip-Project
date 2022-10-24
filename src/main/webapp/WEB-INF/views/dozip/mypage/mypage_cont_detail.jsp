@@ -82,7 +82,7 @@
                     </table>
                     <div class="contract_view_wrap">
                         <button id="apply_view">신청서 확인하기</button>
-                        <button id="contract_view">계약서 확인하기</button>
+                        <button id="contract_view" onclick="cont_view(${c.cont_no})">계약서 확인하기</button>
                     </div>
                 </div>
             </div>
@@ -94,24 +94,33 @@
                             <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total}</span> 원 </th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
                         </tr>
                         <tr>
-                            <th class="cpt_th">계약금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost1}</td> <td class="cpt_td">${c.cont_date1}</td> <td class="cpt_td">${p.pay_date1}</td>
+                            <th class="cpt_th">계약금</th> <th class="cpt_th">:</th>
+                            <td class="cpt_td">${c.cont_cost1}</td>
+                            <td class="cpt_td">${c.cont_date1}</td>
+                            <td class="cpt_td">${p.pay_date1.substring(0,10)}</td>
                         </tr>
                         <tr>
-                            <th class="cpt_th">중도금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost2}</td> <td class="cpt_td">${c.cont_date2}</td> <td class="cpt_td">${p.pay_date2}</td>
+                            <th class="cpt_th">중도금</th> <th class="cpt_th">:</th>
+                            <td class="cpt_td">${c.cont_cost2}</td>
+                            <td class="cpt_td">${c.cont_date2}</td>
+                            <td class="cpt_td">${p.pay_date2.substring(0,10)}</td>
                         </tr>
                         <tr>
-                            <th class="cpt_th">잔금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost3}</td> <td class="cpt_td">${c.cont_date3}</td> <td class="cpt_td">${p.pay_date3}</td>
+                            <th class="cpt_th">잔금</th> <th class="cpt_th">:</th>
+                            <td class="cpt_td">${c.cont_cost3}</td>
+                            <td class="cpt_td">${c.cont_date3}</td>
+                            <td class="cpt_td">${p.pay_date3.substring(0,10)}</td>
                         </tr>
                     </table>
                     <div class="pay_wrap">
                         <select name="pay_select" id="pay_select">
-                            <option selected>결제선택</option>
+                            <option value="0" selected>결제선택</option>
                             <option value="${c.cont_cost1}">계약금</option>
                             <option value="${c.cont_cost2}">중도금</option>
                             <option value="${c.cont_cost3}">잔금</option>
                         </select>
                         <span id="select_cost">선택한 결제 금액</span>
-                        <button id="pay_btn">결제하기</button>
+                        <button type="button" id="pay_btn" onclick="pay_view(${c.cont_no})" disabled>결제하기</button>
                     </div>
                 </div>
             </div>
@@ -121,6 +130,28 @@
 
     </div>
 </div>
+
+<script>
+    $('#pay_select').change(function(){
+        var check = $('#pay_select option:selected').val();
+        if(check==0){
+            $("#pay_btn").prop("disabled", true);
+        }else{
+            $("#pay_btn").prop("disabled", false);
+        }
+    });
+
+
+    function cont_view(cont_no){
+        window.open('/dozip/my_cont_view?cont_no='+cont_no,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
+    function pay_view(cont_no){
+        var cost = $('#pay_select option:selected').val();
+        var name = $('#pay_select option:selected').text();
+        alert("name"+name+", cost"+cost);
+        window.open('/dozip/pay_view?cont_no='+cont_no+'&name='+name+'&cost='+cost,"_blank",'width=500, height=500, top=0, left=100, resizable=no')
+    }
+</script>
 
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />
