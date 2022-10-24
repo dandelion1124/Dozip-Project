@@ -3,6 +3,7 @@ package com.dozip.service;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
+import com.dozip.vo.PayVO;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public interface EstimateService {
 
     List<BidVO> getBidList(String est_num);
 
-    void updateState(String bid_num);
+    void updateState(BidVO b);
 
     int counter();
 
@@ -29,4 +30,8 @@ public interface EstimateService {
     List<ContractVO> getContList(ContractVO c);
 
     ContractVO getCont(String cont_no);
+
+    void contractOK(ContractVO c);
+
+    PayVO getPay(String cont_no);
 }

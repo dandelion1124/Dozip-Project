@@ -67,6 +67,37 @@ function signup_check() {
         return false;
     }
 
+
+    function params_list() {
+        var params = {};
+        var data = $("#signupForm").serializeArray();
+
+        $.each(data, function() {
+            var name = $.trim(this.name);
+            var value = $.trim(this.value);
+            params[name] = value;
+        });
+        return params;
+    }
+    $.ajax({
+        type: 'post',
+        url: 'partners_join_ok',
+        data: {
+            data:JSON.stringify(params_list())
+        },
+        datatype: "json",
+        success: function (data) {
+            alert(data.status);
+            if(data.status ==1){
+                alert('이미 가입된 사업자번호가 있습니다 \n다시 회원가입을 진행해주세요');
+            }
+            else if(data.status ==0){
+                alert('회원가입에 성공하였습니다.');
+                location.href='/partners/main';
+            }
+        }
+    });
+
 }
 //사업자 번호 형식 체크
 $('#business_num').on('keyup', function(event) {

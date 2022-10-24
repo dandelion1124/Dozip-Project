@@ -69,7 +69,7 @@ public class HochulTestController {
      return "/partners/estimate/contract";  //계약서 view 페이지
     }
 
-    @PostMapping("/write_contract_ok") //계약서 작성 확인메서드
+    @RequestMapping("/write_contract_ok") //계약서 작성 확인메서드
     @ResponseBody
     public HashMap<String, Object> write_contract_ok(@RequestParam String data) throws Exception {
         HashMap<String, Object> resultMap = new HashMap<>();
@@ -79,19 +79,15 @@ public class HochulTestController {
         ContractVO cv = mapper.readValue(data, ContractVO.class);
         cv.setCustomer_number(" ");
         int result=partnersService.insertContract(cv);
-        resultMap.put("status",result);
+        resultMap.put("status", result);
+//        resultMap.put("status", "안녕하세요");
         return resultMap;
     }
-
-
-
     @RequestMapping("/detail") //견적 상세정보
     public String estimate_detail(){
 
         return "/partners/estimate/estimate_detail";
     }
-
-
     @RequestMapping("load_info")
     public String load_info(Model model) {
         model.addAttribute("cost", 40);

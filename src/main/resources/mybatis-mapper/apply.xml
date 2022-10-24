@@ -56,7 +56,7 @@
 
     <!--입찰상태변경(계약요청)-->
     <update id="state_up">
-        update bidT set bid_state='계약요청' where bid_num=#{bid_num}
+        update bidT set bid_state=#{bid_state} where bid_num=#{bid_num}
     </update>
 
     <!--est_num 확인-->
@@ -69,9 +69,9 @@
         update bidT set bid_state='거절' where est_num=#{est_num} and bid_state!='계약요청'
     </update>
 
-    <!--estT의 상태를 계약요청으로 변경-->
+    <!--estT의 상태 변경-->
     <update id="est_state">
-        update estimateT set est_check='계약요청' where est_num=#{est_num}
+        update estimateT set est_check=#{est_check} where est_num=#{est_num}
     </update>
 
     <!--해당 아이디에 해당하는 계약서 개수 확인-->
@@ -91,6 +91,26 @@
         select c.*, p.businessName from
         contractT c , partnersT p
         where c.businessNum = p.businessNum(+) and c.cont_no=#{cont_no}
+    </select>
+
+    <!--계약서에 동의 (customerNumber)-->
+    <update id="up_Cnum">
+        update contractT set customer_number=#{customer_number} where cont_no=#{cont_no}
+    </update>
+
+    <!--bid_num 확인-->
+    <select id="get_bNum" resultType="String">
+        select bid_num from bidT where est_num=#{est_num} and businessNum=#{businessNum} and bid_state='계약요청'
+    </select>
+
+    <!--payT insert-->
+    <insert id="in_pay">
+        insert into payT (pay_no, cont_no, mem_id, businessNum) values (payT_no_seq.nextval, #{cont_no}, #{mem_id}, #{businessNum})
+    </insert>
+
+    <!--계약번호로 payT내용 불러오기-->
+    <select id="get_pay" resultType="PayVO">
+        select * from payT where cont_no=#{cont_no}
     </select>
 
 </mapper>

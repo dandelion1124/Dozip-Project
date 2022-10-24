@@ -15,7 +15,7 @@
         <div id="signup_title">
             <a href="/partners/main"> <img src="/images/partners/signup_logo.png" alt="메인로고"></a>
         </div>
-        <form action="partners_join_ok" method="post" onsubmit="return signup_check();">
+        <form method="post" id="signupForm" onsubmit="return signup_check();"> <%--"  --%>
             <div class="info">
                 <label for="businessName">사업자명</label>
                 <input type="text" id="businessName" name="businessName" placeholder="업체명을 입력해주세요">
@@ -44,7 +44,7 @@
                         style="margin: 0px 3px;">@</span>
                     <input type="text" id="pMail_domain" name="p_MailDomain" placeholder="이메일 도메인">
                 </div>
-                <select id="email_adr" name="email_adr">
+                <select id="email_adr">
                     <c:forEach var="e" items="${email}">
                         <option value="${e}">${e}</option>
                     </c:forEach>
@@ -54,7 +54,7 @@
                 <label for="pId">아이디</label>
                 <div class=signup_idchk>
                     <input type="text" id="pId" name="p_Id" placeholder="4~16자 영문, 숫자">
-                    <input type="button" name="idchk" value="중복확인" onclick="id_check();">
+                    <input type="button" value="중복확인" onclick="id_check();">
                 </div>
                 <div id="idcheck_box">
                     <span id="idcheck"></span>
@@ -102,8 +102,11 @@
             <div class=signup_submit>
                 <input type="submit" value="가입하기"></div>
         </form>
+
     </div>
     <jsp:include page="../include/footer.jsp"/>
     <script src="/js/partners/join.js"></script>
 </body>
+
+
 </html>

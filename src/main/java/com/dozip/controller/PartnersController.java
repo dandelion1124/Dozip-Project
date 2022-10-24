@@ -2,6 +2,7 @@ package com.dozip.controller;
 
 import com.dozip.service.PartnersService;
 import com.dozip.vo.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -42,7 +44,7 @@ public class PartnersController {
      * */
 
     //회원가입 페이지
-    @GetMapping("/signup")
+    @RequestMapping("/signup")
     public String partners_signup(Model model) {
         String[] email = {"직접입력", "gmail.com", "naver.com", "hanmail.net", "nate.com"};
         model.addAttribute("email", email);
@@ -62,26 +64,23 @@ public class PartnersController {
 
     //회원가입
     @PostMapping("partners_join_ok")
-    public String partners_join_ok(PartnersVO pv,HttpServletResponse response) throws Exception {
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out =response.getWriter();
+    @ResponseBody
+    public HashMap<String, Object> partners_join_ok(@RequestParam String data) throws Exception {
+        HashMap<String, Object> resultMap = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+        PartnersVO pv = mapper.readValue(data, PartnersVO.class);
 
-        int result=partnersService.checkBusinessNum(pv);
+        System.out.println(data);
+        int result = partnersService.checkBusinessNum(pv);
         System.out.println(result);
-        if(result==1){
-            out.println("<script>");
-            out.println("alert('이미 가입된 사업자번호가 있습니다')");
-            out.println("history.go(-1);");
-            out.println("</script>");
-        }
-        else{
+
+        if (result == 1) {
+            resultMap.put("status", 1);
+        } else {
+            resultMap.put("status", 0);
             partnersService.insertPartners(pv);
-            out.println("<script>");
-            out.println("alert('회원가입에 성공하였습니다.')");
-            out.println("location='/partners/main';");
-            out.println("</script>");
         }
-        return null;
+        return resultMap;
     }//partners_join_ok
 
     //파트너스 아이디찾기
@@ -129,39 +128,34 @@ public class PartnersController {
     }//partners_findid()
 
     //로그인 인증
+    @ResponseBody
     @RequestMapping(value = "/login_ok")
-    public ModelAndView partners_login_ok(PartnersVO vo, HttpServletResponse response, HttpSession session) throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+    public HashMap<String, Object> partners_login_ok(@RequestParam String data, HttpSession session) throws IOException {
 
-        PartnersVO pInfo = partnersService.getPartnersInfo(vo.getP_Id()); //파트너스 아이디를 기준으로 파트너스 정보를 가져옴
-
+        HashMap<String, Object> resultMap = new HashMap<>();
+        ObjectMapper mapper = new ObjectMapper();
+        PartnersVO pv = mapper.readValue(data, PartnersVO.class);
+        PartnersVO pInfo = partnersService.getPartnersInfo(pv.getP_Id()); //파트너스 아이디를 기준으로 파트너스 정보를 가져옴
 
         if (pInfo == null) {
-            out.println("<script>");
-            out.println("alert('존재하지 않는 아이디입니다')");
-            out.println("history.back()");
-            out.println("</script>");
+            resultMap.put("status", 1);
         } else {
-            if (!pInfo.getP_Pw().equals(vo.getP_Pw())) {
-                out.println("<script>");
-                out.println("alert('비밀번호가 일치하지 않습니다')");
-                out.println("history.back()");
-                out.println("</script>");
+            if (!pInfo.getP_Pw().equals(pv.getP_Pw())) {
+                resultMap.put("status", 2);
             } else {
+                resultMap.put("status", 0);
                 session.setAttribute("p_id", pInfo.getP_Id());
                 session.setAttribute("businessName", pInfo.getBusinessName());
                 session.setAttribute("businessNum", pInfo.getBusinessNum());
                 session.setMaxInactiveInterval(-1);   //세션을 통해 로그인 시간 설정
-                return new ModelAndView("redirect:/partners/main");
             }
         }
-        return null;
+        return resultMap;
     }//partners_login_ok
 
     //파트너스 정보 찾기 페이지
     @GetMapping("partners_findinfo")
-    public String partners_findinfo(){
+    public String partners_findinfo() {
         return "/partners/join/find_info";
     }//partners_findinfo()
 
@@ -184,30 +178,30 @@ public class PartnersController {
         return "/partners/interior_Plan/plan";
 
     }//setPlan()
+
     //월정액 요금제
     @GetMapping("/plan_monthly")
-    public String plan_monthly(){
+    public String plan_monthly() {
         return "/partners/interior_Plan/monthly";
     }//plan_monthly()
 
     //부분 시공 요금제
     @GetMapping("/plan_part")
-    public String plan_part(){
+    public String plan_part() {
         return "/partners/interior_Plan/part";
     }//plan_part()
-
 
 
     /*견적 의뢰
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public ModelAndView bid(EstimateVO vo,HttpServletResponse response,HttpSession session) throws Exception {
+    public ModelAndView bid(EstimateVO vo, HttpServletResponse response, HttpSession session) throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
         //String p_id=(String) session.getAttribute("p_id");
 
-        List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
+        List<EstimateVO> elist = this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
 
         //List<BidVO> blist=this.partnersService.countBidList(est_num);
 
@@ -216,7 +210,7 @@ public class PartnersController {
 
         //System.out.println(elist.toString());
 
-        for(int i=0; i<elist.size(); i++){
+        for (int i = 0; i < elist.size(); i++) {
             elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
 
 
@@ -227,7 +221,7 @@ public class PartnersController {
         }
         System.out.println("변경된 elist 출력 " + elist);
 
-        ModelAndView m=new ModelAndView();
+        ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
 
         m.setViewName("/partners/estimate_request/bid");
@@ -235,23 +229,22 @@ public class PartnersController {
     }
 
     private String est_addr_change(String est_addr) {
-        String str[]=est_addr.split(" ");
-        if(est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
-                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")){
+        String str[] = est_addr.split(" ");
+        if (est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
+                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")) {
             //System.out.println("광역시 테스트");
-            est_addr=str[0]+" "+str[1];
-        }
-        else{
+            est_addr = str[0] + " " + str[1];
+        } else {
             //System.out.println("그외 테스트");
-            est_addr=str[1]+" "+str[2];
+            est_addr = str[1] + " " + str[2];
         }
         return est_addr;
     }//주소 변환
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
-    public String bid_detail(Model m,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
+    public String bid_detail(Model m, @RequestParam("no") String bid_no, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
 
 
 
@@ -271,14 +264,15 @@ public class PartnersController {
 
         return "/partners/estimate_request/bid_detail";
     }
+
     @RequestMapping(value = "/bid_detail_ok") //입찰 신청
-    public String bid_detail_ok(BidVO bid,@RequestParam("no") String bid_no,HttpServletRequest request,HttpServletResponse response,HttpSession session)
+    public String bid_detail_ok(BidVO bid, @RequestParam("no") String bid_no, HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws Exception {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
 
         String businessNum = (String) session.getAttribute("businessNum");
-        EstimateVO e=this.partnersService.selectEstimate(bid_no);
+        EstimateVO e = this.partnersService.selectEstimate(bid_no);
 
         bid.setBusinessNum(businessNum);
         bid.setEst_num(e.getEst_num());
@@ -312,12 +306,12 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/my_bid") //내 입찰
-    public ModelAndView my_bid(EstimateVO e,HttpServletResponse response,HttpServletRequest request,HttpSession session) throws Exception {
+    public ModelAndView my_bid(EstimateVO e, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
 
         String businessNum = (String) session.getAttribute("businessNum");
         //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
-        List<BidVO> list= this.partnersService.selectJoinList(businessNum);
+        List<BidVO> list = this.partnersService.selectJoinList(businessNum);
 
         int page=1;//쪽번호
         int limit=5;//한페이지에 보여지는 목록개수
@@ -332,7 +326,7 @@ public class PartnersController {
 //        //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
 //        //매핑 대응
 
-        int listcount=this.partnersService.getListCount2(businessNum);
+        int listcount = this.partnersService.getListCount2(businessNum);
         //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 
@@ -347,17 +341,17 @@ public class PartnersController {
         int endpage=maxpage;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
         if(endpage > startpage+5-1) endpage=startpage+5-1;
 
-        ModelAndView m=new ModelAndView();
-        m.addObject("page",page);
-        m.addObject("startpage",startpage);
-        m.addObject("endpage",endpage);
-        m.addObject("maxpage",maxpage);
-        m.addObject("listcount",listcount);
+        ModelAndView m = new ModelAndView();
+        m.addObject("page", page);
+        m.addObject("startpage", startpage);
+        m.addObject("endpage", endpage);
+        m.addObject("maxpage", maxpage);
+        m.addObject("listcount", listcount);
 //        m.addObject("find_field",find_field);
 //        m.addObject("find_name", find_name);
 
         System.out.println(list.toString());
-        m.addObject("list",list);
+        m.addObject("list", list);
 
         m.setViewName("/partners/estimate_request/my_bid");
         return m;
@@ -365,29 +359,30 @@ public class PartnersController {
 
     @RequestMapping(value = "/construct_request") //시공요청
     public ModelAndView construct_request(HttpSession session) throws Exception {
-        String businessNum=(String)session.getAttribute("businessNum");
+        String businessNum = (String) session.getAttribute("businessNum");
 
-        List<EstimateVO> ereqlist=this.partnersService.selectEstimateListBnum(businessNum);
+        List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(businessNum);
 
-        for(int i=0; i<ereqlist.size(); i++) {
+        for (int i = 0; i < ereqlist.size(); i++) {
             ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
         }
         //System.out.println(ereqlist.toString());
         System.out.println(ereqlist.get(0).getAddr());
 
-        ModelAndView m= new ModelAndView();
-        m.addObject("ereq",ereqlist);
+        ModelAndView m = new ModelAndView();
+        m.addObject("ereq", ereqlist);
 
-        m.setViewName( "/partners/estimate_request/construct_request");
+        m.setViewName("/partners/estimate_request/construct_request");
         return m;
     }
+
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
-    public String construct_request_detail(Model m,@RequestParam("no") String bid_no,HttpServletResponse response) throws Exception {
-            response.setContentType("text/html;charset=UTF-8");
+    public String construct_request_detail(Model m, @RequestParam("no") String bid_no, HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
 
-        EstimateVO e=this.partnersService.selectEstimate(bid_no);
+        EstimateVO e = this.partnersService.selectEstimate(bid_no);
 
-        m.addAttribute("e",e);
+        m.addAttribute("e", e);
 
         return "/partners/estimate_request/construct_request_detail";
     }
@@ -428,6 +423,7 @@ public class PartnersController {
     public String portfolioUpload() {
         return "/partners/portfolio/p_upload";
     }
+
     // 포트폴리오 등록
     @RequestMapping(value = "/upload_photo")
     public String portfolioUpload_photo(PortfolioVO pv, HttpSession session, HttpServletResponse response,
@@ -436,16 +432,16 @@ public class PartnersController {
         if (pv.getPf_addr2().isEmpty())  //마이바티스에 널 값 insert시 오류나서 문자열 처리
             pv.setPf_addr2(" ");
 
-        if(pv.getPf_subtype().contains(",")){
+        if (pv.getPf_subtype().contains(",")) {
 
-        String[] str =pv.getPf_subtype().split(",");
-        if(pv.getPf_type().equals("주거공간")){
-            pv.setPf_subtype(str[0]);
-            System.out.println("주거공간 //" +str[0] );
-        }else if(pv.getPf_type().equals("상업공간")){
-            pv.setPf_subtype(str[1]);
-            System.out.println("상업공간 //" +str[1] );
-        }
+            String[] str = pv.getPf_subtype().split(",");
+            if (pv.getPf_type().equals("주거공간")) {
+                pv.setPf_subtype(str[0]);
+                System.out.println("주거공간 //" + str[0]);
+            } else if (pv.getPf_type().equals("상업공간")) {
+                pv.setPf_subtype(str[1]);
+                System.out.println("상업공간 //" + str[1]);
+            }
         }
         Cookie cookie = new Cookie("pf_no", String.valueOf(partnersService.addPortfolio(pv)));
         response.addCookie(cookie);
@@ -477,32 +473,35 @@ public class PartnersController {
         3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
         */
 
-          String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //호철 학원 PC upload 경로
+        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
-       //String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
+        //String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
 
 
-        String uploadDBPath ="/upload/"+ pf_no+"/";
+        String uploadDBPath = "/upload/" + pf_no + "/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        System.out.println("등록된 사진 수: "+ photos.size());
+        System.out.println("등록된 사진 수: " + photos.size());
 
-        String dbFilename[]=new String[5];
-        String saveFilename[]=new String[5];
+        String dbFilename[] = new String[5];
+        String saveFilename[] = new String[5];
 
-        for(int i=1; i<=photos.size();i++) {
-            dbFilename[i-1]=uploadDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-            saveFilename[i-1]=uploadPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
-            photos.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
-            System.out.println(dbFilename[i-1]);
+        for (int i = 1; i <= photos.size(); i++) {
+            dbFilename[i - 1] = uploadDBPath + "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i - 1] = uploadPath + "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            photos.get(i - 1).transferTo(new File(saveFilename[i - 1])); //실제 파일저장.
+            System.out.println(dbFilename[i - 1]);
         }
-        pv.setPf_photo1(dbFilename[0]);        pv.setPf_photo2(dbFilename[1]);        pv.setPf_photo3(dbFilename[2]);
-        pv.setPf_photo4(dbFilename[3]);        pv.setPf_photo5(dbFilename[4]);
+        pv.setPf_photo1(dbFilename[0]);
+        pv.setPf_photo2(dbFilename[1]);
+        pv.setPf_photo3(dbFilename[2]);
+        pv.setPf_photo4(dbFilename[3]);
+        pv.setPf_photo5(dbFilename[4]);
 
         pv.setPf_no(pf_no);
         partnersService.insertPort_Photos(pv);
@@ -536,21 +535,21 @@ public class PartnersController {
         // 로그인한 파트너스 사업자 번호(세션에 저장되 있음) 불러오기
         String businessNum = (String) session.getAttribute("businessNum");
 
-        int page =1; //쪽번호
+        int page = 1; //쪽번호
         int limit = 8; //한페이지에 보여질 개수
 
         String find_field = null;
         String find_text = null;
         String answer = null;
 
-        if(request.getParameter("page")!= null)
-            page=Integer.parseInt(request.getParameter("page"));
-        if(request.getParameter("answer")!=null)
-            answer=request.getParameter("answer");
+        if (request.getParameter("page") != null)
+            page = Integer.parseInt(request.getParameter("page"));
+        if (request.getParameter("answer") != null)
+            answer = request.getParameter("answer");
 
         System.out.println("answer : " + request.getParameter("answer"));
 
-        if(request.getParameter("find_text")!= null && request.getParameter("find_field") != null) {
+        if (request.getParameter("find_text") != null && request.getParameter("find_field") != null) {
             find_text = request.getParameter("find_text").trim();
             find_field = request.getParameter("find_field");
             if (find_field.equals("customer_name")) {
@@ -565,18 +564,19 @@ public class PartnersController {
 
         int listcount = partnersService.getListCount(findQ); //검색전후 레코드 개수
 
-        int startrow=(page-1)*8+1; //읽기 시작할 행번호
-        int endrow = startrow+limit-1; //읽을 마지막 행번호
-        findQ.setStartrow(startrow);     findQ.setEndrow(endrow);
+        int startrow = (page - 1) * 8 + 1; //읽기 시작할 행번호
+        int endrow = startrow + limit - 1; //읽을 마지막 행번호
+        findQ.setStartrow(startrow);
+        findQ.setEndrow(endrow);
 
         List<QnaVO> qlist = partnersService.getQnaList(findQ); // 검색 전후 목록
 
-        int maxpage = (int)((double)listcount/limit+0.95); //총 페이지 수
+        int maxpage = (int) ((double) listcount / limit + 0.95); //총 페이지 수
         System.out.println("============================");
-        int startpage = (((int)((double)page/10+0.9))-1)*10+1; //시작 페이지
+        int startpage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1; //시작 페이지
         int endpage = maxpage; //마지막 페이지
 
-        if(endpage>startpage+10-1) endpage=startpage+10-1;
+        if (endpage > startpage + 10 - 1) endpage = startpage + 10 - 1;
 
         model.addAttribute("page", page);
         model.addAttribute("startpage", startpage);
@@ -596,7 +596,7 @@ public class PartnersController {
     @PostMapping("/customer_reply_ok")
     public String customer_reply_ok(HttpSession session, QnaVO qv) {
         qv.setBusinessNum((String) session.getAttribute("businessNum"));
-        int result=partnersService.insertQna(qv);
+        int result = partnersService.insertQna(qv);
         System.out.println(result);
         return null;
     }//customer_reply_ok
@@ -604,10 +604,10 @@ public class PartnersController {
     //고객문의글 삭제
     @ResponseBody
     @GetMapping("/customer_qna_del_ok")
-    public String customer_qna_del_ok(QnaVO dv){
+    public String customer_qna_del_ok(QnaVO dv) {
         partnersService.deleteReply(dv);
         int r = partnersService.selqnaRef(dv);
-        if(r==1)  partnersService.returnState(dv);
+        if (r == 1) partnersService.returnState(dv);
         return null;
 
     }//customer_qna_del_ok()
@@ -618,14 +618,14 @@ public class PartnersController {
     }
 
     /*My page
-    *
-    */
-    @RequestMapping(value="/data_manage",method=RequestMethod.GET)
-    public ModelAndView data_manage(HttpServletResponse response,HttpServletRequest request, HttpSession session) throws Exception {
+     *
+     */
+    @RequestMapping(value = "/data_manage", method = RequestMethod.GET)
+    public ModelAndView data_manage(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        PrintWriter out = response.getWriter();
 
-        String businessNum=(String)session.getAttribute("businessNum");
+        String businessNum = (String) session.getAttribute("businessNum");
 //        if(businessNum==null) {
 //            out.println("<script>");
 //            out.println("alert('다시 로그인하세요!');");
@@ -633,44 +633,42 @@ public class PartnersController {
 //            out.println("</script>");
 //        }else {
         //System.out.println(businessNum);
-          //this.partnersService.insertPartnersSub(businessNum);
-        PartnersVO p=this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
-        Partners_subVO ps=this.partnersService.getPartnersSub(businessNum);
+        //this.partnersService.insertPartnersSub(businessNum);
+        PartnersVO p = this.partnersService.getMember(businessNum);//사업자번호에 해당하는 회원정보를 DB로부터 가져옴.
+        Partners_subVO ps = this.partnersService.getPartnersSub(businessNum);
 
 //        String pf_addr1=request.getParameter("pf_addr1");
 //        String pf_addr2=request.getParameter("pf_addr2");
 //        String pf_addr3=request.getParameter("pf_addr3");
 
-           //System.out.println(p.toString());
-           //System.out.println(p.getP_Name()+" "+p.getP_Tel());
-            //System.out.println(p.getP_Address());
-            //System.out.println(pf_addr1);
+        //System.out.println(p.toString());
+        //System.out.println(p.getP_Name()+" "+p.getP_Tel());
+        //System.out.println(p.getP_Address());
+        //System.out.println(pf_addr1);
 
-            ModelAndView m=new ModelAndView();
-            m.addObject("p", p);//p 키이름에 p객체 저장
-            m.addObject("ps",ps);
+        ModelAndView m = new ModelAndView();
+        m.addObject("p", p);//p 키이름에 p객체 저장
+        m.addObject("ps", ps);
 
-            //m.addObject("pName",p.getP_Name());
-            //m.addObject("pTel",p.getP_Tel());
-            //m.addObject("pShortstate",0);
-
-
+        //m.addObject("pName",p.getP_Name());
+        //m.addObject("pTel",p.getP_Tel());
+        //m.addObject("pShortstate",0);
 
 
-            //m.addObject("");
+        //m.addObject("");
 
-            m.setViewName("/partners/mypage/data_manage");
-            return m;
+        m.setViewName("/partners/mypage/data_manage");
+        return m;
 //        }
     }//data_manage()
 
-    @RequestMapping(value="/data_manage_ok",method=RequestMethod.POST) //data_manage
-    public String data_manage_ok(Model m, Partners_subVO ps, HttpServletResponse response,HttpServletRequest request,
-        HttpSession session) throws Exception {
+    @RequestMapping(value = "/data_manage_ok", method = RequestMethod.POST) //data_manage
+    public String data_manage_ok(Model m, Partners_subVO ps, HttpServletResponse response, HttpServletRequest request,
+                                 HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-       //String businessNum = (String)session.getAttribute("businessNum");
+        //String businessNum = (String)session.getAttribute("businessNum");
 /*
         String pAddress=request.getParameter("pAddress");
 
@@ -749,7 +747,7 @@ public class PartnersController {
 //        }
 //        System.out.println(pCom_space_type);
 
-        if(request.getParameter("p_Addr1")!=null) {
+        if (request.getParameter("p_Addr1") != null) {
 
             //p.setP_Address(request.getParameter("p_Address"));
             p.setP_Addr1(request.getParameter("p_Addr1"));
@@ -762,14 +760,14 @@ public class PartnersController {
 
         int res = this.partnersService.checkSub(ps.getBusinessNum());
         System.out.println(res);
-        if(res==0) {
+        if (res == 0) {
             this.partnersService.insertPartnersSub(ps);
 
-        }else{
+        } else {
             this.partnersService.updatePartnersSub(ps);
         }
 
-        m.addAttribute("ps",ps);
+        m.addAttribute("ps", ps);
 
         out.println("<script>");
         out.println("alert('정보 입력 성공!');");
@@ -777,13 +775,15 @@ public class PartnersController {
         out.println("</script>");
 
         return null;
-       // return "redirect:/partners/data_manage;";
+        // return "redirect:/partners/data_manage;";
         //return new ModelAndView("redirect:/partners/data_manage;");
 
     }
-    @RequestMapping(value="/pw_change")
-    public String pw_change() { return "/partners/mypage/pw_change"; }
 
+    @RequestMapping(value = "/pw_change")
+    public String pw_change() {
+        return "/partners/mypage/pw_change";
+    }
 
 
 }
