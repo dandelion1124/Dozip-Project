@@ -829,46 +829,58 @@ public class DozipController {
     }
     
     //고객후기 내용등록하기
+
     @RequestMapping(value = "/upload_review_ok")
-    public String upload_review(ReviewVO rv, HttpSession session, HttpServletResponse response, HttpServletRequest request){
+    public String upload_review(ReviewVO rv,HttpSession session, HttpServletResponse response, HttpServletRequest request){
+
         rv.setMem_id((String) session.getAttribute("id"));
+        int re_star = Integer.parseInt(request.getParameter("rating")); //별점이 들어오게
+        rv.setRe_star(re_star);
 
         Cookie cookie = new Cookie("re_no", String.valueOf(reviewService.addReview(rv)));
         response.addCookie(cookie);
-        System.out.println(rv);
+
         return "/dozip/review/upload_review_photo";
     }
-    
+
+
     //고객후기 사진 등록하기
-    /*
+
     @RequestMapping(value = "/upload_rphoto_ok")
-    public String upload_rphoto(ReviewVO rv, @RequestParam List<MultipartFile>photos,HttpServletResponse response, HttpServletRequest request)throws Exception{
+    public String upload_rphoto_ok(ReviewVO rv, @RequestParam List<MultipartFile>images, HttpServletResponse response, HttpServletRequest request)throws Exception{
+
         response.setContentType("text/html;charset=UTF-8");
 
         int re_no = 0;
         Cookie[] cookies = request.getCookies();
         for(Cookie c:cookies){
             if(c.getName().equals("re_no")){
-                re_no = Integer.parseInt(c.getValue());
+                re_no = Integer.parseInt(c.getValue()); //쿠키에서 글번호 가져옴
             }
         }
 
-        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 학원 PC upload 경로
-        String uploadDBPath ="/r_upload/"+ re_no+"/";
-        File dir = new File(uploadPath);
+        String uploadRPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
+
+//       테스트 시 각자 폴더 경로 주석 풀어서 잡아주세요~
+//       String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //호철 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //지혜 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //민우 학원 PC upload 경로
+//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //수환 학원 PC upload 경로
+        String uploadRDBPath ="/r_upload/"+ re_no+"/";
+        File dir = new File(uploadRPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        System.out.println("등록된 사진 수: "+ photos.size());
+        System.out.println("등록된 사진 수: "+ images.size());
 
         String dbFilename[]=new String[5];
         String saveFilename[]=new String[5];
 
-        for(int i=1; i<=photos.size();i++) {
-            dbFilename[i-1]=uploadDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-            saveFilename[i-1]=uploadPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
-            photos.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
+        for(int i=1; i<=images.size();i++) {
+            dbFilename[i-1]=uploadRDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i-1]=uploadRPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            images.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
             System.out.println(dbFilename[i-1]);
         }
         rv.setRe_photo1(dbFilename[0]);
@@ -876,9 +888,9 @@ public class DozipController {
         rv.setRe_photo4(dbFilename[3]);       rv.setRe_photo5(dbFilename[4]);
 
         rv.setRe_no(re_no);
-        //reviewService.insertReview_Photos(rv);
-        return "redirect:/review_main";
-    }*/
+        reviewService.insertReview_Photos(rv);
+        return "redirect:/dozip/review_main";
+    }
 
 
 }//DozipController

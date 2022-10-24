@@ -8,6 +8,7 @@ select * from contractT;
 
 select * from contractT where mem_id = 'dozip';
 
+
 insert into reviewT(re_no,mem_id,cont_no,re_title,re_cont,re_star,re_count,re_date,re_state)
 values (re_no_seq.nextval,'dozip','C111111','테스트입니다','테스트내용',3,0,sysdate,1);
 delete from reviewT where mem_id='dozip';

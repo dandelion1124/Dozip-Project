@@ -16,6 +16,6 @@ public interface ReviewDAO {
     ContractVO getOneCont(String cont_no);
 
     void addReview(ReviewVO rv);
-
     int getReview_num(ReviewVO rv);
+    void insertReview_Photos(ReviewVO rv);
 }

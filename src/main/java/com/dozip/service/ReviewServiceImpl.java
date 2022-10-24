@@ -36,7 +36,11 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public int addReview(ReviewVO rv) {
-        reviewDAO.addReview(rv);
-        return reviewDAO.getReview_num(rv);
-    }
+        this.reviewDAO.addReview(rv);
+        return this.reviewDAO.getReview_num(rv);}
+
+    @Override
+    public void insertReview_Photos(ReviewVO rv) {reviewDAO.insertReview_Photos(rv);}
+
+
 }

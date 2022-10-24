@@ -21,12 +21,12 @@
 			<div class = "review_write_start">
 				<div class = "review_title">
 					<h3>제목</h3>
-					<div><input type="text" name="r_title" id="r_title" placeholder="제목을 입력해주세요"/></div>
+					<div><input type="text" name="re_title" id="r_title" placeholder="제목을 입력해주세요"/></div>
 				</div>
 				<div class = "cont_inform">
 					<h3>시공정보</h3>
 					<div class = "cont_inform_c">
-						<div id = "t_cont_no"><input type="text" id="tcont_no"  readonly placeholder="계약번호"/></div>
+						<div id = "t_cont_no"><input type="text" id="tcont_no" name = "cont_no"  readonly placeholder="계약번호"/></div>
 						<div><button type="button" id="load_btn" onclick="openCont()">계약번호 불러오기</button></div>
 						<div><button type = "button" id = "search_cont_btn" name="submit">해당정보 불러오기</button></div>
 						<script>
@@ -42,33 +42,33 @@
 					<div id="load_cont">
 						<div id = "tp_name">
 							<h4>업체명</h4>
-							<input type="text" id="tcont_name"  readonly placeholder="업체명"/>
+							<input type="text" id="tcont_name" name = "partners_name" readonly placeholder="업체명"/>
 						</div>
 						<div id = "t_title">
 							<h4>공간정보</h4>
-							<input type="text" id="tcont_title"  readonly placeholder="공간정보"/>
+							<input type="text" id="tcont_title" name = "cont_title" readonly placeholder="공간정보"/>
 						</div>
 						<div id = "t_start">
 							<h4>착공일</h4>
-							<input type="text" id="tcont_st"  readonly placeholder="공사시작 날짜"/>
+							<input type="text" id="tcont_st" name = "cont_start "  readonly placeholder="공사시작 날짜"/>
 						</div>
 						<div id = "t_end">
 							<h4>완공일</h4>
-							<input type="text" id="tcont_end"  readonly placeholder="공사종료 날짜"/>
+							<input type="text" id="tcont_end" name = "cont_end"  readonly placeholder="공사종료 날짜"/>
 						</div>
 						<div id = "t_area">
 							<h4>평수</h4>
-							<input type="text" id="tcont_area"  readonly placeholder="공사 평수"/>
+							<input type="text" id="tcont_area" name = "cont_area"  readonly placeholder="공사 평수"/>
 						</div>
 						<div id= "t_money">
 							<h4>총 공사금액</h4>
-							<input type="text" id="tcont_total"  readonly placeholder="총 공사 금액"/>
+							<input type="text" id="tcont_total" name = "cont_total" readonly placeholder="총 공사 금액"/>
 						</div>
 					</div>
 			</div>
 				<div class = "r_cont_main">
 					<h3>내용</h3>
-					<div class="review_cont"><textarea  name="r_cont" id="r_cont"  placeholder="내용을 입력해주세요"></textarea></div>
+					<div class="review_cont"><textarea  name="re_cont" id="r_cont"  placeholder="내용을 입력해주세요"></textarea></div>
 				</div>
 
 				<div class = "star">
