@@ -24,7 +24,7 @@
         font-size: 0.8rem;
     }
     .left-side-bar {
-        width: 12%;
+        width: 15%;
         margin-left: 50px;
         margin-top: 50px;
         padding: 10px;

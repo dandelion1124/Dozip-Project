@@ -28,7 +28,7 @@
 	</div>
 
 	<%--아이디 찾기--%>
-	<form class="find_id" method="post" action="/dozip/find_id">
+	<form class="find_id">
 	<table style="width:100%;">
 	<tr><td style="height:70px;">
 		<input class="find_id_input"  type="text" name="mem_name2"  id="mem_name2" placeholder="이름" oninput="name_check2();" />		
@@ -39,7 +39,7 @@
 		<br/><span class="telcheck2"></span>
 	</td></tr>
 	</table>
-		<button id="find_id_btn" type="submit" disabled="disabled">아이디 찾기</button>
+		<button id="find_id_btn" type="button" disabled>아이디 찾기</button>
 	</form>
 
 	<%--비밀번호 찾기--%>
@@ -78,5 +78,33 @@
 		<button type="button" onclick="history.go(-1)">← 로그인 화면으로 돌아가기</button>
 	</div>
 </div>
+
+<script>
+	document.getElementById("find_id_btn").onclick = function() {
+		var mem_name = $.trim($('#mem_name2').val());
+		var mem_tel = $.trim($('#mem_tel2').val());
+
+		$.ajax({
+			url : '/dozip/find_id',
+			type : 'post',
+			data : {
+				mem_name : mem_name,
+				mem_tel : mem_tel
+			},
+			success : function(data) {
+				if(data != null){
+					alert('고객님의 아이디는'+data+'입니다.');
+					location='/dozip/id_login';
+				}else{
+					alert('입력하신 정보와 일치하는 아이디가 없습니다.');
+					history.back();
+				}
+			},
+			error:function(error){
+				alert(error);
+			}
+		});
+	}
+</script>
 </body>
 </html>

@@ -36,7 +36,7 @@
         <div class="contract_info">
             <p style="font-size: 1.7rem; font-weight: bold; margin: 0;">계약번호 : ${c.cont_no} </p>
             <ul style="padding:0px;">
-                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님의 계약진행 내역을 확인할 수 있습니다.</li>
+                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님의 공사진행 내역을 확인할 수 있습니다.</li>
             </ul>
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
@@ -94,23 +94,23 @@
                             <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total}</span> 원 </th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
                         </tr>
                         <tr>
-                            <th class="cpt_th">계약금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost1}</td> <td class="cpt_td">${c.cont_date1}</td> <td class="cpt_td">2022.11.02</td>
+                            <th class="cpt_th">계약금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost1}</td> <td class="cpt_td">${c.cont_date1}</td> <td class="cpt_td">${p.pay_date1}</td>
                         </tr>
                         <tr>
-                            <th class="cpt_th">중도금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost2}</td> <td class="cpt_td">${c.cont_date2}</td> <td class="cpt_td">2022.11.16</td>
+                            <th class="cpt_th">중도금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost2}</td> <td class="cpt_td">${c.cont_date2}</td> <td class="cpt_td">${p.pay_date2}</td>
                         </tr>
                         <tr>
-                            <th class="cpt_th">잔금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost3}</td> <td class="cpt_td">${c.cont_date3}</td> <td class="cpt_td">-</td>
+                            <th class="cpt_th">잔금</th> <th class="cpt_th">:</th> <td class="cpt_td">${c.cont_cost3}</td> <td class="cpt_td">${c.cont_date3}</td> <td class="cpt_td">${p.pay_date3}</td>
                         </tr>
                     </table>
                     <div class="pay_wrap">
                         <select name="pay_select" id="pay_select">
                             <option selected>결제선택</option>
-                            <option value="1">계약금</option>
-                            <option value="2">중도금</option>
-                            <option value="3">잔금</option>
+                            <option value="${c.cont_cost1}">계약금</option>
+                            <option value="${c.cont_cost2}">중도금</option>
+                            <option value="${c.cont_cost3}">잔금</option>
                         </select>
-                        <span>선택한 결제 금액</span>
+                        <span id="select_cost">선택한 결제 금액</span>
                         <button id="pay_btn">결제하기</button>
                     </div>
                 </div>

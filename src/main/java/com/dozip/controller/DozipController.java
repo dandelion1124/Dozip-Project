@@ -5,6 +5,9 @@ import com.dozip.service.EstimateService;
 import com.dozip.service.PortfolioService;
 import com.dozip.service.ReviewService;
 import com.dozip.vo.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +25,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -33,7 +38,6 @@ public class DozipController {
     private PortfolioService portfolioService;
     @Autowired
     private EstimateService estimateService;
-
     @Autowired
     private ReviewService reviewService;
 
@@ -88,27 +92,24 @@ public class DozipController {
         return null;
     }
 
-    @GetMapping("member_join") //회원가입창 이동
+    @RequestMapping("member_join") //회원가입창 이동
     public String memberJoin(){ return "/dozip/common/mem_join"; }
 
-    @PostMapping("member_join_ok") //회원가입 완료
-    public void memberJoinOK(MemberVO m, HttpServletResponse response) throws IOException {
+    @RequestMapping(value="member_join_ok") //회원가입 완료
+    @ResponseBody
+    public HashMap<String, String> memberJoinOK(@RequestParam String data) throws IOException {
+        ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        MemberVO m = mapper.readValue(data, MemberVO.class);
+
+        HashMap<String, String> map = new HashMap<String, String>();
         int res = this.dozipService.insertMem(m);
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
-
-        if(res == 1) { //회원가입 성공시 창을 닫는다.
-            out.println("<script>");
-            out.println("alert('가입이 완료되었습니다.');");
-            out.println("window.close();");
-            out.println("</script>");
-        } else { //회원가입 실패시
-            out.println("<script>");
-            out.println("alert('회원가입에 실패했습니다.');");
-            out.println("history.back();");
-            out.println("</script>");
+        if(res == 1) {
+            map.put("message", "가입이 완료되었습니다.");
+        } else {
+            map.put("message", "회원가입에 실패했습니다.");
         }
+        return map;
     }
 
     @RequestMapping(value = "mIDcheck",  method = RequestMethod.POST, produces = "application/json")//회원가입-아이디중복체크
@@ -120,32 +121,15 @@ public class DozipController {
         return res;
     }
 
-    @GetMapping("find_login")//아이디, 비번찾기 이동
+    @RequestMapping("find_login")//아이디, 비번찾기 이동
     public String findLogin() { return "/dozip/common/find_id_pwd"; }
 
-    @PostMapping("find_id")//아이디 찾기
-    public String findID(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        MemberVO vo = new MemberVO();
-        vo.setMem_name(request.getParameter("mem_name2"));
-        vo.setMem_tel(request.getParameter("mem_tel2"));
-
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        String mem_id = this.dozipService.getFindID(vo);
-
-        if(mem_id != null) {
-            out.println("<script>");
-            out.println("alert('고객님의 아이디는 "+mem_id+" 입니다.');");
-            out.println("location='/dozip/id_login';");
-            out.println("</script>");
-        }else {
-            out.println("<script>");
-            out.println("alert('입력하신 정보와 일치하는 아이디가 없습니다.');");
-            out.println("history.back();");
-            out.println("</script>");
-        }
-        return null;
+    @RequestMapping("find_id")//아이디 찾기
+    @ResponseBody
+    public String findID(MemberVO m) throws Exception {
+        System.out.println(m);
+        String mem_id = this.dozipService.getFindID(m);
+        return mem_id;
     }
 
     @PostMapping("find_pwd") //비밀번호 찾기
@@ -318,21 +302,33 @@ public class DozipController {
     }
 
     @GetMapping("my_cont_view") //마이페이지-계약서확인
-    public ModelAndView myContView(ModelAndView mv, String cont_no, ContractVO c){
+    public ModelAndView myContView(ModelAndView mv, String cont_no){
         System.out.println("출력"+cont_no);
-        c = this.estimateService.getCont(cont_no);
+        ContractVO c = this.estimateService.getCont(cont_no);
+        System.out.println("getCustomer_number"+c.getCustomer_number());
         mv.addObject("c",c);
         mv.setViewName("/dozip/mypage/contract");
         return mv;
     }
 
-    @GetMapping("my_contD") //마이페이지 - 견적내용 상세보기
+    @PostMapping("contract_ok") //마이페이지-계약서 동의 (estT, bidT 상태변경 + payT생성)
+    public RedirectView contractOK(ContractVO c){
+        this.estimateService.contractOK(c);
+        RedirectView rv = new RedirectView();
+        rv.setUrl("/dozip/my_cont_view?cont_no="+c.getCont_no());
+        return rv;
+    }
+
+
+    @GetMapping("my_contD") //마이페이지 - 계약상세 (공사진행상황)
     public ModelAndView myContD(ModelAndView mv, String cont_no){
         System.out.println("번호확인:"+cont_no);
 
         ContractVO cont = this.estimateService.getCont(cont_no);
+        PayVO pay = this.estimateService.getPay(cont_no);
 
         mv.addObject("c", cont);
+        mv.addObject("p", pay);
         mv.setViewName("/dozip/mypage/mypage_cont_detail");
         return mv;
     }
@@ -456,9 +452,9 @@ public class DozipController {
     //입찰업체 중 하나를 선택하면 선택한 업체는 상태가 계약요청으로, 나머지는 거절 상태로 변경되도록 함 + 견적서테이블의 상태도 계약요청으로 변경
     @RequestMapping(value = "my_est2_select",  method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    public void bidSelect(String bid_num) {
-        System.out.println("출력 : "+bid_num);
-        this.estimateService.updateState(bid_num);
+    public void bidSelect(BidVO b) {
+        System.out.println("출력 : "+b.getBid_num());
+        this.estimateService.updateState(b);
     }
 
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록

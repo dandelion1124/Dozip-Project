@@ -84,13 +84,16 @@
                             <td id="date">${clist[i].cont_end}</td><%--종료일--%>
                             <td id="date">${clist[i].cont_total}</td><%--총금액--%>
                             <td id="date">
-                                <c:if test="${clist[i].cont_no != null}">계약요청</c:if>
-                                <c:if test="${clist[i].cont_no == null}">계약서작성완료</c:if>
+                                <c:if test="${clist[i].customer_number == null}">계약요청</c:if>
+                                <c:if test="${clist[i].customer_number != null}">계약완료</c:if>
                             </td><%--진행상태--%>
                             <td id="date">
-                                <c:if test="${clist[i].cont_no != null}">
-                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">작성하기</button></c:if>
-                                <c:if test="${clist[i].cont_no == null}">계약서작성완료</c:if>
+                                <c:if test="${clist[i].customer_number == null}">
+                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">작성하기</button>
+                                </c:if>
+                                <c:if test="${clist[i].customer_number != null}">
+                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">확인하기</button>
+                                </c:if>
                             </td><%--계약서--%>
                         </tr>
                     </c:forEach>
