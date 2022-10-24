@@ -5,7 +5,6 @@ import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
     div.contract_title {
         font-size: 33px;
@@ -60,9 +61,11 @@
     }
 </style>
 
-<form action="/partners/write_contract_ok" method="post">
-    <input type="hidden" value="${ev.mem_id}" name="mem_id">
-    <input type="hidden" value="${ev.est_num}" name="est_num">
+<form action="/dozip/contract_ok" method="post">
+    <input type="hidden" value="${c.mem_id}" name="mem_id">
+    <input type="hidden" value="${c.cont_no}" name="cont_no">
+    <input type="hidden" value="${c.est_num}" name="est_num">
+    <input type="hidden" value="${c.businessNum}" name="businessNum">
     <h4>계약번호 : ${c.cont_no} </h4>
     <div class="contract_title">인테리어 표준계약서</div>
     <div class="contract_summary">
@@ -156,12 +159,8 @@
                 </tr>
                 <tr>
                     <th colspan="2">사업자번호 / 주민번호 :
-                        <c:if test="${c.customer_number==null}">
-                        <input size="20" style="background-color: #92d1fc" name="customer_number">
-                        </c:if>
-                        <c:if test="${c.customer_number!=null}">
-                            ${c.customer_number}
-                        </c:if>
+                        <c:if test="${c.customer_number == null}"><input size="20" style="background-color: #92d1fc" name="customer_number"></c:if>
+                        <c:if test="${c.customer_number!= null}">${c.customer_number}</c:if>
                     </th>
                     <%-- 고객 --%>
                     <th colspan="2">사업자번호 / 주민번호 : ${c.businessNum}</th>
@@ -180,6 +179,7 @@
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-    <input type="submit" value="계약하기">
+        <c:if test="${c.customer_number == null}"><input type="submit" value="계약하기"></c:if>
+        <c:if test="${c.customer_number != null}">  </c:if>
     </div>
 </form>

@@ -25,7 +25,7 @@
 <body>
 <div id="join_wrap">
 	<div id="join_title"><p>회원가입</p></div>
-	<form id="join_form_box" method="post"  name="m"  onsubmit="return join_check();" action="/dozip/member_join_ok">
+	<form id="join_form_box" method="post" name="m">
 		<table id="join_form_table">
 			<tr>
 				<%--<th>아이디</th>--%>
@@ -96,10 +96,41 @@
 			<span id="text3">※개인정보 처리방침에 동의해주세요.</span>
 		</div>
 		<div>
-			<button id="join_btn"  type="submit"  disabled="disabled">가 입 하 기</button>
+			<button id="join_btn"  type="button"  disabled >가 입 하 기</button>
 		</div>
 	</form>
-
 </div>
+
+<script>
+	document.getElementById("join_btn").onclick = function() {
+		function params_list() {
+			var params = {};  //배열 선언
+			var data = $("#join_form_box").serializeArray(); //폼태그에 있는 데이터 담기
+
+			$.each(data, function () { //반복문
+				var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+				var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+				params[name] = value; //params 배열에 키, 값 쌍으로 저장
+			});
+			return params;
+		}
+
+		$.ajax({
+			url : '/dozip/member_join_ok',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				data:JSON.stringify(params_list())
+			},
+			success : function(data) {
+				alert(data.message);
+				window.close();
+			},
+			error:function(){
+				alert("실패했습니다.");
+			}
+		});
+	}
+</script>
 </body>
 </html>

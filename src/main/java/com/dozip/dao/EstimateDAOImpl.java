@@ -3,10 +3,10 @@ package com.dozip.dao;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.EstimateVO;
+import com.dozip.vo.PayVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,7 +36,7 @@ public class EstimateDAOImpl implements EstimateDAO {
     public List<BidVO> getBidList(String est_num) { return this.sqlSession.selectList("bid_list", est_num); }
 
     @Override
-    public void updateState(String bid_num) { this.sqlSession.update("state_up", bid_num); }
+    public void updateState(BidVO b) { this.sqlSession.update("state_up", b); }
 
     @Override
     public String getEnum(String bid_num) { return this.sqlSession.selectOne("find_Enum", bid_num); }
@@ -45,7 +45,7 @@ public class EstimateDAOImpl implements EstimateDAO {
     public void updateState2(String est_num) { this.sqlSession.update("state_down", est_num); }
 
     @Override
-    public void updateEstate(String est_num) { this.sqlSession.update("est_state", est_num); }
+    public void updateEstate(EstimateVO e) { this.sqlSession.update("est_state", e); }
 
     @Override
     public int counter() {
@@ -60,5 +60,17 @@ public class EstimateDAOImpl implements EstimateDAO {
 
     @Override
     public ContractVO getCont(String cont_no) { return this.sqlSession.selectOne("get_cont", cont_no); }
+
+    @Override
+    public void updateCustomerNum(ContractVO c) { this.sqlSession.update("up_Cnum", c); }
+
+    @Override
+    public String getBidNum(ContractVO c) { return this.sqlSession.selectOne("get_bNum", c); }
+
+    @Override
+    public void insertPay(ContractVO c) { this.sqlSession.insert("in_pay", c); }
+
+    @Override
+    public PayVO getPay(String cont_no) { return this.sqlSession.selectOne("get_pay", cont_no); }
 
 }
