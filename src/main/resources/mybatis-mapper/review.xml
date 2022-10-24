@@ -24,13 +24,17 @@
         select * from contractT where cont_no=#{cont_no}
     </select>
 
-    <insert id="review_upload" parameterType="ReviewVO">
+    <insert id="review_upload">
         insert into reviewT(re_no,mem_id,cont_no,re_title,re_cont,re_star,re_count,re_date,re_state)
-        values (re_no_seq.nextval,#{mem_id},#{cont_no},#{re_title},#{re_cont},#{re_star,jdbcType=INTEGER},0,sysdate,1)
+        values (re_no_seq.nextval,#{mem_id},#{cont_no},#{re_title},#{re_cont},#{re_star,jdbcType=INTEGER},0,TO_CHAR(sysdate,'YYYY.MM.DD'),1)
     </insert>
 
-    <select id="review_num" parameterType="ReviewVO">
+    <select id="review_num" resultType="int">
         select re_no from reviewT where mem_id = #{mem_id} and re_title = #{re_title}
     </select>
+
+    <insert id = "review_photos">
+        update reviewT set re_photo1 = #{re_photo1, jdbcType = VARCHAR}, re_photo2 = #{re_photo2,jdbcType = VARCHAR}, re_photo3 = #{re_photo3, jdbcType = VARCHAR}, re_photo4 = #{re_photo4,jdbcType = VARCHAR}, re_photo5 = #{re_photo5, jdbcType = VARCHAR} where re_no = #{re_no}
+    </insert>
 
 </mapper>
