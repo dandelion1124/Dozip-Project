@@ -56,7 +56,8 @@
         text-align: right;
         padding-right: 30px;
     }
-    div#contract_btn input{
+
+    div#contract_btn input {
         float: right;
         margin: 9px;
     }
@@ -130,19 +131,19 @@
                 </tr>
             </table>
         </div>
-            <p>② "갑"은 전항의 공사대금지급과 관련하여 정당한 사유 없이 지급을 지연하여서는 안되며, 지연 시에는 미지급액에 대하여 지급일 다음 날로부터 완제일까지 연 6%의 지연이자를 지급하여야
-                한다.</p>
-            <p> &nbsp;&nbsp;"갑"과 "을"은 상호 신의와 성실을 원칙으로 이 계약서에 의하여 공사계약을 체결하고 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
+        <p>② "갑"은 전항의 공사대금지급과 관련하여 정당한 사유 없이 지급을 지연하여서는 안되며, 지연 시에는 미지급액에 대하여 지급일 다음 날로부터 완제일까지 연 6%의 지연이자를 지급하여야
+            한다.</p>
+        <p> &nbsp;&nbsp;"갑"과 "을"은 상호 신의와 성실을 원칙으로 이 계약서에 의하여 공사계약을 체결하고 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
         </br>
         <div>
             <p style="text-align:center;">
-                <input type="date" value="2022-10-19" name="cont_date" ></p>
+                <input type="date" value="2022-10-19" name="cont_date"></p>
         </div>
         </br>
         <div>
             <table id="contract_table3">
                 <tr>
-                    <th colspan="2" style="width:50%";>발주자(시행자) "갑"</th>
+                    <th colspan="2" style="width:50%" ;>발주자(시행자) "갑"</th>
                     <th colspan="2">수급자(시공자) "을"</th>
                 </tr>
                 <tr>
@@ -160,9 +161,10 @@
                     <th class="contract_sign">(서명 또는 인)</th>
                 </tr>
                 <tr>
-                    <th colspan="2">사업자번호 / 주민번호 : </th>
+                    <th colspan="2">사업자번호 / 주민번호 :</th>
                     <%-- 고객 --%>
-                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum" readonly></th>
+                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum" readonly>
+                    </th>
                     <%-- 파트너스 --%>
                 </tr>
                 <tr>
@@ -176,39 +178,38 @@
         </br>
     </div>
     <div id="contract_btn">
-    <input type="button" value="닫기" onclick="window.close()">
-    <input type="button" value="계약하기" id="contract_write">
+        <input type="button" value="닫기" onclick="window.close()">
+        <input type="button" value="계약하기" onclick="contract_write()">
     </div>
     <script>
-            $('#contract_write').onclick(function (event){
-                function params_list() {
-                    var params = {};  //배열 선언
-                    var data = $("#contract_form").serializeArray(); //폼태그에 있는 데이터 담기
+        function contract_write() {
+            function params_list() {
+                var params = {};  //배열 선언
+                var data = $("#contract_form").serializeArray(); //폼태그에 있는 데이터 담기
 
-                    $.each(data, function() { //반복문
-                        var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
-                        var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
-                        params[name] = value; //params 배열에 키, 값 쌍으로 저장
-                    });
-                    return params;
-                }
-                $.ajax({
-                    type: 'post',
-                    url: 'write_contract_ok',
-                    data: {
-                        data:JSON.stringify(params_list())
-                    },
-                  datatype: "json",
-                    success: function (data) {
-                        alert(data.status);
-
-                        if(data.status ==1){
-                            alert('계약서 작성 완료!')
-                            window.opener.location.href='/partners/estimate_list'
-                            self.close()
-                        }
-                    }
+                $.each(data, function () { //반복문
+                    var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+                    var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+                    params[name] = value; //params 배열에 키, 값 쌍으로 저장
                 });
+                return params;
+            }
+
+            $.ajax({
+                type: 'post',
+                url: 'write_contract_ok',
+                data: {
+                    data: JSON.stringify(params_list())
+                },
+                datatype: "json",
+                success: function (data) {
+                    if (data.status == 1) {
+                        alert('계약서 작성 완료!')
+                        window.opener.location.href = '/partners/estimate_list'
+                        self.close()
+                    }
+                }
             });
+        }
     </script>
 </form>
