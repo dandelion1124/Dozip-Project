@@ -36,13 +36,13 @@ public interface PartnersService {
 
     void insertbid(BidVO bid);
 
-    int countBid(String bid_no);
+    int countBid(String est_num);
 
-    List<BidVO> selectJoinList(String businessNum);
+    List<BidVO> selectJoinList(EstimateVO e);
 
     List<EstimateVO> selectEstimateListBnum(String businessNum);
 
     int getListCount2(String businessNum);
 
-    int checkBid(String businessNum); //입찰했는지 확인하는것
+    int checkBid(BidVO b); //입찰했는지 확인하는것
 }
