@@ -37,7 +37,7 @@ public interface PartnersDAO {
 
     void insertbid(BidVO bid);
 
-    List<BidVO> selectBidList();
+    int countBid(String bid_no);
 
 
     List<BidVO> selectJoinList(String businessNum);
@@ -45,5 +45,7 @@ public interface PartnersDAO {
     List<EstimateVO> selectEstimateListBnum(String businessNum);
 
     int getListCount2(String businessNum);
+
+    int checkBid(String businessNum);
 }
 

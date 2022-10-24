@@ -118,11 +118,11 @@
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
 
-    <select id="select_bidList" resultType="bidVO">
-        select * from bidT
+    <select id="count_bid" resultType="int">  <!--상세페이지 파트너스 수 -->
+        select count(businessNum) from bidT where est_num=#{bid_no}
     </select>
 
-    <select id="sel_All" resultType="bidVO">
+    <select id="sel_All" resultType="bidVO"> <!--내 입찰 목록 -->
         select b.*, e.est_use, e.est_dateEnd, e.est_addr from
         (select * from bidT where businessNum=#{businessNum}) b, estimateT e
         where b.est_num = e.est_num(+)
@@ -134,6 +134,10 @@
 
     <select id="my_bid_count" resultType="int">
         select count(bid_num) from bidT where BusinessNum=#{BusinessNum}
+    </select>
+
+    <select id="check_bid" resultType="int">
+        select count(bid_num) from bidT where BusinessNum=#{BusinessNum} and est_num=#{bid_no}
     </select>
 </mapper>
 

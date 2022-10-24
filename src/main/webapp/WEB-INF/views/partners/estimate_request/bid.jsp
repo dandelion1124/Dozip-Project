@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -52,7 +55,11 @@
 								<%--<fmt:parseDate var="endDate" value="${e.est_dateEnd}" pattern="yyyy-MM-dd HH:mm:ss"/> --%>
 								<%--<fmt:formatDate var="formatEndDate" value="${e.est_dateEnd}" pattern="yyyy-MM-dd"/> -->
 								<%--<fmt:parseDate var="enddate"  value="${e.est_dateEnd}" pattern="yyyy-MM-dd"/> --%>
-								모집중 D-<span>${e.remaindate}</span>
+								<span>
+									<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
+									<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
+									<c:if test="${e.remaindate < 0}">모집완료</c:if>
+								</span>
 							</p>
 							<p class="label_badge">
 								<span class="label_val1">${e.est_use}</span>

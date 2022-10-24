@@ -35,7 +35,11 @@ $(function() {
 			<%--<c:forEach var="e" items="${elist}"> --%>
 			<div class="request_detail">
 				<p class="request_detail_day">
-					모집중 D-<span>${e.remaindate}</span>
+					<span>
+						<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
+						<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
+						<c:if test="${e.remaindate < 0}">모집완료</c:if>
+					</span>
 				</p>
 				<p class="label_badge">
 					<span class="label_val1">${e.est_use}</span>
@@ -81,7 +85,7 @@ $(function() {
 								<div class="dt">
 									<p class="ico5">참여 파트너수</p>
 								</div>
-								<div class="dd"></div>
+								<div class="dd">${bcount}</div>
 							</li>
 						</ul>
 					</div>

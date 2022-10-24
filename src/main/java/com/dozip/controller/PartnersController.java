@@ -209,6 +209,7 @@ public class PartnersController {
 
         List<EstimateVO> elist=this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
 
+        //List<BidVO> blist=this.partnersService.countBidList(est_num);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
@@ -218,9 +219,11 @@ public class PartnersController {
         for(int i=0; i<elist.size(); i++){
             elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
 
+
             Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
             long remaindate = (parseddate.getTime() - now.getTime());
             elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
+
         }
         System.out.println("변경된 elist 출력 " + elist);
 
@@ -251,16 +254,20 @@ public class PartnersController {
         PrintWriter out=response.getWriter();
 
 
-        //System.out.println(bid_no);
+
         EstimateVO e=this.partnersService.selectEstimate(bid_no);
+        System.out.println(e.toString());
+        int bcount=this.partnersService.countBid(bid_no);
+        //System.out.println(bcount);
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
         Date parseddate = formatter.parse(e.getEst_dateEnd());
         long remaindate = (parseddate.getTime() - now.getTime());
         e.setRemaindate(remaindate/(24*60*60*1000));
-        System.out.println(remaindate);
+        //System.out.println(remaindate);
         m.addAttribute("e",e);
+        m.addAttribute("bcount",bcount);
 
         return "/partners/estimate_request/bid_detail";
     }
@@ -284,7 +291,17 @@ public class PartnersController {
 
         this.partnersService.insertbid(bid);
 
-        System.out.println(bid.toString());
+        //System.out.println(bid.toString());
+
+        //int listcount=this.partnersService.getListCount2(businessNum);
+        int res=this.partnersService.checkBid(businessNum);
+        System.out.println(res);
+//        if(res==0) {
+//            this.partnersService.insertPartnersSub(ps);
+//
+//        }else{
+//            this.partnersService.updatePartnersSub(ps);
+//        }
 
         out.println("<script>");
         out.println("alert('입찰 성공!');");
@@ -303,7 +320,7 @@ public class PartnersController {
         List<BidVO> list= this.partnersService.selectJoinList(businessNum);
 
         int page=1;//쪽번호
-        int limit=10;//한페이지에 보여지는 목록개수
+        int limit=5;//한페이지에 보여지는 목록개수
         if(request.getParameter("page") != null) {
             page=Integer.parseInt(request.getParameter("page"));
         }
@@ -317,18 +334,18 @@ public class PartnersController {
 
         int listcount=this.partnersService.getListCount2(businessNum);
         //전체 레코드 개수 또는 검색전후 레코드 개수
-        System.out.println("총 게시물수:"+listcount+"개");
+        System.out.println("총 입찰 개수:"+listcount+"개");
 
-        e.setStartrow((page-1)*10+1);//시작행번호
+        e.setStartrow((page-1)*5+1);//시작행번호
         e.setEndrow(e.getStartrow()+limit-1);//끝행번호
+        System.out.println(e.getStartrow());
+        System.out.println(e.getEndrow());
 
-        //총페이지수
-        int maxpage=(int)((double)listcount/limit+0.95);
-        //현재 페이지에 보여질 시작페이지 수(1,11,21)
-        int startpage=(((int)((double)page/10+0.9))-1)*10+1;
-        //현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
-        int endpage=maxpage;
-        if(endpage > startpage+10-1) endpage=startpage+10-1;
+
+        int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
+        int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
+        int endpage=maxpage;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
+        if(endpage > startpage+5-1) endpage=startpage+5-1;
 
         ModelAndView m=new ModelAndView();
         m.addObject("page",page);

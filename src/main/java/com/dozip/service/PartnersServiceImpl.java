@@ -140,8 +140,8 @@ public class PartnersServiceImpl implements PartnersService {
     }
 
     @Override
-    public List<BidVO> selectBidList() {
-        return partnersDao.selectBidList();
+    public int countBid(String bid_no) {
+        return partnersDao.countBid(bid_no);
     }
 
 
@@ -158,6 +158,11 @@ public class PartnersServiceImpl implements PartnersService {
     @Override
     public int getListCount2(String businessNum) {
         return partnersDao.getListCount2(businessNum);
+    }
+
+    @Override
+    public int checkBid(String businessNum) {
+        return partnersDao.checkBid(businessNum);
     }
 
 

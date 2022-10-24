@@ -141,8 +141,8 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public List<BidVO> selectBidList() {
-        return sqlSession.selectList("select_bidList");
+    public int countBid(String bid_no) {
+        return sqlSession.selectOne("count_bid",bid_no);
     }
 
 
@@ -160,6 +160,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public int getListCount2(String businessNum) {
         return this.sqlSession.selectOne("my_bid_count",businessNum);
 
+    }
+
+    @Override
+    public int checkBid(String businessNum) {
+        return this.sqlSession.selectOne("check_bid",businessNum);
     }
 
 
