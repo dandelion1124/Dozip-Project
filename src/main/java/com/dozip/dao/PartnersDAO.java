@@ -27,7 +27,7 @@ public interface PartnersDAO {
     void updatePartnersSub(Partners_subVO ps);
     void updatePartners(PartnersVO p);
     void insertPartnersSub(Partners_subVO ps);
-    List<EstimateVO> selectEstimateList();
+    List<EstimateVO> selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기
     int checkSub(String businessNum);
     List<EstimateVO> getAllEstList();
     List<BidVO> getBidList();
