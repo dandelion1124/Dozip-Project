@@ -296,3 +296,22 @@ create table reviewT
 drop sequence re_no_seq; --삭제
 select re_no_seq.nextval from dual; --시퀀스 확인
 create sequence re_no_seq start with 1 increment by 1 nocache; --생성
+
+--11. 스크랩 테이블
+drop table scrapT;
+delete scrapT;
+select * from scrapT;
+
+create table scrapT(
+    se_no number(38) primary key, --스크랩번호
+    mem_id varchar2(20) not null, -- 고객 id
+    pf_no number(38) not null, --글번호
+    se_state varchar2(10) default 1, --스크랩 상태 ( 1이면 스크랩, 0이면 스크랩 취소)
+    foreign key (mem_id) references memberT(mem_id),
+    foreign key (pf_no) references portfolioT(pf_no)
+);
+
+commit;
+drop sequence se_no_seq;
+create sequence se_no_seq start with 1 increment by 1 nocache; --스크랩 번호 생성
+select se_no_seq.nextval from dual; --스크랩 번호 생성 확인

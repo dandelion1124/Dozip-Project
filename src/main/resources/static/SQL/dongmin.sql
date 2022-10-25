@@ -5,6 +5,7 @@ select * from ESTIMATET;
 select * from PARTNERST;
 select * from REVIEWT;
 select * from contractT;
+select * from SCRAPT;
 
 select * from contractT where mem_id = 'dozip';
 
