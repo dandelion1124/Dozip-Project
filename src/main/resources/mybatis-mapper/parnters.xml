@@ -70,15 +70,24 @@
         update qnaT set reply_state='미답변' where qna_no=#{qna_ref}
     </update>
 
-    <!-- data_manage 정보수정 -->
+
+    <!-- minwoo -->
+    <!-- data_manage -->
     <select id="select_data" resultType="PartnersVO">
         select * from partnersT where businessNum=#{businessNum, jdbcType=VARCHAR}
-        <!--select * from partnersT where businessNum=105 -->
     </select>
 
     <select id="select_subdata" resultType="Partners_subVO">
         select * from partners_subT where businessNum=#{businessNum, jdbcType=VARCHAR}
     </select>
+
+    <insert id="insert_subdata">
+        insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Res_person_name,p_Res_person_tel,p_Com_person_name,p_Com_person_tel,p_Balance,
+        p_Account_bank,p_Account_name,p_Account_num)
+        values(#{businessNum,jdbcType=VARCHAR},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
+        #{p_Com_person_name, jdbcType=VARCHAR},#{p_Com_person_tel, jdbcType=VARCHAR},#{p_Balance,jdbcType=VARCHAR},#{p_Account_bank, jdbcType=VARCHAR},
+        #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR})
+    </insert>
 
     <update id="update_subdata" parameterType="Partners_subVO">
         update Partners_subT set businessNum=#{businessNum,jdbcType=VARCHAR}, p_Shortstate=#{p_Shortstate,jdbcType=VARCHAR},p_Homepg=#{p_Homepg,jdbcType=VARCHAR},
@@ -92,39 +101,41 @@
         update PartnersT set p_Addr1=#{p_Addr1, jdbcType=VARCHAR},p_Addr2=#{p_Addr2, jdbcType=VARCHAR},p_Addr3=#{p_Addr3, jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
     </update>
 
-    <insert id="insert_subdata">
-        insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Res_person_name,p_Res_person_tel,p_Com_person_name,p_Com_person_tel,p_Balance,
-            p_Account_bank,p_Account_name,p_Account_num) <!---->
-        values(#{businessNum,jdbcType=VARCHAR},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
-            #{p_Com_person_name, jdbcType=VARCHAR},#{p_Com_person_tel, jdbcType=VARCHAR},#{p_Balance,jdbcType=VARCHAR},#{p_Account_bank, jdbcType=VARCHAR},
-            #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR}) <!---->
-    </insert>
-
     <select id="res_check" resultType="int">
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
 
     <!-- bid -->
-    <!-- estimate 테이블에 있는 db 전부 가져오기-->
+    <!-- estimate테이블에 있는 데이터 list로 전부 가져오기-->
     <select id="select_estdata" resultType="EstimateVO">
         select * from estimateT
     </select>
+
+    <!-- bid_detail -->
+    <!-- estimate테이블에서 각 견적서 번호 기준으로 가져오기 -->
     <select id="select_est" resultType="EstimateVO">
         select * from estimateT where est_num=#{est_num}
     </select>
-    <!--입찰 상세페이지 입찰하기 -->
+    <!-- 해당 입찰 신청한 파트너스 수 가져오기 -->
+    <select id="count_bid" resultType="int">
+        select count(businessNum) from bidT where est_num=#{est_num}
+    </select>
+    <!-- 이미 입찰 신청한 파트너스는 신청할 수 없게 -->
+    <select id="check_bid" resultType="int">
+        select count(bid_num) from bidT where businessNum=#{businessNum} and est_num=#{est_num}
+    </select>
+
+    <!-- bid_detail_ok -->
+    <!-- 입찰신청하기 입찰 DB에 insert -->
     <insert id="insert_bid_detail">
         insert into bidT (bid_num,businessNum,est_num,bid_price,bid_start,bid_end,bid_detail,bid_date)
         values(bid_num_seq.nextval,#{businessNum,jdbcType=VARCHAR},#{est_num,jdbcType=VARCHAR},
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
 
-    <!-- 해당 입찰 신청한 파트너스 수 가져오기 -->
-    <select id="count_bid" resultType="int">
-        select count(businessNum) from bidT where est_num=#{est_num}
-    </select>
-
-    <select id="sel_All" resultType="bidVO"> <!--내 입찰 목록 -->
+    <!-- my_bid -->
+    <!--bid테이블 기준으로 estimate테이블 조인해서 내 입찰목록 가져오기 -->
+    <select id="sel_All" resultType="bidVO">
         select * from (
         select rowNum r, b.bid_num, b.businessNum , b.est_num,  b.bid_price, b.bid_start  ,
         b.bid_end  , b.bid_detail  ,  b.bid_state   , b.bid_date, e.est_use, e.est_dateEnd, e.est_addr from
@@ -133,16 +144,16 @@
         ) where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
+    <!-- construct_request -->
+    <!-- 사업자 번호 기준으로 estimate테이블 list로 가져오기 -->
     <select id="select_est_bnum" resultType="EstimateVO">
         select * from estimateT where businessNum=#{businessNum}
     </select>
-
+    <!-- 사업자 번호 기준으로 bid테이블의 레코드 개수 count -->
     <select id="my_bid_count" resultType="int">
         select count(bid_num) from bidT where businessNum=#{businessNum}
     </select>
 
-    <select id="check_bid" resultType="int">
-        select count(bid_num) from bidT where businessNum=#{businessNum} and est_num=#{est_num}
-    </select>
+
 </mapper>
 

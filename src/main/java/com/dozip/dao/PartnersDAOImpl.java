@@ -78,95 +78,76 @@ public class PartnersDAOImpl implements PartnersDAO {
 
 
     /* minwoo */
+    /* My page */
     @Override
     public PartnersVO getMember(String businessNum) {
         return sqlSession.selectOne("select_data",businessNum);
     }
-
     @Override
-    public Partners_subVO getPartnersSub(String businessNum) {
-        return sqlSession.selectOne("select_subdata",businessNum);
-    }
+    public Partners_subVO getPartnersSub(String businessNum) { return sqlSession.selectOne("select_subdata",businessNum); }
+    @Override
+    public void insertPartnersSub(Partners_subVO ps) { sqlSession.insert("insert_subdata",ps); }
     @Override
     public void updatePartnersSub(Partners_subVO ps) {
         sqlSession.update("update_subdata",ps);
     }
-
     @Override
     public void updatePartners(PartnersVO p) { sqlSession.update("update_data",p); }
-
-    @Override
-    public void insertPartnersSub(Partners_subVO ps) {
-        sqlSession.insert("insert_subdata",ps);
-    }
-
-    @Override
-    public List<EstimateVO> selectEstimateList() { //estimate 테이블에 있는 db 전부 가져오기
-        return sqlSession.selectList("select_estdata");
-    }
-
     @Override
     public int checkSub(String businessNum) {
         return sqlSession.selectOne("res_check",businessNum);
     }
+    /* bid */
+    @Override //estimate 테이블에 있는 db 전부 가져오기
+    public List<EstimateVO> selectEstimateList() { return sqlSession.selectList("select_estdata"); }
+    /*bid_detail */
+    @Override
+    public EstimateVO selectEstimate(String bid_no) {
+        return sqlSession.selectOne("select_est",bid_no);
+    }
+    @Override // 해당 입찰 신청한 파트너스 수 가져오기
+    public int countBid(String est_num){ return sqlSession.selectOne("count_bid",est_num); }
+    @Override
+    public int checkBid(BidVO b) {
+        return this.sqlSession.selectOne("check_bid",b);
+    }
+    /* bid_detail_ok */
+    @Override //입찰신청하기 입찰 DB에 insert
+    public void insertbid(BidVO bid) {
+        sqlSession.insert("insert_bid_detail",bid);
+    }
+    /* my_bid */
+    @Override
+    public List<BidVO> selectJoinList(EstimateVO e) {
+        return this.sqlSession.selectList("sel_All", e);
+    }
+    /* construct_request */
+    @Override
+    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
+        return this.sqlSession.selectList("select_est_bnum",businessNum);
+    }
+    @Override
+    public int getListCount2(String businessNum) {
+        return this.sqlSession.selectOne("my_bid_count",businessNum);
+    }
+
 
     @Override
     public List<EstimateVO> getAllEstList() {
         return sqlSession.selectList("est_list");
     }
-
-
     @Override
     public List<BidVO> getBidList() {
         return sqlSession.selectList("est_list2");
     }
-
     @Override
     public EstimateVO write_contract(int est_num) {
         return sqlSession.selectOne("write_contract",est_num);
     }
-
     @Override
     public int insertContract(ContractVO cv) {
         return sqlSession.insert("contract_in",cv);
     }
-    @Override
-    public EstimateVO selectEstimate(String bid_no) {
-        return sqlSession.selectOne("select_est",bid_no);
-    }
-
-    @Override //파트너스 입찰 신청
-    public void insertbid(BidVO bid) {
-        sqlSession.insert("insert_bid_detail",bid);
-    }
-
-    @Override
-    public int countBid(String est_num) { // 해당 입찰 신청한 파트너스 수 가져오기
-        return sqlSession.selectOne("count_bid",est_num);
-    }
-
-
-    @Override
-    public List<BidVO> selectJoinList(EstimateVO e) {
-        return this.sqlSession.selectList("sel_All", e);
-    }
-
-    @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
-        return this.sqlSession.selectList("select_est_bnum",businessNum);
-    }
-
-    @Override
-    public int getListCount2(String businessNum) {
-        return this.sqlSession.selectOne("my_bid_count",businessNum);
-
-    }
-
-    @Override
-    public int checkBid(BidVO b) {
-        return this.sqlSession.selectOne("check_bid",b);
-    }
-
 
 }
 

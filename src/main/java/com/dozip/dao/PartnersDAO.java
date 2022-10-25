@@ -22,30 +22,32 @@ public interface PartnersDAO {
     int checkBusinessNum(PartnersVO pv);
 
     /* minwoo */
+    /* My page */
     PartnersVO getMember(String businessNum); //data_manage 회원정보
     Partners_subVO getPartnersSub(String businessNum);
+    void insertPartnersSub(Partners_subVO ps);
     void updatePartnersSub(Partners_subVO ps);
     void updatePartners(PartnersVO p);
-    void insertPartnersSub(Partners_subVO ps);
-    List<EstimateVO> selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기
     int checkSub(String businessNum);
+    /* bid */
+    List<EstimateVO> selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기
+    /*bid_detail */
+    EstimateVO selectEstimate(String bid_no);
+    int countBid(String est_num);
+    int checkBid(BidVO b);
+    /* bid_detail_ok */
+    void insertbid(BidVO bid);
+    /* my_bid */
+    List<BidVO> selectJoinList(EstimateVO e);
+    /* construct_request */
+    List<EstimateVO> selectEstimateListBnum(String businessNum);
+    int getListCount2(String businessNum);
+
+
     List<EstimateVO> getAllEstList();
     List<BidVO> getBidList();
     EstimateVO write_contract(int est_num);
     int insertContract(ContractVO cv);
-    EstimateVO selectEstimate(String bid_no);
 
-    void insertbid(BidVO bid);
-
-    int countBid(String est_num);
-
-
-    List<BidVO> selectJoinList(EstimateVO e);
-
-    List<EstimateVO> selectEstimateListBnum(String businessNum);
-
-    int getListCount2(String businessNum);
-
-    int checkBid(BidVO b);
 }
 

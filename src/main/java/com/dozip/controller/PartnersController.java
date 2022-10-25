@@ -230,14 +230,14 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        EstimateVO e=this.partnersService.selectEstimate(est_num); //
+        EstimateVO e=this.partnersService.selectEstimate(est_num); //견적테이블에서 각 견적서 번호 기준으로 가져오기
         //System.out.println(e.toString());
         BidVO b = new BidVO();
         b.setBusinessNum((String)session.getAttribute("businessNum"));
         //System.out.println(b.getBusinessNum());
         b.setEst_num(est_num);
         int bcount=this.partnersService.countBid(est_num); // 해당 입찰을 신청한 파트너스 수 가져오기
-        int res=this.partnersService.checkBid(b);  //
+        int res=this.partnersService.checkBid(b);  // 이미 입찰 신청한 파트너스는 신청할 수 없게
         System.out.println(res);
         //System.out.println(bcount);
 
@@ -261,23 +261,17 @@ public class PartnersController {
         PrintWriter out = response.getWriter();
 
         String businessNum = (String) session.getAttribute("businessNum");
-        EstimateVO e = this.partnersService.selectEstimate(est_num);
+        EstimateVO e = this.partnersService.selectEstimate(est_num); //견적서 테이블에서 est_num을 가져와야 하므로
 
         bid.setBusinessNum(businessNum);
         bid.setEst_num(e.getEst_num());
 
-        //bid.setBid_num();
         bid.setBid_price(Integer.parseInt(request.getParameter("bid_price"))); //가져온 string값을 int로 형변환해줘야
         bid.setBid_start(request.getParameter("bid_start")); //주소 부분 api로 변경해줄것
         bid.setBid_end(request.getParameter("bid_end"));
         bid.setBid_detail(request.getParameter("bid_detail"));
 
-        this.partnersService.insertbid(bid);
-
-        //System.out.println(bid.toString());
-
-        //int listcount=this.partnersService.getListCount2(businessNum);
-
+        this.partnersService.insertbid(bid); // 입찰신청하기 입찰 DB에 insert
 //        System.out.println(res);
 //        if(res==0) {
 //            this.partnersService.insertPartnersSub(ps);
@@ -285,7 +279,6 @@ public class PartnersController {
 //        }else{
 //            this.partnersService.updatePartnersSub(ps);
 //        }
-
         out.println("<script>");
         out.println("alert('입찰 성공!');");
         out.println("history.back();");
@@ -314,9 +307,7 @@ public class PartnersController {
 //        e.setFind_name("%"+find_name+"%");
 //        //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
 //        //매핑 대응
-
-        int listcount = this.partnersService.getListCount2(businessNum);
-        //전체 레코드 개수 또는 검색전후 레코드 개수
+        int listcount = this.partnersService.getListCount2(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 
         e.setBusinessNum(businessNum);
@@ -338,7 +329,7 @@ public class PartnersController {
 //        m.addObject("find_field",find_field);
 //        m.addObject("find_name", find_name);
 
-        List<BidVO> list = this.partnersService.selectJoinList(e);
+        List<BidVO> list = this.partnersService.selectJoinList(e); //bid테이블 기준으로 estimate테이블 조인해서 가져오기
         System.out.println(list.toString());
         m.addObject("list", list);
 
@@ -369,7 +360,7 @@ public class PartnersController {
     public String construct_request_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response) throws Exception {
         //response.setContentType("text/html;charset=UTF-8");
 
-        EstimateVO e = this.partnersService.selectEstimate(est_num);
+        EstimateVO e = this.partnersService.selectEstimate(est_num); //견적서 번호 기준으로 데이터 가져오기
 
         m.addAttribute("e", e);
 
