@@ -170,22 +170,30 @@ $(function() {
 
 							<form method="post" action="bid_detail_ok?no=${e.est_num}">
 								<div>
-									<div class="bid_part_div">
-										<button type="button" id="bid_participate">입찰 신청하기</button>
-									</div>
-									<div id="bid_part_detail">
-											<div class="bid_detail01">입찰가</div>
-											<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></div>
-											<div class="bid_detail02" >예상 공사시작일</div>
-											<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start"  size="10"/><br/></div>
-											<div class="bid_detail04" >예상 공사종료일</div>
-											<div class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end"  size="10"/><br/></div>
-											<div class="bid_detail03">업체 공사 스타일 설명</div>
-											<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
-									</div>
-									<div class="bid_complete_button">
-										<input type="submit" id="bid_complete" value="신청완료">
-									</div>
+									<c:choose>
+										<c:when test="${res == 0}">
+											<div class="bid_part_div">
+												<button type="button" id="bid_participate">입찰 신청하기</button>
+											</div>
+											<div id="bid_part_detail">
+												<div class="bid_detail01">입찰가</div>
+												<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></div>
+												<div class="bid_detail02" >예상 공사시작일</div>
+												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start"  size="10"/><br/></div>
+												<div class="bid_detail04" >예상 공사종료일</div>
+												<div class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end"  size="10"/><br/></div>
+												<div class="bid_detail03">업체 공사 스타일 설명</div>
+												<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
+											</div>
+											<div class="bid_complete_button">
+												<input type="submit" id="bid_complete" value="신청완료">
+											</div>
+										</c:when>
+										<c:otherwise>
+
+										</c:otherwise>
+									</c:choose>
+
 								</div>
 							</form>	
 						</div>

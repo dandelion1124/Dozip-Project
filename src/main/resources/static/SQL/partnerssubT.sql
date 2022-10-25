@@ -31,6 +31,7 @@ DELETE FROM partners_subT
 commit;
 
 drop table bidT;
+delete bidT;
 select * from bidT;
 create table bidT
 (

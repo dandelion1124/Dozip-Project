@@ -19,7 +19,7 @@
 	</div>
 
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
-				margin:0 5% 40px 5%; background-color:white;">
+				margin:0 5% 20px 5%; background-color:white;">
 		<tr class="my_bid_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
 			<th>입찰 내용</th> <th>입찰가</th> <th>모집 마감일</th> <th>입찰 시공시작일</th> <th>입찰 시공종료일</th> <th>세부정보</th> <th>입찰상태</th>
 		</tr>
@@ -56,6 +56,7 @@
 
 	<%--페이징 추가 --%>
 	<div id="mybid_paging">
+		<p>
 		<c:if test="${page<=1}">
 			[이전]
 		</c:if>
@@ -65,8 +66,8 @@
 
 		<%--현재 쪽번호 출력--%>
 		<c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
-			<c:if test="${p== page}"> <!--현재 페이지 선택 시-->${p}</c:if>
-			<c:if test="${p != page}"> <!--현재 페이지 선택되지 않았을 시 --><a href="/partners/my_bid?page=${p}">[${p}]</a>
+			<c:if test="${p== page}"> ${p}</c:if> <!--현재 페이지 선택 시-->
+			<c:if test="${p != page}"> <a href="/partners/my_bid?page=${p}">[${p}]</a> <!--현재 페이지 선택되지 않았을 시 -->
 			</c:if>
 		</c:forEach>
 
@@ -76,25 +77,8 @@
 		<c:if test="${page<maxpage}">
 			<a href="/partners/my_bid?page=${page+1}">[다음]</a>
 		</c:if>
-
-
+		</p>
 	</div>
-	<!--
-        <div class="my_bid_title2"><h3 id="bid_proc">입찰 진행중</h3></div>
-        <table style="width: 90%; border-collapse: collapse; text-align:center;
-                    margin:0 5% 40px 5%; background-color:white;">
-            <tr class="my_bid_label" style="border-bottom:1px solid lightgray; border-top:1px solid lightgray/*#0064CD*/; height:50px; font-size:16px;">
-                <th>입찰 내용</th> <th>예상 계약금액</th> <th>모집 마감일</th> <th>견적 마감일</th> <th>세부정보</th> <th>입찰취소</th>
-            </tr>
-            <tr class="my_bid_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:14px;">
-                <td>목동 사무실 원상복구 견적 문의</td> <td>5,000,000원</td> <td>2022.07.13</td>  <td>2022.07.25</td>
-                <td><div class="bid_detail"><a href="/partners/estimate_request/bid_detail" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
-                <td><a href="#" class="btn-cancel" onclick="confirm('입찰을 취소하시겠습니까?')" >취소</a></td>
-            </tr>
-
-        </table> -->
-
 </div>
-
 
 <jsp:include page="../include/footer.jsp" />

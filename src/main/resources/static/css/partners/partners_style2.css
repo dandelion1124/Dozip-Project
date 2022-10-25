@@ -776,7 +776,7 @@
    .request_spot{
    
    }
-   .my_bid_title1, .my_bid_title2{
+   .my_bid_title1{
       width: 170px;
       display:inline-block;
    }
@@ -825,7 +825,10 @@
      font-size: 12px;
      letter-spacing: -0.025em;   
     }
-    
+    #mybid_paging{
+     margin:0 auto;
+     text-align:center;
+    }
  /*construct-request */
     .my_req_list{
       margin-top:20px;
