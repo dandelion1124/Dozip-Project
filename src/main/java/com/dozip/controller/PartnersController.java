@@ -394,6 +394,33 @@ public class PartnersController {
         return mv;
     }
 
+    @RequestMapping("/write_contract") //계약서 보기
+    public String write_contract(int est_num, EstimateVO ev, Model model, HttpSession session){
+        /* 계약서에 담을 내용들을 불러와서 model 객체에 담아야함 */
+        String businessNum = (String)session.getAttribute("businessNum");
+        //est_num, 계약 요청 기준으로 select
+        ev=partnersService.write_contract(est_num);
+        model.addAttribute("ev", ev);
+        model.addAttribute("businessNum",businessNum);
+
+        return "/partners/estimate/contract";  //계약서 view 페이지
+    }
+
+    @RequestMapping("/write_contract_ok") //계약서 작성 확인메서드
+    @ResponseBody
+    public HashMap<String, Object> write_contract_ok(@RequestParam String data) throws Exception {
+        HashMap<String, Object> resultMap = new HashMap<>();
+        //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
+        //고객정보는 안넣어야함
+        ObjectMapper mapper = new ObjectMapper();
+        ContractVO cv = mapper.readValue(data, ContractVO.class);
+        cv.setCustomer_number(" ");
+        int result=partnersService.insertContract(cv);
+        resultMap.put("status", result);
+//        resultMap.put("status", "안녕하세요");
+        return resultMap;
+    }
+
     /*내 공사
      *
      *
@@ -509,9 +536,9 @@ public class PartnersController {
         return "redirect:/partners/main";
     }//upload_photo_ok
 
-    @RequestMapping(value = "/portfolio_list")  //견적목록
+    @RequestMapping(value = "/portfolio_list")  //포트폴리오 리스트
     public String portfolio_list() {
-        return "/portfolio/p_list";
+        return "/partners/portfolio/p_list";
     }
 
 
@@ -519,7 +546,7 @@ public class PartnersController {
      *
      * */
     @RequestMapping(value = "/marketing")
-    public String marketing() {  // 고객문의 글 보기
+    public String marketing() {
         return "/partners/marketing/marketing";
     }
 
@@ -531,7 +558,7 @@ public class PartnersController {
 
     // 검색 전,후 고객문의 글 보기
     @RequestMapping(value = "/customer_qna")
-    public String customerQna(Model model, HttpSession session, HttpServletRequest request, QnaVO findQ) throws Exception {
+    public String customerQna(Model model, HttpSession session, HttpServletRequest request, QnaVO findQ, String answer) throws Exception {
         request.setCharacterEncoding("UTF-8");
         // 로그인한 파트너스 사업자 번호(세션에 저장되 있음) 불러오기
         String businessNum = (String) session.getAttribute("businessNum");
@@ -541,14 +568,13 @@ public class PartnersController {
 
         String find_field = null;
         String find_text = null;
-        String answer = null;
-
+        System.out.println(answer);
         if (request.getParameter("page") != null)
             page = Integer.parseInt(request.getParameter("page"));
-        if (request.getParameter("answer") != null)
+       if (request.getParameter("answer") != null)
             answer = request.getParameter("answer");
 
-        System.out.println("answer : " + request.getParameter("answer"));
+       System.out.println("answer : " + request.getParameter("answer"));
 
         if (request.getParameter("find_text") != null && request.getParameter("find_field") != null) {
             find_text = request.getParameter("find_text").trim();
@@ -562,6 +588,8 @@ public class PartnersController {
         findQ.setFind_field(find_field);
         findQ.setAnswer(answer);
         findQ.setBusinessNum(businessNum);
+
+        System.out.println("검색어 : "+findQ.getFind_text());
 
         int listcount = partnersService.getListCount(findQ); //검색전후 레코드 개수
 
@@ -578,7 +606,6 @@ public class PartnersController {
         int endpage = maxpage; //마지막 페이지
 
         if (endpage > startpage + 10 - 1) endpage = startpage + 10 - 1;
-
         model.addAttribute("page", page);
         model.addAttribute("startpage", startpage);
         model.addAttribute("endpage", endpage);

@@ -48,32 +48,7 @@ public class HochulTestController {
 
 
 
-    @RequestMapping("/write_contract") //계약서 보기
-    public String write_contract(int est_num, EstimateVO ev, Model model, HttpSession session){
-        /* 계약서에 담을 내용들을 불러와서 model 객체에 담아야함 */
-        String businessNum = (String)session.getAttribute("businessNum");
-        //est_num, 계약 요청 기준으로 select
-        ev=partnersService.write_contract(est_num);
-        model.addAttribute("ev", ev);
-        model.addAttribute("businessNum",businessNum);
 
-     return "/partners/estimate/contract";  //계약서 view 페이지
-    }
-
-    @RequestMapping("/write_contract_ok") //계약서 작성 확인메서드
-    @ResponseBody
-    public HashMap<String, Object> write_contract_ok(@RequestParam String data) throws Exception {
-        HashMap<String, Object> resultMap = new HashMap<>();
-        //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
-        //고객정보는 안넣어야함
-        ObjectMapper mapper = new ObjectMapper();
-        ContractVO cv = mapper.readValue(data, ContractVO.class);
-        cv.setCustomer_number(" ");
-        int result=partnersService.insertContract(cv);
-        resultMap.put("status", result);
-//        resultMap.put("status", "안녕하세요");
-        return resultMap;
-    }
 
     @RequestMapping("load_info")
     public String load_info(Model model) {

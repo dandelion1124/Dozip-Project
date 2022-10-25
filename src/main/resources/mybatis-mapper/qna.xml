@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Qna">
+
+    <!-- 고객문의글 개수 조회 -->
+    <select id="qna_count" resultType="int">
+        select count(qna_no) from qnaT Left Join memberT On qnaT.mem_id = memberT.mem_id where businessNum=#{businessNum} and qna_state=1
+    </select>
+
+    <!--고객 문의글 불러오기 -->
+    <select id="partners_qna_list" resultType="QnaVO">
+        select * from (select rowNum rNum, qna_no, m.mem_id, qna_type, qna_title, qna_cont, qna_date, qna_ref, qna_step, qna_level, reply_state, reply_date, m.mem_name
+        from (select*from qnaT where businessNum= #{businessNum} and qna_state=1
+            <if test="answer =='no'">
+            and REPLY_STATE='미답변'</if>
+            <if test="answer =='yes'">
+                and REPLY_STATE='답변완료'
+            </if>
+        order by qna_ref desc, qna_level asc) q, memberT m where q.mem_id = m.mem_id(+)) where rNum &gt;= #{startrow} and rNum &lt; #{endrow}
+             <if test="find_field =='customer_name'">
+              and MEM_NAME =#{find_text}
+             </if>
+             <if test="find_field =='qna_type'">
+                and QNA_TYPE like #{find_text}
+             </if>
+    </select>
+
+    <!--답변글 레벨 증가 -->
+    <update id="reply_levelUp">
+        update qnaT set qna_level=qna_level+1 where qna_ref=#{qna_ref} and qna_level >#{qna_level}
+    </update>
+
+    <!--state 답변완료로 변경 -->
+    <update id="change_state">
+        update qnat set reply_state='답변완료' where qna_ref=#{qna_ref}
+    </update>
+    <!-- 고객문의 글답변 -->
+    <insert id="partners_reply_in"> <!--,실수! -->
+        insert into qnaT (qna_no, mem_id, businessNum, qna_type, qna_title, qna_cont, qna_ref, qna_step, qna_level, reply_state, reply_date)
+        values (qnaT_no_seq.nextval, #{mem_id}, #{businessNum}, #{qna_type}, #{qna_title}, #{qna_cont}, #{qna_ref}, #{qna_step}+1, #{qna_level}+1, '답변완료', sysdate)
+    </insert>
+
+    <!-- 댓글 삭제 -->
+    <delete id="del_reply">
+        delete qnaT where qna_no=#{qna_no}
+    </delete>
+    <!--글 그룹 조회 -->
+    <select id="sel_qnaRef" resultType="int">
+        select count(*) from qnaT where qna_ref= #{qna_ref}
+    </select>
+    <!-- 원본글을 다시 미답변 상태로-->
+    <update id="returnState">
+        update qnaT set reply_state='미답변' where qna_no=#{qna_ref}
+    </update>
+</mapper>

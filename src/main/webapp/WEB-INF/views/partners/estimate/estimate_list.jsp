@@ -27,7 +27,7 @@
     }
 
     #est_list_explain {
-        width: 94%;
+        width: 96%;
         border: 4px solid #C1C1C1;
         padding: 10px 20px;
         margin: 0 auto;
@@ -76,7 +76,7 @@
 
     table#est_list_table {
         margin: 20px auto;
-        width: 97%;
+        width: 100%;
     }
 
     #est_list_table thead {
