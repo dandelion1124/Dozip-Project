@@ -86,10 +86,24 @@
 					</ul>
 					<ul class="top-icons">
 						<c:if test="${empty id}"> <!-- 로그인 전 -->
-							<li><a href="#none" onclick="openLogin();"><i class="fas fa-user"></i></a></li>
+							<li><a href="#none" onclick="openLogin();"><i class="fas fa-user"></i></a>
+								<div class = "sub_menu1">
+									<ul>
+										<li><a href="#" onclick="openLogin()">로그인</a></li>
+										<li><a onclick="openJoin()" style="cursor:pointer;">회원가입</a></li>
+									</ul>
+								</div>
+							</li>
 						</c:if>
 						<c:if test="${!empty id}"> <!-- 로그인 후 -->
-							<li><a href="/dozip/mypage_main"><i class="fas fa-user" style="color:#7e9e7f;"></i></a></li>
+							<li><a href="/dozip/mypage_main"><i class="fas fa-user" style="color:#7e9e7f;"></i></a>
+								<div class = "sub_menu2">
+									<ul>
+										<li><a onclick="location.href='logout_ok'" style="cursor: pointer">로그아웃</a></li>
+										<li><a onclick="location.href='mypage_main'" style = "cursor:pointer">마이페이지</a></li>
+									</ul>
+								</div>
+							</li>
 						</c:if>
 						<li><a href="/dozip/counsel_main"><i class="fa-solid fa-comments"></i></a></li>
 					</ul>

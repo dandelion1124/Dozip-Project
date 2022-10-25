@@ -25,6 +25,7 @@
     <script src="/js/dozip/map.js" defer></script>
     <script src="/js/dozip/portfolio.js" defer></script>
     <script src="/js/dozip/jquery.js"></script>
+    <script src="/js/dozip/member.js"></script>
 
     <%--new 헤더--%>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -60,7 +61,7 @@
                                     <div class = "sub_menu1">
                                         <ul>
                                             <li><a href="#" onclick="openLogin()">로그인</a></li>
-                                            <li><a onclick="location.href = 'member_join'" style="cursor:pointer;">회원가입</a></li>
+                                            <li><a onclick="openJoin()" style="cursor:pointer;">회원가입</a></li>
                                         </ul>
                                     </div>
                             </li>
