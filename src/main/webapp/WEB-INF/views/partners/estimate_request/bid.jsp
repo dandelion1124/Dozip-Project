@@ -14,12 +14,17 @@
 			<form method="post" action="">
 			<div class="request_spot">
 				<h2 class="item_title">입찰의뢰</h2>
-						<div class="search_box">
-					    <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요">
-					    <button class="search-btn" type="submit">
+					<select name="my_bid_option" style="border:1px solid lightgray; width: 50px;">
+						<option value="all">전체</option>
+						<option value="success">입찰 성공</option>
+						<option value="fail">입찰 실패</option>
+					</select>
+					<div class="search_box">
+					    <input class="search-txt" name="find_name" id="find_name" type="text" value="${find_name}" placeholder="검색어를 입력해 주세요"/>
+					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'">
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
-						</div>
+					</div>
 					<div class="my_bid_icon">
 						<a href="/partners/my_bid"
 							class="to_my_bid"><img src="/images/partners/bid_list.png" width="55px" height="55px"></a>
@@ -31,7 +36,7 @@
 						<input type="checkbox" id="filter"> 
 							<label for="filter" class="filter">완료 의뢰 건 제외</label> 
 						<div class="request_list_top_right">
-							<select class="fd_search_filter" id="pr_order" data-self="pr_order" data-type="simple">
+							<select class="fd_search_filter" name="find_field" id="pr_order" data-self="pr_order" data-type="simple">
 								<option value="recent">최신 등록 순</option>
 								<option value="due_date">마감 임박 순</option>
 								<option value="request_budget">예산 규모 순</option>

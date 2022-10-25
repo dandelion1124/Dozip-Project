@@ -196,10 +196,20 @@ public class PartnersController {
      *
      */
     @RequestMapping(value = "/bid") //입찰의뢰
-    public ModelAndView bid(EstimateVO vo, HttpServletResponse response, HttpSession session) throws Exception {
+    public ModelAndView bid(EstimateVO e,HttpServletRequest request, HttpServletResponse response, HttpSession session)
+            throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
         //String p_id=(String) session.getAttribute("p_id");
+
+        String find_name=request.getParameter("find_name");//검색어
+        //String find_field=request.getParameter("find_field");//검색필드
+
+        e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
+        //e.setFind_field(find_field);
+        System.out.println(e.toString());
+
+        //int listcount2 = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
 
         List<EstimateVO> elist = this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기.
 
@@ -217,6 +227,8 @@ public class PartnersController {
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
+        m.addObject("find_name", find_name);
+        //m.addObject("find_field",find_field);
 
         m.setViewName("/partners/estimate_request/bid");
         return m;
@@ -253,7 +265,7 @@ public class PartnersController {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
-        Date parseddate = formatter.parse(e.getEst_dateEnd());
+        Date parseddate = formatter.parse(e.getEst_dateEnd())   ;
         long remaindate = (parseddate.getTime() - now.getTime());
         e.setRemaindate(remaindate/(24*60*60*1000));
         //System.out.println(remaindate);
@@ -282,16 +294,10 @@ public class PartnersController {
         bid.setBid_detail(request.getParameter("bid_detail"));
 
         this.partnersService.insertbid(bid); // 입찰신청하기 입찰 DB에 insert
-//        System.out.println(res);
-//        if(res==0) {
-//            this.partnersService.insertPartnersSub(ps);
-//
-//        }else{
-//            this.partnersService.updatePartnersSub(ps);
-//        }
+
         out.println("<script>");
         out.println("alert('입찰 성공!');");
-        out.println("history.back();");
+        out.println("location='/partners/bid_detail?no="+bid.getEst_num()+"'"); //location=에 매핑주소 자체를 넣는 것
         out.println("</script>");
 
         return null;
@@ -310,13 +316,7 @@ public class PartnersController {
         if(request.getParameter("page") != null) {
             page=Integer.parseInt(request.getParameter("page"));
         }
-//        String find_name=request.getParameter("find_name");//검색어
-//        String find_field=request.getParameter("find_field");//검색
-//        //필드
-//        e.setFind_field(find_field);
-//        e.setFind_name("%"+find_name+"%");
-//        //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
-//        //매핑 대응
+
         int listcount = this.partnersService.getListCount2(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 
@@ -336,8 +336,7 @@ public class PartnersController {
         m.addObject("endpage", endpage);
         m.addObject("maxpage", maxpage);
         m.addObject("listcount", listcount);
-//        m.addObject("find_field",find_field);
-//        m.addObject("find_name", find_name);
+
 
         List<BidVO> list = this.partnersService.selectJoinList(e); //bid테이블 기준으로 estimate테이블 조인해서 가져오기
         System.out.println(list.toString());
@@ -350,6 +349,7 @@ public class PartnersController {
     @RequestMapping(value = "/construct_request") //시공요청
     public ModelAndView construct_request(HttpSession session) throws Exception {
         String businessNum = (String) session.getAttribute("businessNum");
+
 
         List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(businessNum);
 
