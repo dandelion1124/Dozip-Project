@@ -36,4 +36,8 @@ public interface EstimateService {
     PayVO getPay(String cont_no);
 
     int payState(PayVO p);
+
+    void updateEstate(EstimateVO e);
+
+    void updateReject(String bid_num);
 }

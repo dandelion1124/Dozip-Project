@@ -78,7 +78,7 @@
                     <li><a>내정보</a></li>
                     <li><a href="/dozip/my_edit">회원정보수정</a></li>
                     <li><a href="/dozip/my_pwd">비밀번호 변경</a></li>
-                    <li><a>스크랩관리</a></li>
+                    <li><a href="/dozip/my_scrap">스크랩관리</a></li>
                     <li><a href="/dozip/my_review">후기관리</a></li>
                 </ul>
             </li>

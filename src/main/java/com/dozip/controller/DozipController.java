@@ -479,6 +479,22 @@ public class DozipController {
         System.out.println("출력 : "+b.getBid_num());
         this.estimateService.updateState(b);
     }
+    //입찰 업체 거절하기
+    @RequestMapping(value = "my_bid_reject")
+    @ResponseBody
+    public void bidReject(String bid_num) {
+        this.estimateService.updateReject(bid_num);
+    }
+
+    //견적신청(지정)에서 업체가 수락했을 때 계약요청을 보내거나 거절하기
+    @RequestMapping(value = "my_est_select")
+    @ResponseBody
+    public void estSelect(String est_num, String est_check) {
+        EstimateVO e = new EstimateVO();
+        e.setEst_num(est_num);
+        e.setEst_check(est_check);
+        this.estimateService.updateEstate(e);
+    }
 
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
     public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
@@ -941,6 +957,35 @@ public class DozipController {
         mv.addObject("listcount",listcount);
 
         mv.setViewName("/dozip/mypage/mypage_review");
+        return mv;
+    }
+
+    //마이페이지 - 포트폴리오 스크랩 페이지
+    @RequestMapping("my_scrap")
+    public ModelAndView myScrap(ModelAndView mv, HttpServletRequest request){
+
+        //쪽나누기
+        int page = 1; //현재 쪽번호
+        int limit = 5; //한 페이지에 보여지는 개수
+
+        if(request.getParameter("page")!=null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+
+        int listcount=0; /*listcount 받아오는 코드 작성해야 함.*/
+        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
+        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
+        int endpage = maxpage; //마지막페이지
+
+        if(endpage>startpage+5-1) endpage=startpage+5-1;
+
+        mv.addObject("page", page);
+        mv.addObject("startpage", startpage);
+        mv.addObject("endpage",endpage);
+        mv.addObject("maxpage",maxpage);
+        mv.addObject("listcount",listcount);
+
+        mv.setViewName("/dozip/mypage/mypage_scrap");
         return mv;
     }
 

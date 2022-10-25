@@ -48,6 +48,7 @@
     .page_area{
         text-align:center;
         margin-top: 10px;
+        margin-bottom: 100px;
     }
 
 </style>
