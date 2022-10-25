@@ -8,9 +8,8 @@
 /*리뷰 메인 CSS*/
 
 .review_write {
-	position: relative;
-	display: inline-block;
-	float: right;
+	height: 100px;
+	width: 100%;
 }
 
 /* part1 */
@@ -25,9 +24,8 @@
 	font-size: 1.0rem;
 	background-color: #347844;
 	color: white;
-	vertical-align: middle;
+	float: right;
 	font-weight: bold;
-	margin-right: 30px;
 }
 
 #part1_title {
