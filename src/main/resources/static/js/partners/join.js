@@ -112,15 +112,14 @@ function signup_proc() {
         success: function (data) {
             alert(data.status);
             if(data.status ==1){
-                alert('이미 가입된 사업자번호가 있습니다 \n다시 회원가입을 진행해주세요');
+                alert(data.message);
             }
             else if(data.status ==0){
-                alert('회원가입에 성공하였습니다.');
+                alert(data.message);
                 location.href='/partners/main';
             }
         }
     });
-
 }
 
 //사업자 번호 형식 체크
@@ -364,8 +363,6 @@ $(function() {
     });
 });
 
-
-
 /***************************/
 /*회원가입창 개인정보 동의 */
 /**************************/
@@ -410,9 +407,6 @@ $(function() {
 /***************************/
 /*   회원정보 찾기 창 전환 */
 /**************************/
-
-
-
 $(function() {
     $('#findid_btn').click(function() {
         $('#findid_form').show();
@@ -431,10 +425,6 @@ $(function() {
 
     });
 });
-
 $(document).ready(function() {
     $('#findid_btn').css("background", "#659832");
 });
-
-
-
