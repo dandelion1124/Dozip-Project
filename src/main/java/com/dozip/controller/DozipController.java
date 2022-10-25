@@ -321,7 +321,7 @@ public class DozipController {
         return mv;
     }
 
-    @RequestMapping("pay_view")
+    @RequestMapping("pay_view") //결제창
     public ModelAndView payView(ModelAndView mv, String cont_no, String name, String cost){
         mv.addObject("cont_no", cont_no);
         mv.addObject("name", name);
@@ -330,7 +330,7 @@ public class DozipController {
         return mv;
     }
 
-    @RequestMapping("pay_ok")
+    @RequestMapping("pay_ok") // 결제상태 변경
     @ResponseBody
     public HashMap<String, String> payOK(String cont_no, String name, String cost){
         HashMap<String, String> map = new HashMap<String, String>();
@@ -913,6 +913,35 @@ public class DozipController {
         rv.setRe_no(re_no);
         reviewService.insertReview_Photos(rv);
         return "redirect:/dozip/review_main";
+    }
+
+    //마이페이지 - 고객 리뷰 페이지
+    @RequestMapping("my_review")
+    public ModelAndView myReview(ModelAndView mv, HttpServletRequest request){
+
+        //쪽나누기
+        int page = 1; //현재 쪽번호
+        int limit = 5; //한 페이지에 보여지는 개수
+
+        if(request.getParameter("page")!=null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+
+        int listcount=0; /*listcount 받아오는 코드 작성해야 함.*/
+        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
+        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
+        int endpage = maxpage; //마지막페이지
+
+        if(endpage>startpage+5-1) endpage=startpage+5-1;
+
+        mv.addObject("page", page);
+        mv.addObject("startpage", startpage);
+        mv.addObject("endpage",endpage);
+        mv.addObject("maxpage",maxpage);
+        mv.addObject("listcount",listcount);
+
+        mv.setViewName("/dozip/mypage/mypage_review");
+        return mv;
     }
 
 

@@ -58,6 +58,19 @@
         text-decoration: underline;
         color: #347844;
     }
+    #permit_btn{
+        border: none;
+        background-color: #0000FF;
+        color: white;
+        height: 25px;
+        margin-right: 5px;
+    }
+    #reject_btn{
+        border: none;
+        background-color: crimson;
+        color: white;
+        height: 25px;
+    }
 </style>
 
 <%-- 견적신청내역 --%>
@@ -94,8 +107,8 @@
                             <td id="date">${elist[i].est_areaP} 평</td><%--평수--%>
                             <td id="date">${elist[i].est_bud} 원</td><%--예산--%>
                             <td id="date">${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
-                            <td id="date">${elist[i].est_date}</td><%--신청일자--%>
-                            <td id="date">${elist[i].est_dateEnd}</td><%--마감일자--%>
+                            <td id="date">${elist[i].est_date.substring(0,10)}</td><%--신청일자--%>
+                            <td id="date">${elist[i].est_dateEnd.substring(0,10)}</td><%--마감일자--%>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -157,10 +170,10 @@
                     + "<td>" + this.bid_end + "</td>"
                     + "<td>" + this.bid_price + "만원</td>"
                     + "<td>" + this.bid_detail + "</td>"
-                    + "<td>" + this.bid_date + "</td>"
+                    + "<td>" + this.bid_date.substring(0,10) + "</td>"
                     + "<td>" + this.bid_state + "</td>"
-                    + "<td><button type='button' class='permit' name='permit' value='"+this.bid_num+"'>수락</button>"
-                    + "<button type='button' value='"+this.bid_num+"'>거절</button></td></tr>"
+                    + "<td><button type='button' id='permit_btn' class='permit' name='permit' value='"+this.bid_num+"'>수락</button>"
+                    + "<button type='button' id='reject_btn' value='"+this.bid_num+"'>거절</button></td></tr>"
             });
 
             $('#count').html(count);
