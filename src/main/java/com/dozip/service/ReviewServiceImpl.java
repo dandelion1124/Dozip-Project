@@ -42,5 +42,10 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public void insertReview_Photos(ReviewVO rv) {reviewDAO.insertReview_Photos(rv);}
 
+    @Override
+    public void re_count(int re_no) {
+        this.reviewDAO.re_count(re_no);
+    }
+
 
 }

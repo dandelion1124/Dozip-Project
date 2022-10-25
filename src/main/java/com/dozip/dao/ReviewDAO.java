@@ -18,4 +18,6 @@ public interface ReviewDAO {
     void addReview(ReviewVO rv);
     int getReview_num(ReviewVO rv);
     void insertReview_Photos(ReviewVO rv);
+
+    void re_count(int re_no);
 }

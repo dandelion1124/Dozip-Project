@@ -16,6 +16,11 @@
         select * from reviewT where re_no = #{re_no}
     </select>
 
+    <!-- 리뷰 조회수 -->
+    <update id="re_count" parameterType="ReviewVO">
+        update reviewT set re_count = re_count+1 where re_no = #{re_no}
+    </update>
+
     <select id = "getClist" resultType="ContractVO">
         select * from contractT where mem_id=#{mem_id}
     </select>
