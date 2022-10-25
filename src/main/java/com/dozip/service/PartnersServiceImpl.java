@@ -62,9 +62,14 @@ public class PartnersServiceImpl implements PartnersService {
     public void returnState(QnaVO dv) {
         partnersDao.returnState(dv);
     }
+    @Override
+    public int checkBusinessNum(PartnersVO pv) {
+        return partnersDao.checkBusinessNum(pv);
+    }
 
 
     /* minwoo */
+    /* My page */
     @Override
     public PartnersVO getMember(String businessNum) {
         return this.partnersDao.getMember(businessNum);
@@ -74,96 +79,69 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.getPartnersSub(businessNum);
     }
     @Override
-    public void updatePartnersSub(Partners_subVO ps) {
-        partnersDao.updatePartnersSub(ps);
-    }
-
-    @Override
-    public void updatePartners(PartnersVO p) { partnersDao.updatePartners(p); }
-
-    @Override
     public void insertPartnersSub(Partners_subVO ps) {
         partnersDao.insertPartnersSub(ps);
     }
-
     @Override
-    public List<EstimateVO> selectEstimateList() {
-        return partnersDao.selectEstimateList();
+    public void updatePartnersSub(Partners_subVO ps) {
+        partnersDao.updatePartnersSub(ps);
     }
-
-
+    @Override
+    public void updatePartners(PartnersVO p) { partnersDao.updatePartners(p); }
     @Override
     public int checkSub(String businessNum) {
         return partnersDao.checkSub(businessNum);
     }
-
-//    @Override
-//    public void checkremaindate(EstimateVO vo) {
-//        partnersDao.checkremaindate(vo);
-//    }
-
-
+    /* bid */
     @Override
-    public int checkBusinessNum(PartnersVO pv) {
-        return partnersDao.checkBusinessNum(pv);
-    }
-
-    @Override
-    public List<EstimateVO> getAllEstList() {
-        return partnersDao.getAllEstList();
-    }
-
-    @Override
-    public List<BidVO> getBidList() {
-        return partnersDao.getBidList();
-    }
-
-
-    @Override
-    public EstimateVO write_contract(int est_num){
-        return partnersDao.write_contract(est_num);
-    }
-
-    @Override
-    public int insertContract(ContractVO cv) {
-        return partnersDao.insertContract(cv);
-    }
-    
+    public List<EstimateVO> selectEstimateList() { return partnersDao.selectEstimateList(); }
     @Override
     public EstimateVO selectEstimate(String bid_no) {
         return partnersDao.selectEstimate(bid_no);
     }
-
+    @Override
+    public int countBid(String est_num) { return partnersDao.countBid(est_num); }
+    @Override
+    public int checkBid(BidVO b) {
+        return partnersDao.checkBid(b);
+    }
+    /* bid_detail_ok */
     @Override
     public void insertbid(BidVO bid) {
         partnersDao.insertbid(bid);
     }
-
-    @Override
-    public int countBid(String est_num) {
-        return partnersDao.countBid(est_num);
-    }
-
-
     @Override
     public List<BidVO> selectJoinList(EstimateVO e) {
         return this.partnersDao.selectJoinList(e);
     }
-
+    /* construct_request */
     @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
-        return this.partnersDao.selectEstimateListBnum(businessNum);
-    }
-
+    public List<EstimateVO> selectEstimateListBnum(String businessNum) { return this.partnersDao.selectEstimateListBnum(businessNum); }
     @Override
     public int getListCount2(String businessNum) {
         return partnersDao.getListCount2(businessNum);
     }
 
+
+
+
     @Override
-    public int checkBid(BidVO b) {
-        return partnersDao.checkBid(b);
+    public List<EstimateVO> getAllEstList() {
+        return partnersDao.getAllEstList();
     }
+    @Override
+    public List<BidVO> getBidList() {
+        return partnersDao.getBidList();
+    }
+    @Override
+    public EstimateVO write_contract(int est_num){
+        return partnersDao.write_contract(est_num);
+    }
+    @Override
+    public int insertContract(ContractVO cv) {
+        return partnersDao.insertContract(cv);
+    }
+    
 
 
 }
