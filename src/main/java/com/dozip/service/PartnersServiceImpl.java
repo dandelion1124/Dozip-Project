@@ -137,8 +137,11 @@ public class PartnersServiceImpl implements PartnersService {
     public EstimateVO write_contract(int est_num){
         return partnersDao.write_contract(est_num);
     }
+
+    @Transactional
     @Override
     public int insertContract(ContractVO cv) {
+        partnersDao.updateEstimate(cv);
         return partnersDao.insertContract(cv);
     }
 

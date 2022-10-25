@@ -30,6 +30,10 @@ fieldset {
 #f_button{
 	border: none;
 }
+#f_button input {
+	height: 40px;
+}
+
 fieldset>div{
   margin:7px 15px;
 }

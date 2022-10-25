@@ -115,7 +115,7 @@
     <div class="contract_money">
         <span><b>(공사대금)</b></span>
         <div>
-            <p>① 총 공사금액 (￦[<input name="cont_total" id="cont_total" placeholder="입력해주세요" onkeyup="inputNumberFormat(this)">] 원정(부가가치세 별도임)<br></p>
+            <p>① 총 공사금액 (￦[<input name="cont_total" id="cont_total" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">] 만원<br></p>
         </div>
         <script>
             function inputNumberFormat(obj) {
@@ -141,19 +141,19 @@
                 </tr>
                 <tr>
                     <th>1차</th>
-                    <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="입력해주세요" ></td>
+                    <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
                     <td><input type="date" name="cont_date1" id="cont_date1" placeholder="입력해주세요"></td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
-                    <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="입력해주세요" ></td>
+                    <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
                     <td><input type="date" name="cont_date2" id="cont_date2" placeholder="입력해주세요"></td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
-                    <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="입력해주세요" ></td>
+                    <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
                     <td><input type="date" name="cont_date3" id="cont_date3" placeholder="입력해주세요"></td>
                     <th>잔금</th>
                 </tr>
@@ -180,28 +180,28 @@
                     <th colspan="2">수급자(시공자) "을"</th>
                 </tr>
                 <tr>
-                    <th colspan="2">주 소 : <input value="${ev.est_addr}" name="customer_addr"></th>
+                    <th colspan="2">주 소 : <input value="${ev.est_addr}" name="customer_addr" readonly></th>
                     <%--고객 --%>
-                    <th colspan="2">주 소 : <input value="불러와야함" name="partners_addr"></th>
+                    <th colspan="2">주 소 : <input value="불러와야함" name="partners_addr" readonly></th>
                     <%-- 파트너스 --%>
                 </tr>
                 <tr>
-                    <th>상 호 / 성 명 : <input value="${ev.est_name}" size="8" name="customer_name"></th>
+                    <th>상 호 / 성 명 : <input value="${ev.est_name}" size="8" name="customer_name" readonly></th>
                     <%-- 고객 --%>
                     <th class="contract_sign">(서명 또는 인)</th>
-                    <th>상 호 / 성 명 : <input value="${businessName}" size="8" name="partners_name"></th>
+                    <th>상 호 / 성 명 : <input value="${businessName}" size="8" name="partners_name" readonly></th>
                     <%-- 파트너스 --%>
                     <th class="contract_sign">(서명 또는 인)</th>
                 </tr>
                 <tr>
                     <th colspan="2">사업자번호 / 주민번호 :</th>
                     <%-- 고객 --%>
-                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum">
+                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum" readonly>
                     </th>
                     <%-- 파트너스 --%>
                 </tr>
                 <tr>
-                    <th colspan="2">전 화 / FAX : <input value="${ev.est_phone}" name="customer_tel"></th>
+                    <th colspan="2">전 화 / FAX : <input value="${ev.est_phone}" name="customer_tel" readonly></th>
                     <%-- 고객 --%>
                     <th colspan="2">전 화 / FAX : <input name="partners_tel" id="partners_tel"  placeholder="입력해주세요"> </th>
                     <%-- 파트너스 --%>

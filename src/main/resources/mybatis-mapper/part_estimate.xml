@@ -31,6 +31,10 @@
     <select id="get_est" resultType="EstimateVO">
         select * from ESTIMATET where est_num=#{est_num}
     </select>
+    <!--견적서 계약서 '작성완료' 로바꾸기 -->
+    <select id="update_est">
+        update ESTIMATET set EST_CHECK='작성완료' where EST_NUM =#{est_num}
+    </select>
 </mapper>
 
 

@@ -158,6 +158,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public EstimateVO getOneEst(String est_num) {
         return sqlSession.selectOne("get_est",est_num);
     }
+
+    @Override
+    public void updateEstimate(ContractVO cv) {
+        sqlSession.update("update_est",cv);
+    }
 }
 
 

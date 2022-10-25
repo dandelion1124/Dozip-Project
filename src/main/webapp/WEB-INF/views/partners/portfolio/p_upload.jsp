@@ -1,13 +1,59 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
+
+<style>
+	input#sample6_postcode {
+		margin-bottom: 12px;
+	}
+	#portfolio_form input, #portfolio_form select {
+		border:none;
+		background: #FDF5EC;
+		border-radius: 3px;
+		padding: 0 3px;
+	}
+	fieldset#first_area input[type=button], fieldset#first_area input[type=text], fieldset#first_area select {
+		height: 30px;
+	}
+	fieldset#first_area input[type=text]:focus-visible, fieldset#first_area select:focus-visible {
+		background: #F39A49;
+	}
+	fieldset#first_area input[type=button]:hover{
+		background: #F39A49;
+		border: 2px solid #F39A49;
+	}
+
+	#portfolio_form textarea{
+		border:none;
+		background:#FDF5EC;
+	}
+	#portfolio_form fieldset{
+		background: #FBDBBD;
+	}
+	.textCount, .textTotal {
+		font-size: 13px;
+	}
+	#process_message img{
+		width: 40px;
+		margin: 0px 20px;
+		padding-top: 20px;
+	}
+	div#process_message {
+		display: flex;
+		align-items: center;
+		font-size: 20px;
+	}
+</style>
 <div id="introduce_cont">
 	<h2>시공사례등록</h2>
 	<p>
 		직접 시공한 인테리어의 포트폴리오를 등록할 수 있습니다.<br> 등록된 포트폴리오는 메인홈페이지에서 확인 할 수
 		있습니다.
 	</p>
-	<div>
-		<h4>1. 정보입력 ---> 2. 사진등록 ---> 3. 완료</h4>
+	<div id="process_message">
+		<div>정보입력</div>
+		<div><img src="/images/partners/right-arrow.png"></div>
+		<div>사진등록 </div>
+		<div><img src="/images/partners/right-arrow.png"> </div><div>완료</div>
 	</div>
 	<div>
 		<span><b>두집</b>에서 계약한 인테리어를 조회하면 쉽게 주요정보를 입력 할 수 있습니다.</span>
@@ -32,9 +78,7 @@
 				<label>제목</label>
 			</div>
 			<div class="a">
-				<input type="text" name="pf_title" size="30" id="pf_title"
-					placeholder="이보다 더 완벽할 수는 없다"> <span>0/50</span>
-				<!-- 제목 -->
+				<input type="text" name="pf_title" size="30" id="pf_title"placeholder="이보다 더 완벽할 수는 없다"> <span class="textCount">0자</span><span class="textTotal">/50자</span>
 			</div>
 		</div>
 		<div class="inline_div">
@@ -78,7 +122,7 @@
 				<label>주소</label>
 			</div>
 			<input type="text" id="sample6_postcode" readonly placeholder="우편번호"
-				size="4" name="pf_zipcode"> <input type="text" id="sample6_address"  name ="pf_addr1" readonly
+				size="5" name="pf_zipcode"> <input type="text" id="sample6_address"  name ="pf_addr1" readonly
 				placeholder="주소" size="30"> <input type="text"
 				id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소"> <input
 				type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목"
@@ -89,7 +133,7 @@
 			<div id="form_sub_title">
 				<label>평수</label>
 			</div>
-			<input name="pf_area" id="pf_area" size="10"> 평
+			<input type="text" name="pf_area" id="pf_area" size="10"> 평
 
 		</div>
 		<div class="inline_div">
@@ -137,5 +181,15 @@
 		<input type="submit" value="사진등록"> <input type="reset" value="초기화">
 	</fieldset>
 </form>
-
+<script>
+	$('#pf_title').keyup(function (e) {
+		let content = $(this).val();
+		// 글자수 세기
+		if (content.length == 0 || content == '') {
+			$('.textCount').text('0자');
+		} else {
+			$('.textCount').text(content.length + '자');
+		}
+	});
+</script>
 <jsp:include page="../include/footer.jsp" />

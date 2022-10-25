@@ -187,11 +187,11 @@ function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처
 
     /***********************/
     function search_check() {
-        if ($('#search_condition').val() == 'default' && $('#search_text').val() == "") {
-            alert('검색유형을 선택하세요');
-            $('#search_text').val("");
-            return false;
-        }
+        // if ($('#search_condition').val() == 'default' && $('#search_text').val() == "") {
+        //     alert('검색유형을 선택하세요');
+        //     $('#search_text').val("");
+        //     return false;
+        // }
     }
 
     /**********************/
@@ -244,3 +244,8 @@ function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처
             }
         });
     }
+
+    /*
+    포트폴리오 제목 글자수 count
+
+     */
