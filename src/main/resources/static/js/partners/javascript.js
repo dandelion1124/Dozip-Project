@@ -192,18 +192,6 @@ function initAjax() { //브라우저에 따른 AjaxObject 인스턴스 분기처
             $('#search_text').val("");
             return false;
         }
-        /*
-        if ($('#search_condition').val() != 'default' && $('#search_text').val() == "") {
-            alert('검색어를 입력하세요');
-            $('#search_text').focus();
-            return false;
-        }
-
-        if($(':radio[name="answer"]:checked').length < 1) {
-            alert('검색유형을 선택하세요');
-            return false;
-
-        }*/
     }
 
     /**********************/

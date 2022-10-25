@@ -73,65 +73,47 @@ public class PartnersController {
         HashMap<String, Object> resultMap = new HashMap<>();
         ObjectMapper mapper = new ObjectMapper();
         PartnersVO pv = mapper.readValue(data, PartnersVO.class);
-
-
-        System.out.println(passwordEncoder.encode(pv.getP_Pw()));
-        pv.setP_Pw(passwordEncoder.encode(pv.getP_Pw()));
-
-
+        pv.setP_Pw(passwordEncoder.encode(pv.getP_Pw())); //비밀번호 암호화
         int result = partnersService.checkBusinessNum(pv);
 
         if (result == 1) {
             resultMap.put("status", 1);
+            resultMap.put("message", "이미 가입된 사업자번호가 있습니다 \\ n다시 회원가입을 진행해주세요");
+
         } else {
             resultMap.put("status", 0);
+            resultMap.put("message", "회원가입에 성공하였습니다");
             partnersService.insertPartners(pv);
         }
         return resultMap;
     }//partners_join_ok
 
-    //파트너스 아이디찾기
-    @PostMapping("/partners_findid")
-    public String partners_findid(String findid_business_num, String findid_pTel, String findid_email,
-                                  HttpServletResponse response) throws Exception {
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
+    //파트너스 정보 찾기 페이지
+    @RequestMapping("partners_findinfo")
+    public String partners_findinfo() {
+        return "/partners/join/find_info";
+    }//partners_findinfo()
 
+    //파트너스 아이디찾기
+    @ResponseBody
+    @RequestMapping("/partners_findid")
+    public HashMap<String,Object> partners_findid(String findid_business_num, String findid_pTel, String findid_email, HttpServletResponse response) throws Exception {
+        HashMap<String, Object> resultMap = new HashMap<>();
         //넘어온정보 알맞게 가공한후 (전화번호)
         findid_pTel = findid_pTel.replaceAll("-", "");
 
         //사업자 번호를 기준으로 db를 통해 정보 조회한후
         PartnersVO fv = partnersService.getPartnersInfo2(findid_business_num);
 
-        //넘어온 정보와 db 값 비교
-        try {
-            //이메일 정보를 가공한후
-            String dbEmail = fv.getP_MailId() + "@" + fv.getP_MailDomain();
-            String db_business_num = fv.getBusinessNum();
-            String db_pTel = fv.getP_Tel();
-
-            String email_id = fv.getP_MailId();
-            String email_domain = fv.getP_MailDomain();
-            String db_email = email_id + "@" + email_domain;
-
-            if (db_business_num.equals(findid_business_num) && db_pTel.equals(findid_pTel) && db_email.equals(findid_email)) {
-                out.println("<script>");
-                out.println("alert('당신의 아이디는 " + fv.getP_Id() + " 입니다.')");
-                out.println("location='/partners/main'");
-                out.println("</script>");
-            } else {
-                out.println("<script>");
-                out.println("alert('일치하는 정보가 없습니다!')");
-                out.println("location='/partners/main'");
-                out.println("</script>");
-            }
-        } catch (Exception e) {
-            out.println("<script>");
-            out.println("alert('일치하는 정보가 없습니다!')");
-            out.println("location='/partners/main'");
-            out.println("</script>");
+        if(fv==null || !findid_pTel.equals(fv.getP_Tel()) || !findid_email.equals(fv.getP_MailId() + "@" + fv.getP_MailDomain())) {
+            resultMap.put("status",0);
+            resultMap.put("message", "일치하는 정보 없음");
         }
-        return null;
+        else{
+            resultMap.put("status",1);
+            resultMap.put("message", "당신의 아이디는 " + fv.getP_Id() + " 입니다");
+        }
+        return resultMap;
     }//partners_findid()
 
     //로그인 인증
@@ -161,19 +143,12 @@ public class PartnersController {
         return resultMap;
     }//partners_login_ok
 
-    //파트너스 정보 찾기 페이지
-    @GetMapping("partners_findinfo")
-    public String partners_findinfo() {
-        return "/partners/join/find_info";
-    }//partners_findinfo()
-
     //로그아웃
     @RequestMapping("/logout")
     public ModelAndView partners_logout(HttpSession session) {
         session.invalidate();
         return new ModelAndView("redirect:/partners/main");
     }//partners_logout
-
 
 
     /*    요금제
