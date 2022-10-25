@@ -15,7 +15,7 @@
         <div id="signup_title">
             <a href="/partners/main"> <img src="/images/partners/signup_logo.png" alt="메인로고"></a>
         </div>
-        <form method="post" id="signupForm" onsubmit="return signup_check();"> <%--"  --%>
+        <form method="post" id="signupForm">
             <div class="info">
                 <label for="businessName">사업자명</label>
                 <input type="text" id="businessName" name="businessName" placeholder="업체명을 입력해주세요">
@@ -100,9 +100,11 @@
 
             </div>
             <div class=signup_submit>
-                <input type="submit" value="가입하기"></div>
+                <input type="button" value="가입하기" onclick="signup_proc()"></div>
         </form>
+        <script>
 
+        </script>
     </div>
     <jsp:include page="../include/footer.jsp"/>
     <script src="/js/partners/join.js"></script>

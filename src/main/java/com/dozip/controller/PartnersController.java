@@ -4,6 +4,8 @@ import com.dozip.service.PartnersService;
 import com.dozip.vo.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,8 @@ public class PartnersController {
     @Autowired
     private PartnersService partnersService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/main") //파트너스 메인
     public String partners() {
@@ -70,9 +74,12 @@ public class PartnersController {
         ObjectMapper mapper = new ObjectMapper();
         PartnersVO pv = mapper.readValue(data, PartnersVO.class);
 
-        System.out.println(data);
+
+        System.out.println(passwordEncoder.encode(pv.getP_Pw()));
+        pv.setP_Pw(passwordEncoder.encode(pv.getP_Pw()));
+
+
         int result = partnersService.checkBusinessNum(pv);
-        System.out.println(result);
 
         if (result == 1) {
             resultMap.put("status", 1);
@@ -136,11 +143,12 @@ public class PartnersController {
         ObjectMapper mapper = new ObjectMapper();
         PartnersVO pv = mapper.readValue(data, PartnersVO.class);
         PartnersVO pInfo = partnersService.getPartnersInfo(pv.getP_Id()); //파트너스 아이디를 기준으로 파트너스 정보를 가져옴
+        boolean pw_check =passwordEncoder.matches(pv.getP_Pw(),pInfo.getP_Pw());//인코딩전 비밀번호와 인코딩된비밀번호를 비교
 
         if (pInfo == null) {
             resultMap.put("status", 1);
         } else {
-            if (!pInfo.getP_Pw().equals(pv.getP_Pw())) {
+            if (!pw_check) {
                 resultMap.put("status", 2);
             } else {
                 resultMap.put("status", 0);

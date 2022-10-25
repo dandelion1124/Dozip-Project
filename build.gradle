@@ -38,7 +38,7 @@ dependencies {
     implementation('javax.servlet:jstl')
 
     //spring-security -> 개발 중
-   // implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 
 
     //JSON 라이브러리
