@@ -43,8 +43,13 @@ public class DozipController {
     private ReviewService reviewService;
 
     @RequestMapping(value = "home") //두집 홈 화면
-    public String dozip(){
-        return "/dozip/index";
+    public ModelAndView dozip(ModelAndView mv){
+
+        List<PortfolioVO> plist = new ArrayList<PortfolioVO>();
+        plist = this.portfolioService.getAllList();
+        mv.addObject("plist",plist);
+        mv.setViewName("/dozip/index");
+        return mv;
     }
 
     @GetMapping("login")//로그인페이지 이동
