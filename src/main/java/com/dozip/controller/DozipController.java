@@ -824,6 +824,8 @@ public class DozipController {
 
         ReviewVO getDetail = this.reviewService.getDetail(re_no); //리뷰 정보 re_no기준으로 가져오기
 
+        this.reviewService.re_count(re_no); //리뷰 조회수
+
         mv.addObject("re",getDetail);
 
         mv.setViewName("/dozip/review/review_detail");
@@ -898,7 +900,7 @@ public class DozipController {
             }
         }
 
-        String uploadRPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
+        String uploadRPath = "C:\\Users\\johnny\\Documents\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
 
 //       테스트 시 각자 폴더 경로 주석 풀어서 잡아주세요~
 //       String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //호철 학원 PC upload 경로

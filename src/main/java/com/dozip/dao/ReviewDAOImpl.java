@@ -44,5 +44,10 @@ public class ReviewDAOImpl implements ReviewDAO {
     @Override
     public void insertReview_Photos(ReviewVO rv) {sqlSession.insert("review_photos",rv);}
 
+    @Override
+    public void re_count(int re_no) {
+        this.sqlSession.update("re_count", re_no);
+    }
+
 
 }

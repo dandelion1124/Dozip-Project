@@ -17,4 +17,6 @@ public interface ReviewService {
     ContractVO getOneCont(String cont_no);
     int addReview(ReviewVO rv);
     void insertReview_Photos(ReviewVO rv);
+
+    void re_count(int re_no);
 }
