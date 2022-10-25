@@ -139,7 +139,7 @@
 
     <div class="part4" style="background-color: white;">
 			<span class="part_title">
-				<a id="part4_link" href="portfolio.do"><p>포트폴리오 보러가기</p></a>
+				<a id="part4_link" href="port"><p>포트폴리오 보러가기</p></a>
 			</span>
 
         <div id="part4_area">
@@ -149,7 +149,7 @@
                     <c:forEach var="i" begin="0" end="2" step="1">
                         <div class="card">
                             <div class="card_image">
-                                <img class="ho" onclick="location.href='port_detail.do?pf_no=${plist[i].pf_no}';"
+                                <img class="ho" onclick="location.href='port_detail?pf_no=${plist[i].pf_no}';"
                                      src='${plist[i].pf_photo1}'/>
                                     <%-- 클릭시 글번호를 넣어 상세로 연결 --%>
                             </div>
@@ -172,12 +172,12 @@
 
     <div id="part5">
 				<span class="part_title">
-					<a id="part5_link" href="review.do"><p>더 많은 후기 보러가기</p></a>
+					<a id="part5_link" href="review_main"><p>더 많은 후기 보러가기</p></a>
 				</span>
         <div id="part5_area">
 
             <div class="part5_inner">
-                <div><a class="part5_img" href="review_detail.do">
+                <div><a class="part5_img" href="review_detail">
                     <img src="/images/dozip/review1.jpg"/>
                 </a></div>
                 <div class="part5_title"><p>깔끔한 주방 인테리어</p></div>
@@ -188,7 +188,7 @@
                 <p></p>
             </div>
             <div class="part5_inner">
-                <div><a class="part5_img" href="review_detail.do">
+                <div><a class="part5_img" href="review_detail">
                     <img src="/images/dozip/review2.jpg"/>
                 </a></div>
                 <div class="part5_title"><p>아늑하고 분위기 있는 침실</p></div>
@@ -199,7 +199,7 @@
                 <p></p>
             </div>
             <div class="part5_inner">
-                <div><a class="part5_img" href="review_detail.do">
+                <div><a class="part5_img" href="review_detail">
                     <img src="/images/dozip/review3.jpg"/>
                 </a></div>
                 <div class="part5_title"><p>작업을 위한 작업실 공사</p></div>
