@@ -372,6 +372,27 @@ public class PartnersController {
      *
      *  */
 
+    @RequestMapping(value = "/estimate_list")
+    public String estimate_list(Model model) {  // 견적목록
+        //est_check 이 대기중이 아니라면 견적 목록 가져옴
+        List<EstimateVO> elist = partnersService.getAllEstList();
+        //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
+        List<BidVO> blist = partnersService.getBidList();
+        model.addAttribute("blist",blist);
+        model.addAttribute("elist",elist);
+        return "/partners/estimate/estimate_list";
+    }
+    @RequestMapping("/detail") //견적 상세정보
+    public ModelAndView estimate_detail(@RequestParam String est_num){
+        BidVO bv=partnersService.getOneBid(est_num);
+        EstimateVO ev=partnersService.getOneEst(est_num);
+
+
+        ModelAndView mv = new ModelAndView("/partners/estimate/estimate_detail");
+        mv.addObject("bv", bv);
+        mv.addObject("ev", ev);
+        return mv;
+    }
 
     /*내 공사
      *

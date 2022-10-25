@@ -149,6 +149,15 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.insert("contract_in",cv);
     }
 
+    @Override
+    public BidVO getOneBid(String est_num) {
+        return sqlSession.selectOne("get_bid", est_num);
+    }
+
+    @Override
+    public EstimateVO getOneEst(String est_num) {
+        return sqlSession.selectOne("get_est",est_num);
+    }
 }
 
 

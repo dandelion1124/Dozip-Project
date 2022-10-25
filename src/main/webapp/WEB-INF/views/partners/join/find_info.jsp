@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="/css/partners/join_style.css">
 <script src="/js/partners/jquery.js"></script>
 <script src="/js/partners/join.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 	<article id="join_wrap">

@@ -7,6 +7,7 @@
     <title>파트너스 회원가입</title>
     <link rel="stylesheet" href="/css/partners/join_style.css">
     <script src="/js/partners/jquery.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body>

@@ -46,16 +46,7 @@ public class HochulTestController {
         return null;
     }//partners_findpwd()
 
-    @RequestMapping(value = "/estimate_list")
-    public String estimate_list(Model model) {  // 견적목록
-        //est_check 이 대기중이 아니라면 견적 목록 가져옴
-        List<EstimateVO> elist = partnersService.getAllEstList();
-        //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
-        List<BidVO> blist = partnersService.getBidList();
-        model.addAttribute("blist",blist);
-        model.addAttribute("elist",elist);
-        return "/partners/estimate/estimate_list";
-    }
+
 
     @RequestMapping("/write_contract") //계약서 보기
     public String write_contract(int est_num, EstimateVO ev, Model model, HttpSession session){
@@ -83,11 +74,7 @@ public class HochulTestController {
 //        resultMap.put("status", "안녕하세요");
         return resultMap;
     }
-    @RequestMapping("/detail") //견적 상세정보
-    public String estimate_detail(){
 
-        return "/partners/estimate/estimate_detail";
-    }
     @RequestMapping("load_info")
     public String load_info(Model model) {
         model.addAttribute("cost", 40);

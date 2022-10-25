@@ -30,13 +30,13 @@ function login_proc(){
         datatype: "json",
         success: function (data) {
             if(data.status ==1)  {
-                swal(data.message)
+                alert(data.message)
             }
             else if(data.status==2) {
-                swal(data.message)
+                alert(data.message)
             }
             else {
-                swal(data.message)
+                alert(data.message)
                 location.href='/partners/main';}
         }
     });
@@ -115,12 +115,11 @@ function signup_proc() {
         },
         datatype: "json",
         success: function (data) {
-            swal(data.status);
             if(data.status ==1){
-                swal(data.message);
+                alert(data.message);
             }
             else if(data.status ==0){
-                swal(data.message);
+                alert(data.message);
                 location.href='/partners/main';
             }
         }
