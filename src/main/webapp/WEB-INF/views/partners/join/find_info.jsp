@@ -21,37 +21,69 @@
 			</div>
 
 			<div id=findinfo_form>
-				<form id="findid_form" action="partners_findid" method="post">
+				<form id="findid_form" method="post">
 					<div>
 						<div class="findinfo_label">
 							<label>사업자 등록번호</label>
 						</div><div>
-							<input type="text" name="findid_business_num" placeholder="000-00-00000" required>
+							<input type="text" id="findid_business_num" placeholder="000-00-00000" required>
 						</div>
 					</div>
 					<div>
 						<div class="findinfo_label">
 							<label>가입시 등록한 핸드폰 번호</label>
 						</div><div>
-							<input type="text" name="findid_pTel" placeholder="000-0000-0000" required>
+							<input type="text" id="findid_pTel" placeholder="000-0000-0000" required>
 						</div>
 					</div>
 					<div>
 						<div class="findinfo_label">
 							<label>이메일</label>
 						</div><div>
-							<input type="email" name="findid_email" required>
+							<input type="email" id="findid_email"required>
 						</div>
 					</div>
 					<div class="findinfo_findbtn">
 						<div>
-							<input type="submit" value="아이디 찾기">
+							<input type="button" value="아이디 찾기" onclick="partners_findid()">
 						</div>
 						<div>
 							<input type="reset" value="취소">
 						</div>
 					</div>
 				</form>
+
+
+					<script>
+					function partners_findid(){
+						const findid_business_num=document.querySelector('#findid_business_num').value;
+						const findid_pTel=document.querySelector('#findid_pTel').value;
+						const findid_email=document.querySelector('#findid_email').value;
+
+						$.ajax({
+							type: 'post',
+							url: 'partners_findid',
+							data: {
+								findid_business_num:findid_business_num,
+								findid_pTel:findid_pTel,
+								findid_email:findid_email
+							},
+							datatype: "json",
+							success: function (data) {
+								if(data.status==1){
+									alert(data.message);
+								}
+								else{
+									alert(data.message);
+								}
+							}
+						});
+					}
+				</script>
+
+
+
+
 				<form action="partners_findpwd" id="findpwd_form" method="post">
 					<div>
 						<div class="findinfo_label">
