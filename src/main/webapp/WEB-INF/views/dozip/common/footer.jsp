@@ -13,7 +13,7 @@
 					<li><a href="#">회사소개</a></li>
 					<li><a href="#">개인정보처리방침</a></li>
 					<li><a href="#">이용약관</a></li>
-					<li><a href="/partners/main">파트너스 페이지</a></li>
+					<li><a href="/partners/main" target='_blank'>파트너스 페이지</a></li>
 				</ul>
 			</nav>
 

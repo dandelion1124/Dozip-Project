@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <style>
@@ -34,8 +35,11 @@
 
     table#est_list_table {
         margin: 20px;
+        border-collapse: collapse;
     }
-
+    thead th {
+        border: 1px solid #eee;
+    }
     table#est_list_table input[type=button] {
         background: none;
         border: none;
@@ -46,6 +50,9 @@
         text-decoration: underline;
         font-weight: bolder;
         color: blue;
+    }
+    tbody td {
+        text-align: center;
     }
 
     #write_contract_btn {
@@ -95,7 +102,7 @@
     <th></th>
     <th>견적서번호</th>
     <th>시공상세정보</th>
-    <th>공사대금(천원)</th>
+    <th>공사대금(만원)</th>
     <th>시공일정</th>
     <th>계약진행상황</th>
     <th>계약날짜</th>
@@ -128,8 +135,8 @@
             <tr>
                 <td><input type="checkbox"></td>
                 <td>${e.est_num}</td>
-                <td><input type="button" value="${e.est_name} (테스트)" onclick="est_detail()"></td>
-                <td>${b.bid_price}</td>
+                <td><input type="button" value="${e.est_name} (테스트)" onclick="est_detail(${e.est_num})"></td>
+                <td><fmt:formatNumber value="${b.bid_price}" type="number"/>만원</td>
                 <td>${b.bid_start} ~ ${b.bid_end}</td>
                 <td>
                     <button id="write_contract_btn" onclick="write_contract(${e.est_num})"> 계약서작성하기</button>
@@ -209,7 +216,7 @@
         </table>
 
         <script>
-        function est_detail(){
+        function est_detail(est_num){
         var popupWidth = 910;
         var popupHeight = 1000;
 
@@ -217,21 +224,10 @@
         // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
         var popupY= (window.screen.height / 2) - (popupHeight / 2);
         // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-        window.open('./detail', 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX + 'resizable=no');
-        /*
-        겟 방식으로 받아서 아작스 처리
-        $.ajax({
-        type:"post",
-        url:'loadportfolio_info.do',
-        data:{
-        business_num:$business_num
-        },
-        datatype:"text",
-        success: function(result){
-        window.open( "./portfolio/load_info.jsp", "Child", "width=800, height=300, top=500, left=500");
+        window.open(`./detail?est_num=`+est_num, 'Child','width='+ popupWidth+ ', height='+popupHeight+ ', top='+ popupY+', left='+ popupX + 'resizable=no');
         }
-        });*/
-        }
+
+
 
         function est_cancel() {
         confirm('해지 하실 경우 계약금이 패널티로 부과됩니다. 해지하시겠습니까?');

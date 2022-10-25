@@ -141,8 +141,15 @@ public class PartnersServiceImpl implements PartnersService {
     public int insertContract(ContractVO cv) {
         return partnersDao.insertContract(cv);
     }
-    
 
+    @Override
+    public BidVO getOneBid(String est_num) {
+        return partnersDao.getOneBid(est_num);
+    }
 
+    @Override
+    public EstimateVO getOneEst(String est_num) {
+        return partnersDao.getOneEst(est_num);
+    }
 }
 

@@ -1,13 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="/js/partners/jquery.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 <style>
+    table input, #cont_total,#cont_date
+    {
+        border: none;
+        color: #0064CD;
+    }
+    #cont_date{
+        font-size: 18px;
+    }
     div.contract_title {
         font-size: 33px;
         text-align: center;
         margin-bottom: 30px;
     }
-
     #contract_table1 {
         border: 1px solid gray;
         border-collapse: collapse;
@@ -15,6 +26,10 @@
         margin: 7px 0;
         font-size: 16px;
         width: 100%;
+    }
+    #contract_table1 input{
+        font-size: 16px;
+
     }
 
     #contract_table2 {
@@ -65,7 +80,7 @@
 <form method="post" id="contract_form">
     <input type="hidden" value="${ev.mem_id}" name="mem_id">
     <input type="hidden" value="${ev.est_num}" name="est_num">
-    <h4>${ev.est_num} 번견적서 (테스트)</h4>
+    <h4>NO-${ev.est_num}</h4>
     <div class="contract_title">인테리어 표준계약서</div>
     <div class="contract_summary">
         <span><b>(공사개요)</b></span>
@@ -73,25 +88,25 @@
             <tr>
                 <th>공사명</th>
                 <th colspan="2">
-                    <input value="${ev.est_zoning} / ${ev.est_use}" name="cont_title">
+                    <input value='${ev.est_use} 시공의뢰(${ev.est_detail})' name="cont_title" size="40" readonly>
                 </th>
             </tr>
             <tr>
                 <th>공사장소(면적)</th>
                 <th colspan="2" class="contract_area">
-                    <p><input value="${ev.est_addr}" name="cont_location"></p>
-                    <p> (면적 : <input type="text" value="${ev.est_areaP}" size="4" name="cont_area"> m<sup>2</sup>) </p>
+                    <p><input value="${ev.est_addr}" name="cont_location" readonly></p>
+                    <p> (면적 : <input type="text" value="${ev.est_areaP}" size="4" name="cont_area" readonly> m<sup>2</sup>) </p>
                 </th>
             </tr>
             <tr>
                 <th rowspan="2">공사기간</th>
-                <th>착 공</th>
-                <td><input type="date" value="${ev.est_start}" name="cont_start">
+                <th>공사시작일</th>
+                <td><input type="date" value="${ev.est_start}" name="cont_start" readonly>
                 </td>
             </tr>
             <tr>
-                <th>준 공</th>
-                <td><input type="date" value="${ev.est_end}" name="cont_end">
+                <th>공사완료일</th>
+                <td><input type="date" value="${ev.est_end}" name="cont_end" readonly>
                 </td>
             </tr>
         </table>
@@ -100,8 +115,21 @@
     <div class="contract_money">
         <span><b>(공사대금)</b></span>
         <div>
-            <p>① 총 공사금액 (￦[<input value="sample" name="cont_total">] 원정(부가가치세 별도임)<br></p>
+            <p>① 총 공사금액 (￦[<input name="cont_total" id="cont_total" placeholder="입력해주세요" onkeyup="inputNumberFormat(this)">] 원정(부가가치세 별도임)<br></p>
         </div>
+        <script>
+            function inputNumberFormat(obj) {
+                obj.value = comma(uncomma(obj.value));
+            }
+            function comma(str) {
+                str = String(str);
+                return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+            }
+            function uncomma(str) {
+                str = String(str);
+                return str.replace(/[^\d]+/g, '');
+            }
+        </script>
         <div>
             <table id="contract_table2" border="1">
                 <tr>
@@ -113,20 +141,20 @@
                 </tr>
                 <tr>
                     <th>1차</th>
-                    <td> ￦<input value="sample" name="cont_cost1"></td>
-                    <td><input type="date" value="2022-10-22" name="cont_date1"></td>
+                    <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="입력해주세요" ></td>
+                    <td><input type="date" name="cont_date1" id="cont_date1" placeholder="입력해주세요"></td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
-                    <td> ￦<input value="sample" name="cont_cost2"></td>
-                    <td><input type="date" value="2022-10-25" name="cont_date2"></td>
+                    <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="입력해주세요" ></td>
+                    <td><input type="date" name="cont_date2" id="cont_date2" placeholder="입력해주세요"></td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
-                    <td> ￦<input value="sample" name="cont_cost3"></td>
-                    <td><input type="date" value="2022-10-30" name="cont_date3"></td>
+                    <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="입력해주세요" ></td>
+                    <td><input type="date" name="cont_date3" id="cont_date3" placeholder="입력해주세요"></td>
                     <th>잔금</th>
                 </tr>
             </table>
@@ -137,7 +165,12 @@
         </br>
         <div>
             <p style="text-align:center;">
-                <input type="date" value="2022-10-19" name="cont_date"></p>
+                <jsp:useBean id="now" class="java.util.Date" />
+                <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" var="today" />
+
+                <input type="text" value="${today}" name="cont_date" id="cont_date" size="12" readonly>
+
+            </p>
         </div>
         </br>
         <div>
@@ -147,30 +180,30 @@
                     <th colspan="2">수급자(시공자) "을"</th>
                 </tr>
                 <tr>
-                    <th colspan="2">주 소 : <input value="sample" name="customer_addr"></th>
+                    <th colspan="2">주 소 : <input value="${ev.est_addr}" name="customer_addr"></th>
                     <%--고객 --%>
-                    <th colspan="2">주 소 : <input value="sample" name="partners_addr"></th>
+                    <th colspan="2">주 소 : <input value="불러와야함" name="partners_addr"></th>
                     <%-- 파트너스 --%>
                 </tr>
                 <tr>
-                    <th>상 호 / 성 명 : <input value="${ev.est_name}" size="5" name="customer_name"></th>
+                    <th>상 호 / 성 명 : <input value="${ev.est_name}" size="8" name="customer_name"></th>
                     <%-- 고객 --%>
                     <th class="contract_sign">(서명 또는 인)</th>
-                    <th>상 호 / 성 명 : <input value="sample" size="5" name="partners_name"></th>
+                    <th>상 호 / 성 명 : <input value="${businessName}" size="8" name="partners_name"></th>
                     <%-- 파트너스 --%>
                     <th class="contract_sign">(서명 또는 인)</th>
                 </tr>
                 <tr>
                     <th colspan="2">사업자번호 / 주민번호 :</th>
                     <%-- 고객 --%>
-                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum" readonly>
+                    <th colspan="2">사업자번호 / 주민번호 : <input value="${businessNum}" size="10" name="businessNum">
                     </th>
                     <%-- 파트너스 --%>
                 </tr>
                 <tr>
                     <th colspan="2">전 화 / FAX : <input value="${ev.est_phone}" name="customer_tel"></th>
                     <%-- 고객 --%>
-                    <th colspan="2">전 화 / FAX : <input value="sample" name="partners_tel"></th>
+                    <th colspan="2">전 화 / FAX : <input name="partners_tel" id="partners_tel"  placeholder="입력해주세요"> </th>
                     <%-- 파트너스 --%>
                 </tr>
             </table>
@@ -183,6 +216,14 @@
     </div>
     <script>
         function contract_write() {
+            if($.trim($('#cont_total').val())=='' || $.trim($('#cont_cost1').val())=='' ||
+                $.trim($('#cont_date1').val())==''|| $.trim($('#cont_cost2').val())=='' ||
+                $.trim($('#cont_date2').val())==''|| $.trim($('#cont_cost3').val())=='' ||
+                $.trim($('#cont_date3').val())=='' || $.trim($('#partners_tel').val())=='')
+            {
+                swal('NOTICE','계약 내용을 빠짐없이 입력해주세요','error');
+                return false;
+            }
             function params_list() {
                 var params = {};  //배열 선언
                 var data = $("#contract_form").serializeArray(); //폼태그에 있는 데이터 담기

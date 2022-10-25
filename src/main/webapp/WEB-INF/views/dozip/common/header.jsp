@@ -82,7 +82,7 @@
 						<li><a href="/dozip/port">포트폴리오</a></li>
 						<li><a href="/dozip/review_main">고객후기</a></li>
 						<li><a href="">스토리</a></li>
-						<li><a href="/partners/main">파트너스</a></li>
+						<li><a href="/partners/main" target='_blank'>파트너스</a></li>
 					</ul>
 					<ul class="top-icons">
 						<c:if test="${empty id}"> <!-- 로그인 전 -->
