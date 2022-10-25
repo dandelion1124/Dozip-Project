@@ -58,6 +58,19 @@
         text-decoration: underline;
         color: #347844;
     }
+    #agree_btn {
+        border: none;
+        background-color: #0000FF;
+        color: white;
+        height: 25px;
+    }
+    #reject_btn {
+        border: none;
+        background-color: crimson;
+        color: white;
+        height: 25px;
+
+    }
 </style>
 
 <%-- 견적신청내역 --%>
@@ -76,10 +89,11 @@
         <div class="my_apply_cont">
             <table class="my_apply_table">
                 <tr>
-                    <th>번호</th> <th>신청날짜</th> <th>공간유형</th> <th>공간선택</th> <th>평수</th> <th>예산</th> <th>업체명</th> <th>진행상황</th>
+                    <th>번호</th> <th>신청날짜</th> <th>공간유형</th> <th>공간선택</th> <th>평수</th>
+                    <th>예산</th> <th>업체명</th> <th>진행상황</th> <th>계약진행</th>
                 </tr>
                 <c:if test="${fn:length(elist) == 0}">
-                    <tr><td colspan="8"> 등록된 글이 없습니다.</td> </tr>
+                    <tr><td colspan="9"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="i" begin="0" end="${fn:length(elist)-1}" step="1">
@@ -88,13 +102,20 @@
                                 <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
                                 <c:out value="${number}"/>
                             </td>
-                            <td id="date">${elist[i].est_date}</td><%--신청날짜--%>
-                            <td id="date">${elist[i].est_zoning}</td><%--공간유형--%>
-                            <td id="date">${elist[i].est_detail}</td><%--공간선택--%>
-                            <td id="date">${elist[i].est_areaP}</td><%--평수--%>
-                            <td id="date">${elist[i].est_bud}</td><%--예산--%>
-                            <td id="date">${elist[i].businessName}</td><%--업체명--%>
-                            <td id="date">${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
+                            <td>${elist[i].est_date.substring(0,10)}</td><%--신청날짜--%>
+                            <td>${elist[i].est_zoning}</td><%--공간유형--%>
+                            <td>${elist[i].est_detail}</td><%--공간선택--%>
+                            <td>${elist[i].est_areaP}</td><%--평수--%>
+                            <td>${elist[i].est_bud}</td><%--예산--%>
+                            <td>${elist[i].businessName}</td><%--업체명--%>
+                            <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
+                            <td>
+                                <c:if test="${elist[i].est_check=='수락'}">
+                                    <button type="button" id="agree_btn">계약요청</button>
+                                    <button type="button" id="reject_btn">취소</button>
+                                </c:if>
+                                <c:if test="${elist[i].est_check!='수락'}">-</c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                 </c:if>
