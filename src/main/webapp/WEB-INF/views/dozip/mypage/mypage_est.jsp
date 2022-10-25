@@ -60,13 +60,13 @@
     }
     #agree_btn {
         border: none;
-        background-color: #0000FF;
+        background-color: #3333FF;
         color: white;
         height: 25px;
     }
     #reject_btn {
         border: none;
-        background-color: crimson;
+        background-color: #FF0033;
         color: white;
         height: 25px;
 
@@ -111,8 +111,8 @@
                             <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
                                 <c:if test="${elist[i].est_check=='수락'}">
-                                    <button type="button" id="agree_btn">계약요청</button>
-                                    <button type="button" id="reject_btn">취소</button>
+                                    <button type="button" id="agree_btn" value="${elist[i].est_num}">계약요청</button>
+                                    <button type="button" id="reject_btn" value="${elist[i].est_num}">거절</button>
                                 </c:if>
                                 <c:if test="${elist[i].est_check!='수락'}">-</c:if>
                             </td>
@@ -140,5 +140,50 @@
     <p id="my_est_text">견적신청을 통해 견적을 받아보세요!&nbsp;&nbsp;<a href="/dozip/apply">견적신청 하러가기</a></p>
 </div>
 
+<script>
+    document.getElementById('agree_btn').onclick = function (){
+        var est_num = $('#agree_btn').val();
+        var est_check = '계약요청';
+
+        alert("해당 업체에 계약요청을 보내겠습니까?");
+
+        $.ajax({
+            url : '/dozip/my_est_select',
+            type : 'post',
+            data : {
+                est_num : est_num,
+                est_check : est_check
+            },
+            success : function(data) {
+                location.reload();
+            },
+            error:function(error){
+                alert(error);
+            }
+        })
+    }
+    document.getElementById('reject_btn').onclick = function (){
+        var est_num = $('#reject_btn').val();
+        var est_check = '거절';
+
+        alert("해당 업체와의 계약을 거절 하시겠습니까?");
+
+        $.ajax({
+            url : '/dozip/my_est_select',
+            type : 'post',
+            data : {
+                est_num : est_num,
+                est_check : est_check
+            },
+            success : function(data) {
+                location.reload();
+            },
+            error:function(error){
+                alert(error);
+            }
+        })
+    }
+
+</script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

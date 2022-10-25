@@ -64,9 +64,14 @@
         select est_num from bidT where bid_num=#{bid_num}
     </select>
 
-    <!--입찰상태변경(거절)-->
+    <!--입찰상태변경(일괄거절)-->
     <update id="state_down">
         update bidT set bid_state='거절' where est_num=#{est_num} and bid_state!='계약요청'
+    </update>
+
+    <!--입찰상태변경(개별거절)-->
+    <update id="bid_reject">
+        update bidT set bid_state='거절' where bid_num=#{bid_num}
     </update>
 
     <!--estT의 상태 변경-->

@@ -90,7 +90,7 @@
                 <p>결제내역</p>
                 <div class="contarct_pay_wrap">
                     <table class="contarct_pay_table">
-                        <tr style="height: 50px;">
+                        <tr>
                             <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total}</span> 원 </th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
                         </tr>
                         <tr>

@@ -60,14 +60,14 @@
     }
     #permit_btn{
         border: none;
-        background-color: #0000FF;
+        background-color: #3333FF;
         color: white;
         height: 25px;
         margin-right: 5px;
     }
     #reject_btn{
         border: none;
-        background-color: crimson;
+        background-color: #FF0033;
         color: white;
         height: 25px;
     }
@@ -145,7 +145,8 @@
         <div class="my_apply_cont">
             <table class="my_apply_table"id="print">
                 <tr>
-                    <th>업체명</th> <th>공사시작일</th> <th>공사종료일</th> <th>공사금액</th> <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th>
+                    <th>업체명</th> <th>공사시작일</th> <th>공사종료일</th> <th>공사금액</th>
+                    <th>설명</th> <th>신청일자</th> <th>상태</th> <th>선택</th>
                 </tr>
             </table>
 
@@ -172,8 +173,12 @@
                     + "<td>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date.substring(0,10) + "</td>"
                     + "<td>" + this.bid_state + "</td>"
-                    + "<td><button type='button' id='permit_btn' class='permit' name='permit' value='"+this.bid_num+"'>수락</button>"
-                    + "<button type='button' id='reject_btn' value='"+this.bid_num+"'>거절</button></td></tr>"
+                    if(this.bid_state=='진행중') {
+                        result += "<td><button type='button' id='permit_btn' class='permit' name='permit' value='" + this.bid_num + "'>수락</button>"
+                        + "<button type='button' id='reject_btn' value='" + this.bid_num + "'>거절</button></td></tr>"
+                    }else{
+                        result += "<td> - </td>"
+                    }
             });
 
             $('#count').html(count);
@@ -207,6 +212,26 @@
             });
         }
     });
+
+    document.getElementById('reject_btn').onclick = function (){
+        var bid_num = $('#reject_btn').val();
+
+        alert("해당 업체와의 계약을 거절 하시겠습니까?");
+
+        $.ajax({
+            url : '/dozip/my_bid_reject',
+            type : 'post',
+            data : {
+                est_num : bid_num
+            },
+            success : function(data) {
+                location.reload();
+            },
+            error:function(error){
+                alert(error);
+            }
+        })
+    }
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

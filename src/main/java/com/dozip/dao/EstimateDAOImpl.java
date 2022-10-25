@@ -76,4 +76,9 @@ public class EstimateDAOImpl implements EstimateDAO {
     @Override
     public int payState(PayVO p) { return this.sqlSession.update("pay_state", p); }
 
+    @Override
+    public void updateReject(String bid_num) {
+        this.sqlSession.update("bid_reject", bid_num);
+    }
+
 }

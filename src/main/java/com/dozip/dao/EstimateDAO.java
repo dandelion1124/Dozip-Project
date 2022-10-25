@@ -45,4 +45,6 @@ public interface EstimateDAO {
     PayVO getPay(String cont_no);
 
     int payState(PayVO p);
+
+    void updateReject(String bid_num);
 }

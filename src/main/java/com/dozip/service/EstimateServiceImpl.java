@@ -90,5 +90,15 @@ public class EstimateServiceImpl implements EstimateService {
     @Override
     public int payState(PayVO p) { return this.estimateDAO.payState(p); }
 
+    @Override
+    public void updateEstate(EstimateVO e) {
+        this.estimateDAO.updateEstate(e); //estimateT 상태 : 계약요청
+    }
+
+    @Override
+    public void updateReject(String bid_num) {
+        this.estimateDAO.updateReject(bid_num); // bidT 상태 : 거절 (개별거절)
+    }
+
 
 }
