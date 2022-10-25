@@ -5,31 +5,7 @@
 /*	margin: 0 auto;*/
 /*}*/
 
-/*드롭다운*/
-.dropdown {
-	position: relative;
-	display: inline-block;
-	height: 70px;
-}
-
-.dd_group {
-	width: 100px;
-	height: 30px;
-	border: 1px solid #C4C4C4;
-	box-sizing: border-box;
-	border-radius: 5px;
-	font-weight:bold;
-	font-size: 14px;
-	line-height: 50px;
-}
-
-.dd_group:focus {
-	border: 1px solid #9B51E0;
-	box-sizing: border-box;
-	border-radius: 10px;
-	outline: 3px solid #a7ee8e;
-	border-radius: 10px;
-}
+/*리뷰 메인 CSS*/
 
 .review_write {
 	position: relative;
@@ -140,14 +116,8 @@
 	box-sizing: border-box;
 }
 
-img {
-
-
-}
-
 .card_inner {
 	width: 100%;
-
 	margin: 0;
 	padding: 0;
 }
@@ -179,7 +149,10 @@ img {
 .card_cont {
 	text-align: center;
 	width: 400px;
-
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	display:inline-block;
 }
 
 

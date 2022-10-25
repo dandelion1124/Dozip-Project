@@ -30,7 +30,7 @@ input#cal2, input#cal1 {
 .estimate_box input[type=radio]+label{
  	display: inline-block;
     cursor: pointer;
-    height: 30px;
+    height: 38px;
     width: 290px;
     border: 1px solid #333;
     line-height: 24px;
@@ -122,8 +122,8 @@ input#cal2, input#cal1 {
   flex-direction: column;
   text-align: center;
   padding: 20px;
-  width: 140px;
-  height: 50px;
+  width: 180px;
+  height: 90px;
   border: 1px solid #ddd;
   border-radius: 6px;
   background-color: #fff;
