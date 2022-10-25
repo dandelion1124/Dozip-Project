@@ -209,29 +209,20 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         //String p_id=(String) session.getAttribute("p_id");
 
-        List<EstimateVO> elist = this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db를 전부 가져오기.
-
-        //List<BidVO> blist=this.partnersService.countBidList(est_num);
+        List<EstimateVO> elist = this.partnersService.selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기.
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
 
-
-
-
         //System.out.println(elist.toString());
-
         for (int i = 0; i < elist.size(); i++) {
             elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
-
 
             Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
             long remaindate = (parseddate.getTime() - now.getTime());
             elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
-
         }
         System.out.println("변경된 elist 출력 " + elist);
-
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
 
@@ -257,16 +248,14 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-
-
-        EstimateVO e=this.partnersService.selectEstimate(est_num);
-        System.out.println(e.toString());
+        EstimateVO e=this.partnersService.selectEstimate(est_num); //
+        //System.out.println(e.toString());
         BidVO b = new BidVO();
         b.setBusinessNum((String)session.getAttribute("businessNum"));
-        System.out.println(b.getBusinessNum());
+        //System.out.println(b.getBusinessNum());
         b.setEst_num(est_num);
-        int bcount=this.partnersService.countBid(est_num);
-        int res=this.partnersService.checkBid(b);
+        int bcount=this.partnersService.countBid(est_num); // 해당 입찰을 신청한 파트너스 수 가져오기
+        int res=this.partnersService.checkBid(b);  //
         System.out.println(res);
         //System.out.println(bcount);
 
@@ -351,9 +340,7 @@ public class PartnersController {
         e.setBusinessNum(businessNum);
         e.setStartrow((page-1)*5+1);//시작행번호
         e.setEndrow(e.getStartrow()+limit-1);//끝행번호
-        //System.out.println(e.getStartrow());
-        //System.out.println(e.getEndrow());
-        System.out.println(e.toString());
+        //System.out.println(e.toString());
 
         int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
         int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
@@ -387,7 +374,7 @@ public class PartnersController {
             ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
         }
         //System.out.println(ereqlist.toString());
-        System.out.println(ereqlist.get(0).getAddr());
+        //System.out.println(ereqlist.get(0).getAddr());
 
         ModelAndView m = new ModelAndView();
         m.addObject("ereq", ereqlist);
@@ -398,7 +385,7 @@ public class PartnersController {
 
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
     public String construct_request_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response) throws Exception {
-        response.setContentType("text/html;charset=UTF-8");
+        //response.setContentType("text/html;charset=UTF-8");
 
         EstimateVO e = this.partnersService.selectEstimate(est_num);
 

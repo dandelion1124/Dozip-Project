@@ -25,7 +25,7 @@ public interface PartnersService {
     void updatePartnersSub(Partners_subVO ps);//data_manage sub회원정보 추가/수정
     void updatePartners(PartnersVO p);//data_manage 회원정보 추가/수정(address)
     void insertPartnersSub(Partners_subVO ps);
-    List<EstimateVO> selectEstimateList();
+    List<EstimateVO> selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기
 
     int checkSub(String businessNum);
     List<EstimateVO> getAllEstList();

@@ -101,7 +101,7 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public List<EstimateVO> selectEstimateList() {
+    public List<EstimateVO> selectEstimateList() { //estimate 테이블에 있는 db 전부 가져오기
         return sqlSession.selectList("select_estdata");
     }
 
@@ -141,7 +141,7 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
 
     @Override
-    public int countBid(String est_num) {
+    public int countBid(String est_num) { // 해당 입찰 신청한 파트너스 수 가져오기
         return sqlSession.selectOne("count_bid",est_num);
     }
 

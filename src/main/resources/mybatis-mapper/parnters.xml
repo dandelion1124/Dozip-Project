@@ -104,7 +104,8 @@
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
 
-    <!-- 입찰 리스트 -->
+    <!-- bid -->
+    <!-- estimate 테이블에 있는 db 전부 가져오기-->
     <select id="select_estdata" resultType="EstimateVO">
         select * from estimateT
     </select>
@@ -118,7 +119,8 @@
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
 
-    <select id="count_bid" resultType="int">  <!--상세페이지 파트너스 수 -->
+    <!-- 해당 입찰 신청한 파트너스 수 가져오기 -->
+    <select id="count_bid" resultType="int">
         select count(businessNum) from bidT where est_num=#{est_num}
     </select>
 
