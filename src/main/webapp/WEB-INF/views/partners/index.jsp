@@ -16,7 +16,7 @@
         <div id="signin_title">
             <div><a href="#"><img src="/images/partners/partners_logo.png" alt="메인로고"></a></div>
         </div>
-        <form id="login_form"> <%--onsubmit="return login_check();"--%>
+        <form id="login_form">
             <div>
                 <input type="text" name="p_Id" id="signin_id" placeholder="아이디">
                 <span id="idcheck"></span>
@@ -26,7 +26,7 @@
                 <span id="pwcheck"></span>
             </div>
             <div>
-                <input type="submit" value="로그인" id="login"></div>
+                <input type="button" value="로그인" id="login" onclick="login_proc()"></div>
             <div id=bottom_button1>
                 <div id=id_save>
                     <div><input type="checkbox" id=id_save_checkbox></div>
@@ -43,37 +43,6 @@
         </div>
     </div>
     <script>
-        $('#login_form').submit(function (event){
-            function params_list() {
-                var params = new Object();
-                params.p_Id=$('#signin_id').val();
-                params.p_Pw=$('#signin_pw').val();
-                return params;
-                };
-            $.ajax({
-                type: 'post',
-                url: 'login_ok',
-                data: {
-                    data:JSON.stringify(params_list())
-                },
-                datatype: "json",
-                success: function (data) {
-                    let res=data.status;
-                    if(res ==1){
-                        alert('존재하지 않는 아이디입니다');
-                        history.back();
-                    }
-                    else if(res==2){
-                        alert('비밀번호가 일치하지 않습니다.')
-                        history.back();
-                    }
-                    else if(res==0){
-                        alert('환영합니다.')
-                        location.href='/partners/main';
-                    }
-                }
-            });
-        });
 
     </script>
     </c:if>

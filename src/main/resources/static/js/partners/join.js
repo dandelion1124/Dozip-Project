@@ -1,7 +1,7 @@
 /*************************/
 /* 로그인창 유효성 검사 */
 /*************************/
-function login_check() {
+function login_proc(){
     if ($.trim($("#signin_id").val()) == '') {
         alert('아이디를 입력하세요');
         $('#signin_id').focus();
@@ -12,6 +12,29 @@ function login_check() {
         $('#signin_id').focus();
         return false;
     }
+    function params_list() {
+        var params = new Object();
+        params.p_Id=$('#signin_id').val();
+        params.p_Pw=$('#signin_pw').val();
+        return params;
+    };
+
+    $.ajax({
+        type: 'post',
+        url: 'login_ok',
+        data: {
+            data:JSON.stringify(params_list())
+        },
+        datatype: "json",
+        success: function (data) {
+            let res=data.status;
+            if(res ==1)  alert('존재하지 않는 아이디입니다');
+            else if(res==2) alert('비밀번호가 일치하지 않습니다.');
+            else if(res==0){
+                alert('환영합니다.');
+                location.href='/partners/main';}
+        }
+    });
 }
 /*아이디 체크 버튼 연동 */
 $(function() {
@@ -26,12 +49,13 @@ $(function() {
     });
 
 });
+
 /*************************/
 /* 회원가입창 유효성 검사 */
 /*************************/
 
-function signup_check() {
-  if ($.trim($("#businessName").val()) == '') {
+function signup_proc() {
+    if ($.trim($("#businessName").val()) == '') {
         alert('사업자명을 입력하세요');
         $('#businessName').focus();
         return false;
@@ -67,7 +91,6 @@ function signup_check() {
         return false;
     }
 
-
     function params_list() {
         var params = {};
         var data = $("#signupForm").serializeArray();
@@ -99,6 +122,7 @@ function signup_check() {
     });
 
 }
+
 //사업자 번호 형식 체크
 $('#business_num').on('keyup', function(event) {
     $('#business_num_check').hide();
@@ -114,27 +138,18 @@ $('#business_num').on('keyup', function(event) {
         $('#business_num').css("border", "2.5px solid gray");
         return false;
     }
-
     if (a1 == '-' && a2 == '-'
         && a3 > 1010000000
         && a3 < 9999999999) {
         $('#business_num_check').hide();
-
-        $('#business_num').css(
-            "border",
+        $('#business_num').css(            "border",
             "2.5px solid gray");
-
     } else {
         $newtext = '<font color="red" size="2"><b>형식이 맞지 않습니다!</b></font>';
-        $('#business_num_check').text(
-            '');
-        $('#business_num_check').show(
-            '');
-        $('#business_num_check')
-            .append($newtext);
-        $('#business_num').css(
-            "border",
-            "2.5px solid red");
+        $('#business_num_check').text( '');
+        $('#business_num_check').show('');
+        $('#business_num_check') .append($newtext);
+        $('#business_num').css("border","2.5px solid red");
     }
 });
 //연락처 형식 체크
