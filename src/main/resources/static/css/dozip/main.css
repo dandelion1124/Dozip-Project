@@ -1,4 +1,17 @@
 @charset "UTF-8";
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #27562B;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+	background-color: grey;
+	border-radius: 5px;
+}
+
 /* index.jsp ui */
 *{font-family:Malgun Gothic;}
 

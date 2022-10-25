@@ -3,15 +3,17 @@
 /*************************/
 function login_proc(){
     if ($.trim($("#signin_id").val()) == '') {
-        alert('아이디를 입력하세요');
+        swal('아이디를 입력하세요');
         $('#signin_id').focus();
         return false;
     }
     if ($.trim($('#signin_pw').val()) == '') {
-        alert('비밀번호를 입력하세요');
+        swal('비밀번호를 입력하세요');
         $('#signin_id').focus();
         return false;
     }
+
+
     function params_list() {
         var params = new Object();
         params.p_Id=$('#signin_id').val();
@@ -27,11 +29,14 @@ function login_proc(){
         },
         datatype: "json",
         success: function (data) {
-            let res=data.status;
-            if(res ==1)  alert('존재하지 않는 아이디입니다');
-            else if(res==2) alert('비밀번호가 일치하지 않습니다.');
-            else if(res==0){
-                alert('환영합니다.');
+            if(data.status ==1)  {
+                swal(data.message)
+            }
+            else if(data.status==2) {
+                swal(data.message)
+            }
+            else {
+                swal(data.message)
                 location.href='/partners/main';}
         }
     });
@@ -56,37 +61,37 @@ $(function() {
 
 function signup_proc() {
     if ($.trim($("#businessName").val()) == '') {
-        alert('사업자명을 입력하세요');
+        swal('사업자명을 입력하세요');
         $('#businessName').focus();
         return false;
     }
     if ($.trim($('#business_num').val()) == '') {
-        alert('사업자번호를 입력하세요');
+        swal('사업자번호를 입력하세요');
         $('#business_num').focus();
         return false;
     }
     if ($.trim($('#pName').val()) == '') {
-        alert('대표자 성함을 입력하세요');
+        swal('대표자 성함을 입력하세요');
         $('#pName').focus();
         return false;
     }
     if ($.trim($('#pTel').val()) == '') {
-        alert('대표전화 번호를 입력하세요');
+        swal('대표전화 번호를 입력하세요');
         $('#pTel').focus();
         return false;
     }
     if ($.trim($('#pMail_id').val()) == '' || $.trim($('#pMail_domain').val()) == '') {
-        alert('이메일을 입력하세요');
+        swal('이메일을 입력하세요');
         $('#pMail_id').focus();
         return false;
     }
     if ($.trim($('#pId').val()) == '') {
-        alert('아이디는 필수사항입니다');
+        swal('아이디는 필수사항입니다');
         $('#pId').focus();
         return false;
     }
     if ($.trim($('#pPw').val()) == '' ||$.trim($('#pwchk').val()) == '' ) {
-        alert('비밀번호를 입력하세요');
+        swal('비밀번호를 입력하세요');
         $('#pPw').focus();
         return false;
     }
@@ -110,12 +115,12 @@ function signup_proc() {
         },
         datatype: "json",
         success: function (data) {
-            alert(data.status);
+            swal(data.status);
             if(data.status ==1){
-                alert(data.message);
+                swal(data.message);
             }
             else if(data.status ==0){
-                alert(data.message);
+                swal(data.message);
                 location.href='/partners/main';
             }
         }
@@ -262,7 +267,7 @@ function id_check() {
                 }
             },
             error: function() {
-                alert('data error');
+                swal('data error');
             }
         });
     }
