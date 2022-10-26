@@ -146,7 +146,7 @@
     <div id="part3">
         <span class="part_title"><p>인테리어, 왜 두집에 맡겨야 할까요?</p></span>
         <span id="part3_img">
-					<a id="part3_image" href="#"><img src="/images/dozip/part3.png"/></a>
+					<a id="part3_image" href="#"><img src="/images/dozip/part3.png" style="width: 400px;"/></a>
 				</span>
     </div>
 

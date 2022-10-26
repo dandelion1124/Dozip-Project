@@ -62,8 +62,8 @@
                 </div>
             </div>
             <div class="signup_pwd">
-                <label for="pPw">비밀번호</label> <input type="password" id="pPw" name="p_Pw"
-                                                     placeholder="10~16자 영문, 숫자, 특수문자 조합">
+                <label for="pPw">비밀번호</label>
+                <input type="password" id="pPw" name="p_Pw" placeholder="10~16자 영문, 숫자, 특수문자 조합">
                 <input type="password" id="pwchk" placeholder="비밀번호 다시 입력">
                 <div id="password_check_box">
                     <span id="password_check"></span>
@@ -101,7 +101,7 @@
 
             </div>
             <div class=signup_submit>
-                <input type="button" value="가입하기" onclick="signup_proc()"></div>
+                <input type="button" value="가입하기" id="signup_submit_btn" onclick="signup_proc()"></div>
         </form>
         <script>
 
