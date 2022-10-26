@@ -129,13 +129,11 @@ function signup_proc() {
 //사업자 번호 형식 체크
 $('#business_num').on('keyup', function(event) {
     $('#business_num_check').hide();
-    $business_num = $.trim($(
-        "#business_num").val());
+    $business_num = $.trim($("#business_num").val());
 
     var a1 = $business_num.charAt(3);
     var a2 = $business_num.charAt(6);
-    var a3 = $business_num.replace(
-        /[-_]/g, '');
+    var a3 = $business_num.replace(/[-_]/g, '');
 
     if ($business_num == '') {
         $('#business_num').css("border", "2.5px solid gray");
@@ -144,15 +142,16 @@ $('#business_num').on('keyup', function(event) {
     if (a1 == '-' && a2 == '-'
         && a3 > 1010000000
         && a3 < 9999999999) {
+        $('#business_num_check').text('');
         $('#business_num_check').hide();
-        $('#business_num').css(            "border",
-            "2.5px solid gray");
+        $('#business_num').css(  "border", "2.5px solid gray");
     } else {
+        $('#business_num').css("border","2.5px solid red");
         $newtext = '<font color="red" size="2"><b>형식이 맞지 않습니다!</b></font>';
-        $('#business_num_check').text( '');
+        $('#business_num_check').text('');
         $('#business_num_check').show('');
         $('#business_num_check') .append($newtext);
-        $('#business_num').css("border","2.5px solid red");
+
     }
 });
 //연락처 형식 체크
@@ -164,13 +163,15 @@ $('#pTel').on('keyup', function(event) {
         $('#pTel').css("border", "2.5px solid gray");
     }
     else if (!(ONLY_NUMBER.test(pTel)) || pTel.length != 11) {
+
+        $('#pTel').css("border", "2.5px solid red");
         $newtext = '<font color="red" size="2"><b>형식이 맞지 않습니다!</b></font>';
         $('#pTel_check').text('');
         $('#pTel_check').show('');
         $('#pTel_check').append($newtext);
-        $('#pTel').css("border", "2.5px solid red");
     }
     else {
+        $('#pTel_check').text('');
         $('#pTel').css("border", "2.5px solid gray");
     }
 
@@ -199,16 +200,14 @@ $('#pId').on('keyup', function(event) {
         $('#idcheck').text('');
         $('#idcheck').show('');
         $('#idcheck').append($newtext);
-        $('#pId').css("border",
-            "2.5px solid red");
+        $('#pId').css("border", "2.5px solid red");
         return false;
     } else { // 모두 충족시키면
         $newtext = '<font color="blue" size="2"><b>아이디 중복체크를 해주세요</b></font>';
         $('#idcheck').text('');
         $('#idcheck').show('');
         $('#idcheck').append($newtext);
-        $('#pId').css("border",
-            "2.5px solid gray");
+        $('#pId').css("border", "2.5px solid gray");
     }
 });
 
@@ -272,6 +271,38 @@ function id_check() {
     }
 
 }
+$('#signup_form').on('keyup', function(event) {
+    let check1 = $('#pTel').css('border-color')=='rgb(255, 0, 0)';
+    let check2 = $('#business_num').css('border-color')=='rgb(255, 0, 0)';
+    let check3 =$('#idcheck').text()!='사용가능한 아이디입니다!';
+    let check4 =$('#password_check').text()!='일치합니다';
+
+    if(check1 || check2 || check3 ||check4){
+        $('#signup_submit_btn').attr("disabled", true);
+    }
+    else{
+        $('#signup_submit_btn').attr("disabled", false);
+    }
+    
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
 
 //비밀번호 일치여부
 $('#pPw').on('keyup', function(event) {
@@ -314,6 +345,7 @@ $('#pPw').on('keyup', function(event) {
             $('#password_check').append($newtext);
             $('#pwchk').css("border", "2.5px solid gray");
             $('#pPw').css("border", "2.5px solid gray");
+
         }
     }
 });
@@ -335,13 +367,22 @@ $('#pwchk').on('keyup', function(event) {
         $('#pPw').css("border", "2.5px solid red");
 
         return false;
-    } else { // 모두 충족시키면
+    }
+    else if(!validate_pw($pPw)) {
+        $newtext = '<font color="red" size="2"><b>비밀번호가 형식이 맞지 않습니다!</b></font>';
+        $('#password_check').text('');
+        $('#password_check').show('');
+        $('#password_check').append($newtext);
+        $('#pPw').css("border", "2.5px solid red");
+    }
+    else { // 모두 충족시키면
         $newtext = '<font color="blue" size="2"><b>일치합니다</b></font>';
         $('#password_check').text('');
         $('#password_check').show('');
         $('#password_check').append($newtext);
         $('#pwchk').css("border", "2.5px solid gray");
         $('#pPw').css("border", "2.5px solid gray");
+
     }
 });
 //정규표현식
@@ -350,7 +391,7 @@ function validate_userid($pId) {
     return pattern.test($pId);
 };
 function validate_pw($pPw) {
-    var pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/);//아이디를 영문소문자와 숫자 와 _조합으로 처리
+    var pattern = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{10,}$/);
     return pattern.test($pPw);
 };
 

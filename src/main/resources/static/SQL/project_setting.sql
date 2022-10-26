@@ -311,7 +311,6 @@ create table scrapT(
     foreign key (pf_no) references portfolioT(pf_no)
 );
 
-commit;
 drop sequence se_no_seq;
 create sequence se_no_seq start with 1 increment by 1 nocache; --스크랩 번호 생성
 select se_no_seq.nextval from dual; --스크랩 번호 생성 확인
