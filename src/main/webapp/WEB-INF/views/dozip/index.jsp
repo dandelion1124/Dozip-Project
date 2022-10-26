@@ -57,7 +57,7 @@
 					</ul>
 					<ul class="top-icons">
 						<c:if test="${empty id}"> <!-- 로그인 전 -->
-							<li><a href="#none" onclick="openLogin();"><i class="fas fa-user"></i></a>
+							<li><a href="#none" onclick="openLogin();" ><i class="fas fa-user"></i></a>
                                     <div class = "sub_menu1">
                                         <ul>
                                             <li><a href="#" onclick="openLogin()">로그인</a></li>
