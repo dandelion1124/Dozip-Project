@@ -62,10 +62,13 @@
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 1rem;
             grid-auto-rows: minmax(2em, auto);
-            background: #B3B9BE;
+
         }
         #pmain_cont div {
           border: 2px solid rgba(0, 0, 255, 0.26);
+        }
+        .index_item {
+            background: #B3B9BE;
         }
         .index_item:nth-child(1) {
             grid-column: 1/4;
@@ -76,7 +79,7 @@
 
     <div id='pmain_cont'>
         <div class="index_item">
-            <h1>대시보드</h1>
+            <h1>Grid Layout 사용해서 구현중</h1>
         </div>
         <div class="index_item">현재 시공중인 공사 완성도<br>
             월별 총 시공계약 : 60건<br>
@@ -86,19 +89,45 @@
         <div class="index_item"> 월별 견적 신청 내역 <br><br>
 
 
-            산야에 대고, 우리는 봄날의 아니더면, 이것이야말로 사막이다.
-            소리다.이것은 산야에 어디 뿐이다. 인생에 기관과 청춘이
-            만천하의 것이다. 불어 못할 우리 얼음이 오아이스도 행복스럽고 쓸쓸한 일월과
-            봄바람이다. 소담스러운 사는가 길지 크고 것이다.  그들의 오직
-            싸인 있는가? 속에서 그와 피고 들어 피부가 그리하였는가?
+            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
+            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
+            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
+            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
+            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
 
         </div>
-        <div class="index_item"> 월별 입찰 내역<br><br>불러 그들은 심장의 어디 무엇을 위하여서.
-            가슴이 밥을 장식하는 힘차게 열락의 위하여서, 듣는다. </div>
-        <div class="index_item">월별 시공 내역<br><br></div>
-        <div class="index_item"> 공지사항<br><br>않는 방황하였으며, 피가 이는
-            하였으며, 대한 뿐이다. 장식하는 찾아 위하여서 청춘의 위하여서,</div>
-        <div class="index_item"> 정산 예정 금액<br><br></div>
+        <div class="index_item"> 월별 입찰 내역<br><br>
+
+
+            Aenean faucibus, augue eget pellentesque dapibus, nisl dui finibus risus,
+            ut tempus eros ex eu quam. Suspendisse pulvinar at purus ut fringilla. Ut felis diam,
+            dignissim a purus interdum, laoreet tempor lacus. In hac habitasse platea dictumst.
+            Pellentesque sollicitudin,
+            purus vel iaculis feugiat, turpis mi ornare ex, ac porta eros nisl sit amet nunc.
+
+        </div>
+        <div class="index_item">월별 시공 내역<br><br>
+
+            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
+            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
+            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
+            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
+            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
+        </div>
+        <div class="index_item"> 공지사항<br><br>Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
+            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
+            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
+            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
+            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
+
+        </div>
+        <div class="index_item"> 정산 예정 금액<br><br>
+
+            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
+            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
+            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
+            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
+            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut. </div>
     </div>
     </c:if>
     <jsp:include page="include/footer.jsp"/>

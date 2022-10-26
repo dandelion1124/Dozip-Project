@@ -5,7 +5,7 @@
 <mapper namespace="partEstimate">
     <!--계약 요청중인 견적서 -->
     <select id="est_list" resultType="EstimateVO">
-        select * from estimateT where est_check != '대기중'
+        select * from estimateT where est_check = '계약요청'
     </select>
 
     <!--계약 요청중인 입찰테이블 -->
@@ -34,6 +34,10 @@
     <!--견적서 계약서 '작성완료' 로바꾸기 -->
     <select id="update_est">
         update ESTIMATET set EST_CHECK='작성완료' where EST_NUM =#{est_num}
+    </select>
+    <!--계약서 테이블 불러오기 -->
+    <select id="all_contract" resultType="ContractVO">
+        select * from contractT
     </select>
 </mapper>
 

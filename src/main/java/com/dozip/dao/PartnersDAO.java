@@ -42,8 +42,6 @@ public interface PartnersDAO {
     /* construct_request */
     List<EstimateVO> selectEstimateListBnum(String businessNum);
     int getListCount2(String businessNum);
-
-
     List<EstimateVO> getAllEstList();
     List<BidVO> getBidList();
     EstimateVO write_contract(int est_num);
@@ -51,5 +49,6 @@ public interface PartnersDAO {
     BidVO getOneBid(String est_num);
     EstimateVO getOneEst(String est_num);
     void updateEstimate(ContractVO cv);
+    List<ContractVO> getContractList();
 }
 

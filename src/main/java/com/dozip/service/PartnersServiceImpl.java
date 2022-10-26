@@ -154,5 +154,10 @@ public class PartnersServiceImpl implements PartnersService {
     public EstimateVO getOneEst(String est_num) {
         return partnersDao.getOneEst(est_num);
     }
+
+    @Override
+    public List<ContractVO> getContractList() {
+        return partnersDao.getContractList();
+    }
 }
 

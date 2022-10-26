@@ -47,4 +47,6 @@ public interface PartnersService {
     BidVO getOneBid(String est_num);
 
     EstimateVO getOneEst(String est_num);
+
+    List<ContractVO> getContractList();
 }

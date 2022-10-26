@@ -9,20 +9,16 @@ import java.util.List;
 
 @Repository
 public class PartnersDAOImpl implements PartnersDAO {
-
     @Autowired
     private SqlSession sqlSession;
-
     @Override
     public PartnersVO getPartnersInfo(String pId) {
         return sqlSession.selectOne("partners_info", pId);
     }//파트너스 정보조회
-
     @Override
     public void addPortfolio(PortfolioVO pv) {
         sqlSession.insert("portfolio_in", pv);
     }//포트폴리오 등록
-
     @Override
     public int getPort_num(PortfolioVO pv) {
         return sqlSession.selectOne("portfolio_num", pv);
@@ -75,7 +71,6 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<QnaVO> getQnaList(QnaVO findQ) {
         return sqlSession.selectList("partners_qna_list", findQ);
     }
-
 
     /* minwoo */
     /* My page */
@@ -130,8 +125,6 @@ public class PartnersDAOImpl implements PartnersDAO {
     public int getListCount2(String businessNum) {
         return this.sqlSession.selectOne("my_bid_count",businessNum);
     }
-
-
     @Override
     public List<EstimateVO> getAllEstList() {
         return sqlSession.selectList("est_list");
@@ -148,20 +141,21 @@ public class PartnersDAOImpl implements PartnersDAO {
     public int insertContract(ContractVO cv) {
         return sqlSession.insert("contract_in",cv);
     }
-
     @Override
     public BidVO getOneBid(String est_num) {
         return sqlSession.selectOne("get_bid", est_num);
     }
-
     @Override
     public EstimateVO getOneEst(String est_num) {
         return sqlSession.selectOne("get_est",est_num);
     }
-
     @Override
     public void updateEstimate(ContractVO cv) {
         sqlSession.update("update_est",cv);
+    }
+    @Override
+    public List<ContractVO> getContractList() {
+        return sqlSession.selectList("all_contract");
     }
 }
 
