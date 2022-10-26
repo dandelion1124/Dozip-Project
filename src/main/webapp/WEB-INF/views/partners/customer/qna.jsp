@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="../include/header.jsp" />
+<style>
+	#qna_table td {
+		text-align: center;
+	}
+</style>
 <div id="qna_title">
 	<div class="title">Q&A</div>
 	<div class="message">고객문의 페이지입니다. 빠른 시일 내에 처리 바랍니다.</div>
