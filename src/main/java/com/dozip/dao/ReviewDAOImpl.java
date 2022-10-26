@@ -49,5 +49,10 @@ public class ReviewDAOImpl implements ReviewDAO {
         this.sqlSession.update("re_count", re_no);
     }
 
+    @Override
+    public List<ReviewVO> best() {
+        return this.sqlSession.selectList("best");
+    }
+
 
 }

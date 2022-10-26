@@ -26,6 +26,7 @@
 	color: white;
 	float: right;
 	font-weight: bold;
+	margin-right: 40px;
 }
 
 #part1_title {
@@ -80,6 +81,8 @@
 }
 
 #review_cont {
+	width: 550px;
+	height: 190px;
 	font-size: 0.8rem;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -102,11 +105,11 @@
 	font-size: 0.8rem;
 
 }
-#revie_go {
+#review_go {
 	font-size: 1.2rem;
 	font-weight: bold;
 }
-#revie_go_box {
+#review_go_box {
 	text-align: right;
 }
 
@@ -165,7 +168,7 @@
 .review_detail {
 	width: 1000px;
 	padding: 110px;
-	background: #F8F8F8;
+	border: 1px solid #ddd;
 	margin: 0 auto;
 
 }
@@ -202,7 +205,12 @@
 	margin-bottom: 50px;
 }
 .re_cont {
-	margin-bottom: 100px;
+	width: 778px;
+	height: 350px;
+	background: #F8F8F8;
+	padding: 20px;
+	border: 0px;
+	resize: none;
 }
 
 

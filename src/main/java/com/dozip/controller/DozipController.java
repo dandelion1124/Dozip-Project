@@ -805,14 +805,17 @@ public class DozipController {
     public ModelAndView review_main(ModelAndView mv) throws Exception {
 
         List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
-        reviewList = this.reviewService.getAllReview(); //리뷰 리스트
+        List<ReviewVO> bestList = new ArrayList<ReviewVO>();
 
+        reviewList = this.reviewService.getAllReview(); //리뷰 리스트
+        bestList = this.reviewService.best(); // Best 리뷰
         int count = this.reviewService.count(); //리뷰 개수
 
-        //this.reviewService.best(); // Best 리뷰
 
         mv.addObject("reviewList",reviewList);
         mv.addObject("count", count);
+        mv.addObject("best",bestList.get(0));
+
 
         mv.setViewName("/dozip/review/review_main");
         return mv;

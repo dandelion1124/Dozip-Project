@@ -16,11 +16,11 @@
 			<div class="big_review">
 				<img id="big_img" src= '/images/dozip/ex01.png' />
 				<div class="big_review_cont">
-					<p id="review_title">글제목</p>
-					<p id="review_cont">집닥을 통해 여러군데 견적을 받았어요. 그 중에 여기가 견적서도 빨리 보내주고 제가 원하는 가격에 최대한 맞춰서 인테리어를 도와주셨어요! 요즘 인테리어 사기가 많아서 고민하고 걱정했는데 확실하게 일 처리 해주시고 전기부터 소방까지 꼼꼼하게 챙겨주셨어요. 벽지나 타일을 고르는데 고민이 많은데 추천도 잘 해주시고 지금도 대 만족 하고 있습니다</p>
+					<p id="review_title">${best.re_title}</p>
+					<p id="review_cont">${best.re_cont}</p>
 					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>
-					<p id="review_info">글쓴이 고객님 | 2022.04.23</p>
-					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=12'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>
+					<p id="review_info">${best.mem_id} 고객님 | ${best.re_date}</p>
+					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=${best.re_no}'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>
 				</div>
 			</div>
 

@@ -47,5 +47,10 @@ public class ReviewServiceImpl implements ReviewService {
         this.reviewDAO.re_count(re_no);
     }
 
+    @Override
+    public List<ReviewVO> best() {
+        return this.reviewDAO.best();
+    }
+
 
 }

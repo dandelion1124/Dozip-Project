@@ -19,4 +19,6 @@ public interface ReviewService {
     void insertReview_Photos(ReviewVO rv);
 
     void re_count(int re_no);
+
+    List<ReviewVO> best();
 }

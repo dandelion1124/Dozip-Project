@@ -12,11 +12,12 @@
 			<p style="float: left; font-style: italic">No. ${re.re_no}</p>
 			<p style="float: right">조회수 : ${re.re_count}</p>
 		</div>
+		<hr/>
 			<div class="rp_img">
 				<img src="${re.re_photo1}">
 			</div>
 			<div class="review_title">
-				<p class="re_title">제목 : ${re.re_title}</p><p class="star" style="float: right">${re.re_star} 점</p>
+				<p class="re_title">${re.re_title}</p><p class="star" style="float: right">${re.re_star} 점</p>
 			</div>
 		<hr/>
 			<div class="review_info">
@@ -30,7 +31,7 @@
 			<img src="${re.re_photo5}">
 		</div>
 		<div>
-			<p class="re_cont">글 내용 : ${re.re_cont}</p>
+			<textarea class="re_cont" readonly>${re.re_cont}</textarea>
 		</div>
 	</div>
 </div>
