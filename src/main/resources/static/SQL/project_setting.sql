@@ -28,7 +28,7 @@ create table partnersT
     businessNum  nvarchar2(12) primary key, --사업자번호
     businessName nvarchar2(20) not null,    --상호명
     p_Id          nvarchar2(20) not null,    --아이디
-    p_Pw          nvarchar2(20) not null,    --비밀번호
+    p_Pw          nvarchar2(100) not null,    --비밀번호
     p_Name        nvarchar2(10) not null,    --대표자이름
     p_Tel         nvarchar2(12) not null,    --대표자 연락처
     p_MailId      nvarchar2(30) not null,    --대표자 이메일 ID
