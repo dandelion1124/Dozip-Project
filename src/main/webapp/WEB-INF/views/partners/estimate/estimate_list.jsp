@@ -38,10 +38,6 @@
         border-collapse: collapse;
     }
 
-    thead th {
-        border: 1px solid #eee;
-    }
-
     table#est_list_table input[type=button] {
         background: none;
         border: none;
@@ -80,10 +76,16 @@
     table#est_list_table {
         margin: 20px auto;
         width: 100%;
+        border-collapse: collapse;
     }
 
     #est_list_table thead {
         background: cornflowerblue;
+    }
+
+    #est_list_table th {
+        font-weight: lighter;
+
     }
 </style>
 <div id="estlist_top_cont">
@@ -113,193 +115,96 @@
     </tr>
     </thead>
     <tbody>
-
-
-
-
     <%--
-
     견적테이블이 있고 계약테이블이 없으면 = 모두다 '계약서작성하기'
                       계약테이블이 있고 같은 est_num가 있으면  '게약서작성완료'
                       계약테이블이 있고 같은 est_num가 없으면 '게약서작성하기'
-
      --%>
 
-<c:if test="${!empty elist }">
-    <c:if test="${empty clist}">
-        <h1>계약서작성하기</h1>
-    </c:if>
-    <c:if test="${!empty clist}">
+    <c:if test="${!empty elist }">
         <c:forEach var="e" items="${elist}">
+            <c:if test="${empty clist}">
 
-             <c:forEach var="c" items="${clist}">
-                 <c:if test="${e.est_num==c.est_num}">
-                     <h1>게약서 작성완료</h1>
-                     <h1>계약서 번호 : ${e.est_num}</h1>
-                     <h1>견적서 번호 : ${c.est_num}</h1>
-                  </c:if>
-                 <c:if test="${e.est_num!=c.est_num}">
-                      <h1>게약서 작성하기</h1>
-                      <h1>계약서 번호 : ${e.est_num}</h1>
-                      <h1>견적서 번호 : ${c.est_num}</h1>
-                 </c:if>
-        </c:forEach>
-        </c:forEach>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>${e.est_num}</td>
+                    <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
+                        <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
+                    <td>${e.est_bud}만원</td>
+                    <td>${e.est_start} ~ ${e.est_end}</td>
+                    <td>
+                        <button class="write_contract_btn" onclick="write_contract(${e.est_num})">
+                            계약서작성하기
+                        </button>
+                    </td>
+                    <td>계약서 작성전</td>
+                    <td>
+                        <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                    </td>
+                </tr>
+
+
+
+
+
+
+            </c:if>
+            <c:if test="${!empty clist}">
+                <c:forEach var="c" items="${clist}">
+                <c:if test="${e.est_num==c.est_num}">
+
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td>${c.est_num}</td>
+                        <td><input type="button" value="${c.cont_location}"> <%--onclick="est_detail(${c.est_num})"--%>
+                        </td>
+                            <%--                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>--%>
+                        <td>${c.cont_total}만원</td>
+                        <td>${c.cont_start} ~ ${c.cont_end}</td>
+                        <td>
+                                ${e.est_check}
+                        </td>
+                        <td>${c.cont_date}</td>
+                        <td>
+                            <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                        </td>
+                    </tr>
+                </c:if>
+
+            <c:if test="${e.est_num!=c.est_num}">
+
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>${e.est_num}</td>
+                    <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
+                        <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
+                    <td>${e.est_bud}만원</td>
+                    <td>${e.est_start} ~ ${e.est_end}</td>
+                    <td>
+                        <button class="write_contract_btn" onclick="write_contract(${e.est_num})">
+                            계약서작성하기
+                        </button>
+                    </td>
+                    <td>계약서 작성전</td>
+                    <td>
+                        <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                    </td>
+                </tr>
+            </c:if>
+         </c:forEach>
+        </c:if>
+     </c:forEach>
     </c:if>
-</c:if>
     <c:if test="${empty elist}">
-        <h1>조회된 견적 목록이 없습니다.</h1>
+        <tr><th colspan="8">      조회된 견적 목록이 없습니다   </th></tr>
     </c:if>
-
-
-
-
-
-
-
-
-
-
-    <%--a. **contractT 이 있는지**--%>
-    <%--1. 있다면 (계약서 작성완료 단계)--%>
-    <%--2. 없다면 (계약서작성전단계)--%>
-    <%--**bidT 이 있는지**--%>
-    <%--a. 있으면 estimateT, bidT 같이 조회--%>
-    <%--b. 없으면 estimateT 로만 조회--%>
-
-    <%--2. 없으면 → 견적 목록이 없습니다.--%>
-
-<%--    <c:if test="${empty elist }">  &lt;%&ndash;1. 없으면 → 견적 목록이 없습니다.&ndash;%&gt;--%>
-<%--        <tr>--%>
-<%--            <td colspan="8"> 조회된 견적목록이 없습니다.</td>--%>
-<%--        </tr>--%>
-<%--    </c:if>--%>
-
-<%--    <c:if test="${!empty elist }">--%>
-<%--        <c:forEach var="e" items="${ elist}">--%>
-<%--            <h1>${e.est_num}</h1>--%>
-<%--            <c:if test="${!empty clist}">&lt;%&ndash;a. **contractT 이 있다면**&ndash;%&gt;--%>
-<%--                &lt;%&ndash;계약 테이블 기준으로 검색&ndash;%&gt;--%>
-<%--                <c:forEach var="c" items="${clist}">--%>
-<%--                    <c:if test="${e.est_num==c.est_num}"> &lt;%&ndash;계약서 작성완료 단게&ndash;%&gt;--%>
-<%--                        &lt;%&ndash;계약서 작성완료 . 계약금 입금전.  &ndash;%&gt;--%>
-<%--                        <tr>--%>
-<%--                            <td><input type="checkbox"></td>--%>
-<%--                            <td>${c.est_num}</td>--%>
-<%--                            <td><input type="button" value="${c.cont_location}" > &lt;%&ndash;onclick="est_detail(${c.est_num})"&ndash;%&gt;--%>
-<%--                            </td>--%>
-<%--&lt;%&ndash;                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>&ndash;%&gt;--%>
-<%--                            <td>${c.cont_total}만원</td>--%>
-<%--                            <td>${c.cont_start} ~ ${c.cont_end}</td>--%>
-<%--                            <td>--%>
-<%--                                ${e.est_check}--%>
-<%--                            </td>--%>
-<%--                            <td>${c.cont_date}</td>--%>
-<%--                            <td>--%>
-<%--                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                    </c:if>--%>
-<%--                </c:forEach>--%>
-
-<%--            </c:if>--%>
-<%--        </c:forEach>--%>
-<%--        <c:if test="${empty clist}">&lt;%&ndash;contractT 이 없다면 == 계약서 작성 전단계 &ndash;%&gt;--%>
-<%--            <c:forEach var="e" items="${ elist}">  &lt;%&ndash; 견적 리스트 불러오기&ndash;%&gt;--%>
-
-<%--                <c:if test="${e.est_check=='계약요청'}">--%>
-<%--                    <c:if test="${empty blist}">    &lt;%&ndash; 직접 견적신청한 리스트&ndash;%&gt;--%>
-<%--                        <tr>--%>
-<%--                            <td><input type="checkbox"></td>--%>
-<%--                            <td>${e.est_num}</td>--%>
-<%--                            <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})">--%>
-<%--                            </td>--%>
-<%--                            <td><fmt:formatNumber value="${b.bid_price}" type="number"/>만원</td>--%>
-<%--                            <td>${b.bid_start} ~ ${b.bid_end}</td>--%>
-<%--                            <td>--%>
-<%--                                <button class="write_contract_btn" onclick="write_contract(${e.est_num})"> 계약서작성하기--%>
-<%--                                </button>--%>
-<%--                            </td>--%>
-<%--                            <td>계약서 작성전</td>--%>
-<%--                            <td>--%>
-<%--                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                    </c:if>--%>
-<%--                    <c:if test="${!empty blist}">  &lt;%&ndash; 입찰신청한 리스트&ndash;%&gt;--%>
-<%--                        <c:forEach var="b" items="${ blist}">  &lt;%&ndash; 견적 리스트 불러오기&ndash;%&gt;--%>
-
-<%--                        <c:if test="${e.est_num==b.est_num}">--%>
-<%--                            <tr>--%>
-<%--                                <td><input type="checkbox"></td>--%>
-<%--                                <td>${e.est_num}</td>--%>
-<%--                                <td><input type="button" value="${e.est_addr} 시공요청"--%>
-<%--                                           onclick="est_detail(${e.est_num})"></td>--%>
-<%--&lt;%&ndash;                                <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;--%>
-<%--                                <td>${e.est_bud}만원</td>--%>
-
-<%--                                <td>${e.est_start} ~ ${e.est_end}</td>--%>
-<%--                                <td>--%>
-<%--                                    <button class="write_contract_btn" onclick="write_contract(${e.est_num})">--%>
-<%--                                        계약서작성하기--%>
-<%--                                    </button>--%>
-<%--                                </td>--%>
-<%--                                <td>계약서 작성전</td>--%>
-<%--                                <td>--%>
-<%--                                    <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-<%--                        </c:if>--%>
-<%--                         </c:forEach>--%>
-<%--                    </c:if>--%>
-<%--                </c:if>--%>
-
-<%--            </c:forEach>--%>
-
-
-<%--        </c:if>--%>
-
-<%--    </c:if>--%>
     <script>
         function write_contract(est_num) {
             window.open('/partners/write_contract?est_num=' + est_num, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
         }
     </script>
     </tbody>
-    <tfoot>
-
-
-    <%--일 단 쪽번호 소스만 불러옴 --%>
-
-    <tr>
-        <th colspan="8" id="paging_th">
-            <%--검색 전 페이징 --%>
-            <c:if test="${(empty find_field ) && (empty find_text)}"><%--검색 필드와 검색어가 없을떄 --%>
-                <%--이전 버튼 --%>
-                <c:if test="${page <= 1 }"> &lt;이전</c:if>
-                <c:if test="${page>1 }"><a href="#"> &lt;이전 </a></c:if>
-                <%--현재 쪽번호 출력 --%>
-                <c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
-                    <c:if test="${a==page }"> <%--현재 쪽번호가 선택된 경우 --%>
-                        <span style="color:orange;"> &nbsp; ${a } &nbsp;</span>
-                    </c:if>
-                    <c:if test="${a!=page }"> <%--현재 페이지가 선택 안된 경우 --%>
-                        <a href="#">&nbsp; ${a } &nbsp;</a>
-                    </c:if>
-                </c:forEach>
-                <%--다음 버튼 --%>
-                <c:if test="${page >= maxpage }">
-                    다음&gt;
-                </c:if>
-                <c:if test="${page < maxpage }">
-                    <a href="#"> 다음&gt;</a>
-                </c:if>
-            </c:if>
-        </th>
-    </tr>
-    </tfoot>
 </table>
-
 <script>
     function est_detail(est_num) {
         var popupWidth = 910;
@@ -311,15 +216,8 @@
         // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
         window.open(`./detail?est_num=` + est_num, 'Child', 'width=' + popupWidth + ', height=' + popupHeight + ', top=' + popupY + ', left=' + popupX + 'resizable=no');
     }
-
-
     function est_cancel() {
         confirm('해지 하실 경우 계약금이 패널티로 부과됩니다. 해지하시겠습니까?');
     }
 </script>
-
-
 <jsp:include page="../include/footer.jsp"/>
-
-
-		

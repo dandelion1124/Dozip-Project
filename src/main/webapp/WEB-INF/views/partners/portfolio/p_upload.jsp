@@ -7,7 +7,7 @@
 	}
 	#portfolio_form input, #portfolio_form select {
 		border:none;
-		background: #FDF5EC;
+		/*background: rgba(253, 245, 236, 0.13);*/
 		border-radius: 3px;
 		padding: 0 3px;
 	}
@@ -15,19 +15,20 @@
 		height: 30px;
 	}
 	fieldset#first_area input[type=text]:focus-visible, fieldset#first_area select:focus-visible {
-		background: #F39A49;
+		/*background: #F39A49;*/
 	}
 	fieldset#first_area input[type=button]:hover{
-		background: #F39A49;
-		border: 2px solid #F39A49;
+		/*background: #F39A49;*/
+		/*border: 2px solid #F39A49;*/
 	}
 
 	#portfolio_form textarea{
 		border:none;
-		background:#FDF5EC;
+		/*background:#FDF5EC;*/
+		border-radius: 4px;
 	}
 	#portfolio_form fieldset{
-		background: #FBDBBD;
+		background: rgba(251, 219, 189, 0.12);
 	}
 	.textCount, .textTotal {
 		font-size: 13px;

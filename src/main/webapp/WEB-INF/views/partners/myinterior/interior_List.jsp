@@ -2,6 +2,9 @@
 <jsp:include page="../include/header.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+	thead#interiorList_table_thead th {
+		font-weight: lighter;
+	}
 a#go_scheduleList {
     font-size: 20px;
     margin-left: 40px;
@@ -35,6 +38,7 @@ table#interiorList_table{
  	margin: 20px auto;
     width: 97%;
     margin-top:0px;
+	border-collapse: collapse;
 }
 thead#interiorList_table_thead {
     background: cornflowerblue;
