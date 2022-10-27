@@ -110,11 +110,11 @@ span.hide_1{
 /*메인 틀*/
 /*********/
 #main_cont {
-	padding: 50px 0px 0px 70px;
-    min-height: 610px;
+	padding: 50px 0px 0px 200px;
+    min-height: 650px;
     /*border: 1px solid black;*/
     /*margin-left: 130px;*/
-    width: 86%;
+    width: 76%;
 }
 
 /************/

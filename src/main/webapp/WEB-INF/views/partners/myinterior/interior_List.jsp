@@ -86,7 +86,6 @@ div#interior_list_searchBar label {
 		<th>공사마감(예정)일</th>
 		<th>정산하기<br>(계약금,중도금,완납)
 		</th>
-		<th>견적서</th>
 		<th>계약서</th>
 		<th>시공 상세정보</th>
 	</tr>
@@ -94,35 +93,20 @@ div#interior_list_searchBar label {
 	</thead>
 	<tbody>
 	<tr>
-		<td>10</td>
+	<c:if test="${empty clist}">
+		<th colspan="7"> 조회된 내역이 없습니다</th>
+	</c:if>
+	<c:if test="${!empty clist}">
+		<c:forEach var="c" items="${clist}">
+		<td>${c.cont_no}</td>
 		<td>예정</td>
-		<td>2022-10-10</td>
-		<td>2022-10-20</td>
+		<td>${c.cont_start}</td>
+		<td>${c.cont_end}</td>
 		<td>계약금지불완료</td>
 		<td>보기</td>
 		<td>보기</td>
-		<td>보기</td>
-	</tr>
-	<tr>
-		<td>11</td>
-		<td>진행중</td>
-		<td>2022-10-10</td>
-		<td>2022-10-20</td>
-		<td>중도금신청</td>
-		<td>보기</td>
-		<td>보기</td>
-		<td>보기</td>
-
-	</tr>
-	<tr>
-		<td>12</td>
-		<td>완료</td>
-		<td>2022-10-10</td>
-		<td>2022-10-20</td>
-		<td>중도금지불완료</td>
-		<td>보기</td>
-		<td>보기</td>
-		<td>보기</td>
+		</c:forEach>
+	</c:if>
 	</tr>
 </tbody>
 <tfoot>

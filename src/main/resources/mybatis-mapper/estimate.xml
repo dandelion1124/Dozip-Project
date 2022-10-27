@@ -39,7 +39,7 @@
     </select>
     <!--계약서 테이블 불러오기 -->
     <select id="all_contract" resultType="ContractVO">
-        select * from contractT
+        select * from contractT order by cont_no desc
     </select>
 </mapper>
 
