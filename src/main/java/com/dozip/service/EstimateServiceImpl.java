@@ -46,6 +46,11 @@ public class EstimateServiceImpl implements EstimateService {
 
         b.setBid_state("거절");
         this.estimateDAO.updateState2(b.getEst_num()); //나머지 bidT 상태 : 거절
+
+        System.out.println("시작"+b.getBid_start()+", 종료"+b.getBid_end());
+
+        b.setBid_start(b.getBid_start().substring(0,10));
+        b.setBid_end(b.getBid_end().substring(0,10));
         this.estimateDAO.updateBtoE(b); //선택한 bidT의 내용을 estimateT에 update
 
         EstimateVO e = new EstimateVO();

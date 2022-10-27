@@ -77,7 +77,7 @@
     <!--선택한 bid정보를 est정보에 업데이트-->
     <update id="bid_to_est">
         update estimateT
-        set est_bud=#{bid_price}, est_start=#{bid_start}, est_end=#{bid_end}
+        set est_bud=#{bid_price}, est_start=(SELECT TO_DATE(#{bid_start},'YYYY-MM-DD') FROM DUAL), est_end=(SELECT TO_DATE(#{bid_end},'YYYY-MM-DD') FROM DUAL)
         where est_num=#{est_num}
     </update>
 
