@@ -8,23 +8,23 @@
 
 
 		<!-- part1  -->
-		<div class="part1">
+<%--		<div class="part1">--%>
 
-			<span id="part1_title">BEST 후기</span>
-			<span id="part1_count">총 ${count}개의 고객후기</span>
+<%--			<span id="part1_title">BEST 후기</span>--%>
+<%--			<span id="part1_count">총 ${count}개의 고객후기</span>--%>
 
-			<div class="big_review">
-				<img id="big_img" src= '/images/dozip/ex01.png' />
-				<div class="big_review_cont">
-					<p id="review_title">${best.re_title}</p>
-					<p id="review_cont">${best.re_cont}</p>
-					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>
-					<p id="review_info">${best.mem_id} 고객님 | ${best.re_date}</p>
-					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=${best.re_no}'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>
-				</div>
-			</div>
+<%--			<div class="big_review">--%>
+<%--				<img id="big_img" src= '/images/dozip/ex01.png' />--%>
+<%--				<div class="big_review_cont">--%>
+<%--					<p id="review_title">${best.re_title}</p>--%>
+<%--					<p id="review_cont">${best.re_cont}</p>--%>
+<%--					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>--%>
+<%--					<p id="review_info">${best.mem_id} 고객님 | ${best.re_date}</p>--%>
+<%--					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=${best.re_no}'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>--%>
+<%--				</div>--%>
+<%--			</div>--%>
 
-		</div>
+<%--		</div>--%>
 
 <%-- 본문 --%>
 <div class="review_write">

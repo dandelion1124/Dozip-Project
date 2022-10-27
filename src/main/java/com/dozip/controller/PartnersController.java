@@ -377,6 +377,7 @@ public class PartnersController {
         List<ContractVO> clist = partnersService.getContractList();
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_list");
         System.out.println(elist);
+        System.out.println(clist);
         mv.addObject("clist",clist);
         mv.addObject("blist",blist);
         mv.addObject("elist",elist);
