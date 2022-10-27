@@ -113,7 +113,52 @@
     </tr>
     </thead>
     <tbody>
-    <%--1. **견적 테이블이 있을시**--%>
+
+
+
+
+    <%--
+
+    견적테이블이 있고 계약테이블이 없으면 = 모두다 '계약서작성하기'
+                      계약테이블이 있고 같은 est_num가 있으면  '게약서작성완료'
+                      계약테이블이 있고 같은 est_num가 없으면 '게약서작성하기'
+
+     --%>
+
+<c:if test="${!empty elist }">
+    <c:if test="${empty clist}">
+        <h1>계약서작성하기</h1>
+    </c:if>
+    <c:if test="${!empty clist}">
+        <c:forEach var="e" items="${elist}">
+
+             <c:forEach var="c" items="${clist}">
+                 <c:if test="${e.est_num==c.est_num}">
+                     <h1>게약서 작성완료</h1>
+                     <h1>계약서 번호 : ${e.est_num}</h1>
+                     <h1>견적서 번호 : ${c.est_num}</h1>
+                  </c:if>
+                 <c:if test="${e.est_num!=c.est_num}">
+                      <h1>게약서 작성하기</h1>
+                      <h1>계약서 번호 : ${e.est_num}</h1>
+                      <h1>견적서 번호 : ${c.est_num}</h1>
+                 </c:if>
+        </c:forEach>
+        </c:forEach>
+    </c:if>
+</c:if>
+    <c:if test="${empty elist}">
+        <h1>조회된 견적 목록이 없습니다.</h1>
+    </c:if>
+
+
+
+
+
+
+
+
+
 
     <%--a. **contractT 이 있는지**--%>
     <%--1. 있다면 (계약서 작성완료 단계)--%>
@@ -124,123 +169,102 @@
 
     <%--2. 없으면 → 견적 목록이 없습니다.--%>
 
-    <c:if test="${empty elist }">  <%--1. 없으면 → 견적 목록이 없습니다.--%>
-        <tr>
-            <td colspan="8"> 조회된 견적목록이 없습니다.</td>
-        </tr>
-    </c:if>
+<%--    <c:if test="${empty elist }">  &lt;%&ndash;1. 없으면 → 견적 목록이 없습니다.&ndash;%&gt;--%>
+<%--        <tr>--%>
+<%--            <td colspan="8"> 조회된 견적목록이 없습니다.</td>--%>
+<%--        </tr>--%>
+<%--    </c:if>--%>
 
-    <c:if test="${!empty elist }">  <%--1. **견적 테이블이 있을시**--%>
-        <c:forEach var="e" items="${ elist}">  <%-- 견적 리스트 불러오기--%>
-            <c:if test="${!empty clist}"><%--a. **contractT 이 있다면**--%>
-                <%--계약 테이블 기준으로 검색--%>
-                <c:forEach var="c" items="${clist}">
-                    <c:if test="${e.est_num==c.est_num}">
-                        <%--계약서 작성완료 . 계약금 입금전.  --%>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>${c.est_num}</td>
-                            <td><input type="button" value="${c.cont_location}" > <%--onclick="est_detail(${c.est_num})"--%>
-                            </td>
-                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
-                            <td>${c.cont_start} ~ ${c.cont_end}</td>
-                            <td>
-                                ${e.est_check}
-                            </td>
-                            <td>${c.cont_date}</td>
-                            <td>
-                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
-                            </td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
+<%--    <c:if test="${!empty elist }">--%>
+<%--        <c:forEach var="e" items="${ elist}">--%>
+<%--            <h1>${e.est_num}</h1>--%>
+<%--            <c:if test="${!empty clist}">&lt;%&ndash;a. **contractT 이 있다면**&ndash;%&gt;--%>
+<%--                &lt;%&ndash;계약 테이블 기준으로 검색&ndash;%&gt;--%>
+<%--                <c:forEach var="c" items="${clist}">--%>
+<%--                    <c:if test="${e.est_num==c.est_num}"> &lt;%&ndash;계약서 작성완료 단게&ndash;%&gt;--%>
+<%--                        &lt;%&ndash;계약서 작성완료 . 계약금 입금전.  &ndash;%&gt;--%>
+<%--                        <tr>--%>
+<%--                            <td><input type="checkbox"></td>--%>
+<%--                            <td>${c.est_num}</td>--%>
+<%--                            <td><input type="button" value="${c.cont_location}" > &lt;%&ndash;onclick="est_detail(${c.est_num})"&ndash;%&gt;--%>
+<%--                            </td>--%>
+<%--&lt;%&ndash;                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>&ndash;%&gt;--%>
+<%--                            <td>${c.cont_total}만원</td>--%>
+<%--                            <td>${c.cont_start} ~ ${c.cont_end}</td>--%>
+<%--                            <td>--%>
+<%--                                ${e.est_check}--%>
+<%--                            </td>--%>
+<%--                            <td>${c.cont_date}</td>--%>
+<%--                            <td>--%>
+<%--                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                    </c:if>--%>
+<%--                </c:forEach>--%>
 
-            </c:if>
-        </c:forEach>
-        <c:if test="${empty clist}"><%--contractT 이 없다면 == 계약서 작성 전단계 --%>
-            <c:forEach var="e" items="${ elist}">  <%-- 견적 리스트 불러오기--%>
+<%--            </c:if>--%>
+<%--        </c:forEach>--%>
+<%--        <c:if test="${empty clist}">&lt;%&ndash;contractT 이 없다면 == 계약서 작성 전단계 &ndash;%&gt;--%>
+<%--            <c:forEach var="e" items="${ elist}">  &lt;%&ndash; 견적 리스트 불러오기&ndash;%&gt;--%>
 
-                <c:if test="${e.est_check=='계약요청'}">
-                    <c:if test="${empty blist}">    <%-- 직접 견적신청한 리스트--%>
-                        <tr>
-                            <td><input type="checkbox"></td>
-                            <td>${e.est_num}</td>
-                            <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})">
-                            </td>
-                            <td><fmt:formatNumber value="${b.bid_price}" type="number"/>만원</td>
-                            <td>${b.bid_start} ~ ${b.bid_end}</td>
-                            <td>
-                                <button class="write_contract_btn" onclick="write_contract(${e.est_num})"> 계약서작성하기
-                                </button>
-                            </td>
-                            <td>계약서 작성전</td>
-                            <td>
-                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
-                            </td>
-                        </tr>
-                    </c:if>
-                    <c:if test="${!empty blist}">  <%-- 입찰신청한 리스트--%>
-                        <c:forEach var="b" items="${ blist}">  <%-- 견적 리스트 불러오기--%>
+<%--                <c:if test="${e.est_check=='계약요청'}">--%>
+<%--                    <c:if test="${empty blist}">    &lt;%&ndash; 직접 견적신청한 리스트&ndash;%&gt;--%>
+<%--                        <tr>--%>
+<%--                            <td><input type="checkbox"></td>--%>
+<%--                            <td>${e.est_num}</td>--%>
+<%--                            <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})">--%>
+<%--                            </td>--%>
+<%--                            <td><fmt:formatNumber value="${b.bid_price}" type="number"/>만원</td>--%>
+<%--                            <td>${b.bid_start} ~ ${b.bid_end}</td>--%>
+<%--                            <td>--%>
+<%--                                <button class="write_contract_btn" onclick="write_contract(${e.est_num})"> 계약서작성하기--%>
+<%--                                </button>--%>
+<%--                            </td>--%>
+<%--                            <td>계약서 작성전</td>--%>
+<%--                            <td>--%>
+<%--                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                    </c:if>--%>
+<%--                    <c:if test="${!empty blist}">  &lt;%&ndash; 입찰신청한 리스트&ndash;%&gt;--%>
+<%--                        <c:forEach var="b" items="${ blist}">  &lt;%&ndash; 견적 리스트 불러오기&ndash;%&gt;--%>
 
-                        <c:if test="${e.est_num==b.est_num}">
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <td>${e.est_num}</td>
-                                <td><input type="button" value="${e.est_addr} 시공요청"
-                                           onclick="est_detail(${e.est_num})"></td>
-                                <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
-                                <td>${e.est_start} ~ ${e.est_end}</td>
-                                <td>
-                                    <button class="write_contract_btn" onclick="write_contract(${e.est_num})">
-                                        계약서작성하기
-                                    </button>
-                                </td>
-                                <td>계약서 작성전</td>
-                                <td>
-                                    <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
-                                </td>
-                            </tr>
-                        </c:if>
-                         </c:forEach>
-                    </c:if>
-                </c:if>
+<%--                        <c:if test="${e.est_num==b.est_num}">--%>
+<%--                            <tr>--%>
+<%--                                <td><input type="checkbox"></td>--%>
+<%--                                <td>${e.est_num}</td>--%>
+<%--                                <td><input type="button" value="${e.est_addr} 시공요청"--%>
+<%--                                           onclick="est_detail(${e.est_num})"></td>--%>
+<%--&lt;%&ndash;                                <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;--%>
+<%--                                <td>${e.est_bud}만원</td>--%>
 
-            </c:forEach>
+<%--                                <td>${e.est_start} ~ ${e.est_end}</td>--%>
+<%--                                <td>--%>
+<%--                                    <button class="write_contract_btn" onclick="write_contract(${e.est_num})">--%>
+<%--                                        계약서작성하기--%>
+<%--                                    </button>--%>
+<%--                                </td>--%>
+<%--                                <td>계약서 작성전</td>--%>
+<%--                                <td>--%>
+<%--                                    <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
+<%--                        </c:if>--%>
+<%--                         </c:forEach>--%>
+<%--                    </c:if>--%>
+<%--                </c:if>--%>
+
+<%--            </c:forEach>--%>
 
 
-        </c:if>
+<%--        </c:if>--%>
 
-    </c:if>
+<%--    </c:if>--%>
     <script>
         function write_contract(est_num) {
             window.open('/partners/write_contract?est_num=' + est_num, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
         }
     </script>
-
-
-    <%--
-            <tr>
-            <td><input type="checkbox"></td>
-            <td>11</td>
-            <td><input type="button" value="목동 사무실 원상복구 견적 문의" onclick="est_detail()"></td>
-            <td>5,000</td>
-            <td>2022.09.01 ~ 2022.09.12</td>
-            <td> 계약금 지불전(D-3)</td>
-            <td>2022.08.30</td>
-            <td><button onclick="est_cancel()" id="cancel_contract_btn">계약해지</button></td>
-
-            </tr>
-            <tr>
-            <td><input type="checkbox"></td>
-            <td>12</td>
-            <td><input type="button" value="목동 사무실 원상복구 견적 문의" onclick="est_detail()"></td>
-            <td>5,000</td>
-            <td>2022.09.01 ~ 2022.09.12</td>
-            <td>계약금 지불완료</td>
-            <td>2022.08.30</td>
-            <td><button onclick="est_cancel()" id="cancel_contract_btn">계약해지</button></td>
-            </tr>
-    --%>
     </tbody>
     <tfoot>
 
@@ -253,14 +277,14 @@
             <c:if test="${(empty find_field ) && (empty find_text)}"><%--검색 필드와 검색어가 없을떄 --%>
                 <%--이전 버튼 --%>
                 <c:if test="${page <= 1 }"> &lt;이전</c:if>
-                <c:if test="${page>1 }"><a href="customer_qna.do?page=${page-1 }"> &lt;이전 </a></c:if>
+                <c:if test="${page>1 }"><a href="#"> &lt;이전 </a></c:if>
                 <%--현재 쪽번호 출력 --%>
                 <c:forEach var="a" begin="${startpage }" end="${endpage }" step="1">
                     <c:if test="${a==page }"> <%--현재 쪽번호가 선택된 경우 --%>
                         <span style="color:orange;"> &nbsp; ${a } &nbsp;</span>
                     </c:if>
                     <c:if test="${a!=page }"> <%--현재 페이지가 선택 안된 경우 --%>
-                        <a href="customer_qna.do?page=${a}">&nbsp; ${a } &nbsp;</a>
+                        <a href="#">&nbsp; ${a } &nbsp;</a>
                     </c:if>
                 </c:forEach>
                 <%--다음 버튼 --%>
@@ -268,7 +292,7 @@
                     다음&gt;
                 </c:if>
                 <c:if test="${page < maxpage }">
-                    <a href="customer_qna.do?page=${page+1 }"> 다음&gt;</a>
+                    <a href="#"> 다음&gt;</a>
                 </c:if>
             </c:if>
         </th>
