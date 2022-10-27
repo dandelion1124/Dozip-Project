@@ -20,10 +20,6 @@ public class PartnersVO {
     private String p_Delcont;
     private int p_State;
 
-
-
-
-
     //추가 필요정보
     private int p_count;
 
