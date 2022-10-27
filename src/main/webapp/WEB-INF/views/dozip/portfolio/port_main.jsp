@@ -92,35 +92,25 @@
 				<option value="심플">심플</option>
 				<option value="럭셔리">럭셔리</option>
 			</select>
-			<select name="d4" id="dd_group4" onchange="input(this)">
-				<option value="0" selected>비용</option>
-				<option value="999">1000만원 이하</option>
-				<option value="1000">1000만원대</option>
-				<option value="2000">2000만원대</option>
-				<option value="3000">3000만원대</option>
-				<option value="4000">4000만원대</option>
-				<option value="5000">5000만원대</option>
-				<option value="6000">6000만원 이상</option>
-			</select>
-			<select name="d5" id="dd_group5" onchange="input(this)">
-				<option value="0" selected>평수</option>
-				<option value="10">10평</option>
-				<option value="20">20평</option>
-				<option value="30">30평</option>
-				<option value="40">40평</option>
-				<option value="50">50평</option>
-				<option value="60">60평 이상</option>
-			</select>
+
+
 			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침 --%>
 			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
 
-			<button type="button" name = "submit">필터검색</button>
+			<button type="button" name = "submit" class = "filter_btn">필터검색</button>
 			<!-- 리스트 검색창 -->
 			<div class = "search_wrap2">
 				<div class = "search_list">
 					<div id ="key_list">선택한 리스트 값</div>
-					<button class = "list_btn">리스트 검색</button>
 				</div>
+				<select name="d4" id="dd_group4" onchange="input(this)">
+					<option selected>정렬방식</option>
+					<option value="1">비용 낮은순</option>
+					<option value="2">비용 높은순</option>
+					<option value="3">평수 낮은순</option>
+					<option value="4">평수 높은순</option>
+				</select>
+				<button type = "button" name = "confirm" class = "order_btn">정렬</button>
 			</div>
 		</div>
 
@@ -229,10 +219,8 @@
 		var pf_subtype1 = $('#dd_group1').val();
 		var pf_subtype2 = $('#dd_group2').val();
 		var pf_concept = $('#dd_group3').val();
-		var pf_cost = $('#dd_group4').val();
-		var pf_area = $('#dd_group5').val();
 
-		alert(pf_subtype1 +" "+pf_subtype2+" "+pf_concept+" "+pf_cost+" "+pf_area);
+		alert(pf_subtype1 +" "+pf_subtype2+" "+pf_concept);
 
 		$.ajax({
 			url: '/dozip/port_search',
@@ -242,8 +230,7 @@
 				pf_subtype1: pf_subtype1,
 				pf_subtype2: pf_subtype2,
 				pf_concept: pf_concept,
-				pf_cost: pf_cost,
-				pf_area:pf_area
+
 			} ,
 			dataType : "json",
 			cache: false,
@@ -272,6 +259,46 @@
 		});
 
 	});
+
+    //정렬기능
+	$(document).on("click", "button[name='confirm']",function (){
+		var pf_order = $('#dd_group4').val();
+
+		alert(pf_order);
+
+		$.ajax({
+			url:'/dozip/port_order',
+			type:'post',
+			async: false,
+			data:{
+				pf_order:pf_order
+			},
+			dataType: "json",
+			cache: false,
+			success : function (data){
+				var result="";
+
+				$(data).each(function (){
+					result += "<div class='card'>"
+							+ "<div class='card_image'>"
+							+ "<img class = 'ho' onclick = 'location.href='port_detail?pf_no='"+this.pf_no+"';' src= '"+this.pf_photo1+"'/>"
+							+ "</div> <div class='card_title'>"
+							+ "<li id = 'bname' style='display: none'>"+this.businessName+"</li>"
+							+ "<li class = 'corp' id='pf_title'>"+this.pf_title+"</li>"
+							+ "<li class = 'card_tag'><span id='pf_subtype'>"+this.pf_subtype+"</span>"
+							+ "<span id='pf_concept'>"+this.pf_concept+"</span>"
+							+ "<span id='pf_area'>"+this.pf_area+"평</span>"
+							+ "<span id='pf_cost'>"+this.pf_cost+"만원대</span>"
+							+ "</li></div></div>"
+				});
+				$('.cards-list').html(result);
+			},
+			error:function (){
+				alert('실패');
+			}
+		});
+	});
+
 </script>
  		
 
