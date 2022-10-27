@@ -60,8 +60,8 @@
     </update>
 
     <!--est_num 확인-->
-    <select id="find_Enum" resultType="String">
-        select est_num from bidT where bid_num=#{bid_num}
+    <select id="find_B" resultType="BidVO">
+        select * from bidT where bid_num=#{bid_num}
     </select>
 
     <!--입찰상태변경(일괄거절)-->
@@ -72,6 +72,13 @@
     <!--입찰상태변경(개별거절)-->
     <update id="bid_reject">
         update bidT set bid_state='거절' where bid_num=#{bid_num}
+    </update>
+
+    <!--선택한 bid정보를 est정보에 업데이트-->
+    <update id="bid_to_est">
+        update estimateT
+        set est_bud=#{bid_price}, est_start=#{bid_start}, est_end=#{bid_end}
+        where est_num=#{est_num}
     </update>
 
     <!--estT의 상태 변경-->

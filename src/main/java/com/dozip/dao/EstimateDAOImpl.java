@@ -39,7 +39,7 @@ public class EstimateDAOImpl implements EstimateDAO {
     public void updateState(BidVO b) { this.sqlSession.update("state_up", b); }
 
     @Override
-    public String getEnum(String bid_num) { return this.sqlSession.selectOne("find_Enum", bid_num); }
+    public BidVO getEnum(String bid_num) { return this.sqlSession.selectOne("find_B", bid_num); }
 
     @Override
     public void updateState2(String est_num) { this.sqlSession.update("state_down", est_num); }
@@ -77,8 +77,9 @@ public class EstimateDAOImpl implements EstimateDAO {
     public int payState(PayVO p) { return this.sqlSession.update("pay_state", p); }
 
     @Override
-    public void updateReject(String bid_num) {
-        this.sqlSession.update("bid_reject", bid_num);
-    }
+    public void updateReject(String bid_num) { this.sqlSession.update("bid_reject", bid_num); }
+
+    @Override
+    public void updateBtoE(BidVO b) { this.sqlSession.update("bid_to_est", b); }
 
 }

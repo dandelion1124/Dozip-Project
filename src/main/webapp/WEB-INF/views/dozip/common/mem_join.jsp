@@ -122,7 +122,7 @@
 				data:JSON.stringify(params_list())
 			},
 			success : function(data) {
-				alert(data);
+				alert(data.message);
 				window.close();
 			},
 			error:function(){
