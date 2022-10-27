@@ -94,19 +94,19 @@
             <tr>
                 <th>공사장소(면적)</th>
                 <th colspan="2" class="contract_area">
-                    <p><input value="${ev.est_addr}" name="cont_location" readonly></p>
-                    <p> (면적 : <input type="text" value="${ev.est_areaP}" size="4" name="cont_area" readonly> m<sup>2</sup>) </p>
+                    <p><input value="${ev.est_addr}" name="cont_location" size="40" readonly></p>
+                    <p> (면적 : <input type="text" value="${ev.est_areaP}" size="1" name="cont_area" readonly> m<sup>2</sup>) </p>
                 </th>
             </tr>
             <tr>
                 <th rowspan="2">공사기간</th>
                 <th>공사시작일</th>
-                <td><input type="date" value="${ev.est_start}" name="cont_start" readonly>
+                <td><input type="text" value="${ev.est_start}" name="cont_start" readonly>
                 </td>
             </tr>
             <tr>
                 <th>공사완료일</th>
-                <td><input type="date" value="${ev.est_end}" name="cont_end" readonly>
+                <td><input type="text" value="${ev.est_end}" name="cont_end" readonly>
                 </td>
             </tr>
         </table>
