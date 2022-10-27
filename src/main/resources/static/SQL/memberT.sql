@@ -1,1 +1,0 @@
---project_setting 으로 옮김
