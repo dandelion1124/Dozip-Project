@@ -104,8 +104,7 @@
 <table id='est_list_table'>
     <thead>
     <tr>
-        <th></th>
-        <th>견적서번호</th>
+        <th>NO</th>
         <th>시공상세정보</th>
         <th>공사대금(만원)</th>
         <th>시공일정</th>
@@ -126,7 +125,6 @@
             <c:if test="${empty clist}">
 
                 <tr>
-                    <td><input type="checkbox"></td>
                     <td>${e.est_num}</td>
                     <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
                         <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
@@ -154,7 +152,6 @@
                 <c:if test="${e.est_num==c.est_num}">
 
                     <tr>
-                        <td><input type="checkbox"></td>
                         <td>${c.est_num}</td>
                         <td><input type="button" value="${c.cont_location}"> <%--onclick="est_detail(${c.est_num})"--%>
                         </td>
@@ -174,7 +171,6 @@
             <c:if test="${e.est_num!=c.est_num}">
 
                 <tr>
-                    <td><input type="checkbox"></td>
                     <td>${e.est_num}</td>
                     <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
                         <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
@@ -196,7 +192,7 @@
      </c:forEach>
     </c:if>
     <c:if test="${empty elist}">
-        <tr><th colspan="8">      조회된 견적 목록이 없습니다   </th></tr>
+        <tr><th colspan="7">      조회된 견적 목록이 없습니다   </th></tr>
     </c:if>
     <script>
         function write_contract(est_num) {
