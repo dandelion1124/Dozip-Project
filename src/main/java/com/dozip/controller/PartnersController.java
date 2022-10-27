@@ -360,8 +360,8 @@ public class PartnersController {
         m.addObject("listcount", listcount);
 
         List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(e);
-        System.out.println(ereqlist.toString());
-        System.out.println(ereqlist.get(0).getEst_addr());
+        //System.out.println(ereqlist.toString());
+        //System.out.println(ereqlist.get(0).getEst_addr());
 
         for (int i = 0; i < ereqlist.size(); i++) {
             ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
