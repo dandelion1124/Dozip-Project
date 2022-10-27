@@ -188,10 +188,10 @@ public class PartnersController {
         response.setContentType("text/html;charset=UTF-8");
         //String p_id=(String) session.getAttribute("p_id");
 
-        String find_name=request.getParameter("find_name");//검색어
+        //String find_name=request.getParameter("find_name");//검색어
         //String find_field=request.getParameter("find_field");//검색필드
 
-        e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
+        //e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
         //e.setFind_field(find_field);
         System.out.println(e.toString());
 
@@ -202,7 +202,6 @@ public class PartnersController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
 
-        //System.out.println(elist.toString());
         for (int i = 0; i < elist.size(); i++) {
             elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
 
@@ -213,7 +212,7 @@ public class PartnersController {
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
-        m.addObject("find_name", find_name);
+        //m.addObject("find_name", find_name);
         //m.addObject("find_field",find_field);
 
         m.setViewName("/partners/estimate_request/bid");
@@ -308,7 +307,7 @@ public class PartnersController {
         e.setBusinessNum(businessNum);
         e.setStartrow((page-1)*5+1);//시작행번호
         e.setEndrow(e.getStartrow()+limit-1);//끝행번호
-        //System.out.println(e.toString());
+        System.out.println(e.toString());
 
         int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
         int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
@@ -346,37 +345,50 @@ public class PartnersController {
         e.setBusinessNum(businessNum);
         e.setStartrow((page-1)*5+1);//시작행번호
         e.setEndrow(e.getStartrow()+limit-1);//끝행번호
+        System.out.println(e.toString());
 
         int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
         int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
         int endpage=maxpage;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
         if(endpage > startpage+5-1) endpage=startpage+5-1;
 
-        List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(businessNum);
-
-        for (int i = 0; i < ereqlist.size(); i++) {
-            ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
-        }
-        //System.out.println(ereqlist.toString());
-        //System.out.println(ereqlist.get(0).getAddr());
-
         ModelAndView m = new ModelAndView();
-        m.addObject("ereq", ereqlist);
         m.addObject("page", page);
         m.addObject("startpage", startpage);
         m.addObject("endpage", endpage);
         m.addObject("maxpage", maxpage);
         m.addObject("listcount", listcount);
 
+        List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(e);
+        System.out.println(ereqlist.toString());
+        System.out.println(ereqlist.get(0).getEst_addr());
+
+        for (int i = 0; i < ereqlist.size(); i++) {
+            ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
+
+        }
+        m.addObject("ereq", ereqlist);
         m.setViewName("/partners/estimate_request/construct_request");
         return m;
     }
+
+    @RequestMapping(value = "/construct_request_accept",  method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public void bidSelect(EstimateVO e,HttpSession session) {
+        String businessNum = (String) session.getAttribute("businessNum");
+        e.setBusinessNum(businessNum);
+
+        this.partnersService.updateEstimate2(e);
+    }
+
+
 
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
     public String construct_request_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response) throws Exception {
         //response.setContentType("text/html;charset=UTF-8");
 
         EstimateVO e = this.partnersService.selectEstimate(est_num); //견적서 번호 기준으로 데이터 가져오기
+
 
         m.addAttribute("e", e);
 

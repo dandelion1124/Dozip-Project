@@ -12,8 +12,10 @@
 			<div class="go_bid_detail"></div>
 			<div class="request_detail">
 				<p class="label_badge">
-					<span class="label_val1">사무실</span>
-					<span class="label_val2">도배/바닥/욕실 공사</span>
+					<c:set var = "length" value = "${fn:length(e.est_detail)}"/>
+					<c:set var = "est_detail" value = "${fn:substring(e.est_detail,0,length-1)}"/>
+					<span class="label_val1"><b>${e.est_use}</b></span>
+					<span class="label_val2"><b>${est_detail}</b></span>
 				</p>
 				<div class="request_detail_title">
 				<h3>${e.addr} ${e.est_use} 원상복구 견적 문의</h3>
@@ -24,27 +26,28 @@
 						<ul class="box-cell5">
 							<li class="detail_info_cons">
 								<div class="dt">
-									<p class="ico1">희망 예산</p>
+									<p class="ico1"><b>희망 예산</b></p>
 								</div>
-								<div class="dd">${e.est_bud}</div>
+								<div class="dd"><b>${e.est_bud}만원</b></div>
 							</li>
 							<li class="detail_info_cons">
 								<div class="dt">
-									<p class="ico2">견적 신청일</p>
+									<p class="ico2"><b>견적 신청일</b></p>
 								</div>
-								<div class="dd">${e.est_date}</div>
+								<c:set var = "est_date" value = "${fn:split(e.est_date,' ')}"/>
+								<div class="dd"><b>${est_date[0]}</b></div>
 							</li>
 							<li class="detail_info_cons">
 								<div class="dt">
-									<p class="ico3">희망 시공시작일</p>
+									<p class="ico3"><b>희망 시공시작일</b></p>
 								</div>
-								<div class="dd">${e.est_start}</div>
+								<div class="dd"><b>${e.est_start}</b></div>
 							</li>
 							<li class="detail_info_cons_ex">
 								<div class="dt">
-									<p class="ico4">희망 시공종료일</p>
+									<p class="ico4"><b>희망 시공종료일</b></p>
 								</div>
-								<div class="dd">${e.est_end}</div>
+								<div class="dd"><b>${e.est_end}</b></div>
 							</li>
 						</ul>
 					</div>
@@ -83,11 +86,12 @@
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">인테리어 종류</dt>
-								<dd class="sec-cont">[${e.est_detail}]</dd>
+								<dd class="sec-cont">[${est_detail}]</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">세부 선택</dt>
-								<dd class="sec-cont">${e.est_detail01}</dd>
+								<dd class="sec-cont">${e.est_detail01} ${e.est_detail02} ${e.est_detail03} ${e.est_detail04}
+									${e.est_detail05} ${e.est_detail06} ${e.est_detail07} ${e.est_detail08}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">시공 규모 (평 수)</dt>

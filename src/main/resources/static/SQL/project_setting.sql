@@ -288,8 +288,8 @@ create table reviewT
     re_date date default sysdate, --작성일자
     re_modate date, --수정일자 (삭제할때도 해당일자 업데이트하기)
     re_state number(10) default 1 --글 상태 (default 1 삭제하면 0)
-    --foreign key (mem_id) references memberT (mem_id),
-    --foreign key (cont_no) references contractT (cont_no)
+    foreign key (mem_id) references memberT (mem_id),
+    foreign key (cont_no) references contractT (cont_no)
 );
 
 --고객후기 테이블 시퀀스

@@ -118,8 +118,8 @@ public class PartnersDAOImpl implements PartnersDAO {
     }
     /* construct_request */
     @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) {
-        return this.sqlSession.selectList("select_est_bnum",businessNum);
+    public List<EstimateVO> selectEstimateListBnum(EstimateVO e) {
+        return this.sqlSession.selectList("select_est_bnum",e);
     }
     @Override
     public int getBlistCount2(String businessNum) {
@@ -160,6 +160,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     @Override
     public List<ContractVO> getContractList() {
         return sqlSession.selectList("all_contract");
+    }
+
+    @Override
+    public void updateEstimate2(EstimateVO e) {
+        sqlSession.update("update_est2",e);
     }
 }
 

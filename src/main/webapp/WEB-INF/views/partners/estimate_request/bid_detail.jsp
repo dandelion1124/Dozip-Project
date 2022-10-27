@@ -58,34 +58,34 @@ $(function() {
 						<ul class="box-cell5">
 							<li class="detail_info">
 								<div class="dt">
-									<p class="ico1">희망 예산</p>
+									<p class="ico1"><b>희망 예산</b></p>
 								</div>
-								<div class="dd">${e.est_bud}만원</div> <!-- 500만원 -->
+								<div class="dd"><b>${e.est_bud}만원</b></div> <!-- 500만원 -->
 							</li>
 							<li class="detail_info">
 								<div class="dt">
-									<p class="ico2">모집마감일</p>
+									<p class="ico2"><b>모집마감일</b></p>
 								</div>
 							<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
-								<div class="dd">${est_dateEnd[0]}</div>
+								<div class="dd"><b>${est_dateEnd[0]}</b></div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
-									<p class="ico3">희망 시공시작일</p>
+									<p class="ico3"><b>희망 시공시작일</b></p>
 								</div>
-								<div class="dd">${e.est_start}</div>
+								<div class="dd"><b>${e.est_start}</b></div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
-									<p class="ico4">희망 시공종료일</p>
+									<p class="ico4"><b>희망 시공종료일</b></p>
 								</div>
-								<div class="dd">${e.est_end}</div>
+								<div class="dd"><b>${e.est_end}</b></div>
 							</li>							
 							<li class="detail_info_ex">
 								<div class="dt">
-									<p class="ico5">참여 파트너수</p>
+									<p class="ico5"><b>참여 파트너수</b></p>
 								</div>
-								<div class="dd">${bcount}</div>
+								<div class="dd"><b>${bcount}</b></div>
 							</li>
 						</ul>
 					</div>

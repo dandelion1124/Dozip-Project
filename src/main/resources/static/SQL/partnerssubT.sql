@@ -93,3 +93,9 @@ select * from (select rowNum ,* from estimateT where businessNum='143-34-47434')
 select rownum r, b.* from ( select * from estimateT where businessNum='143-34-47434' order by est_num desc) b   
 select rownum r,e.* from estimateT e where businessNum='143-34-47434' order by est_num desc
 select rowNum r,e.* from (select * from estimateT where businessNum='143-34-47434') e order by est_num desc
+select *
+        from (select rowNum r, e.*
+              from estimateT e
+              order by est_num desc where businessNum='143-34-47434')
+        where r >= 1
+          and r <= 5
