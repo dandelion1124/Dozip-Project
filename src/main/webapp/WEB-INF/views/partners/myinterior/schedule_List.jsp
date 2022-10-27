@@ -79,7 +79,6 @@
 				start : '2022-10-15'
 			}  ]
 		});
-
 		calendar.render();
 	});
 </script>

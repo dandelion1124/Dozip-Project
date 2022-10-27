@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/partners/partners_style.css">
     <link rel="stylesheet" href="/css/partners/partners_style2.css">
     <link rel="stylesheet" href="/css/partners/qna_review.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
     <script src="/js/partners/jquery.js"></script>
     <script src="/js/partners/javascript.js"></script>
     <script src="/js/partners/javascript2.js"></script>

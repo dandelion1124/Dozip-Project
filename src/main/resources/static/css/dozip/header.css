@@ -7,7 +7,9 @@
     header nav {float:right;}
     header nav ul{float:left;}
     header nav ul li{float:left;}
-    header nav ul li a {line-height: 56px; font-size:14px; color:#fff; text-decoration:none;}
+    header nav ul li a {line-height: 56px;
+        /*font-size:14px;*/
+        color:#fff; text-decoration:none;}
     
     header.sticky {position:fixed; padding:7px 0; background:#fff; box-shadow:0 2px 2px rgba(0,0,0,.3);}/*상단바 고정시*/
     

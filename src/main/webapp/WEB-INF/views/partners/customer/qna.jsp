@@ -6,6 +6,9 @@
 	#qna_table td {
 		text-align: center;
 	}
+	#search_bar_option {
+		align-items: baseline;
+	}
 </style>
 <div id="qna_title">
 	<div class="title">Q&A</div>
@@ -18,7 +21,7 @@
 <input type="hidden" id="board_level" value="${q.qna_level }">
 
 <div id="search_bar">
-	<div>
+	<div id="search_bar_option">
 <select id="search_condition" name="find_field">
 				<option value="default" selected>검색옵션</option>
 				<option value="customer_name" <c:if test="${find_field =='customer_name' }"> ${'selected' }</c:if>>작성자</option>
@@ -31,7 +34,9 @@
 				<option value="yes" <c:if test="${answer =='yes' }"> ${'selected' }</c:if>>답변완료</option>
 			</select>
 	</div><div>
-	<input type="submit" value="검색">
+	<button><i class="xi-search" style="font-size: 16px"></i></button>
+
+
 </div>
 </div>
 <table id="qna_table">

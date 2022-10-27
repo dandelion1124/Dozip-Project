@@ -475,8 +475,14 @@ public class PartnersController {
      * */
 
     @RequestMapping(value = "/interior_list")
-    public String interior_list() {
-        return "/partners/myinterior/interior_List";
+    public ModelAndView interior_list() {
+
+        List<ContractVO> clist = partnersService.getContractList();
+
+        System.out.println(clist);
+        ModelAndView mv = new ModelAndView( "/partners/myinterior/interior_List");
+        mv.addObject("clist", clist);
+        return mv;
     }
 
     @RequestMapping(value = "/schedule_list")

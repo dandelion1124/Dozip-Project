@@ -2,17 +2,22 @@
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 
 
 <style>
     #estlist_title {
-        font-size: 32px;
+        width: 98.5%;
+        font-size: 30px;
         font-weight: 600;
+        border-bottom: 5px solid #000;
+        margin-left: 14px;
     }
 
     #estlist_msg {
         color: darkslateblue;
-        font-size: 21px;
+        font-size: 18px;
         font-family: fantasy;
         margin-bottom: 10px;
     }
@@ -22,13 +27,13 @@
     }
 
     #estlist_top_cont {
-        border-bottom: 4px solid #7F7F7F;
         padding-bottom: 35px;
+        letter-spacing: 1px;
     }
 
     #est_list_explain {
         width: 96%;
-        border: 4px solid #C1C1C1;
+        border-bottom: 4px double #555;
         padding: 10px 20px;
         margin: 0 auto;
     }
@@ -78,7 +83,6 @@
         width: 100%;
         border-collapse: collapse;
     }
-
     #est_list_table thead {
         background: cornflowerblue;
     }
@@ -87,18 +91,23 @@
         font-weight: lighter;
 
     }
+    div#estlist_msg {
+        margin-left: 20px;
+    }
+
 </style>
+<p style="margin-left:  10px"> | 견적관리 > 견적목록</p>
 <div id="estlist_top_cont">
     <div id="estlist_title">견적목록</div>
     <div id="estlist_msg">
-        계약서를 작성 한 후 계약금 지불이 완료되면 시공 일정에 맞추어 공사를 진행해주시기 바랍니다
+       계약서를 작성 한 후 계약금 지불이 완료되면 시공 일정에 맞추어 공사를 진행해주시기 바랍니다
     </div>
     <div id='est_list_explain'>
 
         <h3>계약이 파기되는 상황 </h3>
-        <p>1. 고객이 계약금을 견적 완료일로부터 3일내로 지급하지 않을경우.<br>
-            2. 고객이나 파트너스가 계약을 원치 않을경우 </p>
-        <b>이럴 경우에는 제시된 계약금의 전부를 상대방에게 지불해야한다</b>
+        <p><img src="/images/dozip/blt_check_red.jpg"> 고객이 계약금을 견적 완료일로부터 3일내로 지급하지 않을경우<br>
+            <img src="/images/dozip/blt_check_red.jpg"> 고객이나 파트너스가 계약을 원치 않을경우 </p>
+        <img src="/images/dozip/blt_check_red.jpg"> <b>이럴 경우에는 제시된 계약금의 전부를 상대방에게 지불해야한다</b>
     </div>
 </div>
 <table id='est_list_table'>

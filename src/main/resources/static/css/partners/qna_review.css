@@ -155,7 +155,7 @@ input.del_btn:hover, input.reply_btn:hover {
     width: 98.5%;
     margin: 50px 0px 0px 10px;
 }
-#search_bar input[type=submit]:hover{
+#search_bar button:hover{
     background: #397d3f;
     color: white;
     border: 2px solid #397d3f;
