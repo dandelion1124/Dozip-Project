@@ -122,9 +122,13 @@ public class PartnersDAOImpl implements PartnersDAO {
         return this.sqlSession.selectList("select_est_bnum",businessNum);
     }
     @Override
-    public int getListCount2(String businessNum) {
+    public int getBlistCount2(String businessNum) {
         return this.sqlSession.selectOne("my_bid_count",businessNum);
     }
+    @Override
+    public int getElistCount(String businessNum) { return this.sqlSession.selectOne("cons_req_count",businessNum); }
+
+
     @Override
     public List<EstimateVO> getAllEstList() {
         return sqlSession.selectList("est_list");

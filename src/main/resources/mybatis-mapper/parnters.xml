@@ -63,7 +63,7 @@
     <!-- bid -->
     <!-- estimate테이블에 있는 데이터 list로 전부 가져오기-->
     <select id="select_estdata" resultType="EstimateVO">
-        select * from estimateT
+        select * from estimateT order by est_num desc
     </select>
 
 
@@ -103,13 +103,18 @@
     <!-- construct_request -->
     <!-- 사업자 번호 기준으로 estimate테이블 list로 가져오기 -->
     <select id="select_est_bnum" resultType="EstimateVO">
-        select * from estimateT where businessNum=#{businessNum}
+        select * from (
+        select rowNum r, e.* from (select * from estimateT where businessNum=#{businessNum}) e order by est_num desc
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
+
     </select>
     <!-- 사업자 번호 기준으로 bid테이블의 레코드 개수 count -->
     <select id="my_bid_count" resultType="int">
         select count(bid_num) from bidT where businessNum=#{businessNum}
     </select>
-
+    <select id="cons_req_count" resultType="int">
+        select count(est_num) from estimateT where businessNum=#{businessNum}
+    </select>
 
 </mapper>
 

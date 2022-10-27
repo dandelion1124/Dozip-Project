@@ -37,7 +37,8 @@ public interface PartnersService {
     List<BidVO> selectJoinList(EstimateVO e);
     /* construct_request */
     List<EstimateVO> selectEstimateListBnum(String businessNum);
-    int getListCount2(String businessNum);
+    int getBlistCount2(String businessNum);
+    int getElistCount(String businessNum);
 
 
     List<EstimateVO> getAllEstList();
@@ -49,4 +50,5 @@ public interface PartnersService {
     EstimateVO getOneEst(String est_num);
 
     List<ContractVO> getContractList();
+
 }
