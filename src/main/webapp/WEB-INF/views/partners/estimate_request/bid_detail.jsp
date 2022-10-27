@@ -42,11 +42,11 @@ $(function() {
 					</span>
 				</p>
 				<p class="label_badge">
-					<span class="label_val1">${e.est_use}</span>
+					<span class="label_val1"><b>${e.est_use}</b></span>
 					<span class="label_val2">
 						<c:set var = "length" value = "${fn:length(e.est_detail)}"/>
 						<c:set var = "est_detail" value = "${fn:substring(e.est_detail,0,length-1)}"/>
-						${est_detail}
+						<b>${est_detail}</b>
 					</span>
 				</p>
 				<div class="request_detail_title">

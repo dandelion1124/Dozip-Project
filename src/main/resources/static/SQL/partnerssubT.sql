@@ -88,3 +88,8 @@ create table estimateT
 );
 update estimateT set est_dateEnd='2022-10-23'
 where est_num=4;
+
+select * from (select rowNum ,* from estimateT where businessNum='143-34-47434')
+select rownum r, b.* from ( select * from estimateT where businessNum='143-34-47434' order by est_num desc) b   
+select rownum r,e.* from estimateT e where businessNum='143-34-47434' order by est_num desc
+select rowNum r,e.* from (select * from estimateT where businessNum='143-34-47434') e order by est_num desc

@@ -21,7 +21,7 @@ create table memberT
 
 -- 2. 파트너스 테이블 --
 drop table partnersT;
-delete from PARTNERST;
+delete from PARTNERST where p_Id='baba'
 select * from PARTNERST;
 create table partnersT
 (

@@ -118,11 +118,14 @@ public class PartnersServiceImpl implements PartnersService {
     @Override
     public List<EstimateVO> selectEstimateListBnum(String businessNum) { return this.partnersDao.selectEstimateListBnum(businessNum); }
     @Override
-    public int getListCount2(String businessNum) {
-        return partnersDao.getListCount2(businessNum);
+    public int getBlistCount2(String businessNum) {
+        return partnersDao.getBlistCount2(businessNum);
     }
 
-
+    @Override
+    public int getElistCount(String businessNum) {
+        return partnersDao.getElistCount(businessNum);
+    }
 
 
     @Override

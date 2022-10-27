@@ -296,14 +296,13 @@ public class PartnersController {
         String businessNum = (String) session.getAttribute("businessNum");
         //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
 
-
         int page=1;//쪽번호
         int limit=5;//한페이지에 보여지는 목록개수
         if(request.getParameter("page") != null) {
             page=Integer.parseInt(request.getParameter("page"));
         }
 
-        int listcount = this.partnersService.getListCount2(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
+        int listcount = this.partnersService.getBlistCount2(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 
         e.setBusinessNum(businessNum);
@@ -333,9 +332,25 @@ public class PartnersController {
     }
 
     @RequestMapping(value = "/construct_request") //시공요청
-    public ModelAndView construct_request(HttpSession session) throws Exception {
+    public ModelAndView construct_request(EstimateVO e,HttpSession session,HttpServletRequest request) throws Exception {
         String businessNum = (String) session.getAttribute("businessNum");
 
+        int page=1;//쪽번호
+        int limit=5;//한페이지에 보여지는 목록개수
+        if(request.getParameter("page") != null) {
+            page=Integer.parseInt(request.getParameter("page"));
+        }
+        int listcount = this.partnersService.getElistCount(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
+        System.out.println("총 시공요청 개수:"+listcount+"개");
+
+        e.setBusinessNum(businessNum);
+        e.setStartrow((page-1)*5+1);//시작행번호
+        e.setEndrow(e.getStartrow()+limit-1);//끝행번호
+
+        int maxpage=(int)((double)listcount/limit+0.95);//총페이지수
+        int startpage=(((int)((double)page/5+0.9))-1)*5+1;//현재 페이지에 보여질 시작페이지 수(1,11,21)
+        int endpage=maxpage;//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
+        if(endpage > startpage+5-1) endpage=startpage+5-1;
 
         List<EstimateVO> ereqlist = this.partnersService.selectEstimateListBnum(businessNum);
 
@@ -347,6 +362,11 @@ public class PartnersController {
 
         ModelAndView m = new ModelAndView();
         m.addObject("ereq", ereqlist);
+        m.addObject("page", page);
+        m.addObject("startpage", startpage);
+        m.addObject("endpage", endpage);
+        m.addObject("maxpage", maxpage);
+        m.addObject("listcount", listcount);
 
         m.setViewName("/partners/estimate_request/construct_request");
         return m;
