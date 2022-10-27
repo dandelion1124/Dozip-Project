@@ -5,7 +5,7 @@
 <mapper namespace="partEstimate">
     <!--계약 요청중인 견적서 -->
     <select id="est_list" resultType="EstimateVO">
-        select * from estimateT where est_check != '대기중'
+        select * from estimateT where est_check != '대기중' order by EST_NUM desc
     </select>
 
     <!--계약 요청중인 입찰테이블 -->
@@ -20,7 +20,9 @@
 
     <!--계약서 정보 insert -->
     <select id="contract_in" resultType="int">
-        insert into CONTRACTT values(contractT_no_seq.nextval, #{est_num}, #{mem_id}, #{businessNum},#{cont_title},#{cont_location},#{cont_area},#{cont_start},#{cont_end},#{cont_total},#{cont_cost1},#{cont_date1},#{cont_cost2},#{cont_date2},#{cont_cost3},#{cont_date3},#{cont_date},#{customer_name},#{customer_addr},#{customer_number},#{customer_tel},#{partners_name},#{partners_addr},#{partners_tel})
+        insert into CONTRACTT values(contractT_no_seq.nextval, #{est_num}, #{mem_id}, #{businessNum},#{cont_title},#{cont_location},TO_NUMBER(#{cont_area}),TO_DATE(#{cont_start},'YYYY-MM-DD'),
+                                     TO_DATE(#{cont_end},'YYYY-MM-DD'),TO_NUMBER(#{cont_total}),TO_NUMBER(#{cont_cost1}),TO_DATE(#{cont_date1},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost2}),TO_DATE(#{cont_date2},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost3}),
+                                     TO_DATE(#{cont_date3},'YYYY-MM-DD'),TO_DATE(#{cont_date},'YYYY-MM-DD'),#{customer_name},#{customer_addr},#{customer_number},#{customer_tel},#{partners_name},#{partners_addr},#{partners_tel})
     </select>
 
     <!--입찰정보 불러오기 -->

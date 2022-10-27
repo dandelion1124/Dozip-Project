@@ -101,12 +101,12 @@
             <tr>
                 <th rowspan="2">공사기간</th>
                 <th>공사시작일</th>
-                <td><input type="text" value="${ev.est_start}" name="cont_start" readonly>
+                <td><input type="date" value="${ev.est_start}" name="cont_start" readonly>
                 </td>
             </tr>
             <tr>
                 <th>공사완료일</th>
-                <td><input type="text" value="${ev.est_end}" name="cont_end" readonly>
+                <td><input type="date" value="${ev.est_end}" name="cont_end" readonly>
                 </td>
             </tr>
         </table>
@@ -166,9 +166,9 @@
         <div>
             <p style="text-align:center;">
                 <jsp:useBean id="now" class="java.util.Date" />
-                <fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일" var="today" />
+                <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 
-                <input type="text" value="${today}" name="cont_date" id="cont_date" size="12" readonly>
+                <input type="date" value="${today}" name="cont_date" id="cont_date" size="12" readonly>
 
             </p>
         </div>

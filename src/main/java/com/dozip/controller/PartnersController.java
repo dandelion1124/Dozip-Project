@@ -433,6 +433,12 @@ public class PartnersController {
         String businessNum = (String)session.getAttribute("businessNum");
         //est_num, 계약 요청 기준으로 select
         ev=partnersService.write_contract(est_num);
+        ev.setEst_start(ev.getEst_start().substring(0,10));
+        ev.setEst_end(ev.getEst_end().substring(0,10));
+
+
+
+
         model.addAttribute("ev", ev);
         model.addAttribute("businessNum",businessNum);
 
@@ -442,11 +448,20 @@ public class PartnersController {
     @RequestMapping("/write_contract_ok") //계약서 작성 확인메서드
     @ResponseBody
     public HashMap<String, Object> write_contract_ok(@RequestParam String data) throws Exception {
+
         HashMap<String, Object> resultMap = new HashMap<>();
         //계약서 테이블에 정보 저장후. 계약 완료로 변경해야함
+
         //고객정보는 안넣어야함
         ObjectMapper mapper = new ObjectMapper();
         ContractVO cv = mapper.readValue(data, ContractVO.class);
+
+        cv.setCont_area(cv.getCont_area().replaceAll(",",""));
+        cv.setCont_total(cv.getCont_total().replaceAll(",",""));
+        cv.setCont_cost1(cv.getCont_cost1().replaceAll(",",""));
+        cv.setCont_cost2(cv.getCont_cost2().replaceAll(",",""));
+        cv.setCont_cost3(cv.getCont_cost3().replaceAll(",",""));
+
         cv.setCustomer_number(" ");
         int result=partnersService.insertContract(cv);
         resultMap.put("status", result);
@@ -458,7 +473,6 @@ public class PartnersController {
      *
      *
      * */
-
 
     @RequestMapping(value = "/interior_list")
     public String interior_list() {
