@@ -138,7 +138,7 @@ create table estimateT
     est_name     nvarchar2(50),             --의뢰인 이름
     est_phone    nvarchar2(200),             --의뢰인 휴대폰 번호
     est_addr     nvarchar2(200),             -- 의뢰인 주소    (추가됨)
-    est_desc     nvarchar2(3000),           --스타일 설명
+    est_desc     nvarchar2(2000),           --스타일 설명
     est_file     nvarchar2(200),            --파일첨부
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (mem_id) references memberT (mem_id)
@@ -162,7 +162,7 @@ create table bidT
     bid_price   number(20) not null,
     bid_start  date not null,
     bid_end  date not null,
-    bid_detail  nvarchar2(3000),
+    bid_detail  nvarchar2(2000),
     bid_state   nvarchar2(50) default '진행중', --상태
     bid_date date default sysdate, --입찰신청일자
     foreign key (businessNum) references partnersT (businessNum),
@@ -180,8 +180,8 @@ select * from contractT;
 create table contractT
 (
         cont_no nvarchar2(50) primary key, --고유번호 PK : C20221027-01 (C + 등록일자 + -시퀀스번호)
-        est_num varchar2(50) not null, --견적번호 FK
-        mem_id varchar2(20) not null, --고객 회원아이디 FK
+        est_num nvarchar2(50) not null, --견적번호 FK
+        mem_id nvarchar2(20) not null, --고객 회원아이디 FK
         businessNum nvarchar2(12) not null, --업체 사업자번호 FK
         cont_title nvarchar2(50) not null, --공사명
         cont_location nvarchar2(50) not null, --공사장소
@@ -249,7 +249,7 @@ create table qnaT
     businessNum nvarchar2(12),              --사업자번호(fk)
     qna_type    nvarchar2(50),               --질문유형 (null허용으로 변경하고 작성페이지는 유효성검사로 넣게끔하는걸로 바꿈)
     qna_title   nvarchar2(200)  not null,    --글제목
-    qna_cont    nvarchar2(4000) not null,    --글내용
+    qna_cont    nvarchar2(2000) not null,    --글내용
     qna_date    date default sysdate,       --작성일자
     edit_date   date,                       --수정일자
     qna_state   number(10) default 1,       --글상태(삭제:0)
@@ -277,7 +277,7 @@ create table reviewT
     mem_id nvarchar2(20) not null,-- 고객 id (fk)
     cont_no nvarchar2(50) not null, -- 계약서T 계약번호(fk)
     re_title nvarchar2(200), --글 제목 not null
-    re_cont nvarchar2(4000), --글 내용 not null
+    re_cont nvarchar2(2000), --글 내용 not null
     re_photo1 nvarchar2(70), -- 사진 1
     re_photo2 nvarchar2(70), -- 사진 2
     re_photo3 nvarchar2(70), -- 사진 3
@@ -287,9 +287,9 @@ create table reviewT
     re_count number(38) default 0, -- 조회수
     re_date date default sysdate, --작성일자
     re_modate date, --수정일자 (삭제할때도 해당일자 업데이트하기)
-    re_state number(10) default 1 --글 상태 (default 1 삭제하면 0)
-    --foreign key (mem_id) references memberT (mem_id),
-    --foreign key (cont_no) references contractT (cont_no)
+    re_state number(10) default 1, --글 상태 (default 1 삭제하면 0)
+    foreign key (mem_id) references memberT (mem_id),
+    foreign key (cont_no) references contractT (cont_no)
 );
 
 --고객후기 테이블 시퀀스
