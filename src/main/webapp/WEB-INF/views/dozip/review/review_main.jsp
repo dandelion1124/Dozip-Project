@@ -12,7 +12,7 @@
 
 			<span id="part1_title">BEST 후기</span>
 			<span id="part1_count">총 ${count}개의 고객후기</span>
-
+		<c:if test="${!empty best}">
 			<div class="big_review">
 				<img id="big_img" src= '/images/dozip/ex01.png' />
 				<div class="big_review_cont">
@@ -23,7 +23,10 @@
 					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=${best.re_no}'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>
 				</div>
 			</div>
-
+		</c:if>
+			<c:if test="${empty best}">
+				<div id = "none_re">목록이 없습니다.</div>
+			</c:if>
 		</div>
 
 <%-- 본문 --%>
