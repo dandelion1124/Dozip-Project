@@ -167,8 +167,8 @@
 
             $(data).each(function () {//each()함수로 반복
                 result += "<tr><td>" + this.businessName + "</td>"
-                    + "<td>" + this.bid_start + "</td>"
-                    + "<td>" + this.bid_end + "</td>"
+                    + "<td>" + this.bid_start.substring(0,10) + "</td>"
+                    + "<td>" + this.bid_end.substring(0,10) + "</td>"
                     + "<td>" + this.bid_price + "만원</td>"
                     + "<td>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date.substring(0,10) + "</td>"

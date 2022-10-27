@@ -42,12 +42,14 @@ public class EstimateServiceImpl implements EstimateService {
         b.setBid_state("계약요청");
         this.estimateDAO.updateState(b); //bidT 상태 : 계약요청
 
-        EstimateVO e = new EstimateVO();
-        e.setEst_num(this.estimateDAO.getEnum(b.getBid_num())); // 선택한 bid_num의 est_num을 가져옴
+        b = this.estimateDAO.getEnum(b.getBid_num()); // 선택한 bid_num의 bidVO를 받아옴
 
         b.setBid_state("거절");
-        this.estimateDAO.updateState2(e.getEst_num()); //나머지 bidT 상태 : 거절
+        this.estimateDAO.updateState2(b.getEst_num()); //나머지 bidT 상태 : 거절
+        this.estimateDAO.updateBtoE(b); //선택한 bidT의 내용을 estimateT에 update
 
+        EstimateVO e = new EstimateVO();
+        e.setEst_num(b.getEst_num());
         e.setEst_check("계약요청");
         this.estimateDAO.updateEstate(e); //estimateT 상태 : 계약요청
     }

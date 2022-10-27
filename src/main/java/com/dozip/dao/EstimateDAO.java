@@ -22,7 +22,7 @@ public interface EstimateDAO {
 
     void updateState(BidVO b);
 
-    String getEnum(String bid_num);
+    BidVO getEnum(String bid_num);
 
     void updateState2(String est_num);
 
@@ -47,4 +47,6 @@ public interface EstimateDAO {
     int payState(PayVO p);
 
     void updateReject(String bid_num);
+
+    void updateBtoE(BidVO b);
 }
