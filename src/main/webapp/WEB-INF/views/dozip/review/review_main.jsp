@@ -14,10 +14,10 @@
 			<span id="part1_count">총 ${count}개의 고객후기</span>
 		<c:if test="${!empty best}">
 			<div class="big_review">
-				<img id="big_img" src= '/images/dozip/ex01.png' />
+				<img class="big_img" src= '/images/dozip/ex01.png' />
 				<div class="big_review_cont">
-					<p id="review_title">${best.re_title}</p>
-					<p id="review_cont">${best.re_cont}</p>
+					<p class="rev_title">${best.re_title}</p>
+					<p class="rev_cont">${best.re_cont}</p>
 					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>
 					<p id="review_info">${best.mem_id} 고객님 | ${best.re_date}</p>
 					<div id="review_go_box"><a onclick="location.href='/dozip/review_detail?re_no=${best.re_no}'"  id="review_go" style="cursor: pointer">해당 리뷰보러 가기 >> </a></div>
@@ -25,7 +25,11 @@
 			</div>
 		</c:if>
 			<c:if test="${empty best}">
-				<div id = "none_re">목록이 없습니다.</div>
+				<div class="big_review">
+					<img class="big_img" src= '/images/dozip/Nothing.jpg' />
+					<div class="big_review_cont">
+						<p class="re_nothing">목록이 없습니다.</p>
+				</div>
 			</c:if>
 		</div>
 
@@ -49,7 +53,7 @@
 						</c:forEach>
 					</c:if>
 					<c:if test="${empty reviewList}">
-						<div id = "none_re">목록이 없습니다.</div>
+						<p class="re_nothing">목록이 없습니다.</p>
 					</c:if>
 				</div>
 		</div>

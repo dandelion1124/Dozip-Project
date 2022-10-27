@@ -811,10 +811,13 @@ public class DozipController {
         bestList = this.reviewService.best(); // Best 리뷰
         int count = this.reviewService.count(); //리뷰 개수
 
+        if(bestList.size() != 0){
+            mv.addObject("best",bestList.get(0));
+        }
 
         mv.addObject("reviewList",reviewList);
         mv.addObject("count", count);
-        mv.addObject("best",bestList.get(0));
+
 
 
         mv.setViewName("/dozip/review/review_main");
