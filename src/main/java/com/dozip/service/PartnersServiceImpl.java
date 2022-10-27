@@ -116,7 +116,7 @@ public class PartnersServiceImpl implements PartnersService {
     }
     /* construct_request */
     @Override
-    public List<EstimateVO> selectEstimateListBnum(String businessNum) { return this.partnersDao.selectEstimateListBnum(businessNum); }
+    public List<EstimateVO> selectEstimateListBnum(EstimateVO e) { return this.partnersDao.selectEstimateListBnum(e); }
     @Override
     public int getBlistCount2(String businessNum) {
         return partnersDao.getBlistCount2(businessNum);
@@ -162,5 +162,8 @@ public class PartnersServiceImpl implements PartnersService {
     public List<ContractVO> getContractList() {
         return partnersDao.getContractList();
     }
+
+    @Override
+    public void updateEstimate2(EstimateVO e) { partnersDao.updateEstimate2(e); }
 }
 

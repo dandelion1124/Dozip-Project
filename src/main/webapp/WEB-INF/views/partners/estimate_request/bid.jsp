@@ -20,7 +20,7 @@
 						<option value="fail">입찰 실패</option>
 					</select>
 					<div class="search_box">
-					    <input class="search-txt" name="find_name" id="find_name" type="text" value="${find_name}" placeholder="검색어를 입력해 주세요"/>
+					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
 					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'">
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
@@ -90,7 +90,6 @@
 									<li class="info">
 										<p class="request_info_tit">모집 마감일</p>
 										<p class="request_info_val">
-
 												<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
 											<span><b>${est_dateEnd[0]}</b></span>
 										</p>
