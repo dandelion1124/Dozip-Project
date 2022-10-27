@@ -55,7 +55,7 @@
 	background-color: #F8F8F8;
 }
 
-#big_img {
+.big_img {
 	width: 50%;
 	margin-left: 20px;
 }
@@ -69,7 +69,7 @@
 
 }
 
-#review_title {
+.rev_title {
 	font-size: 1.8rem;
 	font-weight:bold;
 	margin-top: 30px;
@@ -80,7 +80,7 @@
 	-webkit-box-orient: vertical;
 }
 
-#review_cont {
+.rev_cont {
 	width: 550px;
 	height: 190px;
 	font-size: 0.8rem;
@@ -158,7 +158,11 @@
 	white-space:nowrap;
 	display:inline-block;
 }
-
+.re_nothing {
+	text-align: center;
+	font-size: 23px;
+	font-weight: bold;
+}
 
 
 /*  리뷰 보기 페이지  */
