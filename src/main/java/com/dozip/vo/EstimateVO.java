@@ -11,8 +11,8 @@ public class EstimateVO {
         private String est_check;
         private String est_zoning;
         private String est_use;
-        private String est_areaP;
-        private String est_areaM;
+        private int est_areaP;
+        private float est_areaM;
         private String est_detail;
         private String est_detail01;
         private String est_detail02;
@@ -22,7 +22,7 @@ public class EstimateVO {
         private String est_detail06;
         private String est_detail07;
         private String est_detail08;
-        private String est_bud;
+        private int est_bud;
         private String est_start;
         private String est_end;
         private String est_date;

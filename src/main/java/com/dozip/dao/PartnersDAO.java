@@ -52,5 +52,7 @@ public interface PartnersDAO {
     BidVO getOneBid(String est_num);
     EstimateVO getOneEst(String est_num);
     void updateEstimate(ContractVO cv);
+
+    List<ContractVO> getContractList();
 }
 

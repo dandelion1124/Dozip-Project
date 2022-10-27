@@ -750,8 +750,8 @@ public class DozipController {
 
         e.setEst_zoning(request.getParameter("est_zoning"));
         e.setEst_use(request.getParameter("est_use"));
-        e.setEst_areaP(request.getParameter("areaP"));
-        e.setEst_areaM(request.getParameter("areaM"));
+        e.setEst_areaP(Integer.parseInt(request.getParameter("areaP")));
+        e.setEst_areaM(Float.parseFloat(request.getParameter("areaM")));
         e.setEst_detail(request.getParameter("d")); //배열
         e.setEst_detail01(request.getParameter("group_wallpaper_item"));
         e.setEst_detail02(request.getParameter("group_floor_item"));
@@ -762,7 +762,7 @@ public class DozipController {
         e.setEst_detail07(request.getParameter("group_light_item"));
         e.setEst_detail08(request.getParameter("group_door_item"));
 
-        e.setEst_bud(request.getParameter("est_bud"));
+        e.setEst_bud(Integer.parseInt(request.getParameter("est_bud").replace(",","")));
         e.setEst_start(request.getParameter("est_start"));
         e.setEst_end(request.getParameter("est_end"));
 

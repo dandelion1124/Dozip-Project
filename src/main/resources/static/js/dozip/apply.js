@@ -1,9 +1,11 @@
 /*평/m2 계산기*/
 function calculator(num) {
   if (num == 1) {
-    document.getElementById('cal2').value = parseFloat(document.getElementById('cal1').value) * 3.3058;
+      var a = parseFloat(document.getElementById('cal1').value) * 3.3058;
+      document.getElementById('cal2').value = a.toFixed(2);
   } else {
-    document.getElementById('cal1').value = parseFloat(document.getElementById('cal2').value) / 3.3058;
+      var b = parseFloat(document.getElementById('cal2').value) / 3.3058;
+      document.getElementById('cal1').value = b.toFixed(2);
   }
 }
 function change(){
