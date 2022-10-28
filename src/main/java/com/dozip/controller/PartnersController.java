@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -531,10 +532,7 @@ public class PartnersController {
 
     //포트폴리오 사진등록
     @RequestMapping(value = "/upload_photo_ok")
-    public String upload_photo_ok(PortfolioVO pv, @RequestParam List<MultipartFile> photos,
-                                  HttpServletResponse response, HttpServletRequest request) throws IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
+    public String upload_photo_ok(PortfolioVO pv, @RequestParam List<MultipartFile> photos, HttpServletRequest request) throws IOException {
         int pf_no = 0;
         Cookie[] cookies = request.getCookies();
         for (Cookie c : cookies) {
@@ -542,9 +540,6 @@ public class PartnersController {
                 pf_no = Integer.parseInt(c.getValue()); //쿠키에서 포트폴리오 번호 가져옴 -> 사진 삽입 위해
             }
         }
-
-
-
 
     /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
         1. 아래 uploadPath 주소를 자신의 프로젝트 주소의 upload 폴더로 바꿉니다.
@@ -554,7 +549,7 @@ public class PartnersController {
         3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
         */
 
-        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 학원 PC upload 경로
+        String uploadPath = "D:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
@@ -590,10 +585,26 @@ public class PartnersController {
     }//upload_photo_ok
 
     @RequestMapping(value = "/portfolio_list")  //포트폴리오 리스트
-    public String portfolio_list() {
-        return "/partners/portfolio/p_list";
+    public ModelAndView portfolio_list(HttpSession session) {
+        String businessNum = (String) session.getAttribute("businessNum");
+        List<PortfolioVO> plist= partnersService.getPortfolios(businessNum); //파트너스가 작성한 포트폴리오 불러오기
+        ModelAndView mv = new ModelAndView("/partners/portfolio/p_list");
+        mv.addObject("plist", plist);
+        return mv;
     }
+    @RequestMapping("/p_modify") //포트폴리오 수정폼
+    public ModelAndView p_modify(String pf_no, HttpSession session){
+        PortfolioVO pv = new PortfolioVO();
+        pv.setBusinessNum((String)session.getAttribute("businessNum"));
+        pv.setPf_no(Integer.parseInt(pf_no));
+        PortfolioVO vo = partnersService.getOnePortfolio(pv);
+        System.out.println(vo);
 
+
+        ModelAndView mv = new ModelAndView("//partners/portfolio/p_edit");
+        mv.addObject("vo",vo);
+        return mv;
+    }
 
     /*광고 관리
      *

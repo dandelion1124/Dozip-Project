@@ -2,8 +2,9 @@
 <jsp:include page="../include/header.jsp"/>
 <style>
     #balance_detail_title{
-        font-size:28px;
-        font-weight:600;
+        font-size:26px;
+        font-weight:530;
+        border-bottom: 4px solid #000;
     }
     #balance_detail_msg {
         color: darkslateblue;
@@ -17,9 +18,7 @@
     #balance_detail_top_cont {
         padding-bottom: 20px;
     }
-    #balance_detail_title_bar {
-        width: 97.5%;
-    }
+
     #balance_detail_select_status input {
         background: none;
         width: 100%;
@@ -65,7 +64,7 @@
     }
 
     #balance_detail_main_table_div table {
-        width: 98%;
+        width: 100%;
         border: none;
         border-collapse: collapse;
         margin-bottom: 50px;
@@ -98,8 +97,9 @@
         color: black;
     }
 </style>
+<p> | 내공사 > 정산내역</p>
 <div id="balance_detail_top_cont">
-    <div id="balance_detail_title">정산현황</div>
+    <div id="balance_detail_title">정산내역</div>
     <div id="balance_detail_msg">
         시공완료/시공중 정산내역을 확인할 수 있는 페이지입니다
     </div>

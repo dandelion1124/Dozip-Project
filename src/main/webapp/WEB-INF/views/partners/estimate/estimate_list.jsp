@@ -3,100 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-
-
-
-<style>
-    #estlist_title {
-        width: 98.5%;
-        font-size: 30px;
-        font-weight: 600;
-        border-bottom: 5px solid #000;
-        margin-left: 14px;
-    }
-
-    #estlist_msg {
-        color: darkslateblue;
-        font-size: 18px;
-        font-family: fantasy;
-        margin-bottom: 10px;
-    }
-
-    * {
-        line-height: 2em;
-    }
-
-    #estlist_top_cont {
-        padding-bottom: 35px;
-        letter-spacing: 1px;
-    }
-
-    #est_list_explain {
-        width: 96%;
-        border-bottom: 4px double #555;
-        padding: 10px 20px;
-        margin: 0 auto;
-    }
-
-    table#est_list_table {
-        margin: 20px;
-        border-collapse: collapse;
-    }
-
-    table#est_list_table input[type=button] {
-        background: none;
-        border: none;
-        font-size: medium;
-    }
-
-    table.est_list_table input:hover[type=button], .write_contract_btn:hover {
-        text-decoration: underline;
-        font-weight: bolder;
-        color: blue;
-    }
-
-    tbody td {
-        text-align: center;
-    }
-
-    .write_contract_btn {
-        background: none;
-        border: none;
-        font-size: medium;
-    }
-
-    .cancel_contract_btn {
-        background: #FF0000;
-        border: none;
-        color: white;
-        padding: 0px 6px;
-        border-radius: 3px;
-        height: 30px;
-    }
-
-    .cancel_contract_btn:active {
-        background: #2C2A29;
-    }
-
-    table#est_list_table {
-        margin: 20px auto;
-        width: 100%;
-        border-collapse: collapse;
-    }
-    #est_list_table thead {
-        background: cornflowerblue;
-    }
-
-    #est_list_table th {
-        font-weight: lighter;
-
-    }
-    div#estlist_msg {
-        margin-left: 20px;
-    }
-
-</style>
-<p style="margin-left:  10px"> | 견적관리 > 견적목록</p>
+<link rel="stylesheet" href="/css/partners/estimate.css">
+<p> | 견적관리 > 견적목록</p>
 <div id="estlist_top_cont">
     <div id="estlist_title">견적목록</div>
     <div id="estlist_msg">
@@ -123,12 +31,6 @@
     </tr>
     </thead>
     <tbody>
-    <%--
-    견적테이블이 있고 계약테이블이 없으면 = 모두다 '계약서작성하기'
-                      계약테이블이 있고 같은 est_num가 있으면  '게약서작성완료'
-                      계약테이블이 있고 같은 est_num가 없으면 '게약서작성하기'
-     --%>
-
     <c:if test="${!empty elist }">
         <c:forEach var="e" items="${elist}">
             <c:if test="${empty clist}">
@@ -149,12 +51,6 @@
                         <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
                     </td>
                 </tr>
-
-
-
-
-
-
             </c:if>
             <c:if test="${!empty clist}">
                 <c:forEach var="c" items="${clist}">
@@ -214,7 +110,6 @@
     function est_detail(est_num) {
         var popupWidth = 910;
         var popupHeight = 1000;
-
         var popupX = (window.screen.width / 2) - (popupWidth / 2);
         // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
         var popupY = (window.screen.height / 2) - (popupHeight / 2);
