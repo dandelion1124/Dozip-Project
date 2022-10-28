@@ -166,6 +166,16 @@ public class PartnersDAOImpl implements PartnersDAO {
     public void updateEstimate2(EstimateVO e) {
         sqlSession.update("update_est2",e);
     }
+
+    @Override
+    public List<PortfolioVO> getPortfolios(String businessNum) {
+        return sqlSession.selectList("get_portfolios", businessNum);
+    }
+
+    @Override
+    public PortfolioVO getOnePortfolio(PortfolioVO pv) {
+        return sqlSession.selectOne("getOne_port",pv);
+    }
 }
 
 

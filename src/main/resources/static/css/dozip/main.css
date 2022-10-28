@@ -238,7 +238,7 @@ i.fas.fa-user {
 	margin: 0 auto;
 }
 .part2_left {
-	width: 40%;
+	width: 54%;
 	margin-right: 10px;
 }
 #keyword_form {
@@ -284,9 +284,12 @@ i.fas.fa-user {
 .part_title {
 	display: flex;
 	justify-content: center;
-	font-size: 2.0rem;
+	font-size: 1.4rem;
 	font-weight: bold;
+	margin: 20px 0px;
 }
+
+
 
 /*part3 부분*/
 #part3 {
@@ -345,12 +348,13 @@ i.fas.fa-user {
 
 /* 포트폴리오가 없을 시*/
 #none_pf {
-	display : flex;
-	font-size : 2.0rem;
-	color : #347844;
-	margin: 0 auto ; 
+	font-family: serif;
+	display: flex;
+	font-size: 1rem;
+	color: rgb(0 0 0 / 80%);
+	margin: 0 auto;
 	font-weight: bold;
-	margin-top: 50px;
+	margin-top: 20px;
 	
 }
 

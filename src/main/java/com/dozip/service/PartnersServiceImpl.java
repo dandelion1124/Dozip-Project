@@ -165,5 +165,15 @@ public class PartnersServiceImpl implements PartnersService {
 
     @Override
     public void updateEstimate2(EstimateVO e) { partnersDao.updateEstimate2(e); }
+
+    @Override
+    public List<PortfolioVO> getPortfolios(String businessNum) {
+        return partnersDao.getPortfolios(businessNum);
+    }
+
+    @Override
+    public PortfolioVO getOnePortfolio(PortfolioVO pv) {
+        return partnersDao.getOnePortfolio(pv);
+    }
 }
 

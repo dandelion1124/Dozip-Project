@@ -153,7 +153,7 @@
 
     <div class="part4" style="background-color: white;">
 			<span class="part_title">
-				<a id="part4_link" href="port"><p>포트폴리오 보러가기</p></a>
+				<a id="part4_link" href="port"><p><font >포트폴리오 보러가기</p></a>
 			</span>
 
         <div id="part4_area">

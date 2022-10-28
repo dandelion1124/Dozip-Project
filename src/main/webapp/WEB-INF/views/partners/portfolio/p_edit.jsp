@@ -45,7 +45,6 @@
 	}
 </style>
 <p style="margin-bottom: 10px"> | 시공사례 > 등록</p>
-
 <div id="introduce_cont">
 	<h2>시공사례등록</h2>
 	<p>
@@ -81,7 +80,7 @@
 				<label>제목</label>
 			</div>
 			<div class="a">
-				<input type="text" name="pf_title" size="30" id="pf_title"placeholder="이보다 더 완벽할 수는 없다"> <span class="textCount">0자</span><span class="textTotal">/50자</span>
+				<input type="text" name="pf_title" size="30" id="pf_title"placeholder="이보다 더 완벽할 수는 없다" value="${vo.pf_title}"> <span class="textCount">0자</span><span class="textTotal">/50자</span>
 			</div>
 		</div>
 		<div class="inline_div">
