@@ -11,6 +11,9 @@
 		<tr class="my_req_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
 			<th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>수용여부</th>
 		</tr>
+		<c:if test="${empty ereq}">
+			<td colspan="7" style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">현재 시공요청 리스트가 없습니다.</td>
+		</c:if>
 		<c:if test="${!empty ereq}">
 		<c:forEach var="er" items="${ereq}">
 		<tr class="my_req_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:13px; border-bottom:1px solid lightgray;">
