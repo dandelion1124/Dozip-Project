@@ -14,11 +14,12 @@
 			<form method="post" action="">
 			<div class="request_spot">
 				<h2 class="item_title">입찰의뢰</h2>
+				<!--
 					<select name="my_bid_option" style="border:1px solid lightgray; width: 50px;">
 						<option value="all">전체</option>
 						<option value="success">입찰 성공</option>
 						<option value="fail">입찰 실패</option>
-					</select>
+					</select> -->
 					<div class="search_box">
 					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
 					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'">
@@ -33,14 +34,16 @@
 			<div class="request_list_container">
 				<div class="request_list">
 					<div class="request_list_top">
+						<!--
 						<input type="checkbox" id="filter"> 
-							<label for="filter" class="filter">완료 의뢰 건 제외</label> 
+							<label for="filter" class="filter">완료 의뢰 건 제외</label> -->
 						<div class="request_list_top_right">
+							<!--
 							<select class="fd_search_filter" name="find_field" id="pr_order" data-self="pr_order" data-type="simple">
 								<option value="recent">최신 등록 순</option>
 								<option value="due_date">마감 임박 순</option>
 								<option value="request_budget">예산 규모 순</option>
-							</select>
+							</select> -->
 						</div>
 					</div>
 				<c:if test="${empty elist}">
@@ -97,13 +100,15 @@
 									<li class="info">
 										<p class="request_info_tit">희망 시공시작일</p>
 										<p class="request_info_val">
-											<span><b>${e.est_start}</b></span>
+											<c:set var = "est_start" value = "${fn:split(e.est_start,' ')}"/>
+											<span><b>${est_start[0]}</b></span>
 										</p>
 									</li>
 									<li class="info">
 										<p class="request_info_tit">희망 시공종료일</p>
 										<p class="request_info_val">
-											<span><b>${e.est_end}</b></span>
+											<c:set var = "est_end" value = "${fn:split(e.est_end,' ')}"/>
+											<span><b>${est_end[0]}</b></span>
 										</p>
 									</li>
 								</ul>
