@@ -16,6 +16,48 @@ $(function() {
 	});
 });
 
+$(function () {
+	//오늘 날짜를 출력
+	$("#today").text(new Date().toLocaleDateString());
+
+	//datepicker 한국어로 사용하기 위한 언어설정
+	$.datepicker.setDefaults($.datepicker.regional['ko']);
+
+	// 시작일(est_start)은 종료일(est_end) 이후 날짜 선택 불가
+	// 종료일(est_end)은 시작일(est_start) 이전 날짜 선택 불가
+
+	//시작일.
+	$('#bid_start').datepicker({
+		showOn: "both",                     // 달력을 표시할 타이밍 (both: focus or button)
+		buttonImage: "images/calendar.gif", // 버튼 이미지
+		buttonImageOnly: true,             // 버튼 이미지만 표시할지 여부
+		buttonText: "",             // 버튼의 대체 텍스트
+		dateFormat: "yy-mm-dd",             // 날짜의 형식
+		changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
+		//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+		onClose: function (selectedDate) {
+			// 시작일(est_start) datepicker가 닫힐때
+			// 종료일(est_end)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+			$("#bid_end").datepicker("option", "minDate", selectedDate);
+		}
+	});
+
+	//종료일
+	$('#bid_end').datepicker({
+		showOn: "both",
+		buttonImage: "images/calendar.gif",
+		buttonImageOnly: true,
+		buttonText: "",
+		dateFormat: "yy-mm-dd",
+		changeMonth: true,
+		//minDate: 0, // 오늘 이전 날짜 선택 불가
+		onClose: function (selectedDate) {
+			// 종료일(est_end) datepicker가 닫힐때
+			// 시작일(est_start)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정
+			$("#bid_start").datepicker("option", "maxDate", selectedDate);
+		}
+	});
+});
 
 </script>
 
@@ -73,13 +115,15 @@ $(function() {
 								<div class="dt">
 									<p class="ico3"><b>희망 시공시작일</b></p>
 								</div>
-								<div class="dd"><b>${e.est_start}</b></div>
+							<c:set var = "est_start" value = "${fn:split(e.est_start,' ')}"/>
+								<div class="dd"><b>${est_start[0]}</b></div>
 							</li>
 							<li class="detail_info">
 								<div class="dt">
 									<p class="ico4"><b>희망 시공종료일</b></p>
 								</div>
-								<div class="dd"><b>${e.est_end}</b></div>
+							<c:set var = "est_end" value = "${fn:split(e.est_end,' ')}"/>
+								<div class="dd"><b>${est_end[0]}</b></div>
 							</li>							
 							<li class="detail_info_ex">
 								<div class="dt">
@@ -135,8 +179,8 @@ $(function() {
 							<dl class="sec-item">
 								<dt class="sec-title">세부 선택</dt>
 								<dd class="sec-cont">
-									${e.est_detail01} / ${e.est_detail02} / ${e.est_detail03} / ${e.est_detail04} /
-									${e.est_detail05} / ${e.est_detail06} / ${e.est_detail07} / ${e.est_detail08}
+									${e.est_detail01} ${e.est_detail02} ${e.est_detail03} ${e.est_detail04}
+									${e.est_detail05} ${e.est_detail06} ${e.est_detail07} ${e.est_detail08}
 								</dd> <!-- 가공필요 -->
 
 							</dl>
@@ -154,11 +198,11 @@ $(function() {
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공시작일</dt>
-								<dd class="sec-cont">${e.est_start}</dd>
+								<dd class="sec-cont">${est_start[0]}</dd>
 							</dl>							
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공완료일</dt>
-								<dd class="sec-cont">${e.est_end}</dd>
+								<dd class="sec-cont">${est_end[0]}</dd>
 							</dl>							
 							<dl class="sec-item">
 								<dt class="sec-title">희망 스타일</dt>
@@ -178,10 +222,11 @@ $(function() {
 											<div id="bid_part_detail">
 												<div class="bid_detail01">입찰가</div>
 												<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></div>
+												<!-- <span id="today"></span></br> -->
 												<div class="bid_detail02" >예상 공사시작일</div>
-												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start"  size="10"/><br/></div>
+												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></div>
 												<div class="bid_detail04" >예상 공사종료일</div>
-												<div class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end"  size="10"/><br/></div>
+												<div class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></div>
 												<div class="bid_detail03">업체 공사 스타일 설명</div>
 												<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
 											</div>

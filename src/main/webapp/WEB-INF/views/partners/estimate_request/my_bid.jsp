@@ -9,7 +9,7 @@
 		<h2 class="item_title">내 입찰목록</h2>
 		<%-- <div class="my_bid_title1"><h3 id="bid_fin"> <!--입찰 완료 --></h3></div> --%>
 	</div>
-	<div style="width:90%;">
+	<div style="width:95%;">
 		<!--<select name="my_bid_option" style="border:1px solid lightgray; width: 80px;">
             <option value="all">전체</option>
             <option value="success">입찰 성공</option>

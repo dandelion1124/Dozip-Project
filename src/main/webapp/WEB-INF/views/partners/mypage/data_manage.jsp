@@ -350,20 +350,20 @@
 							<div><input type="text" size="20" id="p_Res_person_name" name="p_Res_person_name" value="${ps.p_Res_person_name}" placeholder="담당자명"></div></br>
 							<label><b>담당자 연락처</b></label>
 							<div><input type="text" size="20" id="p_Res_person_tel" name="p_Res_person_tel" value="${ps.p_Res_person_tel}" placeholder="담당자 연락처"></div>
-							<label>
+							<!-- <label>
 								<input type="checkbox" aria-hidden="false">
-								<span class="">대표자 정보와 동일 <!----></span>
-							</label>
+								 <span class="">대표자 정보와 동일</span>
+							</label>  -->
 						</div></br>
 						<div>
 							<label><b>상업 담당자</b></label>
 							<div><input type="text" size="20" id="p_Com_person_name" name="p_Com_person_name" value="${ps.p_Com_person_name}" placeholder="담당자명"></div></br>
 							<label id="payment-link"><b>담당자 연락처</b></label>
 							<div><input type="text" size="20" id="p_Com_person_tel" name="p_Com_person_tel" value="${ps.p_Com_person_tel}" placeholder="담당자 연락처"></div>
-							<label>
+							<!-- <label>
 								<input type="checkbox" aria-hidden="false">
-								<span class="">대표자 정보와 동일 <!----></span>
-							</label>
+								 <span class="">대표자 정보와 동일 </span>
+							</label> -->
 						</div>
 					</div>
 				</fieldset>
