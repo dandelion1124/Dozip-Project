@@ -51,13 +51,13 @@ $(window).resize(function () {
 var iSecond; //초단위로 환산
 var timerchecker = null, $pf_type;
 window.onload = function () {
-    $('#main_cont').hide();
-    $('#main_cont').fadeIn(900);
+    // $('#main_cont').hide();
+    // $('#main_cont').fadeIn(900);
     fncClearTime();
     initTimer();
 }
 function fncClearTime() {
-    iSecond = 1800; 		//로그인 시간 설정
+    iSecond = 30000; 		//로그인 시간 설정
 }
 Lpad = function (str, len) {
     str = str + "";

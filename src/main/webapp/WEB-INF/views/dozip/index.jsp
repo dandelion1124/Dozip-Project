@@ -123,7 +123,7 @@
                 <div class="option">
                     <div id="keyword_form">
                         <form onsubmit="searchPlaces(); return false;">
-                            <input type="text" value="강남 인테리어" id="keyword">
+                            <input type="text" value="강남" id="keyword">
                             <button type="submit">검색하기</button>
                         </form>
                     </div>
@@ -267,4 +267,5 @@
             </div>
         </footer>
 </body>
+
 </html>

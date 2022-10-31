@@ -159,8 +159,12 @@ input.del_btn:hover, input.reply_btn:hover {
     border: 2px solid #397d3f;
     border-radius: 3px;
 }
-#qna_table td {
+.qna_tr td {
     text-align: center;
+}
+.qna_tr td:nth-of-type(2){
+    text-align: left;
+
 }
 #search_bar_option {
     align-items: baseline;

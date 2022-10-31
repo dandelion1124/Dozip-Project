@@ -684,9 +684,12 @@ public class DozipController {
 
 
     @RequestMapping("/apply")
-    public ModelAndView apply(ModelAndView mv){
+    public ModelAndView apply(ModelAndView mv,String name){
         int count = this.estimateService.counter();
 
+
+
+        mv.addObject("name",name);
         mv.addObject("count",count);
         mv.setViewName("/dozip/apply/applicationSheet");
         return mv;

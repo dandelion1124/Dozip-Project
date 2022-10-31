@@ -103,6 +103,42 @@ function displayPlaces(places) {
                 infowindow.close();
             });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            kakao.maps.event.addListener(marker, 'click', function() {
+                const check =confirm(title+"로 견적신청하시겠습니까?");
+                if(check){
+                    location="/dozip/apply?name="+title;
+                }
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             itemEl.onmouseover =  function () {
                 displayInfowindow(marker, title);
             };
@@ -129,7 +165,7 @@ function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
-                '   <span style="font-size:1rem; font-weight:bold">' + places.place_name + '</span><br/>';
+                '   <button style="font-size:1rem; font-weight:bold" onclick="clicktest()">' + places.place_name + '</button><br/>';
 
     if (places.road_address_name) {
         itemStr += '    <span style="font-size:0.8rem;">' + places.road_address_name + '</span>' +
@@ -146,6 +182,63 @@ function getListItem(index, places) {
 
     return el;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function clicktest(){
+    const check=confirm("본 업체로 견적 신청하시겠습니까?");
+
+    if(check){
+        location="/dozip/apply?name=dd";
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
