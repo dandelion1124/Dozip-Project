@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="../include/header.jsp" />
+<style>
+	.first_reply_td{
+		text-align: center;
+	}
+</style>
 <p style="margin-bottom: 10px"> | 시공사례 > 등록</p>
 <div id="qna_title">
 	<div class="title">Q&A</div>
@@ -71,7 +76,7 @@
 			<c:if test="${q.qna_step==1 }">  <%--답변글 출력 부분 --%>
 			<tr>
 			<td></td>
-			<td class="second_reply_td"><span style="color:blue; font-weight:bolder;">	<img src="/images/dozip/arrow.png"></span>  &nbsp; ${q.qna_cont } </td>
+			<td class="second_reply_td"><span style="color:blue; font-weight:bolder;">	 &nbsp;&nbsp;&nbsp;<img src="/images/dozip/arrow.png"></span>  ${q.qna_cont } </td>
 			<td  class="third_reply_td"><input type="button" value="삭제" class="del_btn" onclick="reply_del(${q.qna_no }, ${q.qna_ref })"></td>
 			<td class="first_reply_td"><span class="reply_date_text"> ${businessName } </span></td>
 			<td class="first_reply_td"><span class="reply_date_text"> ${fn:substring(q.reply_date,0,10)} </span></td>
