@@ -6,12 +6,15 @@ import com.dozip.service.PortfolioService;
 import com.dozip.service.ReviewService;
 import com.dozip.vo.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -41,6 +45,8 @@ public class DozipController {
     private EstimateService estimateService;
     @Autowired
     private ReviewService reviewService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "home") //두집 홈 화면
     public ModelAndView dozip(ModelAndView mv){
@@ -55,12 +61,23 @@ public class DozipController {
     @GetMapping("login")//로그인페이지 이동
     public String login() { return "/dozip/common/login"; }
 
+    @GetMapping("loginGo2")//아이디로 로그인페이지 이동22222 (기존 팝업방식 이용할 때 사용) - 시큐리티
+    public void login(HttpServletResponse response) throws Exception {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out=response.getWriter();
+
+        out.println("<script>");
+        out.println("window.location.href='/dozip/home';");
+        out.println("window.open('/dozip/id_login', '_blank', 'toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0');");
+        out.println("</script>");
+    }
+
     @GetMapping("id_login")//아이디로 로그인 페이지 이동
     public String idLogin() { return "/dozip/common/id_login"; }
 
-    @PostMapping("login_ok")//아이디 로그인
+    @PostMapping("login_ok")//아이디 로그인 - 사용X
     public String loginOk(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String mem_id = request.getParameter("mem_id");
+        /*String mem_id = request.getParameter("mem_id");
         String mem_pwd = request.getParameter("mem_pwd");
         String db_pwd = this.dozipService.loginCheck(mem_id);
 
@@ -94,7 +111,7 @@ public class DozipController {
                 out.println("window.close();");
                 out.println("</script>");
             }
-        }
+        }*/
         return null;
     }
 
@@ -138,12 +155,15 @@ public class DozipController {
         return mem_id;
     }
 
-    @PostMapping("find_pwd") //비밀번호 찾기
-    public String findPwd(MemberVO m, HttpServletResponse response) throws Exception {
+    @RequestMapping("find_pwd") //비밀번호 찾기
+    @ResponseBody
+    public HashMap<String,Object> findPwd(@RequestParam String data) throws Exception {
+        ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        MemberVO m = mapper.readValue(data, MemberVO.class);
+
         int res = this.dozipService.checkInfo(m); //작성한 내용과 db의 정보가 일치하는지 확인
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out=response.getWriter();
+        HashMap<String,Object> map = new HashMap<>();
 
         if(res==1) {
             String imsiPwd = "";
@@ -155,38 +175,32 @@ public class DozipController {
             int result = this.dozipService.updatePwd(m);
             if(result==1) {
                 try {
-                    this.dozipService.sendEmail(m);
-                    out.println("<script>");
-                    out.println("alert('임시비밀번호가 메일로 발송되었습니다.');");
-                    out.println("location='/dozip/id_login';");
-                    out.println("</script>");
+                    this.dozipService.sendEmail(m,imsiPwd);
+                    map.put("res", 1);
+                    map.put("message", "임시비밀번호가 메일로 발송되었습니다.");
                 }catch (Exception e){
                     System.out.println("메일발송 실패 : " + e);
-                    out.println("<script>");
-                    out.println("alert('메일발송에 실패했습니다.');");
-                    out.println("history.back();");
-                    out.println("</script>");
+                    map.put("res", 2);
+                    map.put("message", "메일발송에 실패했습니다.");
                 }
             }
-        }else {
-            out.println("<script>");
-            out.println("alert('입력하신 정보와 일치하는 정보가 없습니다.');");
-            out.println("history.back();");
-            out.println("</script>");
+        }else{
+            map.put("res", 3);
+            map.put("message", "입력하신 정보와 일치하는 회원이 없습니다.");
         }
-        return null;
+        return map;
     }
 
     @GetMapping("mypage") // 기존 마이페이지 (나중에 삭제예정)
     public String mypage() { return "/dozip/mypage/mypage_main"; }
 
     @GetMapping("logout_ok") //로그아웃
-    public String logoutOk(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String logoutOk(HttpSession session, HttpServletResponse response) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
-        HttpSession session=request.getSession();//세션 객체 생성
-        session.invalidate();//세션 만료 => 로그아웃
+        //session.removeAttribute("id"); // "id" 세션만 삭제
+        session.invalidate();//모든 세션 만료 => 로그아웃
 
         out.println("<script>");
         out.println("alert('로그아웃 되었습니다.');");
@@ -197,16 +211,35 @@ public class DozipController {
         return null;
     }
 
-    @GetMapping("mypage_main") //마이페이지 메인화면
-    public String mypagetest() { return "/dozip/mypage/mypage"; }
+    @GetMapping("mypage_main") //마이페이지 메인화면 (수정중)
+    public ModelAndView mypagetest(ModelAndView mv, HttpSession session) {
+        //회원정보
+        MemberVO m = this.dozipService.getMemberInfo((String) session.getAttribute("id"));
+        mv.addObject("m", m);
+
+        //현재일자 확인
+        LocalDate now = LocalDate.now();
+        mv.addObject("now", now);
+
+        //문의 리스트 출력(업체)
+        List<QnaVO> qlist = new ArrayList<QnaVO>();
+        QnaVO q = new QnaVO();
+        q.setMem_id((String) session.getAttribute("id"));
+        q.setStartrow(1); q.setEndrow(5);
+        qlist = this.dozipService.getPlist(q);
+        mv.addObject("qlist", qlist);
+
+
+        mv.setViewName("/dozip/mypage/mypage");
+        return mv;
+    }
 
     @RequestMapping("my_edit") //마이페이지-회원정보수정 이동(로그인된 정보 불러오기)
-    public ModelAndView myEdit(HttpSession session) throws Exception{
+    public ModelAndView myEdit(HttpSession session, ModelAndView mv) throws Exception{
         String id = (String)session.getAttribute("id");
 
         MemberVO m = this.dozipService.getMemberInfo(id);
 
-        ModelAndView mv = new ModelAndView();
         mv.addObject("m",m);
         mv.setViewName("/dozip/mypage/mypage_edit");
         return mv;
@@ -238,8 +271,9 @@ public class DozipController {
         int res = 0;
         HashMap<String, String> map = new HashMap<String, String>();
 
-        if(current_pwd.equals(this.dozipService.loginCheck(m.getMem_id()))){//아이디로 비번찾아오기(로그인에 사용한 쿼리문 재사용)
-            res = this.dozipService.updatePwd(m);//비밀번호 변경 (일치하면 비번변경)
+        boolean pw_check = passwordEncoder.matches(current_pwd, (this.dozipService.loginCheck(m.getMem_id())));//아이디로 비번찾아오기(로그인에 사용한 쿼리문 재사용)
+        if(pw_check){//일치하면
+            res = this.dozipService.updatePwd(m);//비밀번호 변경
             if(res==1) {
                 map.put("text","비밀번호 변경이 완료되었습니다.");
             }else {
@@ -300,9 +334,15 @@ public class DozipController {
         return mv;
     }
 
-    @PostMapping("contract_ok") //마이페이지-계약서 동의 (estT, bidT 상태변경 + payT생성)
-    public RedirectView contractOK(ContractVO c){
+    @RequestMapping(value="contract_ok") //마이페이지-계약서 동의 (estT, bidT 상태변경 + payT생성)
+    @ResponseBody
+    public RedirectView contractOK(@RequestParam String data) throws Exception {
+        ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        ContractVO c = mapper.readValue(data, ContractVO.class);
+
+        System.out.println("cont_no"+c.getCont_no());
         this.estimateService.contractOK(c);
+
         RedirectView rv = new RedirectView();
         rv.setUrl("/dozip/my_cont_view?cont_no="+c.getCont_no());
         return rv;

@@ -100,6 +100,15 @@
         list-style: none;
         padding-left: 10px;
     }
+    .pf_box > input[type='radio'] {
+        width: 15px; height: 15px;
+        font-size: 15px;
+        accent-color: #347844;
+    }
+    /*input[type="radio"]{display:none;}
+    label{display:inline-block;width:20px;height:20px;background-repeat:no-repeat;background-size:20px auto;}
+    .r{background-image: url('/resources/static/images/dozip/icons8-unchecked-radio-button-48.png');}
+    input:checked + label.r{background-image: url("/resources/static/images/dozip/icons8-checked-radio-button-48.png");}*/
 </style>
 
 <%-- 정보수정 --%>
@@ -150,6 +159,17 @@
                         <input type="text" name="mem_addr2" id="mem_addr2" placeholder="상세주소를 입력해주세요." value="${m.mem_addr2}"/>
                     </td>
                 </tr>
+                <tr>
+                    <th>프로필</th>
+                    <td class="pf_box" style="display: flex; padding: 5px;">
+                        <input type='radio' name='mem_pf' value='pf01' /><img src="/images/dozip/profile/pf01.png" style="width:70px; height:70px;"/>
+                        <input type='radio' name='mem_pf' value='pf02' /><img src="/images/dozip/profile/pf02.png" style="width:70px; height:70px;"/>
+                        <input type='radio' name='mem_pf' value='pf03' /><img src="/images/dozip/profile/pf03.png" style="width:70px; height:70px;"/>
+                        <input type='radio' name='mem_pf' value='pf04' /><img src="/images/dozip/profile/pf04.png" style="width:70px; height:70px;"/>
+                        <input type='radio' name='mem_pf' value='pf05' /><img src="/images/dozip/profile/pf05.png" style="width:70px; height:70px;"/>
+                        <input type='radio' name='mem_pf' value='pf06' /><img src="/images/dozip/profile/pf06.png" style="width:70px; height:70px;"/>
+                    </td>
+                </tr>
             </table>
             <button type="button" id="mim_btn">수정하기</button>
         </form>
@@ -167,6 +187,10 @@
             }
         }).open();
     }
+
+    $(document).ready(function (){
+        $("input:radio[name='mem_pf']:radio[value='${m.mem_pf}']").prop('checked', true);
+    })
 
     document.getElementById('mim_btn').onclick = function (){
 

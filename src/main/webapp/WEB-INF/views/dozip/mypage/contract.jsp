@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="/js/dozip/jquery.js"></script>
 <style>
     div.contract_title {
         font-size: 33px;
@@ -61,7 +62,7 @@
     }
 </style>
 
-<form action="/dozip/contract_ok" method="post">
+<form id="cont_form">
     <input type="hidden" value="${c.mem_id}" name="mem_id">
     <input type="hidden" value="${c.cont_no}" name="cont_no">
     <input type="hidden" value="${c.est_num}" name="est_num">
@@ -85,12 +86,11 @@
             <tr>
                 <th rowspan="2">공사기간</th>
                 <th>착 공</th>
-                <td>&nbsp;&nbsp;${c.cont_start}</td>
+                <td>&nbsp;&nbsp;${c.cont_start.substring(0,10)}</td>
             </tr>
             <tr>
                 <th>준 공</th>
-                <td>&nbsp;&nbsp;${c.cont_end}
-                </td>
+                <td>&nbsp;&nbsp;${c.cont_end.substring(0,10)}</td>
             </tr>
         </table>
         </br>
@@ -112,19 +112,19 @@
                 <tr>
                     <th>1차</th>
                     <td>&nbsp;&nbsp;￦${c.cont_cost1}</td>
-                    <td>&nbsp;&nbsp;${c.cont_date1}</td>
+                    <td>&nbsp;&nbsp;${c.cont_date1.substring(0,10)}</td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
                     <td>&nbsp;&nbsp;￦${c.cont_cost2}</td>
-                    <td>&nbsp;&nbsp;${c.cont_date2}</td>
+                    <td>&nbsp;&nbsp;${c.cont_date2.substring(0,10)}</td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
                     <td>&nbsp;&nbsp;￦${c.cont_cost3}</td>
-                    <td>&nbsp;&nbsp;${c.cont_date3}</td>
+                    <td>&nbsp;&nbsp;${c.cont_date3.substring(0,10)}</td>
                     <th>잔금</th>
                 </tr>
             </table>
@@ -134,7 +134,7 @@
             <p> &nbsp;&nbsp;"갑"과 "을"은 상호 신의와 성실을 원칙으로 이 계약서에 의하여 공사계약을 체결하고 계약서 2부를 작성하여 각각 1부씩 보관한다.</p>
         </br>
         <div>
-            <p style="text-align:center;">${c.cont_date}</p>
+            <p style="text-align:center;">${c.cont_date.substring(0,10)}</p>
         </div>
         </br>
         <div>
@@ -159,7 +159,7 @@
                 </tr>
                 <tr>
                     <th colspan="2">사업자번호 / 주민번호 :
-                        <c:if test="${c.customer_number == ' '}"><input size="20" style="background-color: #92d1fc" name="customer_number"></c:if>
+                        <c:if test="${c.customer_number == ' '}"><input size="20" style="background-color: #92d1fc" name="customer_number" id="customer_number"></c:if>
                         <c:if test="${c.customer_number!= ' '}">${c.customer_number}</c:if>
                     </th>
                     <%-- 고객 --%>
@@ -179,7 +179,38 @@
     </div>
     <div id="contract_btn">
     <input type="button" value="닫기" onclick="window.close()">
-        <c:if test="${c.customer_number == ' '}"><input type="submit" value="계약하기"></c:if>
-        <c:if test="${c.customer_number != ' '}">  </c:if>
+    <c:if test="${c.customer_number == ' '}"><input type="button" id="cont_btn" value="계약하기"></c:if>
+    <c:if test="${c.customer_number != ' '}">  </c:if>
     </div>
 </form>
+<script>
+    document.getElementById("cont_btn").onclick = function (){
+        function params_list() {
+            var params = {};  //배열 선언
+            var data = $("#cont_form").serializeArray(); //폼태그에 있는 데이터 담기
+
+            $.each(data, function () { //반복문
+                var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+                var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+                params[name] = value; //params 배열에 키, 값 쌍으로 저장
+            });
+            return params;
+        }
+
+        $.ajax({
+            url : '/dozip/contract_ok',
+            type : 'post',
+            data : {
+                data:JSON.stringify(params_list())
+            },
+            success : function(data) {
+                alert("계약이 완료되었습니다.");
+                opener.parent.location.reload();
+            },
+            error:function(error){
+                alert("실패했습니다.");
+            }
+        })
+    }
+
+</script>

@@ -79,16 +79,16 @@
                     <c:forEach var="i" begin="0" end="${fn:length(clist)-1}" step="1">
                         <tr>
                             <td id="num"><a href="/dozip/my_contD?cont_no=${clist[i].cont_no}">${clist[i].cont_no}</a></td><%--계약번호--%>
-                            <td id="date">${clist[i].businessName}</td><%--업체명--%>
-                            <td id="date">${clist[i].cont_title}</td><%--계약제목--%>
-                            <td id="date">${clist[i].cont_start}</td><%--시작일--%>
-                            <td id="date">${clist[i].cont_end}</td><%--종료일--%>
-                            <td id="date">${clist[i].cont_total}</td><%--총금액--%>
-                            <td id="date">
+                            <td>${clist[i].businessName}</td><%--업체명--%>
+                            <td>${clist[i].cont_title.substring(0, clist[i].cont_title.length() - 2)})</td><%--공사내용--%>
+                            <td>${clist[i].cont_start.substring(0,10)}</td><%--시작일--%>
+                            <td>${clist[i].cont_end.substring(0,10)}</td><%--종료일--%>
+                            <td>${clist[i].cont_total} 만원</td><%--총금액--%>
+                            <td>
                                 <c:if test="${clist[i].customer_number == ' '}">계약요청</c:if>
                                 <c:if test="${clist[i].customer_number != ' '}">계약완료</c:if>
                             </td><%--진행상태--%>
-                            <td id="date">
+                            <td>
                                 <c:if test="${clist[i].customer_number == ' '}">
                                     <button type="button" onclick="cont_view(${clist[i].cont_no})">작성하기</button>
                                 </c:if>
