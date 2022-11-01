@@ -52,8 +52,11 @@ public class DozipController {
     public ModelAndView dozip(ModelAndView mv){
 
         List<PortfolioVO> plist = new ArrayList<PortfolioVO>();
+        List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
         plist = this.portfolioService.getAllList();
+        reviewList = this.reviewService.getAllReview();
         mv.addObject("plist",plist);
+        mv.addObject("reviewList",reviewList);
         mv.setViewName("/dozip/index");
         return mv;
     }
@@ -490,8 +493,7 @@ public class DozipController {
         String pf_subtype1 = request.getParameter("pf_subtype1");
         String pf_subtype2 = request.getParameter("pf_subtype2");
         p.setPf_concept(request.getParameter("pf_concept"));
-        p.setPf_cost(Integer.parseInt(request.getParameter("pf_cost")));
-        p.setPf_area(Integer.parseInt(request.getParameter("pf_area")));
+
 
         if(pf_subtype1.equals("주거유형") && !pf_subtype2.equals("상업유형")){
             p.setPf_subtype(pf_subtype2);
@@ -951,13 +953,13 @@ public class DozipController {
             }
         }
 
-        String uploadRPath = "C:\\Users\\johnny\\Documents\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
+        String uploadRPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
 
 //       테스트 시 각자 폴더 경로 주석 풀어서 잡아주세요~
 //       String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //호철 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //지혜 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //민우 학원 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //수환 학원 PC upload 경로
+//       String uploadRPath = "C:\\Users\\johnny\\Documents\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\"; //수환 학원 PC upload 경로
         String uploadRDBPath ="/r_upload/"+ re_no+"/";
         File dir = new File(uploadRPath);
 
