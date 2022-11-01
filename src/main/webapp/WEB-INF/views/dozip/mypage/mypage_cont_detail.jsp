@@ -68,13 +68,13 @@
                             <th class="cst_th">업체명</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.businessName}</td>
                         </tr>
                         <tr>
-                            <th class="cst_th">공사일정</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_start} - ${c.cont_end}</td>
+                            <th class="cst_th">공사일정</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_start.substring(0,10)} - ${c.cont_end.substring(0,10)}</td>
                         </tr>
                         <tr>
                             <th class="cst_th">공사금액</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_total}원</td>
                         </tr>
                         <tr>
-                            <th class="cst_th">공간유형</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_title}</td>
+                            <th class="cst_th">공간유형</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_title.substring(0, c.cont_title.length() - 2)})</td>
                         </tr>
                         <tr>
                             <th class="cst_th">평수</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_area}평</td>
@@ -91,24 +91,24 @@
                 <div class="contarct_pay_wrap">
                     <table class="contarct_pay_table">
                         <tr>
-                            <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total}</span> 원 </th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
+                            <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total*10000}</span> 원 </th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
                         </tr>
                         <tr>
                             <th class="cpt_th">계약금</th> <th class="cpt_th">:</th>
-                            <td class="cpt_td">${c.cont_cost1}</td>
-                            <td class="cpt_td">${c.cont_date1}</td>
+                            <td class="cpt_td">${changeMoney(c.cont_cost1*10000)} 원</td>
+                            <td class="cpt_td">${c.cont_date1.substring(0,10)}</td>
                             <td class="cpt_td">${p.pay_date1.substring(0,10)}</td>
                         </tr>
                         <tr>
                             <th class="cpt_th">중도금</th> <th class="cpt_th">:</th>
-                            <td class="cpt_td">${c.cont_cost2}</td>
-                            <td class="cpt_td">${c.cont_date2}</td>
+                            <td class="cpt_td">${c.cont_cost2*10000} 원</td>
+                            <td class="cpt_td">${c.cont_date2.substring(0,10)}</td>
                             <td class="cpt_td">${p.pay_date2.substring(0,10)}</td>
                         </tr>
                         <tr>
                             <th class="cpt_th">잔금</th> <th class="cpt_th">:</th>
-                            <td class="cpt_td">${c.cont_cost3}</td>
-                            <td class="cpt_td">${c.cont_date3}</td>
+                            <td class="cpt_td">${c.cont_cost3*10000} 원</td>
+                            <td class="cpt_td">${c.cont_date3.substring(0,10)}</td>
                             <td class="cpt_td">${p.pay_date3.substring(0,10)}</td>
                         </tr>
                     </table>
@@ -150,6 +150,12 @@
         var name = $('#pay_select option:selected').text();
         alert("name"+name+", cost"+cost);
         window.open('/dozip/pay_view?cont_no='+cont_no+'&name='+name+'&cost='+cost,"_blank",'width=500, height=500, top=0, left=100, resizable=no')
+    }
+
+    function changeMoney(str){
+        var inMoney = str;
+        var money = inMoney.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return money;
     }
 </script>
 

@@ -16,8 +16,8 @@
     <!--회원가입-->
     <insert id="in_m">
         insert into memberT
-		(mem_id, mem_pwd, mem_name, mem_tel, mem_email, mem_domain, mem_joinType)
-		values (#{mem_id},#{mem_pwd},#{mem_name}, #{mem_tel}, #{mem_email},#{mem_domain},'일반')
+		(mem_id, mem_pwd, mem_name, mem_tel, mem_email, mem_domain, mem_joinType, role)
+		values (#{mem_id},#{mem_pwd},#{mem_name}, #{mem_tel}, #{mem_email},#{mem_domain},'일반','MEMBER')
     </insert>
 
     <!--회원가입-아이디중복확인-->

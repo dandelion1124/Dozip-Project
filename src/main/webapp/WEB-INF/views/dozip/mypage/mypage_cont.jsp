@@ -90,10 +90,10 @@
                             </td><%--진행상태--%>
                             <td>
                                 <c:if test="${clist[i].customer_number == ' '}">
-                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">작성하기</button>
+                                    <button type="button" onclick="cont_view('${clist[i].cont_no}')">작성하기</button>
                                 </c:if>
                                 <c:if test="${clist[i].customer_number != ' '}">
-                                    <button type="button" onclick="cont_view(${clist[i].cont_no})">확인하기</button>
+                                    <button type="button" onclick="cont_view('${clist[i].cont_no}')">확인하기</button>
                                 </c:if>
                             </td><%--계약서--%>
                         </tr>
