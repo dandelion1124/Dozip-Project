@@ -86,8 +86,16 @@ create table estimateT
     foreign key (businessNum) references partnersT (businessNum),
     foreign key (mem_id) references memberT (mem_id)
 );
-update estimateT set est_dateEnd='2022-10-23'
-where est_num=4;
+update estimateT set est_dateEnd='2022-10-23' where est_num=4;
+insert into estimateT(est_num,mem_id,est_zoning,est_use,est_areaP,est_areaM,est_detail,est_detail01,est_bud,est_start,est_end,
+est_name,est_phone,est_addr,est_desc) values('E20221027-01','mem01','주거','유형','1','3.3','도배/벽','디테일','150','2022-11-01','2022-11-10',
+'의뢰인','010-2222-3333','경기 성남시 분당구 미금로 215', '스타일 스타일 아주 좋아');
+
+insert into estimateT(est_num,mem_id,est_zoning,est_use,est_areaP,est_areaM,est_detail,est_detail01,est_bud,est_start,est_end,
+est_name,est_phone,est_addr,est_desc) values('E20221027-01','mem01','주거','유형','1','3.3','도배/벽','디테일','150','2022-11-01','2022-11-10',
+'의뢰인','010-2222-3333','경기 성남시 분당구 미금로 215', '스타일 스타일 아주 좋아');
+
+delete PARTNERST;
 
 select * from (select rowNum ,* from estimateT where businessNum='143-34-47434')
 select rownum r, b.* from ( select * from estimateT where businessNum='143-34-47434' order by est_num desc) b   

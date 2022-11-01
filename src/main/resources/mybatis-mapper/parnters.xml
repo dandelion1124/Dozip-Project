@@ -118,9 +118,9 @@
         select count(est_num) from estimateT where businessNum=#{businessNum}
     </select>
 
-<!--    <update id="update_est2" parameterType="EstimateVO">-->
-<!--        -->
-<!--    </update>-->
+    <update id="update_est2" parameterType="EstimateVO">-->
+        update ESTIMATET set EST_CHECK='수락' where est_num =#{est_num}
+    </update>
 
 
     <!-- 작성한 포트폴리오 불러오기 -->

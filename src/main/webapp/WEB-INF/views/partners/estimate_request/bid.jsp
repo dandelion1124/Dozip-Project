@@ -78,7 +78,7 @@
 								</span>
 							</p>
 							<p class="request_title">
-								<a href="/partners/bid_detail">${e.addr} ${e.est_use} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 --%>
+								<a href="/partners/bid_detail?no=${e.est_num}">${e.addr} ${e.est_use} 견적 문의</a> <%--${e.est_addr} 가공해서 넣어야 --%>
 							</p>
 							<div class="request_desc_div">
 								<p class="request_desc">${e.est_desc}</p>

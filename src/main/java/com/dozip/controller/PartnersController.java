@@ -373,12 +373,11 @@ public class PartnersController {
         return m;
     }
 
-    @RequestMapping(value = "/construct_request_accept",  method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/construct_request_select")
     @ResponseBody
-    public void bidSelect(EstimateVO e,HttpSession session) {
-        String businessNum = (String) session.getAttribute("businessNum");
-        e.setBusinessNum(businessNum);
-
+    public void bidSelect(String est_num,String est_check,EstimateVO e) {
+        e.setEst_num(est_num);
+        e.setEst_check(est_check);
         this.partnersService.updateEstimate2(e);
     }
 
