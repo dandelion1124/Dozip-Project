@@ -57,6 +57,11 @@
 
         )order by p.pf_no desc
     </select>
+    <!-- load contract List for portfolio -->
+    <select id="portfolio_load" resultType="ContractVO">
+        select * from contractT where businessNum=#{businessNum}
+
+    </select>
 
 
 

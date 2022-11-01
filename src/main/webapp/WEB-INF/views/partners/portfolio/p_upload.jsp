@@ -42,6 +42,7 @@
 		display: flex;
 		align-items: center;
 		font-size: 20px;
+		height: 10px;
 	}
 </style>
 <p style="margin-bottom: 10px"> | 시공사례 > 등록</p>

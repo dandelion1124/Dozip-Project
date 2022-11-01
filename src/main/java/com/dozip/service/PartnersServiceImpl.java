@@ -175,5 +175,10 @@ public class PartnersServiceImpl implements PartnersService {
     public PortfolioVO getOnePortfolio(PortfolioVO pv) {
         return partnersDao.getOnePortfolio(pv);
     }
+
+    @Override
+    public List<ContractVO> getContractList_port(String businessNum) {
+        return partnersDao.getContractList_port(businessNum);
+    }
 }
 

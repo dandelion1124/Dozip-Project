@@ -171,10 +171,14 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<PortfolioVO> getPortfolios(String businessNum) {
         return sqlSession.selectList("get_portfolios", businessNum);
     }
-
     @Override
     public PortfolioVO getOnePortfolio(PortfolioVO pv) {
         return sqlSession.selectOne("getOne_port",pv);
+    }
+
+    @Override
+    public List<ContractVO> getContractList_port(String businessNum) {
+        return sqlSession.selectList("portfolio_load", businessNum);
     }
 }
 

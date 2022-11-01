@@ -2,6 +2,7 @@
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/css/partners/estimate.css">
 <p> | 견적관리 > 견적목록</p>
@@ -33,14 +34,14 @@
     <tbody>
     <c:if test="${!empty elist }">
         <c:forEach var="e" items="${elist}">
-            <c:if test="${empty clist}">
+            <c:if test="${empty clist}">   <%--계약서 테이블이 없다면 --%>
 
                 <tr>
                     <td>${e.est_num}</td>
                     <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
-                        <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
-                    <td>${e.est_bud}만원</td>
-                    <td>${e.est_start} ~ ${e.est_end}</td>
+                    <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
+                    <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
+
                     <td>
                         <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
                             계약서작성하기
@@ -60,13 +61,12 @@
                         <td>${c.est_num}</td>
                         <td><input type="button" value="${c.cont_location}"> <%--onclick="est_detail(${c.est_num})"--%>
                         </td>
-                            <%--                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>--%>
-                        <td>${c.cont_total}만원</td>
-                        <td>${c.cont_start} ~ ${c.cont_end}</td>
+                        <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
+                        <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
                         <td>
                                 ${e.est_check}
                         </td>
-                        <td>${c.cont_date}</td>
+                        <td>${fn:substring(c.cont_date,0,10)}</td>
                         <td>
                             <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
                         </td>
@@ -78,9 +78,8 @@
                 <tr>
                     <td>${e.est_num}</td>
                     <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
-                        <%--                               <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>&ndash;%&gt;&ndash;%&gt;--%>
-                    <td>${e.est_bud}만원</td>
-                    <td>${e.est_start} ~ ${e.est_end}</td>
+                    <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
+                    <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
                     <td>
                         <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
                             계약서작성하기

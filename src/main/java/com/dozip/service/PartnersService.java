@@ -57,4 +57,6 @@ public interface PartnersService {
     List<PortfolioVO> getPortfolios(String businessNum);
 
     PortfolioVO getOnePortfolio(PortfolioVO pv);
+
+    List<ContractVO> getContractList_port(String businessNum);
 }

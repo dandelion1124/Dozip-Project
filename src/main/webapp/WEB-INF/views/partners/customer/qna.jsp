@@ -7,7 +7,7 @@
 		text-align: center;
 	}
 </style>
-<p style="margin-bottom: 10px"> | 시공사례 > 등록</p>
+<p style="margin-bottom: 10px"> | 고객관리 > 고객문의</p>
 <div id="qna_title">
 	<div class="title">Q&A</div>
 	<div class="message">고객문의 페이지입니다. 빠른 시일 내에 처리 바랍니다.</div>
