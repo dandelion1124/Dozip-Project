@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/dozip/home", "/dozip/login", "/dozip/id_login",
                         "/dozip/login_ok", "/dozip/member_join", "/dozip/member_join_ok", "/dozip/mIDcheck",
-                        "/dozip/find_login", "/dozip/find_id", "/dozip/find_pwd","/comm/sessionInfo").permitAll()
+                        "/dozip/find_login", "/dozip/find_id", "/dozip/find_pwd", "/dozip/port", "/dozip/review_main",
+                        "/dozip/counsel_main", "/comm/sessionInfo").permitAll()
                 .antMatchers("/dozip/**").hasAuthority("MEMBER") //인가
                 .antMatchers("/admin/**").hasAuthority("ADMIN");
 

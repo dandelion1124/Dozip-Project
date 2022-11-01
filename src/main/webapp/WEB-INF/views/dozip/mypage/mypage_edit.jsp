@@ -217,7 +217,7 @@
             success : function(data) {
                 if(parseInt(data)==1){
                     alert("회원정보 수정이 완료되었습니다.");
-                    location.reload();
+                    location.href = "/dozip/mypage_main";
                 }else{
                     alert("회원정보 수정에 실패했습니다.");
                     location.reload();

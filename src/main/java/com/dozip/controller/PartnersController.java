@@ -429,8 +429,9 @@ public class PartnersController {
     }
 
     @RequestMapping("/write_contract") //계약서 보기
-    public String write_contract(int est_num, EstimateVO ev, Model model, HttpSession session){
+    public String write_contract(String est_num, EstimateVO ev, Model model, HttpSession session){
         /* 계약서에 담을 내용들을 불러와서 model 객체에 담아야함 */
+        System.out.println(est_num);
         String businessNum = (String)session.getAttribute("businessNum");
         //est_num, 계약 요청 기준으로 select
         ev=partnersService.write_contract(est_num);

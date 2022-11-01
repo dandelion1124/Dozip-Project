@@ -3,9 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="./mypage_header.jsp" />
-<script src="/admin/plugins/sweetalert2/sweetalert2.min.js"></script>
-<!-- sweet alert style -->
-<link href="/admin/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <%-- 상단 공통부분 끝 --%>
 <style>
     .my_wrap { width: 97%; margin: 0 auto;}

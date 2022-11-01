@@ -42,7 +42,7 @@
                     <td>${e.est_bud}만원</td>
                     <td>${e.est_start} ~ ${e.est_end}</td>
                     <td>
-                        <button class="write_contract_btn" onclick="write_contract(${e.est_num})">
+                        <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
                             계약서작성하기
                         </button>
                     </td>
@@ -82,7 +82,7 @@
                     <td>${e.est_bud}만원</td>
                     <td>${e.est_start} ~ ${e.est_end}</td>
                     <td>
-                        <button class="write_contract_btn" onclick="write_contract(${e.est_num})">
+                        <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
                             계약서작성하기
                         </button>
                     </td>
@@ -101,7 +101,7 @@
     </c:if>
     <script>
         function write_contract(est_num) {
-            window.open('/partners/write_contract?est_num=' + est_num, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
+            window.open('/partners/write_contract?est_num=' +est_num, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
         }
     </script>
     </tbody>

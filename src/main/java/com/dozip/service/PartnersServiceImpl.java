@@ -137,7 +137,7 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.getBidList();
     }
     @Override
-    public EstimateVO write_contract(int est_num){
+    public EstimateVO write_contract(String est_num){
         return partnersDao.write_contract(est_num);
     }
 

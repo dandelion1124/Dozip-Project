@@ -138,7 +138,7 @@ public class PartnersDAOImpl implements PartnersDAO {
         return sqlSession.selectList("est_list2");
     }
     @Override
-    public EstimateVO write_contract(int est_num) {
+    public EstimateVO write_contract(String est_num) {
         return sqlSession.selectOne("write_contract",est_num);
     }
     @Override
