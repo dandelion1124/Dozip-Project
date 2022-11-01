@@ -457,12 +457,15 @@ public class PartnersController {
         //고객정보는 안넣어야함
         ObjectMapper mapper = new ObjectMapper();
         ContractVO cv = mapper.readValue(data, ContractVO.class);
+        System.out.println(cv.getCont_cost1());
 
         cv.setCont_area(cv.getCont_area().replaceAll(",",""));
         cv.setCont_total(cv.getCont_total().replaceAll(",",""));
         cv.setCont_cost1(cv.getCont_cost1().replaceAll(",",""));
         cv.setCont_cost2(cv.getCont_cost2().replaceAll(",",""));
         cv.setCont_cost3(cv.getCont_cost3().replaceAll(",",""));
+
+
 
         cv.setCustomer_number(" ");
         int result=partnersService.insertContract(cv);
@@ -477,11 +480,16 @@ public class PartnersController {
      * */
 
     @RequestMapping(value = "/interior_list")
-    public ModelAndView interior_list() {
+    public ModelAndView interior_list(String est_check, String pay_state) {
 
         List<ContractVO> clist = partnersService.getContractList();
-
-        System.out.println(clist);
+        if(est_check != null){
+            System.out.println(est_check);
+        }
+        if(pay_state != null){
+            System.out.println(pay_state);
+        }
+       // System.out.println(clist);
         ModelAndView mv = new ModelAndView( "/partners/myinterior/interior_List");
         mv.addObject("clist", clist);
         return mv;
