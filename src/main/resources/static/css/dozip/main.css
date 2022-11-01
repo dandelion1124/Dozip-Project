@@ -238,8 +238,9 @@ i.fas.fa-user {
 	margin: 0 auto;
 }
 .part2_left {
-	width: 54%;
+	width: 500px;
 	margin-right: 10px;
+	height:  450px;
 }
 #keyword_form {
 	width: 100%;
@@ -255,13 +256,13 @@ i.fas.fa-user {
 #menu_wrap{
 	width: 100%;
 	overflow: auto;
-	height: 296px;
+	height: 400px;
 }
 
 #map {
 	z-index: 0;
-	width: 40%;
-	height: 350px;
+	width: 700px;
+	height: 450px;
 }
 #search_wrap {
 	text-align: center;
