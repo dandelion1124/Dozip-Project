@@ -104,7 +104,7 @@
                             </td>
                             <td>${elist[i].est_date.substring(0,10)}</td><%--신청날짜--%>
                             <td>${elist[i].est_zoning}</td><%--공간유형--%>
-                            <td>${elist[i].est_detail}</td><%--공간선택--%>
+                            <td>${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
                             <td>${elist[i].est_areaP}</td><%--평수--%>
                             <td>${elist[i].est_bud}</td><%--예산--%>
                             <td>${elist[i].businessName}</td><%--업체명--%>

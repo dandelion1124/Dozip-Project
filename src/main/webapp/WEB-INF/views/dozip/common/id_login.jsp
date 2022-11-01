@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
 	<script src="/js/dozip/jquery.js"></script>
 	<script src="/js/dozip/member.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <div id="id_login_wrap">

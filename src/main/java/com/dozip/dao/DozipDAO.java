@@ -40,4 +40,6 @@ public interface DozipDAO {
     List<PartnersVO> search_part(String p_address);
 
     int count_partners(String p_address);
+
+    MemberVO login(String mem_id);
 }

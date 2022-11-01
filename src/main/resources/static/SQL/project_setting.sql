@@ -17,8 +17,8 @@ create table memberT
     mem_joinDate     date default sysdate,        --회원 가입날짜
     mem_withdraw     number(10) default 0,        -- 탈퇴여부(탈퇴시 : 1)
     mem_withdrawDate date,                        -- 탈퇴일자
-    role             nvarchar2(20),               -- 권한
-    mem_pf           nvarchar2(20)                -- 프로필
+    mem_pf           nvarchar2(20),               -- 프로필
+    role             nvarchar2(20)                -- 권한 (MEMBER/ADMIN)
 );
 
 -- 2. 파트너스 테이블 --

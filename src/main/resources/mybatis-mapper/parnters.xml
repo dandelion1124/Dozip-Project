@@ -85,7 +85,7 @@
     <!-- 입찰신청하기 입찰 DB에 insert -->
     <insert id="insert_bid_detail">
         insert into bidT (bid_num,businessNum,est_num,bid_price,bid_start,bid_end,bid_detail,bid_date)
-        values(bid_num_seq.nextval,#{businessNum,jdbcType=VARCHAR},#{est_num,jdbcType=VARCHAR},
+        values(('B'||to_char(sysdate, 'yyyymmdd')||'-'||bid_num_seq.nextval),#{businessNum,jdbcType=VARCHAR},#{est_num,jdbcType=VARCHAR},
             #{bid_price,jdbcType=VARCHAR},#{bid_start,jdbcType=VARCHAR},#{bid_end,jdbcType=VARCHAR},#{bid_detail,jdbcType=VARCHAR},sysdate)
     </insert>
 
