@@ -103,9 +103,9 @@
                                 <c:out value="${number}"/>--%>
                             </td>
                             <td id="date">${elist[i].est_zoning}</td><%--공간유형--%>
-                            <td id="date">${elist[i].est_detail}</td><%--공간선택--%>
+                            <td id="date">${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
                             <td id="date">${elist[i].est_areaP} 평</td><%--평수--%>
-                            <td id="date">${elist[i].est_bud} 원</td><%--예산--%>
+                            <td id="date">${elist[i].est_bud} 만원</td><%--예산--%>
                             <td id="date">${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
                             <td id="date">${elist[i].est_date.substring(0,10)}</td><%--신청일자--%>
                             <td id="date">${elist[i].est_dateEnd.substring(0,10)}</td><%--마감일자--%>

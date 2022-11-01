@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
 	<script src="/js/dozip/jquery.js"></script>
 	<script src="/js/dozip/member.js"></script>
+
 	<style>
 		#join_form_table label {
 			font-weight: bold;

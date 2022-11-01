@@ -37,9 +37,11 @@ public interface DozipService {
 
     int checkInfo(MemberVO m);
 
-    void sendEmail(MemberVO m);
+    void sendEmail(MemberVO m, String imsiPwd);
 
     List<PartnersVO> search_part(String p_address);
 
     int count_partners(String s);
+
+    MemberVO login(String mem_id);
 }

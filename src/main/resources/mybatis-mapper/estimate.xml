@@ -20,7 +20,7 @@
 
     <!--계약서 정보 insert -->
     <select id="contract_in" resultType="int">
-        insert into CONTRACTT values(contractT_no_seq.nextval, #{est_num}, #{mem_id}, #{businessNum},#{cont_title},#{cont_location},TO_NUMBER(#{cont_area}),TO_DATE(#{cont_start},'YYYY-MM-DD'),
+        insert into CONTRACTT values(('C'||to_char(sysdate, 'yyyymmdd')||'-'||contractT_no_seq.nextval), #{est_num}, #{mem_id}, #{businessNum},#{cont_title},#{cont_location},TO_NUMBER(#{cont_area}),TO_DATE(#{cont_start},'YYYY-MM-DD'),
                                      TO_DATE(#{cont_end},'YYYY-MM-DD'),TO_NUMBER(#{cont_total}),TO_NUMBER(#{cont_cost1}),TO_DATE(#{cont_date1},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost2}),TO_DATE(#{cont_date2},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost3}),
                                      TO_DATE(#{cont_date3},'YYYY-MM-DD'),TO_DATE(#{cont_date},'YYYY-MM-DD'),#{customer_name},#{customer_addr},#{customer_number},#{customer_tel},#{partners_name},#{partners_addr},#{partners_tel})
     </select>

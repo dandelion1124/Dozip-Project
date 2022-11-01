@@ -5,7 +5,7 @@ select * from MEMBERT;
 create table memberT
 (
     mem_id           nvarchar2(20) primary key,   --회원아이디
-    mem_pwd          nvarchar2(50) not null,      --회원비번
+    mem_pwd          nvarchar2(100) not null,      --회원비번
     mem_name         nvarchar2(20) not null,      --회원이름
     mem_tel          nvarchar2(20) not null,      --회원연락처
     mem_email        nvarchar2(20) not null,      --회원 이메일 아이디
@@ -16,7 +16,9 @@ create table memberT
     mem_joinType     nvarchar2(20) not null,      --가입유형(일반/카톡/네이버/페북/구글)
     mem_joinDate     date default sysdate,        --회원 가입날짜
     mem_withdraw     number(10) default 0,        -- 탈퇴여부(탈퇴시 : 1)
-    mem_withdrawDate date                         -- 탈퇴일자
+    mem_withdrawDate date,                        -- 탈퇴일자
+    mem_pf           nvarchar2(20),               -- 프로필
+    role             nvarchar2(20)                -- 권한 (MEMBER/ADMIN)
 );
 
 -- 2. 파트너스 테이블 --

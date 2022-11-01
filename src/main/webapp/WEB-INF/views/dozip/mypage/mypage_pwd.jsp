@@ -112,7 +112,7 @@
 </div>
 
 <script>
-    /*document.getElementById("mpm_btn").onclick = function() {
+    document.getElementById("mpm_btn").onclick = function() {
         var current_pwd = $.trim($("#current_pwd").val());
         var new_pwd = $.trim($("#new_pwd").val());
 
@@ -132,7 +132,7 @@
                 alert("실패했습니다.");
             }
         });
-    }*/
+    }
 </script>
 
 <%-- 하단 공통부분 --%>

@@ -75,7 +75,7 @@
             <li>
                 <a class="menu_title">MY 나의활동</a>
                 <ul>
-                    <li><a>내정보</a></li>
+                    <li><a href="/dozip/mypage_main">내정보</a></li>
                     <li><a href="/dozip/my_edit">회원정보수정</a></li>
                     <li><a href="/dozip/my_pwd">비밀번호 변경</a></li>
                     <li><a href="/dozip/my_scrap">스크랩관리</a></li>

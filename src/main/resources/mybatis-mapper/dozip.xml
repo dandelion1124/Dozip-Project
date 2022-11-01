@@ -3,6 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dozip">
+    <!--new 로그인-->
+    <select id="loginid" resultType="MemberVO">
+        select * from memberT where mem_id=#{mem_id}
+    </select>
+
     <!--로그인(아이디에 해당하는 비밀번호 가져오기)-->
     <select id="mlogin_check" resultType="String">
         select mem_pwd from memberT where mem_id=#{mem_id} and mem_withdraw=0
@@ -39,7 +44,7 @@
     <!--회원정보 수정-->
     <update id="m_update">
         update memberT set mem_name=#{mem_name}, mem_tel=#{mem_tel}, mem_email=#{mem_email}, mem_domain=#{mem_domain},
-                           mem_zip=#{mem_zip}, mem_addr1=#{mem_addr1}, mem_addr2=#{mem_addr2} where mem_id=#{mem_id}
+                           mem_zip=#{mem_zip}, mem_addr1=#{mem_addr1}, mem_addr2=#{mem_addr2}, mem_pf=#{mem_pf} where mem_id=#{mem_id}
     </update>
 
     <!--비밀번호 변경-->

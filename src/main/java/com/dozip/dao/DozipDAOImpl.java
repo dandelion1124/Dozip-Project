@@ -74,4 +74,9 @@ public class DozipDAOImpl implements DozipDAO{
     public int count_partners(String p_address) {
         return sqlSession.selectOne("counter_partners",p_address);
     }
+
+    @Override
+    public MemberVO login(String mem_id) {
+        return this.sqlSession.selectOne("loginid", mem_id);
+    }
 }

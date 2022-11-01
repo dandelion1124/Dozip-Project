@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/dozip/login.css" />
 	<script src="/js/dozip/jquery.js"></script>
 	<script src="/js/dozip/member.js"></script>
+
 	<script>
 		function on_find_id() {
 			$('.find_pwd').hide();
@@ -43,7 +44,7 @@
 	</form>
 
 	<%--비밀번호 찾기--%>
-	<form class="find_pwd" method="post" action="/dozip/find_pwd"   style="display: none;">
+	<form class="find_pwd"  style="display: none;">
 	<table style="width:100%;">
 	<tr><td style="height:70px;">
 		<input class="find_pwd_input"  type="text" name="mem_id" id="mem_id" placeholder="아이디" oninput="id_check2();"/>
@@ -71,7 +72,7 @@
 	</td></tr>
 	</table>
 		<p id="find_pwd_info">※비밀번호 찾기를 누르면 임시번호를 메일주소로 보내드립니다.</p>
-		<button id="find_pwd_btn" type="submit" >비밀번호 찾기</button>
+		<button id="find_pwd_btn" type="button" >비밀번호 찾기</button>
 	</form>
 	
 	<div class="find_info">
@@ -102,6 +103,43 @@
 			},
 			error:function(error){
 				alert(error);
+			}
+		});
+	}
+
+	document.getElementById("find_pwd_btn").onclick = function() {
+		function params_list() {
+			var params = {};  //배열 선언
+			var data = $(".find_pwd").serializeArray(); //폼태그에 있는 데이터 담기
+
+			$.each(data, function () { //반복문
+				var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
+				var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
+				params[name] = value; //params 배열에 키, 값 쌍으로 저장
+			});
+			return params;
+		}
+
+		$.ajax({
+			url : '/dozip/find_pwd',
+			type : 'post',
+			data : {
+				data:JSON.stringify(params_list())
+			},
+			success : function(data) {
+				if(data.res==1){
+					alert(data.message);
+					location="/dozip/id_login";
+				}else if(data.res==2){
+					alert(data.message);
+					history.back();
+				}else {
+					alert(data.message);
+					history.back();
+				}
+			},
+			error:function(error){
+				alert("실패했습니다.");
 			}
 		});
 	}
