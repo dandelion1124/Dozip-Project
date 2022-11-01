@@ -5,7 +5,14 @@
 
 <div class="my_req_list">
 	<h2 class="item_title">시공견적요청</h2>
-	<span style="float:right;">총 입찰 개수: ${listcount}개</span>
+	<div style="width:95%;">
+		<!--<select name="my_bid_option" style="border:1px solid lightgray; width: 80px;">
+            <option value="all">전체</option>
+            <option value="success">입찰 성공</option>
+            <option value="fail">입찰 실패</option>
+        </select> -->
+		<p style="float:right;">총 입찰 개수: ${listcount}개</p>
+	</div>
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
 				margin:0 5% 40px 5%; background-color:white;">
 		<tr class="my_req_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
@@ -22,8 +29,13 @@
 			<td><div class="req_detail"><a href="/partners/request_detail?no=${er.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 			<form method="post" action="">
 			<td class="req_accept">
-				<button type="button" class="accept" id="permit_btn" name="permit" value='" + this.bid_num + "' value="수락">수락</button>
-				<button type="button" class="deny" id="reject_btn" name="reject" value='" + this.bid_num + "' onclick="confirm('거절하시겠습니까?')" value="거절">거절</button>
+				<c:if test="${er.est_check=='대기중'}">
+				<button type="button" class="accept" id="permit_btn" name="permit" value="${er.est_num}">수락</button>
+				<button type="button" class="deny" id="reject_btn" name="reject" value="${er.est_num}">거절</button>
+				</c:if>
+				<c:if test="${er.est_check=='수락'}"><span style="font-color:blue;"><b>수락</b></span></c:if>
+				<c:if test="${er.est_check=='거절'}"><span style="font-color:red;"><b>거절</b></span>	</c:if>
+
 			</td>
 			</form>
 		</tr>
@@ -49,7 +61,14 @@
 			</c:forEach>
 
 			<c:if test="${page >= maxpage}">
-				[다음]
+				[다음]<div style="width:95%;">
+		<!--<select name="my_bid_option" style="border:1px solid lightgray; width: 80px;">
+            <option value="all">전체</option>
+            <option value="success">입찰 성공</option>
+            <option value="fail">입찰 실패</option>
+        </select> -->
+		<p style="float:right;">총 입찰 개수: 0개</p>
+	</div>
 			</c:if>
 			<c:if test="${page<maxpage}">
 				<a href="/partners/construct_request?page=${page+1}">[다음]</a>
@@ -60,15 +79,17 @@
 
 <script>
 	document.getElementById('permit_btn').onclick = function (){
-		var bid_num = $('#permit_btn').val();
+		var est_num = $('#permit_btn').val();
+		var est_check = '수락';
 
 		alert("고객의 시공요청을 수락하시겠습니까?");
 
 		$.ajax({
-			url : '/partners/construct_request_accept',
+			url : '/partners/construct_request_select',
 			type : 'post',
 			data : {
-				est_num : bid_num
+				est_num : est_num,
+				est_check : est_check
 			},
 			success : function(data) {
 				location.reload();
@@ -80,15 +101,17 @@
 	}
 
 	document.getElementById('reject_btn').onclick = function (){
-		var bid_num = $('#reject_btn').val();
+		var est_num = $('#reject_btn').val();
+		var est_check = '거절';
 
 		alert("고객의 시공요청을 거절하시겠습니까?");
 
 		$.ajax({
-			url : '/dozip/my_bid_reject',
+			url : '/partners/construct_request_select',
 			type : 'post',
 			data : {
-				est_num : bid_num
+				est_num : est_num,
+				est_check : est_check
 			},
 			success : function(data) {
 				location.reload();
