@@ -88,7 +88,20 @@
     <option value="잔금완납">잔금완납</option>
 </select>
 </div>
+<script>
+    //payT 로 시공 상태 조회 (확실하지 않음)
 
+    $('#interior_status').change(function (){
+        let est_check = $('#interior_status option:selected').val();
+        location.href ='/partners/interior_list?est_check='+est_check;
+    });
+    //payT 로 정산 상태 조회
+    $('#balance_status').change(function(){
+        let pay_state = $('#balance_status option:selected').val();
+        location.href ='/partners/interior_list?pay_state='+pay_state;
+
+    })
+</script>
 <table id="interiorList_table">
     <thead id="interiorList_table_thead">
     <tr>

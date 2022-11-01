@@ -50,9 +50,16 @@ public class HochulTestController {
 
 
 
-    @RequestMapping("load_info")
-    public String load_info(Model model) {
-        model.addAttribute("cost", 40);
+    @RequestMapping("/load_info")
+    public String load_info(Model model, HttpSession session) {
+
+        //파트너스 번호로 계약서 불러오기
+        String businessNum = (String)session.getAttribute("businessNum");
+
+        List<ContractVO> clist= partnersService.getContractList_port(businessNum);
+
+        System.out.println(clist);
+        model.addAttribute("clist", clist);
         return "/partners/portfolio/load_info";
     }
 }
