@@ -71,6 +71,14 @@
         color: white;
         height: 25px;
     }
+    #detail{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        max-width : 300px;
+        min-width : 100px;
+    }
 </style>
 
 <%-- 견적신청내역 --%>
@@ -98,17 +106,14 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="i" begin="0" end="${fn:length(elist)-1}" step="1">
                         <tr>
-                            <td id="num">${elist[i].est_num}<%--번호--%>
-                                <%--<c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                <c:out value="${number}"/>--%>
-                            </td>
-                            <td id="date">${elist[i].est_zoning}</td><%--공간유형--%>
-                            <td id="date">${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
-                            <td id="date">${elist[i].est_areaP} 평</td><%--평수--%>
-                            <td id="date">${elist[i].est_bud} 만원</td><%--예산--%>
-                            <td id="date">${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
-                            <td id="date">${elist[i].est_date.substring(0,10)}</td><%--신청일자--%>
-                            <td id="date">${elist[i].est_dateEnd.substring(0,10)}</td><%--마감일자--%>
+                            <td>${elist[i].est_num}</td><%--번호--%>
+                            <td>${elist[i].est_zoning}</td><%--공간유형--%>
+                            <td style="word-wrap: break-word; max-width : 200px;">${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
+                            <td>${elist[i].est_areaP} 평</td><%--평수--%>
+                            <td>${elist[i].est_bud} 만원</td><%--예산--%>
+                            <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
+                            <td>${elist[i].est_date.substring(0,10)}</td><%--신청일자--%>
+                            <td>${elist[i].est_dateEnd.substring(0,10)}</td><%--마감일자--%>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -170,12 +175,12 @@
                     + "<td>" + this.bid_start.substring(0,10) + "</td>"
                     + "<td>" + this.bid_end.substring(0,10) + "</td>"
                     + "<td>" + this.bid_price + "만원</td>"
-                    + "<td>" + this.bid_detail + "</td>"
+                    + "<td id='detail'>" + this.bid_detail + "</td>"
                     + "<td>" + this.bid_date.substring(0,10) + "</td>"
                     + "<td>" + this.bid_state + "</td>"
                     if(this.bid_state=='진행중') {
                         result += "<td><button type='button' id='permit_btn' class='permit' name='permit' value='" + this.bid_num + "'>수락</button>"
-                        + "<button type='button' id='reject_btn' value='" + this.bid_num + "'>거절</button></td></tr>"
+                        + "<button type='button' id='reject_btn' name='reject' value='" + this.bid_num + "'>거절</button></td></tr>"
                     }else{
                         result += "<td> - </td>"
                     }
@@ -213,7 +218,8 @@
         }
     });
 
-    document.getElementById('reject_btn').onclick = function (){
+    // document.getElementById('reject_btn').onclick = function (){
+    $(document).on("click", "button[name='reject']", function (){
         var bid_num = $('#reject_btn').val();
 
         alert("해당 업체와의 계약을 거절 하시겠습니까?");
@@ -222,7 +228,7 @@
             url : '/dozip/my_bid_reject',
             type : 'post',
             data : {
-                est_num : bid_num
+                bid_num : bid_num
             },
             success : function(data) {
                 location.reload();
@@ -231,7 +237,8 @@
                 alert(error);
             }
         })
-    }
+
+    })
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

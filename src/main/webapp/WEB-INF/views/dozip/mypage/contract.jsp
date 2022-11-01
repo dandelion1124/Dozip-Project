@@ -74,7 +74,7 @@
         <table id="contract_table1" border="1">
             <tr>
                 <th>공사명</th>
-                <th colspan="2">${c.cont_title}</th>
+                <th colspan="2">${c.cont_title.substring(0, c.cont_title.length() - 2)})</th>
             </tr>
             <tr>
                 <th>공사장소(면적)</th>

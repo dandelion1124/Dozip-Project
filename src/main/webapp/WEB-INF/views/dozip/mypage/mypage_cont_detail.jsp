@@ -65,7 +65,7 @@
                 <div class="contract_summary">
                     <table id="contract_summary_table">
                         <tr>
-                            <th class="cst_th">업체명</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.businessName}</td>
+                            <th class="cst_th" style="min-width: 100px;">업체명</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.businessName}</td>
                         </tr>
                         <tr>
                             <th class="cst_th">공사일정</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_start.substring(0,10)} - ${c.cont_end.substring(0,10)}</td>
@@ -74,7 +74,7 @@
                             <th class="cst_th">공사금액</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td" id="totalPay">${c.cont_total}</td>
                         </tr>
                         <tr>
-                            <th class="cst_th">공간유형</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td" style="text-overflow:clip;">${c.cont_title.substring(0, c.cont_title.length() - 2)})</td>
+                            <th class="cst_th">공간유형</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_title.substring(0, c.cont_title.length() - 2)})</td>
                         </tr>
                         <tr>
                             <th class="cst_th">평수</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_area}평</td>
@@ -91,7 +91,7 @@
                 <div class="contarct_pay_wrap">
                     <table class="contarct_pay_table">
                         <tr>
-                            <th colspan="3" class="cpt_th" id="ttt">총 공사대금 <span id="total_pay">${c.cont_total}</span></th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
+                            <th colspan="3" class="cpt_th" id="ttt">&nbsp;총 금액&nbsp;&nbsp;&nbsp;<span id="total_pay">${c.cont_total}</span></th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
                         </tr>
                         <tr>
                             <th class="cpt_th">계약금</th> <th class="cpt_th">:</th>
@@ -119,7 +119,7 @@
                             <option value="${c.cont_cost2}">중도금</option>
                             <option value="${c.cont_cost3}">잔금</option>
                         </select>
-                        <span id="select_cost">선택한 결제 금액</span>
+                        <span id="select_cost" style="margin-left: 10px; font-weight: bold; font-size: 1.3rem;"></span>
                         <button type="button" id="pay_btn" onclick="pay_view('${c.cont_no}')" disabled>결제하기</button>
                     </div>
                 </div>
@@ -152,18 +152,25 @@
         window.open('/dozip/pay_view?cont_no='+cont_no+'&name='+name+'&cost='+cost,"_blank",'width=500, height=500, top=0, left=100, resizable=no')
     }
 
-    $(document). ready(function(){
-        function change(str){
-            var inMoney = $(str).text();
-            var outMoney = (parseInt(inMoney)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-            return outMoney+" 원";
-        }
+    function change(str){
+        var inMoney = $(str).text();
+        var outMoney = (parseInt(inMoney)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return outMoney+" 원";
+    }
+
+    $(document).ready(function(){
         $('#cost1').text(change('#cost1'));
         $('#cost2').text(change('#cost2'));
         $('#cost3').text(change('#cost3'));
         $('#total_pay').text(change('#total_pay'));
         $('#totalPay').text(change('#totalPay'));
     })
+
+    document.getElementById('pay_select').onchange = function (){
+        var cost = $('#pay_select option:selected').val();
+        var cost2 = ((cost)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        $('#select_cost').text(cost2+" 원");
+    }
 </script>
 
 <%-- 하단 공통부분 --%>
