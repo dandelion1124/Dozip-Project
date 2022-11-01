@@ -82,7 +82,13 @@
 		var est_num = $('#permit_btn').val();
 		var est_check = '수락';
 
-		alert("고객의 시공요청을 수락하시겠습니까?");
+		var result = confirm("정말 수락하시겠습니까??");   //확인
+
+		if(result==true){
+			alert("수락되었습니다");
+		}else{
+			return false;
+		}
 
 		$.ajax({
 			url : '/partners/construct_request_select',
@@ -104,7 +110,14 @@
 		var est_num = $('#reject_btn').val();
 		var est_check = '거절';
 
-		alert("고객의 시공요청을 거절하시겠습니까?");
+		var result = confirm("정말 거절하시겠습니까??");   //확인
+
+		if(result==true){
+			alert("거절되었습니다");
+		}else{
+			return false;
+		}
+		// alert("고객의 시공요청을 거절하시겠습니까?");
 
 		$.ajax({
 			url : '/partners/construct_request_select',
