@@ -376,7 +376,8 @@ public class PartnersController {
     @RequestMapping(value = "/construct_request_select")
     @ResponseBody
     public void bidSelect(String est_num,String est_check,EstimateVO e) {
-        e.setEst_num(est_num);
+
+        e.setEst_num(est_num); //ajax의 data에 넣은 값을 가져옴
         e.setEst_check(est_check);
         this.partnersService.updateEstimate2(e);
     }

@@ -119,7 +119,12 @@
     </select>
 
     <update id="update_est2" parameterType="EstimateVO">-->
-        update ESTIMATET set EST_CHECK='수락' where est_num =#{est_num}
+        update ESTIMATET
+        <if test="est_check=='수락'">
+        set EST_CHECK='수락'</if>
+        <if test="est_check=='거절'">
+        set EST_CHECK='거절'</if>
+        where est_num =#{est_num}
     </update>
 
 
