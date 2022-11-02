@@ -34,4 +34,8 @@ public class ContractVO {
     private int endrow; //끝행 번호
 
     private String businessName; //사업자명
+    
+    
+    //계약 진행상황
+    private String pay_state;
 }

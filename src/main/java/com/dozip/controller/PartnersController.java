@@ -21,7 +21,6 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 @Controller
@@ -402,17 +401,18 @@ public class PartnersController {
      *  */
 
     @RequestMapping(value = "/estimate_list")
-    public ModelAndView estimate_list() {  // 견적목록
+    public ModelAndView estimate_list(HttpSession session) {  // 견적목록
+        String businessNum =(String)session.getAttribute("businessNum");
         //est_check 이 대기중이 아니라면 견적 목록 가져옴
-        List<EstimateVO> elist = partnersService.getAllEstList();
+        List<EstimateVO> elist = partnersService.getpartEstList(businessNum);
         //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
-        List<BidVO> blist = partnersService.getBidList();
-        List<ContractVO> clist = partnersService.getContractList();
+        List<ContractVO> clist = partnersService.getContractList(businessNum);
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_list");
         System.out.println(elist);
+        System.out.println(elist.size());
         System.out.println(clist);
+        System.out.println(clist.size());
         mv.addObject("clist",clist);
-        mv.addObject("blist",blist);
         mv.addObject("elist",elist);
         return mv;
     }
@@ -480,9 +480,9 @@ public class PartnersController {
      * */
 
     @RequestMapping(value = "/interior_list")
-    public ModelAndView interior_list(String est_check, String pay_state) {
-
-        List<ContractVO> clist = partnersService.getContractList();
+    public ModelAndView interior_list(String est_check, String pay_state, HttpSession session) {
+        String businessNum =(String)session.getAttribute("businessNum");
+        List<ContractVO> clist = partnersService.getContractList(businessNum);
         if(est_check != null){
             System.out.println(est_check);
         }

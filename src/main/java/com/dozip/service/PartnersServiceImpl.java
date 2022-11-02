@@ -159,8 +159,8 @@ public class PartnersServiceImpl implements PartnersService {
     }
 
     @Override
-    public List<ContractVO> getContractList() {
-        return partnersDao.getContractList();
+    public List<ContractVO> getContractList(String businessNum) {
+        return partnersDao.getContractList(businessNum);
     }
 
     @Override
@@ -179,6 +179,11 @@ public class PartnersServiceImpl implements PartnersService {
     @Override
     public List<ContractVO> getContractList_port(String businessNum) {
         return partnersDao.getContractList_port(businessNum);
+    }
+
+    @Override
+    public List<EstimateVO> getpartEstList(String businessNum) {
+        return partnersDao.getpartEstList(businessNum);
     }
 }
 
