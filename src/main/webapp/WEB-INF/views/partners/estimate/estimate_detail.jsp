@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,25 +46,20 @@ evbn
                     <div class="dt">
                         <p class="ico1">희망 예산</p>
                     </div>
-                    <div class="dd"><span style="color:red">sample</span></div> <!-- 500만원 -->
+                    <div class="dd">${ev.est_bud}만원</div>
                 </li>
-                <li class="detail_info">
-                    <div class="dt">
-                        <p class="ico2">모집마감일</p>
-                    </div>
-                    <div class="dd"><span style="color:red">sample</span></div>
-                </li>
+
                 <li class="detail_info">
                     <div class="dt">
                         <p class="ico3">희망 시공시작일</p>
                     </div>
-                    <div class="dd"><span style="color:red">sample</span></div>
+                    <div class="dd">${fn:substring(ev.est_start,0 ,10)}</div>
                 </li>
                 <li class="detail_info">
                     <div class="dt">
                         <p class="ico4">희망 시공종료일</p>
                     </div>
-                    <div class="dd"><span style="color:red">sample</span></div>
+                    <div class="dd">${fn:substring(ev.est_end, 0, 10)}</div>
                 </li>
             </ul>
         </div>
@@ -90,7 +87,8 @@ evbn
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">세부 선택</dt>
-                <dd class="sec-cont"><span style="color:red">sample</span></dd>
+                <dd class="sec-cont">${ev.est_detail} ${ev.est_detail01} ${ev.est_detail02}
+                    ${ev.est_detail03} ${ev.est_detail04} ${ev.est_detail05} ${ev.est_detail06} ${ev.est_detail07} ${ev.est_detail08}</dd>
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">시공 규모(평 수)</dt>
@@ -102,21 +100,20 @@ evbn
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">희망 예산</dt>
-                <dd class="sec-cont"><span style="color:red">sample</span></dd>
+                <dd class="sec-cont">${ev.est_bud}</dd>
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">희망 시공시작일</dt>
-                <dd class="sec-cont"><span style="color:red">sample</span></dd>
+                <dd class="sec-cont">${fn:substring(ev.est_start, 0, 10)}</dd>
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">희망 시공완료일</dt>
-                <dd class="sec-cont"><span style="color:red">sample</span></dd>
+                <dd class="sec-cont">${fn:substring(ev.est_end, 0, 10)}</dd>
             </dl>
             <dl class="sec-item">
                 <dt class="sec-title">희망 스타일</dt>
                 <dd class="sec-cont">
                     ${ev.est_desc}
-                        <span style="color:red">입찰신청일경우 파트너스 메세지도 넣기</span>
                 </dd>
             </dl>
         </div>
