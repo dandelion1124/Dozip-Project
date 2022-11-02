@@ -403,8 +403,7 @@ public class PartnersController {
     public ModelAndView estimate_list(HttpSession session) {  // 견적목록
         String businessNum =(String)session.getAttribute("businessNum");
         //est_check 이 대기중이 아니라면 견적 목록 가져옴
-        List<EstimateVO> elist = partnersService.getpartEstList(businessNum);
-        //bid_state 이 계약요청인 목록을 가져옴 (견적서의 기본키와 1:1 매칭됨)
+        List<EstimateVO> elist = partnersService.getAllEstList(businessNum);
         List<ContractVO> clist = partnersService.getContractList(businessNum);
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_list");
         System.out.println(elist);

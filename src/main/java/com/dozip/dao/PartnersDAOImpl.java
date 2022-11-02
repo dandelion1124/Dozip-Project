@@ -130,8 +130,8 @@ public class PartnersDAOImpl implements PartnersDAO {
 
 
     @Override
-    public List<EstimateVO> getAllEstList() {
-        return sqlSession.selectList("est_list");
+    public List<EstimateVO> getAllEstList(String businessNum) {
+        return sqlSession.selectList("est_list", businessNum);
     }
     @Override
     public List<BidVO> getBidList() {

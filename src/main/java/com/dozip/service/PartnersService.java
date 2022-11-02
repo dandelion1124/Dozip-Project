@@ -42,7 +42,7 @@ public interface PartnersService {
     int getElistCount(String businessNum);
 
 
-    List<EstimateVO> getAllEstList();
+    List<EstimateVO> getAllEstList(String businessNum);
     List<BidVO> getBidList();
     EstimateVO write_contract(String est_num);
     int insertContract(ContractVO cv);
