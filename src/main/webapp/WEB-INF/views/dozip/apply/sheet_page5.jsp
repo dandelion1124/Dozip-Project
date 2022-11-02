@@ -11,7 +11,7 @@
             </div>
             <p class="subtitle">견적요청내용을 확인하시고 맞다면 요청을 보내주세요.</p><br />
             <div class="estimate_box_page4">
-                <table class="tg" style= "table-layout: fixed; width: 460px">
+                <table class="tg" style= "table-layout: fixed; width: 460px;" background = "/images/dozip/receipt.png">
                     <colgroup>
                         <col style="width: 300px">
                         <col style="width: 200px">
@@ -56,6 +56,7 @@
                     </tr>
                     </tbody>
                 </table>
+            </img>
 
             </div>
             <input type="hidden" id="d" name="d">

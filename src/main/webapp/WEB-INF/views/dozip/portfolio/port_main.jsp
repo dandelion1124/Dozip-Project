@@ -92,27 +92,24 @@
 				<option value="심플">심플</option>
 				<option value="럭셔리">럭셔리</option>
 			</select>
-
-
+			<%-- 필터검색 --%>
+			<button type="button" name = "submit" class = "filter_btn"><img id = "filter_img" src = "/images/dozip/portfolio/icons8-slider-50.png"/></button>
 			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침 --%>
-			<%--
 			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
-			--%>
-			<button type="button" name = "submit" class = "filter_btn">필터검색</button>
-			<!-- 리스트 검색창 -->
-			<div class = "search_wrap2">
-				<select name="d4" id="dd_group4" onchange="input(this)">
-					<option selected>정렬방식</option>
-					<option value="1">비용 낮은순</option>
-					<option value="2">비용 높은순</option>
-					<option value="3">평수 낮은순</option>
-					<option value="4">평수 높은순</option>
-				</select>
-				<button type = "button" name = "confirm" class = "order_btn">정렬</button>
-			</div>
+
+			<select name="d4" id="dd_group4" onchange="input(this)">
+				<option selected>정렬방식</option>
+				<option value="1">비용 낮은순</option>
+				<option value="2">비용 높은순</option>
+				<option value="3">평수 낮은순</option>
+				<option value="4">평수 높은순</option>
+			</select>
+			<button type = "button" name = "confirm" class = "order_btn">정렬</button>
+
+
 		</div>
 
-		<%-- 드롭다운 선택한 값 받아오기 추후 삭제예정--%>
+		<%-- 드롭다운 선택한 값 받아오기 --%>
 		<script>
 			let arr = [];
 			function input(e){
@@ -218,7 +215,7 @@
 		var pf_subtype2 = $('#dd_group2').val();
 		var pf_concept = $('#dd_group3').val();
 
-		alert(pf_subtype1 +" "+pf_subtype2+" "+pf_concept);
+		alert(pf_subtype1 +" "+pf_subtype2+" "+pf_concept + "를 기준으로 검색합니다");
 
 		$.ajax({
 			url: '/dozip/port_search',
