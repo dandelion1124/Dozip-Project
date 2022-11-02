@@ -206,6 +206,7 @@
             success : function(data) {
                 alert("계약이 완료되었습니다.");
                 opener.parent.location.reload();
+                window.close();
             },
             error:function(error){
                 alert("실패했습니다.");

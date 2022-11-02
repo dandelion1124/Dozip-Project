@@ -557,10 +557,10 @@ public class PartnersController {
         */
 
 //        String uploadPath = "D:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
+       String uploadPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
-        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
+//        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
 
 
         String uploadDBPath = "/upload/" + pf_no + "/";
