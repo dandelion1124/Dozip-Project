@@ -16,48 +16,6 @@ $(function() {
 	});
 });
 
-$(function () {
-	//오늘 날짜를 출력
-	$("#today").text(new Date().toLocaleDateString());
-
-	//datepicker 한국어로 사용하기 위한 언어설정
-	$.datepicker.setDefaults($.datepicker.regional['ko']);
-
-	// 시작일(est_start)은 종료일(est_end) 이후 날짜 선택 불가
-	// 종료일(est_end)은 시작일(est_start) 이전 날짜 선택 불가
-
-	//시작일.
-	$('#bid_start').datepicker({
-		showOn: "both",                     // 달력을 표시할 타이밍 (both: focus or button)
-		buttonImage: "images/calendar.gif", // 버튼 이미지
-		buttonImageOnly: true,             // 버튼 이미지만 표시할지 여부
-		buttonText: "",             // 버튼의 대체 텍스트
-		dateFormat: "yy-mm-dd",             // 날짜의 형식
-		changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
-		//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
-		onClose: function (selectedDate) {
-			// 시작일(est_start) datepicker가 닫힐때
-			// 종료일(est_end)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-			$("#bid_end").datepicker("option", "minDate", selectedDate);
-		}
-	});
-
-	//종료일
-	$('#bid_end').datepicker({
-		showOn: "both",
-		buttonImage: "images/calendar.gif",
-		buttonImageOnly: true,
-		buttonText: "",
-		dateFormat: "yy-mm-dd",
-		changeMonth: true,
-		//minDate: 0, // 오늘 이전 날짜 선택 불가
-		onClose: function (selectedDate) {
-			// 종료일(est_end) datepicker가 닫힐때
-			// 시작일(est_start)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정
-			$("#bid_start").datepicker("option", "maxDate", selectedDate);
-		}
-	});
-});
 
 </script>
 
@@ -216,23 +174,39 @@ $(function () {
 								<div>
 									<c:choose>
 										<c:when test="${res == 0}">
+											<c:if test="${e.est_check =='대기중'}">
 											<div class="bid_part_div">
 												<button type="button" id="bid_participate">입찰 신청하기</button>
 											</div>
 											<div id="bid_part_detail">
-												<div class="bid_detail01">입찰가</div>
-												<div class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></div>
+												<dl class="sec-item">
+													<dt class="bid_detail01">입찰가</dt>
+													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></dd>
+												</dl>
 												<!-- <span id="today"></span></br> -->
+												<dl class="sec-item">
+													<dt class="bid_detail02">예상 공사시작일</dt>
+													<dd class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></dd>
+													<dt class="bid_detail04">예상 공사종료일</dt>
+													<dd class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></dd>
+												</dl>
+												<dl class="sec-item">
+													<div class="bid_detail03">업체 공사 스타일 설명</div></br>
+													<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
+												</dl>
+												<!--
 												<div class="bid_detail02" >예상 공사시작일</div>
 												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></div>
 												<div class="bid_detail04" >예상 공사종료일</div>
 												<div class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></div>
 												<div class="bid_detail03">업체 공사 스타일 설명</div>
 												<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
+												-->
 											</div>
 											<div class="bid_complete_button">
 												<input type="submit" id="bid_complete" value="신청완료">
 											</div>
+											</c:if>
 										</c:when>
 										<c:otherwise>
 

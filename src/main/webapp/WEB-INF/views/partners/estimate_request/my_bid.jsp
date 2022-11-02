@@ -25,7 +25,7 @@
 		</tr>
 		<c:if test="${empty list}">
 			<tr class="no_bid_list">
-				<td colspan="7" style="font-size:25px; height:100px; background-color: aliceblue;">조회된 입찰 리스트가 없습니다.</td>
+				<td colspan="8" style="font-size:25px; height:100px; background-color: aliceblue;">조회된 입찰 리스트가 없습니다.</td>
 			</tr>
 		</c:if>
 
@@ -40,9 +40,15 @@
 					<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
 					<c:set var = "bid_start" value = "${fn:split(e.bid_start,' ')}"/>
 					<c:set var = "bid_end" value = "${fn:split(e.bid_end,' ')}"/>
-					<td>${e.bid_num}</td> <td>${e.est_addr} ${e.est_use} 견적 문의</td> <td>${e.bid_price}만원</td> <td>${est_dateEnd[0]}</td>  <td>${bid_start[0]}</td> <td>${bid_end[0]}</td>
+					<td><b>${e.bid_num}</b></td> <td>${e.addr} ${e.est_use} 견적 문의</td> <td>${e.bid_price}만원</td> <td>${est_dateEnd[0]}</td>  <td>${bid_start[0]}</td> <td>${bid_end[0]}</td>
 					<td><div class="bid_detail"><a href="/partners/bid_detail?no=${e.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
-					<td class="bid_result"><span class="success1">${e.bid_state}</span></td>
+
+					<td class="bid_result"><span class="success1" style="
+						<c:if test="${e.bid_state=='진행중'}">color:black;</c:if>
+						<c:if test="${e.bid_state=='계약요청'}">color:blue;</c:if>
+						<c:if test="${e.bid_state=='거절'}">color:red;</c:if>
+						<c:if test="${e.bid_state=='계약완료'}">color:#0000CD;</c:if>
+							">${e.bid_state}</span></td>
 				</tr>
 			</c:forEach>
 		</c:if>

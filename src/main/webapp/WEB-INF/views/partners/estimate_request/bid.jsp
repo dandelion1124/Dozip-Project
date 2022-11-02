@@ -9,7 +9,6 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 		<div class="request_page">
 			<form method="post" action="">
 			<div class="request_spot">
@@ -67,9 +66,11 @@
 									<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
 									<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
 									<c:if test="${e.remaindate < 0}">모집완료</c:if>
+									<%-- <c:if test="${e.est_check != 0}">모집완료</c:if>  --%>
 								</span>
 							</p>
 							<p class="label_badge">
+								<span class="bid_number">${e.est_num}</span>
 								<span class="label_val1"><b>${e.est_use}</b></span>
 								<span class="label_val2">
 								<c:set var = "length" value = "${fn:length(e.est_detail)}"/>

@@ -286,6 +286,14 @@
   
 /* estimate_request */
 /* bid */
+   .bid_number{
+       color: black;
+       font-size: 12px;
+       margin: 0;
+       padding: 5px 5px 5px 5px;
+       background: #BEEFFF;
+       font-weight: 600;
+   }
    body{
       letter-spacing: 0.025em;
       background-color:#f7f7f7;
@@ -740,14 +748,11 @@
    	display:none;
    	width:50%;
    }
-   
-   
    .bid_but_tab{
      padding:0 15% 0 15%;
      margin:0 auto;
      text-align: center;
    }
-
 	 .bid_detail01, .bid_detail02, .bid_detail03, .bid_detail04{
 	 	/*text-align:center; */
 	 	width: 45%;
@@ -761,14 +766,10 @@
 	 	display: inline-block;
 	 	text-align:right;
 	 }
-	 
-	 #bid_price, #bid_period{
-	 	
-	 }
-	 
 	 #bid_detail{
 	 	width: 96%;
         margin: 0 2%;
+        resize: none;
 	 }
 
 

@@ -19,7 +19,7 @@
 			<th>견적서 번호</th> <th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>수용여부</th>
 		</tr>
 		<c:if test="${empty ereq}">
-			<td colspan="7" style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">현재 시공요청 리스트가 없습니다.</td>
+			<td colspan="8" style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">현재 시공요청 리스트가 없습니다.</td>
 		</c:if>
 		<c:if test="${!empty ereq}">
 		<c:forEach var="er" items="${ereq}">
@@ -34,7 +34,7 @@
 				<c:if test="${er.est_check=='계약요청'}">background-color:#EBFBFF;</c:if>
 				<c:if test="${er.est_check=='작성완료'}">background-color:#D2E1FF;</c:if>
 				">
-				<td>${er.est_num}</td>
+				<td><b>${er.est_num}</b></td>
 				<td> ${er.addr} ${er.est_use} 견적 문의</td> <td>${er.est_bud}만원</td> <td>${est_date[0]}</td> <td>${est_start[0]}</td> <td>${est_end[0]}</td>
 				<td><div class="req_detail"><a href="/partners/request_detail?no=${er.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 				<form method="post" action="">
@@ -96,7 +96,6 @@
             <option value="success">입찰 성공</option>
             <option value="fail">입찰 실패</option>
         </select> -->
-		<p style="float:right;">총 입찰 개수: 0개</p>
 	</div>
 			</c:if>
 			<c:if test="${page<maxpage}">

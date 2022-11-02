@@ -94,7 +94,7 @@
     <select id="sel_All" resultType="bidVO">
         select * from (
         select rowNum r, b.bid_num, b.businessNum , b.est_num,  b.bid_price, b.bid_start  ,
-        b.bid_end  , b.bid_detail  ,  b.bid_state , b.bid_date, e.est_use, e.est_dateEnd, e.est_addr, e.est_check from
+        b.bid_end  , b.bid_detail  ,  b.bid_state   , b.bid_date, e.est_use, e.est_dateEnd, e.est_addr from
         (select * from bidT where businessNum=#{businessNum}) b, estimateT e
         where b.est_num = e.est_num(+) order by bid_num desc
         ) where r &gt;=#{startrow} and r &lt;=#{endrow}

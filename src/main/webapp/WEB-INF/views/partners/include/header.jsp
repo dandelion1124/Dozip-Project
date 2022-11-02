@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/partners/partners_style2.css">
     <link rel="stylesheet" href="/css/partners/qna_review.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="/js/partners/jquery.js"></script>
     <script src="/js/partners/javascript.js"></script>
