@@ -5,6 +5,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="/css/partners/estimate.css">
+<style>
+    table#est_list_table input[type=button]:hover {
+        background: #00BFFF;
+        border-radius: 3px;
+        opacity:80%;
+        text-decoration: underline;
+    }
+</style>
 <p> | 견적관리 > 견적목록</p>
 <div id="estlist_top_cont">
     <div id="estlist_title">견적목록</div>
@@ -35,10 +43,9 @@
     <c:if test="${!empty elist }">
         <c:forEach var="e" items="${elist}">
             <c:if test="${empty clist}">   <%--계약서 테이블이 없다면 --%>
-
                 <tr>
                     <td>${e.est_num}</td>
-                    <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
+                    <td><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
                     <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
                     <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
 
@@ -52,49 +59,47 @@
                         <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
                     </td>
                 </tr>
-            </c:if>
+            </c:if> <%--${empty clist}--%>
+            <c:if test="${e.est_check=='계약요청'}">
+                <tr>
+                    <td>${e.est_num} </td>
+                    <td><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail('${e.est_num}')"></td>
+                    <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
+                    <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
+                    <td>
+                        <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
+                            계약서작성하기
+                        </button>
+                    </td>
+                    <td>계약서 작성전</td>
+                    <td>
+                        <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                    </td>
+                </tr>
+            </c:if> <%--${e.est_num!=c.est_num}--%>
+
             <c:if test="${!empty clist}">
                 <c:forEach var="c" items="${clist}">
-                <c:if test="${e.est_num==c.est_num}">
+                     <c:if test="${e.est_num==c.est_num && e.est_check != '계약완료'}">
+                         <tr>
+                            <td>${c.est_num}</td>
+                            <td><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td>
+                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
+                            <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
+                            <td>${e.est_check}</td>
+                            <td>${fn:substring(c.cont_date,0,10)}</td>
+                            <td>
+                              <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                            </td>
+                       </tr>
+                     </c:if> <%--${e.est_num==c.est_num}--%>
+                </c:forEach>
+            </c:if> <%--${!empty clist}--%>
+     </c:forEach> <%-- elist --%>
+    </c:if>  <%--${!empty elist }--%>
 
-                    <tr>
-                        <td>${c.est_num}</td>
-                        <td><input type="button" value="${c.cont_location}"> <%--onclick="est_detail(${c.est_num})"--%>
-                        </td>
-                        <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
-                        <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
-                        <td>
-                                ${e.est_check}
-                        </td>
-                        <td>${fn:substring(c.cont_date,0,10)}</td>
-                        <td>
-                            <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
-                        </td>
-                    </tr>
-                </c:if>
 
-            <c:if test="${e.est_num!=c.est_num}">
 
-                <tr>
-                    <td>${e.est_num}</td>
-                    <td><input type="button" value="${e.est_addr} 시공요청" onclick="est_detail(${e.est_num})"></td>
-                    <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
-                    <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
-                    <td>
-                        <button class="write_contract_btn" onclick="write_contract('${e.est_num}')">
-                            계약서작성하기
-                        </button>
-                    </td>
-                    <td>계약서 작성전</td>
-                    <td>
-                        <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
-                    </td>
-                </tr>
-            </c:if>
-         </c:forEach>
-        </c:if>
-     </c:forEach>
-    </c:if>
     <c:if test="${empty elist}">
         <tr><th colspan="7">      조회된 견적 목록이 없습니다   </th></tr>
     </c:if>
