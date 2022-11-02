@@ -379,12 +379,7 @@ button#certify_phone:hover, button#address_btn:hover{
   margin: 0 auto;
   margin-top: 18px;
 }
-.estimate_box_page4{
-  width: 600px;
-  /* height: 500px; */
-  margin: 0 auto;
-  margin-top: 18px;
-}
+
 .companies{
   background-color: rgb(248, 246, 246);
 }
@@ -398,6 +393,28 @@ button#certify_phone:hover, button#address_btn:hover{
 /* 5페이지 css */
 #estimate_step05 {
   height: 900px;
+}
+.estimate_box_page5{
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 18px;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 15px;
+}
+/*표 테이블*/
+.left {
+  font-weight: bold;
+}
+.right {
+  float: left;
+  display: flex;
+}
+tr.table{
+  vertical-align: top;
+  height: 50px;
 }
 
 /* COUNTERS */
@@ -413,14 +430,3 @@ button#certify_phone:hover, button#address_btn:hover{
 .counters ul li h4 {font-size:16px; margin-bottom:30px; color:black; font-family:"Montserrat", sans-serif; text-transform:uppercase; }
 .counters ul li .bar {width:30px;height:2px; background:#fff; display:inline-block;}
 
-/*표 테이블*/
-.left {
-  font-weight: bold;
-}
-.right {
-  float: left;
-  display: flex;
-}
-tr.table{
-  height: 50px;
-}
