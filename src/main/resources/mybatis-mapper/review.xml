@@ -42,7 +42,7 @@
     </insert>
 
     <select id="review_num" resultType="int">
-        select re_no from reviewT where mem_id = #{mem_id} and re_title = #{re_title}
+        select re_no from reviewT where mem_id = #{mem_id} and re_cont = #{re_cont}
     </select>
 
     <insert id = "review_photos">
