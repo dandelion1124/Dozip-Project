@@ -131,7 +131,11 @@
                 <td>예정 ${c.customer_name}</td>
                 <td>${fn:substring(c.cont_start,0,10)}</td>
                 <td>${fn:substring(c.cont_end,0,10)}</td>
-                <td>계약금지불완료</td>
+                <td>${c.pay_state}</td>
+
+                <%--
+                계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
+                --%>
                 <td>보기</td>
                 <td>보기</td>
             </tr>

@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
@@ -31,7 +33,43 @@
     <script src="/js/dozip/header.js"></script>
     <script src="https://kit.fontawesome.com/6f3edb2719.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/dozip/header.css"/>
-
+    <style>
+        .info button {
+            background: none;
+            border-radius: 4px;
+            border: none;
+            padding: 5px;
+        }
+        .info button:hover{
+            background: #4F98FF;
+        }
+        #keyword {
+            width: 260px;
+            border: none;
+            text-align: left;
+            padding: 17px 10px 17px 0px;
+            height: 20px;
+            outline: none;
+            background: none;
+            color: black;
+            font-size: 20px;
+        }
+        #keyword:focus {
+            color: black;
+        }
+        div#keyword_form{
+            width: 330px;
+            border: 2px solid #9A9A9A;
+            border-radius: 4px;
+        }
+        div#keyword_form:hover{
+            background: #F8F8F8;
+        }
+        .xi-search {
+            font-size: 20px;
+            padding: 10px 5px;
+        }
+    </style>
     <script>
         function openLogin() {
             window.open("/dozip/login", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0");
@@ -114,21 +152,21 @@
 
     <div id="part2" style="background-color: white;">
         <div id="part21">
-            <p id="part2_title">주변의 인테리어 업체를 찾아보세요</p>
-            <p id="part2_info">검색하고자 하는 키워드를 입력하세요. (예. 관악구 인테리어, 역삼동 인테리어)</p>
+            <div id="part2_title">
+           주변의 인테리어 업체를 찾아보세요</div>
+            <div id="keyword_form">
+                <form onsubmit="searchPlaces(); return false;">
+                    <i class="xi-search"></i>
+                    <input type="search" value="강남 인테리어" placeholder="업체검색" id="keyword">
+                </form>
+            </div>
+           <div id="part2_info"> 검색하고자 하는 키워드를 입력하세요. (예: 역삼동 인테리어)</div>
         </div>
         <div id="part22">
-            <div class="part2_left">
 
-                <div class="option">
-                    <div id="keyword_form">
-                        <form onsubmit="searchPlaces(); return false;">
-                            <input type="text" value="강남" id="keyword">
-                            <button type="submit">검색하기</button>
-                        </form>
-                    </div>
-                </div>
-                <hr>
+
+            <div class="part2_left">
+                검색결과 : 12개
                 <div id="menu_wrap" class="bg_white">
                     <ul id="placesList"></ul>
                     <div id="pagination"></div>

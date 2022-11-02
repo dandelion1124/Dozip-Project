@@ -24,7 +24,6 @@
                                      TO_DATE(#{cont_end},'YYYY-MM-DD'),TO_NUMBER(#{cont_total}),TO_NUMBER(#{cont_cost1}),TO_DATE(#{cont_date1},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost2}),TO_DATE(#{cont_date2},'YYYY-MM-DD'),TO_NUMBER(#{cont_cost3}),
                                      TO_DATE(#{cont_date3},'YYYY-MM-DD'),TO_DATE(#{cont_date},'YYYY-MM-DD'),#{customer_name},#{customer_addr},#{customer_number},#{customer_tel},#{partners_name},#{partners_addr},#{partners_tel})
     </select>
-
     <!--입찰정보 불러오기 -->
     <select id="get_bid" resultType="BidVO">
         select * from bidT where est_num=#{est_num}
@@ -39,7 +38,12 @@
     </select>
     <!--계약서 테이블 불러오기 -->
     <select id="all_contract" resultType="ContractVO">
-        select * from contractT order by cont_no desc
+       select * from contractT where BUSINESSNUM=#{businessNum} order by cont_no desc
+    </select>
+    <!--파트너스 사업자 기준으로 견적 테이블 불러오기 -->
+    <select id="partners_esimate" resultType="EstimateVO">
+        select * from ESTIMATET
+                 <!--where BUSINESSNUM=#{businessNum} 수정 필요-->
     </select>
 </mapper>
 
