@@ -419,7 +419,6 @@ public class PartnersController {
         BidVO bv=partnersService.getOneBid(est_num);
         EstimateVO ev=partnersService.getOneEst(est_num);
 
-
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_detail");
         mv.addObject("bv", bv);
         mv.addObject("ev", ev);
@@ -435,13 +434,8 @@ public class PartnersController {
         ev=partnersService.write_contract(est_num);
         ev.setEst_start(ev.getEst_start().substring(0,10));
         ev.setEst_end(ev.getEst_end().substring(0,10));
-
-
-
-
         model.addAttribute("ev", ev);
         model.addAttribute("businessNum",businessNum);
-
         return "/partners/estimate/contract";  //계약서 view 페이지
     }
 
@@ -463,8 +457,6 @@ public class PartnersController {
         cv.setCont_cost2(cv.getCont_cost2().replaceAll(",",""));
         cv.setCont_cost3(cv.getCont_cost3().replaceAll(",",""));
 
-
-
         cv.setCustomer_number(" ");
         int result=partnersService.insertContract(cv);
         resultMap.put("status", result);
@@ -480,19 +472,25 @@ public class PartnersController {
     @RequestMapping(value = "/interior_list")
     public ModelAndView interior_list(String est_check, String pay_state, HttpSession session) {
         String businessNum =(String)session.getAttribute("businessNum");
-        List<ContractVO> clist = partnersService.getContractList(businessNum);
+        List<ContractVO> clist = partnersService.getContract_interior(businessNum);
         if(est_check != null){
             System.out.println(est_check);
         }
         if(pay_state != null){
             System.out.println(pay_state);
         }
-       // System.out.println(clist);
+        System.out.println(clist);
         ModelAndView mv = new ModelAndView( "/partners/myinterior/interior_List");
         mv.addObject("clist", clist);
         return mv;
     }
-
+    @RequestMapping(value = "/show_contract")
+    public ModelAndView show_contract(String cont_no){
+        ContractVO cv = partnersService.show_contract(cont_no);
+        ModelAndView mv = new ModelAndView("/partners/myinterior/contract_res");
+        mv.addObject("cv",cv);
+        return mv;
+    }
     @RequestMapping(value = "/schedule_list")
     public String schedule_list() {
         return "/partners/myinterior/schedule_List";
@@ -557,7 +555,8 @@ public class PartnersController {
         */
 
 //        String uploadPath = "D:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 PC upload 경로
-       String uploadPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
+        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 노트북 upload 경로
+//       String uploadPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
 //        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로

@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="/css/partners/estimate.css">
 <style>
     table#est_list_table input[type=button]:hover {
-        background: #00BFFF;
-        border-radius: 3px;
-        opacity:80%;
         text-decoration: underline;
+        color:blue;
+        font-width: bold;
     }
 </style>
 <p> | 견적관리 > 견적목록</p>
