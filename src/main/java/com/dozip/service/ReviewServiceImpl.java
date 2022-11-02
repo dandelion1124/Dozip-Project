@@ -52,5 +52,10 @@ public class ReviewServiceImpl implements ReviewService {
         return this.reviewDAO.best();
     }
 
+    @Override
+    public int reviewCount(String mem_id) {//아이디에 해당하는 리뷰개수확인
+        return this.reviewDAO.reviewCount(mem_id);
+    }
+
 
 }

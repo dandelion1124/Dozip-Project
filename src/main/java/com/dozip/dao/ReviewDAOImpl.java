@@ -54,5 +54,10 @@ public class ReviewDAOImpl implements ReviewDAO {
         return this.sqlSession.selectList("best");
     }
 
+    @Override
+    public int reviewCount(String mem_id) {//아이디에 해당하는 리뷰개수확인
+        return this.sqlSession.selectOne("mem_id", mem_id);
+    }
+
 
 }
