@@ -101,7 +101,7 @@
             <div class="txt_box">
                 <p class="p_title">나의 견적서(지정)</p>
                 <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적서 확인하기 >> </a></p>
+                <p class="p_link"><a>견적내역 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -109,9 +109,9 @@
                 <img src="/images/dozip/icons8-document-66.png" style="width:70px; height:70px;" />
             </div>
             <div class="txt_box">
-                <p class="p_title">나의 견적서(지정)</p>
+                <p class="p_title">나의 견적서(자유)</p>
                 <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적서 확인하기 >> </a></p>
+                <p class="p_link"><a>견적내역 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -119,9 +119,9 @@
                 <img src="/images/dozip/icons8-regular-file-64.png" style="width:70px; height:70px;" />
             </div>
             <div class="txt_box">
-                <p class="p_title">나의 견적서(지정)</p>
+                <p class="p_title">나의 후기</p>
                 <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적서 확인하기 >> </a></p>
+                <p class="p_link"><a>후기 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -129,9 +129,9 @@
                 <img src="/images/dozip/icons8-document-64.png" style="width:70px; height:70px;" />
             </div>
             <div class="txt_box">
-                <p class="p_title">나의 견적서(지정)</p>
+                <p class="p_title">나의 문의</p>
                 <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적서 확인하기 >> </a></p>
+                <p class="p_link"><a>문의글 확인하기 >> </a></p>
             </div>
         </div>
     </div>

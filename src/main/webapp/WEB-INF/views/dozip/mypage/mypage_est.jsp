@@ -98,15 +98,15 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="i" begin="0" end="${fn:length(elist)-1}" step="1">
                         <tr>
-                            <td id="num"><%--번호--%>
-                                <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                <c:out value="${number}"/>
+                            <td id="num">${elist[i].est_num}<%--번호--%>
+                                <%--<c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
+                                <c:out value="${number}"/>--%>
                             </td>
                             <td>${elist[i].est_date.substring(0,10)}</td><%--신청날짜--%>
                             <td>${elist[i].est_zoning}</td><%--공간유형--%>
                             <td>${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
-                            <td>${elist[i].est_areaP}</td><%--평수--%>
-                            <td>${elist[i].est_bud}</td><%--예산--%>
+                            <td>${elist[i].est_areaP} 평</td><%--평수--%>
+                            <td>${elist[i].est_bud} 만원</td><%--예산--%>
                             <td>${elist[i].businessName}</td><%--업체명--%>
                             <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
