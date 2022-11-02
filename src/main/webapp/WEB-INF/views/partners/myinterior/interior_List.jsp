@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="../include/header.jsp"/>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
     thead#interiorList_table_thead th {
@@ -106,7 +107,7 @@
     <thead id="interiorList_table_thead">
     <tr>
         <th>계약번호</th>
-        <th>시공상태(예정, 진행중, 완료)</th>
+        <th>시공상태<br>(예정, 진행중, 완료)</th>
         <th>공사시작(예정)일</th>
         <th>공사마감(예정)일</th>
         <th>정산하기<br>(계약금,중도금,완납)
@@ -117,25 +118,27 @@
 
     </thead>
     <tbody>
-    <tr>
+
         <c:if test="${empty clist}">
+
             <th colspan="7"> 조회된 내역이 없습니다</th>
+        </tr>
         </c:if>
         <c:if test="${!empty clist}">
             <c:forEach var="c" items="${clist}">
+            <tr>
                 <td>${c.cont_no}</td>
-                <td>예정</td>
-                <td>${c.cont_start}</td>
-                <td>${c.cont_end}</td>
+                <td>예정 ${c.customer_name}</td>
+                <td>${fn:substring(c.cont_start,0,10)}</td>
+                <td>${fn:substring(c.cont_end,0,10)}</td>
                 <td>계약금지불완료</td>
                 <td>보기</td>
                 <td>보기</td>
+            </tr>
             </c:forEach>
         </c:if>
-    </tr>
+
     </tbody>
-    <tfoot>
-    </tfoot>
 
 </table>
 
