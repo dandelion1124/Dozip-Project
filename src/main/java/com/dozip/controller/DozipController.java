@@ -202,8 +202,8 @@ public class DozipController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
 
-        //session.removeAttribute("id"); // "id" 세션만 삭제
-        session.invalidate();//모든 세션 만료 => 로그아웃
+        session.removeAttribute("id"); // "id" 세션만 삭제
+        //session.invalidate();//모든 세션 만료 => 로그아웃
 
         out.println("<script>");
         out.println("alert('로그아웃 되었습니다.');");

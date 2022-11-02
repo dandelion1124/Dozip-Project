@@ -90,7 +90,12 @@
 </style>
 <div class="my_wrap">
     <div class="profile">
-        <img src="/images/dozip/profile/${m.mem_pf}.png" style="width:70px; height:70px;" />
+        <c:if test="${m.mem_pf==null}">
+            <img src="/images/dozip/profile/null.png" style="width:70px; height:70px;" />
+        </c:if>
+        <c:if test="${m.mem_pf!=null}">
+            <img src="/images/dozip/profile/${m.mem_pf}.png" style="width:70px; height:70px;" />
+        </c:if>
         <h2 id="pf_title">${m.mem_name}</h2><h4 style="margin-top: 28px;">&nbsp;(${id})님 환영합니다.</h4>
     </div>
     <div class="box" id="row">
