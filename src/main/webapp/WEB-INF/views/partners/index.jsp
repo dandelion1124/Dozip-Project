@@ -68,18 +68,18 @@
           border: 2px solid rgba(0, 0, 255, 0.26);
         }
         .index_item {
-            background: #B3B9BE;
+            background: rgba(179, 185, 190, 0.58);
         }
         .index_item:nth-child(1) {
             grid-column: 1/4;
-            background: #00BFFF;
+            background: rgba(0, 191, 255, 0.52);
         }
     </style>
 
 
     <div id='pmain_cont'>
         <div class="index_item">
-            <h1>Grid Layout 사용해서 구현중</h1>
+            <h1>대시보드</h1>
         </div>
         <div class="index_item">현재 시공중인 공사 완성도<br>
             월별 총 시공계약 : 60건<br>
@@ -88,46 +88,23 @@
         </div>
         <div class="index_item"> 월별 견적 신청 내역 <br><br>
 
-
-            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
-            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
-            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
-            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
-            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
-
+            <br><br> <br><br> <br><br> <br><br>
         </div>
         <div class="index_item"> 월별 입찰 내역<br><br>
-
-
-            Aenean faucibus, augue eget pellentesque dapibus, nisl dui finibus risus,
-            ut tempus eros ex eu quam. Suspendisse pulvinar at purus ut fringilla. Ut felis diam,
-            dignissim a purus interdum, laoreet tempor lacus. In hac habitasse platea dictumst.
-            Pellentesque sollicitudin,
-            purus vel iaculis feugiat, turpis mi ornare ex, ac porta eros nisl sit amet nunc.
+            <br><br> <br><br> <br><br> <br><br>
 
         </div>
         <div class="index_item">월별 시공 내역<br><br>
 
-            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
-            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
-            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
-            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
-            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
         </div>
-        <div class="index_item"> 공지사항<br><br>Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
-            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
-            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
-            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
-            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut.
+        <div class="index_item"> 공지사항
+            <br><br>
 
         </div>
         <div class="index_item"> 정산 예정 금액<br><br>
+            <br><br> <br><br> <br><br> <br><br> <br><br>
 
-            Donec laoreet erat vel cursus molestie. Fusce sit amet velit condimentum, auctor sem vitae,
-            pellentesque tortor. Mauris eu ultricies libero. Ut purus elit, blandit id faucibus at,
-            lobortis in magna. Phasellus cursus, purus vel rutrum pretium, neque quam viverra mi,
-            ut dapibus diam diam quis risus. Donec at sollicitudin risus. Duis eu nunc ut ex
-            convallis convallis at eu orci. Etiam maximus mi quam, non molestie mauris tincidunt ut. </div>
+        </div>
     </div>
     </c:if>
     <jsp:include page="include/footer.jsp"/>

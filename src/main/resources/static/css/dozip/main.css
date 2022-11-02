@@ -36,14 +36,10 @@ a:hover {
 
 .top-icons li ul{
 	background: rgba( 255, 255, 255, 0.5 );
-	display:none;
-	/*height:auto;*/
-	border:0px;
+	display: none;
+	border: 0px;
 	left: 81%;
-	/*width:200px;*/
-	/*z-index:200;*/
-	/*top:1em;
-    /*left:0;*/
+	padding: 0px;
 }
 
 .top-icons li:hover ul{

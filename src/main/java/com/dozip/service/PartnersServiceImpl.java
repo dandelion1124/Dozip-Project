@@ -185,5 +185,16 @@ public class PartnersServiceImpl implements PartnersService {
     public List<EstimateVO> getpartEstList(String businessNum) {
         return partnersDao.getpartEstList(businessNum);
     }
+
+    @Override
+    public List<ContractVO> getContract_interior(String businessNum) {
+        return partnersDao.getContract_interior(businessNum);
+    }
+
+    @Override
+    public ContractVO show_contract(String cont_no) {
+        return partnersDao.show_contract(cont_no);
+    }
+
 }
 

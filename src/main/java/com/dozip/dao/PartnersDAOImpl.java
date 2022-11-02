@@ -185,6 +185,16 @@ public class PartnersDAOImpl implements PartnersDAO {
     public List<EstimateVO> getpartEstList(String businessNum) {
         return sqlSession.selectList("partners_esimate",businessNum);
     }
+
+    @Override
+    public List<ContractVO> getContract_interior(String businessNum) {
+        return sqlSession.selectList("interior_estimate",businessNum);
+    }
+
+    @Override
+    public ContractVO show_contract(String cont_no) {
+        return sqlSession.selectOne("show_contract",cont_no);
+    }
 }
 
 

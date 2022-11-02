@@ -2,69 +2,7 @@
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<style>
-    thead#interiorList_table_thead th {
-        font-weight: lighter;
-		line-height: 1.2em;
-    }
-
-    a#go_scheduleList {
-        font-size: 16px;
-        margin-left: 40px;
-        color: saddlebrown;
-    }
-
-    #interiorList_title {
-        font-size: 26px;
-        font-weight: 530;
-		border-bottom: 4px solid #000;
-    }
-
-    #interiorList_msg {
-        color: darkslateblue;
-        font-size: 16px;
-        font-family: fantasy;
-        margin-bottom: 10px;
-		margin: 20px 0px 10px 13px;
-
-	}
-
-    #interiorList_explain {
-        width: 94%;
-        padding: 10px 20px;
-        margin: 0 auto;
-    }
-
-    #interiorList_top_cont {
-		border-bottom: 4px double #555;
-        padding-bottom: 15px;
-        margin-bottom: 40px;
-    }
-
-    * {
-        line-height: 2em;
-    }
-
-    table#interiorList_table {
-        margin: 20px auto;
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    thead#interiorList_table_thead {
-        background: cornflowerblue;
-    }
-
-    div#interior_list_searchBar label {
-        margin: 0px 12px;
-    }
-
-    #interior_list_searchBar {
-        display: flex;
-        float: right;
-        margin-bottom: 10px;
-    }
-</style>
+<link rel="stylesheet" href="/css/partners/myinterior.css">
 <p> | 내공사 > 내공사내역</p>
 <div id='interiorList_top_cont'>
     <div id='interiorList_title'>내 공사내역<a id="go_scheduleList" href="schedule_list">일정관리</a>
@@ -136,7 +74,7 @@
                 <%--
                 계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
                 --%>
-                <td>보기</td>
+                <td><button onclick="show_contract('${c.cont_no}')">보기</button></td>
                 <td>보기</td>
             </tr>
             </c:forEach>
@@ -145,7 +83,11 @@
     </tbody>
 
 </table>
-
+<script>
+    function show_contract(cont_no) {
+        window.open('/partners/show_contract?cont_no=' +cont_no, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
+    }
+</script>
 
 <jsp:include page="../include/footer.jsp"/>
 

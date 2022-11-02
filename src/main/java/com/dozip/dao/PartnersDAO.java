@@ -55,11 +55,10 @@ public interface PartnersDAO {
     List<ContractVO> getContractList(String businessNum);
     void updateEstimate2(EstimateVO e);
     List<PortfolioVO> getPortfolios(String businessNum);
-
     PortfolioVO getOnePortfolio(PortfolioVO pv);
-
     List<ContractVO> getContractList_port(String businessNum);
-
     List<EstimateVO> getpartEstList(String businessNum);
+    List<ContractVO> getContract_interior(String businessNum);
+    ContractVO show_contract(String cont_no);
 }
 
