@@ -95,8 +95,9 @@
 
 
 			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침 --%>
+			<%--
 			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
-
+			--%>
 			<button type="button" name = "submit" class = "filter_btn">필터검색</button>
 			<!-- 리스트 검색창 -->
 			<div class = "search_wrap2">

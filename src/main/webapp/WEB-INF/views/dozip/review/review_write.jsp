@@ -136,7 +136,7 @@
 		$(document).on("click","button[name='submit']",function(){
 			var cont_no = $('#tcont_no').val();
 
-			alert(cont_no);
+			alert(cont_no +'  계약을 불러옵니다');
 
 			$.ajax({
 				url:'/dozip/search_cont',
@@ -157,9 +157,9 @@
 						+"<div id = 't_title'>" + "<h3>공간정보</h3>"+
 								"<input type='text' id='tcont_title'  readonly value='"+this.cont_title+"'/></div>"
 						+"<div id = 't_start'> " + "<h3>착공일</h3>"+
-								"<input type='text' id='tcont_st'  readonly value='"+this.cont_start+"'/></div>"
+								"<input type='text' id='tcont_st'  readonly value='"+this.cont_start.substring(0,10)+"'/></div>"
 						+"<div id = 't_end'> " + "<h3>완공일</h3>"+
-								"<input type='text' id='tcont_end'  readonly value='"+this.cont_end+"'/></div>"
+								"<input type='text' id='tcont_end'  readonly value='"+this.cont_end.substring(0,10)+"'/></div>"
 						+"<div id = 't_area'> " + "<h3>평수</h3>"+
 								"<input type='text' id='tcont_area'  readonly value='"+this.cont_area+"'/></div>"
 						+"<div id= 't_money'>" + "<h3>총 공사금액</h3>"+

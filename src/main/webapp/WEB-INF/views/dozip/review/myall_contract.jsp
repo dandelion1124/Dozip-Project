@@ -6,6 +6,25 @@
 <script src="/js/dozip/jquery.js"></script>
 
 
+<style>
+    #cont_table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+    #cont_table th {
+        background-color: #f7f7f7;
+        font-size: 0.9rem;
+        height: 30px;
+        border-bottom: 1px solid #B3B9BE;
+        border-top: 2px solid #2b2a29;
+    }
+    #cont_table td {
+        border-bottom: 1px solid #B3B9BE;
+        padding: 10px 0;
+        font-size: 0.8rem;
+    }
+</style>
 <div class="clear"></div>
 
 <div class = "wrap">
@@ -20,7 +39,7 @@
             opener.document.getElementById("tcont_no").value = cont_no;
         }
     </script>
-    <table id = "cont_table" border="1">
+    <table id = "cont_table">
         <tr>
             <th>번호</th>
             <th>계약서번호</th>
@@ -40,8 +59,8 @@
                 </td> <!--계약서번호-->
                 <td id = "tpart_name">${clist[i].partners_name}</td> <!--업체명-->
                 <td id = "tcont_title">${clist[i].cont_title}</td> <!--공간정보-->
-                <td id = "t_cont_start">${clist[i].cont_start}</td> <!--착공날짜-->
-                <td id = "t_cont_end">${clist[i].cont_end}</td> <!--완공날짜-->
+                <td id = "t_cont_start">${clist[i].cont_start.substring(0,10)}</td> <!--착공날짜-->
+                <td id = "t_cont_end">${clist[i].cont_end.substring(0,10)}</td> <!--완공날짜-->
                 <td id = "t_cont_area">${clist[i].cont_area}평</td> <!--평수-->
                 <td id = "t_cont_total">${clist[i].cont_total}만원</td>
             </tr>

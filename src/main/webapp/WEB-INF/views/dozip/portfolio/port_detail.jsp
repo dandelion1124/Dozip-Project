@@ -29,6 +29,7 @@
                   <button type = "button" id = "time">${pf.pf_period}주</button>
                </div>
                <div class = "d_check">
+                  <%--
                   <div class = "scrap">
                      <h3>스크랩하기</h3>
                      <label class="switch">
@@ -43,16 +44,19 @@
                         });
                      </script>
                   </div>
+                  --%>
+                  <%--
                   <div class = "direct_contact">
                      <button type = "button" id = "contact" onclick = "openContact()">업체컨택하기</button>
                   </div>
-                  <%-- 업체와 직접 컨택 --%>
+
                   <script>
                      function openContact(){
                         window.open("dir_contact.jsp","_blank",
                               "toolbar = no, menubar = no, scrollbars=no, resizable=no, width=500, height=750, left=0, top=0");
                      }
                   </script>
+                  --%>
                </div>
             </div>
          </div>
