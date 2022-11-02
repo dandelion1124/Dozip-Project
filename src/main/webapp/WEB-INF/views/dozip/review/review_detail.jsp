@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -25,11 +26,24 @@
 			</div>
 
 		<div class="review_img">
-			<img src="${re.re_photo2}">
-			<img src="${re.re_photo3}">
-			<img src="${re.re_photo4}">
-			<img src="${re.re_photo5}">
+			<c:if test="${!empty re.re_photo2}">
+				<img src="${re.re_photo2}">
+			</c:if>
+			<c:if test="${!empty re.re_photo3}">
+				<img src="${re.re_photo3}">
+			</c:if>
+			<c:if test="${!empty re.re_photo4}">
+				<img src="${re.re_photo4}">
+			</c:if>
+			<c:if test="${!empty re.re_photo5}">
+				<img src="${re.re_photo5}">
+			</c:if>
+<%--				<img src="${re.re_photo3}">--%>
+<%--				<img src="${re.re_photo4}">--%>
+<%--				<img src="${re.re_photo5}">--%>
+
 		</div>
+
 		<div>
 			<textarea class="re_cont" readonly>${re.re_cont}</textarea>
 		</div>

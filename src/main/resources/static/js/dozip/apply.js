@@ -5,7 +5,7 @@ function calculator(num) {
       document.getElementById('cal2').value = a.toFixed(2);
   } else {
       var b = parseFloat(document.getElementById('cal2').value) / 3.3058;
-      document.getElementById('cal1').value = b.toFixed(2);
+      document.getElementById('cal1').value = b.toFixed(0);
   }
 }
 function change(){

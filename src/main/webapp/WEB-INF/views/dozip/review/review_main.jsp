@@ -15,9 +15,9 @@
 
         <c:if test="${!empty best}">
 			<div class="big_review">
-				<img class="big_img" src= '/images/dozip/nothing.jpg' />
+				<img class="big_img" src= ${best.re_photo1} />
 				<div class="big_review_cont">
-					<p class="review_title">${best.re_title}</p>
+					<p class="review_title">${best.re_title}</p> <br>
 					<p class="review_cont">${best.re_cont}</p>
 					<p id="review_tag"><button>주거유형</button><button>스타일</button><button>평수</button></p>
 					<p id="review_info">${best.mem_id} 고객님 | ${best.re_date}</p>
@@ -37,7 +37,7 @@
 
 <%-- 본문 --%>
 <div class="review_write">
-	<button type="button" onclick="location.href='/dozip/review_write'">후기 작성하기 >></button>
+	<button type="button" onclick="location.href='/dozip/review_write'">후기 작성하기</button>
 </div>
 
 <!-- part2 반복문 -->
@@ -50,7 +50,7 @@
 							<%--<img class = "ho" onclick = "location.href='review_detail?re_no=${reviewList[i].re_no}';" src= '${reviewList[i].re_photo1}'/>
 								<%-- onclick으로 클릭시 글번호를 넣어 상세로 연결되게 --%>
 								<div class="card_title"><p>${reviewList[i].re_title}</p></div>
-								<div class="card_cont"><p>${reviewList[i].re_cont}</p></div>
+								<div class="card_cont">${reviewList[i].re_cont}</div>
 							</div>
 						</c:forEach>
 					</c:if>
