@@ -30,19 +30,19 @@
 			      <div id="slider-wrap">
 			          <ul id="slider">
 			             <li>                
-							<img src="/images/dozip/portfolio/banner/final_bannerH.png">
+							<img src="/images/dozip/portfolio/banner/final_banner_01.png">
 			             </li>
 			             
 			             <li>
-							<img src="/images/dozip/portfolio/banner/final_bannerJ.png">
+							<img src="/images/dozip/portfolio/banner/final_banner_02.png">
 			             </li>
 			             
 			             <li>
-							<img src="/images/dozip/portfolio/banner/final_bannerM.png">
+							<img src="/images/dozip/portfolio/banner/final_banner_03.png">
 			             </li>
 			             
 			             <li>
-							<img src="/images/dozip/portfolio/banner/final_bannerS.png">
+							<img src="/images/dozip/portfolio/banner/final_banner_04.png">
 			             </li>
 			          </ul>
 			          
@@ -101,9 +101,6 @@
 			<button type="button" name = "submit" class = "filter_btn">필터검색</button>
 			<!-- 리스트 검색창 -->
 			<div class = "search_wrap2">
-				<div class = "search_list">
-					<div id ="key_list">선택한 리스트 값</div>
-				</div>
 				<select name="d4" id="dd_group4" onchange="input(this)">
 					<option selected>정렬방식</option>
 					<option value="1">비용 낮은순</option>
