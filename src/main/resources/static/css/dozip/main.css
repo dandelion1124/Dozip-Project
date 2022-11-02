@@ -214,15 +214,16 @@ i.fas.fa-user {
 }
 #part21 {
 	width: 100%;
-	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 #part2_title {
 	display: flex;
 	justify-content: center;
 	font-size: 1.3rem;
-	/* font-family:'여기어때 잘난체'; */
 	font-weight: bold;
-	margin-bottom: 0;
+	margin-bottom: 20px;
 }
 #part2_info {
 	display: flex;
@@ -240,7 +241,6 @@ i.fas.fa-user {
 .part2_left {
 	width: 500px;
 	margin: 0px 20px;
-	height:  450px;
 }
 #keyword_form {
 	width: 100%;
@@ -257,6 +257,7 @@ i.fas.fa-user {
 	width: 100%;
 	overflow: auto;
 	height: 400px;
+	margin-top: 20px
 }
 
 #map {

@@ -158,8 +158,8 @@ public class PartnersDAOImpl implements PartnersDAO {
         sqlSession.update("update_est",cv);
     }
     @Override
-    public List<ContractVO> getContractList() {
-        return sqlSession.selectList("all_contract");
+    public List<ContractVO> getContractList(String businessNum) {
+        return sqlSession.selectList("all_contract",businessNum);
     }
 
     @Override
@@ -179,6 +179,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     @Override
     public List<ContractVO> getContractList_port(String businessNum) {
         return sqlSession.selectList("portfolio_load", businessNum);
+    }
+
+    @Override
+    public List<EstimateVO> getpartEstList(String businessNum) {
+        return sqlSession.selectList("partners_esimate",businessNum);
     }
 }
 

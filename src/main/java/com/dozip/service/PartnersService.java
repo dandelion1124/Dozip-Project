@@ -50,7 +50,7 @@ public interface PartnersService {
 
     EstimateVO getOneEst(String est_num);
 
-    List<ContractVO> getContractList();
+    List<ContractVO> getContractList(String businessNum);
 
     void updateEstimate2(EstimateVO e);
 
@@ -59,4 +59,6 @@ public interface PartnersService {
     PortfolioVO getOnePortfolio(PortfolioVO pv);
 
     List<ContractVO> getContractList_port(String businessNum);
+
+    List<EstimateVO> getpartEstList(String businessNum);
 }
