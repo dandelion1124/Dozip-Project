@@ -95,10 +95,10 @@
                             </td><%--진행상태--%>
                             <td>
                                 <c:if test="${c.customer_number == ' '}">
-                                    <button type="button" onclick="cont_view('${c.cont_no}')">작성하기</button>
+                                    <button type="button" style="background-color: #FF0033; border:none; color: white;" onclick="cont_view('${c.cont_no}')">작성하기</button>
                                 </c:if>
                                 <c:if test="${c.customer_number != ' '}">
-                                    <button type="button" onclick="cont_view('${c.cont_no}')">확인하기</button>
+                                    <button type="button" style="background-color: #3333FF; border:none; color: white;" onclick="cont_view('${c.cont_no}')">확인하기</button>
                                 </c:if>
                             </td><%--계약서--%>
                         </tr>
