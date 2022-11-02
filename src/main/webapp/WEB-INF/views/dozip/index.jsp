@@ -92,7 +92,7 @@
         <div class="slideshow-container">
 
             <div class="mySlideDiv fade active">
-                <img src="/images/dozip/mainslide_01.jpg">
+                <img src="/images/dozip/mainslide01.jpg">
             </div>
 
             <div class="mySlideDiv fade">
