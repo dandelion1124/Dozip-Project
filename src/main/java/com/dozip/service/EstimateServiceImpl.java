@@ -84,9 +84,11 @@ public class EstimateServiceImpl implements EstimateService {
         this.estimateDAO.updateEstate(e); // 견적서테이블 상태 '계약완료'로 변경
 
         BidVO b = new BidVO();
-        b.setBid_num(this.estimateDAO.getBidNum(c));
-        b.setBid_state("계약완료");
-        this.estimateDAO.updateState(b); // 입찰테이블 상태 '계약완료'로 변경
+        if(this.estimateDAO.getBidNum(c)!=null) {
+            b.setBid_num(this.estimateDAO.getBidNum(c));
+            b.setBid_state("계약완료");
+            this.estimateDAO.updateState(b); // 입찰테이블 상태 '계약완료'로 변경
+        }
 
         this.estimateDAO.insertPay(c); // 결제테이블 생성, 최초상태 '계약금요청'
     }
