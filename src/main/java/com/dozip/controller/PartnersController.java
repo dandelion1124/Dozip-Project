@@ -300,7 +300,6 @@ public class PartnersController {
         if(request.getParameter("page") != null) {
             page=Integer.parseInt(request.getParameter("page"));
         }
-
         int listcount = this.partnersService.getBlistCount2(businessNum); //전체 레코드 개수 또는 검색전후 레코드 개수
         System.out.println("총 입찰 개수:"+listcount+"개");
 

@@ -41,13 +41,15 @@
 								<div class="dt">
 									<p class="ico3"><b>희망 시공시작일</b></p>
 								</div>
-								<div class="dd"><b>${e.est_start}</b></div>
+								<c:set var = "est_start" value = "${fn:split(e.est_start,' ')}"/>
+								<div class="dd"><b>${est_start[0]}</b></div>
 							</li>
 							<li class="detail_info_cons_ex">
 								<div class="dt">
 									<p class="ico4"><b>희망 시공종료일</b></p>
 								</div>
-								<div class="dd"><b>${e.est_end}</b></div>
+								<c:set var = "est_end" value = "${fn:split(e.est_end,' ')}"/>
+								<div class="dd"><b>${est_end[0]}</b></div>
 							</li>
 						</ul>
 					</div>
@@ -107,11 +109,11 @@
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공시작일</dt>
-								<dd class="sec-cont">${e.est_start}</dd>
+								<dd class="sec-cont">${est_start[0]}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공완료일</dt>
-								<dd class="sec-cont">${e.est_end}</dd>
+								<dd class="sec-cont">${est_end[0]}</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 스타일</dt>

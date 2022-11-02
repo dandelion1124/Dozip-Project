@@ -21,7 +21,7 @@
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
 				margin:0 5% 20px 5%; background-color:white;">
 		<tr class="my_bid_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
-			<th>입찰 내용</th> <th>입찰가</th> <th>모집 마감일</th> <th>입찰 시공시작일</th> <th>입찰 시공종료일</th> <th>세부정보</th> <th>입찰상태</th>
+			<th>입찰 번호</th> <th>입찰 내용</th> <th>입찰가</th> <th>모집마감일</th> <th>시공시작 입찰일</th> <th>시공종료 입찰일</th> <th>세부정보</th> <th>입찰상태</th>
 		</tr>
 		<c:if test="${empty list}">
 			<tr class="no_bid_list">
@@ -31,9 +31,16 @@
 
 		<c:if test="${!empty list}">
 			<c:forEach var="e" items="${list}">
-				<tr class="my_bid_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:13px; border-bottom:1px solid lightgray;">
+				<tr class="my_bid_cont" style="font-size:13px; border-bottom:1px solid lightgray;
+					<c:if test="${e.bid_state=='진행중'}"></c:if>
+					<c:if test="${e.bid_state=='계약요청'}">background-color:#EBFBFF;</c:if>
+					<c:if test="${e.bid_state=='거절'}">background-color:#FDF5E6;</c:if>
+					<c:if test="${e.bid_state=='계약완료'}">background-color:#D2E1FF;</c:if>
+					">
 					<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
-					<td>${e.est_addr} ${e.est_use} 견적 문의</td> <td>${e.bid_price}</td> <td>${est_dateEnd[0]}</td>  <td>${e.bid_start}</td> <td>${e.bid_end}</td>
+					<c:set var = "bid_start" value = "${fn:split(e.bid_start,' ')}"/>
+					<c:set var = "bid_end" value = "${fn:split(e.bid_end,' ')}"/>
+					<td>${e.bid_num}</td> <td>${e.est_addr} ${e.est_use} 견적 문의</td> <td>${e.bid_price}만원</td> <td>${est_dateEnd[0]}</td>  <td>${bid_start[0]}</td> <td>${bid_end[0]}</td>
 					<td><div class="bid_detail"><a href="/partners/bid_detail?no=${e.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
 					<td class="bid_result"><span class="success1">${e.bid_state}</span></td>
 				</tr>

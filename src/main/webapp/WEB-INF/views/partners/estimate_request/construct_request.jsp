@@ -16,29 +16,58 @@
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
 				margin:0 5% 40px 5%; background-color:white;">
 		<tr class="my_req_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
-			<th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>수용여부</th>
+			<th>견적서 번호</th> <th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>수용여부</th>
 		</tr>
 		<c:if test="${empty ereq}">
 			<td colspan="7" style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">현재 시공요청 리스트가 없습니다.</td>
 		</c:if>
 		<c:if test="${!empty ereq}">
 		<c:forEach var="er" items="${ereq}">
-		<tr class="my_req_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:13px; border-bottom:1px solid lightgray;">
-			<c:set var = "est_date" value = "${fn:split(er.est_date,' ')}"/>
-			<td> ${er.addr} ${er.est_use} 원상복구 견적 문의</td> <td>${er.est_bud}만원</td> <td>${est_date[0]}</td> <td>${er.est_start}</td> <td>${er.est_end}</td>
-			<td><div class="req_detail"><a href="/partners/request_detail?no=${er.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
-			<form method="post" action="">
-			<td class="req_accept">
-				<c:if test="${er.est_check=='대기중'}">
-				<button type="button" class="accept" id="permit_btn" name="permit" value="${er.est_num}">수락</button>
-				<button type="button" class="deny" id="reject_btn" name="reject" value="${er.est_num}">거절</button>
-				</c:if>
-				<c:if test="${er.est_check=='수락'}"><span style="font-color:blue;"><b>수락</b></span></c:if>
-				<c:if test="${er.est_check=='거절'}"><span style="font-color:red;"><b>거절</b></span>	</c:if>
+			<c:set var ="est_date" value ="${fn:split(er.est_date,' ')}"/>
+			<c:set var = "est_start" value = "${fn:split(er.est_start,' ')}"/>
+			<c:set var = "est_end" value = "${fn:split(er.est_end,' ')}"/>
 
-			</td>
-			</form>
-		</tr>
+			<tr class="my_req_cont" style="font-size:13px; border-bottom:1px solid lightgray;
+				<c:if test="${er.est_check=='대기중'}"></c:if>
+				<c:if test="${er.est_check=='수락'}">background-color:#EBFBFF;</c:if>
+				<c:if test="${er.est_check=='거절'}">background-color:#FDF5E6;</c:if>
+				<c:if test="${er.est_check=='계약요청'}">background-color:#EBFBFF;</c:if>
+				<c:if test="${er.est_check=='작성완료'}">background-color:#D2E1FF;</c:if>
+				">
+				<td>${er.est_num}</td>
+				<td> ${er.addr} ${er.est_use} 견적 문의</td> <td>${er.est_bud}만원</td> <td>${est_date[0]}</td> <td>${est_start[0]}</td> <td>${est_end[0]}</td>
+				<td><div class="req_detail"><a href="/partners/request_detail?no=${er.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>
+				<form method="post" action="">
+					<td class="req_accept">
+						<c:if test="${er.est_check=='대기중'}">
+							<button type="button" class="accept" id="permit_btn" name="permit" value="${er.est_num}">수락</button>
+							<button type="button" class="deny" id="reject_btn" name="reject" value="${er.est_num}">거절</button>
+						</c:if>
+						<c:if test="${er.est_check=='수락'}"><span style="color:blue;"><b>수락</b></span></c:if>
+						<c:if test="${er.est_check=='거절'}"><span style="color:red;"><b>거절</b></span></c:if>
+						<c:if test="${er.est_check=='계약요청'}"><span style="color:#000069;"><b>계약요청</b></span></c:if>
+						<c:if test="${er.est_check=='작성완료'}"><span style="color:blue;"><b>작성완료</b></span></c:if>
+					</td>
+				</form>
+			</tr>
+
+
+<%--		<tr class="my_req_cont" style="background-color:#EBFBFF; /*#FDF5E6*/ font-size:13px; border-bottom:1px solid lightgray;">--%>
+<%--			<td>${er.est_num}</td>--%>
+<%--			<td> ${er.addr} ${er.est_use} 견적 문의</td> <td>${er.est_bud}만원</td> <td>${est_date[0]}</td> <td>${est_start[0]}</td> <td>${est_end[0]}</td>--%>
+<%--			<td><div class="req_detail"><a href="/partners/request_detail?no=${er.est_num}&page=${page}" class="my_bid_btn-d-view" >자세히 보기</a></div></td>--%>
+<%--			<form method="post" action="">--%>
+<%--			<td class="req_accept">--%>
+<%--				<c:if test="${er.est_check=='대기중'}">--%>
+<%--					<button type="button" class="accept" id="permit_btn" name="permit" value="${er.est_num}">수락</button>--%>
+<%--					<button type="button" class="deny" id="reject_btn" name="reject" value="${er.est_num}">거절</button>--%>
+<%--				</c:if>--%>
+<%--				<c:if test="${er.est_check=='수락'}"><span style="color:blue;"><b>수락</b></span></c:if>--%>
+<%--				<c:if test="${er.est_check=='거절'}"><span style="color:red;"><b>거절</b></span></c:if>--%>
+<%--				<c:if test="${er.est_check=='계약요청'}"><span style="color:#000069;"><b>계약요청</b></span></c:if>--%>
+<%--			</td>--%>
+<%--			</form>--%>
+<%--		</tr>--%>
 		</c:forEach>
 		</c:if>
 	</table>

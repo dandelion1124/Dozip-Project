@@ -52,7 +52,7 @@ delete from estimateT;
 commit;
 
 drop table estimateT;
-delete estimateT;
+delete from estimateT where est_check
 select * from estimateT;
 create table estimateT
 (
