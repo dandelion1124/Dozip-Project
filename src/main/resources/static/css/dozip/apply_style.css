@@ -8,6 +8,8 @@ input#cal2, input#cal1 {
     width: 255px;
     height: 30px;
     font-size: 16px;
+    border-radius: 5px;
+    border-width: thin;
 }
 .title {
   display: flex;
@@ -57,6 +59,7 @@ input#cal2, input#cal1 {
   width: 600px;
   height: 140px;
   margin: 0 auto;
+  margin-top: 60px;
 }
 
 .areaBoxComponent {
@@ -282,16 +285,16 @@ button.go_next {
   margin-top: 18px;
 }
 input#est_start, input#est_end {
-  width: 180px;
-  height: 23px;
-  font-size: 20px;
-  padding: 5px;
+  width: 225px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  border-width: thin;
 }
 .estimate_date{
   width: 600px;
   height: 300px;
   margin: 0 auto;
-  margin-top: 18px;
 }
 .your_cost {
   float: left;
@@ -299,6 +302,10 @@ input#est_start, input#est_end {
 }
 #estimate_cost {
   width: 450px;
+  height: 60px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border-width: thin;
 }
 
 /* 3페이지 css */

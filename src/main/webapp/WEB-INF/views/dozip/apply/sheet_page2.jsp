@@ -17,15 +17,15 @@
             <h2>예산</h2>
             <div class="your_cost">
                 <input type="text" id="estimate_cost" name="est_bud" maxlength="7" placeholder="예산을 입력해주세요"
-                       onkeyup="inputNumberFormat(this);"/>
+                       onkeyup="inputNumberFormat(this);" style="font-size: 20px;text-indent: 10px;"/>
                 <h3>만원</h3>
             </div>
             <br/><br/><br/><br/>
             <hr/>
         </div>
         <div class="estimate_date">
-            <br/><br/>
-            <h2>희망 시공일정</h2><br/><br/>
+            <br/>
+            <h2>희망 시공일정</h2><br/>
             <span style="font-size:20px">오늘 날짜 : <span id="today"></span></span>
             <br>
             <br>
