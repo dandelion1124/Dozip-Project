@@ -76,24 +76,29 @@
                     <tr><td colspan="8"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
                 <c:if test="${fn:length(clist) != 0}">
-                    <c:forEach var="i" begin="0" end="${fn:length(clist)-1}" step="1">
+                    <c:forEach var="c" items="${clist}">
                         <tr>
-                            <td id="num"><a href="/dozip/my_contD?cont_no=${clist[i].cont_no}">${clist[i].cont_no}</a></td><%--계약번호--%>
-                            <td>${clist[i].businessName}</td><%--업체명--%>
-                            <td>${clist[i].cont_title.substring(0, clist[i].cont_title.length() - 2)})</td><%--공사내용--%>
-                            <td>${clist[i].cont_start.substring(0,10)}</td><%--시작일--%>
-                            <td>${clist[i].cont_end.substring(0,10)}</td><%--종료일--%>
-                            <td>${clist[i].cont_total} 만원</td><%--총금액--%>
+                            <c:if test="${c.customer_number == ' '}">
+                                <td id="num"><a href="#" onclick="pop();">${c.cont_no}</a></td><%--계약번호--%>
+                            </c:if>
+                            <c:if test="${c.customer_number != ' '}">
+                                <td id="num"><a href="/dozip/my_contD?cont_no=${c.cont_no}">${c.cont_no}</a></td><%--계약번호--%>
+                            </c:if>
+                            <td>${c.businessName}</td><%--업체명--%>
+                            <td style="word-wrap: break-word; max-width : 300px;">${c.cont_title.substring(0, c.cont_title.length() - 2)})</td><%--공사내용--%>
+                            <td>${c.cont_start.substring(0,10)}</td><%--시작일--%>
+                            <td>${c.cont_end.substring(0,10)}</td><%--종료일--%>
+                            <td>${c.cont_total} 만원</td><%--총금액--%>
                             <td>
-                                <c:if test="${clist[i].customer_number == ' '}">계약요청</c:if>
-                                <c:if test="${clist[i].customer_number != ' '}">계약완료</c:if>
+                                <c:if test="${c.customer_number == ' '}">계약요청</c:if>
+                                <c:if test="${c.customer_number != ' '}">계약완료</c:if>
                             </td><%--진행상태--%>
                             <td>
-                                <c:if test="${clist[i].customer_number == ' '}">
-                                    <button type="button" onclick="cont_view('${clist[i].cont_no}')">작성하기</button>
+                                <c:if test="${c.customer_number == ' '}">
+                                    <button type="button" onclick="cont_view('${c.cont_no}')">작성하기</button>
                                 </c:if>
-                                <c:if test="${clist[i].customer_number != ' '}">
-                                    <button type="button" onclick="cont_view('${clist[i].cont_no}')">확인하기</button>
+                                <c:if test="${c.customer_number != ' '}">
+                                    <button type="button" onclick="cont_view('${c.cont_no}')">확인하기</button>
                                 </c:if>
                             </td><%--계약서--%>
                         </tr>
@@ -122,6 +127,9 @@
 <script>
     function cont_view(cont_no){
         window.open('/dozip/my_cont_view?cont_no='+cont_no,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
+    function pop(){
+        alert("계약을 먼저 완료하고 이용해주세요.");
     }
 </script>
 <%-- 하단 공통부분 --%>
