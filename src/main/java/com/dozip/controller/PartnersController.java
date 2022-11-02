@@ -284,7 +284,6 @@ public class PartnersController {
         out.println("alert('입찰 성공!');");
         out.println("location='/partners/bid_detail?no="+bid.getEst_num()+"'"); //location=에 매핑주소 자체를 넣는 것
         out.println("</script>");
-
         return null;
     }
 
@@ -320,8 +319,11 @@ public class PartnersController {
         m.addObject("maxpage", maxpage);
         m.addObject("listcount", listcount);
 
-
         List<BidVO> list = this.partnersService.selectJoinList(e); //bid테이블 기준으로 estimate테이블 조인해서 가져오기
+
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).setAddr(est_addr_change(list.get(i).getEst_addr()));
+        }
         System.out.println(list.toString());
         m.addObject("list", list);
 
