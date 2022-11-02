@@ -110,11 +110,11 @@
                             <td>${elist[i].businessName}</td><%--업체명--%>
                             <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
-                                <c:if test="${elist[i].est_check!='거절'}">
-                                    <button type="button" id="agree_btn" value="${elist[i].est_num}">진행</button>
+                                <c:if test="${elist[i].est_check=='수락'}">
+                                    <button type="button" id="agree_btn" value="${elist[i].est_num}">계약요청</button>
                                     <button type="button" id="reject_btn" value="${elist[i].est_num}">거절</button>
                                 </c:if>
-                                <c:if test="${elist[i].est_check=='거절'}">-</c:if>
+                                <c:if test="${elist[i].est_check!='수락'}">-</c:if>
                             </td>
                         </tr>
                     </c:forEach>
