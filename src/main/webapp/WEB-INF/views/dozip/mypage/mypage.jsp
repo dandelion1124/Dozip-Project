@@ -26,7 +26,7 @@
         color: white;
     }
     .p_cont{
-        font-size: 2.0rem;
+        font-size: 1.8rem;
         font-weight: bold;
         margin: 0;
     }
@@ -87,6 +87,14 @@
         margin-top: 20px;
         margin-left: 10px;
     }
+    .long{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        max-width : 130px;
+        min-width : 100px;
+    }
 </style>
 <div class="my_wrap">
     <div class="profile">
@@ -105,8 +113,8 @@
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 견적서(지정)</p>
-                <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적내역 확인하기 >> </a></p>
+                <p class="p_cont">${pListCount} 건</p>
+                <p class="p_link"><a href="/dozip/my_est">견적내역 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -115,8 +123,8 @@
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 견적서(자유)</p>
-                <p class="p_cont">10개</p>
-                <p class="p_link"><a>견적내역 확인하기 >> </a></p>
+                <p class="p_cont">${eListCount} 건</p>
+                <p class="p_link"><a href="/dozip/my_est2">견적내역 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -125,8 +133,8 @@
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 후기</p>
-                <p class="p_cont">10개</p>
-                <p class="p_link"><a>후기 확인하기 >> </a></p>
+                <p class="p_cont">${rListCount} 건</p>
+                <p class="p_link"><a href="/dozip/my_review">후기 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
@@ -135,8 +143,8 @@
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 문의</p>
-                <p class="p_cont">10개</p>
-                <p class="p_link"><a>문의글 확인하기 >> </a></p>
+                <p class="p_cont">${qListCount}건 / ${pqListCount}건</p>
+                <p class="p_link"><a href="/dozip/my_Pqna">문의글 확인하기 >> </a></p>
             </div>
         </div>
     </div>
@@ -152,21 +160,20 @@
                     <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
                 <c:if test="${fn:length(qlist) != 0}">
-                    <c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">
+                    <c:forEach var="q" items="${qlist}">
                         <tr>
                             <td id="num">
-                                <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                <c:out value="${number}"/>
+                                임시
                             </td>
                             <td id="title" style="text-align: left; padding-left: 20px;">
-                                <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                <a href="#">${qlist[i].qna_title}</a>
+                                <c:if test="${q.qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
+                                <a href="#">${q.qna_title}</a>
                             </td>
                             <td id="state">
-                                <c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
-                                <c:if test="${qlist[i].qna_level == 0}">${qlist[i].reply_state}</c:if>
+                                <c:if test="${q.qna_level != 0}"><span></span></c:if>
+                                <c:if test="${q.qna_level == 0}">${q.reply_state}</c:if>
                             </td>
-                            <td id="date">${qlist[i].qna_date}</td>
+                            <td id="date">${q.qna_date}</td>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -179,27 +186,27 @@
             <div class="my_qna_cont">
                 <table class="my_qna_table">
                     <tr>
-                        <th>제목</th> <th>답변상태</th><th>작성일</th>
+                        <th>구분</th><th>제목</th> <th>답변상태</th><th>작성일</th>
                     </tr>
                     <c:if test="${fn:length(qlist) == 0}">
                         <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
                     </c:if>
                     <c:if test="${fn:length(qlist) != 0}">
-                        <c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">
+                        <c:forEach var="q" items="${qlist}">
                             <tr>
-                                <td id="num">
-                                    <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                    <c:out value="${number}"/>
+                                <td>
+                                    <c:if test="${q.businessNum==null}">센터</c:if>
+                                    <c:if test="${q.businessNum!=null}">업체</c:if>
                                 </td>
-                                <td id="title" style="text-align: left; padding-left: 20px;">
-                                    <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                    <a href="#">${qlist[i].qna_title}</a>
+                                <td id="title">
+                                    <c:if test="${q.qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
+                                    <a href="#">${q.qna_title}</a>
                                 </td>
                                 <td id="state">
-                                    <c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
-                                    <c:if test="${qlist[i].qna_level == 0}">${qlist[i].reply_state}</c:if>
+                                    <c:if test="${q.qna_level != 0}"><span></span></c:if>
+                                    <c:if test="${q.qna_level == 0}">${q.reply_state}</c:if>
                                 </td>
-                                <td id="date">${qlist[i].qna_date}</td>
+                                <td id="date">${q.qna_date.substring(0,10)}</td>
                             </tr>
                         </c:forEach>
                     </c:if>
@@ -211,28 +218,21 @@
             <div class="my_qna_cont">
                 <table class="my_qna_table">
                     <tr>
-                        <th>제목</th> <th>답변상태</th><th>작성일</th>
+                        <th>제목</th> <th>내용</th><th>작성일</th>
                     </tr>
-                    <c:if test="${fn:length(qlist) == 0}">
-                        <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
+                    <c:if test="${rListCount == 0}">
+                        <tr><td colspan="3"> 등록된 글이 없습니다.</td> </tr>
                     </c:if>
-                    <c:if test="${fn:length(qlist) != 0}">
-                        <c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">
-                            <tr>
-                                <td id="num">
-                                    <c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                    <c:out value="${number}"/>
-                                </td>
-                                <td id="title" style="text-align: left; padding-left: 20px;">
-                                    <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                    <a href="#">${qlist[i].qna_title}</a>
-                                </td>
-                                <td id="state">
-                                    <c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
-                                    <c:if test="${qlist[i].qna_level == 0}">${qlist[i].reply_state}</c:if>
-                                </td>
-                                <td id="date">${qlist[i].qna_date}</td>
-                            </tr>
+                    <c:if test="${rListCount != 0}">
+                        <c:forEach var="r" items="${rlist}">
+                            <c:if test="${r.mem_id==id}">
+                                <tr>
+                                    <td class="long"><a href="#">${r.re_title}</a></td>
+                                    <td class="long">${r.re_cont}</td>
+                                    <td>${r.re_date.substring(0,10)}</td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${r.mem_id!=id}"></c:if>
                         </c:forEach>
                     </c:if>
                 </table>

@@ -21,4 +21,6 @@ public interface ReviewService {
     void re_count(int re_no);
 
     List<ReviewVO> best();
+
+    int reviewCount(String mem_id); // 아이디에 해당하는 리뷰개수 확인
 }

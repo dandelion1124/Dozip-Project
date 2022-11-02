@@ -220,18 +220,36 @@ public class DozipController {
         MemberVO m = this.dozipService.getMemberInfo((String) session.getAttribute("id"));
         mv.addObject("m", m);
 
+        //견적서 개수 확인
+        int pListCount=this.estimateService.getPListCount(m.getMem_id());
+        int eListCount=this.estimateService.getListCount(m.getMem_id());
+        mv.addObject("pListCount", pListCount);
+        mv.addObject("eListCount", eListCount);
+
         //현재일자 확인
         LocalDate now = LocalDate.now();
         mv.addObject("now", now);
 
+        //문의글 개수 확인
+        int qListCount=this.dozipService.getListCount(m.getMem_id());
+        int pqListCount=this.dozipService.getPListCount(m.getMem_id());
+        mv.addObject("qListCount", qListCount);
+        mv.addObject("pqListCount", pqListCount);
+
         //문의 리스트 출력(업체)
         List<QnaVO> qlist = new ArrayList<QnaVO>();
         QnaVO q = new QnaVO();
-        q.setMem_id((String) session.getAttribute("id"));
+        q.setMem_id(m.getMem_id());
         q.setStartrow(1); q.setEndrow(5);
         qlist = this.dozipService.getPlist(q);
         mv.addObject("qlist", qlist);
 
+        //리뷰개수확인
+        int rListCount = this.reviewService.reviewCount(m.getMem_id()); //리뷰 개수
+        List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
+        reviewList = this.reviewService.getAllReview();
+        mv.addObject("rListCount",rListCount);
+        mv.addObject("rlist", reviewList);
 
         mv.setViewName("/dozip/mypage/mypage");
         return mv;
@@ -398,7 +416,7 @@ public class DozipController {
         return map;
     }
 
-    @GetMapping("my_est") //마이페이지-견적서 리스트
+    @GetMapping("my_est") //마이페이지-견적서 리스트 (지정)
     public ModelAndView myEst(ModelAndView mv, EstimateVO e,HttpServletRequest request,HttpSession session) {
         e.setMem_id((String)session.getAttribute("id"));
 
