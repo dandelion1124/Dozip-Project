@@ -206,15 +206,17 @@ i.fas.fa-user {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	padding-top: 20px;
-	padding-bottom: 20px;
 }
 #part21 {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background: #f8f8f8;
+	padding: 30px;
+	margin: 0 auto;
 }
+
 #part2_title {
 	display: flex;
 	justify-content: center;
@@ -238,6 +240,7 @@ i.fas.fa-user {
 .part2_left {
 	width: 500px;
 	margin: 0px 20px;
+	border:1px dotted black;
 }
 #keyword_form {
 	width: 100%;
