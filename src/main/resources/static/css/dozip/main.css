@@ -283,9 +283,9 @@ i.fas.fa-user {
 .part_title {
 	display: flex;
 	justify-content: center;
-	font-size: 1.4rem;
+	font-size: 2.0rem;
 	font-weight: bold;
-	margin: 20px 0px;
+	margin: 25px 0px;
 }
 
 
@@ -325,25 +325,6 @@ i.fas.fa-user {
 	margin: 0 auto;  /*가운데 정렬*/ 
 }
 
-.part4_title {
-	font-size: 1.3rem;
-	background-color: orange;
-}
-
-.part4_cont {
-	background-color: green;
-	width:90%;
-	margin: 0 auto; /* 가운데 정렬 */
-	font-size: 0.8rem;
-	text-overflow: ellipsis;
-	/*white-space: nowrap; 
-	overflow: hidden;
-	display: -webkit-box;
- 	-webkit-line-clamp: 3;
- 	-webkit-box-orient: vertical; */	
-}
-
-/* part 4 카드영역 */
 
 /* 포트폴리오가 없을 시*/
 #none_pf {
@@ -357,79 +338,10 @@ i.fas.fa-user {
 	
 }
 
-/* 카드리스트 */
-.cards-list {
-	flex-wrap : wrap;
-	width: 80%;
-	display: flex;
-	justify-content: space-between;
-	margin : 0 auto;
-}
-
-/* 개별카드 */
-
-.card-list {
-	width : 100%;
-	word-break:break-all;
-	word-wrap:break-word;
-}
-
-.card {
-	width: 30%;
-	margin: 10px;
-	display: flex;
-	flex-direction: column;
-}  
-
-
-
-.card_image img {
-	width: 100%;
-	height: 280px;
-	border-radius: 5px 5px 5px 5px;
-	object-fit: cover;
-	display: flex;
-}
-
-.card_title {
-	border-radius: 0px 0px 5px 5px;
-	/* background-color:#92d1fc; */
-	height: 70px;
-	width: 100%;
-}
-
-.corp {
-	list-style: none;
-	text-align: center;
-	font-size: 1.3rem;
-	font-family:'Malgun-Gothic';
-	color : #347844;
-	line-height: 1.9;
-	font-weight : 1000;
-}
-
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
-
-.card:hover {
-  transform: scale(0.98, 0.98);
-}
-
-.card_tag {
-	font-size: 0.9rem;
-	list-style: none;
-	text-align: center;
-	line-height: 1.9;
-	font-weight : 700;
-}
-
 
 /* part 5 시작 */
-#part5 {
+/* part4, part5 공통*/
+#part4, #part5 {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -440,30 +352,30 @@ i.fas.fa-user {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
-#part5_link {
+#part4_link,#part5_link {
 	text-decoration: none;
 	color: black;
 }
-#part5_area {
+#part4_area,#part5_area {
 	width:90%;
 	display: flex;
 	justify-content:space-between;
 	margin: 0 auto; /* 가운데 정렬 */
 }
-.part5_inner {
+.part4_inner,.part5_inner {
 	/* border: 2px solid #78cbe7; */
 	/* border-radius: 10px; */
 	width: 30%;
 	padding: 10px;
 	/* background-color: #dff3f9; */
 }
-.part5_inner>div>a>img {
+.part4_inner>div>a>img,.part5_inner>div>a>img {
 	width: 90%;
-	height: 200px;
+	height: 300px;
 	border-radius: 5px;
 }
-.part5_title {
-	font-size: 1.3rem;
+.part4_title ,.part5_title {
+	font-size: 1.5rem;
 	font-weight: bold;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -471,12 +383,12 @@ i.fas.fa-user {
 	-webkit-line-clamp: 1;
 	-webkit-box-orient: vertical;
 	height: 50px;
-	margin-top: 0;
+	margin-top: 10px;
 }
-.part5_cont {
+.part4_cont,.part5_cont {
 	width:90%;
 	margin: 0 auto; /* 가운데 정렬 */
-	font-size: 0.8rem;
+	font-size: 1.0rem;
 	text-overflow: ellipsis;
 	/* white-space: nowrap; */
 	overflow: hidden;
