@@ -190,35 +190,31 @@
 
     <div class="clear"></div>
 
-    <div class="part4" style="background-color: white;">
+    <div id="part4" style="background-color: white;">
 			<span class="part_title">
 				<a id="part4_link" href="port"><p><font >포트폴리오 보러가기</p></a>
 			</span>
 
         <div id="part4_area">
-
-            <div class="cards-list">
-                <c:if test="${!empty plist}">
-                    <c:forEach var="i" begin="0" end="2" step="1">
-                        <div class="card">
-                            <div class="card_image">
-                                <img class="ho" onclick="location.href='port_detail?pf_no=${plist[i].pf_no}';"
-                                     src='${plist[i].pf_photo1}'/>
-                                    <%-- 클릭시 글번호를 넣어 상세로 연결 --%>
-                            </div>
-                            <div class="card_title">
-                                <li class="corp">${plist[i].pf_title}</li>
-                                <li class="card_tag">${plist[i].pf_type} ${plist[i].pf_area} ${plist[i].pf_cost}</li>
-                            </div>
+            <c:if test="${!empty plist}">
+                <c:forEach var="i" begin="0" end="2" step="1">
+                    <div class="part4_inner">
+                        <div><a class="part4_img">
+                            <img onclick="location.href='port_detail?pf_no=${plist[i].pf_no}';"
+                                 src='${plist[i].pf_photo1}'/>
+                                <%-- 클릭시 글번호를 넣어 상세로 연결 --%>
+                        </a></div>
+                        <div class="part4_title"><p>${plist[i].pf_title}</p></div>
+                        <div class = "part4_cont">
+                            <li class="card_tag">${plist[i].pf_type} ${plist[i].pf_area} ${plist[i].pf_cost}</li>
                         </div>
-                    </c:forEach>
-                </c:if>
+                    </div>
+                </c:forEach>
+            </c:if>
 
-                <c:if test="${empty plist}">
-                    <div id="none_pf">포트폴리오 목록이 없습니다</div>
-                </c:if>
-            </div>
-
+            <c:if test="${empty plist}">
+                <div id="none_pf">포트폴리오 목록이 없습니다</div>
+            </c:if>
         </div>
     </div>
     <div class="clear"></div>
