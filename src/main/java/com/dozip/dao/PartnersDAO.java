@@ -60,5 +60,7 @@ public interface PartnersDAO {
     List<EstimateVO> getpartEstList(String businessNum);
     List<ContractVO> getContract_interior(String businessNum);
     ContractVO show_contract(String cont_no);
+
+    List<PayVO> getpayList(String businessNum);
 }
 

@@ -38,15 +38,22 @@
     </select>
     <!--계약서 테이블 불러오기 -->
     <select id="all_contract" resultType="ContractVO">
-       select * from contractT where BUSINESSNUM=#{businessNum} order by cont_no desc
+
+        select cont_no, est_num, cont_location, cont_total, cont_start, cont_end, cont_date, TRUNC(SYSDATE)-CONT_DATE as dateCheck from contractT where BUSINESSNUM=#{businessNum} order by cont_no desc
+
     </select>
     <!--내공사 내역에서 사용할 계약 리스트 -->
     <select id="interior_estimate" resultType="ContractVO">
         select c.*, p.PAY_STATE from CONTRACTT c, PAYT p where c.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and PAY_STATE!='계약금요청'
     </select>
-    <!--내공새 내역에서 계약서 조회 -->
+    <!--내공사 내역에서 계약서 조회 -->
     <select id="show_contract" resultType="ContractVO">
         select * from contractT where cont_no=#{cont_no}
+    </select>
+
+    <!-- 계약금 요청상태인 payT 조회 -->
+    <select id="get_paystate" resultType="PayVO">
+        select cont_no, pay_state from payT where businessNum=#{businessNum} and pay_state = '계약금요청'
     </select>
 </mapper>
 

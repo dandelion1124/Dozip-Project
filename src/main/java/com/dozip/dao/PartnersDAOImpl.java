@@ -195,6 +195,11 @@ public class PartnersDAOImpl implements PartnersDAO {
     public ContractVO show_contract(String cont_no) {
         return sqlSession.selectOne("show_contract",cont_no);
     }
+
+    @Override
+    public List<PayVO> getpayList(String businessNum) {
+        return sqlSession.selectList("get_paystate", businessNum);
+    }
 }
 
 

@@ -38,4 +38,7 @@ public class ContractVO {
     
     //계약 진행상황
     private String pay_state;
+
+    //계약서 작성 남은일자
+    private String dateCheck;
 }

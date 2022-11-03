@@ -75,7 +75,7 @@
                         <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
                     </td>
                 </tr>
-            </c:if> <%--${e.est_num!=c.est_num}--%>
+            </c:if> <%--${e.est_check=='계약요청'}"--%>
 
             <c:if test="${!empty clist}">
                 <c:forEach var="c" items="${clist}">
@@ -92,6 +92,24 @@
                             </td>
                        </tr>
                      </c:if> <%--${e.est_num==c.est_num}--%>
+
+
+                    <c:forEach var="p" items="${plist}">
+                    <c:if test="${e.est_num==c.est_num && c.cont_no==p.cont_no}">
+                        <tr>
+                            <td>${c.est_num}</td>
+                            <td><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td>
+                            <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
+                            <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
+                            <td>${p.pay_state} (D-${c.dateCheck})</td>
+                            <td>${fn:substring(c.cont_date,0,10)}</td>
+                            <td>
+                                <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
+                            </td>
+                        </tr>
+
+                    </c:if>
+                    </c:forEach>
                 </c:forEach>
             </c:if> <%--${!empty clist}--%>
      </c:forEach> <%-- elist --%>
@@ -116,7 +134,7 @@
         var popupX = (window.screen.width / 2) - (popupWidth / 2);
         // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
         var popupY = (window.screen.height / 2) - (popupHeight / 2);
-        // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+        // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음F
         window.open(`./detail?est_num=` + est_num, 'Child', 'width=' + popupWidth + ', height=' + popupHeight + ', top=' + popupY + ', left=' + popupX + 'resizable=no');
     }
     function est_cancel() {

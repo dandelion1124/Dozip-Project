@@ -407,11 +407,17 @@ public class PartnersController {
         //est_check 이 대기중이 아니라면 견적 목록 가져옴
         List<EstimateVO> elist = partnersService.getAllEstList(businessNum);
         List<ContractVO> clist = partnersService.getContractList(businessNum);
+        List<PayVO> plist = partnersService.getpayList(businessNum);
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_list");
         System.out.println(elist);
         System.out.println(elist.size());
+        System.out.println("=======================");
         System.out.println(clist);
         System.out.println(clist.size());
+        System.out.println("=======================");
+        System.out.println(plist);
+
+        mv.addObject("plist",plist);
         mv.addObject("clist",clist);
         mv.addObject("elist",elist);
         return mv;
