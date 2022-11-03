@@ -6,11 +6,8 @@ import java.util.List;
 
 public interface PartnersDAO {
     PartnersVO getPartnersInfo(String pId);
-    void addPortfolio(PortfolioVO pv);
-    int getPort_num(PortfolioVO pv);
     void insertPartners(PartnersVO pv);
     PartnersVO getPartnersInfo2(String findid_business_num);
-    void insertPort_Photos(PortfolioVO pv);
     int getListCount(QnaVO findQ);
     List<QnaVO> getQnaList(QnaVO findQ);
     void updateLevel(QnaVO qdto);
@@ -54,8 +51,7 @@ public interface PartnersDAO {
     void updateEstimate(ContractVO cv);
     List<ContractVO> getContractList(String businessNum);
     void updateEstimate2(EstimateVO e);
-    List<PortfolioVO> getPortfolios(String businessNum);
-    PortfolioVO getOnePortfolio(PortfolioVO pv);
+
     List<ContractVO> getContractList_port(String businessNum);
     List<EstimateVO> getpartEstList(String businessNum);
     List<ContractVO> getContract_interior(String businessNum);

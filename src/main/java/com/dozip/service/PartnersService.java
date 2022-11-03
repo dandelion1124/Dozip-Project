@@ -7,10 +7,8 @@ import java.util.List;
 
 public interface PartnersService {
     PartnersVO getPartnersInfo(String pId);
-    int addPortfolio(PortfolioVO pv);
     void insertPartners(PartnersVO pv);
     PartnersVO getPartnersInfo2(String findid_business_num);
-    void insertPort_Photos(PortfolioVO pv);
     int getListCount(QnaVO findQ);
     List<QnaVO> getQnaList(QnaVO findQ);
     int insertQna(QnaVO qdto);
@@ -54,9 +52,7 @@ public interface PartnersService {
 
     void updateEstimate2(EstimateVO e);
 
-    List<PortfolioVO> getPortfolios(String businessNum);
 
-    PortfolioVO getOnePortfolio(PortfolioVO pv);
 
     List<ContractVO> getContractList_port(String businessNum);
 

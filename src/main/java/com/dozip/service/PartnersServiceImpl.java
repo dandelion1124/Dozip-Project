@@ -17,11 +17,7 @@ public class PartnersServiceImpl implements PartnersService {
     public PartnersVO getPartnersInfo(String pId) {
         return partnersDao.getPartnersInfo(pId);
     }
-    @Override
-    public int addPortfolio(PortfolioVO pv) {
-        partnersDao.addPortfolio(pv);
-        return partnersDao.getPort_num(pv); //수정작업 필요 . 가끔2개가 조회됨
-    }
+
 
     @Override
     public void insertPartners(PartnersVO pv) {
@@ -31,10 +27,7 @@ public class PartnersServiceImpl implements PartnersService {
     public PartnersVO getPartnersInfo2(String findid_business_num) {
         return partnersDao.getPartnersInfo2(findid_business_num);
     }
-    @Override
-    public void insertPort_Photos(PortfolioVO pv) {
-        partnersDao.insertPort_Photos(pv);
-    }
+
     @Override
     public int getListCount(QnaVO findQ) {
         return partnersDao.getListCount(findQ);
@@ -166,15 +159,9 @@ public class PartnersServiceImpl implements PartnersService {
     @Override
     public void updateEstimate2(EstimateVO e) { partnersDao.updateEstimate2(e); }
 
-    @Override
-    public List<PortfolioVO> getPortfolios(String businessNum) {
-        return partnersDao.getPortfolios(businessNum);
-    }
 
-    @Override
-    public PortfolioVO getOnePortfolio(PortfolioVO pv) {
-        return partnersDao.getOnePortfolio(pv);
-    }
+
+
 
     @Override
     public List<ContractVO> getContractList_port(String businessNum) {
