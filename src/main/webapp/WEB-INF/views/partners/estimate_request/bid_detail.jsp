@@ -42,6 +42,7 @@ $(function() {
 					</span>
 				</p>
 				<p class="label_badge">
+					<span class="bid_number">${e.est_num}</span>
 					<span class="label_val1"><b>${e.est_use}</b></span>
 					<span class="label_val2">
 						<c:set var = "length" value = "${fn:length(e.est_detail)}"/>
@@ -186,9 +187,9 @@ $(function() {
 												<!-- <span id="today"></span></br> -->
 												<dl class="sec-item">
 													<dt class="bid_detail02">예상 공사시작일</dt>
-													<dd class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></dd>
+													<dd class="bid_detail_text02"><input type="date" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></dd>
 													<dt class="bid_detail04">예상 공사종료일</dt>
-													<dd class="bid_detail_text03"><input type="text" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></dd>
+													<dd class="bid_detail_text03"><input type="date" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></dd>
 												</dl>
 												<dl class="sec-item">
 													<div class="bid_detail03">업체 공사 스타일 설명</div></br>
