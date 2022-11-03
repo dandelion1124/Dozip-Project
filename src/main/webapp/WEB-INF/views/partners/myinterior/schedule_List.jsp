@@ -2,7 +2,7 @@
 <jsp:include page="../include/header.jsp" />
 <style>
 #scheduleList_title a {
-    font-size: 20px;
+    font-size: 16px;
     margin-left: 40px;
     color: saddlebrown;
 }
@@ -27,57 +27,14 @@
 			navLinks : true, // can click day/week names to navigate views
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
-			events : [ {
-				title : 'All Day Event',
-				start : '2022-09-01'
-			}, {
-				title : 'Long Event',
-				start : '2022-09-07',
-				end : '2022-09-10'
-			}, {
-				title : '테스트',
-				start : '2022-09-01',
-				end : '2022-09-03'
-			}, {
-				groupId : 999,
-				title : 'Repeating Event',
-				start : '2022-09-09T16:00:00'
-			}, {
-				groupId : 999,
-				title : 'Repeating Event',
-				start : '2022-09-16T16:00:00'
-			}, {
-				title : 'Conference',
-				start : '2022-09-11',
-				end : '2022-09-13'
-			}, {
-				title : 'Meeting',
-				start : '2022-09-12T10:30:00',
-				end : '2022-09-12T12:30:00'
-			}, {
-				title : 'Lunch',
-				start : '2022-09-12T12:00:00'
-			}, {
-				title : 'Meeting',
-				start : '2022-09-12T14:30:00'
-			}, {
-				title : 'Happy Hour',
-				start : '2022-09-12T17:30:00'
-			}, {
-				title : 'Dinner',
-				start : '2022-09-12T20:00:00'
-			}, {
-				title : 'Birthday Party',
-				start : '2022-09-13T07:00:00'
-			}, {
-				title : 'Click for Google',
-				url : 'http://google.com/',
-				start : '2022-09-28'
-			}, {
-				title : '테스트중',
-				url : 'http://localhost:8084/dozip/home',
-				start : '2022-10-15'
-			}  ]
+			// events : /*json 데이터 */
+
+
+            //     [ {
+			// 	title : '테스트중',
+			// 	url : 'http://localhost:8084/dozip/home',
+			// 	start : '2022-10-15'
+			// }  ]
 		});
 		calendar.render();
 	});

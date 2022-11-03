@@ -59,11 +59,12 @@
         }
         div#keyword_form{
             width: 330px;
-            border: 2px solid #9A9A9A;
+            border: 1.5px solid #6d7696;
             border-radius: 4px;
+            background: hsl(248deg 29% 81%);
         }
         div#keyword_form:hover{
-            background: #F8F8F8;
+            background: #F1F1FC;
         }
         .xi-search {
             font-size: 20px;

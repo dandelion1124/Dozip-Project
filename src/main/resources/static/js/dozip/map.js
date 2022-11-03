@@ -67,7 +67,7 @@ function placesSearchCB(data, status, pagination) {
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
 
-    var listEl = document.getElementById('placesList'), 
+    let listEl = document.getElementById('placesList'),
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
     bounds = new kakao.maps.LatLngBounds(), 
