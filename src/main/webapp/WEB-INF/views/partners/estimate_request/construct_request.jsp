@@ -33,6 +33,7 @@
 				<c:if test="${er.est_check=='거절'}">background-color:#FDF5E6;</c:if>
 				<c:if test="${er.est_check=='계약요청'}">background-color:#EBFBFF;</c:if>
 				<c:if test="${er.est_check=='작성완료'}">background-color:#D2E1FF;</c:if>
+				<c:if test="${er.est_check=='계약완료'}">background-color:#D2E1FF;</c:if>
 				">
 				<td><b>${er.est_num}</b></td>
 				<td> ${er.addr} ${er.est_use} 견적 문의</td> <td>${er.est_bud}만원</td> <td>${est_date[0]}</td> <td>${est_start[0]}</td> <td>${est_end[0]}</td>
@@ -47,6 +48,8 @@
 						<c:if test="${er.est_check=='거절'}"><span style="color:red;"><b>거절</b></span></c:if>
 						<c:if test="${er.est_check=='계약요청'}"><span style="color:#000069;"><b>계약요청</b></span></c:if>
 						<c:if test="${er.est_check=='작성완료'}"><span style="color:blue;"><b>작성완료</b></span></c:if>
+						<c:if test="${er.est_check=='계약완료'}"><span style="color:blue;"><b>계약완료</b></span></c:if>
+
 					</td>
 				</form>
 			</tr>

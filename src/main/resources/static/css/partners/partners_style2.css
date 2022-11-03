@@ -355,7 +355,7 @@
 
    .request_list_container{
       margin-bottom: 15px;
-      width: 80%;
+      width: 90%;
       white-space: nowrap;
    }
     .request_list{
@@ -563,7 +563,7 @@
       background-color:#f7f7f7;
       margin-top: 30px;
       margin-bottom: 30px;
-      width: 80%;
+      width: 90%;
       /*white-space: nowrap;*/
    }
    .go_bid_detail{
