@@ -55,6 +55,14 @@ input#cal2, input#cal1 {
 /*radio 버튼끝*/
 
 
+.estimate_box input[type=radio]+label:hover {
+  background-color: rgb(86, 84, 84);
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+
+
 .estimate_calculator {
   width: 600px;
   height: 140px;
