@@ -196,5 +196,9 @@ public class PartnersServiceImpl implements PartnersService {
         return partnersDao.show_contract(cont_no);
     }
 
+    @Override
+    public List<PayVO> getpayList(String businessNum) {
+        return partnersDao.getpayList(businessNum);
+    }
 }
 

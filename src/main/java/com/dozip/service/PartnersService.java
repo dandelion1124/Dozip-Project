@@ -66,4 +66,6 @@ public interface PartnersService {
     List<ContractVO> getContract_interior(String businessNum);
     //interior_list 에서 사용
     ContractVO show_contract(String cont_no);
+    //esimate_list 에서 사용
+    List<PayVO> getpayList(String businessNum);
 }
