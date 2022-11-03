@@ -2,7 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ApplyEstimate">
+<mapper namespace="Apply">
+    <!-- 견적신청페이지 누적견적신청수 -->
+    <select id="cCounter" resultType="int">
+        select count(*) from estimateT
+    </select>
+
+    <!-- 근처의 파트너스 불러오기 -->
+    <select id="search_p" resultType="PartnersVO">
+        select * from PARTNERST where p_addr1 like #{p_addr1}
+    </select>
+
+    <!-- 근처 파트너스 숫자 -->
+    <select id="counter_partners" resultType="int">
+        select count(*) from PARTNERST where p_addr1 like #{p_addr1}
+    </select>
+
     <!-- 견적 신청 -->
     <insert id="a_insert" parameterType="EstimateVO">
         insert into estimateT
@@ -14,126 +29,4 @@
               ,#{est_detail01, jdbcType = VARCHAR},#{est_detail02, jdbcType = VARCHAR},#{est_detail03, jdbcType = VARCHAR},#{est_detail04, jdbcType = VARCHAR},#{est_detail05, jdbcType = VARCHAR},#{est_detail06, jdbcType = VARCHAR},#{est_detail07, jdbcType = VARCHAR}
               ,#{est_detail08, jdbcType = VARCHAR},#{est_bud, jdbcType = VARCHAR},#{est_start, jdbcType = VARCHAR},#{est_end, jdbcType = VARCHAR},#{est_name, jdbcType = VARCHAR},#{est_phone, jdbcType = VARCHAR},#{est_addr, jdbcType = VARCHAR},#{est_desc, jdbcType = VARCHAR},#{est_file, jdbcType = VARCHAR})
     </insert>
-    <!-- 견적신청페이지 누적견적신청수 -->
-    <select id="cCounter" resultType="int">
-        select count(*) from estimateT
-    </select>
-    <!--총 개수(해당 아이디의 작성 글 개수 확인 - 업체지정)-->
-    <select id="p_count" resultType="int">
-        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is not null)
-    </select>
-
-    <!--업체지정 견적신청 리스트-->
-    <select id="p_list" resultType="EstimateVO">
-        select * from (
-        select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
-        est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
-        from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
-        where e.businessNum=p.businessNum(+) and (e.businessNum is not null)
-        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
-    </select>
-
-    <!--총 개수(해당 아이디의 작성 글 개수 확인 - 업체지정)-->
-    <select id="e_count" resultType="int">
-        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is null)
-    </select>
-
-    <!--업체지정 견적신청 리스트-->
-    <select id="e_list" resultType="EstimateVO">
-        select * from (
-        select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
-        est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
-        from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
-        where e.businessNum=p.businessNum(+) and (e.businessNum is null)
-        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
-    </select>
-
-    <!--입찰 리스트-->
-    <select id="bid_list" resultType="BidVO">
-        select b.* , p.businessName from
-        (select * from bidT where est_num=#{est_num} order by bid_date desc) b, partnersT p
-        where b.businessNum=p.businessNum(+)
-    </select>
-
-    <!--입찰상태변경(계약요청)-->
-    <update id="state_up">
-        update bidT set bid_state=#{bid_state} where bid_num=#{bid_num}
-    </update>
-
-    <!--est_num 확인-->
-    <select id="find_B" resultType="BidVO">
-        select * from bidT where bid_num=#{bid_num}
-    </select>
-
-    <!--입찰상태변경(일괄거절)-->
-    <update id="state_down">
-        update bidT set bid_state='거절' where est_num=#{est_num} and bid_state!='계약요청'
-    </update>
-
-    <!--입찰상태변경(개별거절)-->
-    <update id="bid_reject">
-        update bidT set bid_state='거절' where bid_num=#{bid_num}
-    </update>
-
-    <!--선택한 bid정보를 est정보에 업데이트-->
-    <update id="bid_to_est">
-        update estimateT
-        set est_bud=#{bid_price}, est_start=(SELECT TO_DATE(#{bid_start},'YYYY-MM-DD') FROM DUAL), est_end=(SELECT TO_DATE(#{bid_end},'YYYY-MM-DD') FROM DUAL)
-        where est_num=#{est_num}
-    </update>
-
-    <!--estT의 상태 변경-->
-    <update id="est_state">
-        update estimateT set est_check=#{est_check} where est_num=#{est_num}
-    </update>
-
-    <!--해당 아이디에 해당하는 계약서 개수 확인-->
-    <select id="c_count" resultType="int">
-        select count(*) from contractT where mem_id=#{mem_id}
-    </select>
-
-    <!--해당 아이디의 계약서 목록-->
-    <select id="cont_list" resultType="ContractVO">
-        select c.*, p.businessName from
-        (select * from contractT where mem_id=#{mem_id} order by cont_no desc)c , partnersT p
-        where c.businessNum = p.businessNum(+)
-    </select>
-
-    <!--해당 계약번호의 계약서 내용-->
-    <select id="get_cont" resultType="ContractVO">
-        select c.*, p.businessName from
-        contractT c , partnersT p
-        where c.businessNum = p.businessNum(+) and c.cont_no=#{cont_no}
-    </select>
-
-    <!--계약서에 동의 (customerNumber)-->
-    <update id="up_Cnum">
-        update contractT set customer_number=#{customer_number} where cont_no=#{cont_no}
-    </update>
-
-    <!--bid_num 확인-->
-    <select id="get_bNum" resultType="String">
-        select bid_num from bidT where est_num=#{est_num} and businessNum=#{businessNum} and bid_state='계약요청'
-    </select>
-
-    <!--payT insert-->
-    <insert id="in_pay">
-        insert into payT (pay_no, cont_no, mem_id, businessNum)
-        values (('P'||to_char(sysdate, 'yyyymmdd')||'-'||payT_no_seq.nextval), #{cont_no}, #{mem_id}, #{businessNum})
-    </insert>
-
-    <!--계약번호로 payT내용 불러오기-->
-    <select id="get_pay" resultType="PayVO">
-        select * from payT where cont_no=#{cont_no}
-    </select>
-
-    <!--결제-->
-    <update id="pay_state">
-        update payT set
-        <if test="pay_cost1!=null"> pay_cost1=#{pay_cost1}, pay_date1=sysdate, pay_state='계약금결제완료'</if>
-        <if test="pay_cost2!=null"> pay_cost2=#{pay_cost2}, pay_date2=sysdate, pay_state='중도금결제완료'</if>
-        <if test="pay_cost3!=null"> pay_cost3=#{pay_cost3}, pay_date3=sysdate, pay_state='잔금결제완료'</if>
-        where cont_no=#{cont_no}
-    </update>
-
 </mapper>

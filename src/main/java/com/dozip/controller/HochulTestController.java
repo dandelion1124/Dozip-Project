@@ -1,25 +1,18 @@
 package com.dozip.controller;
 
-import com.dozip.service.DozipService;
+import com.dozip.service.dozip.member.MemberService;
 import com.dozip.service.PartnersService;
-import com.dozip.vo.BidVO;
 import com.dozip.vo.ContractVO;
-import com.dozip.vo.EstimateVO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/partners/*")
@@ -29,7 +22,7 @@ public class HochulTestController {
     private PartnersService partnersService;
 
     @Autowired
-    private DozipService dozipService;
+    private MemberService memberService;
 
     //파트너스 비번찾기
     @PostMapping("/partners_findpwd")

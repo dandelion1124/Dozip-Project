@@ -2,7 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="partEstimate">
+<mapper namespace="estimate">
+    <!--견적서(지정) - 총 개수(해당 아이디 글 개수)-->
+    <select id="p_count" resultType="int">
+        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is not null)
+    </select>
+
+    <!--총 개수(해당 아이디의 작성 글 개수 확인 - 업체지정)-->
+    <select id="e_count" resultType="int">
+        select count(*) from estimateT where mem_id=#{mem_id} and (businessNum is null)
+    </select>
+
+    <!--견적서(지정) 리스트-->
+    <select id="p_list" resultType="EstimateVO">
+        select * from (
+            select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
+                   est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
+            from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
+            where e.businessNum=p.businessNum(+) and (e.businessNum is not null)
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+    <!--견적서(입찰) 리스트-->
+    <select id="e_list" resultType="EstimateVO">
+        select * from (
+            select rowNum r, est_num, mem_id, e.businessNum, est_check, est_zoning, est_use,
+                   est_detail,est_areaP,est_bud,est_date,est_dateEnd, p.businessName
+            from (select*from estimateT where mem_id=#{mem_id} order by est_num desc) e, partnersT p
+            where e.businessNum=p.businessNum(+) and (e.businessNum is null)
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+    <!--estT의 상태 변경-->
+    <update id="est_state">
+        update estimateT set est_check=#{est_check} where est_num=#{est_num}
+    </update>
+
+    <!--선택한 bid정보를 est정보에 업데이트-->
+    <update id="bid_to_est">
+        update estimateT
+        set est_bud=#{bid_price}, est_start=(SELECT TO_DATE(#{bid_start},'YYYY-MM-DD') FROM DUAL), est_end=(SELECT TO_DATE(#{bid_end},'YYYY-MM-DD') FROM DUAL)
+        where est_num=#{est_num}
+    </update>
+
+    <!--여기 위까지 지혜 정리완료-->
+
+
+
+
+
+
     <!--사업자번호 기준으로 견적 테이블 불러오기 -->
     <select id="est_list" resultType="EstimateVO">
         select * from estimateT where est_check != '대기중' and est_check != '수락' order by EST_NUM desc

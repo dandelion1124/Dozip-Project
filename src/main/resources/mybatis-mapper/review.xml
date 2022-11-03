@@ -3,54 +3,58 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="review">
-    <!-- 리뷰목록 가져오기 -->
+    <!--아이디에 해당하는 리뷰개수확인-->
+    <select id="mem_id" resultType="int">
+        select count(*) from reviewT where mem_id=#{mem_id}
+    </select>
+    <!--아이디에 해당하는 후기번호 확인-->
+    <select id="review_num" resultType="int">
+        select re_no from reviewT where mem_id = #{mem_id} and re_cont = #{re_cont}
+    </select>
+
+    <!--리뷰 전체 목록-->
     <select id="allReview" resultType="ReviewVO">
         select * from reviewT order by re_no desc
     </select>
-
-    <!-- 리뷰목록 개수 가져오기 -->
-    <select id="count" resultType="int">
-        select count(*) from reviewT
-    </select>
-
-    <!-- 리뷰보기 -->
-    <select id="details" resultType="ReviewVO">
-        select * from reviewT where re_no = #{re_no}
-    </select>
-
-    <!-- 리뷰 조회수 -->
-    <update id="re_count" parameterType="ReviewVO">
-        update reviewT set re_count = re_count+1 where re_no = #{re_no}
-    </update>
 
     <!-- Best 리뷰 -->
     <select id="best" resultType="ReviewVO">
         select * from reviewT order by re_no asc
     </select>
 
+    <!-- 전체리뷰 개수 가져오기 -->
+    <select id="count" resultType="int">
+        select count(*) from reviewT
+    </select>
+
+    <!-- 리뷰상세 -->
+    <select id="details" resultType="ReviewVO">
+        select * from reviewT where re_no = #{re_no}
+    </select>
+
+    <!-- 리뷰 조회수 up -->
+    <update id="re_count" parameterType="ReviewVO">
+        update reviewT set re_count = re_count+1 where re_no = #{re_no}
+    </update>
+
+    <!--계약서 목록 확인-->
     <select id = "getClist" resultType="ContractVO">
         select * from contractT where mem_id=#{mem_id}
     </select>
 
+    <!--계약번호를 기준으로 계약정보 불러오기-->
     <select id="getCont" resultType="ContractVO">
         select * from contractT where cont_no=#{cont_no}
     </select>
 
+    <!--후기등록-->
     <insert id="review_upload">
         insert into reviewT(re_no,mem_id,cont_no,re_title,re_cont,re_star,re_count,re_date,re_state)
         values (re_no_seq.nextval,#{mem_id},#{cont_no},#{re_title},#{re_cont},#{re_star,jdbcType=INTEGER},0,TO_CHAR(sysdate,'YYYY.MM.DD'),1)
     </insert>
 
-    <select id="review_num" resultType="int">
-        select re_no from reviewT where mem_id = #{mem_id} and re_cont = #{re_cont}
-    </select>
-
+    <!--후기사진등록-->
     <insert id = "review_photos">
         update reviewT set re_photo1 = #{re_photo1, jdbcType = VARCHAR}, re_photo2 = #{re_photo2,jdbcType = VARCHAR}, re_photo3 = #{re_photo3, jdbcType = VARCHAR}, re_photo4 = #{re_photo4,jdbcType = VARCHAR}, re_photo5 = #{re_photo5, jdbcType = VARCHAR} where re_no = #{re_no}
     </insert>
-
-    <select id="mem_id" resultType="int">
-        select count(*) from reviewT where mem_id=#{mem_id}
-    </select>
-
 </mapper>

@@ -1,5 +1,5 @@
 <%@page import="com.dozip.vo.PortfolioVO"%>
-<%@page import="com.dozip.dao.PortfolioDAOImpl"%>
+<%@page import="com.dozip.dao.dozip.portfolio.PortfolioDAOImpl"%>
 <%@page import="com.dozip.vo.PortfolioVO"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
