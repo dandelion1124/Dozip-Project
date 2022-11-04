@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -24,10 +23,6 @@ public class PartnerController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    /*회원가입, 로그인, 아이디 비번 찾기 관련 메서드
-     *
-     * */
-
     //회원가입 페이지
     @RequestMapping("/signup")
     public String partners_signup(Model model) {
@@ -39,11 +34,7 @@ public class PartnerController {
     //회원 가입시 아이디 체크
     @PostMapping("/partners_idCheck")
     public void id_check(String pId, HttpServletResponse response) throws Exception {
-        PrintWriter out = response.getWriter();
         PartnersVO vo = partnerService.getPartnersInfo(pId);
-        int re = -1;
-        if (vo != null) re = 1;
-        out.print(re);
     }//id_check()
 
     //회원가입
@@ -81,7 +72,6 @@ public class PartnerController {
         HashMap<String, Object> resultMap = new HashMap<>();
         //넘어온정보 알맞게 가공한후 (전화번호)
         findid_pTel = findid_pTel.replaceAll("-", "");
-
         //사업자 번호를 기준으로 db를 통해 정보 조회한후
         PartnersVO fv = partnerService.getPartnersInfo2(findid_business_num);
 

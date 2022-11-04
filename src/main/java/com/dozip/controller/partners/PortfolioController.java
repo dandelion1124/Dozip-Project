@@ -37,14 +37,11 @@ public class PortfolioController {
             pv.setPf_addr2(" ");
 
         if (pv.getPf_subtype().contains(",")) {
-
             String[] str = pv.getPf_subtype().split(",");
             if (pv.getPf_type().equals("주거공간")) {
                 pv.setPf_subtype(str[0]);
-                System.out.println("주거공간 //" + str[0]);
             } else if (pv.getPf_type().equals("상업공간")) {
                 pv.setPf_subtype(str[1]);
-                System.out.println("상업공간 //" + str[1]);
             }
         }
         Cookie cookie = new Cookie("pf_no", String.valueOf(portfolioService.addPortfolio(pv)));
@@ -58,12 +55,10 @@ public class PortfolioController {
         int pf_no = 0;
         Cookie[] cookies = request.getCookies();
         for (Cookie c : cookies) {
-            if (c.getName().equals("pf_no")) {
-                pf_no = Integer.parseInt(c.getValue()); //쿠키에서 포트폴리오 번호 가져옴 -> 사진 삽입 위해
-            }
+            if (c.getName().equals("pf_no"))    pf_no = Integer.parseInt(c.getValue());
         }
 
-    /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
+            /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
         1. 아래 uploadPath 주소를 자신의 프로젝트 주소의 upload 폴더로 바꿉니다.
 
             String uploadPath = "upload폴더 경로 주소" + pf_no;
@@ -77,7 +72,6 @@ public class PortfolioController {
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
 //        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
-
 
         String uploadDBPath = "/upload/" + pf_no + "/";
         File dir = new File(uploadPath);
@@ -96,21 +90,15 @@ public class PortfolioController {
             photos.get(i - 1).transferTo(new File(saveFilename[i - 1])); //실제 파일저장.
             System.out.println(dbFilename[i - 1]);
         }
-        pv.setPf_photo1(dbFilename[0]);
-        pv.setPf_photo2(dbFilename[1]);
-        pv.setPf_photo3(dbFilename[2]);
-        pv.setPf_photo4(dbFilename[3]);
-        pv.setPf_photo5(dbFilename[4]);
-
-        pv.setPf_no(pf_no);
+        pv.setPf_photo1(dbFilename[0]);    pv.setPf_photo2(dbFilename[1]);    pv.setPf_photo3(dbFilename[2]);
+        pv.setPf_photo4(dbFilename[3]);    pv.setPf_photo5(dbFilename[4]);    pv.setPf_no(pf_no);
         portfolioService.insertPort_Photos(pv);
         return "redirect:/partners/main";
     }//upload_photo_ok
 
     @RequestMapping(value = "/portfolio_list")  //포트폴리오 리스트
     public ModelAndView portfolio_list(HttpSession session) {
-        String businessNum = (String) session.getAttribute("businessNum");
-        List<PortfolioVO> plist= portfolioService.getPortfolios(businessNum); //파트너스가 작성한 포트폴리오 불러오기
+        List<PortfolioVO> plist= portfolioService.getPortfolios((String) session.getAttribute("businessNum")); //파트너스가 작성한 포트폴리오 불러오기
         ModelAndView mv = new ModelAndView("/partners/portfolio/p_list");
         mv.addObject("plist", plist);
         return mv;
@@ -122,7 +110,6 @@ public class PortfolioController {
         pv.setPf_no(Integer.parseInt(pf_no));
         PortfolioVO vo = portfolioService.getOnePortfolio(pv);
         System.out.println(vo);
-
 
         ModelAndView mv = new ModelAndView("//partners/portfolio/p_edit");
         mv.addObject("vo",vo);
