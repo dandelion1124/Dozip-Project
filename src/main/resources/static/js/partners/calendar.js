@@ -9466,7 +9466,7 @@ var FullCalendar = (function (exports) {
     }(BaseComponent));
     function renderInnerContent$4(innerProps) {
         return (createElement("div", { className: "fc-event-main-frame" },
-            innerProps.timeText && (createElement("div", { className: "fc-event-time" }, innerProps.timeText)),
+            innerProps.timeText && (createElement("div", { className: "fc-event-time" })), //, 뷰페이지에서 12a 가 출력되서innerProps.timeText 지웠음
             createElement("div", { className: "fc-event-title-container" },
                 createElement("div", { className: "fc-event-title fc-sticky" }, innerProps.event.title || createElement(Fragment, null, "\u00A0")))));
     }

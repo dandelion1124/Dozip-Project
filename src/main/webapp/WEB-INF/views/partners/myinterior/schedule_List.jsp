@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/header.jsp" />
+
 <style>
 #scheduleList_title a {
     font-size: 16px;
@@ -13,32 +15,58 @@
 
 
 </style>
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('calendar');
 
-		var calendar = new FullCalendar.Calendar(calendarEl, {
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+<%--오늘 날짜 불러오기 코드 -필요하면 사용 --%>
+
+
+<script>
+    let allData = JSON.parse('${json}'); //달력에 담을 json 데이터
+    let allDataArray=[];
+    let oneDayData={};
+    let scheduleData;
+
+    for(let i=0; i< allData.length;i++) {
+        oneDayData ={
+            'title': allData[i].cont_no+"번 "+allData[i].cont_title,
+            'start': allData[i].cont_date1,
+            'end': allData[i].cont_date3,
+        }
+        allDataArray.push(oneDayData);
+    }
+
+
+
+	document.addEventListener('DOMContentLoaded', function() {
+		let calendarEl = document.getElementById('calendar');
+		let calendar = new FullCalendar.Calendar(calendarEl, {
 			headerToolbar : {
 				left : 'prevYear,prev,next,nextYear today',
 				center : 'title',
 				right : 'dayGridMonth,dayGridWeek,dayGridDay'
 			},
-			initialDate : '2022-09-12',
+			initialDate : '${today}',
 			navLinks : true, // can click day/week names to navigate views
-			editable : true,
+			//editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
-			// events : /*json 데이터 */
-
-
-            //     [ {
-			// 	title : '테스트중',
-			// 	url : 'http://localhost:8084/dozip/home',
-			// 	start : '2022-10-15'
-			// }  ]
+			events :allDataArray
 		});
 		calendar.render();
 	});
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 	$(function() {

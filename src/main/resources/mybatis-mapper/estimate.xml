@@ -93,7 +93,7 @@
     </select>
     <!--내공사 내역에서 사용할 계약 리스트 -->
     <select id="interior_estimate" resultType="ContractVO">
-        select c.*, p.PAY_STATE from CONTRACTT c, PAYT p where c.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and PAY_STATE!='계약금요청'
+        select distinct c.*, p.PAY_STATE, s.REGIT_STATE from CONTRACTT c, PAYT p, SCHEDULET s where c.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and c.CONT_NO=s.CONT_NO and PAY_STATE!='계약금요청'
     </select>
     <!--내공사 내역에서 계약서 조회 -->
     <select id="show_contract" resultType="ContractVO">
@@ -104,6 +104,11 @@
     <select id="get_paystate" resultType="PayVO">
         select cont_no, pay_state from payT where businessNum=#{businessNum} and pay_state = '계약금요청'
     </select>
+
+    <!--일정 등록할 컬럼 insert -->
+        <insert id="schedule_in">
+            insert into SCHEDULET (cont_no) values(#{cont_no})
+        </insert>
 </mapper>
 
 

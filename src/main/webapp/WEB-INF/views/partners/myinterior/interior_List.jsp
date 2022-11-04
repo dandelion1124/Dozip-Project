@@ -44,6 +44,7 @@
 <table id="interiorList_table">
     <thead id="interiorList_table_thead">
     <tr>
+        <th>일정등록</th>
         <th>계약번호</th>
         <th>시공상태<br>(예정, 진행중, 완료)</th>
         <th>공사시작(예정)일</th>
@@ -59,18 +60,42 @@
 
         <c:if test="${empty clist}">
 
-            <th colspan="7"> 조회된 내역이 없습니다</th>
+            <th colspan="8"> 조회된 내역이 없습니다</th>
         </tr>
         </c:if>
         <c:if test="${!empty clist}">
             <c:forEach var="c" items="${clist}">
             <tr>
+                <c:if test="${c.regit_state==1}">
+                    <td><button onclick="schedule_regit('${c.cont_no}')" disabled>등록완료</button></td>
+                </c:if>
+                <c:if test="${c.regit_state==0}">
+                    <td><button onclick="schedule_regit('${c.cont_no}')">일정등록</button></td>
+                </c:if>
                 <td>${c.cont_no}</td>
                 <td>예정 ${c.customer_name}</td>
                 <td>${fn:substring(c.cont_start,0,10)}</td>
                 <td>${fn:substring(c.cont_end,0,10)}</td>
                 <td>${c.pay_state}</td>
+                <script>
+                    function schedule_regit(cont_no){
+                        let regitCheck=confirm('일정 등록을 하시겠습니까?')
+                        if(regitCheck){
+                            $.ajax({
+                                type:'post',
+                                url:'schedule_regit',
+                                data :{
+                                    cont_no:cont_no
+                                },
+                                success: function (){
+                                    swal('등록완료');
+                                    location.reload();
+                                }
+                            });
+                        }
+                        }
 
+                </script>
                 <%--
                 계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
                 --%>

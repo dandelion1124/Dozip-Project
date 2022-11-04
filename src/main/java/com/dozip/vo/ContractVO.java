@@ -41,4 +41,7 @@ public class ContractVO {
 
     //계약서 작성 남은일자
     private String dateCheck;
+
+    //달력 등록여부
+    private int regit_state;
 }

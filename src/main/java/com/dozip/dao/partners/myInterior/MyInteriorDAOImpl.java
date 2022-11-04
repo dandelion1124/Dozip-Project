@@ -18,4 +18,12 @@ public class MyInteriorDAOImpl implements MyInteriorDAO{
     public ContractVO show_contract(String cont_no) {
         return sqlSession.selectOne("show_contract",cont_no);
     }
+    @Override
+    public List<ContractVO> getschedule(String businessNum) {
+        return sqlSession.selectList("load_schedule",businessNum);
+    }
+    @Override
+    public int regit_schedule(String cont_no) {
+        return sqlSession.update("regit_insert",cont_no);
+    }
 }

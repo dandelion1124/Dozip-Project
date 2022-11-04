@@ -48,4 +48,9 @@ public class MyEstimateDAOImpl implements MyEstimateDAO{
     public void updateEstimate(ContractVO cv) {
         sqlSession.update("update_est",cv);
     }
+
+    @Override //일정 등록하기 위한 컬럼 insert
+    public void insertSchedule(String cont_no) {
+        sqlSession.insert("schedule_in",cont_no);
+    }
 }

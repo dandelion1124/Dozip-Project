@@ -43,6 +43,8 @@ public class MyEstimateServiceImpl implements MyEstimateService{
         myEstimateDAO.updateEstimate(cv);
         return myEstimateDAO.insertContract(cv);
     }
-
-
+    @Override //일정 등록하기 위한 컬럼 insert
+    public void insertSchedule(String cont_no) {
+        myEstimateDAO.insertSchedule(cont_no);
+    }
 }

@@ -9,4 +9,7 @@ public interface MyInteriorDAO {
     ContractVO show_contract(String cont_no);
 
 
+    List<ContractVO> getschedule(String businessNum); //달력에 등록할 공사일정 불러오기
+
+    int regit_schedule(String cont_no); //달력에 일정 등록
 }

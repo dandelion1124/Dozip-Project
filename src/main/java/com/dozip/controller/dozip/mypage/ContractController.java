@@ -2,6 +2,8 @@ package com.dozip.controller.dozip.mypage;
 
 import com.dozip.service.dozip.contract.ContractService;
 import com.dozip.service.dozip.pay.PayService;
+import com.dozip.service.partners.myEstimate.MyEstimateService;
+import com.dozip.service.partners.myInterior.MyInteriorService;
 import com.dozip.utils.Paging;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.PayVO;
@@ -28,6 +30,9 @@ public class ContractController {
     private ContractService contractService;
     @Autowired
     private PayService payService;
+
+    @Autowired
+    MyEstimateService myEstimateService;
 
     @GetMapping("my_cont") //마이페이지-계약 리스트
     public ModelAndView myCont(ModelAndView mv, ContractVO c, HttpServletRequest request, HttpSession session){
@@ -75,6 +80,8 @@ public class ContractController {
 
         System.out.println("cont_no"+c.getCont_no());
         this.contractService.contractOK(c); //계약동의
+        
+        myEstimateService.insertSchedule(c.getCont_no()); //호철 스케쥴 테이블 컬럼 insert 메서드
 
         RedirectView rv = new RedirectView();
         rv.setUrl("/dozip/my_cont_view?cont_no="+c.getCont_no());

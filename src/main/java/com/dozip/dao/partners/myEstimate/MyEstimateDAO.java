@@ -15,9 +15,6 @@ public interface MyEstimateDAO {
     EstimateVO getOneEst(String est_num);
     EstimateVO write_contract(String est_num);
     int insertContract(ContractVO cv);
-
     void updateEstimate(ContractVO cv);
-
-
-
+    void insertSchedule(String cont_no); //일정 등록하기 위한 컬럼 insert
 }

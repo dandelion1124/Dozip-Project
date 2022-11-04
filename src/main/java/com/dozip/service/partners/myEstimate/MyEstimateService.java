@@ -16,6 +16,5 @@ public interface MyEstimateService {
     EstimateVO getOneEst(String est_num);
     EstimateVO write_contract(String est_num);
     int insertContract(ContractVO cv);
-
-
+    void insertSchedule(String cont_no);
 }
