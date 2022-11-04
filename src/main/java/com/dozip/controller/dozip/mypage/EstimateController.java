@@ -1,6 +1,7 @@
 package com.dozip.controller.dozip.mypage;
 
 import com.dozip.service.dozip.estimate.EstimateService;
+import com.dozip.utils.Paging;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,32 +26,21 @@ public class EstimateController {
     @GetMapping("my_est") //마이페이지-견적서 리스트 (지정)
     public ModelAndView myEst(ModelAndView mv, EstimateVO e, HttpServletRequest request, HttpSession session) {
         e.setMem_id((String)session.getAttribute("id"));
+        int count=this.estimateService.getPListCount(e.getMem_id());
 
-        //쪽나누기
-        int page = 1; //현재 쪽번호
-        int limit = 5; //한 페이지에 보여지는 개수
-
-        if(request.getParameter("page")!=null) {
-            page=Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(request.getParameter("page") == null) {
+            paging = new Paging(1, 5, count);
+        }else{
+            int page = Integer.parseInt(request.getParameter("page"));
+            paging = new Paging(page, 5, count);
         }
-
-        int listcount=this.estimateService.getPListCount(e.getMem_id());
-        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
-        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
-        int endpage = maxpage; //마지막페이지
-
-        if(endpage>startpage+5-1) endpage=startpage+5-1;
-
-        mv.addObject("page", page);
-        mv.addObject("startpage", startpage);
-        mv.addObject("endpage",endpage);
-        mv.addObject("maxpage",maxpage);
-        mv.addObject("listcount",listcount);
+        mv.addObject("p",paging);
 
         //리스트 출력
         List<EstimateVO> elist = new ArrayList<EstimateVO>();
-        e.setStartrow((page-1)*5+1);
-        e.setEndrow(e.getStartrow()+limit-1);
+        e.setStartrow(paging.getStartrow());
+        e.setEndrow(paging.getEndrow());
         elist = this.estimateService.getPElist(e); //견적서(지정) 리스트
         mv.addObject("elist", elist);
 

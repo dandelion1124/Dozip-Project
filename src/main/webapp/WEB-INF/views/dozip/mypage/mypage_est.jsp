@@ -85,7 +85,7 @@
             </ul>
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
-        <p style="width: 90%; font-weight: bold;">${listcount}건의 신청내역이 있습니다.</p>
+        <p style="width: 90%; font-weight: bold;">${p.count}건의 신청내역이 있습니다.</p>
         <div class="my_apply_cont">
             <table class="my_apply_table">
                 <tr>
@@ -96,25 +96,22 @@
                     <tr><td colspan="9"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
                 <c:if test="${fn:length(elist) != 0}">
-                    <c:forEach var="i" begin="0" end="${fn:length(elist)-1}" step="1">
+                    <c:forEach var="e" items="${elist}">
                         <tr>
-                            <td id="num">${elist[i].est_num}<%--번호--%>
-                                <%--<c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
-                                <c:out value="${number}"/>--%>
-                            </td>
-                            <td>${elist[i].est_date.substring(0,10)}</td><%--신청날짜--%>
-                            <td>${elist[i].est_zoning}</td><%--공간유형--%>
-                            <td>${elist[i].est_detail.substring(0, elist[i].est_detail.length() - 1)}</td><%--공간선택--%>
-                            <td>${elist[i].est_areaP} 평</td><%--평수--%>
-                            <td>${elist[i].est_bud} 만원</td><%--예산--%>
-                            <td>${elist[i].businessName}</td><%--업체명--%>
-                            <td>${elist[i].est_check}</td><%--진행상황(수락/거절)--%>
+                            <td>${e.est_num}</td><%--번호--%>
+                            <td>${e.est_date.substring(0,10)}</td><%--신청날짜--%>
+                            <td>${e.est_zoning}</td><%--공간유형--%>
+                            <td>${e.est_detail.substring(0, e.est_detail.length() - 1)}</td><%--공간선택--%>
+                            <td>${e.est_areaP} 평</td><%--평수--%>
+                            <td>${e.est_bud} 만원</td><%--예산--%>
+                            <td>${e.businessName}</td><%--업체명--%>
+                            <td>${e.est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
-                                <c:if test="${elist[i].est_check=='수락'}">
-                                    <button type="button" id="agree_btn" value="${elist[i].est_num}">계약요청</button>
-                                    <button type="button" id="reject_btn" value="${elist[i].est_num}">거절</button>
+                                <c:if test="${e.est_check=='수락'}">
+                                    <button type="button" id="agree_btn" value="${e.est_num}">계약요청</button>
+                                    <button type="button" id="reject_btn" value="${e.est_num}">거절</button>
                                 </c:if>
-                                <c:if test="${elist[i].est_check!='수락'}">-</c:if>
+                                <c:if test="${e.est_check!='수락'}">-</c:if>
                             </td>
                         </tr>
                     </c:forEach>
@@ -123,16 +120,16 @@
 
             <!-- 쪽번호 출력 -->
             <div class="page_area">
-                <c:if test="${page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
-                <c:if test="${page>1}"><a href="/dozip/my_est?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
+                <c:if test="${p.page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
+                <c:if test="${p.page>1}"><a href="/dozip/my_est?page=${p.page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
 
-                <c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
-                    <c:if test="${p==page}"><span style="color: #347844; font-weight: bold;">${p}</span></c:if>
-                    <c:if test="${p!=page}"><a href="/dozip/my_est?page=${p}">${p}</a></c:if>
+                <c:forEach var="page" begin="${p.startpage}" end="${p.endpage}" step="1">
+                    <c:if test="${page==p.page}"><span style="color: #347844; font-weight: bold;">${page}</span></c:if>
+                    <c:if test="${page!=p.page}"><a href="/dozip/my_est?page=${page}">${page}</a></c:if>
                 </c:forEach>
 
-                <c:if test="${page>=maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
-                <c:if test="${page<maxpage}"><a href="/dozip/my_est?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
+                <c:if test="${p.page>=p.maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
+                <c:if test="${p.page<p.maxpage}"><a href="/dozip/my_est?page=${p.page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
             </div>
         </div>
 

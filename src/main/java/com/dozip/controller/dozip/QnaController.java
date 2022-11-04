@@ -1,6 +1,7 @@
 package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.qna.QnaService;
+import com.dozip.utils.Paging;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,32 +52,21 @@ public class QnaController {
     public ModelAndView counselMain(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session){
         q.setMem_id((String)session.getAttribute("id"));
 
-        if(q.getMem_id()!=null) {
-            //쪽나누기
-            int page = 1; //현재 쪽번호
-            int limit = 5; //한 페이지에 보여지는 개수
-
-            if (request.getParameter("page") != null) {
-                page = Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(q.getMem_id()!=null) { //로그인이 된 상태면 문의글 보여줌
+            int count = this.qnaService.getListCount(q.getMem_id());
+            if(request.getParameter("page") == null) {
+                paging = new Paging(1, 5, count);
+            }else{
+                int page = Integer.parseInt(request.getParameter("page"));
+                paging = new Paging(page, 5, count);
             }
-
-            int listcount = this.qnaService.getListCount(q.getMem_id());
-            int maxpage = (int) ((double) listcount / limit + 0.95); //총페이지
-            int startpage = (((int) ((double) page / 5 + 0.9)) - 1) * 5 + 1; //시작페이지
-            int endpage = maxpage; //마지막페이지
-
-            if (endpage > startpage + 5 - 1) endpage = startpage + 5 - 1;
-
-            mv.addObject("page", page);
-            mv.addObject("startpage", startpage);
-            mv.addObject("endpage", endpage);
-            mv.addObject("maxpage", maxpage);
-            mv.addObject("listcount", listcount);
+            mv.addObject("p",paging);
 
             //문의 리스트 출력(관리자)
             List<QnaVO> qlist = new ArrayList<QnaVO>();
-            q.setStartrow((page - 1) * 5 + 1);
-            q.setEndrow(q.getStartrow() + limit - 1);
+            q.setStartrow(paging.getStartrow());
+            q.setEndrow(paging.getEndrow());
             qlist = this.qnaService.getQlist(q);
             mv.addObject("qlist", qlist);
         }
@@ -86,35 +76,23 @@ public class QnaController {
 
     @GetMapping("my_qna") //마이페이지-관리자 문의글 목록
     public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
-
         String id = (String)session.getAttribute("id");
+        int count=this.qnaService.getListCount(id);
 
-        //쪽나누기
-        int page = 1; //현재 쪽번호
-        int limit = 5; //한 페이지에 보여지는 개수
-
-        if(request.getParameter("page")!=null) {
-            page=Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(request.getParameter("page") == null) {
+            paging = new Paging(1, 5, count);
+        }else{
+            int page = Integer.parseInt(request.getParameter("page"));
+            paging = new Paging(page, 5, count);
         }
-
-        int listcount=this.qnaService.getListCount(id); //문의글(관리자) 개수확인
-        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
-        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
-        int endpage = maxpage; //마지막페이지
-
-        if(endpage>startpage+5-1) endpage=startpage+5-1;
-
-        mv.addObject("page", page);
-        mv.addObject("startpage", startpage);
-        mv.addObject("endpage",endpage);
-        mv.addObject("maxpage",maxpage);
-        mv.addObject("listcount",listcount);
+        mv.addObject("p",paging);
 
         //문의 리스트 출력(관리자)
         List<QnaVO> qlist = new ArrayList<QnaVO>();
         q.setMem_id(id);
-        q.setStartrow((page-1)*5+1);
-        q.setEndrow(q.getStartrow()+limit-1);
+        q.setStartrow(paging.getStartrow());
+        q.setEndrow(paging.getEndrow());
         qlist = this.qnaService.getQlist(q); //문의글(관리자) 리스트
         mv.addObject("qlist", qlist);
 
@@ -123,42 +101,28 @@ public class QnaController {
     }
 
     @GetMapping("my_Pqna") //마이페이지-업체 문의글 목록
-    public ModelAndView myPQna(ModelAndView mv, QnaVO q, HttpServletRequest request) throws Exception {
-        HttpSession session=request.getSession();
+    public ModelAndView myPQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
         String id = (String)session.getAttribute("id");
+        int count=this.qnaService.getPListCount(id);
 
-        //쪽나누기
-        int page = 1; //현재 쪽번호
-        int limit = 5; //한 페이지에 보여지는 개수
-
-        if(request.getParameter("page")!=null) {
-            page=Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(request.getParameter("page") == null) {
+            paging = new Paging(1, 5, count);
+        }else{
+            int page = Integer.parseInt(request.getParameter("page"));
+            paging = new Paging(page, 5, count);
         }
-
-        int listcount=this.qnaService.getPListCount(id);
-        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
-        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
-        int endpage = maxpage; //마지막페이지
-
-        if(endpage>startpage+5-1) endpage=startpage+5-1;
-
-        mv.addObject("page", page);
-        mv.addObject("startpage", startpage);
-        mv.addObject("endpage",endpage);
-        mv.addObject("maxpage",maxpage);
-        mv.addObject("listcount",listcount);
+        mv.addObject("p",paging);
 
         //문의 리스트 출력(업체)
         List<QnaVO> qlist = new ArrayList<QnaVO>();
         q.setMem_id(id);
-        q.setStartrow((page-1)*5+1);
-        q.setEndrow(q.getStartrow()+limit-1);
+        q.setStartrow(paging.getStartrow());
+        q.setEndrow(paging.getEndrow());
         qlist = this.qnaService.getPlist(q);
         mv.addObject("qlist", qlist);
 
         mv.setViewName("/dozip/mypage/mypage_Pqna");
         return mv;
     }
-
-
 }

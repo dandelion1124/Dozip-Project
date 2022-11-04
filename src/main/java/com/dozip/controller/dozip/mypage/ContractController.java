@@ -2,6 +2,7 @@ package com.dozip.controller.dozip.mypage;
 
 import com.dozip.service.dozip.contract.ContractService;
 import com.dozip.service.dozip.pay.PayService;
+import com.dozip.utils.Paging;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.PayVO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -31,32 +32,21 @@ public class ContractController {
     @GetMapping("my_cont") //마이페이지-계약 리스트
     public ModelAndView myCont(ModelAndView mv, ContractVO c, HttpServletRequest request, HttpSession session){
         c.setMem_id((String)session.getAttribute("id"));
+        int count=this.contractService.getCListCount(c.getMem_id());
 
-        //쪽나누기
-        int page = 1; //현재 쪽번호
-        int limit = 5; //한 페이지에 보여지는 개수
-
-        if(request.getParameter("page")!=null) {
-            page=Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(request.getParameter("page") == null) {
+            paging = new Paging(1, 5, count);
+        }else{
+            int page = Integer.parseInt(request.getParameter("page"));
+            paging = new Paging(page, 5, count);
         }
-
-        int listcount=this.contractService.getCListCount(c.getMem_id()); //계약서 개수
-        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
-        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
-        int endpage = maxpage; //마지막페이지
-
-        if(endpage>startpage+5-1) endpage=startpage+5-1;
-
-        mv.addObject("page", page);
-        mv.addObject("startpage", startpage);
-        mv.addObject("endpage",endpage);
-        mv.addObject("maxpage",maxpage);
-        mv.addObject("listcount",listcount);
+        mv.addObject("p",paging);
 
         //리스트 출력
         List<ContractVO> clist = new ArrayList<ContractVO>();
-        c.setStartrow((page-1)*5+1);
-        c.setEndrow(c.getStartrow()+limit-1);
+        c.setStartrow(paging.getStartrow());
+        c.setEndrow(paging.getEndrow());
         clist = this.contractService.getContList(c); //계약서 목록
         mv.addObject("clist", clist);
 
@@ -103,12 +93,4 @@ public class ContractController {
         mv.setViewName("/dozip/mypage/mypage_cont_detail");
         return mv;
     }
-
-
-
-
-
-
-
-
 }

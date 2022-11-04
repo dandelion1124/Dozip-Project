@@ -59,7 +59,7 @@
 					<c:forEach var="i" begin="0" end="${fn:length(qlist)-1}" step="1">
 						<tr>
 							<td id="num">
-								<c:set var="number" value="${(listcount-(5*(page-1)))-i}" />
+								<c:set var="number" value="${(p.count-(p.pageSize*(p.page-1)))-i}" />
 								<c:out value="${number}"/>
 							</td>
 							<td id="title" style="text-align: left; padding-left: 20px;">
@@ -78,16 +78,16 @@
 
 			<!-- 쪽번호 출력 -->
 			<div class="page_area">
-				<c:if test="${page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
-				<c:if test="${page>1}"><a href="/dozip/counsel_main?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
+				<c:if test="${p.page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
+				<c:if test="${p.page>1}"><a href="/dozip/counsel_main?page=${p.page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
 
-				<c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
-					<c:if test="${p==page}"><span style="color: #347844; font-weight: bold;">${p}</span></c:if>
-					<c:if test="${p!=page}"><a href="/dozip/counsel_main?page=${p}">${p}</a></c:if>
+				<c:forEach var="page" begin="${p.startpage}" end="${p.endpage}" step="1">
+					<c:if test="${page==p.page}"><span style="color: #347844; font-weight: bold;">${page}</span></c:if>
+					<c:if test="${page!=p.page}"><a href="/dozip/counsel_main?page=${page}">${page}</a></c:if>
 				</c:forEach>
 
-				<c:if test="${page>=maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
-				<c:if test="${page<maxpage}"><a href="/dozip/counsel_main?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
+				<c:if test="${p.page>=p.maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
+				<c:if test="${p.page<p.maxpage}"><a href="/dozip/counsel_main?page=${p.page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
 			</div>
 		</div>
 	</div>
