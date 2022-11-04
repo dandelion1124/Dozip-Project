@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class PayDAOImpl implements PayDAO{
     @Autowired
@@ -22,5 +24,11 @@ public class PayDAOImpl implements PayDAO{
     @Override //결제상태 변경
     public int payState(PayVO p) {
         return this.sqlSession.update("pay_state", p);
+    }
+    @Override //해당일자가 되면 요청상태로 변경
+    public void updateState() {
+        List<String> list = this.sqlSession.selectList("get_conNo");
+        System.out.println(list.toString());
+        this.sqlSession.update("up_payState",list);
     }
 }

@@ -3,6 +3,8 @@ package com.dozip.controller.dozip.mypage;
 import com.dozip.service.dozip.pay.PayService;
 import com.dozip.vo.PayVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @Controller
+@EnableScheduling
 @RequestMapping("/dozip/*")
 public class PayController {
     @Autowired
@@ -48,5 +51,16 @@ public class PayController {
             map.put("res", "결제에 실패했습니다.");
         }
         return map;
+    }
+
+    @Scheduled(cron = "0 0/1 * * * ?") //1분마다 실행
+    public void payStateUpdate(){
+        System.out.println("스케줄러 실행!");
+        try{
+            this.payService.updateState(); //해당일자가 되면 요청상태로 변경
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 }

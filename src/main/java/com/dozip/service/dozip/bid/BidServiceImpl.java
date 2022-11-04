@@ -19,6 +19,4 @@ public class BidServiceImpl implements BidService{
     public void updateReject(String bid_num) {
         this.bidDAO.updateReject(bid_num); // bidT 상태 : 거절 (개별거절)
     }
-
-
 }
