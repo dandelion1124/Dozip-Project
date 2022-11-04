@@ -29,6 +29,7 @@ public class PayDAOImpl implements PayDAO{
     public void updateState() {
         List<String> list = this.sqlSession.selectList("get_conNo");
         System.out.println(list.toString());
-        this.sqlSession.update("up_payState",list);
+        this.sqlSession.update("second_State",list);
+        this.sqlSession.update("third_State",list);
     }
 }

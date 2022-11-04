@@ -22,18 +22,23 @@
         select cont_no from payT
     </select>
 
-    <!--해당일자가 되면 요청상태로 변경-->
-    <update id="up_payState" parameterType="java.util.List">
+    <!--해당일자가 되면 요청상태로 변경 (중도금요청)-->
+    <update id="second_State" parameterType="java.util.List">
         <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;">
-            update (select c.cont_date2, c.cont_date3, p.* from contractT c, payT p where (c.cont_no=p.cont_no))
-                <set>
-                    <choose>
-                        <when test="(pay_state = '계약금결제완료') and (to_char(cont_date2, 'yyyymmdd')) >= (to_char(sysdate, 'yyyymmdd'))"> pay_state = '중도금요청'</when>
-                        <when test="(pay_state = '중도금결제완료') and (to_char(cont_date3, 'yyyymmdd')) >= (to_char(sysdate, 'yyyymmdd'))"> pay_state = '잔금요청'</when>
-                        <otherwise>pay_state = pay_state</otherwise>
-                    </choose>
-                </set>
+            update (select c.cont_date2, p.* from contractT c, payT p where (c.cont_no=p.cont_no))
+            set pay_state = '중도금요청'
             where cont_no = #{item}
+            and to_char(cont_date2, 'yyyymmdd') &lt;= to_char(sysdate, 'yyyymmdd') and (pay_state in '계약금결제완료')
+        </foreach>
+    </update>
+
+    <!--해당일자가 되면 요청상태로 변경 (잔금요청)-->
+    <update id="third_State" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;">
+            update (select c.cont_date3, p.* from contractT c, payT p where (c.cont_no=p.cont_no))
+            set pay_state = '잔금요청'
+            where cont_no = #{item}
+            and to_char(cont_date3, 'yyyymmdd') &lt;= to_char(sysdate, 'yyyymmdd') and (pay_state in '중도금결제완료')
         </foreach>
     </update>
 </mapper>
