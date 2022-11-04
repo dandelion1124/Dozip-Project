@@ -57,4 +57,9 @@
     <insert id = "review_photos">
         update reviewT set re_photo1 = #{re_photo1, jdbcType = VARCHAR}, re_photo2 = #{re_photo2,jdbcType = VARCHAR}, re_photo3 = #{re_photo3, jdbcType = VARCHAR}, re_photo4 = #{re_photo4,jdbcType = VARCHAR}, re_photo5 = #{re_photo5, jdbcType = VARCHAR} where re_no = #{re_no}
     </insert>
+
+    <!--후기마이페이지-->
+    <select id = "m_review" resultType="ReviewVO">
+        select * from reviewT where mem_id =#{mem_id}
+    </select>
 </mapper>

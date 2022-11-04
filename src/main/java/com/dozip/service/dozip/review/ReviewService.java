@@ -16,4 +16,6 @@ public interface ReviewService {
     ContractVO getOneCont(String cont_no); //계약정보
     int addReview(ReviewVO rv); //후기등록
     void insertReview_Photos(ReviewVO rv); //후기사진등록
+
+    List<ReviewVO> getMreview(String id); //아이디에 해당하는 리뷰목록
 }

@@ -17,4 +17,5 @@ public interface ReviewDAO {
     void addReview(ReviewVO rv); //후기등록
     int getReview_num(ReviewVO rv); //후기번호확인
     void insertReview_Photos(ReviewVO rv); //후기사진등록
+    List<ReviewVO> getMreview(String id); //아이디에 해당하는 리뷰목록
 }

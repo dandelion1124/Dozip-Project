@@ -65,15 +65,22 @@
         width: 100%;
         text-align: center;
         border-collapse: collapse;
+        table-layout: fixed;
     }
     .my_rv_table td {
         border-bottom: 1px solid #B3B9BE;
         padding: 10px 0;
         font-size: 0.8rem;
     }
+
     .page_area{
         text-align:center;
         margin-top: 10px;
+    }
+    .re_contt{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 </style>
 <%-- 내 후기 관리 --%>
@@ -87,30 +94,37 @@
             </ul>
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
-        <p style="width: 90%; font-weight: bold;">${listcount}건의 후기내역이 있습니다.</p>
+        <p style="width: 90%; font-weight: bold;">${count}건의 후기내역이 있습니다.</p>
         <div class="my_rv_cont">
             <table class="my_rv_table">
                 <tr>
-                    <th>번호</th> <th>제목</th> <th>답변상태</th><th>작성일</th>
+                    <th>번호</th> <th>계약번호</th> <th>제목</th> <th>내용</th><th>작성일</th>
                 </tr>
-                <tr>
-                    <td>임시번호</td> <td>임시제목</td> <td>임시상태</td> <td>임시일</td>
-                </tr>
-
+                <c:if test="${fn:length(rlist) == 0}">
+                    <tr><td colspan="5">등록된 후기가 없습니다</td></tr>
+                </c:if>
+                <c:if test="${fn:length(rlist)!=0}">
+                    <c:forEach var="i" begin="0" end="${fn:length(rlist)-1}" step="1">
+                        <tr>
+                            <td>${i+1}</td> <td width="10%">${rlist[i].cont_no}</td> <td width="15%">${rlist[i].re_title}</td>
+                            <td class = "re_contt">${rlist[i].re_cont}</td> <td width="10%">${rlist[i].re_date.substring(0,10)}</td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
             </table>
 
             <!-- 쪽번호 출력 --><%--쪽번호는 page랑 stratpage, endpage 맞춰서 controller쪽 작성해주시면 되고 아래는 따로 수정 안해도 돼요!--%>
             <div class="page_area">
-                <c:if test="${page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
-                <c:if test="${page>1}"><a href="/dozip/my_review?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
+                <c:if test="${p.page<=1}"><img src="/images/dozip/left-arrow.png"></c:if>
+                <c:if test="${p.page>1}"><a href="/dozip/my_review?page=${p.page-1}"><img src="/images/dozip/left-arrow.png"></a></c:if>
 
-                <c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
-                    <c:if test="${p==page}"><span style="color: #347844; font-weight: bold;">${p}</span></c:if>
-                    <c:if test="${p!=page}"><a href="/dozip/my_review?page=${p}">${p}</a></c:if>
+                <c:forEach var="page" begin="${p.startpage}" end="${p.endpage}" step="1">
+                    <c:if test="${page==p.page}"><span style="color: #347844; font-weight: bold;">${page}</span></c:if>
+                    <c:if test="${page!=p.page}"><a href="/dozip/my_review?page=${page}">${page}</a></c:if>
                 </c:forEach>
 
-                <c:if test="${page>=maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
-                <c:if test="${page<maxpage}"><a href="/dozip/my_review?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
+                <c:if test="${p.page>=p.maxpage}"><img src="/images/dozip/right-arrow.png"></c:if>
+                <c:if test="${p.page<p.maxpage}"><a href="/dozip/my_review?page=${p.page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
             </div>
         </div>
     </div>

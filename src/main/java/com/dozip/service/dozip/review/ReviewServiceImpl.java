@@ -54,4 +54,7 @@ public class ReviewServiceImpl implements ReviewService {
     public void insertReview_Photos(ReviewVO rv) {
         reviewDAO.insertReview_Photos(rv);
     }
+
+    @Override
+    public List<ReviewVO> getMreview(String id) {return this.reviewDAO.getMreview(id);}//아이디에 해당하는 리뷰목록
 }

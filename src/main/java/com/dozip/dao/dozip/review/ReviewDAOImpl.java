@@ -56,4 +56,7 @@ public class ReviewDAOImpl implements ReviewDAO {
     public void insertReview_Photos(ReviewVO rv) {
         sqlSession.insert("review_photos",rv);
     }
+
+    @Override
+    public List<ReviewVO> getMreview(String id) {return sqlSession.selectList("m_review",id);}
 }

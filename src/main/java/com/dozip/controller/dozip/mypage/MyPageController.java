@@ -4,6 +4,7 @@ import com.dozip.service.dozip.estimate.EstimateService;
 import com.dozip.service.dozip.member.MemberService;
 import com.dozip.service.dozip.qna.QnaService;
 import com.dozip.service.dozip.review.ReviewService;
+import com.dozip.utils.Paging;
 import com.dozip.vo.MemberVO;
 import com.dozip.vo.QnaVO;
 import com.dozip.vo.ReviewVO;
@@ -128,28 +129,26 @@ public class MyPageController {
     }
 
     @RequestMapping("my_review") //마이페이지 - 고객 리뷰 페이지 (수정중)
-    public ModelAndView myReview(ModelAndView mv, HttpServletRequest request){
-
+    public ModelAndView myReview(ModelAndView mv,ReviewVO r, HttpServletRequest request,HttpSession session){
+        String id = (String)session.getAttribute("id");
+        int count = this.reviewService.reviewCount(id); //아이디에 해당하는 리뷰 개수 확인
         //쪽나누기
-        int page = 1; //현재 쪽번호
-        int limit = 5; //한 페이지에 보여지는 개수
-
-        if(request.getParameter("page")!=null) {
-            page=Integer.parseInt(request.getParameter("page"));
+        Paging paging;
+        if(request.getParameter("page")==null){
+            paging = new Paging(1,5,count); //시작페이지, 한페이지에 나올 개수, 리스트 총 개수
+        }else{
+            int page = Integer.parseInt(request.getParameter("page"));
+            paging = new Paging(page,5,count); //선택한 페이지, 한페이지에 나올 개수, 리스트 총 개수
         }
-
-        int listcount=0; /*listcount 받아오는 코드 작성해야 함.*/
-        int maxpage = (int)((double)listcount/limit+0.95); //총페이지
-        int startpage = (((int)((double)page/5+0.9))-1)*5+1; //시작페이지
-        int endpage = maxpage; //마지막페이지
-
-        if(endpage>startpage+5-1) endpage=startpage+5-1;
-
-        mv.addObject("page", page);
-        mv.addObject("startpage", startpage);
-        mv.addObject("endpage",endpage);
-        mv.addObject("maxpage",maxpage);
-        mv.addObject("listcount",listcount);
+        mv.addObject("p",paging);
+        //리스트 출력
+        List<ReviewVO>rlist = new ArrayList<>();
+        r.setMem_id(id);
+        r.setStartrow(paging.getStartrow());
+        r.setEndrow(paging.getEndrow());
+        rlist = this.reviewService.getMreview(id);
+        mv.addObject("rlist",rlist);
+        mv.addObject("count",count);
 
         mv.setViewName("/dozip/mypage/mypage_review");
         return mv;
