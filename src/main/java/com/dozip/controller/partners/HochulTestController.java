@@ -1,7 +1,7 @@
-package com.dozip.controller;
+package com.dozip.controller.partners;
 
 import com.dozip.service.dozip.member.MemberService;
-import com.dozip.service.PartnersService;
+import com.dozip.service.partners.partner.PartnerService;
 import com.dozip.vo.ContractVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,11 @@ import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-@RequestMapping("/partners/*")
+@RequestMapping("partners/*")
 //@RequestMapping("/dozip/*")
 public class HochulTestController {
     @Autowired
-    private PartnersService partnersService;
+    private PartnerService partnerService;
 
     @Autowired
     private MemberService memberService;
@@ -49,7 +49,7 @@ public class HochulTestController {
         //파트너스 번호로 계약서 불러오기
         String businessNum = (String)session.getAttribute("businessNum");
 
-        List<ContractVO> clist= partnersService.getContractList_port(businessNum);
+        List<ContractVO> clist= partnerService.getContractList_port(businessNum);
 
         System.out.println(clist);
         model.addAttribute("clist", clist);

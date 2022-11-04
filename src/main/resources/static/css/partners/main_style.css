@@ -82,9 +82,9 @@ span.hide_2 input:active{
 }
 /*미디어 쿼리 */
 @media all and (max-width:1180px){
-	div#side_wrap{
-		display: none;
-	}	
+	/*div#side_wrap{*/
+	/*	display: none;*/
+	/*}	*/
 	article#main_cont{
 		margin-left: 0px;
 	}
@@ -120,15 +120,7 @@ span.hide_1{
 /*좌측 메뉴 */
 /************/
 
-#side_wrap{
-    background-color:#e3e88b;
-    position: relative;
-	/*height: 1000vw;*/
-	min-width:162px;
-	overflow: auto;
 
-
-}
 #cont_wrap{
 	margin-left:0.5px;
 	width:  100%;

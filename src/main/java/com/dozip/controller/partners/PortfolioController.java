@@ -18,14 +18,10 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/partners")
+@RequestMapping("partners/*")
 public class PortfolioController {
     @Autowired
     PortfolioService2 portfolioService;
-
-    /* 시공사례 관리
-     *
-     */
     // 포트폴리오 페이지
     @RequestMapping(value = "/upload")
     public String portfolioUpload() {

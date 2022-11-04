@@ -24,6 +24,68 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> <%-- 달력 --%>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script> <%-- 달력 --%>
+
+
+    <style>
+        input[id='menuicon']{
+            display:none;
+        }
+        input[id='menuicon']+label {
+            display: block;
+            width: 40px;
+            height: 30px;
+            position:fixed;
+
+            transition: all .35s;
+            cursor: pointer;
+        }
+        input[id="menuicon"]+label span {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            border-radius: 5px;
+            background: #000;
+            transition: all .35s;
+        }
+        input[id='menuicon'] + label span:nth-child(1) {
+            top:0;
+        }
+        input[id='menuicon'] + label span:nth-child(2) {
+            top:50%;
+            transform: translateY(-50%);
+        }
+        input[id='menuicon'] + label span:nth-child(3) {
+            bottom: 0;
+        }
+        input[id='menuicon']+ label{
+            z-index: 2;
+        }
+        input[id='menuicon']:checked + label span:nth-child(1) {
+            top :50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        input[id='menuicon']:checked + label span:nth-child(2) {
+            opacity: 0;
+        }
+        input[id='menuicon']:checked + label span:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+        }
+        div[id=side_wrap] {
+            background-color:#e3e88b;
+            position: relative;
+            min-width:162px;
+            top:0;
+            left:-300px;
+            z-index: 1;
+            transition: all .35s;
+        }
+
+        input[id='menuicon']:checked + label + div {
+            left:0;
+        }
+    </style>
 </head>
 
     <%
@@ -37,6 +99,12 @@ if(session.getAttribute("p_id")==null) {
 <body>
 <!-- 좌측 사이드바 영역 -->
 <div id="wrap">
+    <input type="checkbox" id="menuicon" checked="checked">
+    <label for="menuicon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
     <div id="side_wrap">
 
         <ul id="side_menu">
@@ -96,7 +164,8 @@ if(session.getAttribute("p_id")==null) {
             <div id="top_bar">
                 <div id=top_title>
                     <div id="menu_show_hide">
-                        <img id="menu_show_hide_img" src='/images/partners/menu_show_hide.png'></div>
+
+                      </div>
                     <div><img id="header_main_logo" src="/images/partners/dozip_logo.png" alt="메인로고"></div>
                     <div>PARTNERS PAGE</div>
                 </div>
