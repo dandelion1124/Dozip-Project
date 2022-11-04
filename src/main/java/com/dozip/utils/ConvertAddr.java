@@ -3,9 +3,9 @@ package com.dozip.utils;
 import org.jetbrains.annotations.NotNull;
 
 public class ConvertAddr {
-    private String est_addr;
-    public ConvertAddr(String est_addr) {
-        this.est_addr=est_addr;
+    private String addr;
+    public ConvertAddr(String addr) {
+        this.addr=addr;
     }
 
     public String convert() {
@@ -17,14 +17,14 @@ public class ConvertAddr {
 
     @NotNull
     private String getString() {
-        String str[] = est_addr.split(" ");
-        if (est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
-                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")) {
-            est_addr = str[0] + " " + str[1];
+        String str[] = addr.split(" ");
+        if (addr.contains("서울") || addr.contains("부산") || addr.contains("대구") || addr.contains("인천") || addr.contains("광주") ||
+                addr.contains("대전") || addr.contains("울산") || addr.contains("부산") || addr.contains("세종")) {
+            addr = str[0] + " " + str[1];
         } else {
-            est_addr = str[1] + " " + str[2];
+            addr = str[1] + " " + str[2];
         }
-        return est_addr;
+        return addr;
     }
 }
 
