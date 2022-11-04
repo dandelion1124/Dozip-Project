@@ -2,6 +2,7 @@ package com.dozip.controller.partners.estimate;
 
 import com.dozip.service.partners.estimate.BiddingService;
 import com.dozip.service.partners.estimate.EstService;
+import com.dozip.utils.ConvertAddr;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +27,7 @@ public class EstController {
     BiddingService biddingService; //민우랑 얘기해야함
     
     
-    
+
     
     @RequestMapping(value = "/construct_request") //시공요청
     public ModelAndView construct_request(EstimateVO e, HttpSession session, HttpServletRequest request) throws Exception {
@@ -62,14 +63,14 @@ public class EstController {
         //System.out.println(ereqlist.get(0).getEst_addr());
 
         for (int i = 0; i < ereqlist.size(); i++) {
-            ereqlist.get(i).setAddr(est_addr_change(ereqlist.get(i).getEst_addr()));
+            ConvertAddr convert= new ConvertAddr(ereqlist.get(i).getEst_addr());
+            ereqlist.get(i).setAddr( convert.convert());
 
         }
         m.addObject("ereq", ereqlist);
         m.setViewName("/partners/estimate_request/construct_request");
         return m;
     }
-
     @RequestMapping(value = "/construct_request_select")
     @ResponseBody
     public void bidSelect(String est_num,String est_check,EstimateVO e) {
@@ -78,8 +79,6 @@ public class EstController {
         e.setEst_check(est_check);
         this.estService.updateEstimate2(e);
     }
-
-
     @RequestMapping(value = "/request_detail") //시공요청 상세목록
     public String construct_request_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response) throws Exception {
         //response.setContentType("text/html;charset=UTF-8");
@@ -91,18 +90,4 @@ public class EstController {
 
         return "/partners/estimate_request/construct_request_detail";
     }
-
-
-    private String est_addr_change(String est_addr) {
-        String str[] = est_addr.split(" ");
-        if (est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
-                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")) {
-            //System.out.println("광역시 테스트");
-            est_addr = str[0] + " " + str[1];
-        } else {
-            //System.out.println("그외 테스트");
-            est_addr = str[1] + " " + str[2];
-        }
-        return est_addr;
-    }//주소 변환
 }

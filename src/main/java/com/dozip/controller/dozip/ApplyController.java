@@ -1,6 +1,7 @@
 package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.apply.ApplyService;
+import com.dozip.utils.ConvertAddr;
 import com.dozip.vo.EstimateVO;
 import com.dozip.vo.PartnersVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,26 +34,13 @@ public class ApplyController {
         return mv;
     }
 
-    private String est_addr_change(String est_addr) { //주소 변환 함수
-        String str[]=est_addr.split(" ");
-        if(est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
-                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")){
-            System.out.println("광역시 테스트");
-            est_addr=str[0]+" "+str[1];
-        }
-        else{
-            System.out.println("그외 테스트");
-            est_addr=str[1]+" "+str[2];
-        }
-        return "%" + est_addr + "%";
-    }//est_addr_change
-
     @RequestMapping(value = "/search_part/{est_addr}") //근처에 존재하는 파트너스 목록
     public ResponseEntity<List<PartnersVO>> search_part(@PathVariable("est_addr") String est_addr) {
-        String p_address=est_addr_change(est_addr);
+        ConvertAddr convertAddr = new ConvertAddr(est_addr);
+
         ResponseEntity<List<PartnersVO>> entity = null;
         try {
-            entity = new ResponseEntity<>(this.applyService.search_part(p_address), HttpStatus.OK); //근처의 파트너스 불러오기
+            entity = new ResponseEntity<>(this.applyService.search_part(convertAddr.convert_db()), HttpStatus.OK); //근처의 파트너스 불러오기
         } catch (Exception e) {
             e.printStackTrace();
             entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -63,15 +51,8 @@ public class ApplyController {
     @ResponseBody //근처에 있는 파트너스 숫자
     @RequestMapping("/count_partners")
     public String count_partners(String est_addr) {
-        int count = 0;
-
-        String p_address=est_addr_change(est_addr);
-
-        count = applyService.count_partners(p_address); //근처 파트너스 숫자
-        System.out.println("검색어 :" + "%" + est_addr + "%");
-        System.out.println("검색된 개수 :" + count);
-        System.out.println(count);
-
+        ConvertAddr convertAddr = new ConvertAddr(est_addr);
+        int count = applyService.count_partners(convertAddr.convert_db()); //근처 파트너스 숫자
         String result=String.valueOf(count);
         return result;
     }//count_partners()

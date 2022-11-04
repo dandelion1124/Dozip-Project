@@ -1,6 +1,7 @@
 package com.dozip.controller.partners.estimate;
 
 import com.dozip.service.partners.estimate.BiddingService;
+import com.dozip.utils.ConvertAddr;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,8 @@ public class BiddingController {
         Date now = new Date();
 
         for (int i = 0; i < elist.size(); i++) {
-            elist.get(i).setAddr(est_addr_change(elist.get(i).getEst_addr()));
+            ConvertAddr convertAddr = new ConvertAddr(elist.get(i).getEst_addr());
+            elist.get(i).setAddr( convertAddr.convert());
 
             Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
             long remaindate = (parseddate.getTime() - now.getTime());
@@ -62,19 +64,6 @@ public class BiddingController {
         m.setViewName("/partners/estimate_request/bid");
         return m;
     }
-
-    private String est_addr_change(String est_addr) {
-        String str[] = est_addr.split(" ");
-        if (est_addr.contains("서울") || est_addr.contains("부산") || est_addr.contains("대구") || est_addr.contains("인천") || est_addr.contains("광주") ||
-                est_addr.contains("대전") || est_addr.contains("울산") || est_addr.contains("부산") || est_addr.contains("세종")) {
-            //System.out.println("광역시 테스트");
-            est_addr = str[0] + " " + str[1];
-        } else {
-            //System.out.println("그외 테스트");
-            est_addr = str[1] + " " + str[2];
-        }
-        return est_addr;
-    }//주소 변환
 
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
     public String bid_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response, HttpSession session) throws Exception {
@@ -166,7 +155,8 @@ public class BiddingController {
         List<BidVO> list = this.biddingService.selectJoinList(e); //bid테이블 기준으로 estimate테이블 조인해서 가져오기
 
         for (int i = 0; i < list.size(); i++) {
-            list.get(i).setAddr(est_addr_change(list.get(i).getEst_addr()));
+            ConvertAddr convertAddr = new ConvertAddr(list.get(i).getEst_addr());
+            list.get(i).setAddr(convertAddr.convert());
         }
         System.out.println(list.toString());
         m.addObject("list", list);
