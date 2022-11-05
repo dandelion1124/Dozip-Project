@@ -12,7 +12,7 @@ public class ConvertAddr {
         return getString();
     }//주소 변환 출력용
     public String convert_db() {
-        return getString();
+        return "%"+getString()+"%";
     }//주소 변환 db검색용
 
     @NotNull

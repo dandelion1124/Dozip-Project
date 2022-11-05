@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/partenrs/*")
+@RequestMapping("/partners/*")
 public class EstController {
     @Autowired
     EstService estService;

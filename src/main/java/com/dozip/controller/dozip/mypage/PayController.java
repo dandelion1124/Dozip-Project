@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @Controller
-@EnableScheduling
 @RequestMapping("/dozip/*")
 public class PayController {
     @Autowired
@@ -53,7 +52,6 @@ public class PayController {
         return map;
     }
 
-    @Scheduled(cron = "0 0/1 * * * ?") //1분마다 실행
     public void payStateUpdate(){
         System.out.println("스케줄러 실행!");
         try{

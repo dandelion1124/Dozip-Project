@@ -3,7 +3,6 @@ package com.dozip.controller.dozip.mypage;
 import com.dozip.service.dozip.contract.ContractService;
 import com.dozip.service.dozip.pay.PayService;
 import com.dozip.service.partners.myEstimate.MyEstimateService;
-import com.dozip.service.partners.myInterior.MyInteriorService;
 import com.dozip.utils.Paging;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.PayVO;
