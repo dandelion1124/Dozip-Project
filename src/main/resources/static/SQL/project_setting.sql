@@ -249,6 +249,7 @@ create table payT
     foreign key (cont_no) references contractT (cont_no)
 );
 
+
 --결제 테이블 시퀀스
 drop sequence payT_no_seq; --삭제
 select payT_no_seq.nextval

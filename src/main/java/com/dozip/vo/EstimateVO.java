@@ -29,7 +29,10 @@ public class EstimateVO {
         private String est_dateEnd;
         private String est_name;
         private String est_phone;
+        private String est_zipcode;
         private String est_addr;
+        private String est_addr2;
+        private String est_addr3;
         private String est_desc;
         private String est_file;
 

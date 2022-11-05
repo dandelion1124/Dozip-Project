@@ -84,7 +84,12 @@ public class ApplyController {
 
         e.setEst_name(request.getParameter("name"));
         e.setEst_phone(request.getParameter("phone"));
+
+        e.setEst_zipcode(request.getParameter("pf_zipcode"));
         e.setEst_addr(request.getParameter("pf_addr1"));
+        e.setEst_addr2(request.getParameter("pf_addr2"));
+        e.setEst_addr3(request.getParameter("pf_addr3"));
+
         e.setEst_desc(request.getParameter("paragraph"));
 
         String bn = request.getParameter("bNum");
