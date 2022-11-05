@@ -5,8 +5,8 @@
 <mapper namespace="dozipPay">
     <!--결제테이블 생성-->
     <insert id="in_pay">
-        insert into payT (pay_no, cont_no, mem_id, businessNum)
-        values (('P'||to_char(sysdate, 'yyyymmdd')||'-'||payT_no_seq.nextval), #{cont_no}, #{mem_id}, #{businessNum})
+        insert into payT (cont_no, mem_id, businessNum)
+        values (#{cont_no}, #{mem_id}, #{businessNum})
     </insert>
 
     <!--결제상태 변경-->

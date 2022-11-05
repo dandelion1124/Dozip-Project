@@ -128,7 +128,7 @@ public class MyPageController {
         return map;
     }
 
-    @RequestMapping("my_review") //마이페이지 - 고객 리뷰 페이지 (수정중)
+    @RequestMapping("my_review") //마이페이지 - 고객 리뷰 페이지
     public ModelAndView myReview(ModelAndView mv,ReviewVO r, HttpServletRequest request,HttpSession session){
         String id = (String)session.getAttribute("id");
         int count = this.reviewService.reviewCount(id); //아이디에 해당하는 리뷰 개수 확인

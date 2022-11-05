@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="./mypage_header.jsp" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <%-- 상단 공통부분 끝 --%>
 <link rel = "stylesheet" type = "text/css" href = "/css/dozip/cont.css"/>
 
@@ -97,27 +98,30 @@
                             <th class="cpt_th">계약금</th> <th class="cpt_th">:</th>
                             <td class="cpt_td" id="cost1">${c.cont_cost1}</td>
                             <td class="cpt_td">${c.cont_date1.substring(0,10)}</td>
-                            <td class="cpt_td">${p.pay_date1.substring(0,10)}</td>
+                            <td class="cpt_td" id="pday1">${p.pay_date1.substring(0,10)}</td>
                         </tr>
                         <tr>
                             <th class="cpt_th">중도금</th> <th class="cpt_th">:</th>
                             <td class="cpt_td" id="cost2">${c.cont_cost2}</td>
                             <td class="cpt_td">${c.cont_date2.substring(0,10)}</td>
-                            <td class="cpt_td">${p.pay_date2.substring(0,10)}</td>
+                            <td class="cpt_td" id="pday2">${p.pay_date2.substring(0,10)}</td>
                         </tr>
                         <tr>
                             <th class="cpt_th">잔금</th> <th class="cpt_th">:</th>
                             <td class="cpt_td" id="cost3">${c.cont_cost3}</td>
                             <td class="cpt_td">${c.cont_date3.substring(0,10)}</td>
-                            <td class="cpt_td">${p.pay_date3.substring(0,10)}</td>
+                            <td class="cpt_td" id="pday3">${p.pay_date3.substring(0,10)}</td>
                         </tr>
                     </table>
                     <div class="pay_wrap">
                         <select name="pay_select" id="pay_select">
                             <option value="0" selected>결제선택</option>
-                            <option value="${c.cont_cost1}">계약금</option>
-                            <option value="${c.cont_cost2}">중도금</option>
-                            <option value="${c.cont_cost3}">잔금</option>
+                            <c:if test="${p.pay_date1!=null}"><option value="done" disabled>계약금지불완료</option></c:if>
+                            <c:if test="${p.pay_date1==null}"><option value="${c.cont_cost1}">계약금</option></c:if>
+                            <c:if test="${p.pay_date2!=null}"><option value="done" disabled>중도금지불완료</option></c:if>
+                            <c:if test="${p.pay_date2==null}"><option value="${c.cont_cost2}">중도금</option></c:if>
+                            <c:if test="${p.pay_date3!=null}"><option value="done" disabled>잔금지불완료</option></c:if>
+                            <c:if test="${p.pay_date3==null}"><option value="${c.cont_cost3}">잔금</option></c:if>
                         </select>
                         <span id="select_cost" style="margin-left: 10px; font-weight: bold; font-size: 1.3rem;"></span>
                         <button type="button" id="pay_btn" onclick="pay_view('${c.cont_no}')" disabled>결제하기</button>
@@ -133,7 +137,7 @@
 
 <script>
     $('#pay_select').change(function(){
-        var check = $('#pay_select option:selected').val();
+        let check = $('#pay_select option:selected').val();
         if(check==0){
             $("#pay_btn").prop("disabled", true);
         }else{
@@ -141,20 +145,29 @@
         }
     });
 
-
     function cont_view(cont_no){
         window.open('/dozip/my_cont_view?cont_no='+cont_no,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
     }
     function pay_view(cont_no){
-        var cost = $('#pay_select option:selected').val();
-        var name = $('#pay_select option:selected').text();
-        alert("name"+name+", cost"+cost);
+        let contNo = cont_no;
+        let check = $('#pay_select option:selected').text();
+        let pday1 = $('#pday1').text(); let pday2 = $('#pday2').text(); let pday3 = $('#pday3').text();
+        if(check=="계약금" && pday1 == "" && pday2=="" && pday3==""){pop_view(contNo);}
+        else if(check=="중도금" && pday2 == "" && pday1!="" && pday3==""){pop_view(contNo);}
+        else if(check=="잔금" && pday3 == "" && pday1!="" && pday2!=""){pop_view(contNo);}
+        else {
+            swal("순서대로 결제를 진행해주십시오.");
+        }
+    }
+    function pop_view(cont_no){
+        let cost = $('#pay_select option:selected').val();
+        let name = $('#pay_select option:selected').text();
         window.open('/dozip/pay_view?cont_no='+cont_no+'&name='+name+'&cost='+cost,"_blank",'width=500, height=500, top=0, left=100, resizable=no')
     }
 
     function change(str){
-        var inMoney = $(str).text();
-        var outMoney = (parseInt(inMoney)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        let inMoney = $(str).text();
+        let outMoney = (parseInt(inMoney)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
         return outMoney+" 원";
     }
 
@@ -167,10 +180,11 @@
     })
 
     document.getElementById('pay_select').onchange = function (){
-        var cost = $('#pay_select option:selected').val();
-        var cost2 = ((cost)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        let cost = $('#pay_select option:selected').val();
+        let cost2 = ((cost)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
         $('#select_cost').text(cost2+" 원");
     }
+
 </script>
 
 <%-- 하단 공통부분 --%>

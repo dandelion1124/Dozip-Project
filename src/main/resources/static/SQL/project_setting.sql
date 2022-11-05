@@ -232,14 +232,11 @@ create sequence contractT_no_seq start with 1 increment by 1 nocache;
 
 --8. 결제 테이블 --
 drop table payT;
-delete
-from payT;
-select *
-from payT;
+delete from payT;
+select * from payT;
 create table payT
 (
-    pay_no      nvarchar2(50) primary key,     --고유번호 PK :  : P20221027-01 (P + 등록일자 + -시퀀스번호)
-    cont_no     nvarchar2(50) not null,        -- 계약서 번호 FK
+    cont_no     nvarchar2(50) primary key,     -- 계약서 번호 PK, FK
     mem_id      varchar2(20)  not null,        --고객 회원아이디 FK
     businessNum nvarchar2(12) not null,        --업체 사업자번호 FK
     pay_cost1   number(38),                    -- 계약금 결제 금액 : 결제시 들어가는 내용이라 null허용
