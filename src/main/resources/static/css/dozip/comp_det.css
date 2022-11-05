@@ -160,16 +160,24 @@ h2{
 /* 카드 뒷면 업체 정보*/
 .comp_cont{
 	margin-top:150px;
-	text-align: center;
+	text-align: left;
 	font-family: "맑은 고딕";
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	color: black;
 	font-weight: bold;
+	padding-left: 20px;
+}
+#comp_title{
+	font-family: Malgun-Gothic;
+	font-size: 1.5rem;
+	font-weight: bold;
+	text-align: center;
+	color : dodgerblue;
 }
 
 /* 지도 */
 #map{
 	display: flex;
-	margin-left: 300px;
-	margin-top:100px;
+	margin-left: 200px;
+	margin-top:50px;
 }

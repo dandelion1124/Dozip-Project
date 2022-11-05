@@ -65,6 +65,7 @@
 		<br>	
 	<!-- 드롭다운 버튼 -->
 	<div class = "port_wrap">
+		<%--
 		<div class = "dropdown">
 			<select name="d1" id="dd_group1" onchange="input(this)">
 				<option selected>주거유형</option>
@@ -92,9 +93,10 @@
 				<option value="심플">심플</option>
 				<option value="럭셔리">럭셔리</option>
 			</select>
-			<%-- 필터검색 --%>
+
 			<button type="button" name = "submit" class = "filter_btn"><img id = "filter_img" src = "/images/dozip/portfolio/icons8-slider-50.png"/></button>
-			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침 --%>
+			<%-- 초기화 버튼 클릭시 포트폴리오 메인으로 새로고침
+
 			<button onclick = "location.href='/dozip/port'" class = "clear_btn">초기화</button>
 
 			<select name="d4" id="dd_group4" onchange="input(this)">
@@ -105,7 +107,7 @@
 				<option value="4">평수 높은순</option>
 			</select>
 			<button type = "button" name = "confirm" class = "order_btn">정렬</button>
-
+			--%>
 
 		</div>
 
@@ -125,7 +127,8 @@
 
 
 			function clear_btn(){
-				document.getElementById("dd_group1").value = "주거유형";
+				document.getElementById("keyword").value = "통합검색";
+				/*document.getElementById("dd_group1").value = "주거유형";
 				document.getElementById("dd_group2").value = "상업유형";
 				document.getElementById("dd_group3").value = "스타일";
 				document.getElementById("dd_group4").value = 0;
@@ -133,7 +136,7 @@
 				document.getElementById("key_list").innerText = "선택한 리스트 값";
 				arr = [];
 				$('#dd_group1').show();
-				$('#dd_group2').show();
+				$('#dd_group2').show();*/
 				$('.card').show();
 			}
 		</script>
@@ -159,15 +162,17 @@
 		});
 		</script>
 
-		<!-- 검색창 -->
+
+
 		<div class = "search_wrap">
 			<div class = "search">
 				<input type = "text" name = "keyword" id="keyword" placeholder="통합검색">
-				<button  class = "search_Btn">
-					<i class = "fas fa-search"></i>
-				</button>
+				<button  class = "search_Btn"><i class = "fas fa-search"></i></button>
+				<button class = "clear_sbtn" onclick="clear_btn()"><img src="/images/dozip/portfolio/icons8-restart-58.png"/></button>
 			</div>
 		</div>
+
+
 	</div>
 
 

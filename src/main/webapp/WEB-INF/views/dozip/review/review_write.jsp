@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/35.2.0/classic/translations/ko.js"></script> <%--한글 사용을 위해 추가--%>
+
+<style>
+	.ck-editor__editable{height: 200px;}
+</style>
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 
@@ -68,9 +74,16 @@
 			</div>
 				<div class = "r_cont_main">
 					<h3>내용</h3>
-					<div class="review_cont"><textarea  name="re_cont" id="r_cont"  placeholder="내용을 입력해주세요"></textarea></div>
+					<div class="review_cont"><textarea  name="re_cont" id="editor"  placeholder="내용을 입력해주세요"></textarea></div>
+					<%--ckeditor 사용--%>
+					<script>
+						ClassicEditor.create(document.querySelector('#editor'),{
+							language:"ko",
+							
+						});
+					</script>
 				</div>
-
+				<br><br>
 				<div class = "star">
 					<h2>종합별점</h2>
 					<div id="test">
@@ -124,9 +137,9 @@
 				$('#tcont_name').focus();
 				return false;
 			}
-			if($.trim($('#r_cont').val()) == ''){
+			if($.trim($('#editor').val()) == ''){
 				alert('내용을 입력해주세요');
-				$('#r_cont').focus();
+				$('#editor').focus();
 				return false;
 			}
 		}

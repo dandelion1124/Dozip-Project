@@ -24,6 +24,10 @@
         padding: 10px 0;
         font-size: 0.8rem;
     }
+    #none_cont{
+        font-weight: bold;
+        font-size:1.4rem;
+    }
 </style>
 <div class="clear"></div>
 
@@ -68,8 +72,8 @@
     </c:if>
 
     <c:if test="${empty clist}">
-            <tr aria-colspan="6">
-                <td>해당 견적서 내역이 없습니다</td>
+            <tr>
+                <td id = "none_cont" colspan="8">해당 견적서 내역이 없습니다</td>
             </tr>
     </c:if>
     </table>
