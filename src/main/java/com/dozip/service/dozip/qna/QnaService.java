@@ -12,4 +12,5 @@ public interface QnaService {
     String getBnum(String businessName); //businessNum 확인
     void insertQna(QnaVO q); //문의글 등록
     List<String> getPartners(); //문의글 - 업체 검색 리스트
+    QnaVO getQan(int qna_no); //문의글 내용확인
 }

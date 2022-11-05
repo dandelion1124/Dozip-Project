@@ -5,9 +5,7 @@ import com.dozip.utils.Paging;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -124,5 +122,14 @@ public class QnaController {
 
         mv.setViewName("/dozip/mypage/mypage_Pqna");
         return mv;
+    }
+
+    @RequestMapping("select_qna/{qna_no}") //문의글 내용확인
+    @ResponseBody
+    public QnaVO selectQna(@PathVariable("qna_no") int qna_no){
+        QnaVO q = this.qnaService.getQan(qna_no);
+        //q.setQna_cont(q.getQna_cont().replace("\r\n","<br/>"));
+        System.out.println("qna확인"+q);
+        return q;
     }
 }

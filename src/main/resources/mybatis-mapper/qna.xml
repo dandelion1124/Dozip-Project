@@ -52,6 +52,11 @@
         select businessName from partnersT
     </select>
 
+    <!--문의글 내용보기-->
+    <select id="get_qna" resultType="QnaVO">
+        select q.*, p.businessName from qnaT q, partnersT p where q.businessNum=p.businessNum(+) and qna_no=#{qna_no}
+    </select>
+
     <!--여기 위까지 지혜 정리완료-->
 
 
