@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,66 +24,15 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> <%-- 달력 --%>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-ko.js"></script> <%-- 달력 --%>
 
-
     <style>
-        input[id='menuicon']{
-            display:none;
-        }
-        input[id='menuicon']+label {
-            display: block;
-            width: 40px;
-            height: 30px;
-            position:fixed;
 
-            transition: all .35s;
-            cursor: pointer;
-        }
-        input[id="menuicon"]+label span {
-            display: block;
-            position: absolute;
-            width: 100%;
-            height: 4px;
-            border-radius: 5px;
-            background: #000;
-            transition: all .35s;
-        }
-        input[id='menuicon'] + label span:nth-child(1) {
-            top:0;
-        }
-        input[id='menuicon'] + label span:nth-child(2) {
-            top:50%;
-            transform: translateY(-50%);
-        }
-        input[id='menuicon'] + label span:nth-child(3) {
-            bottom: 0;
-        }
-        input[id='menuicon']+ label{
-            z-index: 2;
-        }
-        input[id='menuicon']:checked + label span:nth-child(1) {
-            top :50%;
-            transform: translateY(-50%) rotate(45deg);
-        }
-        input[id='menuicon']:checked + label span:nth-child(2) {
-            opacity: 0;
-        }
-        input[id='menuicon']:checked + label span:nth-child(3) {
-            bottom: 50%;
-            transform: translateY(50%) rotate(-45deg);
-        }
-        div[id=side_wrap] {
-            background-color:#e3e88b;
-            position: relative;
-            min-width:162px;
-            top:0;
-            left:-300px;
-            z-index: 1;
-            transition: all .35s;
-        }
 
-        input[id='menuicon']:checked + label + div {
-            left:0;
-        }
+
+
+
+
+
+
     </style>
 </head>
 
@@ -176,29 +124,4 @@ if(session.getAttribute("p_id")==null) {
             </div>
 
         </header>
-
-        <script>
-            $('#menu_show_hide_img').click(function () {
-                //1180px
-                let margin = $('#top_bar').css('margin-left');
-                if (window.innerWidth > 1173) {
-                    $('#side_wrap').toggle(400);
-
-
-                    // if (margin == '0px') {
-                    //     $('#side_wrap').css({'display': 'block'});
-                    //    // $('#top_bar').css({'margin-left': '161px'});
-                    //     //$('#footer_mediaquery').css({'margin-left': '160px'});
-                    //     //$('#main_cont').css({'margin-left': '160px'});
-                    //     //$('#fotter_setting').css({'display': 'block'});
-                    // } else {
-                    //     $('#side_wrap').css({'display': 'none'});
-                    //   //  $('#top_bar').css({'margin-left': '0px'});
-                    //    // $('#footer_mediaquery').css({'margin-left': '0px'});
-                    //    // $('#main_cont').css({'margin-left': '0px'});
-                    //    // $('#fotter_setting').css({'display': 'none'});
-                    // }
-                }
-            });
-        </script>
         <article id="main_cont">
