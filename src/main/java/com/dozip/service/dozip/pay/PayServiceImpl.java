@@ -19,6 +19,10 @@ public class PayServiceImpl implements PayService{
     public int payState(PayVO p) {
         return this.payDAO.payState(p);
     }
+    @Override //해당일자가 되면 요청상태로 변경
+    public void updateState() {
+        this.payDAO.updateState();
+    }
 
 
 }

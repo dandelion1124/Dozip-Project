@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Pay">
+<mapper namespace="dozipPay">
     <!--결제테이블 생성-->
     <insert id="in_pay">
         insert into payT (pay_no, cont_no, mem_id, businessNum)
@@ -16,5 +16,29 @@
         <if test="pay_cost2!=null"> pay_cost2=#{pay_cost2}, pay_date2=sysdate, pay_state='중도금결제완료'</if>
         <if test="pay_cost3!=null"> pay_cost3=#{pay_cost3}, pay_date3=sysdate, pay_state='잔금결제완료'</if>
         where cont_no=#{cont_no}
+    </update>
+
+    <select id="get_conNo" resultType="String">
+        select cont_no from payT
+    </select>
+
+    <!--해당일자가 되면 요청상태로 변경 (중도금요청)-->
+    <update id="second_State" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;">
+            update (select c.cont_date2, p.* from contractT c, payT p where (c.cont_no=p.cont_no))
+            set pay_state = '중도금요청'
+            where cont_no = #{item}
+            and to_char(cont_date2, 'yyyymmdd') &lt;= to_char(sysdate, 'yyyymmdd') and (pay_state in '계약금결제완료')
+        </foreach>
+    </update>
+
+    <!--해당일자가 되면 요청상태로 변경 (잔금요청)-->
+    <update id="third_State" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";" open="DECLARE BEGIN" close="; END;">
+            update (select c.cont_date3, p.* from contractT c, payT p where (c.cont_no=p.cont_no))
+            set pay_state = '잔금요청'
+            where cont_no = #{item}
+            and to_char(cont_date3, 'yyyymmdd') &lt;= to_char(sysdate, 'yyyymmdd') and (pay_state in '중도금결제완료')
+        </foreach>
     </update>
 </mapper>
