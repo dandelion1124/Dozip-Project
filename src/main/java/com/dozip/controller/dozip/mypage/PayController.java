@@ -52,6 +52,7 @@ public class PayController {
         return map;
     }
 
+    @Scheduled(cron = "0 0 0/1 * * ?") //1식간마다 실행 (빨리 상태 보고 싶을땐 "0/15 * * * * ?" 15초마다로 변경해서 확인)
     public void payStateUpdate(){
         System.out.println("스케줄러 실행!");
         try{
@@ -59,6 +60,5 @@ public class PayController {
         } catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

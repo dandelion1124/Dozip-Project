@@ -98,7 +98,7 @@
     <div class="contract_money">
         <span><b>(공사대금)</b></span>
         <div>
-            <p>① 총 공사금액 (&nbsp;&nbsp;￦[${c.cont_total}] 원정(부가가치세 별도임))<br></p>
+            <p>① 총 공사금액 (&nbsp;&nbsp;￦[<span id="cont_total">${c.cont_total}</span>] 원정(부가가치세 별도임))<br></p>
         </div>
         <div>
             <table id="contract_table2" border="1">
@@ -111,19 +111,19 @@
                 </tr>
                 <tr>
                     <th>1차</th>
-                    <td>&nbsp;&nbsp;￦${c.cont_cost1}</td>
+                    <td>&nbsp;&nbsp;￦<span id="cost1">${c.cont_cost1}</span></td>
                     <td>&nbsp;&nbsp;${c.cont_date1.substring(0,10)}</td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
-                    <td>&nbsp;&nbsp;￦${c.cont_cost2}</td>
+                    <td>&nbsp;&nbsp;￦<span id="cost2">${c.cont_cost2}</span></td>
                     <td>&nbsp;&nbsp;${c.cont_date2.substring(0,10)}</td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
-                    <td>&nbsp;&nbsp;￦${c.cont_cost3}</td>
+                    <td>&nbsp;&nbsp;￦<span id="cost3">${c.cont_cost3}</span></td>
                     <td>&nbsp;&nbsp;${c.cont_date3.substring(0,10)}</td>
                     <th>잔금</th>
                 </tr>
@@ -184,6 +184,19 @@
     </div>
 </form>
 <script>
+    function change(str){
+        let inMoney = $(str).text();
+        let outMoney = (parseInt(inMoney)*10000).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return outMoney+" 원";
+    }
+
+    $(document).ready(function(){
+        $('#cont_total').text(change('#cont_total'));
+        $('#cost1').text(change('#cost1'));
+        $('#cost2').text(change('#cost2'));
+        $('#cost3').text(change('#cost3'));
+    })
+
     document.getElementById("cont_btn").onclick = function (){
         function params_list() {
             var params = {};  //배열 선언
@@ -213,5 +226,4 @@
             }
         })
     }
-
 </script>
