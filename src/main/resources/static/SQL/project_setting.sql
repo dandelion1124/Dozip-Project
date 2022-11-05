@@ -145,10 +145,10 @@ create table estimateT
     est_dateEnd  date          default sysdate + 10, --견적신청 마감일자 +10일 (date) 디폴트값 추가하기
     est_name     nvarchar2(50),                      --의뢰인 이름
     est_phone    nvarchar2(200),                     --의뢰인 휴대폰 번호
-    est_zipcode     nvarchar2(200),                     -- 의뢰인 주소(우편번호)
+    est_zipcode  nvarchar2(200),                     -- 의뢰인 주소(우편번호)
     est_addr     nvarchar2(200),                     -- 의뢰인 주소(주소1)
-    est_addr2     nvarchar2(200),                     -- 의뢰인 주소(주소2)
-    est_addr3     nvarchar2(200),                     -- 의뢰인 주소(주소3)
+    est_addr2    nvarchar2(200),                     -- 의뢰인 주소(주소2)
+    est_addr3    nvarchar2(200),                     -- 의뢰인 주소(주소3)
     est_desc     nvarchar2(2000),                    --스타일 설명
     est_file     nvarchar2(200),                     --파일첨부
     foreign key (businessNum) references partnersT (businessNum),
@@ -235,8 +235,10 @@ create sequence contractT_no_seq start with 1 increment by 1 nocache;
 
 --8. 결제 테이블 --
 drop table payT;
-delete from payT;
-select * from payT;
+delete
+from payT;
+select *
+from payT;
 create table payT
 (
     cont_no     nvarchar2(50) primary key,     -- 계약서 번호 PK, FK

@@ -19,9 +19,8 @@ insert into scheduleT values ('C20221101-2','111-11-11111','공사제목2','2022
 
 
 
+select distinct c.*, e.EST_ZIPCODE, e.EST_ADDR2, e.EST_ADDR3, est_zoning, est_use from contractT c, ESTIMATET e where c.businessNum='111-11-11111' and c.EST_NUM=e.EST_NUM;
 
-insert into SCHEDULET values ('C20221101-1',0);
-insert into SCHEDULET values ('C20221101-2',0);
 
-select c.*, p.PAY_STATE from CONTRACTT c, PAYT p, SCHEDULET s where c.BUSINESSNUM='111-11-11111' and p.CONT_NO=c.CONT_NO and s.CONT_NO=c.CONT_NO and PAY_STATE!='계약금요청';
+select c.*, p.PAY_STATE from CONTRACTT c, PAYT p, SCHEDULET s where c.BUSINESSNUM= and p.CONT_NO=c.CONT_NO and s.CONT_NO=c.CONT_NO and PAY_STATE!='계약금요청';
 select c.*, p.PAY_STATE, s.REGIT_STATE from CONTRACTT c, PAYT p, SCHEDULET s where c.BUSINESSNUM='111-11-11111' and p.CONT_NO=c.CONT_NO and c.CONT_NO=s.CONT_NO and PAY_STATE!='계약금요청'

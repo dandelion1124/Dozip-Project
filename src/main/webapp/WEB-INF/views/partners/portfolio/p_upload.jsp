@@ -64,7 +64,6 @@
 		<input type="button" value="불러오기" onclick="loadPortfolioInfo()">
 	</div>
 
-	<%--계약 불러오기 개발중 --%>
 
 	<script>
 		function loadPortfolioInfo(){
@@ -78,7 +77,7 @@
 	<fieldset id="first_area">
 		<legend>기본정보</legend>
 		<div>
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>제목</label>
 			</div>
 			<div class="a">
@@ -86,7 +85,7 @@
 			</div>
 		</div>
 		<div class="inline_div">
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>공사 유형</label>
 			</div>
 			<!-- 공사유형 -->
@@ -94,13 +93,15 @@
 				<option value="none" selected>선택</option>
 				<option value="주거공간">주거공간</option>
 				<option value="상업공간">상업공간</option>
-			</select> <select id="sel_house" name="pf_subtype" disabled>
+			</select>
+            <select id="sel_house" name="pf_subtype" disabled>
 				<option value="none" selected>선택</option>
 				<option value="아파트">아파트</option>
 				<option value="빌라">빌라</option>
 				<option value="주택">주택</option>
 				<option value="오피스텔">오피스텔&nbsp;</option>
-			</select> <select id="sel_business" name="pf_subtype"  style="display: none;">
+			</select>
+            <select id="sel_business" name="pf_subtype"  style="display: none;">
 				<option value="none" selected>선택</option>
 				<option value="사무실">사무실</option>
 				<option value="상가/매장">상가/매장</option>
@@ -111,43 +112,41 @@
 				<option value="기타">기타</option>
 			</select>
 		</div>
-	
+
 		<div class="inline_div">
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>시공 범위</label>
 			</div>
 			<!-- 시공범위 -->
-			<input type="radio" name="pf_range" value="전체 리모델링">전체 리모델링 <input
-				type="radio" name="pf_range" value="부분 리모델링">부분 리모델링
+			<input type="radio" name="pf_range" value="전체 리모델링">전체 리모델링
+            <input type="radio" name="pf_range" value="부분 리모델링">부분 리모델링
 		</div>
 		<div class="clear"></div>
-		<div id="form_sub_title">
-			<div id="form_sub_title">
+		<div class="form_sub_title">
+			<div class="form_sub_title">
 				<label>주소</label>
 			</div>
-			<input type="text" id="sample6_postcode" readonly placeholder="우편번호"
-				size="5" name="pf_zipcode"> <input type="text" id="sample6_address"  name ="pf_addr1" readonly
-				placeholder="주소" size="30"> <input type="text"
-				id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소"> <input
-				type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목"
-				size=10> <input type="button" value="주소검색"
-				onclick="sample6_execDaumPostcode()">
+			<input type="text" id="sample6_postcode" readonly placeholder="우편번호" size="5" name="pf_zipcode">
+            <input type="text" id="sample6_address"  name ="pf_addr1" readonly	placeholder="주소" size="30">
+            <input type="text" id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소">
+            <input type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목" size=10>
+            <input type="button" value="주소검색" id='searchAddr' onclick="sample6_execDaumPostcode()">
 		</div>
 		<div class="inline_div">
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>평수</label>
 			</div>
 			<input type="text" name="pf_area" id="pf_area" size="10"> 평
 
 		</div>
 		<div class="inline_div">
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>공사비용</label>
 			</div>
 			<input type="text" name="pf_cost" id="pf_cost" size="10"> 만원
 		</div>
 		<div class="inline_div">
-			<div id="form_sub_title">
+			<div class="form_sub_title">
 				<label>공사기간</label>
 			</div>
 			<select name="pf_period" id="pf_period">
@@ -166,12 +165,14 @@
 	<!-- 여기까지 첫번째 입력 영역-->
 	<fieldset>
 		<legend>디자인(시공컨셉)</legend>
-		<div id="form_sub_title">
+		<div class="form_sub_title">
 		</div>
-		<input type="radio" value="모던" name="pf_concept">모던 <input type="radio"
-			value="미니멀" name="pf_concept">미니멀 <input type="radio" value="내추럴" name="pf_concept">내추럴
-		<input type="radio" value="빈티지" name="pf_concept">빈티지 <input type="radio"
-			value="심플" name="pf_concept">심플 <input type="radio" value="럭셔리" name="pf_concept">럭셔리
+		<input type="radio" value="모던" name="pf_concept">모던
+        <input type="radio"	value="미니멀" name="pf_concept">미니멀
+        <input type="radio" value="내추럴" name="pf_concept">내추럴
+		<input type="radio" value="빈티지" name="pf_concept">빈티지
+        <input type="radio"	value="심플" name="pf_concept">심플
+        <input type="radio" value="럭셔리" name="pf_concept">럭셔리
 	</fieldset>
 	<fieldset>
 		<legend>소개글</legend>

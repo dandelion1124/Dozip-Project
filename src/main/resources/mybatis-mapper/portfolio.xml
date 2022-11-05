@@ -66,10 +66,9 @@
     </insert>
 
 
-    <!-- load contract List for portfolio -->
+    <!-- ????? ???? ?? ???? -->
     <select id="portfolio_load" resultType="ContractVO">
-        select * from contractT where businessNum=#{businessNum}
-
+        select distinct c.*, e.EST_ZIPCODE, e.EST_ADDR2, e.EST_ADDR3, est_zoning, est_use from contractT c, ESTIMATET e where c.businessNum=#{businessNum} and c.EST_NUM=e.EST_NUM
     </select>
 
 </mapper>

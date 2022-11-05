@@ -44,4 +44,13 @@ public class ContractVO {
 
     //달력 등록여부
     private int regit_state;
+
+
+    //추가 주소 부분(포트폴리오 불러오기 시 사용)
+    private String est_zipcode;
+    private String est_addr2;
+    private String est_addr3;
+    private String est_zoning;
+    private String est_use;
+
 }

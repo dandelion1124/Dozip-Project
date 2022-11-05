@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<script src="/js/partners/jquery.js"></script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,21 +42,56 @@
         <c:if test="${!empty clist}">
             <c:forEach var="c" items="${clist}">
         <tr>
+                <%-- 공사유형, 공사 세부유형, 우편번호, 주소1, 주소2, 주소3, 평수, 공사비용 --%>
+                <%-- est_zoning, est_use, est_zipcode, customer_addr, est_addr2, est_addr3, cont_area, cont_total --%>
+                <input type="hidden" value="${c.est_zoning}">
+                <input type="hidden" value="${c.est_use}">
+                <input type="hidden" value="${c.est_zipcode}">
+                <input type="hidden" value="${c.customer_addr}">
+                <input type="hidden" value="${c.est_addr2}">
+                <input type="hidden" value="${c.est_addr3}">
+
+
                 <td>${c.cont_no}</td>
                 <td>${c.cont_title}</td>
                 <td><input id="cont_area" value="${c.cont_area}" readonly></td>
                 <td><input id="cont_total" value="${c.cont_total}" readonly></td>
-                <td><button onclick="sendValue();">불러오기</button></td>
+                <td><button onclick="sendValue('${c.est_zoning}','${c.est_use}','${c.est_zipcode}','${c.customer_addr}','${c.est_addr2}','${c.est_addr3}','${c.cont_area}','${c.cont_total}');">불러오기</button></td>
             </c:forEach>
         </tr>
         </c:if>
 
 </table>
 <script>
-    function sendValue() {
-        window.opener.document.getElementById("pf_area").value = document.getElementById("cont_area").value;
-        window.opener.document.getElementById("pf_cost").value = document.getElementById("cont_total").value;
-        window.opener.document.getElementById("sel_type").value ="주거공간";
+    function sendValue(pf_type,pf_subtype,pf_zipcode,pf_addr1,pf_addr2,pf_addr3,pf_area,pf_cost) {
+        if(pf_type=='상가'){
+            window.opener.document.getElementById("sel_type").value ='상업공간';
+            window.opener.document.getElementById("sel_business").value = pf_subtype;
+            $("#sel_house", opener.document).css('display','none');
+            $("#sel_business", opener.document).css('display','inline');
+        }
+        else {
+            window.opener.document.getElementById("sel_type").value ='주거공간';
+            window.opener.document.getElementById("sel_house").value = pf_subtype;
+        }
+        $("#sel_type", opener.document).attr('disabled',true);
+        $("#sel_house", opener.document).attr('disabled',true);
+        $("#sel_business", opener.document).attr('disabled',true);
+
+        $("#sample6_postcode", opener.document).attr('disabled',true);
+        $("#sample6_address", opener.document).attr('disabled',true);
+        $("#sample6_detailAddress", opener.document).attr('disabled',true);
+        $("#sample6_extraAddress", opener.document).attr('disabled',true);
+        $("#pf_area", opener.document).attr('disabled',true);
+        $("#pf_cost", opener.document).attr('disabled',true);
+        $("#searchAddr", opener.document).attr('disabled',true);
+        window.opener.document.getElementById("sample6_postcode").value =pf_zipcode;
+        window.opener.document.getElementById("sample6_address").value = pf_addr1;
+        window.opener.document.getElementById("sample6_detailAddress").value = pf_addr2;
+        window.opener.document.getElementById("sample6_extraAddress").value = pf_addr3;
+        window.opener.document.getElementById("pf_area").value = pf_area;
+        window.opener.document.getElementById("pf_cost").value = pf_cost;
+
         window.close();
     }
 </script>
