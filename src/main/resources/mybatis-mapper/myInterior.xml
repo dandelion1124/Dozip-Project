@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MyInterior">
+    <!--내공사 내역에서 사용할 계약 리스트 -->
+    <select id="interior_estimate" resultType="ContractVO">
+        select distinct c.*, p.PAY_STATE, s.REGIT_STATE from CONTRACTT c, PAYT p, SCHEDULET s where c.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and c.CONT_NO=s.CONT_NO and PAY_STATE!='계약금요청'
+
+        <if test="interiorState=='예정'">
+            and TO_CHAR(SYSDATE, 'YY/MM/dd') &lt; TO_CHAR(CONT_START)
+        </if>
+        <if test="interiorState=='진행중'">
+            and TO_CHAR(SYSDATE, 'YY/MM/dd') &gt;= TO_CHAR(CONT_START) and TO_CHAR(SYSDATE, 'YY/MM/dd') &lt;= TO_CHAR(CONT_END)
+        </if>
+        <if test="interiorState=='완료'">
+            and TO_CHAR(SYSDATE, 'YY/MM/dd') &gt; TO_CHAR(CONT_END)
+        </if>
+
+        <if test="pay_state=='계약금완납'">
+            and PAY_STATE='계약금결제완료'
+        </if>
+        <if test="pay_state=='중도금완납'">
+            and PAY_STATE='중도금결제완료'
+        </if>
+        <if test="pay_state=='잔금완납'">
+            and PAY_STATE='잔금결제완료'
+        </if>
+
+
+
+        <!--pay_state 1(계약금완납),2(중도금신청),3(중도금완납),4(잔금신청),5(잔금완납)
+        -->
+
+
+    </select>
+    <!--내공사 내역에서 계약서 조회 -->
+    <select id="show_contract" resultType="ContractVO">
+        select * from contractT where cont_no=#{cont_no}
+    </select>
+
+    <!-- 계약금 요청상태인 payT 조회 -->
+    <select id="get_paystate" resultType="PayVO">
+        select cont_no, pay_state from payT where businessNum=#{businessNum} and pay_state = '계약금요청'
+    </select>
+
+    <!--일정 등록할 컬럼 insert -->
+    <insert id="schedule_in">
+        insert into SCHEDULET (cont_no) values(#{cont_no})
+    </insert>
+</mapper>

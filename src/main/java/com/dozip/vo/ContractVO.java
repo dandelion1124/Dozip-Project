@@ -34,10 +34,12 @@ public class ContractVO {
     private int endrow; //끝행 번호
 
     private String businessName; //사업자명
-    
-    
-    //계약 진행상황
+
+
+    //내공사 내역 검색용
     private String pay_state;
+    private String interiorState;
+
 
     //계약서 작성 남은일자
     private String dateCheck;
@@ -52,5 +54,6 @@ public class ContractVO {
     private String est_addr3;
     private String est_zoning;
     private String est_use;
+
 
 }

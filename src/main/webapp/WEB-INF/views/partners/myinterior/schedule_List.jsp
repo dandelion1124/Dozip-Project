@@ -9,13 +9,15 @@
     color: saddlebrown;
 }
 #scheduleList_title{
-	font-size: 32px;
-	font-weight: 600;
+    font-size: 26px;
+    font-weight: 530;
+    border-bottom: 4px solid #000;
+    line-height: 2em;
+
 }
 
 
 </style>
-
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <%--오늘 날짜 불러오기 코드 -필요하면 사용 --%>
@@ -35,16 +37,13 @@
         }
         allDataArray.push(oneDayData);
     }
-
-
-
 	document.addEventListener('DOMContentLoaded', function() {
 		let calendarEl = document.getElementById('calendar');
 		let calendar = new FullCalendar.Calendar(calendarEl, {
 			headerToolbar : {
-				left : 'prevYear,prev,next,nextYear today',
+				left : 'prev,next,today',
 				center : 'title',
-				right : 'dayGridMonth,dayGridWeek,dayGridDay'
+				right : 'dayGridMonth,dayGridWeek'
 			},
 			initialDate : '${today}',
 			navLinks : true, // can click day/week names to navigate views
@@ -75,9 +74,10 @@
 		});
 	});
 </script>
+<p> | 내공사 > 내공사내역</p>
 
 <div id="scheduleList_title">
-일정관리<a href="interior_list">내공사내역</a>		</div>
+    일정관리<a href="interior_list">내공사내역</a>		</div>
 
 
 <div id='calendar' style="width: 90%; margin: 20px;"></div>

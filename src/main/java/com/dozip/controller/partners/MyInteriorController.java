@@ -20,22 +20,49 @@ public class MyInteriorController {
     @Autowired
     MyInteriorService myInteriorService;
 
+    @ResponseBody
     @RequestMapping(value = "/interior_list") //내공사내역
     public ModelAndView interior_list(String est_check, String pay_state, HttpSession session) {
-        List<ContractVO> clist = myInteriorService.getContract_interior((String)session.getAttribute("businessNum"));
-        if(est_check != null){
-            System.out.println(est_check);
+        ContractVO vo = new ContractVO();
+        vo.setBusinessNum((String) session.getAttribute("businessNum"));
+        List<ContractVO> clist;
+
+        if (est_check != null) {
+            if (est_check.equals("예정")) {
+                vo.setInteriorState("예정");
+            } else if (est_check.equals("진행중")) {
+                vo.setInteriorState("진행중");
+            } else if (est_check.equals("완료")) {
+                vo.setInteriorState("완료");
+            }
         }
-        if(pay_state != null){
+
+        if (pay_state != null) {
             System.out.println(pay_state);
+            if(pay_state.equals("계약금완납")){
+                vo.setPay_state("계약금완납");
+            }
+            else if(pay_state.equals("중도금완납")){
+                vo.setPay_state("중도금완납");
+            }
+            else if(pay_state.equals("잔금완납")){
+                vo.setPay_state("잔금완납");
+            }
         }
+
+        clist = myInteriorService.getContract_interior(vo);
+
         System.out.println(clist);
-        ModelAndView mv = new ModelAndView( "/partners/myinterior/interior_List");
+        System.out.println(clist.size());
+        ModelAndView mv = new ModelAndView("/partners/myinterior/interior_List");
+        mv.addObject("est_check", est_check);
+        mv.addObject("pay_state", pay_state);
         mv.addObject("clist", clist);
         return mv;
     }
+
     @RequestMapping(value = "/show_contract") //견적서 보기
-    public ModelAndView show_contract(String cont_no){
+    public ModelAndView show_contract(String cont_no) {
         ModelAndView mv = new ModelAndView("/partners/myinterior/contract_res");
         mv.addObject("cv", myInteriorService.show_contract(cont_no));
         return mv;
@@ -54,13 +81,13 @@ public class MyInteriorController {
         return mv;
     }
 
-    @RequestMapping(value="/schedule_regit")//ajax로 일정 등록
+    @RequestMapping(value = "/schedule_regit")//ajax로 일정 등록
     @ResponseBody
-    public HashMap<String,Object> schedule_regit(String cont_no){
-        HashMap<String ,Object> resultMap = new HashMap<>();
+    public HashMap<String, Object> schedule_regit(String cont_no) {
+        HashMap<String, Object> resultMap = new HashMap<>();
         int result = myInteriorService.regit_schedule(cont_no);
-        resultMap.put("status",result);
-    return resultMap;
+        resultMap.put("status", result);
+        return resultMap;
     }
 
     @RequestMapping(value = "/balance_details") //정산 내역
