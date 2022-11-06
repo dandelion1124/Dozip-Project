@@ -44,6 +44,10 @@ public class QnaServiceImpl implements QnaService{
     public QnaVO getQan(int qna_no) {
         return this.qnaDAO.getQna(qna_no);
     }
+    @Override //문의글(전체) 리스트
+    public List<QnaVO> getAllList(QnaVO q) {
+        return this.qnaDAO.getAllList(q);
+    }
 
 
 }

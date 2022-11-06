@@ -39,12 +39,14 @@ function openSearch(){
 						<th>문의유형</th>
 						<td>
 							<select name="qna_type" id="qna_type">
-								<option selected>문의유형</option>
-								<option value="1번 문의유형">1번 문의유형</option>
-								<option value="2번 문의유형">2번 문의유형</option>
-								<option value="3번 문의유형">3번 문의유형</option>
-								<option value="4번 문의유형">4번 문의유형</option>
-								<option value="5번 문의유형">5번 문의유형</option>
+								<option value="문의유형" selected>문의유형</option>
+								<option value="서비스안내">서비스안내</option>
+								<option value="견적">견적</option>
+								<option value="상담">상담</option>
+								<option value="계약">계약</option>
+								<option value="공사">공사</option>
+								<option value="시공후">시공후</option>
+								<option value="파트너스">파트너스</option>
 							</select>
 						</td>
 					</tr>

@@ -41,4 +41,9 @@
             and to_char(cont_date3, 'yyyymmdd') &lt;= to_char(sysdate, 'yyyymmdd') and (pay_state in '중도금결제완료')
         </foreach>
     </update>
+
+    <!--요청상태인 결제건 가져옴-->
+    <select id="request_state" resultType="PayVO">
+        select * from payT where pay_state like '%요청%'
+    </select>
 </mapper>

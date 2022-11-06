@@ -16,7 +16,7 @@
 	</div>
 	<hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
 	<div class="counsel_write_form_box">
-		<form id="counsel_write_form" action="/dozip/qna_write_ok" method="post">
+		<form id="counsel_write_form">
 			<p style="width: 80%; font-weight: bold;">문의글 작성</p>
 			<table class="write_table">
 				<tr>
@@ -27,12 +27,14 @@
 					<th>문의유형</th>
 					<td>
 						<select name="qna_type" id="qna_type">
-							<option selected>문의유형</option>
-							<option value="1번 문의유형">1번 문의유형</option>
-							<option value="2번 문의유형">2번 문의유형</option>
-							<option value="3번 문의유형">3번 문의유형</option>
-							<option value="4번 문의유형">4번 문의유형</option>
-							<option value="5번 문의유형">5번 문의유형</option>
+							<option value="문의유형" selected>문의유형</option>
+							<option value="서비스안내">서비스안내</option>
+							<option value="견적">견적</option>
+							<option value="상담">상담</option>
+							<option value="계약">계약</option>
+							<option value="공사">공사</option>
+							<option value="시공후">시공후</option>
+							<option value="파트너스">파트너스</option>
 						</select>
 					</td>
 				</tr>
@@ -42,18 +44,18 @@
 				</tr>
 			</table>
 			<div class="cw_btn_wrap">
-				<button type="submit" id="qna_btn">작성완료</button>
+				<button type="button" id="qna_btn">작성완료</button>
 			</div>
-		</form>	
+		</form>
 	</div>
 
 	</div>
 
 	<script>
-		$(document).on('click', '#qna_btn', function(e){
-			const qna_title = $("#qna_title").val().trim();
-			const qna_type = $("#qna_type").val().trim();
-			const qna_cont = $("#qna_cont").val().trim();
+		document.getElementById('qna_btn').onclick = function (){
+			let qna_title = $.trim($("#qna_title").val());
+			let qna_type = $.trim($("#qna_type").val());
+			let qna_cont = $.trim($("#qna_cont").val());
 
 			if (qna_title === '') {
 				alert('제목을 입력해주세요.');
@@ -68,17 +70,14 @@
 				return false;
 			}
 
-			var formData = new FormData();
-			formData.append("qna_title", qna_title);
-			formData.append("qna_type", qna_type);
-			formData.append("qna_cont", qna_cont);
-
 			$.ajax({
-				enctype : 'multipart/form-data',
-				processData : false,
-				contentType : false,
-				cache : false,
-				data : formData,
+				url : '/dozip/qna_write_ok',
+				type : 'post',
+				data : {
+					qna_title : qna_title,
+					qna_type : qna_type,
+					qna_cont : qna_cont
+				},
 				success : function() {
 					alert('글이 작성되었습니다.');
 					var myReferer = document.referrer;
@@ -92,7 +91,7 @@
 					alert("글 저장에 실패했습니다.");
 				}
 			});
-		});
+		}
 	</script>
 
 </div>

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="./mypage_header.jsp" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/qna_popup.css" />
 <%-- 상단 공통부분 끝 --%>
 <style>
     /* 고객센터문의 */
@@ -22,24 +23,6 @@
     #head_num { width: 10%; }
     #head_title { width: 60%; }
     .page_area{ text-align:center; margin-top: 10px; }
-    /*팝업창*/
-    .background { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.3); z-index: 1000;
-        /* 숨기기 */ z-index: -1; opacity: 0; }
-    .window { position: relative; width: 100%; height: 100%; }
-    .popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
-        /* 임시 지정 */ width: 500px; height: 500px;
-        /* 초기에 약간 아래에 배치 */ transform: translate(-50%, -40%); }
-    .show { opacity: 1; z-index: 1000; transition: all .5s; }
-    .show .popup { transform: translate(-50%, -50%); transition: all .5s; }
-    #title_box { width: 100%; height: 50px; margin-top: 0px; background-color: #347844; color: white; font-size: 1.3rem; font-weight: bold; padding-left: 20px; padding-top: 10px;}
-    #qna_box { margin: 50px auto; width: 80%; border-collapse: collapse; border-top: 2px solid #2b2a29; }
-    #qna_box th { border-bottom: 1px solid #B3B9BE; background-color: #f7f7f7; font-weight: normal; width: 30%; height: 40px; font-size: 0.8rem; }
-    #qna_box td { border-bottom: 1px solid #B3B9BE; padding-left: 20px; padding-right: 20px; font-size: 0.8rem; }
-    #btn_wrap { margin: 0 auto; text-align: center; }
-    #cont { padding: 10px 20px; }
-    #cont > textarea { width: 100%; border: none; height: 100px; resize: none; background-color: white; }
-    #delete { background-color: #FF0033; border: none; color: white; height: 30px; }
-    #close { background-color: #7f8c8d; border: none; color: white; height: 30px; }
 </style>
 <%-- 고객센터문의 --%>
 <div class="mypage_body" id="my_counsel_list">
@@ -56,7 +39,7 @@
         <div class="my_qna_cont">
             <table class="my_qna_table">
                 <tr>
-                    <th id="head_num">번호</th> <th id="head_title">제목</th> <th id="qna_state">답변상태</th><th id="head_date">작성일</th>
+                    <th id="head_num">번호</th> <th>문의유형</th> <th id="head_title">제목</th> <th id="qna_state">답변상태</th><th id="head_date">작성일</th>
                 </tr>
                 <c:if test="${fn:length(qlist) == 0}">
                     <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
@@ -68,7 +51,8 @@
                                 <c:set var="number" value="${(p.count-(p.pageSize*(p.page-1)))-i}" />
                                 <c:out value="${number}"/>
                             </td>
-                            <td id="title" style="text-align: left; padding-left: 20px;">
+                            <td>${qlist[i].qna_type}</td>
+                            <td id="title" style="text-align: left; padding-left: 30px;">
                                 <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
                                 <a href="#" onclick="selectQna(${qlist[i].qna_no})">${qlist[i].qna_title}</a>
                             </td>

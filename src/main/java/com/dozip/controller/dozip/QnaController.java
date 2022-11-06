@@ -35,7 +35,8 @@ public class QnaController {
     }
 
     //문의글 등록 완료
-    @RequestMapping(value = "qna_write_ok",  method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "qna_write_ok")
+    @ResponseBody
     public void qnaWriteOK(QnaVO q, HttpSession session) throws Exception {
         q.setMem_id((String)session.getAttribute("id"));
 

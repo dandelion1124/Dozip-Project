@@ -38,7 +38,10 @@ public class BidDAOImpl implements BidDAO{
     public void updateReject(String bid_num) {
         this.sqlSession.update("bid_reject", bid_num);
     }
-
+    @Override //아이디에 해당하는 입찰리스트
+    public List<BidVO> getIdBidList(String mem_id) {
+        return this.sqlSession.selectList("bid_list_id", mem_id);
+    }
 
 
 }

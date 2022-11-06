@@ -58,5 +58,5 @@ public class ReviewDAOImpl implements ReviewDAO {
     }
 
     @Override
-    public List<ReviewVO> getMreview(String id) {return sqlSession.selectList("m_review",id);}
+    public List<ReviewVO> getMreview(ReviewVO r) {return sqlSession.selectList("m_review",r);}
 }

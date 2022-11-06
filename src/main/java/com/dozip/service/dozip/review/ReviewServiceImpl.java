@@ -56,5 +56,5 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewVO> getMreview(String id) {return this.reviewDAO.getMreview(id);}//아이디에 해당하는 리뷰목록
+    public List<ReviewVO> getMreview(ReviewVO r) {return this.reviewDAO.getMreview(r);}//아이디에 해당하는 리뷰목록
 }

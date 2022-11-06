@@ -44,6 +44,10 @@ public class QnaDAOImpl implements QnaDAO{
     public QnaVO getQna(int qna_no) {
         return this.sqlSession.selectOne("get_qna", qna_no);
     }
+    @Override //문의글(전체) 리스트
+    public List<QnaVO> getAllList(QnaVO q) {
+        return this.sqlSession.selectList("all_qna", q);
+    }
 
 
 }

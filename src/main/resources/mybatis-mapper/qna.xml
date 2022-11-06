@@ -27,11 +27,9 @@
     <!--관리자 문의글 리스트-->
     <select id="get_Qlist" resultType="QnaVO">
         select * from (
-            select rowNum r, qna_no, mem_id, businessNum, qna_type,qna_title,
-                   qna_cont,qna_date,edit_date,qna_state,qna_ref,qna_step,
-                   qna_level,reply_state,reply_date
-            from (select*from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc)
-            where (businessNum is null)
+            select rowNum r, q.* from
+            (select * from qnaT where mem_id=#{mem_id} and (businessNum is null)
+            order by qna_ref desc, qna_level asc) q
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
@@ -57,9 +55,14 @@
         select q.*, p.businessName from qnaT q, partnersT p where q.businessNum=p.businessNum(+) and qna_no=#{qna_no}
     </select>
 
+    <!--문의글 전체 리스트-->
+    <select id="all_qna" resultType="QnaVO">
+        select * from (
+             select rowNum r, q.* from
+             (select * from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q
+        )where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
     <!--여기 위까지 지혜 정리완료-->
-
-
 
 
 

@@ -10,9 +10,12 @@
 
     <!--해당 아이디의 계약서 목록-->
     <select id="cont_list" resultType="ContractVO">
-        select c.*, p.businessName from
-        (select * from contractT where mem_id=#{mem_id} order by cont_no desc)c , partnersT p
-        where c.businessNum = p.businessNum(+)
+        select * from (
+        select rowNum r, c.*, p.businessName
+              from (select * from contractT where mem_id = #{mem_id} order by cont_no desc) c,
+                   partnersT p
+              where c.businessNum = p.businessNum(+)
+        ) where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
     <!--해당 계약번호의 계약서 내용-->

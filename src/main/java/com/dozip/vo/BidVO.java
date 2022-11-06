@@ -22,6 +22,7 @@ public class BidVO {
     private String est_addr;
     private String est_check;
     private String addr;
+    private String mem_id;
 
     //페이징. 쪽나누기 관련변수
     private int startrow; //시작행번호
