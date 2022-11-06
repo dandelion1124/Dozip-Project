@@ -1,6 +1,8 @@
 thead#interiorList_table_thead th {
     font-weight: lighter;
     padding: 7px 0px;
+    border: 1px solid #6495ED;
+    border-bottom: 1px solid darkblue;
 }
 
 a#go_scheduleList {

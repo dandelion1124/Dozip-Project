@@ -8,9 +8,29 @@
 <link rel="stylesheet" href="/css/partners/myinterior.css">
 <style>
     #interiorList_table td{
-        padding:7px 0px;
+        padding: 2px 0px;
         text-align: center;
+        border: 1px solid darkblue;
     }
+    td.schedule_regit{
+        background: #D7EAF5;
+        padding:5px 3px;
+        border: none;
+    }
+    td.schedule_regit:hover{
+        background: #6495ED;
+    }
+    td.schedule_regit button, td.schedule_regit_after button{
+        background: none;
+        border: none;
+        font-size: 16px;
+    }
+    td.schedule_regit_after {
+        background:#F8F8F8;
+        padding:5px 3px;
+        border: none;
+    }
+
 </style>
 <p> | 내공사 > 내공사내역</p>
 <div id='interiorList_top_cont'>
@@ -54,10 +74,10 @@
     <tr>
         <th>일정등록</th>
         <th>계약번호</th>
-        <th>시공상태<br>(예정, 진행중, 완료)</th>
+        <th>시공상태</th>
         <th>공사시작(예정)일</th>
         <th>공사마감(예정)일</th>
-        <th>정산하기<br>(계약금,중도금,완납)
+        <th>정산하기
         </th>
         <th>계약서</th>
         <th>시공 상세정보</th>
@@ -74,10 +94,10 @@
             <c:forEach var="c" items="${clist}">
             <tr>
                 <c:if test="${c.regit_state==1}">
-                    <td><button onclick="schedule_regit('${c.cont_no}')" disabled>등록완료</button></td>
+                    <td class='schedule_regit_after'><button onclick="schedule_regit('${c.cont_no}')" disabled>등록완료</button></td>
                 </c:if>
                 <c:if test="${c.regit_state==0}">
-                    <td><button onclick="schedule_regit('${c.cont_no}')">일정등록</button></td>
+                    <td class='schedule_regit'><button onclick="schedule_regit('${c.cont_no}')">일정등록</button></td>
                 </c:if>
                 <td>${c.cont_no}</td>
                 <td>
@@ -110,8 +130,8 @@
                 <%--
                 계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
                 --%>
-                <td><button onclick="show_contract('${c.cont_no}')">보기</button></td>
-                <td>보기</td>
+                <td class='schedule_regit'><button onclick="show_contract('${c.cont_no}')">보기</button></td>
+                <td class='schedule_regit'>보기</td>
             </tr>
             </c:forEach>
         </c:if>

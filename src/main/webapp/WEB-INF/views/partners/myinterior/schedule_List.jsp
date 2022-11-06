@@ -80,7 +80,7 @@
     일정관리<a href="interior_list">내공사내역</a>		</div>
 
 
-<div id='calendar' style="width: 90%; margin: 20px;"></div>
+<div id='calendar' style="width: 100%; margin: 20px 0px;"></div>
 
 
 
