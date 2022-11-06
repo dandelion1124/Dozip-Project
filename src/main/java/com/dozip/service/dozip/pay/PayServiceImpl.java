@@ -6,6 +6,8 @@ import com.dozip.vo.PayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PayServiceImpl implements PayService{
     @Autowired
@@ -22,6 +24,10 @@ public class PayServiceImpl implements PayService{
     @Override //해당일자가 되면 요청상태로 변경
     public void updateState() {
         this.payDAO.updateState();
+    }
+    @Override //결제요청상태 확인
+    public List<PayVO> requestPay(String mem_id) {
+        return payDAO.requestPay(mem_id);
     }
 
 

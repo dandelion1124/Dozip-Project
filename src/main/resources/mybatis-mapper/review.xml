@@ -60,6 +60,9 @@
 
     <!--후기마이페이지-->
     <select id = "m_review" resultType="ReviewVO">
-        select * from reviewT where mem_id =#{mem_id}
+        select * from (
+            select rowNum r, rev.* from
+            (select * from reviewT where mem_id=#{mem_id} order by re_no desc) rev
+        )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 </mapper>

@@ -4,97 +4,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="./mypage_header.jsp" />
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/dozip/qna_popup.css" />
 <%-- 상단 공통부분 끝 --%>
 <style>
     .my_wrap { width: 97%; margin: 0 auto;}
-    .box {
-        /*border: 1px solid black;*/
-        margin: 10px;
-        margin-bottom: 30px;
-    }
-    #row {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    #row>div{
-        /*border: 1px solid black;*/
-        width: 24%;
-        padding-left: 10px;
-        border-radius: 5px;
-        background-color: #2C3E50;
-        color: white;
-    }
-    .p_cont{
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin: 0;
-    }
-    #row2 {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    #row2>div{
-        border: 1px solid black;
-        width: 49%;
-        padding-left: 10px;
-        border-radius: 5px;
-    }
-    .p_title {
-        margin-bottom: 0;
-    }
-    .p_link {
-        margin-top: 5px; margin-bottom: 5px;
-        text-align: right;
-        padding-right: 10px;
-        font-size: 0.8rem;
-    }
+    .box { margin: 10px; margin-bottom: 30px; }
+    #row { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    #row>div{ width: 24%; padding-left: 10px; border-radius: 5px; background-color: #2C3E50; color: white; }
+    .p_cont{ font-size: 1.8rem; font-weight: bold; margin: 0; }
+    #row2 { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    #row2>div{ width: 49%; padding-left: 10px; }
+    .p_title { margin-bottom: 0; }
+    .p_link { margin-top: 5px; margin-bottom: 5px; text-align: right; padding-right: 10px; font-size: 0.8rem; }
     .p_link>a{color: white;}
-    .img_box {
-        align-self: center;
-        margin-right: 10px;
-    }
-    .txt_box{
-        width: 70%;
-    }
-
-    .my_qna_cont {
-        width: 100%;
-    }
-    .my_qna_table th {
-        background-color: #f7f7f7;
-        font-size: 0.9rem;
-        height: 30px;
-        border-bottom: 1px solid #B3B9BE;
-        border-top: 2px solid #2b2a29;
-    }
-    .my_qna_table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-    }
-    .my_qna_table td {
-        border-bottom: 1px solid #B3B9BE;
-        padding: 10px 0;
-        font-size: 0.8rem;
-    }
-    .profile {
-        display: flex;
-        margin: 20px auto;
-    }
-    #pf_title {
-        margin-top: 20px;
-        margin-left: 10px;
-    }
-    .long{
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-        max-width : 130px;
-        min-width : 100px;
-    }
+    .img_box { align-self: center; margin-right: 10px; }
+    .txt_box{ width: 70%; }
+    .my_qna_cont { width: 100%; }
+    .my_qna_table th { background-color: #f7f7f7; font-size: 0.9rem; height: 30px; border-bottom: 1px solid #B3B9BE; border-top: 2px solid #2b2a29; }
+    .my_qna_table { width: 100%; text-align: center; border-collapse: collapse; }
+    .my_qna_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
+    .profile { display: flex; margin: 20px auto; }
+    #pf_title { margin-top: 20px; margin-left: 10px; }
+    .long{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all; max-width : 130px; min-width : 100px; }
+    .move_btn { border: none; height: 30px; background-color: #347844; border-radius: 5px; }
+    .move_btn > a { color: white; }
 </style>
 <div class="my_wrap">
     <div class="profile">
@@ -154,26 +87,48 @@
         <div class="my_qna_cont">
             <table class="my_qna_table">
                 <tr>
-                    <th>알림일자</th> <th>말머리</th> <th>알림내용</th> <th>이동</th>
+                    <th style="width: 150px;">말머리</th> <th style="width: 180px;">관련번호</th> <th>알림내용</th> <th style="width: 150px;">이동</th>
                 </tr>
-                <c:if test="${fn:length(qlist) == 0}">
+                <c:if test="${fn:length(plist) == 0}">
                     <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
-                <c:if test="${fn:length(qlist) != 0}">
-                    <c:forEach var="q" items="${qlist}">
+                <c:if test="${fn:length(plist) != 0}">
+                    <c:forEach var="p" items="${plist}">
                         <tr>
-                            <td id="num">
-                                임시
-                            </td>
-                            <td id="title" style="text-align: left; padding-left: 20px;">
-                                <c:if test="${q.qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                <a href="#">${q.qna_title}</a>
-                            </td>
-                            <td id="state">
-                                <c:if test="${q.qna_level != 0}"><span></span></c:if>
-                                <c:if test="${q.qna_level == 0}">${q.reply_state}</c:if>
-                            </td>
-                            <td id="date">${q.qna_date}</td>
+                            <td>결제관련</td>
+                            <td>계약번호<br/>${p.cont_no}</td>
+                            <td><b style="color:red;">${p.pay_state}</b>이 들어왔습니다.<br/>확인 후 결제를 진행해주세요.</td>
+                            <td><button class="move_btn"><a href="/dozip/my_contD?cont_no=${p.cont_no}">확인하기</a></button></td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${fn:length(eplist) != 0}">
+                    <c:forEach var="ep" items="${eplist}">
+                        <tr>
+                            <td>견적관련</td>
+                            <td>견적번호<br/>${ep.est_num}</td>
+                            <td>업체(<b style="color: blue;">${ep.businessName}</b>)가 요청하신 견적서를 <b style="color: blue;">수락</b>했습니다.</td>
+                            <td><button class="move_btn"><a href="/dozip/my_est">확인하기</a></button></td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${fn:length(clist) != 0}">
+                    <c:forEach var="c" items="${clist}">
+                        <tr>
+                            <td>계약관련</td>
+                            <td>계약번호<br/>${c.cont_no}</td>
+                            <td>업체(<b style="color: #9B51E0;">${c.businessName}</b>)가 계약서를 보냈습니다.<br/>계약을 진행해주세요.</td>
+                            <td><button class="move_btn"><a href="/dozip/my_cont">확인하기</a></button></td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${fn:length(blist) != 0}">
+                    <c:forEach var="b" items="${blist}">
+                        <tr>
+                            <td>입찰관련</td>
+                            <td>견적번호<br/>${b.est_num}</td>
+                            <td>업체(<b style="color: green;">${b.businessName}</b>)가 입찰에 참여했습니다.<br/>내용을 확인해주세요.</td>
+                            <td><button class="move_btn"><a href="/dozip/my_est2">확인하기</a></button></td>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -186,7 +141,7 @@
             <div class="my_qna_cont">
                 <table class="my_qna_table">
                     <tr>
-                        <th>구분</th><th>제목</th> <th>답변상태</th><th>작성일</th>
+                        <th>구분</th><th>답변상태</th><th>제목</th><th>작성일</th>
                     </tr>
                     <c:if test="${fn:length(qlist) == 0}">
                         <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
@@ -195,16 +150,16 @@
                         <c:forEach var="q" items="${qlist}">
                             <tr>
                                 <td>
-                                    <c:if test="${q.businessNum==null}">센터</c:if>
+                                    <c:if test="${q.businessNum==null}">고객센터</c:if>
                                     <c:if test="${q.businessNum!=null}">업체</c:if>
-                                </td>
-                                <td id="title">
-                                    <c:if test="${q.qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                    <a href="#">${q.qna_title}</a>
                                 </td>
                                 <td id="state">
                                     <c:if test="${q.qna_level != 0}"><span></span></c:if>
                                     <c:if test="${q.qna_level == 0}">${q.reply_state}</c:if>
+                                </td>
+                                <td id="title" class="long">
+                                    <c:if test="${q.qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
+                                    <a href="#" onclick="selectQna(${q.qna_no})">${q.qna_title}</a>
                                 </td>
                                 <td id="date">${q.qna_date.substring(0,10)}</td>
                             </tr>
@@ -225,14 +180,11 @@
                     </c:if>
                     <c:if test="${rListCount != 0}">
                         <c:forEach var="r" items="${rlist}">
-                            <c:if test="${r.mem_id==id}">
-                                <tr>
-                                    <td class="long"><a href="#">${r.re_title}</a></td>
-                                    <td class="long">${r.re_cont}</td>
-                                    <td>${r.re_date.substring(0,10)}</td>
-                                </tr>
-                            </c:if>
-                            <c:if test="${r.mem_id!=id}"></c:if>
+                            <tr>
+                                <td class="long"><a href="review_detail?re_no=${r.re_no}">${r.re_title}</a></td>
+                                <td class="long">${r.re_cont}</td>
+                                <td>${r.re_date.substring(0,10)}</td>
+                            </tr>
                         </c:forEach>
                     </c:if>
                 </table>
@@ -241,10 +193,50 @@
     </div>
     <button id="btn" type="button">테스트</button>
 </div>
+
+<div class="background">
+    <div class="window">
+        <div class="popup">
+            <div id="title_box">글 내용 확인</div>
+            <table id="qna_box">
+                <tr><th>제목</th><td>내용</td></tr>
+            </table>
+            <div id="btn_wrap">
+                <button type="button" id="delete">삭제하기</button>
+                <button type="button" id="close">창닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     document.getElementById('btn').onclick = function (){
         swal("테스트");
     }
+
+    function selectQna(data){
+        let qna_no = data;
+        let result = ""
+        $.getJSON("/dozip/select_qna/"+qna_no, function(data){
+            result += "<tr><th>제목</th><td>"+data.qna_title+"</td></tr>"
+                if(data.businessName!=null){
+                    result += "<tr><th>문의업체</th><td>"+data.businessName+"</td></tr>"
+                }
+            result += "<tr><th>문의유형</th><td>"+data.qna_type+"</td><tr>"
+                    + "<tr><th>작성일자</th><td>"+data.qna_date+"</td><tr>"
+                    + "<tr><th>내용</th><td id='cont'><textarea readonly disabled>"+data.qna_cont+"</textarea></td><tr>"
+            $('#qna_box').html(result);
+        })
+        show ();
+    }
+
+    function show () {
+        document.querySelector(".background").className = "background show";
+    }
+    function close () {
+        document.querySelector(".background").className = "background";
+    }
+    document.querySelector("#close").addEventListener("click", close);
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

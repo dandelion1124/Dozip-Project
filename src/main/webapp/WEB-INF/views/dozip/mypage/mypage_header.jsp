@@ -65,6 +65,26 @@
         height: 45px;
     }
 </style>
+<script>
+    window.onload = function (){
+        let link =  document.location.href.split("/");
+        let addr1 = link[link.length-1].split("?");
+        let addr = addr1[0];
+        let title = "";
+        if(addr=="mypage_main"){title = " MY 나의활동 > 내정보 "}
+        if(addr=="my_edit"){title = " MY 나의활동 > 회원정보수정 "}
+        if(addr=="my_pwd"){title = " MY 나의활동 > 비밀번호변경 "}
+        if(addr=="my_scrap"){title = " MY 나의활동 > 스크랩관리 "}
+        if(addr=="my_review"){title = " MY 나의활동 > 후기관리 "}
+        if(addr=="my_cont"||addr=="my_contD"){title = " MY 계약관리 > 나의계약 "}
+        if(addr=="my_est"){title = " MY 계약관리 > 견적신청관리(지정) "}
+        if(addr=="my_est2"){title = " MY 계약관리 > 견적신청관리(입찰) "}
+        if(addr=="my_qna"){title = " MY 질문관리 > 고객센터문의 "}
+        if(addr=="my_Pqna"){title = " MY 질문관리 > 업체문의 "}
+
+        $('#mene_title').html(title);
+    }
+</script>
 <div class="left-side-bar">
     <div style="text-align: center; font-size: 1.2rem; font-weight: bold">마 이 페 이 지</div>
     <div class="heading">
@@ -87,7 +107,7 @@
                 <ul>
                     <li><a href="/dozip/my_cont">나의계약</a></li>
                     <li><a href="/dozip/my_est">견적신청관리(지정)</a></li>
-                    <li><a href="/dozip/my_est2">견적신청관리(자유)</a></li>
+                    <li><a href="/dozip/my_est2">견적신청관리(입찰)</a></li>
                 </ul>
             </li>
             <li>
@@ -102,5 +122,5 @@
 </div>
 
 <div class="content_wrap">
-    <div style="font-size: 0.9rem; margin-bottom:15px;"> | My Page > 메뉴선택 > 메뉴선택 </div>
+    <div style="font-size: 0.9rem; margin-bottom:15px;"> <b>|</b> My Page > <span id="mene_title"> 메뉴선택 > 메뉴선택 </span></div>
     <div class="content_box">

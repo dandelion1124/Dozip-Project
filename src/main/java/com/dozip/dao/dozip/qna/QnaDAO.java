@@ -13,4 +13,5 @@ public interface QnaDAO {
     void insertQna(QnaVO q); //문의글 등록
     List<String> getPartners(); //문의글 - 업체 검색 리스트
     QnaVO getQna(int qna_no); //문의글 내용확인
+    List<QnaVO> getAllList(QnaVO q); //문의글(전체) 리스트
 }

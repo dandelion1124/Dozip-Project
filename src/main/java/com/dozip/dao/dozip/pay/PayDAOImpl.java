@@ -32,4 +32,8 @@ public class PayDAOImpl implements PayDAO{
         this.sqlSession.update("second_State",list);
         this.sqlSession.update("third_State",list);
     }
+    @Override //결제요청상태 확인
+    public List<PayVO> requestPay(String mem_id) {
+        return this.sqlSession.selectList("request_state", mem_id);
+    }
 }

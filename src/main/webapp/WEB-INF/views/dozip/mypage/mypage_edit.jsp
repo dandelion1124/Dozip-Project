@@ -115,7 +115,7 @@
 <div class="mypage_body" id="my_info_modify">
     <div id="mim_wrap">
         <div class="edit_info">
-            <p style="font-size: 1.7rem; font-weight: bold; margin: 0;">개인정보 수정</p>
+            <p style="font-size: 1.7rem; font-weight: bold; margin: 0;">회원정보 수정</p>
             <ul style="padding:0px;">
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님의 주소와 연락처 등 개인정보를 수정하실 수 있습니다.</li>
                 <li style="font-size: 0.8rem;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;휴대전화번호와 이메일은 한번 더 확인하시어 정확한 안내를 받으시기 바랍니다.</li>

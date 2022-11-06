@@ -3,6 +3,7 @@
 <jsp:include page="../common/header.jsp" />
 <script src="/DoZip/js/jquery.js" ></script>
 <link rel="stylesheet" type="text/css" href="/css/dozip/counsel.css" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/qna_popup.css" />
 <%-- 상단 공통부분 끝 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -50,7 +51,7 @@
 		<div class="my_qna_cont">
 			<table class="my_qna_table">
 				<tr>
-					<th id="head_num">번호</th> <th id="head_title">제목</th> <th id="qna_state">답변상태</th><th id="head_date">작성일</th>
+					<th id="head_num">번호</th> <th>문의유형</th> <th id="head_title">제목</th> <th id="qna_state">답변상태</th><th id="head_date">작성일</th>
 				</tr>
 				<c:if test="${fn:length(qlist) == 0}">
 					<tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
@@ -62,9 +63,10 @@
 								<c:set var="number" value="${(p.count-(p.pageSize*(p.page-1)))-i}" />
 								<c:out value="${number}"/>
 							</td>
+							<td>${qlist[i].qna_type}</td>
 							<td id="title" style="text-align: left; padding-left: 20px;">
 								<c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-								<a href="#">${qlist[i].qna_title}</a>
+								<a href="#" onclick="selectQna(${qlist[i].qna_no})">${qlist[i].qna_title}</a>
 							</td>
 							<td id="state">
 								<c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
@@ -125,12 +127,48 @@
 
 </div>
 
+<div class="background">
+	<div class="window">
+		<div class="popup">
+			<div id="title_box">글 내용 확인</div>
+			<table id="qna_box">
+				<tr><th>제목</th><td>내용</td></tr>
+			</table>
+			<div id="btn_wrap">
+				<button type="button" id="delete">삭제하기</button>
+				<button type="button" id="close">창닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script>
 	$(".qna_menu").click(function() {
 		$(this).next(".qna_hide").stop().slideToggle(300);
 		$(this).toggleClass('on').siblings().removeClass('on');
 		$(this).next(".qna_hide").siblings(".qna_hide").slideUp(300);
 	});
+
+	function selectQna(data){
+		let qna_no = data;
+		let result = ""
+		$.getJSON("/dozip/select_qna/"+qna_no, function(data){
+			result += "<tr><th>제목</th><td>"+data.qna_title+"</td></tr>"
+					+ "<tr><th>문의유형</th><td>"+data.qna_type+"</td><tr>"
+					+ "<tr><th>작성일자</th><td>"+data.qna_date+"</td><tr>"
+					+ "<tr><th>내용</th><td id='cont'><textarea readonly disabled>"+data.qna_cont+"</textarea></td><tr>"
+			$('#qna_box').html(result);
+		})
+		show ();
+	}
+
+	function show () {
+		document.querySelector(".background").className = "background show";
+	}
+	function close () {
+		document.querySelector(".background").className = "background";
+	}
+	document.querySelector("#close").addEventListener("click", close);
 </script>
 
 

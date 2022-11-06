@@ -5,83 +5,21 @@
 <jsp:include page="./mypage_header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 <style>
-    /* 고객센터문의 */
-    #my_review_list {
-        width: 99%;
-        margin: 20px auto;
-    }
-    .rv_wrap {
-        width:100%;
-        display: flex;
-        justify-content:space-between;
-        flex-direction: column;
-        align-items: center;
-    }
-    .my_rv_cont {
-        width: 90%;
-    }
-    #review_write_btn {
-        border: 0;
-        font-size: 1.2rem;
-        font-weight:bold;
-        background-color: #347844;
-        text-align: center;
-        width: 30%;
-        height: 45px;
-    }
-    #review_write_btn a {
-        color: white;
-    }
-    #my_rv_text {
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: 200px;
-    }
-    #my_rv_text  a {
-        text-decoration: underline;
-        color: #347844;
-    }
-    .rv_info {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-    }
-    .rv_info>ul>li {
-        list-style: none;
-        padding-left: 10px;
-    }
-    .review_box {
-        margin: 40px auto;
-        text-align: center;
-    }
-    .my_rv_table th {
-        background-color: #f7f7f7;
-        font-size: 0.9rem;
-        height: 30px;
-        border-bottom: 1px solid #B3B9BE;
-        border-top: 2px solid #2b2a29;
-    }
-    .my_rv_table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-        table-layout: fixed;
-    }
-    .my_rv_table td {
-        border-bottom: 1px solid #B3B9BE;
-        padding: 10px 0;
-        font-size: 0.8rem;
-    }
-
-    .page_area{
-        text-align:center;
-        margin-top: 10px;
-    }
-    .re_contt{
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
-    }
+    #my_review_list { width: 99%; margin: 20px auto; }
+    .rv_wrap { width:100%; display: flex; justify-content:space-between; flex-direction: column; align-items: center; }
+    .my_rv_cont { width: 90%; }
+    #review_write_btn { border: 0; font-size: 1.2rem; font-weight:bold; background-color: #347844; text-align: center; width: 30%; height: 45px; }
+    #review_write_btn a { color: white; }
+    #my_rv_text { text-align: center; font-weight: bold; margin-bottom: 200px; }
+    #my_rv_text  a { text-decoration: underline; color: #347844; }
+    .rv_info { width: 100%; text-align: left; margin-left: 30px; }
+    .rv_info>ul>li { list-style: none; padding-left: 10px; }
+    .review_box { margin: 40px auto; text-align: center; }
+    .my_rv_table th { background-color: #f7f7f7; font-size: 0.9rem; height: 30px; border-bottom: 1px solid #B3B9BE; border-top: 2px solid #2b2a29; }
+    .my_rv_table { width: 100%; text-align: center; border-collapse: collapse;}
+    .my_rv_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
+    .page_area{ text-align:center; margin-top: 10px; }
+    .re_contt{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all; max-width: 200px; min-width : 100px;  }
 </style>
 <%-- 내 후기 관리 --%>
 <div class="mypage_body" id="my_review_list">
@@ -90,6 +28,7 @@
             <p style="font-size: 1.7rem; font-weight: bold; margin: 0;">나의 후기</p>
             <ul style="padding:0px;">
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;내가 작성한 후기글을 확인 할 수 있습니다.</li>
+                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;제목을 누르면 해당 후기 상세글 페이지로 이동합니다.</li>
                 <li style="font-size: 0.8rem;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;여기서 글을 수정하거나 삭제할 수 있습니다.</li>
             </ul>
         </div>
@@ -98,7 +37,8 @@
         <div class="my_rv_cont">
             <table class="my_rv_table">
                 <tr>
-                    <th>번호</th> <th>계약번호</th> <th>제목</th> <th>내용</th><th>작성일</th>
+                    <th style="width: 90px;">번호</th> <th  style="width: 110px;">계약번호</th>
+                    <th>제목</th> <th>내용</th><th style="width: 120px;">작성일</th>
                 </tr>
                 <c:if test="${fn:length(rlist) == 0}">
                     <tr><td colspan="5">등록된 후기가 없습니다</td></tr>
@@ -106,8 +46,14 @@
                 <c:if test="${fn:length(rlist)!=0}">
                     <c:forEach var="i" begin="0" end="${fn:length(rlist)-1}" step="1">
                         <tr>
-                            <td>${i+1}</td> <td width="10%">${rlist[i].cont_no}</td> <td width="15%">${rlist[i].re_title}</td>
-                            <td class = "re_contt">${rlist[i].re_cont}</td> <td width="10%">${rlist[i].re_date.substring(0,10)}</td>
+                            <td id="num">
+                                <c:set var="number" value="${(p.count-(p.pageSize*(p.page-1)))-i}" />
+                                <c:out value="${number}"/>
+                            </td>
+                            <td>${rlist[i].cont_no}</td>
+                            <td class = "re_contt"><a href="review_detail?re_no=${rlist[i].re_no}">${rlist[i].re_title}</a></td>
+                            <td class = "re_contt">${rlist[i].re_cont}</td>
+                            <td>${rlist[i].re_date.substring(0,10)}</td>
                         </tr>
                     </c:forEach>
                 </c:if>

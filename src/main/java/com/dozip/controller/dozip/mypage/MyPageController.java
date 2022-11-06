@@ -1,13 +1,14 @@
 package com.dozip.controller.dozip.mypage;
 
+import com.dozip.service.dozip.bid.BidService;
+import com.dozip.service.dozip.contract.ContractService;
 import com.dozip.service.dozip.estimate.EstimateService;
 import com.dozip.service.dozip.member.MemberService;
+import com.dozip.service.dozip.pay.PayService;
 import com.dozip.service.dozip.qna.QnaService;
 import com.dozip.service.dozip.review.ReviewService;
 import com.dozip.utils.Paging;
-import com.dozip.vo.MemberVO;
-import com.dozip.vo.QnaVO;
-import com.dozip.vo.ReviewVO;
+import com.dozip.vo.*;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,12 @@ public class MyPageController {
     @Autowired
     private QnaService qnaService;
     @Autowired
+    private PayService payService;
+    @Autowired
+    private ContractService contractService;
+    @Autowired
+    private BidService bidService;
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("mypage_main") //마이페이지 메인화면 (수정중)
@@ -64,18 +71,58 @@ public class MyPageController {
         mv.addObject("qListCount", qListCount);
         mv.addObject("pqListCount", pqListCount);
 
-        //문의 리스트 출력(업체)
-        List<QnaVO> qlist = new ArrayList<QnaVO>();
+        //결제내역 확인 (결제요청 알림)
+        List<PayVO> plist = this.payService.requestPay(m.getMem_id());
+        mv.addObject("plist", plist);
+
+        //견적내역(지정) 확인 (수락 알림)
+        EstimateVO e = new EstimateVO();
+        e.setMem_id(m.getMem_id()); e.setStartrow(1); e.setEndrow(pListCount);
+        List<EstimateVO> eplist = new ArrayList<>();
+        for(int i=0; i<this.estimateService.getPElist(e).size(); i++){
+            EstimateVO e1 = this.estimateService.getPElist(e).get(i);
+            if(e1.getEst_check().equals("수락")){
+                eplist.add(e1);
+            }
+        }
+        mv.addObject("eplist", eplist);
+
+        //계약서 확인 (계약요청 알림)
+        ContractVO c = new ContractVO();
+        c.setMem_id(m.getMem_id()); c.setStartrow(1);
+        c.setEndrow(this.contractService.getCListCount(m.getMem_id()));
+        List<ContractVO> clist = new ArrayList<>();
+        for(int i=0; i<this.contractService.getContList(c).size(); i++){
+            ContractVO c1 = this.contractService.getContList(c).get(i);
+            if(c1.getCustomer_number().equals(" ")){
+                clist.add(c1);
+            }
+        }
+        mv.addObject("clist",clist);
+
+        //입찰내역 (입찰알림)
+        List<BidVO> blist = new ArrayList<>();
+        for(int i=0; i<this.bidService.getIdBidList(m.getMem_id()).size(); i++){
+            BidVO b = this.bidService.getIdBidList(m.getMem_id()).get(i);
+            if(b.getBid_state().equals("진행중")){
+                blist.add(b);
+            }
+        }
+        mv.addObject("blist", blist);
+
+        //문의 리스트 출력(관리자+업체)
         QnaVO q = new QnaVO();
         q.setMem_id(m.getMem_id());
-        q.setStartrow(1); q.setEndrow(5);
-        qlist = this.qnaService.getPlist(q);
+        q.setStartrow(1); q.setEndrow(5); //글 5개까지만 보여줌
+        List<QnaVO> qlist = this.qnaService.getAllList(q);
         mv.addObject("qlist", qlist);
 
-        //리뷰개수확인
+        //리뷰개수 + 리스트
         int rListCount = this.reviewService.reviewCount(m.getMem_id()); //리뷰 개수
-        List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
-        reviewList = this.reviewService.getAllReview(); //리뷰 전체 목록
+        ReviewVO r = new ReviewVO();
+        r.setMem_id(m.getMem_id());
+        r.setStartrow(1); r.setEndrow(5); //글 5개까지만 보여줌
+        List<ReviewVO> reviewList = this.reviewService.getMreview(r);
         mv.addObject("rListCount",rListCount);
         mv.addObject("rlist", reviewList);
 
@@ -146,7 +193,7 @@ public class MyPageController {
         r.setMem_id(id);
         r.setStartrow(paging.getStartrow());
         r.setEndrow(paging.getEndrow());
-        rlist = this.reviewService.getMreview(id);
+        rlist = this.reviewService.getMreview(r);
         mv.addObject("rlist",rlist);
         mv.addObject("count",count);
 
