@@ -13,7 +13,7 @@ public class MyInteriorServiceImpl implements MyInteriorService {
     MyInteriorDAO myInteriorDAO;
 
     @Override
-    public List<ContractVO> getContract_interior(String businessNum) {return myInteriorDAO.getContract_interior(businessNum);}
+    public List<ContractVO> getContract_interior(ContractVO vo) {return myInteriorDAO.getContract_interior(vo);}
     @Override
     public ContractVO show_contract(String cont_no) {
         return myInteriorDAO.show_contract(cont_no);

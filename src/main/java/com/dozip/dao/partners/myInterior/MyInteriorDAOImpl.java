@@ -13,7 +13,7 @@ public class MyInteriorDAOImpl implements MyInteriorDAO{
     SqlSession sqlSession;
 
     @Override
-    public List<ContractVO> getContract_interior(String businessNum) {return sqlSession.selectList("interior_estimate",businessNum);}
+    public List<ContractVO> getContract_interior(ContractVO vo) {return sqlSession.selectList("interior_estimate",vo);}
     @Override
     public ContractVO show_contract(String cont_no) {
         return sqlSession.selectOne("show_contract",cont_no);

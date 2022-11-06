@@ -5,7 +5,7 @@ import com.dozip.vo.ContractVO;
 import java.util.List;
 
 public interface MyInteriorService {
-    List<ContractVO> getContract_interior(String businessNum);
+    List<ContractVO> getContract_interior(ContractVO vo);
     ContractVO show_contract(String cont_no);
     
     List<ContractVO> getschedule(String businessNum);    //달력에 등록할 공사 일정 불러오기

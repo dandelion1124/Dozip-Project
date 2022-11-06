@@ -2,7 +2,16 @@
 <jsp:include page="../include/header.jsp"/>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <link rel="stylesheet" href="/css/partners/myinterior.css">
+<style>
+    #interiorList_table td{
+        padding:7px 0px;
+        text-align: center;
+    }
+</style>
 <p> | 내공사 > 내공사내역</p>
 <div id='interiorList_top_cont'>
     <div id='interiorList_title'>내 공사내역<a id="go_scheduleList" href="schedule_list">일정관리</a>
@@ -16,20 +25,20 @@
 </div>
 <div id='interior_list_searchBar'>
     <label for="interior_status">시공상태</label> <select id="interior_status">
-    <option value="예정">예정</option>
-    <option value="진행중">진행중</option>
-    <option value="완료">완료</option>
+    <option value="전체"selected>전체</option>
+    <option value="예정"<c:if test="${est_check=='예정'}"> selected</c:if>>예정</option>
+    <option value="진행중"<c:if test="${est_check=='진행중'}"> selected</c:if>>진행중</option>
+    <option value="완료"<c:if test="${est_check=='완료'}"> selected</c:if>>완료</option>
 </select> <label for="balance_status">정산상태</label> <select id="balance_status">
-    <option value="계약금완납">계약금완납</option>
-    <option value="중도금신청">중도금신청</option>
-    <option value="중도금완납">중도금완납</option>
-    <option value="잔금신청">잔금신청</option>
-    <option value="잔금완납">잔금완납</option>
+    <option value="전체"selected>전체</option>
+    <option value="계약금완납"<c:if test="${pay_state=='계약금완납'}"> selected</c:if>>계약금완납</option>
+    <option value="중도금완납"<c:if test="${pay_state=='중도금완납'}"> selected</c:if>>중도금완납</option>
+    <option value="잔금완납"<c:if test="${pay_state=='잔금완납'}"> selected</c:if>>잔금완납</option>
 </select>
 </div>
 <script>
-    //payT 로 시공 상태 조회 (확실하지 않음)
 
+    //payT 로 시공 상태 조회 (확실하지 않음)
     $('#interior_status').change(function (){
         let est_check = $('#interior_status option:selected').val();
         location.href ='/partners/interior_list?est_check='+est_check;
@@ -38,8 +47,7 @@
     $('#balance_status').change(function(){
         let pay_state = $('#balance_status option:selected').val();
         location.href ='/partners/interior_list?pay_state='+pay_state;
-
-    })
+    });
 </script>
 <table id="interiorList_table">
     <thead id="interiorList_table_thead">
@@ -55,11 +63,10 @@
         <th>시공 상세정보</th>
     </tr>
 
+
     </thead>
     <tbody>
-
         <c:if test="${empty clist}">
-
             <th colspan="8"> 조회된 내역이 없습니다</th>
         </tr>
         </c:if>
@@ -73,7 +80,11 @@
                     <td><button onclick="schedule_regit('${c.cont_no}')">일정등록</button></td>
                 </c:if>
                 <td>${c.cont_no}</td>
-                <td>예정 ${c.customer_name}</td>
+                <td>
+                <c:if test="${today<fn:substring(c.cont_start,0,10)}">예정</c:if>
+               <c:if test="${today>=fn:substring(c.cont_start,0,10) && today<=fn:substring(c.cont_end,0,10)}">진행중</c:if>
+                <c:if test="${today>fn:substring(c.cont_end,0,10)}">완료</c:if>
+                </td>
                 <td>${fn:substring(c.cont_start,0,10)}</td>
                 <td>${fn:substring(c.cont_end,0,10)}</td>
                 <td>${c.pay_state}</td>
