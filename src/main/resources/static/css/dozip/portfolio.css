@@ -93,9 +93,9 @@
 
 
 /*검색창 부분*/
+
 .search {
 	width:100%;
-	float: right;
 	display: flex;
 	margin-right : 20px;
 }
@@ -106,29 +106,42 @@
 
 #keyword{
   width: 400px;
-  border-bottom: 1px solid #00704a;
-  border-top : none;
-  border-left : none;
-  border-right: none;
+  height: 40px;
+  border: 3px solid #00704a;
   text-align : center;
   padding: 5px;
-  height: 20px;
   outline: none;
   color: #00704a;
 }
 
-#keyword:focus{
-  color: #00704a;
+#keyword:focus {
+    color: #00704a;
 }
 
 .search_Btn {
-  width: 40px;
+  width: 50px;
+  height: 40px;
   margin-bottom : 40px;
   margin-left : 2px;
   text-align: center;
+  background-color: white;
+  border:none;
   color: #00704a;
   cursor: pointer;
   font-size: 20px;
+}
+
+.clear_sbtn{
+    width : 70px;
+    height:40px;
+    margin-left:1px;
+    background-color: white;
+    border:none;
+}
+
+.clear_sbtn>img{
+    width : 40px;
+    height:40px;
 }
 
 #none_search {
@@ -153,9 +166,10 @@
 	padding:20px 0px;
 }
 
-/*Resize the wrap to see the search bar change!*/
+
 .search_wrap{
   width: 30%;
+  margin : auto;
 }
 
 /*프리미엄 포트폴리오*/
@@ -335,8 +349,7 @@ h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; marg
 }
 
 .top_title {
-	display : flex;
-	justify-content : center;
+	text-align: center;
 	font-family : '맑은고딕';
 	font-size : 1.6rem;
 	font-weight: bold;
