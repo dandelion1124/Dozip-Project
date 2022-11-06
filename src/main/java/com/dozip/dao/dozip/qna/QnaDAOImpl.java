@@ -40,10 +40,10 @@ public class QnaDAOImpl implements QnaDAO{
     public List<String> getPartners() {
         return this.sqlSession.selectList("get_P");
     }
-
-
-
-
+    @Override //문의글 내용확인
+    public QnaVO getQna(int qna_no) {
+        return this.sqlSession.selectOne("get_qna", qna_no);
+    }
 
 
 }

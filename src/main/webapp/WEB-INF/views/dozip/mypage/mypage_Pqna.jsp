@@ -6,69 +6,41 @@
 <%-- 상단 공통부분 끝 --%>
 <style>
     /* 고객센터문의 */
-    #my_partner_qna {
-        width: 99%;
-        margin: 20px auto;
-    }
-    .qna_wrap {
-        width:100%;
-        display: flex;
-        justify-content:space-between;
-        flex-direction: column;
-        align-items: center;
-    }
-    .my_qna_cont {
-        width: 90%;
-    }
-    #my_P_qna_write_btn {
-        border: 0;
-        font-size: 1.2rem;
-        font-weight:bold;
-        background-color: #347844;
-        text-align: center;
-        width: 30%;
-        height: 45px;
-    }
-    #my_P_qna_write_btn a {
-        color: white;
-    }
-    .qna_info {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-    }
-    .qna_info>ul>li {
-        list-style: none;
-        padding-left: 10px;
-    }
-    .mqw_box {
-        margin: 40px auto;
-        text-align: center;
-    }
-    .my_qna_table th {
-        background-color: #f7f7f7;
-        font-size: 0.9rem;
-        height: 30px;
-        border-bottom: 1px solid #B3B9BE;
-        border-top: 2px solid #2b2a29;
-    }
-    .my_qna_table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-    }
-    .my_qna_table td {
-        border-bottom: 1px solid #B3B9BE;
-        padding: 10px 0;
-        font-size: 0.8rem;
-    }
+    #my_partner_qna { width: 99%; margin: 20px auto; }
+    .qna_wrap { width:100%; display: flex; justify-content:space-between; flex-direction: column; align-items: center; }
+    .my_qna_cont { width: 90%; }
+    #my_P_qna_write_btn { border: 0; font-size: 1.2rem; font-weight:bold; background-color: #347844; text-align: center; width: 30%; height: 45px; }
+    #my_P_qna_write_btn a { color: white; }
+    .qna_info { width: 100%; text-align: left; margin-left: 30px; }
+    .qna_info>ul>li { list-style: none; padding-left: 10px; }
+    .mqw_box { margin: 40px auto; text-align: center; }
+    .my_qna_table th { background-color: #f7f7f7; font-size: 0.9rem; height: 30px; border-bottom: 1px solid #B3B9BE; border-top: 2px solid #2b2a29; }
+    .my_qna_table { width: 100%; text-align: center; border-collapse: collapse; }
+    .my_qna_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
     #head_num { width: 10%; }
     #head_title { width: 50%; }
-    .page_area{
-        text-align:center;
-        margin-top: 10px;
-    }
+    .page_area{ text-align:center; margin-top: 10px; }
+
+    /*팝업창*/
+    .background { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.3); z-index: 1000;
+                /* 숨기기 */ z-index: -1; opacity: 0; }
+    .window { position: relative; width: 100%; height: 100%; }
+    .popup { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+            /* 임시 지정 */ width: 500px; height: 500px;
+            /* 초기에 약간 아래에 배치 */ transform: translate(-50%, -40%); }
+    .show { opacity: 1; z-index: 1000; transition: all .5s; }
+    .show .popup { transform: translate(-50%, -50%); transition: all .5s; }
+    #title_box { width: 100%; height: 50px; margin-top: 0px; background-color: #347844; color: white; font-size: 1.3rem; font-weight: bold; padding-left: 20px; padding-top: 10px;}
+    #qna_box { margin: 50px auto; width: 80%; border-collapse: collapse; border-top: 2px solid #2b2a29; }
+    #qna_box th { border-bottom: 1px solid #B3B9BE; background-color: #f7f7f7; font-weight: normal; width: 30%; height: 40px; font-size: 0.8rem; }
+    #qna_box td { border-bottom: 1px solid #B3B9BE; padding-left: 20px; padding-right: 20px; font-size: 0.8rem; }
+    #btn_wrap { margin: 0 auto; text-align: center; }
+    #cont { padding: 10px 20px; }
+    #cont > textarea { width: 100%; border: none; height: 100px; resize: none; background-color: white; }
+    #delete { background-color: #FF0033; border: none; color: white; height: 30px; }
+    #close { background-color: #7f8c8d; border: none; color: white; height: 30px; }
 </style>
+
 <%-- 고객센터문의 --%>
 <div class="mypage_body" id="my_partner_qna">
     <div class="qna_wrap">
@@ -102,7 +74,7 @@
                             </td>
                             <td id="title" style="text-align: left; padding-left: 20px;">
                                 <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
-                                <a href="#">${qlist[i].qna_title}</a>
+                                <a href="#" onclick="selectQna(${qlist[i].qna_no})">${qlist[i].qna_title}</a>
                             </td>
                             <td id="state">
                                 <c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
@@ -134,6 +106,44 @@
     </button></div>
 </div>
 
+<div class="background">
+    <div class="window">
+        <div class="popup">
+            <div id="title_box">글 내용 확인</div>
+            <table id="qna_box">
+                <tr><th>제목</th><td>내용</td></tr>
+            </table>
+            <div id="btn_wrap">
+                <button type="button" id="delete">삭제하기</button>
+                <button type="button" id="close">창닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectQna(data){
+        let qna_no = data;
+        let result = ""
+        $.getJSON("/dozip/select_qna/"+qna_no, function(data){
+            result += "<tr><th>제목</th><td>"+data.qna_title+"</td></tr>"
+                + "<tr><th>문의업체</th><td>"+data.businessName+"</td></tr>"
+                + "<tr><th>문의유형</th><td>"+data.qna_type+"</td><tr>"
+                + "<tr><th>작성일자</th><td>"+data.qna_date+"</td><tr>"
+                + "<tr><th>내용</th><td id='cont'><textarea readonly disabled>"+data.qna_cont+"</textarea></td><tr>"
+            $('#qna_box').html(result);
+        })
+        show ();
+    }
+
+    function show () {
+        document.querySelector(".background").className = "background show";
+    }
+    function close () {
+        document.querySelector(".background").className = "background";
+    }
+    document.querySelector("#close").addEventListener("click", close);
+</script>
 
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

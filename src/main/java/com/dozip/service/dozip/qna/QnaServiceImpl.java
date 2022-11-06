@@ -40,9 +40,10 @@ public class QnaServiceImpl implements QnaService{
     public List<String> getPartners() {
         return this.qnaDAO.getPartners();
     }
-
-
-
+    @Override //문의글 내용확인
+    public QnaVO getQan(int qna_no) {
+        return this.qnaDAO.getQna(qna_no);
+    }
 
 
 }

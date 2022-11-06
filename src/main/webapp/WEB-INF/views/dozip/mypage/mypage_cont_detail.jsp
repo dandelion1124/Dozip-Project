@@ -8,26 +8,10 @@
 <link rel = "stylesheet" type = "text/css" href = "/css/dozip/cont.css"/>
 
 <style>
-    #my_contract_list {
-        width: 99%;
-        margin: 20px auto;
-    }
-    .my_contract_wrap {
-        width:100%;
-        display: flex;
-        justify-content:space-between;
-        flex-direction: column;
-        align-items: center;
-    }
-    .contract_info {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-    }
-    .contract_info>ul>li {
-        list-style: none;
-        padding-left: 10px;
-    }
+    #my_contract_list { width: 99%; margin: 20px auto; }
+    .my_contract_wrap { width:100%; display: flex; justify-content:space-between; flex-direction: column; align-items: center; }
+    .contract_info { width: 100%; text-align: left; margin-left: 30px; }
+    .contract_info>ul>li { list-style: none; padding-left: 10px; }
 
 </style>
 
@@ -45,7 +29,7 @@
         <%-- 상세내용 불러옴 --%>
         <div class="follow_title_wrap">
             <p id="follow_title">현재진행상태</p>
-            <div class="progress_bar"><div class="progress"></div></div><p id="progress_percent">45%</p>
+            <%--<div class="progress_bar"><div class="progress"></div></div><p id="progress_percent">45%</p>--%>
         </div>
         <div class="my_contract_info2">
             <table>
@@ -130,7 +114,7 @@
             </div>
         </div>
         <%-- 상세내용 불러옴 --%>
-
+        <div id="cancel_box"><button type="button" id="cancel">계약취소하기</button></div>
 
     </div>
 </div>
