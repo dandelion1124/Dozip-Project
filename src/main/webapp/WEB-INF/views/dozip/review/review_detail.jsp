@@ -22,7 +22,7 @@
 			</div>
 		<hr/>
 			<div class="review_info">
-			<p>${re.mem_id}고객님 | ${re.re_date}</p><p hidden>수정일 : ${re.re_modate}</p>
+			<p>${re.mem_id}고객님 | ${re.re_date.substring(0,10)}</p><p hidden>수정일 : ${re.re_modate}</p>
 			</div>
 
 		<div class="review_img">
