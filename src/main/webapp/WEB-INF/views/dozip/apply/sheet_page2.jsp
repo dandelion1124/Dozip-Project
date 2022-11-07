@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <%-- 2페이지 --%>
 <div class="page2" hidden>
     <div id="estimate_step02">

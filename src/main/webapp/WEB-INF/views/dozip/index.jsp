@@ -61,7 +61,7 @@
             width: 330px;
             border: 1.5px solid #6d7696;
             border-radius: 4px;
-            background: hsl(248deg 29% 81%);
+            background: white;
         }
         div#keyword_form:hover{
             background: #F1F1FC;

@@ -354,7 +354,7 @@ from dual;
 drop table scheduleT;
 select *
 from SCHEDULET;
-create table schedule
+create table scheduleT
 (
     cont_no     nvarchar2(50) primary key, --계약서 번호
     regit_state number(5) default 0,       --등록상태 0: 미등록, 1 : 등록

@@ -159,8 +159,18 @@ function onlynumber(str) {
 
 /*달력*/
 $(function () {
-  //오늘 날짜를 출력
-  $("#today").text(new Date().toLocaleDateString());
+    function formatDate(date, format) {
+        const map = {
+            mm: date.getMonth() + 1,
+            dd: date.getDate(),
+            yy: date.getFullYear().toString().slice(-2),
+            yyyy: date.getFullYear()
+        }
+        return format.replace(/yyyy|mm|dd/gi, matched => map[matched])
+    }
+    //오늘 날짜를 출력
+    $("#today").text(formatDate(new Date(), 'yyyy년mm월dd일'));
+
 
   //datepicker 한국어로 사용하기 위한 언어설정
   $.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -176,7 +186,7 @@ $(function () {
     buttonText: "",             // 버튼의 대체 텍스트
     dateFormat: "yy-mm-dd",             // 날짜의 형식
     changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
-    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+    minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
     onClose: function (selectedDate) {
       // 시작일(est_start) datepicker가 닫힐때
       // 종료일(est_end)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
@@ -192,7 +202,7 @@ $(function () {
     buttonText: "",
     dateFormat: "yy-mm-dd",
     changeMonth: true,
-    //minDate: 0, // 오늘 이전 날짜 선택 불가
+    minDate: 0, // 오늘 이전 날짜 선택 불가
     onClose: function (selectedDate) {
       // 종료일(est_end) datepicker가 닫힐때
       // 시작일(est_start)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
