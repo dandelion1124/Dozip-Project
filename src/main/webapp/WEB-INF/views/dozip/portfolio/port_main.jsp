@@ -127,7 +127,7 @@
 
 
 			function clear_btn(){
-				document.getElementById("keyword").value = "통합검색";
+				document.getElementById("keyword").value = "";
 				/*document.getElementById("dd_group1").value = "주거유형";
 				document.getElementById("dd_group2").value = "상업유형";
 				document.getElementById("dd_group3").value = "스타일";
@@ -169,6 +169,9 @@
 				<input type = "text" name = "keyword" id="keyword" placeholder="통합검색">
 				<button  class = "search_Btn"><i class = "fas fa-search"></i></button>
 				<button class = "clear_sbtn" onclick="clear_btn()"><img src="/images/dozip/portfolio/icons8-restart-58.png"/></button>
+			</div>
+			<div class = "s_info">
+				<div class="info">검색하고자 하는 키워드를 입력하세요. (예: 모던 or 2000)</div>
 			</div>
 		</div>
 

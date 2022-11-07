@@ -457,3 +457,8 @@ a.footer_mail:hover {
 	border-radius: 10px;
 	padding: 10px;
 }
+
+/* 스크롤시 이미지 fade-in 되게*/
+.part4_img,.part5_img{
+	opacity: 0;
+}

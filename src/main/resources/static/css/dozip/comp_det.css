@@ -11,6 +11,7 @@
 .comp_wrap{
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 }
 
 .comp_card {
@@ -37,15 +38,22 @@
 	backface-visibility: hidden;
 }
 
+.front{
+	margin-top: 80px;
+}
+
 /* 뒷면 사전에 뒤집기 */
 .back{
+	margin-top: 30px;
 	transform: rotateY(180deg);
+	transition:1s;
 }
 
 /* 호버시 뒤집기 */
 /* 요소를 Y축 기준으로 회전시킴*/
 .flip:hover .comp_card{
 	transform: rotateY(180deg);
+	transition:1s;
 }
 
 #comp_logo {
@@ -61,6 +69,7 @@
 .comp_img {
 	display:flex;
 	justify-content: left;
+	margin-left: 40px;
 }
 
 .comp_name{
@@ -159,13 +168,13 @@ h2{
 
 /* 카드 뒷면 업체 정보*/
 .comp_cont{
-	margin-top:150px;
+	margin-top:50px;
 	text-align: left;
 	font-family: "맑은 고딕";
 	font-size: 1.3rem;
 	color: black;
 	font-weight: bold;
-	padding-left: 20px;
+	padding-left: 30px
 }
 #comp_title{
 	font-family: Malgun-Gothic;

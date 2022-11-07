@@ -76,6 +76,21 @@
             window.open("/dozip/login", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=550, height=750, left=0, top=0");
         }/* width=400, height=550 */
     </script>
+    <%--스크롤 할 때 이미지 fade in되게 설정--%>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function (){
+                $('.part4_img,.part5_img').each(function (){
+                    var bottom_of_element = $(this).offset().top + $(this).outerHeight()/3;
+                    var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                    if(bottom_of_window > bottom_of_element){
+                        $(this).animate({'opacity':'1'},700);
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 		<!-- header 영역 -->

@@ -13,13 +13,6 @@
 			<div class = "flip">
 				<div class = "comp_card">
 					<div class = "front">
-						<div class=	"comp_img">
-							<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
-							<button type = "button" id = "comp">보증업체 (i)
-								<span class = "tooltip-text">5000만원 예치금 보증회사</span>
-							</button>
-						</div>
-
 						<div class = "comp_name">
 							<h2>${pc.businessName}</h2>
 						</div>
@@ -46,6 +39,12 @@
 						</div>
 					</div>
 					<div class = "back">
+						<div class=	"comp_img">
+							<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
+							<button type = "button" id = "comp">보증업체 (i)
+								<span class = "tooltip-text">5000만원 예치금 보증회사</span>
+							</button>
+						</div>
 						<%-- 업체 정보 --%>
 						<div class = "comp_cont">
 							<p id = "comp_title">업체정보</p>
