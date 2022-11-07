@@ -407,18 +407,25 @@ button#certify_phone:hover, button#address_btn:hover{
   margin: 0 auto;
   margin-top: 18px;
   border-collapse: collapse;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);*/
   border-radius: 5px;
-  overflow: hidden;
-  padding: 15px;
+  /*overflow: hidden;*/
+  padding: 20px;
+  background-color: #DFE8F8;
 }
 /*표 테이블*/
 .left {
   font-weight: bold;
+  width:180px;
+  vertical-align: middle;
+  padding-left: 20px;
 }
 .right {
-  float: left;
-  display: flex;
+  /*float: left;
+  display: flex;*/
+  vertical-align: middle;
+  width: 73%;
+  border-bottom: 1px solid lightgray;
 }
 tr.table{
   vertical-align: top;

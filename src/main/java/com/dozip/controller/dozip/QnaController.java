@@ -77,6 +77,7 @@ public class QnaController {
     public ModelAndView myQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
         String id = (String)session.getAttribute("id");
         int count=this.qnaService.getListCount(id);
+        mv.addObject("count", count);
 
         Paging paging;
         if(request.getParameter("page") == null) {
@@ -103,6 +104,7 @@ public class QnaController {
     public ModelAndView myPQna(ModelAndView mv, QnaVO q, HttpServletRequest request, HttpSession session) throws Exception {
         String id = (String)session.getAttribute("id");
         int count=this.qnaService.getPListCount(id);
+        mv.addObject("count", count);
 
         Paging paging;
         if(request.getParameter("page") == null) {

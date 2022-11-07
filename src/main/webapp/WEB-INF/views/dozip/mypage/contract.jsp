@@ -2,64 +2,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="/js/dozip/jquery.js"></script>
 <style>
-    div.contract_title {
-        font-size: 33px;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    #contract_table1 {
-        border: 1px solid gray;
-        border-collapse: collapse;
-        background-color: white;
-        margin: 7px 0;
-        font-size: 16px;
-        width: 100%;
-    }
-
-    #contract_table2 {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        margin: 7px 0;
-    }
-
-    #contract_table1 tr, #contract_table2 tr {
-        height: 40px;
-    }
-
-    #contract_table1 th:first-of-type, #contract_table2 th:first-of-type {
-        width: 20%;
-    }
-
-    th.contract_area p:first-of-type {
-        padding-left: 15px;
-        float: left;
-        display: inline-flex;
-        margin: 0px;
-    }
-
-    th.contract_area p:last-of-type {
-        padding-right: 15px;
-        float: right;
-        display: inline-flex;
-        margin: 0px;
-    }
-
-    #contract_table3 {
-        border: 0px;
-        width: 100%;
-        text-align: left;
-    }
-
-    th.contract_sign {
-        text-align: right;
-        padding-right: 30px;
-    }
-    div#contract_btn input{
-        float: right;
-        margin: 9px;
-    }
+    div.contract_title { font-size: 33px; text-align: center; margin-bottom: 30px; }
+    #contract_table1 { border: 1px solid gray; border-collapse: collapse; background-color: white; margin: 7px 0; font-size: 16px; width: 100%; }
+    #contract_table2 { width: 100%; border-collapse: collapse; background-color: white; margin: 7px 0; }
+    #contract_table1 tr, #contract_table2 tr { height: 40px; }
+    #contract_table1 th:first-of-type, #contract_table2 th:first-of-type { width: 20%; }
+    th.contract_area p:first-of-type { padding-left: 15px; float: left; display: inline-flex; margin: 0px; }
+    th.contract_area p:last-of-type { padding-right: 15px; float: right; display: inline-flex; margin: 0px; }
+    #contract_table3 { border: 0px; width: 100%; text-align: left; }
+    th.contract_sign { text-align: right; padding-right: 30px; }
+    div#contract_btn input{ float: right; margin: 9px; }
 </style>
 
 <form id="cont_form">

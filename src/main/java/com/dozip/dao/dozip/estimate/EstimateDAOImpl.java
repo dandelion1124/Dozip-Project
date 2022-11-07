@@ -39,4 +39,8 @@ public class EstimateDAOImpl implements EstimateDAO {
     public void updateBtoE(BidVO b) {
         this.sqlSession.update("bid_to_est", b);
     }
+    @Override //견적서(입찰) 번호 리스트
+    public List<String> getEstNum(String mem_id) {
+        return this.sqlSession.selectList("est_num", mem_id);
+    }
 }

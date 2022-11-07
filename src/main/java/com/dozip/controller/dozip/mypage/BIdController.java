@@ -47,6 +47,10 @@ public class BIdController {
         elist = this.estimateService.getElist(e);
         mv.addObject("elist", elist);
 
+        List<String> estNum = new ArrayList<>();
+        estNum = this.estimateService.getEstNum(e.getMem_id());
+        mv.addObject("estNum", estNum);
+
         mv.setViewName("/dozip/mypage/mypage_est2");
         return mv;
     }

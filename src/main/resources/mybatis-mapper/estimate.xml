@@ -45,6 +45,11 @@
         where est_num=#{est_num}
     </update>
 
+    <!--견적서(입찰) 번호 리스트-->
+    <select id="est_num" resultType="String">
+        select est_num from estimateT where mem_id=#{mem_id} order by est_num desc
+    </select>
+
     <!--여기 위까지 지혜 정리완료-->
 
 

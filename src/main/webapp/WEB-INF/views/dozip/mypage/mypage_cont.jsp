@@ -60,6 +60,7 @@
             <p style="font-size: 1.7rem; font-weight: bold; margin: 0;">내 계약내역 확인</p>
             <ul style="padding:0px;">
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님의 계약진행 내역을 확인할 수 있습니다.</li>
+                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;<b style="color: #347844; font-size: 0.9rem; background-color: beige">'계약서 작성하기 → 계약번호를 눌러서 상세내용 확인 → 결제진행'</b> 순서로 진행해주세요.</li>
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;계약번호를 클릭하면 자세한 내용을 확인 할 수 있습니다.</li>
                 <li style="font-size: 0.8rem;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;기한에 맞춰 결제를 진행해주십시오.</li>
             </ul>
@@ -131,6 +132,13 @@
     function pop(){
         alert("계약을 먼저 완료하고 이용해주세요.");
     }
+
+    $( ".my_contract_table tr" ).on( "mouseover", function() {
+        $( this ).css( "background-color", "#EEF1FF" );/*FFF8E6/ECF7FF/EEF1FF*/
+    });
+    $( ".my_contract_table tr" ).on( "mouseleave", function() {
+        $( this ).css( "background-color", "white" );
+    });
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

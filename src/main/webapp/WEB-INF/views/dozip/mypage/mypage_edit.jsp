@@ -105,10 +105,6 @@
         font-size: 15px;
         accent-color: #347844;
     }
-    /*input[type="radio"]{display:none;}
-    label{display:inline-block;width:20px;height:20px;background-repeat:no-repeat;background-size:20px auto;}
-    .r{background-image: url('/resources/static/images/dozip/icons8-unchecked-radio-button-48.png');}
-    input:checked + label.r{background-image: url("/resources/static/images/dozip/icons8-checked-radio-button-48.png");}*/
 </style>
 
 <%-- 정보수정 --%>

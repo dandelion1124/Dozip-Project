@@ -34,7 +34,7 @@
             </ul>
         </div>
         <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"/>
-        <p style="width: 90%; font-weight: bold;">${listcount}건의 문의내역이 있습니다.</p>
+        <p style="width: 90%; font-weight: bold;">${count}건의 문의내역이 있습니다.</p>
         <div class="my_qna_cont">
             <table class="my_qna_table">
                 <tr>
@@ -52,7 +52,7 @@
                             </td>
                             <td id="partner_name">
                                 <c:if test="${qlist[i].qna_level != 0}"><span></span></c:if>
-                                <c:if test="${qlist[i].qna_level == 0}"><a href="#">${qlist[i].businessName}</a></c:if>
+                                <c:if test="${qlist[i].qna_level == 0}">${qlist[i].businessName}</c:if>
                             </td>
                             <td id="title" style="text-align: left; padding-left: 20px;">
                                 <c:if test="${qlist[i].qna_level != 0}"><img src="/images/dozip/arrow.png"></c:if>
@@ -125,6 +125,13 @@
         document.querySelector(".background").className = "background";
     }
     document.querySelector("#close").addEventListener("click", close);
+
+    $( ".my_qna_table tr " ).on( "mouseover", function() {
+        $( this ).css( "background-color", "#FFF8E6" );/*FFF8E6/ECF7FF/EEF1FF*/
+    });
+    $( ".my_qna_table tr " ).on( "mouseleave", function() {
+        $( this ).css( "background-color", "white" );
+    });
 </script>
 
 <%-- 하단 공통부분 --%>

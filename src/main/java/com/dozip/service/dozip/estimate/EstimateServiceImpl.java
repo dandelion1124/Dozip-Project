@@ -61,4 +61,8 @@ public class EstimateServiceImpl implements EstimateService {
     public void updateEstate(EstimateVO e) {
         this.estimateDAO.updateEstate(e); //estimateT 상태 : 계약요청
     }
+    @Override //견적서(입찰) 번호 리스트
+    public List<String> getEstNum(String mem_id) {
+        return this.estimateDAO.getEstNum(mem_id);
+    }
 }

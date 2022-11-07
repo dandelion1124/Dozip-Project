@@ -5,7 +5,7 @@
 .progress_bar .progress { width: 45%; height: 30px; padding: 0; text-align: center; background-color: #4F98FF; color: #111; }
 #progress_percent { font-size: 1.5rem; font-weight:bold; margin-left: 10px; }*/
 /*진행상태*/
-.my_contract_info2 { border: 3px solid black; font-weight:bold; text-align: center; width: 90%; padding-top: 15px; padding-bottom: 15px; margin: 0 auto; }
+.my_contract_info2 { border: 2px solid black; font-weight:bold; text-align: center; width: 90%; padding-top: 15px; padding-bottom: 15px; margin: 0 auto; }
 .my_contract_info2 table, td, th { border: none; margin: 0 auto; }
 .my_contract_info2 table { width: 100%; }
 .my_contract_info2 th, td { font-size: 1.3rem; }
@@ -14,7 +14,7 @@
 /*요약내용*/
 .my_contract_cont2 p { font-size: 1.5rem; font-weight:bold; margin-bottom: 10px; }
 .my_contract_cont2 { width: 50%; }
-.contract_summary { border: 3px solid black; padding-top: 15px; padding-bottom: 15px; width: 95%; }
+.contract_summary { border: 2px solid black; padding-top: 15px; padding-bottom: 15px; width: 95%; }
 #contract_summary_table { width: 90%; margin: 0 auto; border-spacing: 10px; }
 .cst_th, .cst_td { font-size: 1.0rem; }
 .contract_view_wrap { text-align: center; }
@@ -22,10 +22,10 @@
 /*결제내역*/
 .contract_pay { width: 50%; }
 .contract_pay p { font-size: 1.5rem; font-weight:bold; margin-bottom: 10px; }
-.contarct_pay_wrap { border: 3px solid black; padding-top: 15px; padding-bottom: 15px; width: 95%; height: 251px;}
+.contarct_pay_wrap { border: 2px solid black; padding-top: 15px; padding-bottom: 15px; width: 95%; height: 251px; margin: 0 auto; }
 .contarct_pay_table { width: 90%; margin: 0 auto; border-spacing: 10px; }
-.cpt_th , .cpt_td { font-size: 1.0rem; text-align: center; }
-#ttt { background-color: #d5ebd1;}
+.cpt_th, .cpt_th1, .cpt_td { font-size: 1.0rem; text-align: center; }
+.cpt_th1 { border-bottom: 4px double lightgray; }
 #total_pay { color: red; font-size: 1.1rem; }
 .ppp { display: flex; margin-top: 30px; margin-bottom: 30px; width: 90%; }
 .pay_wrap { text-align: center; margin-top: 10px; }
