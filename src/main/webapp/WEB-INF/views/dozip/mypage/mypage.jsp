@@ -42,7 +42,7 @@
     <div class="box" id="row">
         <div class="p01" style="display: flex">
             <div class="img_box">
-                <img src="/images/dozip/icons8-paper-80.png" style="width:70px; height:70px;" />
+                <img src="/images/dozip/icons8-estimate-48.png" style="width:70px; height:70px;" />
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 견적서(지정)</p>
@@ -52,17 +52,17 @@
         </div>
         <div class="p01" style="display: flex">
             <div class="img_box">
-                <img src="/images/dozip/icons8-document-66.png" style="width:70px; height:70px;" />
+                <img src="/images/dozip/icons8-estimate-48.png" style="width:70px; height:70px;" />
             </div>
             <div class="txt_box">
-                <p class="p_title">나의 견적서(자유)</p>
+                <p class="p_title">나의 견적서(입찰)</p>
                 <p class="p_cont">${eListCount} 건</p>
                 <p class="p_link"><a href="/dozip/my_est2">견적내역 확인하기 >> </a></p>
             </div>
         </div>
         <div class="p01" style="display: flex">
             <div class="img_box">
-                <img src="/images/dozip/icons8-regular-file-64.png" style="width:70px; height:70px;" />
+                <img src="/images/dozip/icons8-review-64.png" style="width:64px; height:64px; margin-left: 5px; margin-bottom: 5px;" />
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 후기</p>
@@ -72,7 +72,7 @@
         </div>
         <div class="p01" style="display: flex">
             <div class="img_box">
-                <img src="/images/dozip/icons8-document-64.png" style="width:70px; height:70px;" />
+                <img src="/images/dozip/icons8-question-64.png" style="width:64px; height:64px;" />
             </div>
             <div class="txt_box">
                 <p class="p_title">나의 문의</p>

@@ -80,6 +80,14 @@
     <p id="my_rv_text">다른 고객들의 리뷰를 보고싶다면?&nbsp;&nbsp; <a href="/dozip/review_main">다른 리뷰 보러가기</a></p>
 </div>
 
+<script>
+    $( ".my_rv_table tr " ).on( "mouseover", function() {
+        $( this ).css( "background-color", "#ECF7FF" );/*FFF8E6/ECF7FF/EEF1FF*/
+    });
+    $( ".my_rv_table tr " ).on( "mouseleave", function() {
+        $( this ).css( "background-color", "white" );
+    });
+</script>
 
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

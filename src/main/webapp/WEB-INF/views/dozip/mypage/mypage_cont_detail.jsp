@@ -39,7 +39,10 @@
                     <th>공사중</th><th rowspan="2" class="next_arrow">>></th><th>공사완료</th>
                 </tr>
                 <tr>
-                    <td>0</td><td>0</td><td style="color: blue;">1</td><td>0</td>
+                    <td><c:if test="${p.pay_state=='계약금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='계약금요청'}">0</c:if></td>
+                    <td><c:if test="${p.pay_state=='계약금결제완료'||p.pay_state=='중도금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='계약금결제완료'&&p.pay_state!='중도금요청'}">0</c:if></td>
+                    <td><c:if test="${p.pay_state=='중도금결제완료'||p.pay_state=='잔금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='중도금결제완료'&&p.pay_state!='잔금요청'}">0</c:if></td>
+                    <td><c:if test="${p.pay_state=='잔금결제완료'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='잔금결제완료'}">0</c:if></td>
                 </tr>
             </table>
         </div>
@@ -62,21 +65,21 @@
                             <th class="cst_th">공간유형</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_title.substring(0, c.cont_title.length() - 2)})</td>
                         </tr>
                         <tr>
-                            <th class="cst_th">평수</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_area}평</td>
+                            <th class="cst_th">평수</th> <th class="cst_th">:&nbsp;</th> <td class="cst_td">${c.cont_area}평(${e.est_areaM}m<sup>2</sup>)</td>
                         </tr>
                     </table>
                     <div class="contract_view_wrap">
-                        <button id="apply_view">신청서 확인하기</button>
+                        <button id="apply_view" onclick="est_view('${c.est_num}')">신청서 확인하기</button>
                         <button id="contract_view" onclick="cont_view('${c.cont_no}')">계약서 확인하기</button>
                     </div>
                 </div>
             </div>
             <div class="contract_pay">
-                <p>결제내역</p>
+                <p style="margin-left: 10px;">결제내역</p>
                 <div class="contarct_pay_wrap">
                     <table class="contarct_pay_table">
-                        <tr>
-                            <th colspan="3" class="cpt_th" id="ttt">&nbsp;총 금액&nbsp;&nbsp;&nbsp;<span id="total_pay">${c.cont_total}</span></th> <th class="cpt_th">요청일</th> <th class="cpt_th">결제일</th>
+                        <tr style="height: 40px;">
+                            <th colspan="3" class="cpt_th1">&nbsp;총 금액&nbsp;&nbsp;&nbsp;<span id="total_pay">${c.cont_total}</span></th> <th class="cpt_th1">요청일</th> <th class="cpt_th1">결제일</th>
                         </tr>
                         <tr>
                             <th class="cpt_th">계약금</th> <th class="cpt_th">:</th>
@@ -98,7 +101,7 @@
                         </tr>
                     </table>
                     <div class="pay_wrap">
-                        <select name="pay_select" id="pay_select">
+                        <select name="pay_select" id="pay_select" style="width: 25%;">
                             <option value="0" selected>결제선택</option>
                             <c:if test="${p.pay_date1!=null}"><option value="done" disabled>계약금지불완료</option></c:if>
                             <c:if test="${p.pay_date1==null}"><option value="${c.cont_cost1}">계약금</option></c:if>
@@ -107,7 +110,7 @@
                             <c:if test="${p.pay_date3!=null}"><option value="done" disabled>잔금지불완료</option></c:if>
                             <c:if test="${p.pay_date3==null}"><option value="${c.cont_cost3}">잔금</option></c:if>
                         </select>
-                        <span id="select_cost" style="margin-left: 10px; font-weight: bold; font-size: 1.3rem;"></span>
+                        <span id="select_cost" style="margin-left: 10px; font-weight: bold; font-size: 1.3rem;"> - 원</span>
                         <button type="button" id="pay_btn" onclick="pay_view('${c.cont_no}')" disabled>결제하기</button>
                     </div>
                 </div>
@@ -131,6 +134,9 @@
 
     function cont_view(cont_no){
         window.open('/dozip/my_cont_view?cont_no='+cont_no,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
+    function est_view(est_num){
+        window.open('/dozip/my_est_view?est_num='+est_num,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
     }
     function pay_view(cont_no){
         let contNo = cont_no;

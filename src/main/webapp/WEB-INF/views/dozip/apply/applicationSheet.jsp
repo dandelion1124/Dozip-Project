@@ -445,6 +445,9 @@ function apply01_check() { /*1 페이지 유효성 검증 */
         var area = document.getElementById('cal1').value
         document.getElementById("get_area").innerText = area;
 
+        var area2 = document.getElementById('cal2').value
+        document.getElementById("get_area2").innerText = area2;
+
 	if ($(':radio[name="est_use"]:checked').length < 1) {
 		alert('건물 유형을 선택해 주세요!');
 		return false;
@@ -489,7 +492,7 @@ function apply01_check() { /*1 페이지 유효성 검증 */
     }
 
     document.getElementById("d").value = all;
-    document.getElementById("get_detail").innerText = all;
+    document.getElementById("get_detail").innerText = all.substring(0, all.length - 1);
 
     var all2 = '';
     var detail03_val = document.getElementsByName("group_kitchen_item");

@@ -2,9 +2,12 @@ package com.dozip.controller.dozip.mypage;
 
 import com.dozip.service.dozip.contract.ContractService;
 import com.dozip.service.dozip.pay.PayService;
+import com.dozip.service.partners.estimate.BiddingService;
+import com.dozip.service.partners.estimate.EstService;
 import com.dozip.service.partners.myEstimate.MyEstimateService;
 import com.dozip.utils.Paging;
 import com.dozip.vo.ContractVO;
+import com.dozip.vo.EstimateVO;
 import com.dozip.vo.PayVO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,9 +32,10 @@ public class ContractController {
     private ContractService contractService;
     @Autowired
     private PayService payService;
-
     @Autowired
     MyEstimateService myEstimateService;
+    @Autowired
+    BiddingService biddingService;
 
     @GetMapping("my_cont") //마이페이지-계약 리스트
     public ModelAndView myCont(ModelAndView mv, ContractVO c, HttpServletRequest request, HttpSession session){
@@ -63,11 +67,17 @@ public class ContractController {
 
     @GetMapping("my_cont_view") //마이페이지-계약서확인
     public ModelAndView myContView(ModelAndView mv, String cont_no){
-        System.out.println("출력"+cont_no);
         ContractVO c = this.contractService.getCont(cont_no); //계약서 정보
         System.out.println("getCustomer_number"+c.getCustomer_number());
         mv.addObject("c",c);
         mv.setViewName("/dozip/mypage/contract");
+        return mv;
+    }
+    @GetMapping("my_est_view") //마이페이지-견적서확인
+    public ModelAndView myEstView(ModelAndView mv, String est_num){
+        EstimateVO e = this.biddingService.selectEstimate(est_num);
+        mv.addObject("e",e);
+        mv.setViewName("/dozip/mypage/estimate");
         return mv;
     }
 
@@ -93,7 +103,8 @@ public class ContractController {
 
         ContractVO cont = this.contractService.getCont(cont_no); //계약서 정보
         PayVO pay = this.payService.getPay(cont_no); //결제정보
-
+        EstimateVO e = this.biddingService.selectEstimate(cont.getEst_num());
+        mv.addObject("e",e);
         mv.addObject("c", cont);
         mv.addObject("p", pay);
         mv.setViewName("/dozip/mypage/mypage_cont_detail");

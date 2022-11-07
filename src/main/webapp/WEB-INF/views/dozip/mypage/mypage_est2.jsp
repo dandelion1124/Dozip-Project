@@ -5,80 +5,20 @@
 <jsp:include page="./mypage_header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 <style>
-    #my_estimate_list {
-        width: 99%;
-        margin: 20px auto;
-    }
-    .my_estimate_wrap {
-        width:100%;
-        display: flex;
-        justify-content:space-between;
-        flex-direction: column;
-        align-items: center;
-    }
-    .my_apply_cont {
-        width: 90%;
-    }
-    .my_apply_table th {
-        background-color: #f7f7f7;
-        font-size: 0.9rem;
-        height: 30px;
-        border-bottom: 1px solid #B3B9BE;
-        border-top: 2px solid #2b2a29;
-    }
-    .my_apply_table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-    }
-    .my_apply_table td {
-        border-bottom: 1px solid #B3B9BE;
-        padding: 10px 0;
-        font-size: 0.8rem;
-    }
-    .estimate_info {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-    }
-    .estimate_info>ul>li {
-        list-style: none;
-        padding-left: 10px;
-    }
-    .page_area{
-        text-align:center;
-        margin-top: 10px;
-    }
-    #my_est_text {
-        text-align: center;
-        font-weight: bold;
-        margin: 50px auto;
-    }
-    #my_est_text  a {
-        text-decoration: underline;
-        color: #347844;
-    }
-    #permit_btn{
-        border: none;
-        background-color: #3333FF;
-        color: white;
-        height: 25px;
-        margin-right: 5px;
-    }
-    #reject_btn{
-        border: none;
-        background-color: #FF0033;
-        color: white;
-        height: 25px;
-    }
-    #detail{
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        word-break: break-all;
-        max-width : 300px;
-        min-width : 100px;
-    }
+    #my_estimate_list { width: 99%; margin: 20px auto; }
+    .my_estimate_wrap { width:100%; display: flex; justify-content:space-between; flex-direction: column; align-items: center; }
+    .my_apply_cont { width: 90%; }
+    .my_apply_table th { background-color: #f7f7f7; font-size: 0.9rem; height: 30px; border-bottom: 1px solid #B3B9BE; border-top: 2px solid #2b2a29; }
+    .my_apply_table { width: 100%; text-align: center; border-collapse: collapse; }
+    .my_apply_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
+    .estimate_info { width: 100%; text-align: left; margin-left: 30px; }
+    .estimate_info>ul>li { list-style: none; padding-left: 10px; }
+    .page_area{ text-align:center; margin-top: 10px; }
+    #my_est_text { text-align: center; font-weight: bold; margin: 50px auto; }
+    #my_est_text  a { text-decoration: underline; color: #347844; }
+    #permit_btn{ border: none; background-color: #3333FF; color: white; height: 25px; margin-right: 5px; }
+    #reject_btn{ border: none; background-color: #FF0033; color: white; height: 25px; }
+    #detail{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all; max-width : 300px; min-width : 100px; }
 </style>
 
 <%-- 견적신청내역 --%>
@@ -137,11 +77,11 @@
         <div style="margin-top: 40px; width: 90%; margin-bottom: 10px;">
             <span style="font-weight: bold; margin-right: 10px;">입찰참여 업체 리스트 확인</span>
             <select id="selectNum">
-                <c:if test="${elist.size()==0}"><option value="0">견적서 번호를 선택해주세요.</option></c:if>
-                <c:if test="${elist.size()!=0}">
+                <c:if test="${estNum.size()==0}"><option value="0">견적서 번호를 선택해주세요.</option></c:if>
+                <c:if test="${estNum.size()!=0}">
                     <option value="0">견적서 번호를 선택해주세요.</option>
-                    <c:forEach var="n" items="${elist}">
-                        <option value="${n.est_num}">${n.est_num}</option>
+                    <c:forEach var="n" items="${estNum}">
+                        <option value="${n}">${n}</option>
                     </c:forEach>
                 </c:if>
             </select>
@@ -192,12 +132,13 @@
     });
 
     $(document).on("click", "button[name='permit']", function (){
-        var bid_num = $(this).val();
+        let bid_num = $(this).val();
         //alert("bid_num" + bid_num);
-        var result = confirm("선택하신 업체와 계약하시겠습니까?");
+
+        let result = confirm("선택하신 업체와 계약하시겠습니까?");
 
         if(result) {
-            var formData = new FormData();
+            let formData = new FormData();
             formData.append("bid_num", bid_num);
 
             $.ajax({
@@ -220,25 +161,33 @@
 
     // document.getElementById('reject_btn').onclick = function (){
     $(document).on("click", "button[name='reject']", function (){
-        var bid_num = $('#reject_btn').val();
+        let bid_num = $('#reject_btn').val();
 
-        alert("해당 업체와의 계약을 거절 하시겠습니까?");
+        let res = confirm("해당 업체와의 계약을 거절 하시겠습니까?");
 
-        $.ajax({
-            url : '/dozip/my_bid_reject',
-            type : 'post',
-            data : {
-                bid_num : bid_num
-            },
-            success : function(data) {
-                location.reload();
-            },
-            error:function(error){
-                alert(error);
-            }
-        })
-
+        if(res) {
+            $.ajax({
+                url: '/dozip/my_bid_reject',
+                type: 'post',
+                data: {
+                    bid_num: bid_num
+                },
+                success: function (data) {
+                    location.reload();
+                },
+                error: function (error) {
+                    alert(error);
+                }
+            })
+        }
     })
+
+    $( ".my_apply_table tr " ).on( "mouseover", function() {
+        $( this ).css( "background-color", "#EEF1FF" );/*FFF8E6/ECF7FF/EEF1FF*/
+    });
+    $( ".my_apply_table tr " ).on( "mouseleave", function() {
+        $( this ).css( "background-color", "white" );
+    });
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

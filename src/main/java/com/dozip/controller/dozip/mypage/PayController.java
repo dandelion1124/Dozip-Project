@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @Controller
+@EnableScheduling
 @RequestMapping("/dozip/*")
 public class PayController {
     @Autowired

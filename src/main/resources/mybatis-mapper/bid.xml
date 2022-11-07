@@ -42,11 +42,13 @@
 
     <!--입찰 리스트-->
     <select id="bid_list_id" resultType="BidVO">
-        select DISTINCT b.*, p.businessName, e.mem_id
-        from (select * from bidT order by bid_date desc) b, partnersT p, estimateT e
-        where b.businessNum=p.businessNum(+)
-          and p.businessNum=e.businessNum(+)
-          and mem_id=#{mem_id}
+        select DISTINCT b.bid_num, b.bid_state, b.est_num, b.businessNum, p.businessName, e.mem_id
+              from (select * from bidT order by bid_date desc) b,
+                   partnersT p,
+                   estimateT e
+              where b.est_num = e.est_num(+)
+                and b.businessNum = p.businessNum(+)
+                and mem_id=#{mem_id}
     </select>
 
 </mapper>

@@ -14,4 +14,5 @@ public interface EstimateService {
     List<EstimateVO> getElist(EstimateVO e); //견적서(입찰) 리스트
     void updateState(BidVO b); //견적서(입찰) 선택
     void updateEstate(EstimateVO e); //견적신청 상태변경
+    List<String> getEstNum(String mem_id); //견적서(입찰) 번호 리스트
 }
