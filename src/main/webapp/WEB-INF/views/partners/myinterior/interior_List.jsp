@@ -8,14 +8,17 @@
 <link rel="stylesheet" href="/css/partners/myinterior.css">
 <style>
     #interiorList_table td{
-        padding: 2px 0px;
+        padding: 5px 0px;
         text-align: center;
-        border: 1px solid darkblue;
+        border-bottom: 1px solid gray;
     }
     td.schedule_regit{
         background: #D7EAF5;
         padding:5px 3px;
         border: none;
+    }
+    button.schedule_btn{
+        padding: 2px 15px;
     }
     td.schedule_regit:hover{
         background: #6495ED;
@@ -130,8 +133,8 @@
                 <%--
                 계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
                 --%>
-                <td class='schedule_regit'><button onclick="show_contract('${c.cont_no}')">보기</button></td>
-                <td class='schedule_regit'>보기</td>
+                <td><button onclick="show_contract('${c.cont_no}')" class='schedule_btn'>보기</button></td>
+                <td>보기</td>
             </tr>
             </c:forEach>
         </c:if>

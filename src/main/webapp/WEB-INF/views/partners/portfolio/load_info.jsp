@@ -74,17 +74,7 @@
             window.opener.document.getElementById("sel_type").value ='주거공간';
             window.opener.document.getElementById("sel_house").value = pf_subtype;
         }
-        $("#sel_type", opener.document).attr('disabled',true);
-        $("#sel_house", opener.document).attr('disabled',true);
-        $("#sel_business", opener.document).attr('disabled',true);
 
-        $("#sample6_postcode", opener.document).attr('disabled',true);
-        $("#sample6_address", opener.document).attr('disabled',true);
-        $("#sample6_detailAddress", opener.document).attr('disabled',true);
-        $("#sample6_extraAddress", opener.document).attr('disabled',true);
-        $("#pf_area", opener.document).attr('disabled',true);
-        $("#pf_cost", opener.document).attr('disabled',true);
-        $("#searchAddr", opener.document).attr('disabled',true);
         window.opener.document.getElementById("sample6_postcode").value =pf_zipcode;
         window.opener.document.getElementById("sample6_address").value = pf_addr1;
         window.opener.document.getElementById("sample6_detailAddress").value = pf_addr2;
