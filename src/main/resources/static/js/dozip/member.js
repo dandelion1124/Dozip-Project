@@ -1,3 +1,4 @@
+
 /* 이메일주소 동기화 */
 var changeSelect = function(value) {
 	$("#mem_domain").val(value);

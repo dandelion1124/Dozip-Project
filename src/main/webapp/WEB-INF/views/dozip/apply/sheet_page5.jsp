@@ -66,7 +66,7 @@
             <input type="hidden" id="bNum" name="bNum">
             <div class="nextpage">
                 <button type="button" class="go_back" onclick="page_back05()">이전</button>
-                <button class="go_next" >진행하기</button>
+                <button class="go_next">진행하기</button>
             </div>
         </section>
     </div>

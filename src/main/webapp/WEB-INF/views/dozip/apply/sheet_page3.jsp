@@ -1,21 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
     .partnersinfo_div {
-        padding: 20px 50px;
+        padding: 20px 10px;
         font-size: 20px;
         line-height: 1.8;
         border: 1px solid darkgray;
         margin-bottom: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        box-shadow: 1px 1px 4px 1px rgb(247 226 169 / 25%);
     }
     .partnersinfo_div:hover {
-        background: #b0d3ff;
-        border: 1px solid #212121b5;
+        background: #FEFCF5;
+        cursor: pointer;
+        border: 1px solid #e1d9bd;
     }
     .partnersinfo_div  input[type="checkbox"]{
         zoom: 1.3;
     }
-
-
+    .partnersinfo_div img {
+        width: 100px;
+        height: 100px;
+    }
 
 </style>
 
@@ -44,7 +51,8 @@
                     <p class="textCount">0자</p><p class="textTotal">/1500자</p>
                 </div>
                 <textarea id="paragraph" name="paragraph" maxlength="1500" placeholder="원하는 스타일에 대해 자유롭게 써주세요"></textarea>
-
+                <h3>원하는 스타일의 사진을 등록해주세요</h3>
+                <input type="file" name="est_file">
             </div>
             <div class="nextpage">
                 <button type="button" class="go_back" onclick="page_back03()" >이전</button>
@@ -53,6 +61,7 @@
         </section>
     </div>
 </div>
+
 <script>
     function apply03_check(){ /*3 페이지 유효성 검증 */
         var est_name = document.getElementById("name").value;
@@ -90,10 +99,10 @@
         $.getJSON("/dozip/search_part/"+est_addr, function(data){ //json 데이터를 get방식으로 처리, 비동기식으로 가져온 데이터는 data매개변수에 저장
             var result="";
             $(data).each(function(){ //each()함수로반복
-                result += "<div class=partnersinfo_div>"+
-                    "<input type=checkbox name='businessName' value="+this.businessNum+" style='appearance: revert;'> <label for="+this.businessName+">"+this.businessName+"</label><br>" +
-                    "전화번호 : " +this.p_Tel+"<br>" +
-                    "주소 :" +this.p_Addr1+"<br></div>"
+                result += "<label for="+this.businessNum+"><div class=partnersinfo_div><div class='partners_logo'><img src='/images/dozip/profile/null.png'></div><div>"+
+                    "<input  type='checkbox' class='partenrs_btn' id="+this.businessNum+" name='businessName' value="+this.businessNum+" style='appearance: revert;'>&nbsp;업체명 : "+ this.businessName+"<br>" +
+                    "&nbsp;&nbsp;&nbsp;&nbsp;연락처 : " +this.p_Tel+"<br>" +
+                    "&nbsp;&nbsp;&nbsp;&nbsp;주 &nbsp;소 : " +this.p_Addr1+"<br></div></div></label>"
             });
             $('#partners_info').html(result); //해당영역에 html() 함수로 문자와 태그를 함께 변경 적용.
         });
@@ -106,7 +115,7 @@
             datatype: "text",
             success: function (data) {
                 var result="";
-                result+="고객님 근처에 <b style=color:red;font-size:2em>"+data+"</b>개의 인테리어 업체가 있습니다.<br/> 클릭해서 직접 상담해 볼 수 있어요.";
+                result+="고객님 근처에 <b style=color:red;font-size:2em>"+data+"</b>개의 인테리어 업체가 있습니다<br/> 클릭해서 직접 상담해 볼 수 있어요";
                 $('#p1').html(result); //해당영역에 html() 함수로 문자와 태그를 함께 변경 적용.
             }
         });
