@@ -41,7 +41,7 @@
             padding: 5px;
         }
         .info button:hover{
-            background: #4F98FF;
+            background: #F3FAF5;
         }
         #keyword {
             width: 260px;
@@ -180,7 +180,6 @@
            <div id="part2_info"> 검색하고자 하는 키워드를 입력하세요. (예: 역삼동 인테리어)</div>
         </div>
         <div id="part22">
-
 
             <div class="part2_left">
                 검색결과 : 12개

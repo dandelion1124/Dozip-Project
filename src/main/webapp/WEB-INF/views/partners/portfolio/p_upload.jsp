@@ -7,24 +7,18 @@
 	}
 	#portfolio_form input, #portfolio_form select {
 		border:none;
-		/*background: rgba(253, 245, 236, 0.13);*/
 		border-radius: 3px;
 		padding: 0 3px;
 	}
 	fieldset#first_area input[type=button], fieldset#first_area input[type=text], fieldset#first_area select {
 		height: 30px;
 	}
-	fieldset#first_area input[type=text]:focus-visible, fieldset#first_area select:focus-visible {
-		/*background: #F39A49;*/
-	}
-	fieldset#first_area input[type=button]:hover{
-		/*background: #F39A49;*/
-		/*border: 2px solid #F39A49;*/
-	}
+	fieldset#first_area select:hover, fieldset#first_area input[type=text]:hover{
+		background: #e2e6e8;
+	  }
 
 	#portfolio_form textarea{
 		border:none;
-		/*background:#FDF5EC;*/
 		border-radius: 4px;
 	}
 	#portfolio_form fieldset{
@@ -44,6 +38,21 @@
 		font-size: 20px;
 		height: 10px;
 	}
+	#f_button input:hover,.port_btn:hover,#port_load_btn:hover{
+		background:#9A9A9A;
+		cursor: pointer;
+	}
+	#f_button input{
+		float: right;
+		margin: 0px 10px;
+		padding: 0px 14px;
+	}
+	input#port_load_btn {
+		border: none;
+		background: rgba(169, 169, 167, 0.62);
+		border-radius: 3px;
+		padding: 7px 10px;
+	}
 </style>
 <p style="margin-bottom: 10px"> | 시공사례 > 등록</p>
 
@@ -61,7 +70,7 @@
 	</div>
 	<div>
 		<span><b>두집</b>에서 계약한 인테리어를 조회하면 쉽게 주요정보를 입력 할 수 있습니다.</span>
-		<input type="button" value="불러오기" onclick="loadPortfolioInfo()">
+		<input type="button" value="불러오기" id='port_load_btn' onclick="loadPortfolioInfo()" style="padding: ">
 	</div>
 
 
@@ -72,7 +81,7 @@
 	</script>
 </div>
 <form action="upload_photo" id="portfolio_form" method="post" onsubmit="return portfoilio_check()">
-	<input type="hidden" id="businessNum" value="${businessNum}">
+	<input type="hidden" id="businessNum"  value="${businessNum}">
 	<%-- 제목, 공사 유형, 시공범위, 주소 ,평수, 공사비용, 공사기간--%>
 	<fieldset id="first_area">
 		<legend>기본정보</legend>
@@ -130,7 +139,7 @@
             <input type="text" id="sample6_address"  name ="pf_addr1" readonly	placeholder="주소" size="30">
             <input type="text" id="sample6_detailAddress" name ="pf_addr2" placeholder="상세주소">
             <input type="text" id="sample6_extraAddress" name ="pf_addr3" readonly placeholder="참고항목" size=10>
-            <input type="button" value="주소검색" id='searchAddr' onclick="sample6_execDaumPostcode()">
+            <input type="button" value="주소검색" id='searchAddr'  class='port_btn' onclick="sample6_execDaumPostcode()">
 		</div>
 		<div class="inline_div">
 			<div class="form_sub_title">

@@ -5,7 +5,7 @@
 
     <section aria-label="주소 선택& 근처 업체" class="youraddr">
         <div class="title">
-            <h2>근처의 인테리어업체와 직접 연락할 수 있어요.</h2><h3>4/4</h3>
+            <h2>근처의 인테리어업체와 직접 연락할 수 있어요</h2><h3>4/4</h3>
         </div>
         <div id="msg2">
             <p id="p1"></p>
@@ -37,5 +37,16 @@
         document.getElementById("bNum").value = bNum;
         const it = document.querySelector('#bNum').value
         console.log(it);
+
+
+
+
+
+
+
+        let check=confirm('업체를 선택하지 않고 진행하시겠습니까?');
+        if(!check){
+            return false;
+        }
     }
 </script>

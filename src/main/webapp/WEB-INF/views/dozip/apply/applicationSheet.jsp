@@ -29,7 +29,7 @@
 </section><!--//counters -->
 
 
-<form method="post" action="apply_ok">
+<form method="post" action="apply_ok" enctype="multipart/form-data">
 <div class="page1" >
     <title>인테리어 견적 신청서</title>
 

@@ -35,7 +35,6 @@ public class PortfolioController {
         pv.setBusinessNum((String) session.getAttribute("businessNum"));
         if (pv.getPf_addr2().isEmpty())  //마이바티스에 널 값 insert시 오류나서 문자열 처리
             pv.setPf_addr2(" ");
-
         if (pv.getPf_subtype().contains(",")) {
             String[] str = pv.getPf_subtype().split(",");
             if (pv.getPf_type().equals("주거공간")) {
