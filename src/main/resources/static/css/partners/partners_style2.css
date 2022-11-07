@@ -755,13 +755,13 @@
    }
 	 .bid_detail01, .bid_detail02, .bid_detail03, .bid_detail04{
 	 	/*text-align:center; */
-	 	width: 45%;
+	 	width: 50%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	color:#4398ed;
 	 }
 	 .bid_detail_text01, .bid_detail_text02, .bid_detail_text03{
-	 	width: 46%;
+	 	width: 50%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	text-align:right;

@@ -11,4 +11,8 @@ public interface InfoService {
     void insertPartnersSub(Partners_subVO ps);
     void updatePartnersSub(Partners_subVO ps);//data_manage sub회원정보 추가/수정
     int checkSub(String businessNum);
+
+    String ploginCheck(String p_id); //비밀번호 변경
+
+    int pupdatePwd(PartnersVO p);
 }

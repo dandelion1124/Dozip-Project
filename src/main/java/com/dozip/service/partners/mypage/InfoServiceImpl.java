@@ -34,4 +34,14 @@ public class InfoServiceImpl implements InfoService {
     public int checkSub(String businessNum) {
         return infoDAO.checkSub(businessNum);
     }
+
+    @Override
+    public String ploginCheck(String p_id) {
+        return infoDAO.ploginCheck(p_id);
+    }
+
+    @Override
+    public int pupdatePwd(PartnersVO p) {
+        return infoDAO.pupdatePwd(p);
+    }
 }

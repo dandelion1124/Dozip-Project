@@ -13,15 +13,20 @@
 			<form method="post" action="">
 			<div class="request_spot">
 				<h2 class="item_title">입찰의뢰</h2>
-				<!--
-					<select name="my_bid_option" style="border:1px solid lightgray; width: 50px;">
+
+					<select name="find_field" style="border:1px solid lightgray; width: 50px;">
 						<option value="all">전체</option>
-						<option value="success">입찰 성공</option>
-						<option value="fail">입찰 실패</option>
-					</select> -->
+						<option value="bid_title"
+								<c:if test="${find_field=='bid_title'}">${'selected'}</c:if>
+						>제목</option>
+						<option value="bid_cont"
+								<c:if test="${find_field=='bid_cont'}">${'selected'}</c:if>
+						>내용</option>
+					</select>
 					<div class="search_box">
-					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
-					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'">
+					    <input type="text" class="search-txt" name="find_name" id="find_name" value="${find_name}"
+							   placeholder="검색어를 입력해 주세요"/>
+					    <button class="search-btn" type="submit" onclick="location.href='/partners/bid'">
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
 					</div>
@@ -63,10 +68,14 @@
 								<%--<fmt:formatDate var="formatEndDate" value="${e.est_dateEnd}" pattern="yyyy-MM-dd"/> -->
 								<%--<fmt:parseDate var="enddate"  value="${e.est_dateEnd}" pattern="yyyy-MM-dd"/> --%>
 								<span>
-									<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
-									<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
-									<c:if test="${e.remaindate < 0}">모집완료</c:if>
-									<%-- <c:if test="${e.est_check != 0}">모집완료</c:if>  --%>
+									<c:choose>
+										<c:when test="${e.est_check != '대기중'}">모집마감</c:when>
+										<c:otherwise>
+											<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
+											<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
+											<c:if test="${e.remaindate < 0}">모집완료</c:if>
+										</c:otherwise>
+									</c:choose>
 								</span>
 							</p>
 							<p class="label_badge">
@@ -140,6 +149,31 @@
 				<div class="bottom-btn-wrap">
 					<button type="button" class="more_button"><img src="../images/more_plus.png"></br><span>더보기</span></button>
 				</div> -->
+				<div id="mybid_paging">
+					<p>
+						<c:if test="${page<=1}">
+							[이전]
+						</c:if>
+						<c:if test="${page>1}">
+							<a href="/partners/my_bid?page=${page-1}">[이전]</a>
+						</c:if>
+
+						<%--현재 쪽번호 출력--%>
+						<c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
+							<c:if test="${p== page}"> ${p}</c:if> <!--현재 페이지 선택 시-->
+							<c:if test="${p != page}"> <a href="/partners/my_bid?page=${p}">[${p}]</a> <!--현재 페이지 선택되지 않았을 시 -->
+							</c:if>
+						</c:forEach>
+
+						<c:if test="${page >= maxpage}">
+							[다음]
+						</c:if>
+						<c:if test="${page<maxpage}">
+							<a href="/partners/my_bid?page=${page+1}">[다음]</a>
+						</c:if>
+					</p>
+				</div>
+
 			</form>
 		</div>
 <jsp:include page="../include/footer.jsp" />

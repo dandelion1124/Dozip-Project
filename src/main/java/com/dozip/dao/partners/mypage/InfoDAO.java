@@ -11,5 +11,7 @@ public interface InfoDAO {
     void updatePartnersSub(Partners_subVO ps);
     int checkSub(String businessNum);
 
+    String ploginCheck(String p_id);
 
+    int pupdatePwd(PartnersVO p);
 }

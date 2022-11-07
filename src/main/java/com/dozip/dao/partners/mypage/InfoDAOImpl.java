@@ -31,4 +31,14 @@ public class InfoDAOImpl implements InfoDAO {
     public int checkSub(String businessNum) {
         return sqlSession.selectOne("res_check",businessNum);
     }
+
+    @Override
+    public String ploginCheck(String p_id) {
+        return this.sqlSession.selectOne("ploginCheck",p_id);
+    }
+
+    @Override
+    public int pupdatePwd(PartnersVO p) {
+        return this.sqlSession.update("pupdatePwd",p);
+    }
 }
