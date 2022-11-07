@@ -11,7 +11,9 @@ $(window).scroll(function(){
     }
 });
 
-
+$('.main-menu a').on('click', function (){
+    $(this.addClass('active'));
+})
 
 
 

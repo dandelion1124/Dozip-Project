@@ -51,10 +51,17 @@
 		.top-icons li{margin-right:25px;}
 		.top-icons li:last-child{margin-right:0;}
 
-		header nav ul li a:hover, header nav ul li a.active{
-			color:#7e9e7f;
+		header nav ul li a:hover{
+			color:#3a3b3c;
+			font-weight: 600;
 			transition: 0.2s ease;
 		}
+
+		header nav ul li a.active{
+			color:#3a3b3c;
+			font-weight: 600;
+		}
+
 		header ol, ul {
 			list-style: none;
 		}
@@ -64,6 +71,9 @@
 		}
 	</style>
 	<script>
+		$('.main-menu a').on('click', function (){
+			$(this.addClass('active'));
+		})
 	    function openLogin(){
 	        window.open("/dozip/login", "_blank", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=400, height=550, left=0, top=0" );
 	    }

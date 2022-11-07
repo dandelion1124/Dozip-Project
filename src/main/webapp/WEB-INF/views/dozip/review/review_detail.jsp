@@ -17,8 +17,37 @@
 			<div class="rp_img">
 				<img src="${re.re_photo1}">
 			</div>
-			<div class="review_title">
-				<p class="re_title">${re.re_title}</p><p class="star" style="float: right">${re.re_star} 점</p>
+			<div class="review_t">
+				<p class="re_title">${re.re_title}</p>
+
+				<p class="star" style="float: right">
+				<c:if test="${re.re_star eq 1}">
+					<img src="/images/dozip/star1.png">
+				</c:if>
+					<c:if test="${re.re_star eq 2}">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+					</c:if>
+					<c:if test="${re.re_star eq 3}">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+					</c:if>
+					<c:if test="${re.re_star eq 4}">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+					</c:if>
+					<c:if test="${re.re_star eq 5}">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+						<img src="/images/dozip/star1.png">
+					</c:if>
+				</p>
+
 			</div>
 		<hr/>
 			<div class="review_info">
@@ -38,15 +67,12 @@
 			<c:if test="${!empty re.re_photo5}">
 				<img src="${re.re_photo5}">
 			</c:if>
-<%--				<img src="${re.re_photo3}">--%>
-<%--				<img src="${re.re_photo4}">--%>
-<%--				<img src="${re.re_photo5}">--%>
-
 		</div>
 
 		<div>
 			<textarea class="re_cont" readonly>${re.re_cont}</textarea>
 		</div>
+		<button type="button" class="go_list" onclick="location.href='/dozip/review_main'">목록으로</button>
 	</div>
 </div>
 
