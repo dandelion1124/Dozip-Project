@@ -182,7 +182,7 @@ $(function() {
 											<div id="bid_part_detail">
 												<dl class="sec-item">
 													<dt class="bid_detail01">입찰가</dt>
-													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></dd>
+													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="9"/>만원<br/></dd>
 												</dl>
 												<!-- <span id="today"></span></br> -->
 												<dl class="sec-item">
@@ -191,10 +191,10 @@ $(function() {
 													<dt class="bid_detail04">예상 공사종료일</dt>
 													<dd class="bid_detail_text03"><input type="date" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></dd>
 												</dl>
-												<dl class="sec-item">
+												<div class="">
 													<div class="bid_detail03">업체 공사 스타일 설명</div></br>
 													<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
-												</dl>
+												</div>
 												<!--
 												<div class="bid_detail02" >예상 공사시작일</div>
 												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></div>

@@ -1,19 +1,23 @@
 package com.dozip.controller.partners;
 
 import com.dozip.service.partners.mypage.InfoService;
+import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
+import java.util.HashMap;
 
 
 @Controller
@@ -21,6 +25,9 @@ import java.io.PrintWriter;
 public class InfoController {
     @Autowired
     InfoService infoService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     /*My page
      *
      */
@@ -186,5 +193,30 @@ public class InfoController {
     @RequestMapping(value = "/pw_change")
     public String pw_change() {
         return "/partners/mypage/pw_change";
+    }
+
+
+    @RequestMapping("pw_change_ok") //마이페이지-비밀번호수정완료
+    @ResponseBody
+    public HashMap<String, String> pwChangeOk(String current_pwd, String new_pwd, HttpSession session) throws Exception {
+        PartnersVO p = new PartnersVO();
+        p.setP_Id((String)session.getAttribute("p_id")); //현재 로그인 되어있는 세션의 아이디 값
+        p.setP_Pw(new_pwd);//새 비번
+
+        int res = 0;
+        HashMap<String, String> map = new HashMap<String, String>();
+
+        boolean pw_check = passwordEncoder.matches(current_pwd, (this.infoService.ploginCheck(p.getP_Id())));
+        if(pw_check){//일치하면
+            res = this.infoService.pupdatePwd(p);//비밀번호 변경
+            if(res==1) {
+                map.put("text","비밀번호 변경이 완료되었습니다.");
+            }else {
+                map.put("text","변경에 실패했습니다.");
+            }
+        }else{
+            map.put("text","기존 비밀번호를 확인해주세요.");
+        }
+        return map;
     }
 }

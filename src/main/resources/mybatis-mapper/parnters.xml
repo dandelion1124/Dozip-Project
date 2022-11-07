@@ -60,6 +60,15 @@
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
 
+    <!-- 비밀번호 변경-->
+    <select id="ploginCheck" resultType="String">
+        select p_Pw from partnersT where p_Id=#{p_Id} and p_State=1
+    </select>
+
+    <update id="pupdatePwd">
+        update partnersT set p_Pw=#{p_Pw} where p_Id=#{p_Id}
+    </update>
+
     <!-- bid -->
     <!-- estimate테이블에 있는 데이터 list로 전부 가져오기-->
     <select id="select_estdata" resultType="EstimateVO">

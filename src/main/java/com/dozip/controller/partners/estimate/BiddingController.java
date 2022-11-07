@@ -2,6 +2,7 @@ package com.dozip.controller.partners.estimate;
 
 import com.dozip.service.partners.estimate.BiddingService;
 import com.dozip.utils.ConvertAddr;
+import com.dozip.utils.Paging;
 import com.dozip.vo.BidVO;
 import com.dozip.vo.EstimateVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +32,22 @@ public class BiddingController {
             throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
-        //String p_id=(String) session.getAttribute("p_id");
 
-        //String find_name=request.getParameter("find_name");//검색어
-        //String find_field=request.getParameter("find_field");//검색필드
+//        Paging paging;
+//        if(request.getParameter("page") == null){
+//            paging = new Paging(1,5,count);
+//        }else{
+//            int page=Integer.parseInt(request.getParameter("page"));
+//            paging = new Paging(page, 5, count);
+//        }
 
-        //e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
-        //e.setFind_field(find_field);
-        System.out.println(e.toString());
+
+        String find_name=request.getParameter("find_name");//검색어
+        String find_field=request.getParameter("find_field");//검색필드
+
+        e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
+        e.setFind_field(find_field);
+        System.out.println(e.getFind_name()+" "+e.getFind_field());
 
         //int listcount2 = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
 
@@ -58,9 +67,9 @@ public class BiddingController {
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
-        //m.addObject("find_name", find_name);
-        //m.addObject("find_field",find_field);
-
+        m.addObject("find_name", find_name);
+        m.addObject("find_field",find_field);
+        //m.addObject("p",paging);
         m.setViewName("/partners/estimate_request/bid");
         return m;
     }
