@@ -19,7 +19,7 @@
 
     <!-- Best 리뷰 -->
     <select id="best" resultType="ReviewVO">
-        select * from reviewT order by re_no asc
+        select * from reviewT, contractT order by re_count desc
     </select>
 
     <!-- 전체리뷰 개수 가져오기 -->

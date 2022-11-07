@@ -20,7 +20,11 @@ public class ReviewVO {
     private String re_modate;
     private String re_state;
 
-    //쪽나누기
+    //Best댓글) 계약서 테이블에서가져온 정보
+    private String cont_title;
+    private int cont_area;
+    private String partners_name;
+
     //페이징. 쪽나누기 관련변수
     private int startrow; //시작행번호
     private int endrow; //끝행 번호

@@ -21,9 +21,14 @@
     .top-icons li{margin-right:25px;}
     .top-icons li:last-child{margin-right:0;}
     
-    header nav ul li a:hover, header nav ul li a.active{
-        color:#7e9e7f;
+    header nav ul li a:hover {
+        color:#3a3b3c;
+        font-weight: 600;
         transition: 0.2s ease;
+    }
+    header nav ul li a.active{
+        color:#3a3b3c;
+        font-weight: 600;
     }
     
     header .logo a{width:171px ; height:56px; background:url(/images/dozip/HomeLogo01.png) no-repeat; display:block; text-indent:-9999em;}

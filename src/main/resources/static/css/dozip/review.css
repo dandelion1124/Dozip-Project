@@ -13,6 +13,10 @@
 }
 
 /* part1 */
+.review_title {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
 .part1 {
 	margin-top: 30px;
 }
@@ -26,7 +30,7 @@
 	color: white;
 	float: right;
 	font-weight: bold;
-	margin-right: 40px;
+	margin-right: 28px;
 }
 
 #part1_title {
@@ -50,15 +54,16 @@
 	/* border: 1px solid; */
 	display: flex;
 	margin: 0 auto;
-	margin-bottom: 50px;
+	margin-bottom: 70px;
 	justify-content: space-between;
 	background-color: #F8F8F8;
 }
 
 .big_img {
 	width: 50%;
-	height: 400px;
+	height: 450px;
 	margin-left: 20px;
+	border-radius: 5px;
 }
 
 .big_review_cont {
@@ -70,7 +75,14 @@
 
 }
 .review_cont {
-	height: 200px;
+	white-space: normal;
+	overflow: hidden;
+	line-height: 1.5;
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
 }
 
 .rev_title {
@@ -98,11 +110,13 @@
 
 #review_tag button {
 	border: 0;
-	border-radius: 70px;
-	height: 20%;
-	font-size: 0.8rem;
+	border-radius: 100px;
+	padding: 5px 10px 5px 10px;
+	font-size: 0.9rem;
 	margin-right: 5px;
-	background-color: #cef3c5;
+	margin-top: 40px;
+	font-weight: 600;
+	background-color: #b6dce9;
 }
 
 #review_info {
@@ -110,7 +124,13 @@
 
 }
 #review_go {
-	font-size: 1.2rem;
+	border: 0;
+	border-radius: 5px;
+	height: 40px;
+	width: 180px;
+	font-size: 1.0rem;
+	background-color: #347844;
+	color: white;
 	font-weight: bold;
 }
 #review_go_box {
@@ -123,9 +143,9 @@
 }
 
 .card_inner {
-	width: 100%;
-	margin: 0;
-	padding: 0;
+	width: 1260px;
+	height: auto;
+	margin: 0 auto;
 }
 .gallery {
 	background: #F8F8F8;
@@ -179,7 +199,7 @@
 	padding: 110px;
 	border: 1px solid #ddd;
 	margin: 0 auto;
-
+	text-align: center;
 }
 .rp_img img{
 	border-radius: 5px;
@@ -193,23 +213,23 @@
 	height: 100%;
 	object-fit: cover;
 }
-.review_title {
+.review_t {
 	width: 100%;
 	display: flow-root;
-	font-weight: bolder;
 }
 
 .re_title {
 	float: left;
 	font-weight: bold;
 	font-size: 25px;
-	margin-top: 10px;
+	margin-top: 9px;
 	margin-bottom: 0;
 }
 
 .review_info p {
 	margin-top: 5px;
 	font-size: small;
+	text-align: left;
 }
 .review_info {
 	margin-bottom: 50px;
@@ -221,6 +241,25 @@
 	padding: 20px;
 	border: 0px;
 	resize: none;
+	line-height: 1.6;
+	font-size: .9rem;
+	FONT-WEIGHT: 550;
+}
+.go_list {
+	margin-top: 50px;
+	border: 0;
+	border-radius: 5px;
+	height: 40px;
+	width: 180px;
+	font-size: 1.0rem;
+	background-color: #347844;
+	color: white;
+	font-weight: bold;
+}
+.go_list:hover {
+	background-color: #0e3b11;
+	cursor: pointer;
+	transition: 0.3s ease;
 }
 
 
