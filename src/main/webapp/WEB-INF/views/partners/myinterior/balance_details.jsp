@@ -1,20 +1,24 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <jsp:include page="../include/header.jsp"/>
 <style>
-    #balance_detail_title{
-        font-size:26px;
-        font-weight:530;
+    #balance_detail_title {
+        font-size: 26px;
+        font-weight: 530;
         border-bottom: 4px solid #000;
     }
+
     #balance_detail_msg {
         color: darkslateblue;
         font-size: 16px;
         font-family: fantasy;
         margin-bottom: 10px;
     }
-    *{
-        line-height:2em;
+
+    * {
+        line-height: 2em;
     }
+
     #balance_detail_top_cont {
         padding-bottom: 20px;
     }
@@ -32,7 +36,7 @@
         background: dimgray;
     }
 
-    #balance_detail_search_bar_div>div {
+    #balance_detail_search_bar_div > div {
         width: 95.5%;
         height: 100px;
         border: 3px solid dimgray;
@@ -121,7 +125,6 @@
     </div>
     <div id="balance_detail_search_bar2" style="display: none">
         <h1 style="color:darkgoldenrod">시공중 정산 내역 검색바 기능 구상중</h1>
-
     </div>
 </div>
 <div id="balance_detail_main_table_div">
@@ -133,46 +136,26 @@
             <th>정산 금액</th>
             <th>상세내역</th>
         </tr>
-        <tr>
-            <td>2022년 5월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 6월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 7월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 8월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 9월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 10월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
+
+        <c:if test="${empty plist}">
+            <tr>
+                <td colspan="4">조회된 목록이 없습니다</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty plist}">
+            <c:forEach var="p" items="${plist}">
+            <tr>
+                <td>${p.pay_date1}</td>
+                <td>${p.count}</td>
+                <td>${p.pay_cost1 + p.pay_cost2 +p.pay_cost3} 만원</td>
+                <td><input type="button" value="상세내역" class="detail_button"></td>
+            </tr>
+            </c:forEach>
+        </c:if>
         <tr>
             <th>합계</th>
-            <th>100건</th>
-            <th>1,000,000원</th>
+            <th>${pv.count}건</th>
+            <th>${pv.pay_cost1 + pv.pay_cost2 +pv.pay_cost3} 만원</th>
             <th></th>
         </tr>
     </table>
@@ -227,6 +210,21 @@
         </tr>
     </table>
 </div>
+
+<script>
+    //시공완료 내역
+    $('#select_status_btn1').click(function (){
+        let pay_state = $('#interior_status option:selected').val();
+        location.href ='/partners/balance_details?pay_state='+'시공완료';
+    });
+    //시공중 내역
+    $('#select_status_btn2').click(function(){
+        let pay_state = $('#balance_status option:selected').val();
+        location.href ='/partners/balance_details?pay_state='+'시공중';
+    });
+</script>
+
+
 
 <script>
 

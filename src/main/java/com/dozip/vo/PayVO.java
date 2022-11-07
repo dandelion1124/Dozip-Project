@@ -17,4 +17,7 @@ public class PayVO {
     private String pay_state;
 
 
+    //정산내역에서 count 활용
+    private int count;
+
 }

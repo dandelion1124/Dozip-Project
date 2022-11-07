@@ -2,6 +2,7 @@ package com.dozip.service.partners.myInterior;
 
 import com.dozip.dao.partners.myInterior.MyInteriorDAO;
 import com.dozip.vo.ContractVO;
+import com.dozip.vo.PayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,15 @@ public class MyInteriorServiceImpl implements MyInteriorService {
     @Override
     public int regit_schedule(String cont_no) { //달력에 일정 등록
         return myInteriorDAO.regit_schedule(cont_no);
+    }
+
+    @Override //정산내역 불러오기
+    public List<PayVO> getBalance(PayVO vo) {
+        return myInteriorDAO.getBalance(vo);
+    }
+
+    @Override //정산내역 합계 불러오기
+    public PayVO totalBalance(PayVO vo) {
+        return myInteriorDAO.totalBalance(vo);
     }
 }

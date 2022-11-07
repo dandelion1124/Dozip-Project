@@ -1,171 +1,39 @@
 /*Qnad A, review 파일 */
 
-#qna_title .title {
-    font-size: 2em;
-    font-weight: 900;
-}
-
-#qna_title .message {
-    background-color: #eee;
-    margin: 10px 0px;
-    padding: 6px;
-}
-
-span>div {
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 3px 10px;
-    font-size: 0.8em;
-}
-
-.period_cont {
-    color: royalblue;
-}
-
-#search_conditon{
-    background:beige;
-    margin: 50px 10px;
-}
-
-div#search_conditon_wrap {
-    padding: 20px 50px;
-}
-#search_conditon_wrap>div{
-    margin:15px 0px;
-}
-#search_conditon_sub_1{
-    display:flex;
-    justify-content:flex-start;
-}
-#search_conditon_sub_1>div{
-    margin-right:100px;
-}
-#search_conditon_hidemenu{
-    display: flex;
-    justify-content: space-between;
-    margin-right:50px;
-}
-
-#qna_table {
-    border-top: 2px solid #2C2A29;
-    height: 200px;
-    width: 100%;
-    margin: 20px 0px 50px 0px;
-    border-collapse: collapse;
-}
-tr.qna_first_tr{
-    border-bottom:1px solid #2C2A29;
-}
-
-tr.qna_tr>td{
-    padding:2px 5px;
-}
-.qna_table_date{
-    max-width:100px;
-}
-.reply_textarea{
-    border:none;
-}
-
-td#reply_cont{
-    background:#e1deca;
-}
-span.reply_date_text{
-    font-weight: bold;
-}
-#qna_table th{
-    height:50px;
-    border-top:1px solid #ccc;
-}
-#write_date {
-    border: none;
-    background: none;
-    font-weight: bold;
-    font-size: 15px;
-}
-.not_serach_msg {
-    text-align: center;
-}
-.reply_btn>input {
-    margin-left:26%;
-    padding:5px;
-}
-td.third_reply_td>input {
-    margin-left:45%;
-}
-div#qna_paging {
-    float: left;
-    margin-bottom: 60px;
-    margin-left: 40%;
-}
-th#paging_th a{
-    text-decoration: none;
-    color:black;
-
-}
-th#paging_th a:visited{
-    color:black;
-}
-th#paging_th a:hover{
-    color:orange;
-}
-
-div#qna_cont_box {
-    background: #64bbed38;
-    width: 86%;
-    min-height: 60px;
-    margin-top: 15px;
-    padding: 7px;
-    border-radius: 3px;
-    font-family: '고딕';
-}
-#qna_table textarea {
-    margin-bottom: 30px;
-    border: 1px solid gainsboro;
-    background: #dcdcdc42;
-    border-radius: 3px;
-    min-height: 80px;
-    padding:7px;
-}
-#qna_tilte_input input{
-    border:none;
-    background: none;
-    font-size: 13px;
-    padding: 5px;
-}
-#qna_tilte_input input:hover {
-    color: #0064CD;
-    font-weight: bolder;
-}
-input.del_btn, input.reply_btn{
-    border:none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    background: #D7EAF5;
-    margin: 10px 0px;
-}
-input.del_btn:hover, input.reply_btn:hover {
-    background: #0064CD;
-    color: whitesmoke;
-}
-#search_bar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-}
-#search_bar button:hover{
-    background: #397d3f;
-    color: white;
-    border: 2px solid #397d3f;
-    border-radius: 3px;
-}
-.qna_tr td {
-    text-align: center;
-}
-.qna_tr td:nth-of-type(2){
-    text-align: left;
-
-}
-#search_bar_option {
-    align-items: baseline;
-}
+#qna_title .title {font-size: 2em;font-weight: 900;}
+#qna_title .message {background-color: #eee;margin: 10px 0px;padding: 6px;}
+span>div {border: 1px solid black;border-radius: 20px;padding: 3px 10px;font-size: 0.8em;}
+.period_cont {color: royalblue;}
+#search_conditon{background:beige;margin: 50px 10px;}
+div#search_conditon_wrap {padding: 20px 50px;}
+#search_conditon_wrap>div{margin:15px 0px;}
+#search_conditon_sub_1{display:flex;justify-content:flex-start;}
+#search_conditon_sub_1>div{margin-right:100px;}
+#search_conditon_hidemenu{display: flex;justify-content: space-between;margin-right:50px;}
+#qna_table {border-top: 2px solid #2C2A29;height: 200px;width: 100%;margin: 20px 0px 50px 0px;border-collapse: collapse;}
+tr.qna_first_tr{border-bottom:1px solid #2C2A29;}
+tr.qna_tr>td{padding:2px 5px;}
+.qna_table_date{max-width:100px;}
+.reply_textarea{border:none;}
+td#reply_cont{background:#e1deca;}
+span.reply_date_text{font-weight: bold;}
+#qna_table th{height:50px;border-top:1px solid #ccc;}
+#write_date {border: none;background: none;font-weight: bold;font-size: 15px;}
+.not_serach_msg {text-align: center;}
+.reply_btn>input {margin-left:26%; padding:5px;}
+td.third_reply_td>input {margin-left:45%;}
+div#qna_paging {float: left;margin-bottom: 60px;margin-left: 40%;}
+th#paging_th a{text-decoration: none;color:black;}
+th#paging_th a:visited{color:black;}
+th#paging_th a:hover{color:orange;}
+div#qna_cont_box {background: #64bbed38;width: 86%;min-height: 60px;margin-top: 15px;padding: 7px;border-radius: 3px;font-family: '고딕';}
+#qna_table textarea {    margin-bottom: 30px;border: 1px solid gainsboro;background: #dcdcdc42;border-radius: 3px;min-height: 80px;padding:7px;}
+#qna_tilte_input input{border:none;background: none;font-size: 13px;padding: 5px;}
+#qna_tilte_input input:hover {color: #0064CD;font-weight: bolder;}
+input.del_btn, input.reply_btn{border:none;border-radius: 3px;padding: 5px 10px;background: #D7EAF5;margin: 10px 0px;}
+input.del_btn:hover, input.reply_btn:hover {background: #0064CD;color: whitesmoke;}
+#search_bar {display: flex;justify-content: space-between;margin-top: 50px;}
+#search_bar button:hover{background: #397d3f;color: white;border: 2px solid #397d3f;border-radius: 3px;}
+.qna_tr td {text-align: center;}
+.qna_tr td:nth-of-type(2){text-align: left;}
+#search_bar_option {align-items: baseline;}

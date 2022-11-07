@@ -1,65 +1,22 @@
 
-.clear {
-	clear: both;
-}
+.clear {clear: both;}
 
 
 /*시공 사례 등록 파일 */
 
-#introduce_cont {
-  	background-color: #eeeeee;
-    padding: 20px 10px;
-    border-radius: 6px;
-}
-#introduce_cont *{
-  padding:10px 0px;
-	
-}
-
-#portfolio_form fieldset{
-  padding:20px 10px;
-  
-}
-.form_sub_title{
-		margin-bottom: 7px;
-		font-weight: bold;
-}
-fieldset {
-	border:1px lightgray solid ;
-}
-#f_button{
-	border: none;
-}
-#f_button input {
-	height: 40px;
-}
-
-fieldset>div{
-  margin:7px 15px;
-}
-fieldset>legend{
-  font-size:18px;
-}
-.inline_div{
-  float:left;
-}
+#introduce_cont {background-color: #eeeeee;padding: 20px 10px;border-radius: 6px;}
+#introduce_cont *{padding:10px 0px;}
+#portfolio_form fieldset{padding:20px 10px;}
+.form_sub_title{margin-bottom: 7px;font-weight: bold;}
+fieldset {border:1px lightgray solid ;}
+#f_button{border: none;}
+#f_button input {height: 40px;}
+fieldset>div{margin:7px 15px;}
+fieldset>legend{font-size:18px;}
+.inline_div{float:left;}
 /*시공 사례 사진 등록 페이지 */
-#uploda_photo_cont {
-	display: inline-grid;
-}
-#uploda_photo_cont>div {
-	float: left;
-	border-right: 3px solid black;
-	margin-right: 30px;
-}
-.photo_inputfile {
-	margin-bottom: 20px;
-}
-#uploda_photo_cont img {
-	width: 200px;
-	height: 200px;
-}
-#photo_submit {
-	margin: 40px 0px 0px 50px;
-	clear: both;
-}
+#uploda_photo_cont {display: inline-grid;}
+#uploda_photo_cont>div {float: left;border-right: 3px solid black;margin-right: 30px;}
+.photo_inputfile {margin-bottom: 20px;}
+#uploda_photo_cont img {width: 200px;height: 200px;}
+#photo_submit {margin: 40px 0px 0px 50px;clear: both;}

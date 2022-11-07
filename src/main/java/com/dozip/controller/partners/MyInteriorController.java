@@ -2,6 +2,7 @@ package com.dozip.controller.partners;
 
 import com.dozip.service.partners.myInterior.MyInteriorService;
 import com.dozip.vo.ContractVO;
+import com.dozip.vo.PayVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,7 +92,16 @@ public class MyInteriorController {
     }
 
     @RequestMapping(value = "/balance_details") //정산 내역
-    public String balance_details() {
-        return "/partners/myinterior/balance_details";
+    public ModelAndView balance_details(HttpSession session) {
+
+        PayVO vo = new PayVO();
+        vo.setBusinessNum((String)session.getAttribute("businessNum"));
+
+        List<PayVO> plist = myInteriorService.getBalance(vo);
+        PayVO pv = myInteriorService.totalBalance(vo);
+        ModelAndView mv = new ModelAndView("/partners/myinterior/balance_details");
+        mv.addObject("plist",plist);
+        mv.addObject("pv",pv);
+        return mv;
     }
 }

@@ -29,7 +29,7 @@
     </thead>
     <c:if test="${empty plist}">
         <tr>
-            <th> 조회된 포트폴리오가 없습니다</th>
+            <th colspan="4"> 조회된 포트폴리오가 없습니다</th>
         </tr>
     </c:if>
     <c:if test="${!empty plist}">

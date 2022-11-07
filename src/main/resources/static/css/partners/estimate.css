@@ -1,83 +1,17 @@
-#estlist_title {
-    width: 100%;
-    font-size: 26px;
-    font-weight: 530;
-    border-bottom: 4px solid #000;
-}
+#estlist_title {width: 100%;font-size: 26px;font-weight: 530;border-bottom: 4px solid #000;}
 
-#estlist_msg {
-    color: darkslateblue;
-    font-size: 16px;
-    font-family: fantasy;
-    margin: 20px 0px 10px 13px;
-}
+#estlist_msg {color: darkslateblue; font-size: 16px;font-family:fantasy;margin:20px 0px 10px 13px;}
+* {line-height: 2em;}
+#estlist_top_cont {padding-bottom: 35px;letter-spacing: 1px;}
+#est_list_explain {width: 98%;border-bottom: 4px double #555; padding: 10px 10px;margin: 0 auto;}
+table#est_list_table {margin: 20px;border-collapse: collapse;}
+table#est_list_table input[type=button] {background: none;border: none;font-size: medium;}
+table.est_list_table input:hover[type=button], .write_contract_btn:hover {text-decoration: underline;font-weight: bolder;color: blue;}
+tbody td {text-align: center;}
 
-* {
-    line-height: 2em;
-}
-
-#estlist_top_cont {
-    padding-bottom: 35px;
-    letter-spacing: 1px;
-}
-
-#est_list_explain {
-    width: 98%;
-    border-bottom: 4px double #555;
-    padding: 10px 10px;
-    margin: 0 auto;
-}
-
-table#est_list_table {
-    margin: 20px;
-    border-collapse: collapse;
-}
-
-table#est_list_table input[type=button] {
-    background: none;
-    border: none;
-    font-size: medium;
-}
-
-table.est_list_table input:hover[type=button], .write_contract_btn:hover {
-    text-decoration: underline;
-    font-weight: bolder;
-    color: blue;
-}
-
-tbody td {
-    text-align: center;
-}
-
-.write_contract_btn {
-    background: none;
-    border: none;
-    font-size: medium;
-}
-
-.cancel_contract_btn {
-    background: #FF0000;
-    border: none;
-    color: white;
-    padding: 0px 6px;
-    border-radius: 3px;
-    height: 30px;
-}
-
-.cancel_contract_btn:active {
-    background: #2C2A29;
-}
-
-table#est_list_table {
-    margin: 20px auto;
-    width: 100%;
-    border-collapse: collapse;
-}
-#est_list_table thead {
-    background: cornflowerblue;
-}
-
-#est_list_table th {
-    font-weight: lighter;
-
-}
+.write_contract_btn {background: none;border: none;font-size: medium;}
+.cancel_contract_btn {background: #FF0000;border: none;color: white;padding: 0px 6px;border-radius: 3px;height: 30px;}
+.cancel_contract_btn:active {background: #2C2A29;}
+table#est_list_table {margin: 20px auto;width: 100%;border-collapse: collapse;}
+#est_list_table thead {background: cornflowerblue;}
+#est_list_table th {font-weight: lighter;}

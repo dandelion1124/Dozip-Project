@@ -58,7 +58,7 @@
 </div>
 <script>
 
-    //payT 로 시공 상태 조회 (확실하지 않음)
+    //payT 로 시공 상태 조회
     $('#interior_status').change(function (){
         let est_check = $('#interior_status option:selected').val();
         location.href ='/partners/interior_list?est_check='+est_check;

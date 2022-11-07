@@ -3,25 +3,12 @@
 <jsp:include page="../include/header.jsp" />
 
 <style>
-#scheduleList_title a {
-    font-size: 16px;
-    margin-left: 40px;
-    color: saddlebrown;
-}
-#scheduleList_title{
-    font-size: 26px;
-    font-weight: 530;
-    border-bottom: 4px solid #000;
-    line-height: 2em;
-
-}
-
-
+    #scheduleList_title a {font-size: 16px;margin-left: 40px;color: saddlebrown;}
+    #scheduleList_title{font-size: 26px;font-weight: 530;border-bottom: 4px solid #000;line-height: 2em;}
 </style>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <%--오늘 날짜 불러오기 코드 -필요하면 사용 --%>
-
 
 <script>
     let allData = JSON.parse('${json}'); //달력에 담을 json 데이터
@@ -54,37 +41,16 @@
 		calendar.render();
 	});
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<%--
 <script>
 	$(function() {
 		$('.fc-event-title').click(function() {
 			alert('hello~');
 		});
 	});
-</script>
+</script> --%>
 <p> | 내공사 > 내공사내역</p>
-
 <div id="scheduleList_title">
-    일정관리<a href="interior_list">내공사내역</a>		</div>
-
-
+    일정관리<a href="interior_list">내공사내역</a></div>
 <div id='calendar' style="width: 100%; margin: 20px 0px;"></div>
-
-
-
-
-
 <jsp:include page="../include/footer.jsp" />
-
