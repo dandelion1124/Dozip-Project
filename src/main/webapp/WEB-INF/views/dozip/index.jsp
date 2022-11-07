@@ -135,12 +135,13 @@
             </div>
 
             <div class="mySlideDiv fade">
-                <img src="/images/dozip/partners_bg.jpg">
+                <img src="/images/dozip/mainslide02.jpg">
             </div>
 
             <div class="mySlideDiv fade">
-                <img src="/images/dozip/mainslide_03.jpg">
+                <img src="/images/dozip/mainslide03.jpg">
             </div>
+
 
             <a class="prev" onclick="prevSlide()">&#10094;</a>
             <a class="next" onclick="nextSlide()">&#10095;</a>

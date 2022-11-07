@@ -21,7 +21,7 @@ $(window).scroll(function(){
 $(document).ready(function () {
     $(".mySlideDiv").not(".active").hide(); //화면 로딩 후 첫번째 div를 제외한 나머지 숨김
 
-    setInterval(nextSlide, 4000); //4초(4000)마다 다음 슬라이드로 넘어감
+    setInterval(prevSlide, 4000); //4초(4000)마다 다음 슬라이드로 넘어감
 });
 //이전 슬라이드
 function prevSlide() {
