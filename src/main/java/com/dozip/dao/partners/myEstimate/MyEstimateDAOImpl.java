@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public class MyEstimateDAOImpl implements MyEstimateDAO{
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override
     public List<EstimateVO> getAllEstList(String businessNum) {

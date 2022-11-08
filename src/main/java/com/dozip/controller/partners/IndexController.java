@@ -1,17 +1,54 @@
 package com.dozip.controller.partners;
 
+import com.dozip.service.partners.index.IndexService;
+import com.dozip.vo.PayVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("partners/*")
 public class IndexController {
 
+    @Autowired
+    private IndexService indexService;
+
     @RequestMapping(value = "/main") //파트너스 메인
-    public String partners() {
-        return "/partners/index";
+    public ModelAndView partners(HttpSession session) {
+        //월별 정산내역
+        String bNum =(String)session.getAttribute("businessNum");
+       PayVO pv = indexService.montly_sales(bNum);
+       int portfolioCount = indexService.portfolioCount(bNum);
+       ModelAndView mv = new ModelAndView("/partners/index");
+       mv.addObject("pv",pv);
+       mv.addObject("portfolioCount",portfolioCount);
+       return mv;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*    요금제

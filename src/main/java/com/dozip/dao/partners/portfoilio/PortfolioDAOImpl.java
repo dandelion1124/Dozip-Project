@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PortfolioDAOImpl2 implements PortfolioDAO2 {
-    @Autowired SqlSession sqlSession;
+public class PortfolioDAOImpl implements PortfolioDAO {
+    @Autowired
+    private SqlSession sqlSession;
 
     @Override
     public void addPortfolio(PortfolioVO pv) {

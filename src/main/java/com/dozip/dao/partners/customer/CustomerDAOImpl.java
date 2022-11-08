@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override
     public int getListCount(QnaVO findQ) {

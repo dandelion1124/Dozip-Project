@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public class BiddingDAOImpl implements BiddingDAO {
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override //estimate 테이블에 있는 db 전부 가져오기
     public List<EstimateVO> selectEstimateList() { return sqlSession.selectList("select_estdata"); }

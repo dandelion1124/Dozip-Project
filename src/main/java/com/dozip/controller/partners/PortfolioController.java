@@ -1,6 +1,6 @@
 package com.dozip.controller.partners;
 
-import com.dozip.service.partners.portfoilio.PortfolioService2;
+import com.dozip.service.partners.portfoilio.PortfolioService;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +24,7 @@ public class PortfolioController {
     @Value("${uploadPath}")
     private String uploadPath;
     @Autowired
-    PortfolioService2 portfolioService;
+    PortfolioService portfolioService;
     // 포트폴리오 페이지
     @RequestMapping(value = "/upload")
     public String portfolioUpload() {

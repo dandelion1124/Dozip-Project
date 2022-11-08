@@ -1,6 +1,6 @@
 package com.dozip.controller.dozip;
 
-import com.dozip.service.dozip.portfolio.PortfolioService;
+import com.dozip.service.dozip.portfolio.MainPortfolioService;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,12 @@ import java.util.List;
 @RequestMapping("/dozip/*")
 public class MainPortfolioController {
     @Autowired
-    private PortfolioService portfolioService;
+    private MainPortfolioService mainPortfolioService;
 
     @GetMapping(value = "port") //포트폴리오 리스트 출력
     public ModelAndView port(ModelAndView mv)  {
         List<PortfolioVO> plist = new ArrayList<PortfolioVO>();
-        plist = this.portfolioService.getAllList(); //포트폴리오 전체 리스트
+        plist = this.mainPortfolioService.getAllList(); //포트폴리오 전체 리스트
         mv.addObject("plist",plist);
         mv.setViewName("/dozip/portfolio/port_main");
         return mv;
@@ -30,8 +30,8 @@ public class MainPortfolioController {
     @GetMapping(value = "port_detail") //포트폴리오 상세
     public ModelAndView detail(@RequestParam("pf_no") int pf_no, HttpServletRequest request) throws Exception{
 
-        PortfolioVO pf = this.portfolioService.getOnelist(pf_no); //pf_no에 해당하는 글
-        PartnersVO pt = this.portfolioService.getComplist(pf_no); //파트너스 정보
+        PortfolioVO pf = this.mainPortfolioService.getOnelist(pf_no); //pf_no에 해당하는 글
+        PartnersVO pt = this.mainPortfolioService.getComplist(pf_no); //파트너스 정보
 
         ModelAndView mv = new ModelAndView();
         mv.addObject("pf",pf);
@@ -43,7 +43,7 @@ public class MainPortfolioController {
 
     @GetMapping(value = "comp_detail") //업체정보 상세
     public ModelAndView comp(@RequestParam("businessName") String businessName, HttpServletRequest request, PartnersVO p) throws Exception{
-        PartnersVO pc = this.portfolioService.getOnecomp(businessName); //파트너스 정보
+        PartnersVO pc = this.mainPortfolioService.getOnecomp(businessName); //파트너스 정보
 
         ModelAndView mv = new ModelAndView();
         mv.addObject("pc",pc);
@@ -71,7 +71,7 @@ public class MainPortfolioController {
         System.out.println("확인" + p);
 
         List<PortfolioVO> list = new ArrayList<PortfolioVO>();
-        list = this.portfolioService.getSearchList(p);
+        list = this.mainPortfolioService.getSearchList(p);
         System.out.println("리스트 값" + list.toString());
         return list;
     }

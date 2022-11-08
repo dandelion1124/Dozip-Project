@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,8 +65,6 @@
             grid-template-columns: repeat(2, 1fr);
             grid-gap: 1rem;
             grid-auto-rows: minmax(1em, auto);
-
-
         }
 
         .index_item {
@@ -75,6 +74,7 @@
             border-radius: 10px;
             transition: all .35s;
         }
+
         .index_item:nth-child(1) {
             grid-column: 1/4;
             display: flex;
@@ -99,22 +99,35 @@
         #pmain_cont .index_item:nth-child(1) div button:hover, #pmain_cont .index_item:nth-child(1) div label:hover {
             cursor: pointer;
         }
-       .index_item:nth-child(4) div {
+
+        .index_item:nth-child(4) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1rem;
+            grid-auto-rows: minmax(1em, auto);
             min-width: 60px;
             border: none;
             border-radius: 4px;
             padding: 10px;
             margin-left: 10px;
+            grid-row: 2/4;
+            grid-column: 3;
         }
+        .index_item:nth-child(4) div{
+            text-align: center;
+        }
+
         #myChart, #myChart2, #myChart3 {
             border: 1px dotted #00000091;
             margin: 0 auto;
             border-radius: 3px;
 
         }
+
         canvas#myChart2 {
             margin-top: -20px;
         }
+
         i.xi-angle-right {
             margin-top: 80px;
         }
@@ -126,8 +139,54 @@
             font-size: 26px;
             font-weight: bold;
         }
+
         .index_item div label:hover {
             color: #178BFF;
+        }
+
+        #mointhy_balnace {
+            border: none;
+            margin: 0 auto;
+        }
+
+        #mointhy_balnace th {
+            text-align: left;
+            font-size: 20px;
+            width: 100px;
+        }
+
+        mointhy_balnace td {
+            font-size: 16px;
+
+        }
+
+        .mointhy_balnace_title1 {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .mointhy_balnace_title2 {
+            text-align: center;
+            margin: 20px 0px 30px 0px;
+        }
+        .index_item_count{
+            margin-top: 7px;
+        }
+        .go_balance{
+            padding-top: 15px;
+            text-align: center;
+        }
+        .go_balance a {
+            font-weight: bolder;
+
+            text-decoration: none;
+        }
+        .go_balance a:visited{
+            color: black;
+        }
+        .go_balance a:active{
+            color: steelblue;
         }
     </style>
 
@@ -165,26 +224,52 @@
             <canvas id="myChart" width="450" height="300"></canvas>
         </div>
         <div class="index_item"> <%--grid 3 --%>
-            <h2>이번달 매출</h2>
-            <p>계약금 : 100,000</p>
-            <p>중도금 : 100,000</p>
-            <p>잔금 : 100,000</p>
+
+            <h1 class="mointhy_balnace_title1"> 매출현황<span style="font-size: 18px">(${pv.pay_date1})</span></h1>
+            <h2 class="mointhy_balnace_title2"><fmt:formatNumber
+                    value="${(pv.pay_cost1 +pv.pay_cost2+ pv.pay_cost3)*10000}" pattern="#,###"/> 원</h2>
+
+
+            <table id='mointhy_balnace'>
+                <tr>
+                    <th>계약금</th>
+                    <td><fmt:formatNumber value="${pv.pay_cost1*10000}" pattern="#,###"/> 원</td>
+                </tr>
+                <tr>
+                    <th>중도금</th>
+                    <td><fmt:formatNumber value="${pv.pay_cost2*10000}" pattern="#,###"/> 원</td>
+                </tr>
+                <tr>
+                    <th>잔&nbsp;&nbsp;&nbsp;금</th>
+                    <td><fmt:formatNumber value="${pv.pay_cost3*10000}" pattern="#,###"/> 원</td>
+                </tr>
+                <tr>
+                    <td class="go_balance" colspan="2"><a href="/partners/balance_details">보러가기></a> </td>
+                </tr>
+            </table>
         </div>
         <div class="index_item">  <%--grid 4 --%>
-            <div>미확인 문의
-                <input type="button" value="확인하기">
-            </div>
-            <div> 시공 요청건
-                <input type="button" value="확인하기">
-            </div>
-            <div> 계약 요청건
-                <input type="button" value="확인하기">
-            </div>
-            <div> 등록된 포트폴리오수
-                <input type="button" value="등록하기">
+            <div>
+                <div>고객 문의</div>
+                <div class="index_item_count">0</div>
             </div>
             <div>
-                리뷰 평점 평균 : 5점
+                <div> 시공 요청</div>
+                <div class="index_item_count"> 0</div>
+            </div>
+            <div>
+                <div> 계약 요청</div>
+                <div class="index_item_count"> 0</div>
+            </div>
+            <div>
+                <div> 포트폴리오</div>
+                <div class="index_item_count">
+                    <span style="font-weight: bolder; font-size: 14px; color: #0064CD"> ${portfolioCount}</span> 개
+                </div>
+            </div>
+            <div>
+                <div> 업체 평점</div>
+                <div class="index_item_count">5 점</div>
             </div>
         </div>
 
@@ -195,11 +280,6 @@
             <canvas id="myChart3" width="450" height="300"></canvas>
 
         </div>
-        <div class="index_item"><%--grid 7 --%>
-            광고 광고 광고 광고 광고 광고
-
-        </div>
-            <%--grid 7 --%>
     </div>
     <script>
         $('#status01').click(function () {
@@ -326,36 +406,35 @@
             // chart data(차트 데이터-객체형태)
             data: {
                 // labels -> x축에 들어갈 데이터
-                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                labels: ['입찰', '지정'],
                 datasets: [{
                     // label : 차트제목
-                    label: '월별 시공 현황',
+                    label: '입찰/지정',
 
                     // data : x축 label에 대응되는 데이터 값
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [12, 19],
 
                     // 차트 스타일 지정
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
+                        // 'rgba(255, 206, 86, 0.2)',
+                        // 'rgba(75, 192, 192, 0.2)',
+                        // 'rgba(153, 102, 255, 0.2)',
+                        // 'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 99, 132, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
+                        // 'rgba(255, 206, 86, 1)',
+                        // 'rgba(75, 192, 192, 1)',
+                        // 'rgba(153, 102, 255, 1)',
+                        // 'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 2
                 }]
             },
             options: {
-
                 responsive: false,
                 scales: {
                     y: {

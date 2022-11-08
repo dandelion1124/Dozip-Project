@@ -1,7 +1,7 @@
 package com.dozip.service.partners.portfoilio;
 
 
-import com.dozip.dao.partners.portfoilio.PortfolioDAO2;
+import com.dozip.dao.partners.portfoilio.PortfolioDAO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PortfolioServiceImpl2 implements PortfolioService2 {
+public class PortfolioServiceImpl implements PortfolioService {
     @Autowired
-    PortfolioDAO2 portfolioDAO;
+    PortfolioDAO portfolioDAO;
 
     @Override
     public int addPortfolio(PortfolioVO pv) {
