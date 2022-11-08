@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="/css/dozip/review.css" />
+
 <jsp:include page="../common/header.jsp" />
+<link rel="stylesheet" type="text/css" href="/css/dozip/review.css" />
 <script src="/js/dozip/jquery.js"></script>
 <%-- 상단 공통부분 끝 --%>
 <div class="review_detail_wrap">
