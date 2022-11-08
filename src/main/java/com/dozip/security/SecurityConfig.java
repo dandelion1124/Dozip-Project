@@ -51,7 +51,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         http.logout()
+                .logoutUrl("/dozip/logout_ok")
                 .logoutSuccessUrl("/dozip/home") //로그아웃 후 이동할 페이지 지정
+                .deleteCookies("JSESSIONID", "remember-me") // 로그아웃 후 쿠키 삭제
                 .permitAll();
     }
 }

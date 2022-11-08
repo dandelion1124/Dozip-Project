@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
     #epart1, #epart2, #epart3 { box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); padding: 5px; margin-bottom: 20px; background-color: white;  border-radius: 5px; }
-    .subtitle { margin-bottom: 0px; margin-top: 0px; }
-    .title { display: -webkit-box; }
     .conlon { width: 10px; margin-right: 10px;}
+    #t1, #t2 { float: left; }
 </style>
 <%-- 5페이지 --%>
 <div class = "page5" hidden>
@@ -11,10 +10,12 @@
 
     <div id="estimate_step05">
         <section aria-label="견적요청" class="estimate_yourcost">
-            <div class="title">
-                <img src="/images/dozip/icons8-estimate-48.png" style="padding-top: 13px;"/><h2>고객님의 견적요청내용입니다</h2><h3></h3>
+            <div class="title" style="display: flow-root;">
+                <div id="t1" style="margin-left: 50px;"><img src="/images/dozip/icons8-estimate-48.png" style="padding-top: 20px; width: 80px; height: 90px; "/></div>
+                <div id="t2"><h3 style="margin-bottom: 5px; padding-top: 3px; color: black; ">고객님의 견적요청내용입니다</h3>
+                <p class="subtitle" style="margin-bottom: 0px; margin-top: 0px;">견적요청내용을 확인하시고 맞다면 요청을 보내주세요</p></div>
             </div>
-            <p class="subtitle">견적요청내용을 확인하시고 맞다면 요청을 보내주세요</p><br />
+
             <div class="estimate_box_page5">
                 <div id="epart1">
                     <table>

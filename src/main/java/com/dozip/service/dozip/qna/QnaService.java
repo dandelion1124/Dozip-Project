@@ -14,4 +14,6 @@ public interface QnaService {
     List<String> getPartners(); //문의글 - 업체 검색 리스트
     QnaVO getQan(int qna_no); //문의글 내용확인
     List<QnaVO> getAllList(QnaVO q); //문의글(전체) 리스트
+    List<QnaVO> adminQnaList(QnaVO q); //관리자페이지 - 문의글 전체 리스트
+    int adminQnaCount(); //관리자페이지 - 문의글 개수
 }

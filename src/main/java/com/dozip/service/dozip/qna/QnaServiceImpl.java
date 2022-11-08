@@ -48,6 +48,14 @@ public class QnaServiceImpl implements QnaService{
     public List<QnaVO> getAllList(QnaVO q) {
         return this.qnaDAO.getAllList(q);
     }
+    @Override //관리자페이지 - 문의글 전체 리스트
+    public List<QnaVO> adminQnaList(QnaVO q) {
+        return this.qnaDAO.adminQnaList(q);
+    }
+    @Override //관리자페이지 - 문의글 개수
+    public int adminQnaCount() {
+        return this.qnaDAO.adminQnaCount();
+    }
 
 
 }

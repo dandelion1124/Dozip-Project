@@ -20,19 +20,19 @@
 			<nav class="header_nav">
 				<!-- 로고 -->
 				<div class="logo">
-					<a href="./index.jsp"> <img src="/images/admin/logo.png"/>
+					<a href="/admin/"> <img src="/images/admin/logo.png"/>
 					</a>
 				</div>
 				
 				<ul class="menu">
-					<li><a href="/Admin/admin_memlist.do">회원/파트너스관리&nbsp;</a></li>
-					<li><a href="/Admin/admin_writinglist.do">전체글관리&nbsp;</a></li>
-					<li><a href="/Admin/admin_contractlist.do">계약/정산관리&nbsp;</a></li>
-					<li><a href="/Admin/admin_qnalist.do">문의관리&nbsp;</a></li>
+					<li><a href="/admin/mem">회원/파트너스관리&nbsp;</a></li>
+					<li><a href="/admin/write">전체글관리&nbsp;</a></li>
+					<li><a href="/admin/contract">계약/정산관리&nbsp;</a></li>
+					<li><a href="/admin/qna">문의관리&nbsp;</a></li>
 				</ul>
 			
 				<ul class="icons">
-					<li><a href="go_home.do"  id="admin_logout">관리자페이지 나가기</a></li>
+					<li><a href="/dozip/logout_ok"  id="admin_logout">관리자페이지 나가기</a></li>
 				</ul>
 				<a href="#" class="toggleBtn"><i class="fas fa-bars"></i></a> <!-- 반응형 메뉴 토글 버튼-->
 			</nav>
