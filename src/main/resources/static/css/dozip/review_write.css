@@ -6,10 +6,43 @@
     margin: 0 auto;
 }
 
+#r_guide{
+    display: flex;
+    flex-direction: row;
+}
+
+#guide{
+    padding-top: 10px;
+}
+
+#guide_cont{
+    padding-top: 20px;
+    padding-left: 5px;
+}
+
+#cont_guide_wrap{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#cont_img{
+    width: 40px;
+}
+
+#next_icon,#next_icon02{
+    width: 15px;
+}
+
+#cont_guide{
+    padding-left: 10px;
+}
+
 .review_guide {
     width: 90%;
     border-radius: 5px;
-    border: 4px solid #dcdcdc;
+    border: 4px solid #79a5fa;
     margin: 20px auto;
     padding: 8px;
 }
@@ -36,6 +69,14 @@
     color : #0064CD;
     font-weight : bold;
 }
+
+.review_write_start{
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 4px solid #E2E8F6;
+}
 .review_write_form {
     margin-top: 50px;
     width: 90%;
@@ -44,7 +85,7 @@
 
 
 .review_write_form #r_title {
-    width: 20%;
+    width: 13%;
     height: 30px;
     border-radius: 2px;
 }
@@ -79,12 +120,13 @@
 }
 
 #load_cont {
+    width: 80%;
     height: 120px;
     display : flex;
     flex-wrap: wrap;
     flex-direction : row;
     justify-content: space-evenly;
-    border: 3px solid #0A6EFF;
+    border: 2px solid #0A6EFF;
     border-radius: 3px;
     align-content: center;
 }
@@ -95,7 +137,7 @@
     height: 150px;
     resize: none;
     font-family: 'Malgun Gothic';
-    border : 3px solid;
+    border : 2px solid;
     border-radius: 3px;
 }
 

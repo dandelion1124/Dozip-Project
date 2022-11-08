@@ -1,17 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="/css/dozip/review_write.css" />
+
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
-
+<link rel="stylesheet" type="text/css" href="/css/dozip/review_write.css" />
 <div class="review_write_wrap">
 	<hr/>
 	<div class="review_guide">
-		<p id = "r_guide">후기 작성 가이드</p>
+		<div id = "r_guide">
+			<img id="guide" src="/images/dozip/icons8-estimate-48.png"/>
+			<div id="guide_cont">후기 작성 가이드</div>
+		</div>
 		<ul>
 			<li>필수 항목을 모두 채워주세요</li>
 			<li>계약정보 불러오기를 클릭하면 계약서 정보를 편하게 불러올 수 있어요!</li>
-			<p id = "cont_guide">계약정보 불러오기 가이드</p>
-			<li id = "cont_rguide">계약번호 불러오기 버튼 클릭 => 계약 번호 선택 => 해당 정보 불러오기 클릭</li>
+			<div id = "cont_guide_wrap">
+				<img id="cont_img" src="/images/dozip/icons8-notice-64.png"/>
+				<div id = "cont_guide">계약정보 불러오기 가이드</div>
+			</div>
+			<li id = "cont_rguide">계약번호 불러오기 버튼 클릭
+				<img id="next_icon" src="/images/dozip/next2.png"/>
+				계약 번호 선택
+				<img id="next_icon02" src="/images/dozip/next2.png"/>
+				해당 정보 불러오기 클릭</li>
 			<li>상세히 적어주시면 많은 사람들에게 큰 도움이 될 수 있습니다!</li>
 		</ul>
 	</div>
@@ -102,6 +112,7 @@
 			</div>
 			<div><button type="submit" id="r_submit_btn">내용 등록하기</button></div>
 		</div>
+
 	</form>
 </div>
 
