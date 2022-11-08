@@ -5,6 +5,7 @@ import com.dozip.utils.ConvertAddr;
 import com.dozip.vo.EstimateVO;
 import com.dozip.vo.PartnersVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,11 +20,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/dozip/*")
 public class ApplyController {
+    @Value("${uploadPath}")
+    private String uploadPath;
+
     @Autowired
     private ApplyService applyService;
 
@@ -65,14 +71,6 @@ public class ApplyController {
         EstimateVO e = new EstimateVO();
         PrintWriter out=response.getWriter();
 
-
-        System.out.println("파일"+est_file);
-
-
-
-
-
-
         e.setMem_id((String) session.getAttribute("id")); //현재 로그인된 세션의 아이디 값
 
         e.setEst_zoning(request.getParameter("est_zoning"));
@@ -107,56 +105,23 @@ public class ApplyController {
         System.out.println("선택한 회사 : "+bn);
 
 
+        uploadPath+="est_upload//";
 
+        Date now =new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
+        String randomName = String.valueOf((int)(Math.random() *(99999999-10000000+1))+10000000);
 
-
-        //        String uploadPath = "D:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 PC upload 경로
-        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\est_upload\\";  //호철 노트북 upload 경로
-//       String uploadPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
-//        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
-
-        String uploadDBPath = "/upload/";
+        String uploadDBPath = "/upload/est_upload/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
 
-        String dbFilename;
-        String saveFilename;
-
-
-
-        /*
-        파일명 생각해야함. 어떤 기준으로 폴더와 파일을 만들것인지?
-        아이디기준으로 폴더만들고 난수출력하기.
-         */
-            dbFilename= uploadDBPath + "photo0" + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-            saveFilename= uploadPath + "photo0" +".jpg";   //String 객체에 실제 파일명 저장
-            est_file.transferTo(new File(saveFilename)); //실제 파일저장.
-
-
-
+        String dbFilename= uploadDBPath + sdf.format(now)+randomName +".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+        String saveFilename= uploadPath + sdf.format(now)+randomName +".jpg";   //String 객체에 실제 파일명 저장
+        est_file.transferTo(new File(saveFilename)); //실제 파일저장.
         e.setEst_file(dbFilename);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         if(bn != null) {
             String[] array=bn.split("/");

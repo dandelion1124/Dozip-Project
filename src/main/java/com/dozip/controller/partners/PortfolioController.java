@@ -3,6 +3,7 @@ package com.dozip.controller.partners;
 import com.dozip.service.partners.portfoilio.PortfolioService2;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,8 @@ import java.util.List;
 @Controller
 @RequestMapping("partners/*")
 public class PortfolioController {
+    @Value("${uploadPath}")
+    private String uploadPath;
     @Autowired
     PortfolioService2 portfolioService;
     // 포트폴리오 페이지
@@ -57,20 +60,7 @@ public class PortfolioController {
             if (c.getName().equals("pf_no"))    pf_no = Integer.parseInt(c.getValue());
         }
 
-            /* 중요!!! 이미지 파일 업로드하고 html 로 불러오기 위한 작업
-        1. 아래 uploadPath 주소를 자신의 프로젝트 주소의 upload 폴더로 바꿉니다.
-
-            String uploadPath = "upload폴더 경로 주소" + pf_no;
-        2. 사진 등록후 서버 한번 재시작 해야 포트폴리오가 불러와집니다
-        3. 작업 하신후에 upload 폴더안에 있는 내용들은 깃에 올리지 말아주세요~~ (**삭제 혹은 무시**)
-        */
-
-//        String uploadPath = "D:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 PC upload 경로
-        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no + "\\";  //호철 노트북 upload 경로
-//       String uploadPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //지혜 학원 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //민우 학원 PC upload 경로
-//       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //수환 학원 PC upload 경로
-//        String uploadPath = "C:\\DoZip\\src\\main\\resources\\static\\upload\\" + pf_no+"\\";  //동민 학원 PC upload 경로
+        uploadPath+=pf_no + "\\";
 
         String uploadDBPath = "/upload/" + pf_no + "/";
         File dir = new File(uploadPath);
