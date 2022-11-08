@@ -10,7 +10,7 @@
 
     <!-- 근처의 파트너스 불러오기 -->
     <select id="search_p" resultType="PartnersVO">
-        select * from PARTNERST where p_addr1 like #{p_addr1}
+        select p.*, s.P_COMP_LOGO from PARTNERST p, PARTNERS_SUBT s where p_addr1 like #{p_addr1} and p.BUSINESSNUM=s.BUSINESSNUM
     </select>
 
     <!-- 근처 파트너스 숫자 -->

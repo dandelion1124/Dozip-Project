@@ -95,6 +95,10 @@
             background: none;
             font-size: 16px;
         }
+        #pmain_cont .index_item:nth-child(1) div button:hover {
+            font-weight: bold;
+
+        }
 
         #pmain_cont .index_item:nth-child(1) div button:hover, #pmain_cont .index_item:nth-child(1) div label:hover {
             cursor: pointer;

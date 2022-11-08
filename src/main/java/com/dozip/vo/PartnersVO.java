@@ -22,6 +22,8 @@ public class PartnersVO {
 
     //추가 필요정보
     private int p_count;
+    //사진등록용
+    private String p_Comp_logo;
 
 
 }

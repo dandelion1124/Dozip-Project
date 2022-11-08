@@ -16,4 +16,6 @@ public interface InfoDAO {
     int pupdatePwd(PartnersVO p);
 
     void insertpartnerslogo(Partners_subVO ps);
+
+    void updatepartnerslogo(Partners_subVO ps);
 }

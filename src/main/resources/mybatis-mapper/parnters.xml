@@ -61,8 +61,11 @@
     </select>
 
     <insert id="insert_logo">
-        update Partners_subT set p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR}
+        insert into Partners_subT (p_Comp_logo) values(#{p_Comp_logo,jdbcType=VARCHAR})
     </insert>
+    <update id="update_logo" parameterType="Partners_subVO">
+        update Partners_subT set p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR} where businessNum=#{businessNum}
+    </update>
 
     <!-- 비밀번호 변경-->
     <select id="ploginCheck" resultType="String">

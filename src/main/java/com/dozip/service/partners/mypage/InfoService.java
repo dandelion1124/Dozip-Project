@@ -17,4 +17,6 @@ public interface InfoService {
     int pupdatePwd(PartnersVO p);
 
     void insertpartnerslogo(Partners_subVO ps);//파트너스 로고넣기
+
+    void updatepartnerslogo(Partners_subVO ps);
 }

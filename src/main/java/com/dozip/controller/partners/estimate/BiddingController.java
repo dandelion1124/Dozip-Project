@@ -28,10 +28,12 @@ public class BiddingController {
 
 
     @RequestMapping(value = "/bid") //입찰의뢰
-    public ModelAndView bid(EstimateVO e, HttpServletRequest request, HttpServletResponse response, HttpSession session)
+    public ModelAndView bid(EstimateVO e,BidVO b, HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws Exception {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
+
+        //int bcount = this.biddingService.countJoinpartners(b);
 
 //        Paging paging;
 //        if(request.getParameter("page") == null){
@@ -62,6 +64,8 @@ public class BiddingController {
             Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
             long remaindate = (parseddate.getTime() - now.getTime());
             elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
+
+            //System.out.println(elist.get(i).getEst_num());
         }
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();

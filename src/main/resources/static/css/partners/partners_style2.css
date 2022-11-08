@@ -129,7 +129,7 @@
       vertical-align:middle;
    }
    #p_Int_img, #p_Comp_logo, #p_Account_file, #p_Business_lic_file {
-      visibility: hidden;
+      /* visibility: hidden; */
    }
    .additional-03{
       display:inline-block;
@@ -471,7 +471,7 @@
        box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
        /*word-break: keep-all;*/
     }
-    
+
     ul.company_profile{
        width: 90%;
        display: block;
@@ -489,6 +489,15 @@
        background-color:aliceblue;
        border-radius:3px;
        box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+    }
+    ul li.info3{
+        overflow:hidden;
+        text-overflow: ellipsis;
+        margin:10px 0 8px 0;
+        font-size: 15px;
+        list-style: none;
+        text-align: center;
+        font-weight:bold;
     }
     p.request_info_tit{
        color:gray;

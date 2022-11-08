@@ -136,7 +136,7 @@ function apply03_check(){ /*3 페이지 유효성 검증 */
         $.getJSON("/dozip/search_part/"+est_addr, function(data){ //json 데이터를 get방식으로 처리, 비동기식으로 가져온 데이터는 data매개변수에 저장
             var result="";
             $(data).each(function(){ //each()함수로반복
-                result += "<label for="+this.businessNum+"><div class=partnersinfo_div><div class='partners_logo'><img src='/images/dozip/profile/null.png'></div><div>"+
+                result += "<label for="+this.businessNum+"><div class=partnersinfo_div><div class='partners_logo'><img src="+this.p_Comp_logo+" alt='사진'></div><div>"+
                     "<input  type='checkbox' class='partenrs_btn' id="+this.businessNum+" name='businessName' value="+this.businessNum+" style='appearance: revert;'>&nbsp;업체명 : "+ this.businessName+"<br>" +
                     "&nbsp;&nbsp;&nbsp;&nbsp;연락처 : " +this.p_Tel+"<br>" +
                     "&nbsp;&nbsp;&nbsp;&nbsp;주 &nbsp;소 : " +this.p_Addr1+"<br></div></div></label>"

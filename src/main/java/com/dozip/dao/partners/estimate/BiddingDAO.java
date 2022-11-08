@@ -15,5 +15,5 @@ public interface BiddingDAO {
     int getBlistCount2(String businessNum);
     List<BidVO> selectJoinList(EstimateVO e);
 
-
+    BidVO countJoinpartners(BidVO b);
 }
