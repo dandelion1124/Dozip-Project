@@ -38,15 +38,5 @@
         const it = document.querySelector('#bNum').value
         console.log(it);
 
-
-
-
-
-
-
-        let check=confirm('업체를 선택하지 않고 진행하시겠습니까?');
-        if(!check){
-            return false;
-        }
     }
 </script>

@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class MyInteriorDAOImpl implements MyInteriorDAO{
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override
     public List<ContractVO> getContract_interior(ContractVO vo) {return sqlSession.selectList("interior_estimate",vo);}

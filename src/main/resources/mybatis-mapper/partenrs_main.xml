@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dashboard">
+
+        <!--이번달 매출내역 -->
+    <select id="montly_sales" resultType="PayVO">
+        select count(*) as count, TO_CHAR(PAY_DATE1, 'YYYY-MM') as PAY_DATE1, sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3) as PAY_COST3
+        from PAYT where BUSINESSNUM=#{businessNum} and TO_CHAR(PAY_DATE1, 'YYYY-MM') =TO_CHAR(Sysdate, 'YYYY-MM') group by TO_CHAR(PAY_DATE1, 'YYYY-MM')
+    </select>
+    <select id="portfolioCount" resultType="int">
+        select count(*) from PORTFOLIOT where BUSINESSNUM=#{bNum}
+    </select>
+</mapper>

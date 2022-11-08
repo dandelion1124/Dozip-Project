@@ -1,26 +1,19 @@
 package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.member.MemberService;
-import com.dozip.service.dozip.portfolio.PortfolioService;
-import com.dozip.service.dozip.review.ReviewService;
 import com.dozip.vo.MemberVO;
-import com.dozip.vo.PortfolioVO;
-import com.dozip.vo.ReviewVO;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 @Controller
 @RequestMapping("/dozip/*")

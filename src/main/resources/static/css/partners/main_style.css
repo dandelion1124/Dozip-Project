@@ -82,13 +82,10 @@ a.footer_mail:hover {color: green;}
 /****************/
 /*미디어 쿼리 ***/
 /****************/
-@media all and (max-width:1150px){
-    #main_cont{width: 90%;}
-    .index_item:nth-child(2){display:none; }
-   .index_item:nth-child(5){display:none; }}
-@media all and (max-width:1060px){
-    #pmain_cont .index_item:nth-child(1){display:none;}
-    .index_item:nth-child(6){display:none;}}
+@media all and (max-width:1330px){#pmain_cont .index_item:nth-child(4){display:none; }}
+@media all and (max-width:1150px){#main_cont{width: 90%;}.index_item:nth-child(2){display:none; }.index_item:nth-child(5){display:none; }}
+@media all and (max-width:1060px){#pmain_cont .index_item:nth-child(1){flex-direction: column;}i.xi-angle-right {display: none;}}
 @media all and (max-width:930px){span.hide_1{display: none;}}
+@media all and (max-width:900px){.index_item:nth-child(6){display:none;}}
 @media all and (max-width:610px){#footer_nav{display: none;} #main_cont{width: 85%;}}
 @media all and (max-width:545px){span.hide_2{display: none;} }

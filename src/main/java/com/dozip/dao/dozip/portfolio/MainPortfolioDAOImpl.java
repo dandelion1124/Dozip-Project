@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PortfolioDAOImpl implements PortfolioDAO{
+public class MainPortfolioDAOImpl implements MainPortfolioDAO {
     @Autowired
     private SqlSession sqlSession;
 

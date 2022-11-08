@@ -1,6 +1,6 @@
 package com.dozip.controller.dozip;
 
-import com.dozip.service.dozip.portfolio.PortfolioService;
+import com.dozip.service.dozip.portfolio.MainPortfolioService;
 import com.dozip.service.dozip.review.ReviewService;
 import com.dozip.vo.PortfolioVO;
 import com.dozip.vo.ReviewVO;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/dozip/*")
 public class MainController {
     @Autowired
-    private PortfolioService portfolioService;
+    private MainPortfolioService mainPortfolioService;
     @Autowired
     private ReviewService reviewService;
 
@@ -25,7 +25,7 @@ public class MainController {
 
         List<PortfolioVO> plist = new ArrayList<PortfolioVO>();
         List<ReviewVO> reviewList = new ArrayList<ReviewVO>();
-        plist = this.portfolioService.getAllList();
+        plist = this.mainPortfolioService.getAllList();
         reviewList = this.reviewService.getAllReview();
         mv.addObject("plist",plist);
         mv.addObject("reviewList",reviewList);

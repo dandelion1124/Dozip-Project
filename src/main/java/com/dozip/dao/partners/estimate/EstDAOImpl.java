@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class EstDAOImpl implements EstDAO{
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override
     public int getElistCount(String businessNum) { return this.sqlSession.selectOne("cons_req_count",businessNum); }

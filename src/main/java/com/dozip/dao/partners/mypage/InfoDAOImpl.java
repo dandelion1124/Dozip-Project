@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class InfoDAOImpl implements InfoDAO {
     @Autowired
-    SqlSession sqlSession;
+    private SqlSession sqlSession;
 
     @Override
     public PartnersVO getMember(String businessNum) {
