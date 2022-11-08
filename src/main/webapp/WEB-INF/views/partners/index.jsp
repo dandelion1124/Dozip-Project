@@ -73,8 +73,8 @@
             box-shadow: 2px 2px 8px 3px rgb(0 0 0 / 14%);
             background: #ffffff00;
             border-radius: 10px;
+            transition: all .35s;
         }
-
         .index_item:nth-child(1) {
             grid-column: 1/4;
             display: flex;
@@ -99,42 +99,22 @@
         #pmain_cont .index_item:nth-child(1) div button:hover, #pmain_cont .index_item:nth-child(1) div label:hover {
             cursor: pointer;
         }
-
-        .index_item:nth-child(3) {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .index_item:nth-child(6) {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .index_item:nth-child(3) div, .index_item:nth-child(6) div {
+       .index_item:nth-child(4) div {
             min-width: 60px;
-            height: 100px;
-            background: #55a75d;
             border: none;
             border-radius: 4px;
             padding: 10px;
             margin-left: 10px;
         }
-
-        #myChart, #myChart2 {
+        #myChart, #myChart2, #myChart3 {
             border: 1px dotted #00000091;
             margin: 0 auto;
             border-radius: 3px;
 
         }
-
         canvas#myChart2 {
             margin-top: -20px;
         }
-
-        div#cont_wrap {
-            background: #eee;
-        }
-
         i.xi-angle-right {
             margin-top: 80px;
         }
@@ -146,7 +126,6 @@
             font-size: 26px;
             font-weight: bold;
         }
-
         .index_item div label:hover {
             color: #178BFF;
         }
@@ -186,21 +165,18 @@
             <canvas id="myChart" width="450" height="300"></canvas>
         </div>
         <div class="index_item"> <%--grid 3 --%>
+            <h2>이번달 매출</h2>
+            <p>계약금 : 100,000</p>
+            <p>중도금 : 100,000</p>
+            <p>잔금 : 100,000</p>
+        </div>
+        <div class="index_item">  <%--grid 4 --%>
             <div>미확인 문의
                 <input type="button" value="확인하기">
             </div>
             <div> 시공 요청건
                 <input type="button" value="확인하기">
             </div>
-        </div>
-        <div class="index_item">
-            광고 광고 광고 광고 광고 광고
-        </div>
-            <%--grid 4 --%>
-        <div class="index_item"><br> <%--grid 5 --%>
-            <canvas id="myChart2" width="450" height="300"></canvas>
-        </div>
-        <div class="index_item">  <%--grid 6 --%>
             <div> 계약 요청건
                 <input type="button" value="확인하기">
             </div>
@@ -208,11 +184,20 @@
                 <input type="button" value="등록하기">
             </div>
             <div>
-                리뷰 평점 평균
+                리뷰 평점 평균 : 5점
             </div>
         </div>
-        <div class="index_item">
+
+        <div class="index_item"><br> <%--grid 5 --%>
+            <canvas id="myChart2" width="450" height="300"></canvas>
+        </div>
+        <div class="index_item">  <%--grid 6 --%>
+            <canvas id="myChart3" width="450" height="300"></canvas>
+
+        </div>
+        <div class="index_item"><%--grid 7 --%>
             광고 광고 광고 광고 광고 광고
+
         </div>
             <%--grid 7 --%>
     </div>
@@ -326,6 +311,54 @@
                 indexAxis: 'y',
                 scales: {
                     x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        const ctx3 = document.getElementById('myChart3').getContext('2d');
+        const myChart3 = new Chart(ctx3, {
+            // chart type(차트 형태) : bar, line, pie
+            type: 'pie',
+
+            // chart data(차트 데이터-객체형태)
+            data: {
+                // labels -> x축에 들어갈 데이터
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    // label : 차트제목
+                    label: '월별 시공 현황',
+
+                    // data : x축 label에 대응되는 데이터 값
+                    data: [12, 19, 3, 5, 2, 3],
+
+                    // 차트 스타일 지정
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+
+                responsive: false,
+                scales: {
+                    y: {
                         beginAtZero: true
                     }
                 }
