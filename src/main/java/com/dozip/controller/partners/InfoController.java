@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 
@@ -87,17 +89,19 @@ public class InfoController {
         //System.out.println(comp_logo);
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        Date now =new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
+        String randomName = String.valueOf((int)(Math.random() *(99999999-10000000+1))+10000000);
 
         uploadPath+="logo_upload//";
-
         String uploadDBPath = "/upload/logo_upload/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        String dbFilename = uploadDBPath + "partnerslogo" + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-        String saveFilename = uploadPath + "partnerslogo" + ".jpg";   //String 객체에 실제 파일명 저장
+        String dbFilename = uploadDBPath + "partnerslogo" + sdf.format(now)+ randomName + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+        String saveFilename = uploadPath + "partnerslogo" + sdf.format(now)+ randomName + ".jpg";   //String 객체에 실제 파일명 저장
 
         comp_logo.transferTo(new File(saveFilename)); //실제 파일저장.
         System.out.println(dbFilename);
