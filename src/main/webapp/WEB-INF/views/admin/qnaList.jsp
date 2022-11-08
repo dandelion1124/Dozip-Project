@@ -5,6 +5,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<script>
+	function openQna(qna_no){
+		window.open("/admin/qna_cont?qna_no="+qna_no, "_blank", "toolbar=no, menubar=no, scrollbars=no, resizable=no, width=400, height=500, left=0, top=0" );
+	}
+</script>
+
 <div class="all_qna_list_wrap">
 	<div>
 		<p id="all_qna_list_title">고객문의 목록</p>
@@ -90,7 +96,7 @@
 					</td>
 					<td>${qlist[i].qna_ref}</td><!-- 원본글번호 -->
 					<td>${qlist[i].qna_type}</td><!-- 문의유형 -->
-					<td id="title"><a href="#">${qlist[i].qna_title}</a></td><!-- 글제목 -->
+					<td id="title"><a href="#" onclick="openQna(${qlist[i].qna_no})">${qlist[i].qna_title}</a></td><!-- 글제목 -->
 					<td id="date">${qlist[i].qna_date}</td><!-- 문의날짜 -->
 					<td><!-- 업체명 -->
 						<c:if test="${qlist[i].businessName != null}">${qlist[i].businessName}</c:if>

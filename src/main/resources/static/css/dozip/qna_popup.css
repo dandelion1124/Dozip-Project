@@ -7,11 +7,11 @@
     /* 초기에 약간 아래에 배치 */ transform: translate(-50%, -40%); }
 .show { opacity: 1; z-index: 1000; transition: all .5s; }
 .show .popup { transform: translate(-50%, -50%); transition: all .5s; }
-#title_box { width: 100%; height: 50px; margin-top: 0px; background-color: #347844; color: white; font-size: 1.3rem; font-weight: bold; padding-left: 20px; padding-top: 10px;}
-#qna_box { margin: 50px auto; width: 80%; border-collapse: collapse; border-top: 2px solid #2b2a29; }
+#title_box { width: 100%; height: 50px; margin-top: 0px; background-color: #347844; color: white; font-size: 1.3rem; font-weight: bold; padding-top: 15px;}
+#qna_box { margin: 40px auto; width: 80%; border-collapse: collapse; border-top: 2px solid #2b2a29; }
 #qna_box th { border-bottom: 1px solid #B3B9BE; background-color: #f7f7f7; font-weight: normal; width: 30%; height: 40px; font-size: 0.8rem; }
 #qna_box td { border-bottom: 1px solid #B3B9BE; padding-left: 20px; padding-right: 20px; font-size: 0.8rem; }
-#btn_wrap { margin: 0 auto; text-align: center; }
+#btn_wrap { margin: 0px auto 10px auto; text-align: center; }
 #cont { padding: 10px 20px; }
 #cont > textarea { width: 100%; border: none; height: 100px; resize: none; background-color: white; }
 #delete { background-color: #FF0033; border: none; color: white; height: 30px; }

@@ -11,7 +11,7 @@
     <div id="estimate_step05">
         <section aria-label="견적요청" class="estimate_yourcost">
             <div class="title" style="display: flow-root;">
-                <div id="t1" style="margin-left: 50px;"><img src="/images/dozip/icons8-estimate-48.png" style="padding-top: 20px; width: 80px; height: 90px; "/></div>
+                <div id="t1" style="margin-left: 50px;"><img src="/images/dozip/icons8-estimate-48.png" style="padding-top: 20px; width: 80px; height: 85px; "/></div>
                 <div id="t2"><h3 style="margin-bottom: 5px; padding-top: 3px; color: black; ">고객님의 견적요청내용입니다</h3>
                 <p class="subtitle" style="margin-bottom: 0px; margin-top: 0px;">견적요청내용을 확인하시고 맞다면 요청을 보내주세요</p></div>
             </div>
