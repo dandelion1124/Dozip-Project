@@ -19,13 +19,21 @@ public class IndexController {
 
     @RequestMapping(value = "/main") //파트너스 메인
     public ModelAndView partners(HttpSession session) {
+
+        ModelAndView mv = new ModelAndView("/partners/index");
+        if((String)session.getAttribute("businessNum")!= null){
+            String bNum =(String)session.getAttribute("businessNum");
+            PayVO pv = indexService.montly_sales(bNum);
+            int portfolioCount = indexService.portfolioCount(bNum);
+
+            mv.addObject("pv",pv);
+            mv.addObject("portfolioCount",portfolioCount);
+        }
+
         //월별 정산내역
-        String bNum =(String)session.getAttribute("businessNum");
-       PayVO pv = indexService.montly_sales(bNum);
-       int portfolioCount = indexService.portfolioCount(bNum);
-       ModelAndView mv = new ModelAndView("/partners/index");
-       mv.addObject("pv",pv);
-       mv.addObject("portfolioCount",portfolioCount);
+
+
+
        return mv;
     }
 
