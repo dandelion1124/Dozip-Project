@@ -149,7 +149,7 @@
 							<c:if test="${e.est_check != '대기중'}">
 								<ul class="company_profile">
 									<li class="info3" style="margin-top:5px;">
-										<p class="val" style="color:blue;">★입찰 참여 중★</p>
+										<p style="color:blue; list-style:none;">★입찰 참여중★</p>
 									</li>
 								</ul>
 							</c:if>

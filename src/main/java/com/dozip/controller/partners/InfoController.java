@@ -88,9 +88,9 @@ public class InfoController {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        uploadPath+="est_upload//";
+        uploadPath+="logo_upload//";
 
-        String uploadDBPath = "/upload/est_upload/";
+        String uploadDBPath = "/upload/logo_upload/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
@@ -194,8 +194,6 @@ public class InfoController {
             this.infoService.updatePartners(p);
         }
 
-
-
         int res = this.infoService.checkSub(ps.getBusinessNum());
         System.out.println(res);
         if (res == 0) {
@@ -209,12 +207,12 @@ public class InfoController {
         m.addAttribute("ps", ps);
 
         out.println("<script>");
-        out.println("alert('정보 입력 성공!');");
-        out.println("history.back();");
+        out.println("alert('정보 변경 완료!');");
+        //out.println("history.back();");
         out.println("</script>");
 
-        return null;
-        // return "redirect:/partners/data_manage;";
+        //return null;
+        return "redirect:/partners/main";
         //return new ModelAndView("redirect:/partners/data_manage;");
 
     }

@@ -491,10 +491,9 @@
        box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
     }
     ul li.info3{
-        width:90%;
         overflow:hidden;
         text-overflow: ellipsis;
-        margin:0px 5% 8px 5%;
+        margin:10px 0 8px 0;
         font-size: 15px;
         list-style: none;
         text-align: center;
