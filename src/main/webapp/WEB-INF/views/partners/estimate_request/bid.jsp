@@ -21,12 +21,12 @@
 						<option value="success">입찰 성공</option>
 						<option value="fail">입찰 실패</option>
 					</select> -->
-				<div style="padding:0 0 0 2.5%; width:87%;">
-					계약서를 작성 한 후 계약금 지불이 완료되면 시공 일정에 맞추어 공사를 진행해주시기 바랍니다</hr>
-					고객님이 업체를 지정하여 신청한 견적 내역을 확인합니다.</hr>
-					번호를 누르면 상세페이지에서 내용을 확인할 수 있습니다.</hr>
-					업체의 수락/거절 내용을 확인 할 수 있습니다.</hr>
-					test
+				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:1px double black;">
+					<ul style="padding:0px;">
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰을 신청하시면 모집마감일 내에 고객 쪽에서 업체를 선택하게 됩니다.</li>
+					</ul>
 				</div>
 				<!-- <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"> -->
 				<div class="search_box">
@@ -148,8 +148,8 @@
 							</div>
 							<c:if test="${e.est_check != '대기중'}">
 								<ul class="company_profile">
-									<li class="info2" style="margin-top:5px;">
-										<p class="val" style="color:blue;">입찰 참여 중</p>
+									<li class="info3" style="margin-top:5px;">
+										<p class="val" style="color:blue;">★입찰 참여 중★</p>
 									</li>
 								</ul>
 							</c:if>

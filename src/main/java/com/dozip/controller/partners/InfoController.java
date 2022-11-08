@@ -5,6 +5,7 @@ import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +32,10 @@ public class InfoController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Value("${uploadPath}")
+    private String uploadPath;
+
     /*My page
      *
      */
@@ -76,23 +82,27 @@ public class InfoController {
     }//data_manage()
 
     @RequestMapping(value = "/data_manage_ok", method = RequestMethod.POST) //data_manage
-    public String data_manage_ok(Model m, @RequestParam String p_Comp_logo, Partners_subVO ps, HttpServletResponse response, HttpServletRequest request,
+    public String data_manage_ok(Model m, MultipartFile comp_logo, Partners_subVO ps, HttpServletResponse response, HttpServletRequest request,
                                  HttpSession session) throws Exception {
+        //System.out.println(comp_logo);
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\";
+        uploadPath+="est_upload//";
 
-        String uploadDBPath = "/upload/";
+        String uploadDBPath = "/upload/est_upload/";
         File dir = new File(uploadPath);
 
-        String dbFilename = uploadDBPath + "photo01" + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-        String saveFilename = uploadPath + "photo01" + ".jpg";   //String 객체에 실제 파일명 저장
-        //p_Comp_logo.transferTo(new File(saveFilename)); //실제 파일저장.
+        if (!dir.isDirectory()) { //폴더가 없다면 생성
+            dir.mkdirs();
+        }
+        String dbFilename = uploadDBPath + "partnerslogo" + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+        String saveFilename = uploadPath + "partnerslogo" + ".jpg";   //String 객체에 실제 파일명 저장
+
+        comp_logo.transferTo(new File(saveFilename)); //실제 파일저장.
         System.out.println(dbFilename);
 
         ps.setP_Comp_logo(dbFilename);
-        infoService.insertpartnerslogo(ps);
 
         //String businessNum = (String)session.getAttribute("businessNum");
 /*
@@ -190,9 +200,10 @@ public class InfoController {
         System.out.println(res);
         if (res == 0) {
             this.infoService.insertPartnersSub(ps);
-
+            infoService.insertpartnerslogo(ps);
         } else {
             this.infoService.updatePartnersSub(ps);
+            infoService.updatepartnerslogo(ps);
         }
 
         m.addAttribute("ps", ps);

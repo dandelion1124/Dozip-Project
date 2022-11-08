@@ -55,4 +55,9 @@ public class InfoServiceImpl implements InfoService {
     public void insertpartnerslogo(Partners_subVO ps) {
         infoDAO.insertpartnerslogo(ps);
     }
+
+    @Override
+    public void updatepartnerslogo(Partners_subVO ps) {
+        infoDAO.updatepartnerslogo(ps);
+    }
 }
