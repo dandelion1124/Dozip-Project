@@ -18,7 +18,38 @@
 			<div class="big_review">
 				<img class="big_img" src= ${best.re_photo1} />
 				<div class="big_review_cont">
-					<p class="review_title">${best.re_title}</p> <br>
+					<p class="review_title">${best.re_title}</p>
+
+						<%-- 별찍기 --%>
+					<p class="star" style="display: contents;">
+						<c:if test="${best.re_star eq 1}">
+							<img src="/images/dozip/star1.png">
+						</c:if>
+						<c:if test="${best.re_star eq 2}">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+						</c:if>
+						<c:if test="${best.re_star eq 3}">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+						</c:if>
+						<c:if test="${best.re_star eq 4}">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+						</c:if>
+						<c:if test="${best.re_star eq 5}">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+							<img src="/images/dozip/star1.png">
+						</c:if>
+					</p> <br/>
+
+
 					<p class="review_cont">${best.re_cont}</p>
 
 					<p id="review_tag">

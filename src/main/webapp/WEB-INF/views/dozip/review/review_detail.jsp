@@ -20,7 +20,7 @@
 			<div class="review_t">
 				<p class="re_title">${re.re_title}</p>
 
-				<p class="star" style="float: right">
+				<p class="star" style="float: right;margin-top: 23px;">
 				<c:if test="${re.re_star eq 1}">
 					<img src="/images/dozip/star1.png">
 				</c:if>
