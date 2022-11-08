@@ -156,18 +156,18 @@
         <div class="index_item"> <%--grid 1 --%>
             <div>
                 <label for="status01">0</label>
-                <button id="status01">계약요청</button>
+                <button id="status01">견적요청</button>
             </div>
             <i class="xi-angle-right"></i>
             <div>
                 <label for="status02">0</label>
-                <button id="status02">계약서작성완료</button>
+                <button id="status02">계약요청</button>
 
             </div>
             <i class="xi-angle-right"></i>
             <div>
                 <label for="status03">0</label>
-                <button id="status03">계약금지불완료</button>
+                <button id="status03">계약완료</button>
             </div>
             <i class="xi-angle-right"></i>
             <div>
@@ -218,7 +218,7 @@
     </div>
     <script>
         $('#status01').click(function () {
-            location.href = '/partners/estimate_list'
+            location.href = '/partners/construct_request'
         });
         $('#status02').click(function () {
             location.href = '/partners/estimate_list'
