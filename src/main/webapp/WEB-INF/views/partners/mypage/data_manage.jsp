@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page  contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <jsp:include page="../include/header.jsp" />
 <link rel="stylesheet" href="/css/partners/partners_style2.css">
@@ -45,14 +46,27 @@
 			checkbox.checked = selectAll.checked;
 		})
 	}
-
 	$(function() {
 		$('#resi-down').click(function() {
 			$('#residence-wrap').toggle(400);
 		});
 	});
 
-
+	$(function() {
+		$("#p_Comp_logo").on('change', function(){
+			readURL(this);
+		});
+	});
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#view1').attr('src', e.target.result);
+				$('#view1').css('visibility', 'visible');
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 </script>
 <article>
 	<div>
@@ -72,8 +86,8 @@
 			</div>
 		</div>
 		<div class="all_information">
-
-			<form method="post" action="data_manage_ok">
+			<form action="data_manage_ok" method="post" enctype="multipart/form-data">
+			<!--<form method="post" action="data_manage_ok"> -->
 				<fieldset id="business">
 					<legend>
 						<b>사업자 정보</b>
@@ -134,37 +148,37 @@
 						</br>
 					</div>
 				</fieldset>
-			</form>
 				<fieldset id="additional">
 					<legend>
 						<b>부가 정보</b>
 					</legend></br>
 
-				<form action="data_manage_ok" method="post" enctype="multipart/form-data">
+
 					<div class="additional-02">
 						<label class="upload_image_title"><b>대표 인테리어 이미지</b></label><br />
-						<div class="upload_image_size">(권장 이미지 사이즈 750 x 600)</div>
+						<input type="file" id="p_Int_img" accept="image/*">
+						<div class="upload_image_size">(권장 이미지 사이즈 150 x 150)</div>
 						<div tabindex="0" class="upload_image" >
-							<label for="p_Int_img" class="upload_lbl">  <!-- label for과 input id가 같아야 적용됨 -->
+							<label for="p_Int_img" class="upload_lbl">  <!-- label for과 input id가 같아야 적용됨-->
 								<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 							</label>
-							<input type="file" id="p_Int_img" name="p_Int_img" accept="image/*">
+
 						</div>
 						<br />
 					</div>
 					<div class="additional-03">
 						<label class="upload_image_title"><b>파트너스 로고 이미지</b></label><br />
-						<div class="upload_image_size">(권장 이미지 사이즈 300 x 300)</div>
+						<input type="file" id="p_Comp_logo" name="comp_logo" accept="image/*">
+						<div class="upload_image_size">(권장 이미지 사이즈 150 x 150)</div>
 						<div tabindex="0" class="upload_image" >
+							<img id="view1" src="#" width="150px" height="150px"/>
 							<label for="p_Comp_logo" class="upload_lbl">
 								<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 							</label>
-							<input type="file" id="p_Comp_logo" name="p_Comp_logo" accept="image/*">
+
 						</div>
 						<br />
 					</div>
-				</form>
-				<form method="post" action="data_manage_ok">
 					<div class="additional-01">
 						<label><b>전문가 한마디</b></label><br />
 						<textarea id="p_Shortstate" name="p_Shortstate" autocomplete="off"
@@ -363,7 +377,6 @@
 					</div>
 				</fieldset>
 
-
 				<fieldset id="payment">
 					<legend><b>정산 정보</b></legend>
 
@@ -383,22 +396,25 @@
 					<div>
 						<div class="representative-01">
 							<label class="upload_image_title"><b>통장 사본</b></label><br>
+
 							<div tabindex="0" class="upload_image">
 								<label for="p_Account_file" class="upload_lbl">
 									<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 								</label>
-								<input type="file" id="p_Account_file" name="p_Account_file" accept="image/*">
+								<input type="file" id="p_Account_file" accept="image/*">
 							</div>
 							<br>
 						</div>
 						<div class="representative-02">
 							<label class="upload_image_title"><b>사업자 등록증 사본</b></label><br>
+
 							<div tabindex="0" class="upload_image">
 								<label for="p_Business_lic_file" class="upload_lbl">
 									<img src="/images/partners/upload_plus.png" width="40px" height="40px">
 								</label>
-								<input type="file" id="p_Business_lic_file" name="p_Business_lic_file" accept="image/*">
+								<input type="file" id="p_Business_lic_file" accept="image/*">
 							</div>
+
 							<br>
 						</div>
 						<p class="red">* 입금계좌, 통장 사본, 사업자 등록증 사본은 1회만 입력 가능합니다.

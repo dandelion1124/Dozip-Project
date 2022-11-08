@@ -39,4 +39,9 @@ public class BiddingServiceImpl implements BiddingService {
         return this.biddingDAO.selectJoinList(e);
     }
 
+    @Override
+    public BidVO countJoinpartners(BidVO b) {
+        return this.biddingDAO.countJoinpartners(b);
+    }
+
 }

@@ -15,8 +15,5 @@ public interface BiddingService {
     int getBlistCount2(String businessNum);
     List<BidVO> selectJoinList(EstimateVO e);
 
-
-
-
-
+    BidVO countJoinpartners(BidVO b); //파트너스 수 세기
 }

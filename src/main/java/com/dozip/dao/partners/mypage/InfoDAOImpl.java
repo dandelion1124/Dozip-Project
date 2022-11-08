@@ -46,4 +46,9 @@ public class InfoDAOImpl implements InfoDAO {
     public void insertpartnerslogo(Partners_subVO ps) {
         this.sqlSession.insert("insert_logo",ps);
     }
+
+    @Override
+    public void updatepartnerslogo(Partners_subVO ps) {
+        this.sqlSession.update("update_logo",ps);
+    }
 }
