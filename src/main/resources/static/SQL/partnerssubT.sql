@@ -24,10 +24,11 @@ create table partners_subT
     p_Business_lic_file nvarchar2(70),
     foreign key (businessNum) references partnersT (businessNum)
 );
+DELETE FROM partnersT where p_Id='partners1';
 
 drop table partners_subT;
 select * from partners_subT;
-DELETE FROM partners_subT 
+DELETE FROM partners_subT
 commit;
 
 drop table bidT;

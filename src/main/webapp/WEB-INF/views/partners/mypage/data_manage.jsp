@@ -72,6 +72,7 @@
 			</div>
 		</div>
 		<div class="all_information">
+
 			<form method="post" action="data_manage_ok">
 				<fieldset id="business">
 					<legend>
@@ -128,27 +129,18 @@
 							<!--<input type="text" id="p_Address" name="p_Address"  size="30" value="" readonly /> -->
 							<input type="text" id="sample6_postcode" class="pf_zipcode" name="pf_zipcode" readonly placeholder="우편번호"  size="4" value="${pf_zipcode}" style="visibility: hidden;">
 
-
-
-
-
-
                             <%--주소 검색 API 코드 --%>
 						</div>
 						</br>
 					</div>
 				</fieldset>
-
+			</form>
 				<fieldset id="additional">
 					<legend>
 						<b>부가 정보</b>
-					</legend>
-					<div class="additional-01">
-						<label><b>전문가 한마디</b></label><br />
-						<textarea id="p_Shortstate" name="p_Shortstate" autocomplete="off"
-								  placeholder="(EX. 따듯함이 느껴지는 원목과 화이트 컬러의 내추럴 스타일, 33평 아파트 인테리어입니다.)" rows="5">${ps.p_Shortstate}</textarea>
-						<span class="text">0/2000</span>
-					</div>
+					</legend></br>
+
+				<form action="data_manage_ok" method="post" enctype="multipart/form-data">
 					<div class="additional-02">
 						<label class="upload_image_title"><b>대표 인테리어 이미지</b></label><br />
 						<div class="upload_image_size">(권장 이미지 사이즈 750 x 600)</div>
@@ -170,6 +162,14 @@
 							<input type="file" id="p_Comp_logo" name="p_Comp_logo" accept="image/*">
 						</div>
 						<br />
+					</div>
+				</form>
+				<form method="post" action="data_manage_ok">
+					<div class="additional-01">
+						<label><b>전문가 한마디</b></label><br />
+						<textarea id="p_Shortstate" name="p_Shortstate" autocomplete="off"
+								  placeholder="(EX. 따듯함이 느껴지는 원목과 화이트 컬러의 내추럴 스타일, 33평 아파트 인테리어입니다.)" rows="5">${ps.p_Shortstate}</textarea>
+						<span class="text">0/2000</span>
 					</div>
 					<div class="additional-04">
 						<label><b>제공 서비스</b></label><br />
@@ -196,8 +196,6 @@
 						<textarea class="homepage" autocomplete="off" name="p_Homepg" id="p_Homepg" placeholder="홈페이지를 입력하세요" rows="3">${ps.p_Homepg}</textarea>
 					</div>
 					<br />
-
-
 					<!--
                     <div class="additional-06">
                         <label><b>업체사진(실내)</b></label><br />
@@ -219,10 +217,7 @@
                         </div>
                     </div>
                     -->
-
 				</fieldset>
-
-
 
 				<fieldset id="preference">
 					<legend>

@@ -15,4 +15,6 @@ public interface InfoService {
     String ploginCheck(String p_id); //비밀번호 변경
 
     int pupdatePwd(PartnersVO p);
+
+    void insertpartnerslogo(Partners_subVO ps);//파트너스 로고넣기
 }

@@ -4,12 +4,16 @@ import com.dozip.dao.partners.mypage.InfoDAO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class InfoServiceImpl implements InfoService {
     @Autowired
     InfoDAO infoDAO;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public PartnersVO getMember(String businessNum) {
         return this.infoDAO.getMember(businessNum);
@@ -42,6 +46,13 @@ public class InfoServiceImpl implements InfoService {
 
     @Override
     public int pupdatePwd(PartnersVO p) {
+        String encodedPassword = passwordEncoder.encode(p.getP_Pw());
+        p.setP_Pw(encodedPassword);
         return infoDAO.pupdatePwd(p);
+    }
+
+    @Override
+    public void insertpartnerslogo(Partners_subVO ps) {
+        infoDAO.insertpartnerslogo(ps);
     }
 }

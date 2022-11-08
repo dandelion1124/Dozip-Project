@@ -14,4 +14,6 @@ public interface InfoDAO {
     String ploginCheck(String p_id);
 
     int pupdatePwd(PartnersVO p);
+
+    void insertpartnerslogo(Partners_subVO ps);
 }
