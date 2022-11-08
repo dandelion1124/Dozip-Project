@@ -92,16 +92,17 @@ public class MyInteriorController {
     }
 
     @RequestMapping(value = "/balance_details") //정산 내역
-    public ModelAndView balance_details(HttpSession session) {
+    public ModelAndView balance_details(HttpSession session,String pay_state) {
 
         PayVO vo = new PayVO();
         vo.setBusinessNum((String)session.getAttribute("businessNum"));
 
-        List<PayVO> plist = myInteriorService.getBalance(vo);
-        PayVO pv = myInteriorService.totalBalance(vo);
+        List<PayVO> plist = myInteriorService.getBalance(vo);  //시공완료 정산내역
+        PayVO pv = myInteriorService.totalBalance(vo);         //시공완료 합계
         ModelAndView mv = new ModelAndView("/partners/myinterior/balance_details");
         mv.addObject("plist",plist);
         mv.addObject("pv",pv);
+        mv.addObject("pay_state",pay_state);
         return mv;
     }
 }

@@ -41,7 +41,6 @@ public class BiddingController {
 //            paging = new Paging(page, 5, count);
 //        }
 
-
         String find_name=request.getParameter("find_name");//검색어
         String find_field=request.getParameter("find_field");//검색필드
 
@@ -49,7 +48,7 @@ public class BiddingController {
         e.setFind_field(find_field);
         System.out.println(e.getFind_name()+" "+e.getFind_field());
 
-        //int listcount2 = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
+        //int count = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
 
         List<EstimateVO> elist = this.biddingService.selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기.
 

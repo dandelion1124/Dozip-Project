@@ -60,6 +60,10 @@
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
 
+    <insert id="insert_logo">
+        update Partners_subT set p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR}
+    </insert>
+
     <!-- 비밀번호 변경-->
     <select id="ploginCheck" resultType="String">
         select p_Pw from partnersT where p_Id=#{p_Id} and p_State=1

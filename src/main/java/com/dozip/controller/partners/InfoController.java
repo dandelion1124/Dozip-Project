@@ -10,12 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.PrintWriter;
 import java.util.HashMap;
 
@@ -74,10 +76,23 @@ public class InfoController {
     }//data_manage()
 
     @RequestMapping(value = "/data_manage_ok", method = RequestMethod.POST) //data_manage
-    public String data_manage_ok(Model m, Partners_subVO ps, HttpServletResponse response, HttpServletRequest request,
+    public String data_manage_ok(Model m, @RequestParam String p_Comp_logo, Partners_subVO ps, HttpServletResponse response, HttpServletRequest request,
                                  HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
+        String uploadPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\";
+
+        String uploadDBPath = "/upload/";
+        File dir = new File(uploadPath);
+
+        String dbFilename = uploadDBPath + "photo01" + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+        String saveFilename = uploadPath + "photo01" + ".jpg";   //String 객체에 실제 파일명 저장
+        //p_Comp_logo.transferTo(new File(saveFilename)); //실제 파일저장.
+        System.out.println(dbFilename);
+
+        ps.setP_Comp_logo(dbFilename);
+        infoService.insertpartnerslogo(ps);
 
         //String businessNum = (String)session.getAttribute("businessNum");
 /*
@@ -168,6 +183,8 @@ public class InfoController {
             //System.out.println(p.getP_Addr1()+p.getP_Addr2()+p.getP_Addr3());
             this.infoService.updatePartners(p);
         }
+
+
 
         int res = this.infoService.checkSub(ps.getBusinessNum());
         System.out.println(res);

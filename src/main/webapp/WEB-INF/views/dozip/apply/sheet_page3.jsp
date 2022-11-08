@@ -48,7 +48,7 @@
                 <h3>의뢰인 정보 입력</h3>
                 <input type="text" id="name" name="name" placeholder="이름을 입력해주세요">
                 <input type="text" id="phone" name="phone" oninput="hypenTel(this)" placeholder="휴대폰 번호를 입력해 주세요" maxlength="13"/>
-                <button type="button" id="certify_phone" >인증하기</button>
+                <button type="button" id="certify_phone" onclick="phone_chk()">인증하기</button>
 
                 <input type="text" id="sample6_postcode" readonly placeholder="우편번호" size="4" name="pf_zipcode">
                 <input type="text" id="sample6_address"  name ="pf_addr1" readonly  placeholder="주소" size="30">
@@ -92,7 +92,15 @@
 </div>
 
 <script>
-    function apply03_check(){ /*3 페이지 유효성 검증 */
+    function phone_chk() {
+        if (document.getElementById("phone").value == ""){
+            alert('휴대폰 번호를 입력해주세요.');
+        }else {
+            alert('인증되었습니다.');
+        }
+}
+
+function apply03_check(){ /*3 페이지 유효성 검증 */
         var est_name = document.getElementById("name").value;
         var est_phone = document.getElementById("phone").value;
         var est_addr = document.getElementById("sample6_address").value;

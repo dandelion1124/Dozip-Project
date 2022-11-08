@@ -4,6 +4,7 @@ import com.dozip.service.dozip.review.ReviewService;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,12 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 @Controller
 @RequestMapping("/dozip/*")
 public class ReviewController {
+    @Value("${uploadPath}")
+    private String uploadPath;
     @Autowired
     private ReviewService reviewService;
 
@@ -106,15 +112,23 @@ public class ReviewController {
             }
         }
 
+<<<<<<< HEAD
 //        String uploadRPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
 //       테스트 시 각자 폴더 경로 주석 풀어서 잡아주세요~
 //        String uploadRPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\r_pload\\" + re_no+"\\";  //호철 노트북 upload 경로
        String uploadRPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //지혜 노트북 upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadRPath = "C:\\Users\\johnny\\Documents\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\"; //수환 학원 PC upload 경로
+=======
+        uploadPath+="review//";
+>>>>>>> main
 
-        String uploadRDBPath ="/r_upload/"+ re_no+"/";
-        File dir = new File(uploadRPath);
+        Date now = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
+        String randomName = String.valueOf((int)(Math.random() *(99999999-10000000+1))+10000000); //난수생성
+
+        String uploadDBPath ="/upload/review/";
+        File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
@@ -125,8 +139,8 @@ public class ReviewController {
         String saveFilename[]=new String[5];
 
         for(int i=1; i<=images.size();i++) {
-            dbFilename[i-1]=uploadRDBPath+ "photo0" + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-            saveFilename[i-1]=uploadRPath+ "photo0" + i + ".jpg";   //String 객체에 실제 파일명 저장
+            dbFilename[i-1]=uploadDBPath+ sdf.format(now)+randomName + i + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+            saveFilename[i-1]=uploadPath+ sdf.format(now)+randomName + i + ".jpg";   //String 객체에 실제 파일명 저장
             images.get(i-1).transferTo(new File(saveFilename[i-1])); //실제 파일저장.
             System.out.println(dbFilename[i-1]);
         }

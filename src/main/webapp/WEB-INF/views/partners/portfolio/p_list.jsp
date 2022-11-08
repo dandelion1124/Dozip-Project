@@ -3,17 +3,25 @@
 <jsp:include page="../include/header.jsp"/>
 <style>
     #port_list_table{
-        width: 100%;
+        width: 70%;
         border-collapse: collapse;
+        margin:20px auto;
+        text-align: center;
     }
     #port_list_table thead{
         background: cornflowerblue;
+
 
     }
     #est_list_table th {
         font-weight: lighter;
 
     }
+    table#port_list_table td {
+        border: 1px solid slategrey;
+    }
+
+
 </style>
 <p style="margin-bottom: 10px"> | 시공사례 > 수정/삭제</p>
 <h1> 포트폴리오 목록</h1>
@@ -34,12 +42,12 @@
     </c:if>
     <c:if test="${!empty plist}">
         <c:forEach var="p" items="${plist}">
-            <tr>
+        <tr>
             <td>${p.pf_no}</td>
-            <td>${p.pf_title}</td>
+            <td style="text-align: left">${p.pf_title}</td>
             <td>${p.pf_regdate}</td>
             <td><input type="button" value="수정/삭제" onclick="location='/partners/p_modify?pf_no=${p.pf_no}'"></td>
-            </tr>
+        </tr>
         </c:forEach>
     </c:if>
 

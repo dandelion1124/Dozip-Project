@@ -16,7 +16,7 @@
 	<table style="width: 90%; border-collapse: collapse; text-align:center;
 				margin:0 5% 40px 5%; background-color:white;">
 		<tr class="my_req_label" style="border-bottom:1px solid black; border-top:2px solid black;/*#0064CD*/ height:50px; font-size:15px;">
-			<th>견적서 번호</th> <th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>수용여부</th>
+			<th>견적서 번호</th> <th>견적요청 내용</th> <th>희망 예산</th> <th>견적신청일</th> <th>희망 시공시작일</th> <th>희망 시공종료일</th> <th>세부정보</th> <th>진행상태</th>
 		</tr>
 		<c:if test="${empty ereq}">
 			<td colspan="8" style="font-size:25px; height:100px; background-color: aliceblue; text-align: center; line-height: 100px;">현재 시공요청 리스트가 없습니다.</td>
@@ -79,10 +79,10 @@
 	<div id="mybid_paging">
 		<p>
 			<c:if test="${page<=1}">
-				[이전]
+				<img src="/images/dozip/left-arrow.png">
 			</c:if>
 			<c:if test="${page>1}">
-				<a href="/partners/construct_request?page=${page-1}">[이전]</a>
+				<a href="/partners/construct_request?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a>
 			</c:if>
 
 			<%--현재 쪽번호 출력--%>
@@ -93,7 +93,7 @@
 			</c:forEach>
 
 			<c:if test="${page >= maxpage}">
-				[다음]<div style="width:95%;">
+				<img src="/images/dozip/right-arrow.png"><div style="width:95%;">
 		<!--<select name="my_bid_option" style="border:1px solid lightgray; width: 80px;">
             <option value="all">전체</option>
             <option value="success">입찰 성공</option>
@@ -102,7 +102,7 @@
 	</div>
 			</c:if>
 			<c:if test="${page<maxpage}">
-				<a href="/partners/construct_request?page=${page+1}">[다음]</a>
+				<a href="/partners/construct_request?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a>
 			</c:if>
 		</p>
 	</div>
@@ -113,7 +113,7 @@
 		var est_num = $('#permit_btn').val();
 		var est_check = '수락';
 
-		var result = confirm("정말 수락하시겠습니까??");   //확인
+		var result = confirm("정말 수락하시겠습니까?");   //확인
 
 		if(result==true){
 			alert("수락되었습니다");
@@ -141,7 +141,7 @@
 		var est_num = $('#reject_btn').val();
 		var est_check = '거절';
 
-		var result = confirm("정말 거절하시겠습니까??");   //확인
+		var result = confirm("정말 거절하시겠습니까?");   //확인
 
 		if(result==true){
 			alert("거절되었습니다");

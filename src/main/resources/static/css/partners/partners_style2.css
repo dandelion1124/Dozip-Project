@@ -3,7 +3,11 @@
 /* data_manage */
    .item_title{
       margin: 0 0 10px 0;
+      font-size: 26px;
       padding: 10px 0 0 2.5%;
+       border-top: 3px solid black;
+       /*border-bottom: 1px double black; */
+       width:87%;
       /*background-color: white;*/
    }
    .item_tab_box{
@@ -317,8 +321,8 @@
       padding:0px;
       display:inline-block;
       border:none;
-      border-bottom: 2px solid black;
-      width: 60%;
+      border-bottom: 1px solid black;
+      width: 40%;
       height: 30px;
    }
    .search-txt:focus{
@@ -339,7 +343,7 @@
    .my_bid_icon{
       position:fixed;
       top:120px;
-      right:10%;
+      right:5%;
    }
 
    #filter{
@@ -354,6 +358,7 @@
    }
 
    .request_list_container{
+      padding: 0 0 25px 2.5%;
       margin-bottom: 15px;
       width: 90%;
       white-space: nowrap;
@@ -377,10 +382,11 @@
     .request_list_card{
        display:table;
        width:95%;
-       margin:0 2.5% 0 2.5%;
+       /*margin:0 2.5% 0 2.5%; */
        background-color:white;
        white-space: nowrap;
        table-layout: fixed;
+       box-shadow: 0 0 10px rgb(0 0 0 / 15%);
     }
     .request_list_item01, .request_list_item02{
         display: table-cell;
@@ -402,15 +408,15 @@
        color:white;
        font-size:12px;
        margin:0;
-    padding: 5px 5px 5px 5px;
-    background:#00A5FF;
+       padding: 5px 5px 5px 5px;
+       background:#00A5FF;
     }
     .label_val2{
        color:white;
        font-size:12px;
-    margin:0;
-    padding: 5px 5px 5px 5px;
-    background:#000069;
+       margin:0;
+       padding: 5px 5px 5px 5px;
+       background:#000069;
     }
     .request_title{
       margin-top: 20px;
@@ -462,6 +468,7 @@
        text-align:center;
        background-color:aliceblue;
        border-radius:3px;
+       box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
        /*word-break: keep-all;*/
     }
     
@@ -474,13 +481,14 @@
     ul li.info2{
        width:90%;
        overflow:hidden;  
-     text-overflow: ellipsis;
-     margin:0px 5% 8px 5%;
+       text-overflow: ellipsis;
+       margin:0px 5% 8px 5%;
        font-size: 12px;
        list-style: none;
        text-align: center;
        background-color:aliceblue;
        border-radius:3px;
+       box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
     }
     p.request_info_tit{
        color:gray;
@@ -535,6 +543,7 @@
     color: #fff;
     font-size: 15px;
     letter-spacing: -0.025em;
+        box-shadow: 3px 3px 7px rgb(0 0 0 / 10%);
     }
     .bottom-btn-wrap{
        width:80%;
@@ -594,7 +603,8 @@
       margin: 0 3% 0 3%;
       padding:25px;
       word-wrap: break-word;
-    word-break: keep-all;
+      word-break: keep-all;
+      box-shadow: 0 0 10px rgb(0 0 0 / 15%);
    }
    .request_detail_title {
       margin:20px 0;
@@ -616,11 +626,11 @@
     font-weight: bold;
    }
    .green_box{
-    padding: 1.5%;
-    background-color: aliceblue;
-    box-sizing: border-box;
+      padding: 1.5%;
+      background-color: aliceblue;
+      box-sizing: border-box;
       font-weight: 500;
-   
+      box-shadow: 3px 3px 7px rgb(0 0 0 / 10%);
    }
    .box-cell5{
       width: 100%;
@@ -755,13 +765,13 @@
    }
 	 .bid_detail01, .bid_detail02, .bid_detail03, .bid_detail04{
 	 	/*text-align:center; */
-	 	width: 50%;
+	 	width: 45%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	color:#4398ed;
 	 }
 	 .bid_detail_text01, .bid_detail_text02, .bid_detail_text03{
-	 	width: 50%;
+	 	width: 46%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	text-align:right;
@@ -799,7 +809,7 @@
    .my_bid_btn-d-view{
      overflow:hidden;  
      text-overflow: ellipsis;
-     margin: 0 10% 0 10%;
+     /*margin: 0 10% 0 10%; */
      text-align: center;
      text-decoration-line:none;
      display: block;
@@ -809,7 +819,8 @@
      background: #00BFFF;
      color: #fff;
      font-size: 12px;
-     letter-spacing: -0.025em;   
+     letter-spacing: -0.025em;
+     font-weight: bold;
    }
     .btn-cancel{
      overflow:hidden;  
@@ -853,6 +864,7 @@
       border-radius: 5px;
       color:white;
       cursor:pointer;
+      font-weight: bold;
    }
    .req_accept .accept{
       background-color: #0000FF;
