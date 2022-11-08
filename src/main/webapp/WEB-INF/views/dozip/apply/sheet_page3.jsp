@@ -23,7 +23,16 @@
         width: 100px;
         height: 100px;
     }
-
+    img#view {
+        width: 350px;
+        border: 1px solid #ddd;
+        padding: 30px;
+    }
+    div#est_file_div {
+        display: flex;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
 </style>
 
 <%-- 3 페이지 --%>
@@ -52,7 +61,27 @@
                 </div>
                 <textarea id="paragraph" name="paragraph" maxlength="1500" placeholder="원하는 스타일에 대해 자유롭게 써주세요"></textarea>
                 <h3>원하는 스타일의 사진을 등록해주세요</h3>
-                <input type="file" name="est_file">
+                <div id="est_file_div">
+                <input type="file" name="est_file" id="est_file"  accept="image/*">
+<%--                    src="/images/partners/upload_plus.png"--%>
+                <img id="view" src="#" style="visibility: hidden"/></div>
+                <script>
+                    $(function() {
+                        $("#est_file").on('change', function(){
+                            readURL(this);
+                        });
+                    });
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#view').attr('src', e.target.result);
+                                $('#view').css('visibility', 'visible');
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
             </div>
             <div class="nextpage">
                 <button type="button" class="go_back" onclick="page_back03()" >이전</button>
