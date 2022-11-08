@@ -59,7 +59,7 @@
     <select id="all_qna" resultType="QnaVO">
         select * from (
              select rowNum r, q.* from
-             (select * from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc)
+             (select * from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
