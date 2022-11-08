@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="/css/dozip/review_write.css" />
 <jsp:include page="../common/header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 
