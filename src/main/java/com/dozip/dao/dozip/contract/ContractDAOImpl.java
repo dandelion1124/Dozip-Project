@@ -27,6 +27,4 @@ public class ContractDAOImpl implements ContractDAO{
     public void updateCustomerNum(ContractVO c) {
         this.sqlSession.update("up_Cnum", c);
     }
-
-
 }

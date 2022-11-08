@@ -85,6 +85,13 @@
 </div>
 
 <script>
+    $( ".my_apply_table tr" ).on( "mouseover", function() {
+        $( this ).css( "background-color", "#EEF1FF" );/*FFF8E6/ECF7FF/EEF1FF*/
+    });
+    $( ".my_apply_table tr" ).on( "mouseleave", function() {
+        $( this ).css( "background-color", "white" );
+    });
+
     document.getElementById('agree_btn').onclick = function (){
         var est_num = $('#agree_btn').val();
         var est_check = '계약요청';
@@ -128,12 +135,7 @@
         })
     }
 
-    $( ".my_apply_table tr" ).on( "mouseover", function() {
-        $( this ).css( "background-color", "#EEF1FF" );/*FFF8E6/ECF7FF/EEF1FF*/
-    });
-    $( ".my_apply_table tr" ).on( "mouseleave", function() {
-        $( this ).css( "background-color", "white" );
-    });
+
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

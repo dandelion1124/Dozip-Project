@@ -29,4 +29,5 @@
     <update id="up_Cnum">
         update contractT set customer_number=#{customer_number} where cont_no=#{cont_no}
     </update>
+
 </mapper>

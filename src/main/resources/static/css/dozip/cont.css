@@ -29,6 +29,6 @@
 #total_pay { color: red; font-size: 1.1rem; }
 .ppp { display: flex; margin-top: 30px; margin-bottom: 30px; width: 90%; }
 .pay_wrap { text-align: center; margin-top: 10px; }
-#cancel_box{ width: 90%; text-align: right; }
+#cancel_box{ width: 90%; text-align: right; margin-top: 80px; margin-bottom: 20px; }
 #pay_btn{ margin-left: 10px; border: 0; background-color: #008000; color: white; font-size: medium; font-weight: bold; height: 25px; width: 20%; }
 #cancel { border: 0; background-color: #FF0033; color: white; font-size: medium; font-weight: bold; height: 25px; }

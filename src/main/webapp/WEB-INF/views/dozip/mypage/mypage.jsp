@@ -89,7 +89,7 @@
                 <tr>
                     <th style="width: 150px;">말머리</th> <th style="width: 180px;">관련번호</th> <th>알림내용</th> <th style="width: 150px;">이동</th>
                 </tr>
-                <c:if test="${fn:length(plist) == 0}">
+                <c:if test="${fn:length(plist) == 0 && fn:length(eplist) == 0 && fn:length(clist) == 0 && fn:length(blist) == 0}">
                     <tr><td colspan="4"> 등록된 글이 없습니다.</td> </tr>
                 </c:if>
                 <c:if test="${fn:length(plist) != 0}">

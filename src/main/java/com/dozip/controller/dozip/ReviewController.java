@@ -108,8 +108,8 @@ public class ReviewController {
 
 //        String uploadRPath = "C:\\DoZip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //동민 PC upload 경로
 //       테스트 시 각자 폴더 경로 주석 풀어서 잡아주세요~
-        String uploadRPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\r_pload\\" + re_no+"\\";  //호철 노트북 upload 경로
-//       String uploadRPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //지혜 학원 PC upload 경로
+//        String uploadRPath = "C:\\workspace\\dozip\\src\\main\\resources\\static\\r_pload\\" + re_no+"\\";  //호철 노트북 upload 경로
+       String uploadRPath = "C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\";  //지혜 노트북 upload 경로
 //       String uploadPath = "D:\\DoZip\\src\\main\\resources\\static\\upload\\" + re_no+"\\";  //민우 학원 PC upload 경로
 //       String uploadRPath = "C:\\Users\\johnny\\Documents\\dozip\\src\\main\\resources\\static\\r_upload\\" + re_no+"\\"; //수환 학원 PC upload 경로
 

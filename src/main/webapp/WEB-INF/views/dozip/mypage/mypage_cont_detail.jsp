@@ -117,7 +117,7 @@
             </div>
         </div>
         <%-- 상세내용 불러옴 --%>
-        <div id="cancel_box"><button type="button" id="cancel">계약취소하기</button></div>
+        <div id="cancel_box"><button type="button" id="cancel" onclick="cancel()">계약취소하기</button></div>
 
     </div>
 </div>
@@ -175,6 +175,12 @@
         $('#select_cost').text(cost2+" 원");
     }
 
+    function cancel(){
+        let res = confirm("계약을 취소하시겠습니까?");
+        if(res){
+            history.back();
+        }
+    }
 </script>
 
 <%-- 하단 공통부분 --%>
