@@ -90,7 +90,7 @@
 <div class="background">
     <div class="window">
         <div class="popup">
-            <div id="title_box">글 내용 확인</div>
+            <div id="title_box">&nbsp;&nbsp;&nbsp;글 내용 확인</div>
             <table id="qna_box">
                 <tr><th>제목</th><td>내용</td></tr>
             </table>

@@ -125,7 +125,7 @@
                 new_pwd : new_pwd
             },
             success : function(data) {
-                alert(data.message);
+                alert(data.text);
                 location.reload();
             },
             error:function(){

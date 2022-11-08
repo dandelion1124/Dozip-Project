@@ -24,7 +24,7 @@
 	<button>글삭제</button>
 	<hr/>
 	<div>${q.qna_ref }<br/>${q.qna_step }<br/>${q.qna_level }<br/></div>
-	<form method="post" action="admin_qnaReply.do">
+	<form method="post" action="/admin/admin_qnaReply">
 		<!-- 히든전달 -->
 		<input type="hidden" name="qna_ref" value="${q.qna_ref}"/>
 		<input type="hidden" name="qna_step" value="${q.qna_step}"/>

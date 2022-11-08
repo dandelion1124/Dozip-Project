@@ -1,11 +1,15 @@
 package com.dozip.controller.admin;
 
 import com.dozip.service.dozip.qna.QnaService;
+import com.dozip.service.partners.customer.CustomerService;
 import com.dozip.utils.Paging;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +23,8 @@ public class AdminController {
 
     @Autowired
     private QnaService qnaService;
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping(value = "/")
     public String dozip(){
@@ -61,5 +67,23 @@ public class AdminController {
 
         mv.setViewName("/admin/qnaList");
         return mv;
+    }
+
+    @RequestMapping("qna_cont")
+    public ModelAndView selectQna(int qna_no){
+        ModelAndView mv = new ModelAndView();
+        QnaVO q = this.qnaService.getQan(qna_no);
+        mv.addObject("q", q);
+        //q.setQna_cont(q.getQna_cont().replace("\r\n","<br/>"));
+        mv.setViewName("/admin/qna_detail");
+        return mv;
+    }
+
+    @PostMapping("admin_qnaReply")
+    public void adminQnaReply(QnaVO q){
+        int result = customerService.insertQna(q);
+        if(result==1) {
+            System.out.println("답글작성 성공");
+        }
     }
 }
