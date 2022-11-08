@@ -2,6 +2,9 @@
 <jsp:include page="../include/header.jsp" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
+
 
 <script>
 $(function() {
@@ -182,19 +185,20 @@ $(function() {
 											<div id="bid_part_detail">
 												<dl class="sec-item">
 													<dt class="bid_detail01">입찰가</dt>
-													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="9"/>만원<br/></dd>
+													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></dd>
 												</dl>
 												<!-- <span id="today"></span></br> -->
 												<dl class="sec-item">
+													<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 													<dt class="bid_detail02">예상 공사시작일</dt>
-													<dd class="bid_detail_text02"><input type="date" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></dd>
+													<dd class="bid_detail_text02"><input type="date" id="bid_start" name="bid_start" class="hasDatepicker" min="${today}" size="10"/><br/></dd>
 													<dt class="bid_detail04">예상 공사종료일</dt>
-													<dd class="bid_detail_text03"><input type="date" id="bid_end" name="bid_end" class="hasDatepicker" size="10"/><br/></dd>
+													<dd class="bid_detail_text03"><input type="date" id="bid_end" name="bid_end" class="hasDatepicker" min="${today}" size="10"/><br/></dd>
 												</dl>
-												<div class="">
+												<dl class="sec-item">
 													<div class="bid_detail03">업체 공사 스타일 설명</div></br>
 													<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
-												</div>
+												</dl>
 												<!--
 												<div class="bid_detail02" >예상 공사시작일</div>
 												<div class="bid_detail_text02"><input type="text" id="bid_start" name="bid_start" class="hasDatepicker" size="10"/><br/></div>

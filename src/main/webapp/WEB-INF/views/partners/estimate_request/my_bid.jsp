@@ -71,10 +71,10 @@
 	<div id="mybid_paging">
 		<p>
 		<c:if test="${page<=1}">
-			[이전]
+			<img src="/images/dozip/left-arrow.png">
 		</c:if>
 		<c:if test="${page>1}">
-			<a href="/partners/my_bid?page=${page-1}">[이전]</a>
+			<a href="/partners/my_bid?page=${page-1}"><img src="/images/dozip/left-arrow.png"></a>
 		</c:if>
 
 		<%--현재 쪽번호 출력--%>
@@ -85,10 +85,10 @@
 		</c:forEach>
 
 		<c:if test="${page >= maxpage}">
-			[다음]
+			<img src="/images/dozip/right-arrow.png">
 		</c:if>
 		<c:if test="${page<maxpage}">
-			<a href="/partners/my_bid?page=${page+1}">[다음]</a>
+			<a href="/partners/my_bid?page=${page+1}"><img src="/images/dozip/right-arrow.png"></a>
 		</c:if>
 		</p>
 	</div>

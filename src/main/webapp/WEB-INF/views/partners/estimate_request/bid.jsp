@@ -12,21 +12,26 @@
 		<div class="request_page">
 			<form method="post" action="">
 			<div class="request_spot">
+				<p style="margin-bottom: 15px; font-size: 0.9rem;"> <b>|</b> 견적의뢰 > 입찰의뢰</p>
 				<h2 class="item_title">입찰의뢰</h2>
 
-					<select name="find_field" style="border:1px solid lightgray; width: 50px;">
+				<!--
+					<select name="my_bid_option" style="border:1px solid lightgray; width: 50px;">
 						<option value="all">전체</option>
-						<option value="bid_title"
-								<c:if test="${find_field=='bid_title'}">${'selected'}</c:if>
-						>제목</option>
-						<option value="bid_cont"
-								<c:if test="${find_field=='bid_cont'}">${'selected'}</c:if>
-						>내용</option>
-					</select>
-					<div class="search_box">
-					    <input type="text" class="search-txt" name="find_name" id="find_name" value="${find_name}"
-							   placeholder="검색어를 입력해 주세요"/>
-					    <button class="search-btn" type="submit" onclick="location.href='/partners/bid'">
+						<option value="success">입찰 성공</option>
+						<option value="fail">입찰 실패</option>
+					</select> -->
+				<div style="padding:0 0 0 2.5%; width:87%;">
+					계약서를 작성 한 후 계약금 지불이 완료되면 시공 일정에 맞추어 공사를 진행해주시기 바랍니다</hr>
+					고객님이 업체를 지정하여 신청한 견적 내역을 확인합니다.</hr>
+					번호를 누르면 상세페이지에서 내용을 확인할 수 있습니다.</hr>
+					업체의 수락/거절 내용을 확인 할 수 있습니다.</hr>
+					test
+				</div>
+				<!-- <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"> -->
+				<div class="search_box">
+					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
+					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'" style="box-shadow: 0 0 10px rgb(0 0 0 / 15%)";>
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
 					</div>
@@ -69,13 +74,16 @@
 								<%--<fmt:parseDate var="enddate"  value="${e.est_dateEnd}" pattern="yyyy-MM-dd"/> --%>
 								<span>
 									<c:choose>
-										<c:when test="${e.est_check != '대기중'}">모집마감</c:when>
-										<c:otherwise>
+										<c:when test="${e.est_check == '대기중'}">
 											<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
 											<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
-											<c:if test="${e.remaindate < 0}">모집완료</c:if>
+											<c:if test="${e.remaindate < 0}"><span style="color:red;">모집마감</span></c:if>
+										</c:when>
+										<c:otherwise>
+											<c:if test="${e.est_check != '대기중'}"><span style="color:red;">모집마감</span></c:if>
 										</c:otherwise>
 									</c:choose>
+
 								</span>
 							</p>
 							<p class="label_badge">
@@ -138,6 +146,13 @@
 							<div class="bid_detail">
 								<a href="/partners/bid_detail?no=${e.est_num}" class="btn-d-view"><b>자세히 보기</b></a>
 							</div>
+							<c:if test="${e.est_check != '대기중'}">
+								<ul class="company_profile">
+									<li class="info2" style="margin-top:5px;">
+										<p class="val" style="color:blue;">입찰 참여 중</p>
+									</li>
+								</ul>
+							</c:if>
 						</div>						
 					</div></br>
 						</c:if>
@@ -149,31 +164,6 @@
 				<div class="bottom-btn-wrap">
 					<button type="button" class="more_button"><img src="../images/more_plus.png"></br><span>더보기</span></button>
 				</div> -->
-				<div id="mybid_paging">
-					<p>
-						<c:if test="${page<=1}">
-							[이전]
-						</c:if>
-						<c:if test="${page>1}">
-							<a href="/partners/my_bid?page=${page-1}">[이전]</a>
-						</c:if>
-
-						<%--현재 쪽번호 출력--%>
-						<c:forEach var="p" begin="${startpage}" end="${endpage}" step="1">
-							<c:if test="${p== page}"> ${p}</c:if> <!--현재 페이지 선택 시-->
-							<c:if test="${p != page}"> <a href="/partners/my_bid?page=${p}">[${p}]</a> <!--현재 페이지 선택되지 않았을 시 -->
-							</c:if>
-						</c:forEach>
-
-						<c:if test="${page >= maxpage}">
-							[다음]
-						</c:if>
-						<c:if test="${page<maxpage}">
-							<a href="/partners/my_bid?page=${page+1}">[다음]</a>
-						</c:if>
-					</p>
-				</div>
-
 			</form>
 		</div>
 <jsp:include page="../include/footer.jsp" />
