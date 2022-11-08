@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+/*리뷰 작성 페이지*/
+.review_write_wrap {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.review_guide {
+    width: 90%;
+    border-radius: 5px;
+    border: 4px solid #dcdcdc;
+    margin: 20px auto;
+    padding: 8px;
+}
+
+.review_guide #r_guide {
+    font-size: 1.3rem;
+    margin-left: 40px;
+    font-weight: bold;
+}
+
+.review_guide li {
+    font-family: 'Malgun Gothic';
+    line-height: 28px;
+    font-size : 1.1rem;
+}
+
+.review_guide #cont_guide{
+    padding-top : 10px;
+    font-weight: bold;
+    font-size : 1.3rem;
+}
+
+#cont_rguide{
+    color : #0064CD;
+    font-weight : bold;
+}
+.review_write_form {
+    margin-top: 50px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+.review_write_form #r_title {
+    width: 20%;
+    height: 30px;
+    border-radius: 2px;
+}
+
+.cont_inform_c{
+    display:flex;
+    flex-direction: row;
+}
+
+.cont_inform_c input{
+    width : 200px;
+    height: 30px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#load_btn,#search_cont_btn{
+    width: 130px;
+    height : 30px;
+    border:none;
+    background-color: #0A6EFF;
+    color : white;
+    border-radius: 2px;
+}
+
+#search_cont_btn{
+    margin-left: 10px;
+}
+
+#onload_cont{
+    margin-top: 20px;
+}
+
+#load_cont {
+    height: 120px;
+    display : flex;
+    flex-wrap: wrap;
+    flex-direction : row;
+    justify-content: space-evenly;
+    border: 3px solid #0A6EFF;
+    border-radius: 3px;
+    align-content: center;
+}
+
+
+#r_cont {
+    width: 60%;
+    height: 150px;
+    resize: none;
+    font-family: 'Malgun Gothic';
+    border : 3px solid;
+    border-radius: 3px;
+}
+
+/*별점*/
+#test {
+    /*
+    border: 2px solid;
+    border-radius: 3px;*/
+    width:12%;
+    height: 30px;
+}
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    justify-content: space-around;
+    padding: 0 0.2em;
+    width: 5em;
+    /* vertical-align: middle; 안먹힘 */
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    -webkit-text-fill-color: transparent;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1.5px;/* 2.3px; */
+    -webkit-text-stroke-color: #2b2a29;
+    cursor: pointer;
+}
+
+.star-rating :checked ~ label {
+    -webkit-text-fill-color: gold;
+}
+
+.star-rating label:hover, .star-rating label:hover ~ label {
+    -webkit-text-fill-color: #fff58c;
+}
+
+.star_area {
+    display: flex;
+}
+
+.star_score {
+    display: flex;
+    font-size: 1.0rem;
+    line-height: 1.5rem;
+    justify-content: space-around;
+    font-family: '여기어때 잘난체';
+    margin-left: 5px;
+}
+
+#r_submit_btn {
+    margin-left: 500px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    background-color: #0A6EFF;
+    color: white;
+    text-align: center;
+    width: 20%;
+    height: 40px;
+    justify-content: center;
+}

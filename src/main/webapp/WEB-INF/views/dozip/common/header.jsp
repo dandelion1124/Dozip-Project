@@ -11,7 +11,7 @@
 
 	<title>두꺼비집</title>
 	<link rel="stylesheet" type="text/css" href="/css/dozip/main.css" />
-	<link rel="stylesheet" type="text/css" href="/css/dozip/review.css" />
+	<%--<link rel="stylesheet" type="text/css" href="/css/dozip/review.css" />--%>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
 	<script src ="/js/dozip/header.js" defer></script>
