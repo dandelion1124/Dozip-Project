@@ -102,6 +102,9 @@
     }
 </style>
 <p> | 내공사 > 정산내역</p>
+${pay_state}
+<input type="radio" value="시공완료" name="test" id="select_status_btn1" <c:if test="${pay_state=='시공완료'}"> checked</c:if>    >
+<input type="radio" value="시공중" name="test" id="select_status_btn2" <c:if test="${pay_state=='시공중'}"> checked</c:if>>
 <div id="balance_detail_top_cont">
     <div id="balance_detail_title">정산내역</div>
     <div id="balance_detail_msg">
@@ -112,9 +115,9 @@
 <div id="balance_detail_title_bar">
     <div id="balance_detail_select_status">
         <div id="balance_detail_select_status_div1">
-            <input type="button" id="select_status_btn1" value="시공완료"></div>
+            <label for="select_status_btn1">시공완료</label></div>
         <div id="balance_detail_select_status_div2">
-            <input type="button" id="select_status_btn2" value="시공중"></div>
+            <label for="select_status_btn2">시공중</label></div>
         <div id="balance_detail_select_status_div3"></div>
     </div>
 </div>
@@ -211,34 +214,25 @@
     </table>
 </div>
 
+
+
+
 <script>
-    //시공완료 내역
+
+    let btn1 = document.getElementById("select_status_btn1");
+    let btn2 = document.getElementById("select_status_btn2");
+    let div1 = document.getElementById("balance_detail_select_status_div1");
+    let div2 = document.getElementById("balance_detail_select_status_div2");
+    let search1 = document.getElementById("balance_detail_search_bar1");
+    let search2 = document.getElementById("balance_detail_search_bar2");
+    let table1 = document.getElementById("balance_detail_main_table1");
+    let table2 = document.getElementById("balance_detail_main_table2");
+
+    let style = "border : 2px solid dimgray";
+
     $('#select_status_btn1').click(function (){
-        let pay_state = $('#interior_status option:selected').val();
-        location.href ='/partners/balance_details?pay_state='+'시공완료';
-    });
-    //시공중 내역
-    $('#select_status_btn2').click(function(){
-        let pay_state = $('#balance_status option:selected').val();
-        location.href ='/partners/balance_details?pay_state='+'시공중';
-    });
-</script>
+        location='/partners/balance_details?pay_state='+'시공완료';
 
-
-
-<script>
-
-    const btn1 = document.getElementById("select_status_btn1");
-    const btn2 = document.getElementById("select_status_btn2");
-    const div1 = document.getElementById("balance_detail_select_status_div1");
-    const div2 = document.getElementById("balance_detail_select_status_div2");
-    const search1 = document.getElementById("balance_detail_search_bar1");
-    const search2 = document.getElementById("balance_detail_search_bar2");
-    const table1 = document.getElementById("balance_detail_main_table1");
-    const table2 = document.getElementById("balance_detail_main_table2");
-
-    const style = "border : 2px solid dimgray";
-    btn1.onclick = function (event) {
         div1.style.cssText = 'border : 2px solid dimgray; background:cornflowerblue; border-bottom:transparent';
         div2.style.cssText = 'border:transparent; border-bottom:2px solid dimgray';
         table1.style.display = 'inline-table';
@@ -246,16 +240,17 @@
         search1.style.display = 'block';
         search2.style.display = 'none';
 
-    }
-    btn2.onclick = function (event) {
+    });
+    $('#select_status_btn2').click(function (){
+        location='/partners/balance_details?pay_state='+'시공중';
         div1.style.cssText = 'border:transparent; border-bottom:2px solid dimgray; background:none';
         div2.style.cssText = 'border : 2px solid dimgray; background:cornflowerblue; border-bottom:transparent';
         table1.style.display = 'none';
         table2.style.display = 'inline-table';
         search1.style.display = 'none';
         search2.style.display = 'block';
+    });
 
-    }
 
 
 </script>
