@@ -26,10 +26,19 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out=response.getWriter();
-        out.println("<script>");
-        out.println("opener.parent.location.reload();");
-        out.println("window.close();");
-        out.println("</script>");
+
+        if(session.getAttribute("id").equals("admin")){
+            out.println("<script>");
+            out.println("opener.location.href = '/admin/'");
+            out.println("window.close();");
+            out.println("</script>");
+        }else {
+            out.println("<script>");
+            out.println("opener.parent.location.reload();");
+            out.println("window.close();");
+            out.println("</script>");
+        }
+
 
         /*response.sendRedirect("/dozip/home"); //로그인 후 이동할 페이지 지정 */
     }

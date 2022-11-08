@@ -21,7 +21,7 @@ public class Paging {
         this.pageSize = pageSize;
         this.count = count;
         this.maxpage = (int) ((double) count / pageSize + 0.95);
-        this.startpage = (((int) ((double) page / pageSize + 0.9)) - 1) * pageSize + 1;
+        this.startpage = (((int) ((double) page / pageSize + 0.95)) - 1) * pageSize + 1;
         this.endpage = this.maxpage;
         if (endpage > startpage + count - 1) {
             endpage = startpage + count - 1;

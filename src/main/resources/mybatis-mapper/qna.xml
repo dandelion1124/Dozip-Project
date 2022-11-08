@@ -59,7 +59,20 @@
     <select id="all_qna" resultType="QnaVO">
         select * from (
              select rowNum r, q.* from
-             (select * from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc) q
+             (select * from qnaT where mem_id=#{mem_id} order by qna_ref desc, qna_level asc)
+        )where r &gt;=#{startrow} and r &lt;=#{endrow}
+    </select>
+
+    <!--dd-->
+    <select id="admin_qna_count" resultType="int">
+        select count(*) from qnaT
+    </select>
+
+    <!--관리자페이지 문의글 전체 목록-->
+    <select id="admin_qna" resultType="QnaVO">
+        select * from (
+            select rowNum r, q.* , p.businessName from
+            (select * from qnaT order by qna_no desc) q, partnersT p where q.businessNum=p.businessNum(+)
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
     <!--여기 위까지 지혜 정리완료-->
