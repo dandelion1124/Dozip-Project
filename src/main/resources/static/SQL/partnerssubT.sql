@@ -108,3 +108,6 @@ select *
               order by est_num desc where businessNum='143-34-47434')
         where r >= 1
           and r <= 5
+          
+select est_num, count(est_num) ecount from bidT group by est_num
+select businessNum, count(businessNum) bcount from bidT where est_num='E20221102-15' group by businessNum 

@@ -210,7 +210,7 @@
                 title: '정보 수정 요청',
                 text: "정보(주소, 업체로고 필수)를 등록해야 입찰을 받으실 수 있습니다. " +
                     "정보 변경 페이지로 이동할까요?",
-                icon: 'question',
+                icon: 'warning',
                 showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
                 confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
                 cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
@@ -227,12 +227,12 @@
     <div id='pmain_cont'>
         <div class="index_item"> <%--grid 1 --%>
             <div>
-                <label for="status01">0</label>
+                <label for="status01">${directEstCount}</label>
                 <button id="status01">견적요청</button>
             </div>
             <i class="xi-angle-right"></i>
             <div>
-                <label for="status02">0</label>
+                <label for="status02">${requestContCount}</label>
                 <button id="status02">계약요청</button>
 
             </div>
@@ -292,11 +292,11 @@
             <div>
                 <div> 시공 요청</div>
                 <div class="index_item_count">
-                    <span>0</span>개</div>
+                    <span onclick="location='./construct_request'">${directEstCount}</span>개</div>
             </div>
             <div>
                 <div> 계약 요청</div>
-                <div class="index_item_count"> <span>0</span>개</div>
+                <div class="index_item_count"> <span>${requestContCount}</span>개</div>
             </div>
             <div>
                 <div> 포트폴리오</div>
@@ -306,7 +306,16 @@
             </div>
             <div>
                 <div> 업체 평점</div>
-                <div class="index_item_count"><span>0</span>점</div>
+                <div class="index_item_count"><span>
+                       <c:if test="${reviewCount==0}">
+                           0
+                       </c:if>
+                       <c:if test="${reviewCount!=0}">
+                           ${getreviewStart/reviewCount}
+                       </c:if>
+                </span>점</div>
+                <div style="margin-top: 50px"> 리뷰 개수</div>
+                <div class="index_item_count"><span>${reviewCount}</span>개</div>
             </div>
         </div>
 

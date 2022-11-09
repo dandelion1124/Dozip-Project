@@ -15,7 +15,7 @@ public class BiddingDAOImpl implements BiddingDAO {
     private SqlSession sqlSession;
 
     @Override //estimate 테이블에 있는 db 전부 가져오기
-    public List<EstimateVO> selectEstimateList() { return sqlSession.selectList("select_estdata"); }
+    public List<EstimateVO> selectEstimateList(String businessNum) { return sqlSession.selectList("select_estdata", businessNum); }
     @Override
     public EstimateVO selectEstimate(String bid_no) {
         return sqlSession.selectOne("select_est",bid_no);
@@ -39,6 +39,11 @@ public class BiddingDAOImpl implements BiddingDAO {
     public List<BidVO> selectJoinList(EstimateVO e) {
         return this.sqlSession.selectList("sel_All", e);
     }
+
+//    @Override
+//    public List<EstimateVO> checkbid(EstimateVO e) {
+//        return this.sqlSession.selectList("checkbid",e);
+//    }
 
 
 }

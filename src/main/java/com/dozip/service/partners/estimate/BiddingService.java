@@ -6,7 +6,7 @@ import com.dozip.vo.EstimateVO;
 import java.util.List;
 
 public interface BiddingService {
-    List<EstimateVO> selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기
+    List<EstimateVO> selectEstimateList(String businessNum); //estimate 테이블에 있는 db 전부 가져오기
     EstimateVO selectEstimate(String bid_no); // bid, bid_detail, bid_detail_ok
     int countBid(String est_num);
     int checkBid(BidVO b); //입찰했는지 확인하는것
@@ -15,4 +15,5 @@ public interface BiddingService {
     int getBlistCount2(String businessNum);
     List<BidVO> selectJoinList(EstimateVO e);
 
+    //List<EstimateVO> checkbid(EstimateVO e);
 }

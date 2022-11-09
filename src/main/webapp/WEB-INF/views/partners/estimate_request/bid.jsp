@@ -5,7 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<script>
+	function inputNumberFormat(obj) {
+		obj.value = comma(uncomma(obj.value));
+	}
 
+</script>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -77,10 +82,10 @@
 										<c:when test="${e.est_check == '대기중'}">
 											<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
 											<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
-											<c:if test="${e.remaindate < 0}"><span style="color:red;">모집마감</span></c:if>
+											<c:if test="${e.remaindate < 0}"><span style="color:red; opacity:0.5;">모집마감</span></c:if>
 										</c:when>
 										<c:otherwise>
-											<c:if test="${e.est_check != '대기중'}"><span style="color:red;">모집마감</span></c:if>
+											<c:if test="${e.est_check != '대기중'}"><span style="color:red; opacity:0.5;">모집마감</span></c:if>
 										</c:otherwise>
 									</c:choose>
 
@@ -105,7 +110,7 @@
 									<li class="info">
 										<p class="request_info_tit">희망 예산</p>
 										<p class="request_info_val">
-											<span><b>${e.est_bud}만원</b></span>
+											<span onkeyup="inputNumberFormat(this)"><b>${e.est_bud}만원</b></span>
 										</p>
 									</li>
 									<li class="info">
@@ -141,12 +146,12 @@
 									<p class="val"><b>${e.addr} </b></p></li>
 								<li class="info2">
 									<p class="key">참여 파트너수</p>
-									<p class="val" style="color:blue;"><b>${e.ecount}</b></p></li>
+									<p class="val" style="color:blue;"><b>${e.ecount}개</b></p></li>
 							</ul>
 							<div class="bid_detail">
 								<a href="/partners/bid_detail?no=${e.est_num}" class="btn-d-view"><b>자세히 보기</b></a>
 							</div>
-							<c:if test="${e.est_check != '대기중'}">
+							<c:if test="${e.bcount == 1}">
 								<ul class="company_profile">
 									<li class="info3" style="margin-top:5px;">
 										<p style="color:blue; list-style:none;">★입찰 참여중★</p>
