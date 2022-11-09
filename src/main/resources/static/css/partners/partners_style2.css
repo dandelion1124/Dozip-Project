@@ -698,9 +698,8 @@
       float:left;
    }
    .sec-item{
-      margin:10px 0;
+      margin:5px 0;
       display: flex;
-      flex-wrap:no-wrap;
    }
    .sec-title{
       flex-basis:25%;
@@ -755,6 +754,7 @@
     font-size: 15px;
     letter-spacing: -0.025em;
     text-align:center;
+    /* float:right; */
    }
    #bid_part_detail{
    	/*display:inline-block; */
@@ -764,8 +764,8 @@
    }
    .bid_complete_button{
    	display:inline-block;
-   	display:none;
    	width:100%;
+    display:none;
    }
    .bid_but_tab{
      padding:0 15% 0 15%;
@@ -780,7 +780,7 @@
 	 	color:#4398ed;
 	 }
 	 .bid_detail_text01, .bid_detail_text02, .bid_detail_text03{
-	 	width: 46%;
+	 	width: 50%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	text-align:right;

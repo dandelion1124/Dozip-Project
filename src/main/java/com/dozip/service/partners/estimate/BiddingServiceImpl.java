@@ -13,7 +13,7 @@ public class BiddingServiceImpl implements BiddingService {
     @Autowired
     BiddingDAO biddingDAO;
     @Override
-    public List<EstimateVO> selectEstimateList() { return biddingDAO.selectEstimateList(); }
+    public List<EstimateVO> selectEstimateList(String businessNum) { return biddingDAO.selectEstimateList(businessNum); }
     @Override
     public EstimateVO selectEstimate(String bid_no) {
         return biddingDAO.selectEstimate(bid_no);
@@ -38,6 +38,11 @@ public class BiddingServiceImpl implements BiddingService {
     public List<BidVO> selectJoinList(EstimateVO e) {
         return this.biddingDAO.selectJoinList(e);
     }
+
+//    @Override
+//    public List<EstimateVO> checkbid(EstimateVO e) {
+//        return this.biddingDAO.checkbid(e);
+//    }
 
 
 }
