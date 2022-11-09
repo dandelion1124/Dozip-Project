@@ -10,6 +10,7 @@
     }
 
     .upload_zone{
+        width: 70%;
         min-height : 200px;
         border : 3px solid #0A6EFF;
     }
