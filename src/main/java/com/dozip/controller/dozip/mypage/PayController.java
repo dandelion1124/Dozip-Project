@@ -55,11 +55,16 @@ public class PayController {
 
     @Scheduled(cron = "0 0 0/1 * * ?") //1식간마다 실행 (빨리 상태 보고 싶을땐 "0/15 * * * * ?" 15초마다로 변경해서 확인)
     public void payStateUpdate(){
-        System.out.println("스케줄러 실행!");
-        try{
-            this.payService.updateState(); //해당일자가 되면 요청상태로 변경
-        } catch (Exception e){
-            e.printStackTrace();
+        int res =  this.payService.check();
+        if(res!=0) { //DB에 등록된 값이 있을 경우에만 수행
+            System.out.println("스케줄러 실행!");
+            try {
+                this.payService.updateState(); //해당일자가 되면 요청상태로 변경
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else{
+            System.out.println("데이터 없음");
         }
     }
 }
