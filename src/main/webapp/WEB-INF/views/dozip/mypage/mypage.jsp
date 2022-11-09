@@ -10,7 +10,7 @@
     .my_wrap { width: 97%; margin: 0 auto;}
     .box { margin: 10px; margin-bottom: 30px; }
     #row { display: flex; justify-content: space-between; flex-wrap: wrap; }
-    #row>div{ width: 24%; padding-left: 10px; border-radius: 5px; background-color: #2C3E50; color: white; }
+    #row>div{ width: 23%; padding-left: 10px; border-radius: 5px; background-color: #2C3E50; color: white; }
     .p_cont{ font-size: 1.8rem; font-weight: bold; margin: 0; }
     #row2 { display: flex; justify-content: space-between; flex-wrap: wrap; }
     #row2>div{ width: 49%; padding-left: 10px; }

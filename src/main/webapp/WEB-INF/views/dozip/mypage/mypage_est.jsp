@@ -52,7 +52,7 @@
                             <td>${e.est_areaP} 평</td><%--평수--%>
                             <td>${e.est_bud} 만원</td><%--예산--%>
                             <td>${e.businessName}</td><%--업체명--%>
-                            <td>${e.est_check}</td><%--진행상황(수락/거절)--%>
+                            <td id="state">${e.est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
                                 <c:if test="${e.est_check=='수락'}">
                                     <button type="button" id="agree_btn" value="${e.est_num}">계약요청</button>

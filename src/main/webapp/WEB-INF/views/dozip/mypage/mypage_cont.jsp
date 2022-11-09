@@ -54,9 +54,9 @@
                             <td>${c.cont_end.substring(0,10)}</td><%--종료일--%>
                             <td>${c.cont_total} 만원</td><%--총금액--%>
                             <td>
-                                <c:if test="${c.customer_number == ' '}">계약요청</c:if>
+                                <c:if test="${c.customer_number == ' '}"><span style="color: red; font-weight: bold">계약요청</span></c:if>
                                 <c:if test="${c.customer_number != ' '&&c.pay_state!='잔금결제완료'}">계약완료</c:if>
-                                <c:if test="${c.customer_number != ' '&&c.pay_state=='잔금결제완료'}"><span style="color: red">공사완료</span></c:if>
+                                <c:if test="${c.customer_number != ' '&&c.pay_state=='잔금결제완료'}"><span style="color: blue; font-weight: bold">공사완료</span></c:if>
                             </td><%--진행상태--%>
                             <td>
                                 <c:if test="${c.customer_number == ' '}">
