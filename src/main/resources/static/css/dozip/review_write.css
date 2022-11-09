@@ -120,7 +120,7 @@
 }
 
 #load_cont {
-    width: 80%;
+    width: 1000px;
     height: 120px;
     display : flex;
     flex-wrap: wrap;

@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -199,6 +200,15 @@ public class MyPageController {
 
         mv.setViewName("/dozip/mypage/mypage_review");
         return mv;
+    }
+
+    //마이페이지 - 고객후기 삭제
+    @RequestMapping("review_del")
+    public ModelAndView rdel(ModelAndView mv, HttpServletRequest request){
+        int re_no = Integer.parseInt(request.getParameter("re_no"));
+        this.reviewService.reviewDel(re_no);
+
+        return new ModelAndView("redirect:/dozip/my_review");
     }
 
     //마이페이지 - 포트폴리오 스크랩 페이지 (미완성)

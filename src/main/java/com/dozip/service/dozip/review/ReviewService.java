@@ -18,4 +18,6 @@ public interface ReviewService {
     void insertReview_Photos(ReviewVO rv); //후기사진등록
 
     List<ReviewVO> getMreview(ReviewVO r); //아이디에 해당하는 리뷰목록
+
+    void reviewDel(int re_no); //고객 후기 삭제
 }

@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Port">
-    <!--????? ?? ???-->
+    <!--포트폴리오 전체 리스트 불러오기-->
     <select id = "port_list" resultType="PortfolioVO">
         select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, p.pf_zipcode, p.pf_addr1, p.pf_addr2, p.pf_addr3, p.pf_area,
                p.pf_cost, p.pf_period, p.pf_concept, p.pf_introduction, p.pf_closing, p.pf_photo1, p.pf_photo2, p.pf_photo3, p.pf_photo4, p.pf_photo5,
                p.pf_premium, p.pf_regdate, pt.businessName from portfolioT p JOIN partnersT pT on pT.businessNum = p.businessNum order by p.pf_no desc
     </select>
 
-    <!--????? ?? ???-->
+    <!--포트폴리오 검색결과 리스트 반환-->
     <select id="search_list" resultType="PortfolioVO">
         select p.pf_no, p.businessNum, p.pf_title, p.pf_type, p.pf_subtype, p.pf_range, p.pf_zipcode, p.pf_addr1,
         p.pf_addr2, p.pf_addr3, p.pf_area,
@@ -26,25 +26,20 @@
         )order by p.pf_no desc
     </select>
 
-    <!--????? ?? (pf_no? ???? ?)-->
+    <!--글번호에 해상하는 포트폴리오 가져오기-->
     <select id="pf_list" resultType="PortfolioVO">
         select * from portfolioT where pf_no = #{pf_no}
     </select>
 
-    <!--???? ?? ????-->
+    <!--해당 글번호의 파트너스 정보 가져오기-->
     <select id="pt_list" resultType="PartnersVO">
         select * from partnersT where businessNum = (select businessNum from portfolioT where pf_no = #{pf_no})
     </select>
 
-    <!--???? ?? ????-->
+    <!--사업자번호와 일치하는 파트너스 정보 가져오기-->
     <select id="pc_list" resultType="PartnersVO">
         select * from partnersT where businessName = #{businessName}
     </select>
-
-    <!--?? ??? ?? ????-->
-
-
-
 
 
     <!--????? ??-->

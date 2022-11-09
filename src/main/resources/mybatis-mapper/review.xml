@@ -62,7 +62,12 @@
     <select id = "m_review" resultType="ReviewVO">
         select * from (
             select rowNum r, rev.* from
-            (select * from reviewT where mem_id=#{mem_id} order by re_no desc) rev
+            (select * from reviewT where mem_id=#{mem_id} and re_state = 1 order by re_no desc) rev
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
+
+    <!--후기 마이페이지 삭제 기능-->
+    <update id="del_review" >
+        update reviewT set re_state = 0 where re_no = #{re_no}
+    </update>
 </mapper>
