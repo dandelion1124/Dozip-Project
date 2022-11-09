@@ -44,6 +44,6 @@
 
     <!--요청상태인 결제건 가져옴-->
     <select id="request_state" resultType="PayVO">
-        select * from payT where pay_state like '%요청%'
+        select * from payT where mem_id=#{mem_id} and pay_state like '%요청%'
     </select>
 </mapper>
