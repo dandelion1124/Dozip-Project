@@ -466,3 +466,16 @@ a.footer_mail:hover {
 .part4_img,.part5_img{
 	opacity: 0;
 }
+
+/* 메인페이지 페이지설명란. */
+.content_tt { font-size:30px; font-weight:600; color:#555; text-align:center;}
+.content_desc {font-size:16px; font-weight:300; color:#8c8c8c; width:65%; margin:23px auto 33px; text-align:center; }
+.container { width:1170px; margin: 0 auto;}
+
+.excellent_mobile {padding-top:80px; background:#fbfaf8;}
+.excellent_mobile img { float:left; margin-left:50px;}
+.excellent_mobile .contents {float:right; width:670px; margin-top:115px; }
+.excellent_mobile .contents h3, .excellent_mobile .contents p{text-align:left; width:100%;}
+.excellent_mobile .contents ul {margin-left:50px;}
+.excellent_mobile .contents ul li {font-size:16px; font-weight:300; color:#8c8c8c; margin-bottom:7px; }
+.excellent_mobile .contents ul li span{ width:21px; height:21px; background:url(/images/dozip/sprites.png) no-repeat -402px -89px; display: inline-block; text-indent:-9999em; margin-right:28px; vertical-align:middle;}
