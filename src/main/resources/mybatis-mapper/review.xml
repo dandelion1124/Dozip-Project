@@ -5,7 +5,7 @@
 <mapper namespace="review">
     <!--아이디에 해당하는 리뷰개수확인-->
     <select id="mem_id" resultType="int">
-        select count(*) from reviewT where mem_id=#{mem_id}
+        select count(*) from reviewT where mem_id=#{mem_id} and re_state='1'
     </select>
     <!--아이디에 해당하는 후기번호 확인-->
     <select id="review_num" resultType="int">
@@ -14,17 +14,17 @@
 
     <!--리뷰 전체 목록-->
     <select id="allReview" resultType="ReviewVO">
-        select * from reviewT order by re_no desc
+        select * from reviewT where re_state='1' order by re_no desc
     </select>
 
     <!-- Best 리뷰 -->
     <select id="best" resultType="ReviewVO">
-        select * from reviewT, contractT order by re_count desc
+        select * from reviewT, contractT where re_state='1' order by re_count desc
     </select>
 
     <!-- 전체리뷰 개수 가져오기 -->
     <select id="count" resultType="int">
-        select count(*) from reviewT
+        select count(*) from reviewT where re_state='1'
     </select>
 
     <!-- 리뷰상세 -->
@@ -36,16 +36,6 @@
     <update id="re_count" parameterType="ReviewVO">
         update reviewT set re_count = re_count+1 where re_no = #{re_no}
     </update>
-
-    <!--계약서 목록 확인-->
-    <select id = "getClist" resultType="ContractVO">
-        select * from contractT where mem_id=#{mem_id}
-    </select>
-
-    <!--계약번호를 기준으로 계약정보 불러오기-->
-    <select id="getCont" resultType="ContractVO">
-        select * from contractT where cont_no=#{cont_no}
-    </select>
 
     <!--후기등록-->
     <insert id="review_upload">
@@ -62,7 +52,7 @@
     <select id = "m_review" resultType="ReviewVO">
         select * from (
             select rowNum r, rev.* from
-            (select * from reviewT where mem_id=#{mem_id} order by re_no desc) rev
+            (select * from reviewT where mem_id=#{mem_id} and re_state='1' order by re_no desc) rev
         )where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 </mapper>

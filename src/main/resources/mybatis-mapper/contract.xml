@@ -30,4 +30,13 @@
         update contractT set customer_number=#{customer_number} where cont_no=#{cont_no}
     </update>
 
+    <!--계약서 목록 확인-->
+    <select id = "getClist" resultType="ContractVO">
+        select * from contractT where mem_id=#{mem_id}
+    </select>
+
+    <!--계약번호를 기준으로 계약정보 불러오기-->
+    <select id="getCont" resultType="ContractVO">
+        select * from contractT where cont_no=#{cont_no}
+    </select>
 </mapper>
