@@ -144,13 +144,6 @@
     </update>
 
 
-    <!-- 작성한 포트폴리오 불러오기 -->
-    <select id="get_portfolios" resultType="PortfolioVO">
-        select * from PORTFOLIOT where BUSINESSNUM =#{num}
-    </select>
-    <!--수정할 포트폴리오 정보 불러오기 -->
-    <select id="getOne_port" resultType="PortfolioVO">
-        select * from PORTFOLIOT where BUSINESSNUM =#{businessNum} and PF_NO=#{pf_no}
-    </select>
+
 </mapper>
 

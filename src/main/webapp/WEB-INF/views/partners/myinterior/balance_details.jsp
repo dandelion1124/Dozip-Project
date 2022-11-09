@@ -1,11 +1,13 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="../include/header.jsp"/>
+
 <style>
     #balance_detail_title {
         font-size: 26px;
         font-weight: 530;
-        border-bottom: 4px solid #000;
+        border-bottom: 3px solid #000;
     }
 
     #balance_detail_msg {
@@ -14,7 +16,6 @@
         font-family: fantasy;
         margin-bottom: 10px;
     }
-
     * {
         line-height: 2em;
     }
@@ -75,7 +76,7 @@
     }
 
     #balance_detail_main_table_div th {
-        padding: 10px 20px;
+        padding: 5px 0px;
         background: #acb9e5;
     }
 
@@ -84,13 +85,13 @@
     }
 
     #balance_detail_main_table_div td {
-        padding: 7px 20px;
+        padding: 5px 0px;
         text-align: center;
     }
 
     input.detail_button {
         background: #00BFFF;
-        padding: 6px 10px;
+        padding: 2px 10px;
         border: none;
         border-radius: 3px;
         color: white;
@@ -102,9 +103,6 @@
     }
 </style>
 <p> | 내공사 > 정산내역</p>
-${pay_state}
-<input type="radio" value="시공완료" name="test" id="select_status_btn1" <c:if test="${pay_state=='시공완료'}"> checked</c:if>    >
-<input type="radio" value="시공중" name="test" id="select_status_btn2" <c:if test="${pay_state=='시공중'}"> checked</c:if>>
 <div id="balance_detail_top_cont">
     <div id="balance_detail_title">정산내역</div>
     <div id="balance_detail_msg">
@@ -115,19 +113,19 @@ ${pay_state}
 <div id="balance_detail_title_bar">
     <div id="balance_detail_select_status">
         <div id="balance_detail_select_status_div1">
-            <label for="select_status_btn1">시공완료</label></div>
+            <input type="button" id="select_status_btn1" value="시공완료"></div>
         <div id="balance_detail_select_status_div2">
-            <label for="select_status_btn2">시공중</label></div>
+            <input type="button" id="select_status_btn2" value="시공중"></div>
         <div id="balance_detail_select_status_div3"></div>
     </div>
 </div>
 <div id="balance_detail_search_bar_div">
     <div id="balance_detail_search_bar1">
-        <h1>시공완료 정산 내역 검색바 기능 구상중</h1>
+        <h4>시공완료 </h4>
 
     </div>
     <div id="balance_detail_search_bar2" style="display: none">
-        <h1 style="color:darkgoldenrod">시공중 정산 내역 검색바 기능 구상중</h1>
+        <h4>시공중</h4>
     </div>
 </div>
 <div id="balance_detail_main_table_div">
@@ -147,18 +145,18 @@ ${pay_state}
         </c:if>
         <c:if test="${!empty plist}">
             <c:forEach var="p" items="${plist}">
-            <tr>
-                <td>${p.pay_date1}</td>
-                <td>${p.count}</td>
-                <td>${p.pay_cost1 + p.pay_cost2 +p.pay_cost3} 만원</td>
-                <td><input type="button" value="상세내역" class="detail_button"></td>
-            </tr>
+                <tr>
+                    <td>${p.pay_date1}</td>
+                    <td>${p.count}</td>
+                    <td> <fmt:formatNumber value="${(p.pay_cost1 + p.pay_cost2 +p.pay_cost3)*10000}" pattern="#,###"/> 원</td>
+                    <td><input type="button" value="상세내역" class="detail_button" onclick="balance_detail('${p.pay_date1}')"></td>
+                </tr>
             </c:forEach>
         </c:if>
         <tr>
             <th>합계</th>
-            <th>${pv.count}건</th>
-            <th>${pv.pay_cost1 + pv.pay_cost2 +pv.pay_cost3} 만원</th>
+            <th>${pv.count} 건</th>
+            <th><fmt:formatNumber value="${(pv.pay_cost1 + pv.pay_cost2 +pv.pay_cost3)*10000}" pattern="#,###"/> 원</th>
             <th></th>
         </tr>
     </table>
@@ -169,88 +167,86 @@ ${pay_state}
             <th>정산 금액</th>
             <th>상세내역</th>
         </tr>
-        <tr>
-            <td>sample</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>sample</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 7월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 8월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 9월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
-        <tr>
-            <td>2022년 10월</td>
-            <td>sample</td>
-            <td>sample</td>
-            <td><input type="button" value="상세내역" class="detail_button"></td>
-        </tr>
+        <c:if test="${empty plist_ing}">
+            <tr>
+                <td colspan="4">조회된 목록이 없습니다</td>
+            </tr>
+        </c:if>
+        <c:if test="${!empty plist_ing}">
+            <c:forEach var="p" items="${plist_ing}">
+                <tr>
+                    <td>${p.pay_date1}</td>
+                    <td>${p.count}</td>
+                    <td> <fmt:formatNumber value="${(p.pay_cost1 + p.pay_cost2 +p.pay_cost3)*10000}" pattern="#,###"/> 원</td>
+                    <td><input type="button" value="상세내역" class="detail_button" onclick="balance_detail_ing('${p.pay_date1}')"></td>
+                </tr>
+            </c:forEach>
+        </c:if>
         <tr>
             <th>합계</th>
-            <th>100건</th>
-            <th>1,000,000원</th>
+            <th>${pv_ing.count}건</th>
+            <th><fmt:formatNumber value="${(pv_ing.pay_cost1 + pv_ing.pay_cost2 +pv_ing.pay_cost3)*10000}" pattern="#,###"/> 원</th>
             <th></th>
         </tr>
     </table>
 </div>
+<script>
+    function balance_detail(pay_date1) {
+
+
+        var popupWidth = 1100;
+        var popupHeight = 500;
+        var popupX = (window.screen.width / 2) - (popupWidth / 2);
+        // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+        var popupY = (window.screen.height / 2) - (popupHeight / 2);
+        // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음F
+        window.open(`./monthly_detail?pay_date=` + pay_date1, 'Child', 'width=' + popupWidth + ', height=' + popupHeight + ', top=' + popupY + ', left=' + popupX + 'resizable=no');
+    }
+    function balance_detail_ing(pay_date1) {
+
+        var popupWidth = 1100;
+        var popupHeight = 500;
+        var popupX = (window.screen.width / 2) - (popupWidth / 2);
+        // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+        var popupY = (window.screen.height / 2) - (popupHeight / 2);
+        // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음F
+        window.open(`./monthly_detail?pay_date_ing=` + pay_date1, 'Child', 'width=' + popupWidth + ', height=' + popupHeight + ', top=' + popupY + ', left=' + popupX + 'resizable=no');
+    }
+</script>
+
+
 
 
 
 
 <script>
 
-    let btn1 = document.getElementById("select_status_btn1");
-    let btn2 = document.getElementById("select_status_btn2");
-    let div1 = document.getElementById("balance_detail_select_status_div1");
-    let div2 = document.getElementById("balance_detail_select_status_div2");
-    let search1 = document.getElementById("balance_detail_search_bar1");
-    let search2 = document.getElementById("balance_detail_search_bar2");
-    let table1 = document.getElementById("balance_detail_main_table1");
-    let table2 = document.getElementById("balance_detail_main_table2");
+    const btn1 = document.getElementById("select_status_btn1");
+    const btn2 = document.getElementById("select_status_btn2");
+    const div1 = document.getElementById("balance_detail_select_status_div1");
+    const div2 = document.getElementById("balance_detail_select_status_div2");
+    const search1 = document.getElementById("balance_detail_search_bar1");
+    const search2 = document.getElementById("balance_detail_search_bar2");
+    const table1 = document.getElementById("balance_detail_main_table1");
+    const table2 = document.getElementById("balance_detail_main_table2");
 
-    let style = "border : 2px solid dimgray";
-
-    $('#select_status_btn1').click(function (){
-        location='/partners/balance_details?pay_state='+'시공완료';
-
+    const style = "border : 2px solid dimgray";
+    btn1.onclick = function (event) {
         div1.style.cssText = 'border : 2px solid dimgray; background:cornflowerblue; border-bottom:transparent';
         div2.style.cssText = 'border:transparent; border-bottom:2px solid dimgray';
         table1.style.display = 'inline-table';
         table2.style.display = 'none';
         search1.style.display = 'block';
         search2.style.display = 'none';
-
-    });
-    $('#select_status_btn2').click(function (){
-        location='/partners/balance_details?pay_state='+'시공중';
+    }
+    btn2.onclick = function (event) {
         div1.style.cssText = 'border:transparent; border-bottom:2px solid dimgray; background:none';
         div2.style.cssText = 'border : 2px solid dimgray; background:cornflowerblue; border-bottom:transparent';
         table1.style.display = 'none';
         table2.style.display = 'inline-table';
         search1.style.display = 'none';
         search2.style.display = 'block';
-    });
-
+    }
 
 
 </script>

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/css/partners/join_style.css">
     <script src="/js/partners/jquery.js"></script>
     <script src="/js/partners/join.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 </head>
@@ -117,9 +118,14 @@
             grid-row: 2/4;
             grid-column: 3;
         }
-        .index_item:nth-child(4) div{
+        .index_item:nth-child(4)> div {
             text-align: center;
+            background: #d8bfd859;
+            padding: 7px;
+            border-radius: 20px;
+            box-shadow: 1px -1px 3px #ccc;
         }
+
 
         #myChart, #myChart2, #myChart3 {
             border: 1px dotted #00000091;
@@ -177,6 +183,10 @@
         .index_item_count{
             margin-top: 7px;
         }
+        .index_item_count span{
+            font-weight: bolder; font-size: 14px; color: #0064CD;
+            cursor: pointer;
+        }
         .go_balance{
             padding-top: 15px;
             text-align: center;
@@ -186,14 +196,34 @@
 
             text-decoration: none;
         }
+        td.go_balance a:hover {
+            color: #36A2EB;
+        }
         .go_balance a:visited{
             color: black;
         }
-        .go_balance a:active{
-            color: steelblue;
-        }
-    </style>
 
+    </style>
+    <script>
+        if('${status}'==0){
+            Swal.fire({
+                title: '정보 수정 요청',
+                text: "정보(주소, 업체로고 필수)를 등록해야 입찰을 받으실 수 있습니다. " +
+                    "정보 변경 페이지로 이동할까요?",
+                icon: 'question',
+                showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+                confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+                cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+                confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+                cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+                reverseButtons: false, // 버튼 순서 거꾸로
+            }).then(result => {
+                if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+                    location.href="/partners/data_manage";
+                }
+            });
+        }
+    </script>
     <div id='pmain_cont'>
         <div class="index_item"> <%--grid 1 --%>
             <div>
@@ -255,25 +285,28 @@
         <div class="index_item">  <%--grid 4 --%>
             <div>
                 <div>고객 문의</div>
-                <div class="index_item_count">0</div>
+                <div class="index_item_count">
+                    <span onclick="location='./customer_qna'">${qnaCount}</span> 개
+                </div>
             </div>
             <div>
                 <div> 시공 요청</div>
-                <div class="index_item_count"> 0</div>
+                <div class="index_item_count">
+                    <span>0</span>개</div>
             </div>
             <div>
                 <div> 계약 요청</div>
-                <div class="index_item_count"> 0</div>
+                <div class="index_item_count"> <span>0</span>개</div>
             </div>
             <div>
                 <div> 포트폴리오</div>
                 <div class="index_item_count">
-                    <span style="font-weight: bolder; font-size: 14px; color: #0064CD"> ${portfolioCount}</span> 개
+                    <span onclick="location='./portfolio_list'">${portfolioCount}</span> 개
                 </div>
             </div>
             <div>
                 <div> 업체 평점</div>
-                <div class="index_item_count">5 점</div>
+                <div class="index_item_count"><span>0</span>점</div>
             </div>
         </div>
 
@@ -307,7 +340,6 @@
     <script>
         const ctx = document.getElementById('myChart').getContext('2d');
         const myChart = new Chart(ctx, {
-            // chart type(차트 형태) : bar, line, pie
             type: 'line',
 
             // chart data(차트 데이터-객체형태)
@@ -355,7 +387,6 @@
     <script>
         let ctx2 = document.getElementById('myChart2').getContext('2d');
         const myChart2 = new Chart(ctx2, {
-            // chart type(차트 형태) : bar, line, pie
             type: 'bar',
 
             // chart data(차트 데이터-객체형태)
@@ -404,10 +435,8 @@
     <script>
         const ctx3 = document.getElementById('myChart3').getContext('2d');
         const myChart3 = new Chart(ctx3, {
-            // chart type(차트 형태) : bar, line, pie
             type: 'pie',
 
-            // chart data(차트 데이터-객체형태)
             data: {
                 // labels -> x축에 들어갈 데이터
                 labels: ['입찰', '지정'],
@@ -422,18 +451,12 @@
                     backgroundColor: [
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
-                        // 'rgba(255, 206, 86, 0.2)',
-                        // 'rgba(75, 192, 192, 0.2)',
-                        // 'rgba(153, 102, 255, 0.2)',
-                        // 'rgba(255, 159, 64, 0.2)'
+
                     ],
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
                         'rgba(255, 99, 132, 1)',
-                        // 'rgba(255, 206, 86, 1)',
-                        // 'rgba(75, 192, 192, 1)',
-                        // 'rgba(153, 102, 255, 1)',
-                        // 'rgba(255, 159, 64, 1)'
+
                     ],
                     borderWidth: 2
                 }]

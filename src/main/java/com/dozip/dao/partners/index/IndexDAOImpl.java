@@ -1,5 +1,6 @@
 package com.dozip.dao.partners.index;
 
+import com.dozip.vo.InfoVO;
 import com.dozip.vo.PayVO;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
@@ -19,5 +20,15 @@ public class IndexDAOImpl implements  IndexDAO{
     @Override
     public int portfolioCount(String bNum) {
         return sqlSession.selectOne("portfolioCount",bNum);
+    }
+
+    @Override
+    public InfoVO partnersInfoCheck(String bNum) { //파트너스 정보 등록 확인용
+        return sqlSession.selectOne("partnersInfoCheck", bNum);
+    }
+
+    @Override
+    public int newQnaCount(String bNum) { //미답변 문의 개수
+        return sqlSession.selectOne("newQnaCount", bNum);
     }
 }

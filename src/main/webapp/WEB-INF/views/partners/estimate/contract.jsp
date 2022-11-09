@@ -133,27 +133,27 @@
         <div>
             <table id="contract_table2" border="1">
                 <tr>
-                    <th rowspan="4" style="width:12%;">대금 지급 시기</th>
-                    <th style="width:8%;">횟 수</th>
+                    <th rowspan="4" style="width:15%;">대금 지급 시기</th>
+                    <th style="width:5%;">횟 수</th>
                     <th style="width:25%;">금 액</th>
                     <th style="width:25%;">년 월 일</th>
                     <th style="width:8%;">내 역</th>
                 </tr>
                 <tr>
                     <th>1차</th>
-                    <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
+                    <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
                     <td><input type="date" name="cont_date1" id="cont_date1" placeholder="입력해주세요"></td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
-                    <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
+                    <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
                     <td><input type="date" name="cont_date2" id="cont_date2" placeholder="입력해주세요"></td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
-                    <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">만원</td>
+                    <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
                     <td><input type="date" name="cont_date3" id="cont_date3" placeholder="입력해주세요"></td>
                     <th>잔금</th>
                 </tr>

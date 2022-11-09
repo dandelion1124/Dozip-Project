@@ -1,6 +1,7 @@
 package com.dozip.controller.partners;
 
 import com.dozip.service.partners.index.IndexService;
+import com.dozip.vo.InfoVO;
 import com.dozip.vo.PayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,38 @@ public class IndexController {
     public ModelAndView partners(HttpSession session) {
 
         ModelAndView mv = new ModelAndView("/partners/index");
-        if((String)session.getAttribute("businessNum")!= null){
+        if(session.getAttribute("businessNum")!= null){
             String bNum =(String)session.getAttribute("businessNum");
+            String status;
+
+            /*매출 내역 */
             PayVO pv = indexService.montly_sales(bNum);
+
+            /*등록된 포트폴이오 개수 */
             int portfolioCount = indexService.portfolioCount(bNum);
 
+            /*파트너스 정보 등록 확인 */
+            InfoVO iv = indexService.partnersInfoCheck(bNum);
+            if(iv.getAddr_check()==0 || iv.getPhoto_check()==0){
+                status="0";
+            }
+            else{
+                status="1";
+            }
+
+            /*미답변 문의 갯수 */
+            int qnaCount = indexService.newQnaCount(bNum);
+
+
+
+
+
+
+
+
             mv.addObject("pv",pv);
+            mv.addObject("status",status);
+            mv.addObject("qnaCount",qnaCount);
             mv.addObject("portfolioCount",portfolioCount);
         }
 

@@ -1,5 +1,4 @@
-thead#interiorList_table_thead th {font-weight: lighter;padding: 8px 0px;}
-a#go_scheduleList {font-size: 16px; margin-left: 40px;color: saddlebrown;}
+thead#interiorList_table_thead th {padding: 8px 0px;font-size: 15px;}a#go_scheduleList {font-size: 16px; margin-left: 40px;color: saddlebrown;}
 #interiorList_title {font-size: 26px;font-weight: 530;border-bottom: 3px solid #333;line-height: 2em;}
 #interiorList_msg {color: darkslateblue;font-size: 16px;font-family: fantasy;margin: 20px 0px 10px 13px;}
 #interiorList_explain {width: 94%;padding: 0px 20px;margin: 0 auto;}

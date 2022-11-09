@@ -12,4 +12,15 @@
     <select id="portfolioCount" resultType="int">
         select count(*) from PORTFOLIOT where BUSINESSNUM=#{bNum}
     </select>
+
+    <!-- 파트너스 정보 등록 확인 용(주소, 로고) -->
+    <select id="partnersInfoCheck" resultType="InfoVO">
+        select count(s.P_COMP_LOGO) as photo_check, count(p.P_ADDR1) as addr_check from PARTNERST p, PARTNERS_SUBT s where p.BUSINESSNUM=s.BUSINESSNUM and p.BUSINESSNUM=#{businessNum}
+    </select>
+
+    <!--미답변 문의 개수 -->
+    <select id="newQnaCount" resultType="int">
+        select count(QNA_NO) from QNAT where BUSINESSNUM=#{businessNum} and REPLY_STATE='미답변'
+    </select>
+
 </mapper>

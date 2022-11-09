@@ -47,7 +47,7 @@
 
 
 
-    <!--????? ?? ??-->
+    <!--????? ??-->
     <insert id="portfolio_in" parameterType="PortfolioVO">
         insert into portfolioT (pf_no, businessNum, pf_title, pf_type, pf_subtype, pf_range, pf_zipcode, pf_addr1, pf_addr2, pf_addr3, pf_area, pf_cost, pf_period,
                                 pf_concept, pf_introduction, pf_closing, pf_regdate)
@@ -55,7 +55,7 @@
                 #{pf_addr3}, #{pf_area}, #{pf_cost}, #{pf_period}, #{pf_concept}, #{pf_introduction}, #{pf_closing}, sysdate)
     </insert>
 
-    <!--????? ????-->
+    <!--????? ?? ????-->
     <select id="portfolio_num" resultType="int">
         select pf_no from portfolioT where businessNum=#{businessNum} and pf_title=#{pf_title}
     </select>
@@ -66,9 +66,21 @@
     </insert>
 
 
-    <!-- ????? ???? ?? ???? -->
+    <!-- ????? ???? -->
     <select id="portfolio_load" resultType="ContractVO">
         select distinct c.*, e.EST_ZIPCODE, e.EST_ADDR2, e.EST_ADDR3, est_zoning, est_use from contractT c, ESTIMATET e where c.businessNum=#{businessNum} and c.EST_NUM=e.EST_NUM
+    </select>
+
+
+    <!--????? ???? -->
+
+    <!-- ??? ????? ???? -->
+    <select id="get_portfolios" resultType="PortfolioVO">
+        select * from PORTFOLIOT where BUSINESSNUM =#{num} order by pf_no desc
+    </select>
+    <!--??? ????? ?? ???? -->
+    <select id="getOne_port" resultType="PortfolioVO">
+        select * from PORTFOLIOT where BUSINESSNUM =#{businessNum} and PF_NO=#{pf_no}
     </select>
 
 </mapper>

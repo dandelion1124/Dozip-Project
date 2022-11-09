@@ -30,13 +30,35 @@ public class MyInteriorServiceImpl implements MyInteriorService {
         return myInteriorDAO.regit_schedule(cont_no);
     }
 
-    @Override //정산내역 불러오기
+    @Override //시공완료 정산내역 불러오기
     public List<PayVO> getBalance(PayVO vo) {
         return myInteriorDAO.getBalance(vo);
     }
 
-    @Override //정산내역 합계 불러오기
+    @Override //시공완료 정산내역 합계 불러오기
     public PayVO totalBalance(PayVO vo) {
         return myInteriorDAO.totalBalance(vo);
+    }
+
+    @Override //시공완료 정산내역 불러오기
+    public List<PayVO> getBalance_ing(PayVO vo) {
+        return myInteriorDAO.getBalance_ing(vo);
+    }
+
+    @Override //시공완료 정산내역 합계 불러오기
+    public PayVO totalBalance_ing(PayVO vo) {
+        return myInteriorDAO.totalBalance_ing(vo);
+    }
+
+    @Override //시공완료  월별 정산상세내역 불러오기
+    public List<PayVO> monthly_balance(PayVO vo) {
+
+        return myInteriorDAO.monthly_balance(vo);
+    }
+
+    @Override //시공중  월별 정산상세내역 불러오기
+    public List<PayVO> monthly_balance_ing(PayVO vo) {
+
+        return myInteriorDAO.monthly_balance_ing(vo);
     }
 }

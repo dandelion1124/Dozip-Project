@@ -33,8 +33,26 @@ public class MyInteriorDAOImpl implements MyInteriorDAO{
         return sqlSession.selectList("get_balance",vo);
     }
 
-    @Override
+    @Override //정산 완료내역 불러오기
     public PayVO totalBalance(PayVO vo) {
         return sqlSession.selectOne("get_tBalance", vo);
+    }
+    @Override //정산내역 불러오기
+    public List<PayVO> getBalance_ing(PayVO vo) {
+        return sqlSession.selectList("get_balance_ing", vo);
+    }
+    @Override //정산 완료내역 불러오기
+    public PayVO totalBalance_ing(PayVO vo) {
+        return sqlSession.selectOne("get_tBalance_ing", vo);
+    }
+
+    @Override //시공완료  월별 정산상세내역 불러오기
+    public List<PayVO> monthly_balance(PayVO vo) {
+        return sqlSession.selectList("montly_bal", vo);
+    }
+
+    @Override //시공중  월별 정산상세내역 불러오기
+    public List<PayVO> monthly_balance_ing(PayVO vo) {
+        return sqlSession.selectList("montly_bal_ing", vo);
     }
 }

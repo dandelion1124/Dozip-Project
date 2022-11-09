@@ -14,6 +14,11 @@
     .est_table_left{
         text-align: left;
     }
+    #est_list_table tbody, .est_detail btn {
+        font-size: 13px;
+    }
+    tbody td {text-align: center; border-bottom: 1px solid #333; padding: 3px 0px;  font-size: 13px;}
+
 </style>
 <p> | 견적관리 > 견적목록</p>
 <div id="estlist_top_cont">
@@ -46,8 +51,8 @@
         <c:forEach var="e" items="${elist}">
             <c:if test="${empty clist && !empty e.businessNum}">   <%--계약서 테이블이 없다면 --%>
                 <tr>
-                    <td class="est_table_left">${e.est_num}</td>
-                    <td class="est_table_left"><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail('${e.est_num}')"></td>
+                    <td>${e.est_num}</td>
+                    <td><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail('${e.est_num}')"></td>
                     <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
                     <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
 
@@ -64,7 +69,7 @@
             </c:if> <%--${empty clist}--%>
             <c:if test="${e.est_check=='계약요청'}">
                 <tr>
-                    <td class="est_table_left">${e.est_num} </td>
+                    <td>${e.est_num} </td>
                     <td class="est_table_left"><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail('${e.est_num}')"></td>
                     <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
                     <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
@@ -84,8 +89,8 @@
                 <c:forEach var="c" items="${clist}">
                      <c:if test="${e.est_num==c.est_num && e.est_check != '계약완료'}">
                          <tr>
-                            <td class="est_table_left">${c.est_num}</td>
-                            <td class="est_table_left"><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td>
+                            <td>${c.est_num}</td>
+                            <td class="est_table_left"><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td class="est_table_left">
                             <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
                             <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
                             <td>${e.est_check}</td>
@@ -101,7 +106,7 @@
                     <c:if test="${e.est_num==c.est_num && c.cont_no==p.cont_no}">
                         <tr>
                             <td>${c.est_num}</td>
-                            <td><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td>
+                            <td class="est_table_left"><input class='est_detail btn' type="button" value="${c.cont_location} 시공요청" onclick="est_detail('${c.est_num}')"></td>
                             <td><fmt:formatNumber value="${c.cont_total}" type="number"/>만원</td>
                             <td>${fn:substring(c.cont_start,0,10)}~ ${fn:substring(c.cont_end,0,10)}</td>
                             <td>${p.pay_state} (D-${c.dateCheck})</td>

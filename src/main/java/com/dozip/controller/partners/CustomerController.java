@@ -1,6 +1,7 @@
 package com.dozip.controller.partners;
 
 import com.dozip.service.partners.customer.CustomerService;
+import com.dozip.utils.Paging;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,11 +30,10 @@ public class CustomerController {
         request.setCharacterEncoding("UTF-8");
 
         int page = 1; //쪽번호
-        int limit = 8; //한페이지에 보여질 개수
 
         String find_field = null;
         String find_text = null;
-        System.out.println(answer);
+
         if (request.getParameter("page") != null)
             page = Integer.parseInt(request.getParameter("page"));
         if (request.getParameter("answer") != null)
@@ -47,27 +47,26 @@ public class CustomerController {
                 findQ.setFind_text("%" + find_text + "%");
             }
         }
+
         findQ.setFind_field(find_field);
         findQ.setAnswer(answer);
         findQ.setBusinessNum((String) session.getAttribute("businessNum"));
         int listcount = customerService.getListCount(findQ); //검색전후 레코드 개수
-        int startrow = (page - 1) * 8 + 1; //읽기 시작할 행번호
-        int endrow = startrow + limit - 1; //읽을 마지막 행번호
+
+        Paging paging = new Paging(page,8,listcount);
+
+
+        int startrow = paging.getStartrow(); //읽기 시작할 행번호
+        int endrow = paging.getEndrow(); //읽을 마지막 행번호
         findQ.setStartrow(startrow);
         findQ.setEndrow(endrow);
-
         List<QnaVO> qlist = customerService.getQnaList(findQ); // 검색 전후 목록
 
-        int maxpage = (int) ((double) listcount / limit + 0.95); //총 페이지 수
-        int startpage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1; //시작 페이지
-        int endpage = maxpage; //마지막 페이지
-
-        if (endpage > startpage + 10 - 1) endpage = startpage + 10 - 1;
         model.addAttribute("page", page);
-        model.addAttribute("startpage", startpage);
-        model.addAttribute("endpage", endpage);
-        model.addAttribute("maxpage", maxpage);
-        model.addAttribute("listcount", listcount); //레코드 개수
+        model.addAttribute("startpage", paging.getStartpage());//시작 페이지
+        model.addAttribute("endpage", paging.getEndpage()); //마지막 페이지
+        model.addAttribute("maxpage", paging.getMaxpage());
+        model.addAttribute("listcount", paging.getCount()); //레코드 개수
         model.addAttribute("answer", answer);
         model.addAttribute("find_text", find_text);
         model.addAttribute("find_field", find_field);

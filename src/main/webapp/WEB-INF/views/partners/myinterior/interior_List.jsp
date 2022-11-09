@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+<script src="/js/utilities.js"></script>
+
 <link rel="stylesheet" href="/css/partners/myinterior.css">
 <style>
     #interiorList_table td{
@@ -26,12 +28,15 @@
     td.schedule_regit button, td.schedule_regit_after button{
         background: none;
         border: none;
-        font-size: 16px;
+        font-size: 13px;
     }
     td.schedule_regit_after {
         background:#F8F8F8;
         padding:5px 3px;
         border: none;
+    }
+    #interiorList_table_thead+tbody {
+        font-size: 13px;
     }
 
 </style>
@@ -138,15 +143,7 @@
             </tr>
             </c:forEach>
         </c:if>
-
     </tbody>
-
 </table>
-<script>
-    function show_contract(cont_no) {
-        window.open('/partners/show_contract?cont_no=' +cont_no, '계약서', 'width=745, height=955, top=0, left=100, resizable=no')
-    }
-</script>
-
 <jsp:include page="../include/footer.jsp"/>
 

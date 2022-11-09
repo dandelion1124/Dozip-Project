@@ -92,17 +92,43 @@ public class MyInteriorController {
     }
 
     @RequestMapping(value = "/balance_details") //정산 내역
-    public ModelAndView balance_details(HttpSession session,String pay_state) {
+    public ModelAndView balance_details(HttpSession session) {
 
         PayVO vo = new PayVO();
         vo.setBusinessNum((String)session.getAttribute("businessNum"));
 
         List<PayVO> plist = myInteriorService.getBalance(vo);  //시공완료 정산내역
         PayVO pv = myInteriorService.totalBalance(vo);         //시공완료 합계
+
+        List<PayVO> plist_ing = myInteriorService.getBalance_ing(vo); //시공중 정산내역
+        PayVO pv_ing = myInteriorService.totalBalance_ing(vo);  //시공중 합계
+
         ModelAndView mv = new ModelAndView("/partners/myinterior/balance_details");
+        mv.addObject("plist_ing",plist_ing);
+        mv.addObject("pv_ing",pv_ing);
         mv.addObject("plist",plist);
         mv.addObject("pv",pv);
-        mv.addObject("pay_state",pay_state);
+        return mv;
+    }
+
+
+    @RequestMapping("/monthly_detail") //월별 정산 상세내역
+    public ModelAndView monthly_detail(String pay_date, String pay_date_ing, HttpSession session) {
+        PayVO vo= new PayVO();
+        vo.setBusinessNum((String) session.getAttribute("businessNum"));
+        List<PayVO> plist = null;
+        if(pay_date!= null){ //시공완료
+            vo.setPay_date1(pay_date);
+            plist=myInteriorService.monthly_balance(vo);
+        }
+        if(pay_date_ing!= null){//시공중
+            vo.setPay_date1(pay_date_ing);
+            plist=myInteriorService.monthly_balance_ing(vo);
+        }
+        System.out.println(plist);
+
+        ModelAndView mv = new ModelAndView("/partners/myinterior/monthly_details");
+        mv.addObject("plist", plist);
         return mv;
     }
 }

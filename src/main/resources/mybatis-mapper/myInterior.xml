@@ -65,4 +65,27 @@
         select count(*) as count,  sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3) as PAY_COST3
         from PAYT where BUSINESSNUM=#{businessNum} and PAY_STATE='잔금결제완료'
     </select>
+
+    <!--시공중 정산 내역 불러오기 -->
+    <select id="get_balance_ing" resultType="PayVO">
+        select count(*) as count, TO_CHAR(PAY_DATE1, 'YYYY-MM') as PAY_DATE1, sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3) as PAY_COST3
+        from PAYT where BUSINESSNUM=#{businessNum} and PAY_STATE!='잔금결제완료' group by TO_CHAR(PAY_DATE1, 'YYYY-MM')
+    </select>
+    <!-- 시공중 정산 합계 내역 불러오기 -->
+    <select id="get_tBalance_ing" resultType="PayVO">
+        select count(*) as count,  sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3) as PAY_COST3
+        from PAYT where BUSINESSNUM=#{businessNum} and PAY_STATE!='잔금결제완료'
+    </select>
+
+    <!--월별 시공완료 정산 상세 내역 불러오기 -->
+    <select id="montly_bal" resultType="PayVO">
+        select p.*,c.cont_title, c.customer_name from PAYT p, CONTRACTT c
+            where p.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and TO_CHAR(PAY_DATE1, 'YYYY-MM') =#{pay_date1} and PAY_STATE='잔금결제완료'
+    </select>
+    <!--월별 시공중 정산 상세 내역 불러오기 -->
+    <select id="montly_bal_ing" resultType="PayVO">
+        select p.*,c.cont_title, c.customer_name from PAYT p, CONTRACTT c
+           where p.BUSINESSNUM=#{businessNum} and p.CONT_NO=c.CONT_NO and TO_CHAR(PAY_DATE1, 'YYYY-MM') =#{pay_date1} and PAY_STATE!='잔금결제완료'
+    </select>
+
 </mapper>

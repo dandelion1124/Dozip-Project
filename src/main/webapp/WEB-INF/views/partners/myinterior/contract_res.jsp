@@ -120,27 +120,28 @@
         <div>
             <table id="contract_table2" border="1">
                 <tr>
-                    <th rowspan="4" style="width:12%;">대금 지급 시기</th>
-                    <th style="width:8%;">횟 수</th>
+                    <th rowspan="4" style="width:15%;">대금 지급 시기</th>
+                    <th style="width:5%;">횟 수</th>
                     <th style="width:25%;">금 액</th>
                     <th style="width:25%;">년 월 일</th>
                     <th style="width:8%;">내 역</th>
                 </tr>
                 <tr>
                     <th>1차</th>
-                    <td> ￦ ${cv.cont_cost1}만원</td>
+                    <td> ￦ <fmt:formatNumber value="${cv.cont_cost1*10000}" pattern="#,###"/></td>
                     <td>${fn:substring(cv.cont_date1,0,10)}</td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
-                    <td> ￦ ${cv.cont_cost2}만원</td>
+
+                    <td> ￦ <fmt:formatNumber value="${cv.cont_cost2*10000}" pattern="#,###"/></td>
                     <td>${fn:substring(cv.cont_date2,0,10)}</td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
-                    <td> ￦ ${cv.cont_cost3}만원</td>
+                    <td> ￦ <fmt:formatNumber value="${cv.cont_cost3*10000}" pattern="#,###"/></td>
                     <td>${fn:substring(cv.cont_date3, 0, 10)}</td>
                     <th>잔금</th>
                 </tr>

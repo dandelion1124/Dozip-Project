@@ -1,17 +1,4 @@
-
-select count(*) as count, TO_CHAR(PAY_DATE1, 'YYYY-MM') as PAY_DATE1, sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3)
-    as PAY_COST3 from PAYT where BUSINESSNUM='111-11-11111' group by TO_CHAR(PAY_DATE1, 'YYYY-MM');
+select count(s.P_COMP_LOGO) as photo_check, count(p.P_ADDR1) as addr_check from PARTNERST p, PARTNERS_SUBT s where p.BUSINESSNUM=s.BUSINESSNUM and p.BUSINESSNUM='222-22-22222';
 
 
-
-select count(*) as count, TO_CHAR(PAY_DATE1, 'YYYY-MM') as PAY_DATE1, sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3) as PAY_COST3
-from PAYT where BUSINESSNUM='111-11-11111' and TO_CHAR(PAY_DATE1, 'YYYY-MM') =TO_CHAR(Sysdate, 'YYYY-MM') group by TO_CHAR(PAY_DATE1, 'YYYY-MM')
-
-
-select p.*, s.P_COMP_LOGO from PARTNERST p, PARTNERS_SUBT s where p_addr1 like '%삼성동%' and p.BUSINESSNUM=s.BUSINESSNUM;
-
-
-
-select count(*) as count,  sum(PAY_COST1) as PAY_COST1,sum(PAY_COST2) as PAY_COST2, sum(PAY_COST3)
-                as PAY_COST3 from PAYT where BUSINESSNUM='111-11-11111';
-
+select * from PORTFOLIOT  where BUSINESSNUM ='111-11-11111'  ;
