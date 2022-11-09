@@ -5,52 +5,15 @@
 <jsp:include page="./mypage_header.jsp" />
 <%-- 상단 공통부분 끝 --%>
 <style>
-    #my_contract_list {
-        width: 99%;
-        margin: 20px auto;
-    }
-    .my_contract_wrap {
-        width:100%;
-        display: flex;
-        justify-content:space-between;
-        flex-direction: column;
-        align-items: center;
-    }
-    .my_contract_cont {
-        width: 90%;
-    }
-    .my_contract_table th {
-        background-color: #f7f7f7;
-        font-size: 0.9rem;
-        height: 30px;
-        border-bottom: 1px solid #B3B9BE;
-        border-top: 2px solid #2b2a29;
-    }
-    .my_contract_table {
-        width: 100%;
-        text-align: center;
-        border-collapse: collapse;
-    }
-    .my_contract_table td {
-        border-bottom: 1px solid #B3B9BE;
-        padding: 10px 0;
-        font-size: 0.8rem;
-    }
-    .contract_info {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-    }
-    .contract_info>ul>li {
-        list-style: none;
-        padding-left: 10px;
-    }
-    .page_area{
-        text-align:center;
-        margin-top: 10px;
-        margin-bottom: 100px;
-    }
-
+    #my_contract_list { width: 99%; margin: 20px auto; }
+    .my_contract_wrap { width:100%; display: flex; justify-content:space-between; flex-direction: column; align-items: center; }
+    .my_contract_cont { width: 90%; }
+    .my_contract_table th { background-color: #f7f7f7; font-size: 0.9rem; height: 30px; border-bottom: 1px solid #B3B9BE; border-top: 2px solid #2b2a29; }
+    .my_contract_table { width: 100%; text-align: center; border-collapse: collapse; }
+    .my_contract_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
+    .contract_info { width: 100%; text-align: left; margin-left: 30px; }
+    .contract_info>ul>li { list-style: none; padding-left: 10px; }
+    .page_area{ text-align:center; margin-top: 10px; margin-bottom: 100px; }
 </style>
 
 <%-- 견적신청내역 --%>
@@ -92,7 +55,8 @@
                             <td>${c.cont_total} 만원</td><%--총금액--%>
                             <td>
                                 <c:if test="${c.customer_number == ' '}">계약요청</c:if>
-                                <c:if test="${c.customer_number != ' '}">계약완료</c:if>
+                                <c:if test="${c.customer_number != ' '&&c.pay_state!='잔금결제완료'}">계약완료</c:if>
+                                <c:if test="${c.customer_number != ' '&&c.pay_state=='잔금결제완료'}"><span style="color: red">공사완료</span></c:if>
                             </td><%--진행상태--%>
                             <td>
                                 <c:if test="${c.customer_number == ' '}">
@@ -121,7 +85,6 @@
                 <c:if test="${p.page<p.maxpage}"><a href="/dozip/my_cont?page=${p.page+1}"><img src="/images/dozip/right-arrow.png"></a></c:if>
             </div>
         </div>
-
     </div>
 </div>
 
