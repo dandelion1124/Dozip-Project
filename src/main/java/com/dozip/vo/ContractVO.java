@@ -35,7 +35,6 @@ public class ContractVO {
 
     private String businessName; //사업자명
 
-
     //내공사 내역 검색용
     private String pay_state;
     private String interiorState;
