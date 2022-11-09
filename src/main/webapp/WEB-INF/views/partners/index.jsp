@@ -210,7 +210,7 @@
                 title: '정보 수정 요청',
                 text: "정보(주소, 업체로고 필수)를 등록해야 입찰을 받으실 수 있습니다. " +
                     "정보 변경 페이지로 이동할까요?",
-                icon: 'question',
+                icon: 'warning',
                 showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
                 confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
                 cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
@@ -227,7 +227,7 @@
     <div id='pmain_cont'>
         <div class="index_item"> <%--grid 1 --%>
             <div>
-                <label for="status01">0</label>
+                <label for="status01">${directEstCount}</label>
                 <button id="status01">견적요청</button>
             </div>
             <i class="xi-angle-right"></i>

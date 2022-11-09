@@ -11,4 +11,8 @@ public interface IndexService {
     InfoVO partnersInfoCheck(String bNum); //파트너스 정보 등록여부 체크용
 
     int newQnaCount(String bNum); //미답변 문의 개수
+
+    int directEstCount(String bNum);
+
+    int reviewCount(String bNum);
 }

@@ -23,4 +23,12 @@
         select count(QNA_NO) from QNAT where BUSINESSNUM=#{businessNum} and REPLY_STATE='미답변'
     </select>
 
+    <!--후기 개수 -->
+    <select id="reviewCount" resultType="int">
+
+    </select>
+    <!-- 직접 견적 신청 개수 -->
+    <select id="directEstCount" resultType="int">
+        select count(*) from ESTIMATET where BUSINESSNUM =#{businessNum} and EST_CHECK='대기중'
+    </select>
 </mapper>

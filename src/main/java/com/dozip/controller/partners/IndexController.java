@@ -41,12 +41,16 @@ public class IndexController {
                 status="1";
             }
 
-            /*미답변 문의 갯수 */
+            /*미답변 문의 개수 */
             int qnaCount = indexService.newQnaCount(bNum);
 
 
 
+            /* 업체시공요청 개수 */
+            int directEstCount = indexService.directEstCount(bNum);
 
+            /* 업체 리뷰 개수 */
+            int reviewCount = indexService.reviewCount(bNum);
 
 
 
@@ -54,6 +58,8 @@ public class IndexController {
             mv.addObject("pv",pv);
             mv.addObject("status",status);
             mv.addObject("qnaCount",qnaCount);
+            mv.addObject("directEstCount",directEstCount);
+            mv.addObject("reviewCount",reviewCount);
             mv.addObject("portfolioCount",portfolioCount);
         }
 

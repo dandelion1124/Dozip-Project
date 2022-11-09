@@ -31,4 +31,13 @@ public class IndexDAOImpl implements  IndexDAO{
     public int newQnaCount(String bNum) { //미답변 문의 개수
         return sqlSession.selectOne("newQnaCount", bNum);
     }
+
+    @Override
+    public int directEstCount(String bNum) { //직접 견적신청개수
+        return sqlSession.selectOne("directEstCount",bNum);
+    }
+    @Override
+    public int reviewCount(String bNum) { //등록된 리뷰개수
+        return sqlSession.selectOne("reviewCount",bNum);
+    }
 }
