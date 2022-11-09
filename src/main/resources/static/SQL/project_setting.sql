@@ -92,25 +92,25 @@ from partners_subT;
 create table partners_subT
 (
     businessNum         nvarchar2(12) not null, --사업자번호(FK)
-    p_Shortstate        nvarchar2(2000),
-    p_Int_img           nvarchar2(70),
-    p_Comp_logo         nvarchar2(70),
-    p_Service           nvarchar2(50),
-    p_Homepg            nvarchar2(100),
-    p_Res_build_type    nvarchar2(100),
-    p_Res_space_type    nvarchar2(400),
-    p_Com_build_type    nvarchar2(100),
-    p_Com_space_type    nvarchar2(400),
-    p_Res_person_name   nvarchar2(10),
-    p_Res_person_tel    nvarchar2(15),
-    p_Com_person_name   nvarchar2(10),
-    p_Com_person_tel    nvarchar2(15),
-    p_Balance           nvarchar2(20),
-    p_Account_bank      nvarchar2(10),
-    p_Account_name      nvarchar2(10),
-    p_Account_num       nvarchar2(20),
-    p_Account_file      nvarchar2(70),
-    p_Business_lic_file nvarchar2(70),
+    p_Shortstate        nvarchar2(2000),        --전문가 한마디
+    p_Int_img           nvarchar2(70),          --대표 인테리어 이미지
+    p_Comp_logo         nvarchar2(70),          --로고 이미지
+    p_Service           nvarchar2(50),          --제공 서비스
+    p_Homepg            nvarchar2(100),         --홈페이지
+    p_Res_build_type    nvarchar2(100),         --주거-건물유형
+    p_Res_space_type    nvarchar2(400),         --주거-가능공간
+    p_Com_build_type    nvarchar2(100),         --상업-건물유형
+    p_Com_space_type    nvarchar2(400),         --상업-가능공간
+    p_Res_person_name   nvarchar2(10),          --주거 담당자명
+    p_Res_person_tel    nvarchar2(15),          --주거 담당자 연락처
+    p_Com_person_name   nvarchar2(10),          --상업 담당자명
+    p_Com_person_tel    nvarchar2(15),          --상업 담당자 연락처
+    p_Balance           nvarchar2(20),          --예치금
+    p_Account_bank      nvarchar2(10),          --계좌 은행명
+    p_Account_name      nvarchar2(10),          --계좌 예금주
+    p_Account_num       nvarchar2(20),          --계좌 번호
+    p_Account_file      nvarchar2(70),          --통장 사본
+    p_Business_lic_file nvarchar2(70),          --사업자 등록증 사본
     foreign key (businessNum) references partnersT (businessNum)
 );
 
@@ -173,10 +173,10 @@ create table bidT
     bid_num     nvarchar2(50) primary key,     --입찰번호(PK) : B20221027-01 (B + 등록일자 + -시퀀스번호)
     businessNum nvarchar2(12) not null,        --사업자번호(FK)
     est_num     nvarchar2(50) not null,        --견적서 번호(FK)
-    bid_price   number(20)    not null,
-    bid_start   date          not null,
-    bid_end     date          not null,
-    bid_detail  nvarchar2(2000),
+    bid_price   number(20)    not null,        --입찰가
+    bid_start   date          not null,        --예상 공사시작일
+    bid_end     date          not null,        --예상 공사종료일
+    bid_detail  nvarchar2(2000),               --세부사항
     bid_state   nvarchar2(50) default '진행중',   --상태
     bid_date    date          default sysdate, --입찰신청일자
     foreign key (businessNum) references partnersT (businessNum),

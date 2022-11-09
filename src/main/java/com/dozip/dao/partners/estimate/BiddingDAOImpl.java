@@ -40,9 +40,5 @@ public class BiddingDAOImpl implements BiddingDAO {
         return this.sqlSession.selectList("sel_All", e);
     }
 
-    @Override
-    public BidVO countJoinpartners(BidVO b) {
-        return this.sqlSession.selectOne("count_partners",b);
-    }
 
 }

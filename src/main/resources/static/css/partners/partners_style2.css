@@ -765,7 +765,7 @@
    .bid_complete_button{
    	display:inline-block;
    	display:none;
-   	width:50%;
+   	width:100%;
    }
    .bid_but_tab{
      padding:0 15% 0 15%;
