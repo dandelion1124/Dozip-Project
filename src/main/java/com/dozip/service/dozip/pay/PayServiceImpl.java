@@ -27,7 +27,11 @@ public class PayServiceImpl implements PayService{
     }
     @Override //결제요청상태 확인
     public List<PayVO> requestPay(String mem_id) {
-        return payDAO.requestPay(mem_id);
+        return this.payDAO.requestPay(mem_id);
+    }
+    @Override //DB null 체크
+    public int check() {
+        return this.payDAO.check();
     }
 
 

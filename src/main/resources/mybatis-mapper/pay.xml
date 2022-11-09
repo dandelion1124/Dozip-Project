@@ -46,4 +46,8 @@
     <select id="request_state" resultType="PayVO">
         select * from payT where mem_id=#{mem_id} and pay_state like '%요청%'
     </select>
+
+    <select id="null_check" resultType="int">
+        select count(*) from payT
+    </select>
 </mapper>
