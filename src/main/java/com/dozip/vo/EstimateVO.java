@@ -47,4 +47,5 @@ public class EstimateVO {
         private String businessName; //사업자명
         private String addr;
         private long remaindate;
+        private int ecount;
 }

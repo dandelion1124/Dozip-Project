@@ -33,8 +33,6 @@ public class BiddingController {
         //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
 
-        //int bcount = this.biddingService.countJoinpartners(b);
-
 //        Paging paging;
 //        if(request.getParameter("page") == null){
 //            paging = new Paging(1,5,count);
@@ -54,6 +52,8 @@ public class BiddingController {
 
         List<EstimateVO> elist = this.biddingService.selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기.
 
+        System.out.println(elist.get(0).getEst_num());
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
 
@@ -65,13 +65,17 @@ public class BiddingController {
             long remaindate = (parseddate.getTime() - now.getTime());
             elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
 
+            //elist2.get(i).setEst_num(elist.get(i).);
             //System.out.println(elist.get(i).getEst_num());
         }
+        //List<Integer> ecount = this.biddingService.countJoinpartners(e);
+
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
         m.addObject("find_name", find_name);
         m.addObject("find_field",find_field);
+        //m.addObject("ecount",ecount);
         //m.addObject("p",paging);
         m.setViewName("/partners/estimate_request/bid");
         return m;

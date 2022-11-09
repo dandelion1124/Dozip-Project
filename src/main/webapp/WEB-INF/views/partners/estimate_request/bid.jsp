@@ -141,7 +141,7 @@
 									<p class="val"><b>${e.addr} </b></p></li>
 								<li class="info2">
 									<p class="key">참여 파트너수</p>
-									<p class="val"><b> </b></p></li>
+									<p class="val" style="color:blue;"><b>${e.ecount}</b></p></li>
 							</ul>
 							<div class="bid_detail">
 								<a href="/partners/bid_detail?no=${e.est_num}" class="btn-d-view"><b>자세히 보기</b></a>
