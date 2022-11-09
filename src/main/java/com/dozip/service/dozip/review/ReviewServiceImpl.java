@@ -57,4 +57,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ReviewVO> getMreview(ReviewVO r) {return this.reviewDAO.getMreview(r);}//아이디에 해당하는 리뷰목록
+
+    @Override
+    public void reviewDel(int re_no) {reviewDAO.reviewDel(re_no);} //해당하는 후기 삭제
 }
