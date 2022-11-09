@@ -48,4 +48,5 @@ public class EstimateVO {
         private String addr;
         private long remaindate;
         private int ecount;
+        private int bcount;
 }

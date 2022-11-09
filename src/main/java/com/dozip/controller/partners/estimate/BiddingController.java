@@ -30,9 +30,10 @@ public class BiddingController {
     @RequestMapping(value = "/bid") //입찰의뢰
     public ModelAndView bid(EstimateVO e,BidVO b, HttpServletRequest request, HttpServletResponse response, HttpSession session)
             throws Exception {
-        //String requestUrl = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
         response.setContentType("text/html;charset=UTF-8");
+        String businessNum = (String) session.getAttribute("businessNum");
 
+       // System.out.println(b.getBusinessNum());
 //        Paging paging;
 //        if(request.getParameter("page") == null){
 //            paging = new Paging(1,5,count);
@@ -50,7 +51,9 @@ public class BiddingController {
 
         //int count = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
 
-        List<EstimateVO> elist = this.biddingService.selectEstimateList(); //estimate 테이블에 있는 db 전부 가져오기.
+        List<EstimateVO> elist = this.biddingService.selectEstimateList(businessNum); //estimate 테이블에 있는 db 전부 가져오기.
+
+        //List<EstimateVO> countlist = this.biddingService.checkbid();
 
         System.out.println(elist.get(0).getEst_num());
 
@@ -68,13 +71,14 @@ public class BiddingController {
             //elist2.get(i).setEst_num(elist.get(i).);
             //System.out.println(elist.get(i).getEst_num());
         }
-        //List<Integer> ecount = this.biddingService.countJoinpartners(e);
+
 
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
         m.addObject("find_name", find_name);
         m.addObject("find_field",find_field);
+        //m.addObject("countlist",countlist);
         //m.addObject("ecount",ecount);
         //m.addObject("p",paging);
         m.setViewName("/partners/estimate_request/bid");
@@ -96,6 +100,10 @@ public class BiddingController {
         int res=this.biddingService.checkBid(b);  // 이미 입찰 신청한 파트너스는 신청할 수 없게
         System.out.println(res);
         //System.out.println(bcount);
+
+        ConvertAddr convertAddr = new ConvertAddr(e.getEst_addr());
+        e.setAddr(convertAddr.convert());
+
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();

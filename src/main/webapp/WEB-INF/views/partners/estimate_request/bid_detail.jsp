@@ -54,7 +54,7 @@ $(function() {
 					</span>
 				</p>
 				<div class="request_detail_title">
-				<h3> 주소 ${e.est_use} 견적 문의</h3>
+				<h3> ${e.addr} ${e.est_use} 견적 문의</h3>
 				</div>
 				
 				<div class="greeb_box_container">
@@ -156,7 +156,7 @@ $(function() {
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 예산</dt>
-								<dd class="sec-cont">${e.est_bud}0000원</dd>
+								<dd class="sec-cont">${e.est_bud}만원</dd>
 							</dl>
 							<dl class="sec-item">
 								<dt class="sec-title">희망 시공시작일</dt>
@@ -185,7 +185,7 @@ $(function() {
 											<div id="bid_part_detail">
 												<dl class="sec-item">
 													<dt class="bid_detail01">입찰가</dt>
-													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="10"/>만원<br/></dd>
+													<dd class="bid_detail_text01"><input type="text" id="bid_price" name="bid_price" size="8"/>만원<br/></dd>
 												</dl>
 												<!-- <span id="today"></span></br> -->
 												<dl class="sec-item">
@@ -195,7 +195,7 @@ $(function() {
 													<dt class="bid_detail04">예상 공사종료일</dt>
 													<dd class="bid_detail_text03"><input type="date" id="bid_end" name="bid_end" class="hasDatepicker" min="${today}" size="10"/><br/></dd>
 												</dl>
-												<dl class="sec-item">
+												<dl class="sec-item2">
 													<div class="bid_detail03">업체 공사 스타일 설명</div></br>
 													<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
 												</dl>
@@ -208,9 +208,9 @@ $(function() {
 												<textarea id="bid_detail" name="bid_detail" rows="5" ></textarea>
 												-->
 											</div>
-											<div class="bid_complete_button">
-												<input type="submit" id="bid_complete" value="신청완료">
-											</div>
+												<div class="bid_complete_button">
+													<input type="submit" id="bid_complete" value="신청완료">
+												</div>
 											</c:if>
 										</c:when>
 										<c:otherwise>
