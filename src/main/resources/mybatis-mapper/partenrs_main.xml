@@ -25,10 +25,24 @@
 
     <!--후기 개수 -->
     <select id="reviewCount" resultType="int">
+        select count(*) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum}
+    </select>
 
+    <!--후기 평점 합 -->
+    <select id="getreviewStart" resultType="int">
+        select sum(RE_STAR) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum}
     </select>
     <!-- 직접 견적 신청 개수 -->
     <select id="directEstCount" resultType="int">
         select count(*) from ESTIMATET where BUSINESSNUM =#{businessNum} and EST_CHECK='대기중'
     </select>
+
+
+    <!--계약요청 건수 -->
+    <select id="requestContCount" resultType="int">
+        select count(*) from ESTIMATET e where (select count(*) from bidT b where b.BUSINESSNUM=#{businessNum})=1 and EST_CHECK='계약요청'
+    </select>
+
+
+
 </mapper>

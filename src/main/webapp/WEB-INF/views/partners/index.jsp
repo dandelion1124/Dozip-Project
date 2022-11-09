@@ -232,7 +232,7 @@
             </div>
             <i class="xi-angle-right"></i>
             <div>
-                <label for="status02">0</label>
+                <label for="status02">${requestContCount}</label>
                 <button id="status02">계약요청</button>
 
             </div>
@@ -292,11 +292,11 @@
             <div>
                 <div> 시공 요청</div>
                 <div class="index_item_count">
-                    <span>0</span>개</div>
+                    <span onclick="location='./construct_request'">${directEstCount}</span>개</div>
             </div>
             <div>
                 <div> 계약 요청</div>
-                <div class="index_item_count"> <span>0</span>개</div>
+                <div class="index_item_count"> <span>${requestContCount}</span>개</div>
             </div>
             <div>
                 <div> 포트폴리오</div>
@@ -306,7 +306,16 @@
             </div>
             <div>
                 <div> 업체 평점</div>
-                <div class="index_item_count"><span>0</span>점</div>
+                <div class="index_item_count"><span>
+                       <c:if test="${reviewCount==0}">
+                           0
+                       </c:if>
+                       <c:if test="${reviewCount!=0}">
+                           ${getreviewStart/reviewCount}
+                       </c:if>
+                </span>점</div>
+                <div style="margin-top: 50px"> 리뷰 개수</div>
+                <div class="index_item_count"><span>${reviewCount}</span>개</div>
             </div>
         </div>
 

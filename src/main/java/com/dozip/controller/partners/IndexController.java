@@ -3,6 +3,7 @@ package com.dozip.controller.partners;
 import com.dozip.service.partners.index.IndexService;
 import com.dozip.vo.InfoVO;
 import com.dozip.vo.PayVO;
+import com.dozip.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,15 +52,26 @@ public class IndexController {
 
             /* 업체 리뷰 개수 */
             int reviewCount = indexService.reviewCount(bNum);
+            int getreviewStart=0;
+            if(reviewCount!=0){
+                /* 업체 평점합 가져오기 */
+                getreviewStart= indexService.getreviewStart(bNum);
+            }
 
+            System.out.println("getreviewStart: "+getreviewStart);
+            /*계약 요청 개수 */
+            int requestContCount = indexService.requestContCount(bNum);
 
-
+            System.out.println("테스트 " + requestContCount);
 
             mv.addObject("pv",pv);
             mv.addObject("status",status);
             mv.addObject("qnaCount",qnaCount);
             mv.addObject("directEstCount",directEstCount);
+            mv.addObject("requestContCount",requestContCount);
             mv.addObject("reviewCount",reviewCount);
+            mv.addObject("getreviewStart",getreviewStart);
+
             mv.addObject("portfolioCount",portfolioCount);
         }
 

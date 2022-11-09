@@ -2,7 +2,6 @@ package com.dozip.dao.partners.index;
 
 import com.dozip.vo.InfoVO;
 import com.dozip.vo.PayVO;
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,5 +38,15 @@ public class IndexDAOImpl implements  IndexDAO{
     @Override
     public int reviewCount(String bNum) { //등록된 리뷰개수
         return sqlSession.selectOne("reviewCount",bNum);
+    }
+
+    @Override
+    public int requestContCount(String bNum) {
+        return sqlSession.selectOne("requestContCount",bNum);
+    }
+
+    @Override
+    public int getreviewStart(String bNum) {
+        return sqlSession.selectOne("getreviewStart",bNum);
     }
 }

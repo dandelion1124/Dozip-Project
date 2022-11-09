@@ -112,7 +112,7 @@ public class ReviewController {
             }
         }
 
-        uploadPath+="review//";
+        uploadPath+="review\\";
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");

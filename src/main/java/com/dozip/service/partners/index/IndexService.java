@@ -14,5 +14,9 @@ public interface IndexService {
 
     int directEstCount(String bNum);
 
-    int reviewCount(String bNum);
+    int reviewCount(String bNum); //후기 개수
+
+    int requestContCount(String bNum);
+
+    int getreviewStart(String bNum); //후기 평점합
 }

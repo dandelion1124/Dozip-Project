@@ -39,4 +39,14 @@ public class IndexServiceImpl implements IndexService{
     public int reviewCount(String bNum) { //  등록된 리뷰 개수
         return indexDAO.reviewCount(bNum);
     }
+
+    @Override //견적신청개수
+    public int requestContCount(String bNum) {
+        return indexDAO.requestContCount(bNum);
+    }
+
+    @Override
+    public int getreviewStart(String bNum) {
+        return indexDAO.getreviewStart(bNum);
+    }
 }

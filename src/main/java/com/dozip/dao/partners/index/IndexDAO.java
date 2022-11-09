@@ -13,4 +13,8 @@ public interface IndexDAO {
     int directEstCount(String bNum); //직접 견적 신청개수
 
     int reviewCount(String bNum); //등록된 리뷰 개수
+
+    int requestContCount(String bNum);
+
+    int getreviewStart(String bNum);
 }
