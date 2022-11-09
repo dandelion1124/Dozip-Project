@@ -39,10 +39,5 @@ public class BiddingServiceImpl implements BiddingService {
         return this.biddingDAO.selectJoinList(e);
     }
 
-//    @Override
-//    public List<EstimateVO> checkbid(EstimateVO e) {
-//        return this.biddingDAO.checkbid(e);
-//    }
-
 
 }

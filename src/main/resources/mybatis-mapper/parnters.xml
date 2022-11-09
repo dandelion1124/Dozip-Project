@@ -77,7 +77,6 @@
     </update>
 
     <!-- bid -->
-    <!-- estimate테이블에 있는 데이터 list로 전부 가져오기-->
 <!--    <select id="select_estdata" resultType="EstimateVO">-->
 <!--        select e.*, b.ecount                                &lt;!&ndash; 파트너스 수 추가함 &ndash;&gt;-->
 <!--        from (select * from estimateT order by est_num desc) e,-->
@@ -85,7 +84,8 @@
 <!--             &lt;!&ndash; (select est_num, count(est_num) bcount from bidT where businessNum=#{businessNum}) be&ndash;&gt;-->
 <!--        where e.est_num=b.est_num(+)-->
 <!--    </select>-->
-    <select id="select_estdata" resultType="EstimateVO">
+    <!-- estimate테이블에 있는 데이터 list로 전부 가져오기-->
+    <select id="select_estdata" resultType="EstimateVO"> <!-- 파트너스 수 추가 --> <!-- 입찰 진행 중 확인 추가 -->
         select e.*, b.ecount , be.bcount
         from (select * from estimateT order by est_num desc) e,
         (select est_num, count(est_num) ecount from bidT group by est_num) b,
@@ -93,21 +93,6 @@
         where e.est_num=b.est_num(+)
         and e.est_num = be.est_num(+)
     </select>
-<!--    <select id="checkbid" resultType="EstimateVO">-->
-<!--        select e.*, b.bcount-->
-<!--        from (select * from estimateT order by est_num desc) e,-->
-<!--        (select est_num, count(est_num) bcount from bidT where businessNum=#{businessNum}) b-->
-<!--        &lt;!&ndash; (select businessNum, count(businessNum) bcount from bidT group by est_num) be &ndash;&gt;-->
-<!--        where e.est_num=b.est_num(+)-->
-<!--    </select>-->
-
-<!--    <select id="list_count_partners" resultType="int">-->
-<!--        select count(est_num) from (-->
-<!--            select e.est_num, b.businessNum, b.bid_num from-->
-<!--            (select * from  bidT where est_num=#{est_num}) b, estimateT e-->
-<!--        where e.est_num = b.est_num(+)-->
-<!--    </select>-->
-
 
     <!-- bid_detail -->
     <!-- estimate테이블에서 각 견적서 번호 기준으로 가져오기 -->

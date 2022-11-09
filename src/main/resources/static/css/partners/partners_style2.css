@@ -343,7 +343,7 @@
    .my_bid_icon{
       position:fixed;
       top:120px;
-      right:5%;
+      right:4%;
    }
 
    #filter{
@@ -852,7 +852,6 @@
     }
  /*construct-request */
     .my_req_list{
-      margin-top:20px;
       margin-bottom:20px;
    }
    .my_req_label{

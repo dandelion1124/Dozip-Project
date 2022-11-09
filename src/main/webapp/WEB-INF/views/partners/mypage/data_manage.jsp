@@ -72,8 +72,15 @@
 	<div>
 		<div class="request_spot">
 			<div class="request_color">
+				<p style="margin-bottom: 15px; font-size: 0.9rem;"> <b>|</b> My Page > 내 정보관리</p>
 				<h2 class="item_title" >내 정보관리</h2>
-
+				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
+					<ul style="padding:0px;">
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;파트너스 정보 수정 페이지입니다.</li>
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;처음 가입 시 영업장 주소를 반드시 입력해주시기 바랍니다.</li>
+						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입력된 주소를 기반으로 고객 주소와 매칭해 추천해 드립니다.</li>
+					</ul>
+				</div>
 				<div class="item_tab_box" >
 					<div role="tablist" class="item_tab_inbox" id="business-link">
 						<div id="tab1"><a href="#business-link" class="tab-link" >사업자 정보</a></div>

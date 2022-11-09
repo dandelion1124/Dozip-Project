@@ -33,7 +33,6 @@ public class BiddingController {
         response.setContentType("text/html;charset=UTF-8");
         String businessNum = (String) session.getAttribute("businessNum");
 
-       // System.out.println(b.getBusinessNum());
 //        Paging paging;
 //        if(request.getParameter("page") == null){
 //            paging = new Paging(1,5,count);
@@ -41,25 +40,19 @@ public class BiddingController {
 //            int page=Integer.parseInt(request.getParameter("page"));
 //            paging = new Paging(page, 5, count);
 //        }
-
         String find_name=request.getParameter("find_name");//검색어
         String find_field=request.getParameter("find_field");//검색필드
 
         e.setFind_name("%"+find_name+"%"); //%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
         e.setFind_field(find_field);
-        System.out.println(e.getFind_name()+" "+e.getFind_field());
+        //System.out.println(e.getFind_name()+" "+e.getFind_field());
 
         //int count = this.partnersService.countestimate(est_num); //견적테이블 견적 개수 카운트
 
         List<EstimateVO> elist = this.biddingService.selectEstimateList(businessNum); //estimate 테이블에 있는 db 전부 가져오기.
 
-        //List<EstimateVO> countlist = this.biddingService.checkbid();
-
-        System.out.println(elist.get(0).getEst_num());
-
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
-
         for (int i = 0; i < elist.size(); i++) {
             ConvertAddr convertAddr = new ConvertAddr(elist.get(i).getEst_addr());
             elist.get(i).setAddr( convertAddr.convert());
@@ -67,12 +60,7 @@ public class BiddingController {
             Date parseddate = formatter.parse(elist.get(i).getEst_dateEnd());
             long remaindate = (parseddate.getTime() - now.getTime());
             elist.get(i).setRemaindate(remaindate/(24*60*60*1000));
-
-            //elist2.get(i).setEst_num(elist.get(i).);
-            //System.out.println(elist.get(i).getEst_num());
         }
-
-
         System.out.println("변경된 elist 출력 " + elist);
         ModelAndView m = new ModelAndView();
         m.addObject("elist", elist);//e 키이름에 e객체 저장
@@ -88,22 +76,17 @@ public class BiddingController {
     @RequestMapping(value = "/bid_detail") //입찰 상세목록
     public String bid_detail(Model m, @RequestParam("no") String est_num, HttpServletResponse response, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
 
         EstimateVO e=this.biddingService.selectEstimate(est_num); //견적테이블에서 각 견적서 번호 기준으로 가져오기
-        //System.out.println(e.toString());
         BidVO b = new BidVO();
         b.setBusinessNum((String)session.getAttribute("businessNum"));
-        //System.out.println(b.getBusinessNum());
         b.setEst_num(est_num);
         int bcount=this.biddingService.countBid(est_num); // 해당 입찰을 신청한 파트너스 수 가져오기
         int res=this.biddingService.checkBid(b);  // 이미 입찰 신청한 파트너스는 신청할 수 없게
-        System.out.println(res);
-        //System.out.println(bcount);
+        //System.out.println(res);
 
         ConvertAddr convertAddr = new ConvertAddr(e.getEst_addr());
         e.setAddr(convertAddr.convert());
-
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
@@ -147,9 +130,7 @@ public class BiddingController {
     @RequestMapping(value = "/my_bid") //내 입찰
     public ModelAndView my_bid(EstimateVO e, HttpServletResponse response, HttpServletRequest request, HttpSession session) throws Exception {
         response.setContentType("text/html;charset=UTF-8");
-
         String businessNum = (String) session.getAttribute("businessNum");
-        //List<EstimateVO> elist=this.partnersService.selectEstimateListBnum(businessNum);
 
         int page=1;//쪽번호
         int limit=5;//한페이지에 보여지는 목록개수
@@ -177,7 +158,6 @@ public class BiddingController {
         m.addObject("listcount", listcount);
 
         List<BidVO> list = this.biddingService.selectJoinList(e); //bid테이블 기준으로 estimate테이블 조인해서 가져오기
-
         for (int i = 0; i < list.size(); i++) {
             ConvertAddr convertAddr = new ConvertAddr(list.get(i).getEst_addr());
             list.get(i).setAddr(convertAddr.convert());

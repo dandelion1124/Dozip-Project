@@ -26,7 +26,7 @@
 						<option value="success">입찰 성공</option>
 						<option value="fail">입찰 실패</option>
 					</select> -->
-				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:1px double black;">
+				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
 					<ul style="padding:0px;">
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
