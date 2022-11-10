@@ -17,4 +17,6 @@ public interface IndexDAO {
     int requestContCount(String bNum);
 
     int getreviewStart(String bNum);
+
+    int finishedInteriorCount(String bNum); //공사완료된 개수
 }

@@ -40,6 +40,11 @@ public class PartnerDAOImpl implements PartnerDAO {
     public List<EstimateVO> getpartEstList(String businessNum) {
         return sqlSession.selectList("partners_esimate",businessNum);
     }
+
+    @Override
+    public void updatePwd(PartnersVO vo) {
+        sqlSession.update("update_pPw", vo);
+    }
 }
 
 

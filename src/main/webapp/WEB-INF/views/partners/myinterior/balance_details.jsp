@@ -76,7 +76,7 @@
     }
 
     #balance_detail_main_table_div th {
-        padding: 5px 0px;
+        padding: 2px 0px;
         background: #acb9e5;
     }
 
@@ -85,7 +85,7 @@
     }
 
     #balance_detail_main_table_div td {
-        padding: 5px 0px;
+        padding: 2px 0px;
         text-align: center;
     }
 
@@ -119,6 +119,9 @@
         <div id="balance_detail_select_status_div3"></div>
     </div>
 </div>
+
+
+<%--
 <div id="balance_detail_search_bar_div">
     <div id="balance_detail_search_bar1">
         <h4>시공완료 </h4>
@@ -128,6 +131,8 @@
         <h4>시공중</h4>
     </div>
 </div>
+
+--%>
 <div id="balance_detail_main_table_div">
 
     <table id="balance_detail_main_table1">
@@ -147,7 +152,7 @@
             <c:forEach var="p" items="${plist}">
                 <tr>
                     <td>${p.pay_date1}</td>
-                    <td>${p.count}</td>
+                    <td>${p.count} 건</td>
                     <td> <fmt:formatNumber value="${(p.pay_cost1 + p.pay_cost2 +p.pay_cost3)*10000}" pattern="#,###"/> 원</td>
                     <td><input type="button" value="상세내역" class="detail_button" onclick="balance_detail('${p.pay_date1}')"></td>
                 </tr>
@@ -176,7 +181,7 @@
             <c:forEach var="p" items="${plist_ing}">
                 <tr>
                     <td>${p.pay_date1}</td>
-                    <td>${p.count}</td>
+                    <td>${p.count} 건</td>
                     <td> <fmt:formatNumber value="${(p.pay_cost1 + p.pay_cost2 +p.pay_cost3)*10000}" pattern="#,###"/> 원</td>
                     <td><input type="button" value="상세내역" class="detail_button" onclick="balance_detail_ing('${p.pay_date1}')"></td>
                 </tr>
@@ -184,7 +189,7 @@
         </c:if>
         <tr>
             <th>합계</th>
-            <th>${pv_ing.count}건</th>
+            <th>${pv_ing.count} 건</th>
             <th><fmt:formatNumber value="${(pv_ing.pay_cost1 + pv_ing.pay_cost2 +pv_ing.pay_cost3)*10000}" pattern="#,###"/> 원</th>
             <th></th>
         </tr>

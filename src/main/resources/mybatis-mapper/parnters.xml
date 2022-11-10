@@ -23,6 +23,10 @@
         select * from partnersT where businessNum=#{businessNum}
     </select>
 
+    <!-- 파트너스 비밀번호 변경시 재 암호화 -->
+    <update id="update_pPw">
+        update partnersT set p_pw=#{p_pw} where =$+#{p_id}
+    </update>
 
 
 

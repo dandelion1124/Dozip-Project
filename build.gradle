@@ -37,7 +37,7 @@ dependencies {
     implementation('org.apache.tomcat.embed:tomcat-embed-jasper')
     implementation('javax.servlet:jstl')
 
-    //spring-security -> 개발 중
+    //spring-security
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
 
@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.13.4'
 
 
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    implementation 'org.springframework.boot:spring-boot-devtools'
 }
 
 tasks.named('test') {

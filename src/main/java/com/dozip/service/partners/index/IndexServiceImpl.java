@@ -49,4 +49,9 @@ public class IndexServiceImpl implements IndexService{
     public int getreviewStart(String bNum) {
         return indexDAO.getreviewStart(bNum);
     }
+
+    @Override
+    public int finishedInteriorCount(String bNum) {
+        return indexDAO.finishedInteriorCount(bNum);
+    }
 }

@@ -34,5 +34,6 @@ public interface PartnerDAO {
     List<EstimateVO> getpartEstList(String businessNum);
 
 
+    void updatePwd(PartnersVO vo);
 }
 

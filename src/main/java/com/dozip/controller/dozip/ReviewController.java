@@ -136,7 +136,7 @@ public class ReviewController {
             System.out.println(dbFilename[i-1]);
         }
         rv.setRe_photo1(dbFilename[0]);
-        rv.setRe_photo2(dbFilename[1]);        rv.setRe_photo3(dbFilename[2]);
+        rv.setRe_photo2(dbFilename[1]);       rv.setRe_photo3(dbFilename[2]);
         rv.setRe_photo4(dbFilename[3]);       rv.setRe_photo5(dbFilename[4]);
 
         rv.setRe_no(re_no);

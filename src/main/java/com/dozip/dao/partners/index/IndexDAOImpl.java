@@ -49,4 +49,9 @@ public class IndexDAOImpl implements  IndexDAO{
     public int getreviewStart(String bNum) {
         return sqlSession.selectOne("getreviewStart",bNum);
     }
+
+    @Override
+    public int finishedInteriorCount(String bNum) {
+        return sqlSession.selectOne("finishedInteriorCount",bNum);
+    }
 }

@@ -19,4 +19,6 @@ public interface IndexService {
     int requestContCount(String bNum);
 
     int getreviewStart(String bNum); //후기 평점합
+
+    int finishedInteriorCount(String bNum); //공소 완료된 개수
 }

@@ -249,7 +249,7 @@
             </div>
             <i class="xi-angle-right"></i>
             <div>
-                <label for="status05">0</label>
+                <label for="status05">${finishedInterior}</label>
                 <button id="status05">공사완료</button>
             </div>
 
@@ -311,7 +311,7 @@
                            0
                        </c:if>
                        <c:if test="${reviewCount!=0}">
-                           ${getreviewStart/reviewCount}
+                         <fmt:formatNumber value="${getreviewStart/reviewCount}"  pattern="0.0"></fmt:formatNumber>
                        </c:if>
                 </span>점</div>
                 <div style="margin-top: 50px"> 리뷰 개수</div>
@@ -404,9 +404,9 @@
                 labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     // label : 차트제목
-                    label: '월별 정산 내역',
+                    label: '월별 정산 내역(만원)',
                     // data : x축 label에 대응되는 데이터 값
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [1200, 1900, 300, 500, 2000, 0],
                     // 차트 스타일 지정
                     backgroundColor: [
 

@@ -25,12 +25,12 @@
 
     <!--후기 개수 -->
     <select id="reviewCount" resultType="int">
-        select count(*) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum}
+        select count(*) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum} and r.re_state=1
     </select>
 
     <!--후기 평점 합 -->
     <select id="getreviewStart" resultType="int">
-        select sum(RE_STAR) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum}
+        select sum(RE_STAR) from REVIEWT r, CONTRACTT c where r.CONT_NO=c.CONT_NO and c.BUSINESSNUM=#{businessNum} and r.re_state=1
     </select>
     <!-- 직접 견적 신청 개수 -->
     <select id="directEstCount" resultType="int">
@@ -43,6 +43,9 @@
         select count(*) from ESTIMATET e where (select count(*) from bidT b where b.BUSINESSNUM=#{businessNum})=1 and EST_CHECK='계약요청'
     </select>
 
-
+    <!--공사완료된 건수 -->
+    <select id="finishedInteriorCount" resultType="int">
+        select count(*) from PayT where businessNum=#{businessNum} and pay_state='잔금결제완료'
+    </select>
 
 </mapper>
