@@ -209,7 +209,7 @@ $(function() {
 												-->
 											</div>
 												<div class="bid_complete_button">
-													<input type="submit" id="bid_complete" value="신청완료">
+													<input type="submit" id="bid_complete" value="신 청" >
 												</div>
 											</c:if>
 										</c:when>

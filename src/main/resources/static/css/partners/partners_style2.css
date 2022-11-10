@@ -728,7 +728,7 @@
    	cursor:pointer;
     overflow: hidden;
     margin: 15px 25% 15px 25%;
-    width: 40%;
+    width: 20%;
     text-decoration-line: none;
     display: block;
     height: 42px;
@@ -752,9 +752,11 @@
     background: #00BFFF;
     color: #fff;
     font-size: 15px;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.2em;
     text-align:center;
     /* float:right; */
+    width:100px;
+    font-size:15px;
    }
    #bid_part_detail{
    	/*display:inline-block; */
