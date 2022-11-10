@@ -25,7 +25,7 @@
 
     <!-- 파트너스 비밀번호 변경시 재 암호화 -->
     <update id="update_pPw">
-        update partnersT set p_pw=#{p_pw} where =$+#{p_id}
+        update partnersT set p_Pw=#{p_Pw} where p_Id=#{p_Id}
     </update>
 
 
