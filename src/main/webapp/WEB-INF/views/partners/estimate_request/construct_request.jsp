@@ -10,7 +10,7 @@
 		<ul style="padding:0px;">
 			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정해 신청한 견적 리스트를 확인합니다.</li>
 			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;진행상태에서 수락을 선택하시면 고객이 계약요청 여부를  </li>
-			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;진행상태는 <b style="font-size:15px;">[ 수락/거절 -> 계약요청/거절 -> 작성완료 -> 계약완료 -> 잔금결제완료 ]</b> 순으로 진행됩니다.</li>
+			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;진행상태는 <b style="font-size:15px; background-color: lightblue;">[ 수락/거절 -> 계약요청/거절 -> 작성완료 -> 계약완료 -> 잔금결제완료 ]</b> 순으로 진행됩니다.</li>
 		</ul>
 	</div>
 	<div style="width:88%;">
