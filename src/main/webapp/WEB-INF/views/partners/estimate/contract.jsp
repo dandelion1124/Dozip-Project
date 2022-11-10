@@ -142,19 +142,19 @@
                 <tr>
                     <th>1차</th>
                     <td> ￦<input name="cont_cost1" id="cont_cost1" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
-                    <td><input type="date" name="cont_date1" id="cont_date1" placeholder="입력해주세요"></td>
+                    <td><input type="date" name="cont_date1" id="cont_date1" placeholder="입력해주세요" max="${ev.est_start}"></td>
                     <th>계약금</th>
                 </tr>
                 <tr>
                     <th>2차</th>
                     <td> ￦<input name="cont_cost2" id="cont_cost2" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
-                    <td><input type="date" name="cont_date2" id="cont_date2" placeholder="입력해주세요"></td>
+                    <td><input type="date" name="cont_date2" id="cont_date2" placeholder="입력해주세요"  max="${ev.est_end}" min="${ev.est_start}"></td>
                     <th>중도금</th>
                 </tr>
                 <tr>
                     <th>3차</th>
                     <td> ￦<input name="cont_cost3" id="cont_cost3" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)"> 만원</td>
-                    <td><input type="date" name="cont_date3" id="cont_date3" placeholder="입력해주세요"></td>
+                    <td><input type="date" name="cont_date3" id="cont_date3" placeholder="입력해주세요"  max="${ev.est_end}" min="${ev.est_start}"></td>
                     <th>잔금</th>
                 </tr>
             </table>
