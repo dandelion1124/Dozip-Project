@@ -42,10 +42,10 @@ public class InfoDAOImpl implements InfoDAO {
         return this.sqlSession.update("pupdatePwd",p);
     }
 
-    @Override
-    public void insertpartnerslogo(Partners_subVO ps) {
-        this.sqlSession.insert("insert_logo",ps);
-    }
+//    @Override
+//    public void insertpartnerslogo(Partners_subVO ps) {
+//        this.sqlSession.insert("insert_logo",ps);
+//    }
 
     @Override
     public void updatepartnerslogo(Partners_subVO ps) {

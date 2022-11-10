@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div class="my_req_list">
-	<p style="margin-bottom: 15px; font-size: 0.9rem;"> <b>|</b> 견적의뢰 > 시공요청</p>
-	<h2 class="item_title">시공요청</h2>
+	<p style="margin-bottom: 15px; font-size: 0.9rem;"> <b>|</b> 견적의뢰 > 시공요청(지정)</p>
+	<h2 class="item_title">시공요청(지정)</h2>
 	<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
 		<ul style="padding:0px;">
 			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>

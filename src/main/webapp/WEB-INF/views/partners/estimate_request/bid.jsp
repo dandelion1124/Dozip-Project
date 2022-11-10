@@ -26,7 +26,7 @@
 						<option value="success">입찰 성공</option>
 						<option value="fail">입찰 실패</option>
 					</select> -->
-				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
+				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3.5px double gray;">
 					<ul style="padding:0px;">
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
@@ -36,7 +36,7 @@
 				<!-- <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"> -->
 				<div class="search_box">
 					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
-					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'" style="box-shadow: 0 0 10px rgb(0 0 0 / 15%)";>
+					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'";>
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
 					</div>
@@ -48,9 +48,9 @@
 			<div class="request_list_container">
 				<div class="request_list">
 					<div class="request_list_top">
-						<!--
+
 						<input type="checkbox" id="filter"> 
-							<label for="filter" class="filter">완료 의뢰 건 제외</label> -->
+							<label for="filter" class="filter">마감된 의뢰 건 제외</label>
 						<div class="request_list_top_right">
 							<!--
 							<select class="fd_search_filter" name="find_field" id="pr_order" data-self="pr_order" data-type="simple">

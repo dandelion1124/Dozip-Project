@@ -37,15 +37,15 @@
     </select>
 
     <insert id="insert_subdata">
-        insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Res_person_name,p_Res_person_tel,p_Com_person_name,p_Com_person_tel,p_Balance,
+        insert into Partners_subT (businessNum, p_Shortstate,p_Homepg,p_Comp_logo,p_Res_person_name,p_Res_person_tel,p_Com_person_name,p_Com_person_tel,p_Balance,
         p_Account_bank,p_Account_name,p_Account_num)
-        values(#{businessNum,jdbcType=VARCHAR},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
+        values(#{businessNum,jdbcType=VARCHAR},#{p_Shortstate, jdbcType=VARCHAR},#{p_Homepg, jdbcType=VARCHAR},#{p_Comp_logo,jdbcType=VARCHAR},#{p_Res_person_name, jdbcType=VARCHAR},#{p_Res_person_tel, jdbcType=VARCHAR},
         #{p_Com_person_name, jdbcType=VARCHAR},#{p_Com_person_tel, jdbcType=VARCHAR},#{p_Balance,jdbcType=VARCHAR},#{p_Account_bank, jdbcType=VARCHAR},
         #{p_Account_name, jdbcType=VARCHAR},#{p_Account_num, jdbcType=VARCHAR})
     </insert>
 
     <update id="update_subdata" parameterType="Partners_subVO">
-        update Partners_subT set businessNum=#{businessNum,jdbcType=VARCHAR}, p_Shortstate=#{p_Shortstate,jdbcType=VARCHAR},p_Homepg=#{p_Homepg,jdbcType=VARCHAR},
+        update Partners_subT set businessNum=#{businessNum,jdbcType=VARCHAR}, p_Shortstate=#{p_Shortstate,jdbcType=VARCHAR},p_Homepg=#{p_Homepg,jdbcType=VARCHAR},p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR},
         p_Res_person_name=#{p_Res_person_name,jdbcType=VARCHAR},p_Res_person_tel=#{p_Res_person_tel,jdbcType=VARCHAR},p_Com_person_name=#{p_Com_person_name,jdbcType=VARCHAR},
         p_Com_person_tel=#{p_Com_person_tel,jdbcType=VARCHAR},p_Account_bank=#{p_Account_bank,jdbcType=VARCHAR},p_Balance=#{p_Balance,jdbcType=VARCHAR},
         p_Account_name=#{p_Account_name,jdbcType=VARCHAR},p_Account_num=#{p_Account_num,jdbcType=VARCHAR}
@@ -60,12 +60,12 @@
         select count(businessNum) from Partners_subT where businessNum=#{businessNum}
     </select>
 
-    <insert id="insert_logo">
-        insert into Partners_subT (p_Comp_logo) values(#{p_Comp_logo,jdbcType=VARCHAR})
-    </insert>
-    <update id="update_logo" parameterType="Partners_subVO">
-        update Partners_subT set p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}
-    </update>
+<!--    <insert id="insert_logo">-->
+<!--        insert into Partners_subT (p_Comp_logo) values(#{p_Comp_logo,jdbcType=VARCHAR})-->
+<!--    </insert>-->
+<!--    <update id="update_logo" parameterType="Partners_subVO">-->
+<!--        update Partners_subT set p_Comp_logo=#{p_Comp_logo,jdbcType=VARCHAR} where businessNum=#{businessNum, jdbcType=VARCHAR}-->
+<!--    </update>-->
 
     <!-- 비밀번호 변경-->
     <select id="ploginCheck" resultType="String">
