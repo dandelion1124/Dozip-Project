@@ -67,7 +67,7 @@ if(session.getAttribute("p_id")==null) {
             <li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;의뢰</a>
                 <ul>
                     <li><a href="/partners/bid">입찰의뢰</a></li>
-                    <li><a href="/partners/construct_request">시공요청</a></li>
+                    <li><a href="/partners/construct_request">시공요청(지정)</a></li>
                 </ul>
             </li>
             <li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;관리</a>

@@ -40,10 +40,4 @@ public class BiddingDAOImpl implements BiddingDAO {
         return this.sqlSession.selectList("sel_All", e);
     }
 
-//    @Override
-//    public List<EstimateVO> checkbid(EstimateVO e) {
-//        return this.sqlSession.selectList("checkbid",e);
-//    }
-
-
 }

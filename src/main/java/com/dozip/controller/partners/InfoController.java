@@ -202,10 +202,10 @@ public class InfoController {
         System.out.println(res);
         if (res == 0) {
             this.infoService.insertPartnersSub(ps);
-            infoService.insertpartnerslogo(ps);
+            //infoService.insertpartnerslogo(ps);
         } else {
             this.infoService.updatePartnersSub(ps);
-            infoService.updatepartnerslogo(ps);
+            //infoService.updatepartnerslogo(ps);
         }
 
         m.addAttribute("ps", ps);

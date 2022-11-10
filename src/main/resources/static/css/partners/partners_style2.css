@@ -343,7 +343,7 @@
    .my_bid_icon{
       position:fixed;
       top:120px;
-      right:5%;
+      right:4%;
    }
 
    #filter{
@@ -354,7 +354,7 @@
    }
 
    .request_list_top{
-      padding: 7px 0 0 2.5%;
+      padding: 7px 0 7px 1%;
    }
 
    .request_list_container{
@@ -852,7 +852,6 @@
     }
  /*construct-request */
     .my_req_list{
-      margin-top:20px;
       margin-bottom:20px;
    }
    .my_req_label{

@@ -51,10 +51,10 @@ public class InfoServiceImpl implements InfoService {
         return infoDAO.pupdatePwd(p);
     }
 
-    @Override
-    public void insertpartnerslogo(Partners_subVO ps) {
-        infoDAO.insertpartnerslogo(ps);
-    }
+//    @Override
+//    public void insertpartnerslogo(Partners_subVO ps) {
+//        infoDAO.insertpartnerslogo(ps);
+//    }
 
     @Override
     public void updatepartnerslogo(Partners_subVO ps) {
