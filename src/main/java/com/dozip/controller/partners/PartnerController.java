@@ -185,7 +185,11 @@ public class PartnerController {
     //로그아웃
     @RequestMapping("/logout")
     public ModelAndView partners_logout(HttpSession session) {
-        session.invalidate();
+        //session.invalidate();
+        session.removeAttribute("p_id");
+        session.removeAttribute("businessName");
+        session.removeAttribute("businessNum");
+
         return new ModelAndView("redirect:/partners/main");
     }//partners_logout
 
