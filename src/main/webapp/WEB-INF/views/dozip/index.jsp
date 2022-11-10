@@ -174,7 +174,7 @@
             <div id="keyword_form">
                 <form onsubmit="searchPlaces(); return false;">
                     <i class="xi-search"></i>
-                    <input type="search" placeholder="업체검색" id="keyword">
+                    <input type="search" placeholder="업체검색"  value="강남 인테리어" id="keyword">
                 </form>
             </div>
            <div id="part2_info"> 검색하고자 하는 키워드를 입력하세요. (예: 역삼동 인테리어)</div>
@@ -182,7 +182,6 @@
         <div id="part22">
 
             <div class="part2_left">
-                검색결과 : 12개
                 <div id="menu_wrap" class="bg_white">
                     <ul id="placesList"></ul>
                     <div id="pagination"></div>
