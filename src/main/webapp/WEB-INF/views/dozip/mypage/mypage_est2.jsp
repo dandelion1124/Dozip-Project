@@ -46,7 +46,7 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="e" items="${elist}">
                         <tr>
-                            <td>${e.est_num}</td><%--번호--%>
+                            <td><a href="#" onclick="est_view('${e.est_num}')">${e.est_num}</a></td><%--번호--%>
                             <td>${e.est_zoning}</td><%--공간유형--%>
                             <td style="word-wrap: break-word; max-width : 200px;">${e.est_detail.substring(0, e.est_detail.length() - 1)}</td><%--공간선택--%>
                             <td>${e.est_areaP} 평</td><%--평수--%>
@@ -188,6 +188,9 @@
     $( ".my_apply_table tr " ).on( "mouseleave", function() {
         $( this ).css( "background-color", "white" );
     });
+    function est_view(est_num){
+        window.open('/dozip/my_est_view?est_num='+est_num,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />
