@@ -208,7 +208,7 @@
             <img src="/images/dozip/dozip_hand.png" alt="Dozip"/>
             <div class="contents">
                 <h3 class="content_tt">인테리어, 왜 두집에 맡겨야 할까요?</h3>
-                <p class="content_desc">꼼꼼한 비교견적 믿을 수 있는 업체를 연결해 드려요. 상세한 집닥플래너 견적서의 분석과 상담을 전담플래너가 관리해드려요. 현장케어 시공현장을 꼼꼼하게 체크해요. 든든한 두집 두집과 함께하면 스트레스 받지 않아요.</p>
+                <p class="content_desc">꼼꼼한 비교견적 믿을 수 있는 업체를 연결해 드려요. 상세한 집닥플래너 견적서의 분석과 상담을 전담플래너가 관리해드려요. 현장케어 시공현장을 꼼꼼하게 체크해요. 든든한 두집과 함께하면 스트레스 받지 않아요.</p>
                 <ul>
                     <li><span>bullet</span> 간단한 회원가입후 견적신청을 해보아요</li>
                     <li><span>bullet</span> 두집과 파트너스를 맺어 더 많은 고객과 연결될 수 있어요</li>
