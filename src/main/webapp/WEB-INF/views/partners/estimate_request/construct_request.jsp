@@ -8,9 +8,9 @@
 	<h2 class="item_title">시공요청(지정)</h2>
 	<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
 		<ul style="padding:0px;">
-			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
-			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
-			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰을 신청하시면 모집마감일 내에 고객 쪽에서 업체를 선택하게 됩니다.</li>
+			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정해 신청한 견적 리스트를 확인합니다.</li>
+			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;진행상태에서 수락을 선택하시면 고객이 계약요청 여부를  </li>
+			<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;진행상태는 <b style="font-size:15px;">[ 수락/거절 -> 계약요청/거절 -> 작성완료 -> 계약완료 -> 잔금결제완료 ]</b> 순으로 진행됩니다.</li>
 		</ul>
 	</div>
 	<div style="width:88%;">

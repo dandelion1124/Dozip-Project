@@ -10,9 +10,9 @@
 		<h2 class="item_title">내 입찰목록</h2>
 		<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3px double gray;">
 			<ul style="padding:0px;">
-				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
-				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
-				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰을 신청하시면 모집마감일 내에 고객 쪽에서 업체를 선택하게 됩니다.</li>
+				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;현재 참여중인 입찰을 모두 확인하실 수 있습니다.</li>
+				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰 및 계약 진행상황에 따라 입찰상태가 바뀌게 됩니다.</li>
+				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰상태는 <b style="font-size:15px;">[ 진행중 -> 계약요청/거절 -> 계약완료 -> 공사완료 ]</b> 순으로 진행됩니다. </li>
 			</ul>
 		</div>
 		<%-- <div class="my_bid_title1"><h3 id="bid_fin"> <!--입찰 완료 --></h3></div> --%>

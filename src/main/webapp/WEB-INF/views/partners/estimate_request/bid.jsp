@@ -48,9 +48,9 @@
 			<div class="request_list_container">
 				<div class="request_list">
 					<div class="request_list_top">
-
+						<!--
 						<input type="checkbox" id="filter"> 
-							<label for="filter" class="filter">마감된 의뢰 건 제외</label>
+							<label for="filter" class="filter">마감된 의뢰 건 제외</label> -->
 						<div class="request_list_top_right">
 							<!--
 							<select class="fd_search_filter" name="find_field" id="pr_order" data-self="pr_order" data-type="simple">
