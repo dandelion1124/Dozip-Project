@@ -104,19 +104,16 @@ public class PartnerController {
             String db_business_num = vo.getBusinessNum();
             String db_pId = vo.getP_Id();
             String db_pName = vo.getP_Name();
-            System.out.println("dv 값 : " +db_business_num + "/ " + db_pId + "/" + db_pName);
-            System.out.println("넘어온 값:"+ findpwd_business_num + "/ " + findpwd_pId + "/" + findpwd_pName);
             if (db_business_num.equals(findpwd_business_num) && db_pId.equals(findpwd_pId) && db_pName.equals(findpwd_pName)) {
                 try{
-
                     String imsiPwd = "";
                     for (int i = 0; i < 12; i++) {
                         imsiPwd += (char) ((Math.random() * 26) + 97);
                     }
                     imsiPwd+="ims!";
                     vo.setP_Pw(passwordEncoder.encode(imsiPwd));
-
                     partnerService.updatePwd(vo);
+                    System.out.println("zzzz" +vo.getP_Pw());
 
                     String toEmail = vo.getP_MailId()+"@"+vo.getP_MailDomain();
 
@@ -134,7 +131,8 @@ public class PartnerController {
                     resultMap.put("status", 1);
                     resultMap.put("message", "임시비밀번호가 메일로 발송되었습니다.");
                 }catch (Exception e){
-                    System.out.println(e);
+                    System.out.println(e.getStackTrace());
+                    System.out.println(e.getMessage());
                     resultMap.put("status", 0);
                     resultMap.put("message", "메일발송에 실패했습니다.");
                 }
