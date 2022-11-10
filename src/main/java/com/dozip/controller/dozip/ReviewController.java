@@ -1,6 +1,7 @@
 package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.review.ReviewService;
+import com.dozip.utils.UploadPath;
 import com.dozip.vo.ContractVO;
 import com.dozip.vo.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/dozip/*")
 public class ReviewController {
-    @Value("${uploadPath}")
-    private String uploadPath;
     @Autowired
     private ReviewService reviewService;
 
@@ -101,7 +100,7 @@ public class ReviewController {
 
     @RequestMapping(value = "/upload_rphoto_ok") //후기 사진등록
     public String upload_rphoto_ok(ReviewVO rv, @RequestParam List<MultipartFile>images, HttpServletResponse response, HttpServletRequest request)throws Exception{
-
+        UploadPath path = new UploadPath();
         response.setContentType("text/html;charset=UTF-8");
 
         int re_no = 0;
@@ -111,8 +110,14 @@ public class ReviewController {
                 re_no = Integer.parseInt(c.getValue()); //쿠키에서 글번호 가져옴
             }
         }
+        String uploadPath=path.getPath();
+
+        System.out.println("====================================");
+        System.out.println(uploadPath);
 
         uploadPath+="review\\";
+        System.out.println(uploadPath);
+        System.out.println("====================================");
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");

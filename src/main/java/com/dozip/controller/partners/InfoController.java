@@ -1,6 +1,7 @@
 package com.dozip.controller.partners;
 
 import com.dozip.service.partners.mypage.InfoService;
+import com.dozip.utils.UploadPath;
 import com.dozip.vo.MemberVO;
 import com.dozip.vo.PartnersVO;
 import com.dozip.vo.Partners_subVO;
@@ -34,9 +35,6 @@ public class InfoController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    @Value("${uploadPath}")
-    private String uploadPath;
 
     /*My page
      *
@@ -93,15 +91,20 @@ public class InfoController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
         String randomName = String.valueOf((int)(Math.random() *(99999999-10000000+1))+10000000);
 
-        uploadPath+="logo_upload\\n";
+
+        UploadPath path = new UploadPath();
+        String uploadPath=path.getPath();
+
+
+        uploadPath+="logo_upload\\";
         String uploadDBPath = "/upload/logo_upload/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성
             dir.mkdirs();
         }
-        String dbFilename = uploadDBPath + "partnerslogo" + sdf.format(now)+ randomName + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
-        String saveFilename = uploadPath + "partnerslogo" + sdf.format(now)+ randomName + ".jpg";   //String 객체에 실제 파일명 저장
+        String dbFilename = uploadDBPath + sdf.format(now)+ randomName + ".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
+        String saveFilename = uploadPath + sdf.format(now)+ randomName + ".jpg";   //String 객체에 실제 파일명 저장
 
         comp_logo.transferTo(new File(saveFilename)); //실제 파일저장.
         System.out.println(dbFilename);
