@@ -2,6 +2,7 @@ package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.apply.ApplyService;
 import com.dozip.utils.ConvertAddr;
+import com.dozip.utils.UploadPath;
 import com.dozip.vo.EstimateVO;
 import com.dozip.vo.PartnersVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/dozip/*")
 public class ApplyController {
-    @Value("${uploadPath}")
-    private String uploadPath;
+
 
     @Autowired
     private ApplyService applyService;
@@ -103,7 +103,8 @@ public class ApplyController {
 
         String bn = request.getParameter("bNum");
         System.out.println("선택한 회사 : "+bn);
-
+        UploadPath path = new UploadPath();
+        String uploadPath=path.getPath();
 
         uploadPath+="est_upload\\";
 

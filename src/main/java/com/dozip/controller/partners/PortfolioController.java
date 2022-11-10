@@ -1,9 +1,9 @@
 package com.dozip.controller.partners;
 
 import com.dozip.service.partners.portfoilio.PortfolioService;
+import com.dozip.utils.UploadPath;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +21,6 @@ import java.util.List;
 @Controller
 @RequestMapping("partners/*")
 public class PortfolioController {
-    @Value("${uploadPath}")
-    private String uploadPath;
     @Autowired
     PortfolioService portfolioService;
     // 포트폴리오 페이지
@@ -59,9 +57,13 @@ public class PortfolioController {
         for (Cookie c : cookies) {
             if (c.getName().equals("pf_no"))    pf_no = Integer.parseInt(c.getValue());
         }
+        UploadPath path = new UploadPath();
+        String uploadPath=path.getPath();
+
+        System.out.println(uploadPath);
 
         uploadPath+="portfolio\\"+pf_no + "\\";
-
+        System.out.println(uploadPath);
         String uploadDBPath = "/upload/portfolio/" + pf_no + "/";
         File dir = new File(uploadPath);
 
@@ -103,5 +105,6 @@ public class PortfolioController {
         ModelAndView mv = new ModelAndView("//partners/portfolio/p_edit");
         mv.addObject("vo",vo);
         return mv;
+
     }
 }
