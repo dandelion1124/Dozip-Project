@@ -85,9 +85,16 @@
    <br><br>
    <%-- 업체 명함 부분 --%>
    <div class = "comp_card">
+      <c:if test="${pst.p_Comp_logo eq null}">
       <div class=   "comp_img">
          <img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
       </div>
+      </c:if>
+      <c:if test="${pst.p_Comp_logo ne null}">
+         <div class=   "comp_img">
+            <img id = "comp_logo2" src = "${pst.p_Comp_logo}"/>
+         </div>
+      </c:if>
       <div class = "comp_name">
          <div class = "name">${pt.businessName}</div>
 
@@ -102,7 +109,7 @@
 
       </div>
       <div class = "comp_detail">
-         <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}'">더보러가기</button>
+         <button type = "button" id = "comp" onclick = "location = 'comp_detail?businessName=${pt.businessName}&bNum=${pt.businessNum}'">더보러가기</button>
       </div>
 
    </div>

@@ -2,6 +2,7 @@ package com.dozip.service.dozip.portfolio;
 
 import com.dozip.dao.dozip.portfolio.MainPortfolioDAO;
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,10 @@ public class MainPortfolioServiceImpl implements MainPortfolioService {
     public PartnersVO getOnecomp(String businessName) {
         return this.mainPortfolioDao.getOnecomp(businessName);
     }
+
+    @Override
+    public Partners_subVO getComplogo(int pf_no) {return this.mainPortfolioDao.getComplogo(pf_no) ;}
+
+    @Override
+    public Partners_subVO getClogo(String businessNum) {return this.mainPortfolioDao.getClogo(businessNum);}
 }

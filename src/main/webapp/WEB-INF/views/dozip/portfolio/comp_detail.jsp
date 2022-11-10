@@ -39,16 +39,27 @@
 						</div>
 					</div>
 					<div class = "back">
-						<div class=	"comp_img">
-							<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
-							<button type = "button" id = "comp">보증업체 (i)
-								<span class = "tooltip-text">5000만원 예치금 보증회사</span>
-							</button>
-						</div>
+						<c:if test="${pst.p_Comp_logo eq null}">
+							<div class=   "comp_img">
+								<img id = "comp_logo" src = "/images/dozip/portfolio/detail/frog.png"/>
+								<button type = "button" id = "comp">보증업체 (i)
+									<span class = "tooltip-text">5000만원 예치금 보증회사</span>
+								</button>
+							</div>
+						</c:if>
+						<c:if test="${pst.p_Comp_logo ne null}">
+							<div class=   "comp_img">
+								<img id = "comp_logo2" src = "${pst.p_Comp_logo}"/>
+								<button type = "button" id = "comp2">보증업체 (i)
+									<span class = "tooltip-text2">5000만원 예치금 보증회사</span>
+								</button>
+							</div>
+						</c:if>
+
 						<%-- 업체 정보 --%>
 						<div class = "comp_cont">
 							<p id = "comp_title">업체정보</p>
-
+							<p id = "comp_bnum">${pc.businessNum}</p>
 							<p id = "comp_ceo">대표자 : ${pc.p_Name}</p>
 
 							<p id = "comp_cont">전문분야 : 주거공간 / 상업공간</p>
