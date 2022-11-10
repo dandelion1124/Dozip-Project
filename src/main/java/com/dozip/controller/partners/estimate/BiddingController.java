@@ -121,7 +121,7 @@ public class BiddingController {
         this.biddingService.insertbid(bid); // 입찰신청하기 입찰 DB에 insert
 
         out.println("<script>");
-        out.println("alert('입찰 성공!');");
+        out.println("alert('입찰 신청 완료!');");
         out.println("location='/partners/bid_detail?no="+bid.getEst_num()+"'"); //location=에 매핑주소 자체를 넣는 것
         out.println("</script>");
         return null;

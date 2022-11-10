@@ -12,7 +12,7 @@
 			<ul style="padding:0px;">
 				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;현재 참여중인 입찰을 모두 확인하실 수 있습니다.</li>
 				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰 및 계약 진행상황에 따라 입찰상태가 바뀌게 됩니다.</li>
-				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰상태는 <b style="font-size:15px; background-color: lightblue;">[ 진행중 -> 계약요청/거절 -> 계약완료 -> 공사완료 ]</b> 순으로 진행됩니다. </li>
+				<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;입찰상태는 <b style="font-size:15px; background-color: lightblue;">[ 진행중 -> 계약요청/거절 -> 계약완료 ]</b> 순으로 진행됩니다. </li>
 			</ul>
 		</div>
 		<%-- <div class="my_bid_title1"><h3 id="bid_fin"> <!--입찰 완료 --></h3></div> --%>
@@ -43,7 +43,6 @@
 					<c:if test="${e.bid_state=='계약요청'}">background-color:#EBFBFF;</c:if>
 					<c:if test="${e.bid_state=='거절'}">background-color:#FDF5E6;</c:if>
 					<c:if test="${e.bid_state=='계약완료'}">background-color:#D2E1FF;</c:if>
-					<c:if test="${e.bid_state=='공사완료'}">background-color:lightgray;</c:if>
 					">
 					<c:set var = "est_dateEnd" value = "${fn:split(e.est_dateEnd,' ')}"/>
 					<c:set var = "bid_start" value = "${fn:split(e.bid_start,' ')}"/>
