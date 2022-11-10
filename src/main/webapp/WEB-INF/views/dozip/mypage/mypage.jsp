@@ -191,7 +191,7 @@
             </div>
         </div>
     </div>
-    <button id="btn" type="button">테스트</button>
+    
 </div>
 
 <div class="background">
