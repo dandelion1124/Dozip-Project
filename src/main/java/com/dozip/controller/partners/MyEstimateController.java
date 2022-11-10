@@ -29,12 +29,12 @@ public class MyEstimateController {
 
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_list");
 
-        mv.addObject("plist",myEstimateService.getpayList(businessNum)); //EstimateVO
+        mv.addObject("plist",myEstimateService.getpayList(businessNum));  //PayVO
         mv.addObject("clist",myEstimateService.getContractList(businessNum)); //ContractVO
-        mv.addObject("elist",myEstimateService.getAllEstList(businessNum)); //PayVO
+        mv.addObject("elist",myEstimateService.getAllEstList(businessNum));    //EstimateVO
+
         return mv;
     }
-    
     @RequestMapping("/detail") //견적 상세정보
     public ModelAndView estimate_detail(@RequestParam String est_num){
         ModelAndView mv = new ModelAndView("/partners/estimate/estimate_detail");
