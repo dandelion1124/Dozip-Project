@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <link rel="stylesheet" type="text/css" href="/css/admin/admin_memList.css"/>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page = "./include/header.jsp"/>
 <script src="../js/jquery.js" ></script>
 <%-- 상단 공통부분 끝 --%>
@@ -66,38 +67,30 @@
 			</script>
 			<table id = "tb_mem" border = "1" >
 				<tr>
-					<th width = "50" id = "tb_num">번호</th>
 					<th width = "100" id = "tb_nick">아이디</th>
 					<th width = "80" id = "tb_name">이름</th>
 					<th width = "150" id = "tb_phone">연락처</th>
 					<th width = "100" id = "tb_email_id">이메일 ID</th>
 					<th width = "130" id = "tb_email_domain">이메일 Domain</th>
-					<th width = "200" id = "tb_address1">주소1</th>
-					<th width = "200" id = "tb_address2">주소2</th>
+					<th width = "200" id = "tb_address1">가입유형</th>
+					<th width="150" id = "tb_address2">가입날짜</th>
 				</tr>
-				<%! int i = 0; %>
-					<% for(i=1; i<=15; i+=2) { %>
-								<tr>
-									<td id="num"><%=i %></td>
-									<td id="nick">kdm6606</td>
-									<td id="name">구동민</td>
-									<td id="phone">010-7777-9999</td>
-									<td id ="email_id">kdm6606</td>
-									<td id ="email_domain">@naver.com</td>
-									<td id = "address1">서울시 강남구 역삼동</td>
-									<td id = "address2">상어아파트 201호</td>
-								</tr>
-								<tr class = "even">
-									<td id="num"><%=i+1 %></td>
-									<td id="nick">dandell</td>
-									<td id="name">양지혜</td>
-									<td id="phone">010-5555-7777</td>
-									<td id ="email_id">5140lovely</td>
-									<td id ="email_domain">@naver.com</td>
-									<td id = "address1">부산광역시 북구</td>
-									<td id = "address2">마린시티 2201호</td>
-								</tr>
-					<% } %>
+				<c:if test = "${fn:length(mlist)==0}">
+					<tr><td colspan="8">회원 리스트가 없습니다</td></tr>
+				</c:if>
+				<c:if test="${fn:length(mlist)!=0}">
+					<c:forEach var="i" begin="0" end="${fn:length(mlist)-1}" step="1">
+						<tr>
+							<td id="nick">${mlist[i].mem_id}</td>
+							<td id="name">${mlist[i].mem_name}</td>
+							<td id="phone">${mlist[i].mem_tel}</td>
+							<td id ="email_id">${mlist[i].mem_email}</td>
+							<td id ="email_domain">${mlist[i].mem_domain}</td>
+							<td id = "address1">${mlist[i].mem_joinType}</td>
+							<td id = "address2">${mlist[i].mem_joinDate.substring(0,10)}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</table>
 		</div>
 	</div>
@@ -139,31 +132,17 @@
 					<th width = "300" id = "comp_address">사업자 주소</th>
 					<th width = "100" id = "plan">요금제</th>
 				</tr>
-				<%! int j = 0; %>
-					<% for(j=1; j<=15; j+=2) { %>
-							<tr>
-								<td  id="num2"><%=j %></td>
-								<td  id="co_num">759-41-00656</td>
-								<td  id="co_name">호철디자인</td>
-								<td  id="nick2">shc1004</td>
-								<td  id = "ceo">신호철</td>
-								<td  id = "ceo_tel">010-6666-7777</td>
-								<td  id ="ceo_email">shc@naver.com</td>
-								<td  id = "co_address">서울시 강남구 선릉로</td>
-								<td  id = "co_plan">3000만원</td>
-							</tr>
-							<tr class = "even">
-								<td  id="num2"><%=j+1 %></td>
-								<td  id="co_num">862-51-00878</td>
-								<td  id="co_name">민우디자인</td>
-								<td  id="nick2">minu8282</td>
-								<td  id = "ceo">윤민우</td>
-								<td  id = "ceo_tel">010-2222-3333</td>
-								<td  id ="ceo_email">ymw@naver.com</td>
-								<td  id = "co_address">서울시 강남구 역삼로</td>
-								<td  id = "co_plan">5000만원</td>
-							</tr>
-					<% } %>
+				<tr>
+					<td  id="num2"></td>
+					<td  id="co_num">759-41-00656</td>
+					<td  id="co_name">호철디자인</td>
+					<td  id="nick2">shc1004</td>
+					<td  id = "ceo">신호철</td>
+					<td  id = "ceo_tel">010-6666-7777</td>
+					<td  id ="ceo_email">shc@naver.com</td>
+					<td  id = "co_address">서울시 강남구 선릉로</td>
+					<td  id = "co_plan">3000만원</td>
+				</tr>
 			</table>
 	</div>
 </div>

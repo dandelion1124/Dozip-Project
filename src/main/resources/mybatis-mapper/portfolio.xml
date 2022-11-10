@@ -36,11 +36,19 @@
         select * from partnersT where businessNum = (select businessNum from portfolioT where pf_no = #{pf_no})
     </select>
 
+    <!--해당 글번호의 파트너스 사진 가져오기-->
+    <select id="pt_logo" resultType="Partners_subVO">
+    select * from PARTNERS_SUBT where BUSINESSNUM = (select businessNum from PORTFOLIOT where pf_no=#{pt_no})
+    </select>
     <!--사업자번호와 일치하는 파트너스 정보 가져오기-->
     <select id="pc_list" resultType="PartnersVO">
         select * from partnersT where businessName = #{businessName}
     </select>
 
+    <!--사업자이름과 일치하는 파트너스 로고 가져오기-->
+    <select id="pst_logo" resultType="Partners_subVO">
+        select * from Partners_subT where businessNum=#{businessNum}
+    </select>
 
     <!--????? ??-->
     <insert id="portfolio_in" parameterType="PortfolioVO">

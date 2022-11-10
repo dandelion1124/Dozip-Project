@@ -2,6 +2,7 @@ package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.portfolio.MainPortfolioService;
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,21 +33,24 @@ public class MainPortfolioController {
 
         PortfolioVO pf = this.mainPortfolioService.getOnelist(pf_no); //pf_no에 해당하는 글
         PartnersVO pt = this.mainPortfolioService.getComplist(pf_no); //파트너스 정보
-
+        Partners_subVO pst = this.mainPortfolioService.getComplogo(pf_no);//파트너스 로고
         ModelAndView mv = new ModelAndView();
         mv.addObject("pf",pf);
         mv.addObject("pt",pt);
+        mv.addObject("pst",pst);
 
         mv.setViewName("/dozip/portfolio/port_detail");
         return mv;
     }
 
     @GetMapping(value = "comp_detail") //업체정보 상세
-    public ModelAndView comp(@RequestParam("businessName") String businessName, HttpServletRequest request, PartnersVO p) throws Exception{
-        PartnersVO pc = this.mainPortfolioService.getOnecomp(businessName); //파트너스 정보
+    public ModelAndView comp(@RequestParam("businessName") String businessName, @RequestParam("bNum") String businessNum, HttpServletRequest request, PartnersVO p) throws Exception{
 
+        PartnersVO pc = this.mainPortfolioService.getOnecomp(businessName); //파트너스 정보
+        Partners_subVO pst = this.mainPortfolioService.getClogo(businessNum);//파트너스 로고
         ModelAndView mv = new ModelAndView();
         mv.addObject("pc",pc);
+        mv.addObject("pst",pst);
         mv.setViewName("/dozip/portfolio/comp_detail");
         return mv;
     }

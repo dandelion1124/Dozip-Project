@@ -256,7 +256,7 @@ input:checked + .slider:before {
 	border-radius : 5px;
 }
 
-#comp_logo {
+#comp_logo,#comp_logo2 {
   width: 100px;
   height: 100px;
   object-fit: cover;

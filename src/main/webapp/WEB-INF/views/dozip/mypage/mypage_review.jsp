@@ -21,6 +21,7 @@
     .page_area{ text-align:center; margin-top: 10px; }
     .re_contt{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all; max-width: 200px; min-width : 100px;  }
     #r_del{border:none; border-radius: 2px;color: white;background-color: #FF0033; height: 25px;}
+    #del_a{text-decoration:none; color: white;}
 </style>
 
 
@@ -58,7 +59,7 @@
                             <td class = "re_title"><a href="review_detail?re_no=${rlist[i].re_no}">${rlist[i].re_title}</a></td>
                             <td class = "re_contt" style="width: 100px; padding-left: 50px;">${rlist[i].re_cont}</td>
                             <td>${rlist[i].re_date.substring(0,10)}</td>
-                            <td><button id = "r_del" onclick="review_del()"><a href="review_del?re_no=${rlist[i].re_no}">삭제</a></button></td>
+                        <td><button id = "r_del" onclick="review_del()"><a id = "del_a" href="review_del?re_no=${rlist[i].re_no}">삭제</a></button></td>
                         </tr>
                     </c:forEach>
                 </c:if>

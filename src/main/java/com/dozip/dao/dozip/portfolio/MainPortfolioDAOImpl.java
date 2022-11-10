@@ -1,6 +1,7 @@
 package com.dozip.dao.dozip.portfolio;
 
 import com.dozip.vo.PartnersVO;
+import com.dozip.vo.Partners_subVO;
 import com.dozip.vo.PortfolioVO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,10 @@ public class MainPortfolioDAOImpl implements MainPortfolioDAO {
     public PartnersVO getOnecomp(String businessName) {
         return this.sqlSession.selectOne("pc_list",businessName);
     }
+
+    @Override
+    public Partners_subVO getComplogo(int pf_no) {return this.sqlSession.selectOne("pt_logo",pf_no);}
+
+    @Override
+    public Partners_subVO getClogo(String businessNum) {return this.sqlSession.selectOne("pst_logo",businessNum);}
 }
