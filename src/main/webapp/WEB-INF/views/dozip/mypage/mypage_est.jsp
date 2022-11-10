@@ -45,14 +45,17 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="e" items="${elist}">
                         <tr>
-                            <td>${e.est_num}</td><%--번호--%>
+                            <td><a href="#" onclick="est_view('${e.est_num}')">${e.est_num}</a></td><%--번호--%>
                             <td>${e.est_date.substring(0,10)}</td><%--신청날짜--%>
                             <td>${e.est_zoning}</td><%--공간유형--%>
                             <td>${e.est_detail.substring(0, e.est_detail.length() - 1)}</td><%--공간선택--%>
                             <td>${e.est_areaP} 평</td><%--평수--%>
                             <td>${e.est_bud} 만원</td><%--예산--%>
                             <td>${e.businessName}</td><%--업체명--%>
-                            <td id="state">${e.est_check}</td><%--진행상황(수락/거절)--%>
+                            <td id="state" style="
+                                <c:if test="${e.est_check=='공사완료'}">color:blue;</c:if>
+                                <c:if test="${e.est_check=='거절'}">color:red;</c:if>
+                                    ">${e.est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
                                 <c:if test="${e.est_check=='수락'}">
                                     <button type="button" id="agree_btn" value="${e.est_num}">계약요청</button>
@@ -134,7 +137,9 @@
             }
         })
     }
-
+    function est_view(est_num){
+        window.open('/dozip/my_est_view?est_num='+est_num,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
 
 </script>
 <%-- 하단 공통부분 --%>

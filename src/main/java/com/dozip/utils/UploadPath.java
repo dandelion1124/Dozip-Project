@@ -11,7 +11,8 @@ public class UploadPath {
 //#minwoo photo path
 //#uploadPath = C:\\bootcamp\\project\\dozip\\src\\main\\resources\\static\\upload\\
 //#uploadPath=C:\\DoZip\\src\\main\\resources\\static\\upload\\
-    private String uploadpath="C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\";
+    //private String uploadpath="C:\\workspace\\dozip\\src\\main\\resources\\static\\upload\\";//호철
+    private String uploadpath="C:\\DEV\\IntelliJ_work\\dozip\\src\\main\\resources\\static\\upload\\";//지혜
     public String getPath(){
          this.uploadpath = uploadpath;
         return uploadpath;
