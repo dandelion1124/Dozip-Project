@@ -20,6 +20,15 @@
         body{
             background: #f2f2f2;
         }
+        table#load_info_table caption {
+            margin-bottom: 20px;
+        }
+        table#load_info_table th {
+            background: darkgrey;
+        }
+        table#load_info_table th, table#load_info_table td {
+            padding: 5px 2px;
+        }
     </style>
 </head>
 <body>

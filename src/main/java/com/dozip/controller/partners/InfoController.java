@@ -93,7 +93,7 @@ public class InfoController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
         String randomName = String.valueOf((int)(Math.random() *(99999999-10000000+1))+10000000);
 
-        uploadPath+="logo_upload//";
+        uploadPath+="logo_upload\\n";
         String uploadDBPath = "/upload/logo_upload/";
         File dir = new File(uploadPath);
 

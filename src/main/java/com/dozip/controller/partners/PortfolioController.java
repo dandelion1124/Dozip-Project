@@ -60,9 +60,9 @@ public class PortfolioController {
             if (c.getName().equals("pf_no"))    pf_no = Integer.parseInt(c.getValue());
         }
 
-        uploadPath+=pf_no + "\\";
+        uploadPath+="portfolio\\"+pf_no + "\\";
 
-        String uploadDBPath = "/upload/" + pf_no + "/";
+        String uploadDBPath = "/upload/portfolio/" + pf_no + "/";
         File dir = new File(uploadPath);
 
         if (!dir.isDirectory()) { //폴더가 없다면 생성

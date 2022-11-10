@@ -3,6 +3,7 @@ package com.dozip.controller.partners;
 import com.dozip.service.dozip.member.MemberService;
 import com.dozip.service.partners.partner.PartnerService;
 import com.dozip.vo.ContractVO;
+import com.dozip.vo.PartnersVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -31,19 +32,6 @@ public class HochulTestController {
     private MemberService memberService;
     private String schemaFilePath;
 
-    //파트너스 비번찾기
-    @PostMapping("/partners_findpwd")
-    public String partners_findpwd(String findpwd_business_num, String findpwd_pId, String findpwd_pName,
-                                   HttpServletResponse response) throws Exception {
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        out.println("<script>");
-        out.println("alert('Spring 코드로 바꿀예정입니다')");
-        out.println("location='/partners/main'");
-        out.println("</script>");
-        return null;
-    }//partners_findpwd()
 
 
     @RequestMapping("/load_info")

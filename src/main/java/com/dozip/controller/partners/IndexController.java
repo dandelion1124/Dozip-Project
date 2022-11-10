@@ -62,7 +62,11 @@ public class IndexController {
             /*계약 요청 개수 */
             int requestContCount = indexService.requestContCount(bNum);
 
-            System.out.println("테스트 " + requestContCount);
+
+
+            /* 공사완료 개수 */
+            int finishedInterior = indexService.finishedInteriorCount(bNum);
+
 
             mv.addObject("pv",pv);
             mv.addObject("status",status);
@@ -71,7 +75,7 @@ public class IndexController {
             mv.addObject("requestContCount",requestContCount);
             mv.addObject("reviewCount",reviewCount);
             mv.addObject("getreviewStart",getreviewStart);
-
+            mv.addObject("finishedInterior",finishedInterior);
             mv.addObject("portfolioCount",portfolioCount);
         }
 
