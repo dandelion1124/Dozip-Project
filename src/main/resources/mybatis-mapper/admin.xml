@@ -8,4 +8,14 @@
     <select id="mem_list" resultType="MemberVO">
         select * from memberT
     </select>
+
+    <!--회원 삭제-->
+    <delete id="del_m">
+        delete from memberT where mem_id=#{mem_id}
+    </delete>
+
+    <!--파트너스 전체 리스트 불러오기-->
+    <select id="part_list" resultType="PartnersVO">
+        select * from partnersT
+    </select>
 </mapper>

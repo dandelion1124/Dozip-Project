@@ -74,6 +74,7 @@
 					<th width = "130" id = "tb_email_domain">이메일 Domain</th>
 					<th width = "200" id = "tb_address1">가입유형</th>
 					<th width="150" id = "tb_address2">가입날짜</th>
+					<th id = "tb_dell">삭제여부</th>
 				</tr>
 				<c:if test = "${fn:length(mlist)==0}">
 					<tr><td colspan="8">회원 리스트가 없습니다</td></tr>
@@ -88,6 +89,7 @@
 							<td id ="email_domain">${mlist[i].mem_domain}</td>
 							<td id = "address1">${mlist[i].mem_joinType}</td>
 							<td id = "address2">${mlist[i].mem_joinDate.substring(0,10)}</td>
+							<td id = "tb_delete"><button id = "m_del" onclick="review_del()"><a id = "del_a" href="mem_del?mem_id=${mlist[i].mem_id}">삭제</a></button></td>
 						</tr>
 					</c:forEach>
 				</c:if>
@@ -122,7 +124,6 @@
 			</div>
 			<table id = "tb_part" border = "1">
 				<tr>
-					<th width = "50" id = "tb_num2">번호</th>
 					<th width = "150" id = "comp_num">사업자 번호</th>
 					<th width = "120" id = "comp_name">사업자명</th>
 					<th width = "100" id = "tb_nick2">아이디</th>
@@ -132,23 +133,33 @@
 					<th width = "300" id = "comp_address">사업자 주소</th>
 					<th width = "100" id = "plan">요금제</th>
 				</tr>
-				<tr>
-					<td  id="num2"></td>
-					<td  id="co_num">759-41-00656</td>
-					<td  id="co_name">호철디자인</td>
-					<td  id="nick2">shc1004</td>
-					<td  id = "ceo">신호철</td>
-					<td  id = "ceo_tel">010-6666-7777</td>
-					<td  id ="ceo_email">shc@naver.com</td>
-					<td  id = "co_address">서울시 강남구 선릉로</td>
-					<td  id = "co_plan">3000만원</td>
-				</tr>
+				<c:if test="${fn:length(plist)==0}">
+					<tr><td colspan="9">회원 리스트가 없습니다</td></tr>
+				</c:if>
+				<c:if test="${fn:length(plist)!=0}">
+					<c:forEach var="i" begin="0" end = "${fn:length(plist)-1}" step="1">
+						<tr>
+							<td  id="co_num">${plist[i].businessNum}</td>
+							<td  id="co_name">${plist[i].businessName }</td>
+							<td  id="nick2">${plist[i].p_Id}</td>
+							<td  id = "ceo">${plist[i]. p_Name}</td>
+							<td  id = "ceo_tel">${plist[i].p_Tel}</td>
+							<td  id ="ceo_email">${plist[i].p_MailId}</td>
+							<td  id = "co_address">${plist[i].p_MailDomain}</td>
+							<td  id = "co_plan">${plist[i].p_State}</td>
+						</tr>
+					</c:forEach>
+				</c:if>
 			</table>
 	</div>
 </div>
 <br><br>
 
-
+<script>
+	function review_del(){
+		alert('해당 회원을 삭제하시겠습니까?');
+	}
+</script>
 
 
 

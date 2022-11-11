@@ -52,13 +52,13 @@ public class IndexController {
 
             /* 업체 리뷰 개수 */
             int reviewCount = indexService.reviewCount(bNum);
-            int getreviewStart=0;
+            int getreviewStar=0;
             if(reviewCount!=0){
                 /* 업체 평점합 가져오기 */
-                getreviewStart= indexService.getreviewStart(bNum);
+                getreviewStar= indexService.getreviewStart(bNum);
             }
 
-            System.out.println("getreviewStart: "+getreviewStart);
+            System.out.println("getreviewStar: "+getreviewStar);
             /*계약 요청 개수 */
             int requestContCount = indexService.requestContCount(bNum);
 
@@ -74,7 +74,7 @@ public class IndexController {
             mv.addObject("directEstCount",directEstCount);
             mv.addObject("requestContCount",requestContCount);
             mv.addObject("reviewCount",reviewCount);
-            mv.addObject("getreviewStart",getreviewStart);
+            mv.addObject("getreviewStar",getreviewStar);
             mv.addObject("finishedInterior",finishedInterior);
             mv.addObject("portfolioCount",portfolioCount);
         }

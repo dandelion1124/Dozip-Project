@@ -59,7 +59,7 @@
 
     <!--사업자번호 기준으로 견적 테이블 불러오기 -->
     <select id="est_list" resultType="EstimateVO">
-        select * from estimateT where est_check != '대기중' and est_check != '수락' order by EST_NUM desc
+        select distinct e.* from estimateT e, bidT b where e.EST_NUM=b.EST_NUM and b.BUSINESSNUM=#{businessNum} or e.BUSINESSNUM=#{businessNum}  and est_check != '대기중' and est_check != '수락' and est_check != '공사완료' order by e.EST_NUM desc
     </select>
 
     <!--계약 요청중인 입찰테이블 -->
