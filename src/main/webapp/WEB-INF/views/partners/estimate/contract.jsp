@@ -2,81 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="/js/partners/jquery.js"></script>
+<script src="/js/partners/contract.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-<style>
-    table input, #cont_total,#cont_date
-    {
-        border: none;
-        color: #0064CD;
-    }
-    #cont_date{
-        font-size: 18px;
-    }
-    div.contract_title {
-        font-size: 33px;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    #contract_table1 {
-        border: 1px solid gray;
-        border-collapse: collapse;
-        background-color: white;
-        margin: 7px 0;
-        font-size: 16px;
-        width: 100%;
-    }
-    #contract_table1 input{
-        font-size: 16px;
-
-    }
-
-    #contract_table2 {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: white;
-        margin: 7px 0;
-    }
-
-    #contract_table1 tr, #contract_table2 tr {
-        height: 40px;
-    }
-
-    #contract_table1 th:first-of-type, #contract_table2 th:first-of-type {
-        width: 20%;
-    }
-
-    th.contract_area p:first-of-type {
-        padding-left: 15px;
-        float: left;
-        display: inline-flex;
-        margin: 0px;
-    }
-
-    th.contract_area p:last-of-type {
-        padding-right: 15px;
-        float: right;
-        display: inline-flex;
-        margin: 0px;
-    }
-
-    #contract_table3 {
-        border: 0px;
-        width: 100%;
-        text-align: left;
-    }
-
-    th.contract_sign {
-        text-align: right;
-        padding-right: 30px;
-    }
-
-    div#contract_btn input {
-        float: right;
-        margin: 9px;
-    }
-</style>
+<link rel="stylesheet" href="/css/partners/contract.css">
 <form method="post" id="contract_form">
     <input type="hidden" value="${ev.mem_id}" name="mem_id">
     <input type="hidden" value="${ev.est_num}" name="est_num">
@@ -117,19 +45,6 @@
         <div>
             <p>① 총 공사금액 (￦[<input name="cont_total" id="cont_total" placeholder="금액입력" size="4" onkeyup="inputNumberFormat(this)">] 만원<br></p>
         </div>
-        <script>
-            function inputNumberFormat(obj) {
-                obj.value = comma(uncomma(obj.value));
-            }
-            function comma(str) {
-                str = String(str);
-                return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-            }
-            function uncomma(str) {
-                str = String(str);
-                return str.replace(/[^\d]+/g, '');
-            }
-        </script>
         <div>
             <table id="contract_table2" border="1">
                 <tr>
@@ -167,9 +82,7 @@
             <p style="text-align:center;">
                 <jsp:useBean id="now" class="java.util.Date" />
                 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
-
                 <input type="date" value="${today}" name="cont_date" id="cont_date" size="12" readonly>
-
             </p>
         </div>
         </br>
@@ -214,43 +127,4 @@
         <input type="button" value="닫기" onclick="window.close()">
         <input type="button" value="계약하기" onclick="contract_write()">
     </div>
-    <script>
-        function contract_write() {
-            if($.trim($('#cont_total').val())=='' || $.trim($('#cont_cost1').val())=='' ||
-                $.trim($('#cont_date1').val())==''|| $.trim($('#cont_cost2').val())=='' ||
-                $.trim($('#cont_date2').val())==''|| $.trim($('#cont_cost3').val())=='' ||
-                $.trim($('#cont_date3').val())=='' || $.trim($('#partners_tel').val())=='')
-            {
-                swal('NOTICE','계약 내용을 빠짐없이 입력해주세요','error');
-                return false;
-            }
-            function params_list() {
-                var params = {};  //배열 선언
-                var data = $("#contract_form").serializeArray(); //폼태그에 있는 데이터 담기
-
-                $.each(data, function () { //반복문
-                    var name = $.trim(this.name);  //name 변수에 this.data 의 name 파라미터 값
-                    var value = $.trim(this.value);  //value 변수에 this.data 의 value 값
-                    params[name] = value; //params 배열에 키, 값 쌍으로 저장
-                });
-                return params;
-            }
-
-            $.ajax({
-                type: 'post',
-                url: 'write_contract_ok',
-                data: {
-                    data: JSON.stringify(params_list())
-                },
-                datatype: "json",
-                success: function (data) {
-                    if (data.status == 1) {
-                        alert('계약서 작성 완료!')
-                        window.opener.location.href = '/partners/estimate_list'
-                        self.close()
-                    }
-                }
-            });
-        }
-    </script>
 </form>

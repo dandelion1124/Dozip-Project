@@ -7,8 +7,8 @@
     <title>파트너스 회원가입</title>
     <link rel="stylesheet" href="/css/partners/join_style.css">
     <script src="/js/partners/jquery.js"></script>
+    <script src="/js/partners/join.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
 <body>
 <article id="join_wrap">
@@ -103,13 +103,8 @@
             <div class=signup_submit>
                 <input type="button" value="가입하기" id="signup_submit_btn" onclick="signup_proc()"></div>
         </form>
-        <script>
-
-        </script>
     </div>
     <jsp:include page="../include/footer.jsp"/>
     <script src="/js/partners/join.js"></script>
 </body>
-
-
 </html>
