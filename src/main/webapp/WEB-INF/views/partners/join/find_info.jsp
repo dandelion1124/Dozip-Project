@@ -8,7 +8,6 @@
 <script src="/js/partners/jquery.js"></script>
 <script src="/js/partners/join.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
 <body>
 	<article id="join_wrap">
@@ -54,67 +53,6 @@
 						</div>
 					</div>
 				</form>
-
-
-
-					<script>
-					function partners_findid(){
-						const findid_business_num=document.querySelector('#findid_business_num').value;
-						const findid_pTel=document.querySelector('#findid_pTel').value;
-						const findid_email=document.querySelector('#findid_email').value;
-
-						$.ajax({
-							type: 'post',
-							url: 'partners_findid',
-							data: {
-								findid_business_num:findid_business_num,
-								findid_pTel:findid_pTel,
-								findid_email:findid_email
-							},
-							datatype: "json",
-							success: function (data) {
-								if(data.status==1){
-									alert(data.message);
-								}
-								else{
-									alert(data.message);
-								}
-							}
-						});
-					}
-					function partners_findpwd(){
-						const findpwd_business_num=document.querySelector('#findpwd_business_num').value;
-						const findpwd_pId=document.querySelector('#findpwd_pId').value;
-						const findpwd_pName=document.querySelector('#findpwd_pName').value;
-
-
-						$.ajax({
-							type: 'post',
-							url: 'partners_findpwd',
-							data: {
-								findpwd_business_num:findpwd_business_num,
-								findpwd_pId:findpwd_pId,
-								findpwd_pName:findpwd_pName
-							},
-							datatype: "json",
-							success: function (data) {
-								alert(data.status);
-								if(data.status==1){
-									alert(data.message);
-								}
-								else if(data.status==0){
-									alert(data.message);
-								}
-							}
-						});
-					}
-
-
-
-				</script>
-
-
-
 				<form id="findpwd_form" method="post">
 					<div>
 						<div class="findinfo_label">

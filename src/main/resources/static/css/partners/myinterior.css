@@ -6,8 +6,13 @@ thead#interiorList_table_thead th {padding: 8px 0px;font-size: 15px;}a#go_schedu
 table#interiorList_table {margin: 20px auto;width: 100%;border-collapse: collapse;}
 thead#interiorList_table_thead {background: cornflowerblue;}
 div#interior_list_searchBar label {margin: 0px 12px;}
-#interior_list_searchBar {display: flex;float: right;margin-bottom: 10px;}
-
+#interior_l #interiorList_table td{padding: 5px 0px;text-align: center;border-bottom: 1px solid gray;}
+td.schedule_regit{background: #D7EAF5;padding:5px 3px;border: none;}
+button.schedule_btn{padding: 2px 15px;}
+td.schedule_regit:hover{background: #6495ED;}
+td.schedule_regit button, td.schedule_regit_after button{background: none; border: none;font-size: 13px;}
+td.schedule_regit_after {background:#F8F8F8;padding:5px 3px;border: none;}
+#interiorList_table_thead+tbody {font-size: 13px;}
 
 /* 정산 상세내역 */
 #balance_detail_title {font-size: 26px;font-weight: 530;border-bottom: 3px solid #000;}

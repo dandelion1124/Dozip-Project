@@ -455,7 +455,7 @@ $(document).ready(function() {
     $('#findid_btn').css("background", "#659832");
 });
 
-/**회원 아이디 찾기 **/
+/**회원 아이디 찾기, 회원 비밀번호 찾기 **/
 function partners_findid(){
     const findid_business_num=document.querySelector('#findid_business_num').value;
     const findid_pTel=document.querySelector('#findid_pTel').value;
@@ -480,4 +480,29 @@ function partners_findid(){
         }
     });
 }
-/**회원 비밀번호 찾기 **/
+function partners_findpwd(){
+    const findpwd_business_num=document.querySelector('#findpwd_business_num').value;
+    const findpwd_pId=document.querySelector('#findpwd_pId').value;
+    const findpwd_pName=document.querySelector('#findpwd_pName').value;
+
+
+    $.ajax({
+        type: 'post',
+        url: 'partners_findpwd',
+        data: {
+            findpwd_business_num:findpwd_business_num,
+            findpwd_pId:findpwd_pId,
+            findpwd_pName:findpwd_pName
+        },
+        datatype: "json",
+        success: function (data) {
+            alert(data.status);
+            if(data.status==1){
+                alert(data.message);
+            }
+            else if(data.status==0){
+                alert(data.message);
+            }
+        }
+    });
+}

@@ -6,40 +6,8 @@
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <script src="/js/utilities.js"></script>
-
+<script src="/js/myInterior.js"></script>
 <link rel="stylesheet" href="/css/partners/myinterior.css">
-<style>
-    #interiorList_table td{
-        padding: 5px 0px;
-        text-align: center;
-        border-bottom: 1px solid gray;
-    }
-    td.schedule_regit{
-        background: #D7EAF5;
-        padding:5px 3px;
-        border: none;
-    }
-    button.schedule_btn{
-        padding: 2px 15px;
-    }
-    td.schedule_regit:hover{
-        background: #6495ED;
-    }
-    td.schedule_regit button, td.schedule_regit_after button{
-        background: none;
-        border: none;
-        font-size: 13px;
-    }
-    td.schedule_regit_after {
-        background:#F8F8F8;
-        padding:5px 3px;
-        border: none;
-    }
-    #interiorList_table_thead+tbody {
-        font-size: 13px;
-    }
-
-</style>
 <p> | 내공사 > 내공사내역</p>
 <div id='interiorList_top_cont'>
     <div id='interiorList_title'>내 공사내역<a id="go_scheduleList" href="schedule_list">일정관리</a>
@@ -64,19 +32,7 @@
     <option value="잔금완납"<c:if test="${pay_state=='잔금완납'}"> selected</c:if>>잔금완납</option>
 </select>
 </div>
-<script>
 
-    //payT 로 시공 상태 조회
-    $('#interior_status').change(function (){
-        let est_check = $('#interior_status option:selected').val();
-        location.href ='/partners/interior_list?est_check='+est_check;
-    });
-    //payT 로 정산 상태 조회
-    $('#balance_status').change(function(){
-        let pay_state = $('#balance_status option:selected').val();
-        location.href ='/partners/interior_list?pay_state='+pay_state;
-    });
-</script>
 <table id="interiorList_table">
     <thead id="interiorList_table_thead">
     <tr>
@@ -90,8 +46,6 @@
         <th>계약서</th>
         <th>시공 상세정보</th>
     </tr>
-
-
     </thead>
     <tbody>
         <c:if test="${empty clist}">
@@ -121,24 +75,6 @@
                 <c:if test="${c.pay_state!='잔금결제완료'}">
                     <td>${c.pay_state}</td>
                 </c:if>
-                <script>
-                    function schedule_regit(cont_no){
-                        let regitCheck=confirm('일정 등록을 하시겠습니까?')
-                        if(regitCheck){
-                            $.ajax({
-                                type:'post',
-                                url:'schedule_regit',
-                                data :{
-                                    cont_no:cont_no
-                                },
-                                success: function (){
-                                    swal('등록완료');
-                                    location.reload();
-                                }
-                            });
-                        }
-                        }
-                </script>
                 <%--
                 계약금요청, 계약금 결제완료, 중도금결제완료, 잔금 결제완료=공사완료
                 --%>
