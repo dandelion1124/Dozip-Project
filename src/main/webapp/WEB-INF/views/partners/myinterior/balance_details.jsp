@@ -2,105 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="../include/header.jsp"/>
+<link rel="stylesheet" href="/css/partners/myinterior.css">
 
 <style>
-    #balance_detail_title {
-        font-size: 26px;
-        font-weight: 530;
-        border-bottom: 3px solid #000;
-    }
-
-    #balance_detail_msg {
-        color: darkslateblue;
-        font-size: 16px;
-        font-family: fantasy;
-        margin-bottom: 10px;
-    }
-    * {
-        line-height: 2em;
-    }
-
-    #balance_detail_top_cont {
-        padding-bottom: 20px;
-    }
-
-    #balance_detail_select_status input {
-        background: none;
-        width: 100%;
-        height: 40px;
-        margin: 0px;
-        border: 1px solid #B3B9BE;
-        border-bottom: transparent;
-    }
-
-    #balance_detail_select_status input:active {
-        background: dimgray;
-    }
-
-    #balance_detail_search_bar_div > div {
-        width: 95.5%;
-        height: 100px;
-        border: 3px solid dimgray;
-        margin: 40px 0px;
-        padding: 14px;
-    }
-
-    div#balance_detail_select_status {
-        display: flex;
-        margin-bottom: 20px;
-    }
-
-    #balance_detail_select_status_div1 {
-        width: 15%;
-        border: 2px solid dimgray;
-        border-bottom: transparent;
-        background: cornflowerblue;
-    }
-
-    #balance_detail_select_status_div2 {
-        width: 15%;
-        border-bottom: 2px solid dimgray;
-        border-left: transparent;
-    }
-
-    #balance_detail_select_status_div3 {
-        width: 70%;
-        border-bottom: 2px solid dimgray;
-    }
-
-    #balance_detail_main_table_div table {
-        width: 100%;
-        border: none;
-        border-collapse: collapse;
-        margin-bottom: 50px;
-    }
-
-    #balance_detail_main_table_div th {
-        padding: 5px 0px;
-        background: #acb9e5;
-    }
-
-    #balance_detail_main_table_div tr {
-        border-bottom: 1px solid grey;
-    }
-
-    #balance_detail_main_table_div td {
-        padding: 5px 0px;
-        text-align: center;
-    }
-
-    input.detail_button {
-        background: #00BFFF;
-        padding: 2px 10px;
-        border: none;
-        border-radius: 3px;
-        color: white;
-    }
-
-    input.detail_button:active {
-        background: #B3B9BE;
-        color: black;
-    }
+    * {line-height: 2em;}
 </style>
 <p> | 내공사 > 정산내역</p>
 <div id="balance_detail_top_cont">

@@ -8,7 +8,10 @@
 </style>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
-<%--오늘 날짜 불러오기 코드 -필요하면 사용 --%>
+<p> | 내공사 > 내공사내역</p>
+<div id="scheduleList_title">
+    일정관리<a href="interior_list">내공사내역</a></div>
+<div id='calendar' style="width: 100%; margin: 20px 0px;"></div>
 
 <script>
     let allData = JSON.parse('${json}'); //달력에 담을 json 데이터
@@ -24,33 +27,21 @@
         }
         allDataArray.push(oneDayData);
     }
-	document.addEventListener('DOMContentLoaded', function() {
-		let calendarEl = document.getElementById('calendar');
-		let calendar = new FullCalendar.Calendar(calendarEl, {
-			headerToolbar : {
-				left : 'prev,next,today',
-				center : 'title',
-				right : 'dayGridMonth,dayGridWeek'
-			},
-			initialDate : '${today}',
-			navLinks : true, // can click day/week names to navigate views
-			//editable : true,
-			dayMaxEvents : true, // allow "more" link when too many events
-			events :allDataArray
-		});
-		calendar.render();
-	});
+    document.addEventListener('DOMContentLoaded', function() {
+        let calendarEl = document.getElementById('calendar');
+        let calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar : {
+                left : 'prev,next,today',
+                center : 'title',
+                right : 'dayGridMonth,dayGridWeek'
+            },
+            initialDate : '${today}',
+            navLinks : true, // can click day/week names to navigate views
+            //editable : true,
+            dayMaxEvents : true, // allow "more" link when too many events
+            events :allDataArray
+        });
+        calendar.render();
+    });
 </script>
-<%--
-<script>
-	$(function() {
-		$('.fc-event-title').click(function() {
-			alert('hello~');
-		});
-	});
-</script> --%>
-<p> | 내공사 > 내공사내역</p>
-<div id="scheduleList_title">
-    일정관리<a href="interior_list">내공사내역</a></div>
-<div id='calendar' style="width: 100%; margin: 20px 0px;"></div>
 <jsp:include page="../include/footer.jsp" />

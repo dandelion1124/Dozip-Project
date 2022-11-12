@@ -283,26 +283,7 @@ $('#signup_form').on('keyup', function(event) {
     else{
         $('#signup_submit_btn').attr("disabled", false);
     }
-    
-
-
-
-
-
-
-
-
-
-
 });
-
-
-
-
-
-
-
-
 
 //비밀번호 일치여부
 $('#pPw').on('keyup', function(event) {
@@ -473,3 +454,30 @@ $(function() {
 $(document).ready(function() {
     $('#findid_btn').css("background", "#659832");
 });
+
+/**회원 아이디 찾기 **/
+function partners_findid(){
+    const findid_business_num=document.querySelector('#findid_business_num').value;
+    const findid_pTel=document.querySelector('#findid_pTel').value;
+    const findid_email=document.querySelector('#findid_email').value;
+
+    $.ajax({
+        type: 'post',
+        url: 'partners_findid',
+        data: {
+            findid_business_num:findid_business_num,
+            findid_pTel:findid_pTel,
+            findid_email:findid_email
+        },
+        datatype: "json",
+        success: function (data) {
+            if(data.status==1){
+                alert(data.message);
+            }
+            else{
+                alert(data.message);
+            }
+        }
+    });
+}
+/**회원 비밀번호 찾기 **/
