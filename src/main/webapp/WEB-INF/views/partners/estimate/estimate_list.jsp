@@ -49,9 +49,11 @@
     <tbody>
     <c:if test="${!empty elist }">
         <c:forEach var="e" items="${elist}">
-            <c:if test="${empty clist && !empty e.businessNum}">   <%--계약서 테이블이 없다면 --%>
+            <%--
+            <c:if test="${empty clist && !empty e.businessNum}">
                 <tr>
-                    <td>${e.est_num}</td>
+
+                    <td>${e.est_num} ㅇㅇ</td>
                     <td><input class='est_detail btn' type="button" value="${e.est_addr} 시공요청" onclick="est_detail('${e.est_num}')"></td>
                     <td><fmt:formatNumber value="${e.est_bud}" type="number"/>만원</td>
                     <td>${fn:substring(e.est_start,0,10)}~ ${fn:substring(e.est_end,0,10)}</td>
@@ -66,7 +68,7 @@
                         <button onclick="est_cancel()" class="cancel_contract_btn">계약해지</button>
                     </td>
                 </tr>
-            </c:if> <%--${empty clist}--%>
+            </c:if> --%>
             <c:if test="${e.est_check=='계약요청'}">
                 <tr>
                     <td>${e.est_num} </td>

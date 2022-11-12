@@ -36,4 +36,8 @@ public class PayDAOImpl implements PayDAO{
     public List<PayVO> requestPay(String mem_id) {
         return this.sqlSession.selectList("request_state", mem_id);
     }
+    @Override
+    public int check() {
+        return this.sqlSession.selectOne("null_check");
+    }
 }

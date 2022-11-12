@@ -70,13 +70,13 @@
 	</div>
 	<div>
 		<span><b>두집</b>에서 계약한 인테리어를 조회하면 쉽게 주요정보를 입력 할 수 있습니다.</span>
-		<input type="button" value="불러오기" id='port_load_btn' onclick="loadPortfolioInfo()" style="padding: ">
+		<input type="button" value="불러오기" id='port_load_btn' onclick="loadPortfolioInfo()">
 	</div>
 
 
 	<script>
 		function loadPortfolioInfo(){
-			window.open( "./load_info", "Child", "width=800, height=300, top=500, left=500")
+			window.open( "./load_info", "Child", "width=930, height=300, top=500, left=500")
 		}
 	</script>
 </div>

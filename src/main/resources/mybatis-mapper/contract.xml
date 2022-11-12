@@ -11,10 +11,11 @@
     <!--해당 아이디의 계약서 목록-->
     <select id="cont_list" resultType="ContractVO">
         select * from (
-        select rowNum r, c.*, p.businessName
+        select DISTINCT rowNum r, c.*, p.businessName, payT.pay_state
               from (select * from contractT where mem_id = #{mem_id} order by cont_no desc) c,
-                   partnersT p
+                   partnersT p, payT
               where c.businessNum = p.businessNum(+)
+              and c.cont_no = payT.cont_no(+)
         ) where r &gt;=#{startrow} and r &lt;=#{endrow}
     </select>
 
@@ -30,4 +31,13 @@
         update contractT set customer_number=#{customer_number} where cont_no=#{cont_no}
     </update>
 
+    <!--계약서 목록 확인-->
+    <select id = "getClist" resultType="ContractVO">
+        select * from contractT where mem_id=#{mem_id}
+    </select>
+
+    <!--계약번호를 기준으로 계약정보 불러오기-->
+    <select id="getCont" resultType="ContractVO">
+        select * from contractT where cont_no=#{cont_no}
+    </select>
 </mapper>

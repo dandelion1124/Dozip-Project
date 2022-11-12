@@ -5,7 +5,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+<script>
+	function inputNumberFormat(obj) {
+		obj.value = comma(uncomma(obj.value));
+	}
 
+</script>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,7 +26,7 @@
 						<option value="success">입찰 성공</option>
 						<option value="fail">입찰 실패</option>
 					</select> -->
-				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:1px double black;">
+				<div style="padding:0 0 10px 2.5%; width:87%; border-bottom:3.5px double gray;">
 					<ul style="padding:0px;">
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;고객이 업체를 지정하지 않고 신청한 견적 리스트를 확인합니다.</li>
 						<li style="font-size: 0.8rem; margin-bottom: 5px; list-style:none;"><span class="red">*</span>&nbsp;자세히 보기를 클릭하면 세부 견적내역을 확인하고 입찰에 참여하실 수 있습니다.</li>
@@ -31,7 +36,7 @@
 				<!-- <hr style="width: 100%; border:0px; border-top: #7f8c8d double;"> -->
 				<div class="search_box">
 					    <input class="search-txt" name="find_name" id="find_name" type="text" placeholder="검색어를 입력해 주세요"/>
-					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'" style="box-shadow: 0 0 10px rgb(0 0 0 / 15%)";>
+					    <button class="search-btn" type="submit" onclick="location.href='/partners/my_bid'";>
 					    	<img src="/images/partners/search.png" width="20px" height="20px">
 					    </button>
 					</div>
@@ -45,7 +50,7 @@
 					<div class="request_list_top">
 						<!--
 						<input type="checkbox" id="filter"> 
-							<label for="filter" class="filter">완료 의뢰 건 제외</label> -->
+							<label for="filter" class="filter">마감된 의뢰 건 제외</label> -->
 						<div class="request_list_top_right">
 							<!--
 							<select class="fd_search_filter" name="find_field" id="pr_order" data-self="pr_order" data-type="simple">
@@ -77,10 +82,10 @@
 										<c:when test="${e.est_check == '대기중'}">
 											<c:if test="${e.remaindate > 0}">모집중 D-${e.remaindate}</c:if>
 											<c:if test="${e.remaindate == 0}">모집중 D-day</c:if>
-											<c:if test="${e.remaindate < 0}"><span style="color:red;">모집마감</span></c:if>
+											<c:if test="${e.remaindate < 0}"><span style="color:red; opacity:0.5;">모집마감</span></c:if>
 										</c:when>
 										<c:otherwise>
-											<c:if test="${e.est_check != '대기중'}"><span style="color:red;">모집마감</span></c:if>
+											<c:if test="${e.est_check != '대기중'}"><span style="color:red; opacity:0.5;">모집마감</span></c:if>
 										</c:otherwise>
 									</c:choose>
 
@@ -105,7 +110,7 @@
 									<li class="info">
 										<p class="request_info_tit">희망 예산</p>
 										<p class="request_info_val">
-											<span><b>${e.est_bud}만원</b></span>
+											<span onkeyup="inputNumberFormat(this)"><b>${e.est_bud}만원</b></span>
 										</p>
 									</li>
 									<li class="info">
@@ -141,12 +146,12 @@
 									<p class="val"><b>${e.addr} </b></p></li>
 								<li class="info2">
 									<p class="key">참여 파트너수</p>
-									<p class="val"><b> </b></p></li>
+									<p class="val" style="color:blue;"><b>${e.ecount}개</b></p></li>
 							</ul>
 							<div class="bid_detail">
 								<a href="/partners/bid_detail?no=${e.est_num}" class="btn-d-view"><b>자세히 보기</b></a>
 							</div>
-							<c:if test="${e.est_check != '대기중'}">
+							<c:if test="${e.bcount == 1}">
 								<ul class="company_profile">
 									<li class="info3" style="margin-top:5px;">
 										<p style="color:blue; list-style:none;">★입찰 참여중★</p>

@@ -117,18 +117,38 @@ public class MyInteriorController {
         PayVO vo= new PayVO();
         vo.setBusinessNum((String) session.getAttribute("businessNum"));
         List<PayVO> plist = null;
+        int totalMontlyBal=0;
+        ModelAndView mv = new ModelAndView("/partners/myinterior/monthly_details");
+
         if(pay_date!= null){ //시공완료
             vo.setPay_date1(pay_date);
+            mv.addObject("month",pay_date);
             plist=myInteriorService.monthly_balance(vo);
+            for(PayVO p: plist){
+                totalMontlyBal+=Integer.parseInt(p.getPay_cost1())+Integer.parseInt(p.getPay_cost2())+Integer.parseInt(p.getPay_cost3());
+            }
+
         }
         if(pay_date_ing!= null){//시공중
             vo.setPay_date1(pay_date_ing);
+            mv.addObject("month",pay_date_ing);
             plist=myInteriorService.monthly_balance_ing(vo);
+            for(PayVO p: plist){
+                if(p.getPay_cost1()!= null){
+                    totalMontlyBal+=Integer.parseInt(p.getPay_cost1());
+                }
+                if(p.getPay_cost2()!= null){
+                    totalMontlyBal+=Integer.parseInt(p.getPay_cost2());
+                }
+                if(p.getPay_cost3()!= null){
+                    totalMontlyBal+=Integer.parseInt(p.getPay_cost3());
+                }
+            }
         }
         System.out.println(plist);
 
-        ModelAndView mv = new ModelAndView("/partners/myinterior/monthly_details");
         mv.addObject("plist", plist);
+        mv.addObject("totalMontlyBal",totalMontlyBal);
         return mv;
     }
 }

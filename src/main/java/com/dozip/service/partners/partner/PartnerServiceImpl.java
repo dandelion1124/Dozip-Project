@@ -27,9 +27,10 @@ public class PartnerServiceImpl implements PartnerService {
         return partnerDao.getPartnersInfo2(findid_business_num);
     }
 
-
-
-
+    @Override
+    public void updatePwd(PartnersVO vo) {
+        partnerDao.updatePwd(vo);
+    }
 
     @Override
     public int checkBusinessNum(PartnersVO pv) {

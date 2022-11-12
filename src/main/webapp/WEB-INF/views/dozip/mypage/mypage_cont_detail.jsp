@@ -39,8 +39,8 @@
                     <th>공사중</th><th rowspan="2" class="next_arrow">>></th><th>공사완료</th>
                 </tr>
                 <tr>
-                    <td><c:if test="${p.pay_state=='계약금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='계약금요청'}">0</c:if></td>
-                    <td><c:if test="${p.pay_state=='계약금결제완료'||p.pay_state=='중도금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='계약금결제완료'&&p.pay_state!='중도금요청'}">0</c:if></td>
+                    <td>0</td>
+                    <td><c:if test="${p.pay_state=='계약금요청'||p.pay_state=='계약금결제완료'||p.pay_state=='중도금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='계약금결제완료'&&p.pay_state!='중도금요청'&&p.pay_state!='계약금요청'}">0</c:if></td>
                     <td><c:if test="${p.pay_state=='중도금결제완료'||p.pay_state=='잔금요청'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='중도금결제완료'&&p.pay_state!='잔금요청'}">0</c:if></td>
                     <td><c:if test="${p.pay_state=='잔금결제완료'}"><span style="color: blue">1</span></c:if><c:if test="${p.pay_state!='잔금결제완료'}">0</c:if></td>
                 </tr>

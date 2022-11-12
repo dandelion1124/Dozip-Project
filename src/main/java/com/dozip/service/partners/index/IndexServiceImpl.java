@@ -29,4 +29,29 @@ public class IndexServiceImpl implements IndexService{
     public int newQnaCount(String bNum) { 
         return indexDAO.newQnaCount(bNum);
     }
+
+    @Override
+    public int directEstCount(String bNum) { // 직접 견적 신청 개수
+        return indexDAO.directEstCount(bNum);
+    }
+
+    @Override
+    public int reviewCount(String bNum) { //  등록된 리뷰 개수
+        return indexDAO.reviewCount(bNum);
+    }
+
+    @Override //견적신청개수
+    public int requestContCount(String bNum) {
+        return indexDAO.requestContCount(bNum);
+    }
+
+    @Override
+    public int getreviewStart(String bNum) {
+        return indexDAO.getreviewStart(bNum);
+    }
+
+    @Override
+    public int finishedInteriorCount(String bNum) {
+        return indexDAO.finishedInteriorCount(bNum);
+    }
 }

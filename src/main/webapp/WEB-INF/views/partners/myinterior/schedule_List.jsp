@@ -22,8 +22,8 @@
     for(let i=0; i< allData.length;i++) {
         oneDayData ={
             'title': allData[i].cont_no+"번 "+allData[i].cont_title,
-            'start': allData[i].cont_date1,
-            'end': allData[i].cont_date3,
+            'start': allData[i].cont_start,
+            'end': allData[i].cont_end,
         }
         allDataArray.push(oneDayData);
     }

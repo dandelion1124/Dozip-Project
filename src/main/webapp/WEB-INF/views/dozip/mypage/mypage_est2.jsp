@@ -29,6 +29,7 @@
             <ul style="padding:0px;">
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님이 업체를 지정하지 않고 신청한 견적 내역을 확인합니다.</li>
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;입찰현황에서 신청번호를 선택하면 참여한 업체를 확인할 수 있습니다.</li>
+                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;상태는 <b style="font-size: 1.0rem; color: #9B51E0"">[대기중->계약요청->작성완료->계약완료->공사완료]</b> 순으로 진행됩니다.</li>
                 <li style="font-size: 0.8rem;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;마감일자가 되기 전에 공사를 진행할 업체를 선택해주세요.</li>
             </ul>
         </div>
@@ -46,12 +47,14 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="e" items="${elist}">
                         <tr>
-                            <td>${e.est_num}</td><%--번호--%>
+                            <td><a href="#" onclick="est_view('${e.est_num}')">${e.est_num}</a></td><%--번호--%>
                             <td>${e.est_zoning}</td><%--공간유형--%>
                             <td style="word-wrap: break-word; max-width : 200px;">${e.est_detail.substring(0, e.est_detail.length() - 1)}</td><%--공간선택--%>
                             <td>${e.est_areaP} 평</td><%--평수--%>
                             <td>${e.est_bud} 만원</td><%--예산--%>
-                            <td>${e.est_check}</td><%--진행상황(수락/거절)--%>
+                            <td style="
+                                <c:if test="${e.est_check=='공사완료'}">color:blue</c:if>"
+                            >${e.est_check}</td><%--진행상황(수락/거절)--%>
                             <td>${e.est_date.substring(0,10)}</td><%--신청일자--%>
                             <td>${e.est_dateEnd.substring(0,10)}</td><%--마감일자--%>
                         </tr>
@@ -188,6 +191,9 @@
     $( ".my_apply_table tr " ).on( "mouseleave", function() {
         $( this ).css( "background-color", "white" );
     });
+    function est_view(est_num){
+        window.open('/dozip/my_est_view?est_num='+est_num,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
 </script>
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

@@ -18,7 +18,7 @@
     <script src="/js/partners/javascript2.js"></script>
     <script src='/js/partners/calendar.js'></script>
     <script src='/js/address.js'></script>
-
+    <script src="/js/utilities.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> <%-- 달력 --%>
@@ -67,7 +67,7 @@ if(session.getAttribute("p_id")==null) {
             <li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;의뢰</a>
                 <ul>
                     <li><a href="/partners/bid">입찰의뢰</a></li>
-                    <li><a href="/partners/construct_request">시공요청</a></li>
+                    <li><a href="/partners/construct_request">시공요청(지정)</a></li>
                 </ul>
             </li>
             <li><a href="#">&nbsp;&nbsp;&nbsp;견적&nbsp;관리</a>
@@ -90,7 +90,7 @@ if(session.getAttribute("p_id")==null) {
             </li>
             <li><a href="#">&nbsp;&nbsp;&nbsp;광고&nbsp;관리</a>
                 <ul>
-                    <li><a href="/partners/marketing">노출프로모션</a></li>
+                    <li><a href="#">노출프로모션</a></li>
                 </ul>
             </li>
             <li><a href="#">&nbsp;&nbsp;&nbsp;고객&nbsp;관리</a>

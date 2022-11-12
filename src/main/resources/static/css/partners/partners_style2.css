@@ -343,7 +343,7 @@
    .my_bid_icon{
       position:fixed;
       top:120px;
-      right:5%;
+      right:4%;
    }
 
    #filter{
@@ -354,7 +354,7 @@
    }
 
    .request_list_top{
-      padding: 7px 0 0 2.5%;
+      padding: 7px 0 7px 1%;
    }
 
    .request_list_container{
@@ -698,9 +698,8 @@
       float:left;
    }
    .sec-item{
-      margin:10px 0;
+      margin:5px 0;
       display: flex;
-      flex-wrap:no-wrap;
    }
    .sec-title{
       flex-basis:25%;
@@ -729,7 +728,7 @@
    	cursor:pointer;
     overflow: hidden;
     margin: 15px 25% 15px 25%;
-    width: 40%;
+    width: 20%;
     text-decoration-line: none;
     display: block;
     height: 42px;
@@ -753,8 +752,11 @@
     background: #00BFFF;
     color: #fff;
     font-size: 15px;
-    letter-spacing: -0.025em;
+    letter-spacing: 0.2em;
     text-align:center;
+    /* float:right; */
+    width:100px;
+    font-size:15px;
    }
    #bid_part_detail{
    	/*display:inline-block; */
@@ -764,8 +766,8 @@
    }
    .bid_complete_button{
    	display:inline-block;
-   	display:none;
-   	width:50%;
+   	width:100%;
+    display:none;
    }
    .bid_but_tab{
      padding:0 15% 0 15%;
@@ -780,7 +782,7 @@
 	 	color:#4398ed;
 	 }
 	 .bid_detail_text01, .bid_detail_text02, .bid_detail_text03{
-	 	width: 46%;
+	 	width: 50%;
 	 	margin:5px 2%;
 	 	display: inline-block;
 	 	text-align:right;
@@ -852,7 +854,6 @@
     }
  /*construct-request */
     .my_req_list{
-      margin-top:20px;
       margin-bottom:20px;
    }
    .my_req_label{

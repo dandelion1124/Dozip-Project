@@ -1,11 +1,16 @@
 package com.dozip.controller.admin;
 
+import com.dozip.service.admin.AdminMemService;
 import com.dozip.service.dozip.qna.QnaService;
 import com.dozip.service.partners.customer.CustomerService;
 import com.dozip.utils.Paging;
+import com.dozip.vo.MemberVO;
+import com.dozip.vo.PartnersVO;
 import com.dozip.vo.QnaVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,14 +30,41 @@ public class AdminController {
     private QnaService qnaService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private AdminMemService adminMemService;
 
     @RequestMapping(value = "/")
     public String dozip(){
         return "/admin/index";
     };
 
-    @RequestMapping(value = "mem")
-    public String admin() {return "/admin/memberList";}
+    @RequestMapping(value = "mem") //전체 고객 리스트 불러오기
+    public ModelAndView admin(MemberVO m) {
+        List<MemberVO>mlist = new ArrayList<>();
+        mlist = this.adminMemService.getMemList(); //회원 리스트
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("mlist",mlist);
+        mv.setViewName("/admin/memberList");
+        return mv;
+    }
+    @RequestMapping(value = "part")
+    public ModelAndView part(PartnersVO p){
+        List<PartnersVO>plist = new ArrayList<>();
+        plist = this.adminMemService.getPartList(); //파트너스 리스트
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("plist",plist);
+        mv.setViewName("/admin/memberList");
+        return mv;
+    }
+    @RequestMapping(value = "mem_del") //해당 회원 삭제시키기
+    public ModelAndView mdel(ModelAndView mv,HttpServletRequest request){
+        String mem_id = request.getParameter("mem_id");
+        this.adminMemService.delMem(mem_id);
+
+        return new ModelAndView("redirect:/admin/mem");
+    }
 
     @RequestMapping(value = "write")
     public String write(){return "/admin/writingList";}

@@ -28,6 +28,7 @@
             <ul style="padding:0px;">
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;고객님이 업체를 지정하여 신청한 견적 내역을 확인합니다.</li>
                 <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;번호를 누르면 상세페이지에서 내용을 확인할 수 있습니다.</li>
+                <li style="font-size: 0.8rem; margin-bottom: 7px;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;상태는 <b style="font-size: 1.0rem; color: #9B51E0">[대기중->수락->계약요청->계약완료->공사완료 or 대기중->거절]</b> 순으로 진행됩니다.</li>
                 <li style="font-size: 0.8rem;"><img src="/images/dozip/blt_check_red.jpg"/>&nbsp;업체의 수락/거절 내용을 확인 할 수 있습니다.</li>
             </ul>
         </div>
@@ -45,14 +46,18 @@
                 <c:if test="${fn:length(elist) != 0}">
                     <c:forEach var="e" items="${elist}">
                         <tr>
-                            <td>${e.est_num}</td><%--번호--%>
+                            <td><a href="#" onclick="est_view('${e.est_num}')">${e.est_num}</a></td><%--번호--%>
                             <td>${e.est_date.substring(0,10)}</td><%--신청날짜--%>
                             <td>${e.est_zoning}</td><%--공간유형--%>
                             <td>${e.est_detail.substring(0, e.est_detail.length() - 1)}</td><%--공간선택--%>
                             <td>${e.est_areaP} 평</td><%--평수--%>
                             <td>${e.est_bud} 만원</td><%--예산--%>
                             <td>${e.businessName}</td><%--업체명--%>
-                            <td>${e.est_check}</td><%--진행상황(수락/거절)--%>
+                            <td id="state" style="
+                                <c:if test="${e.est_check=='공사완료'}">color:blue;</c:if>
+                                <c:if test="${e.est_check=='계약완료'||e.est_check=='계약요청'}">color:#347844;</c:if>
+                                <c:if test="${e.est_check=='거절'}">color:red;</c:if>
+                                    ">${e.est_check}</td><%--진행상황(수락/거절)--%>
                             <td>
                                 <c:if test="${e.est_check=='수락'}">
                                     <button type="button" id="agree_btn" value="${e.est_num}">계약요청</button>
@@ -134,7 +139,9 @@
             }
         })
     }
-
+    function est_view(est_num){
+        window.open('/dozip/my_est_view?est_num='+est_num,"_blank",'width=745, height=955, top=0, left=100, resizable=no')
+    }
 
 </script>
 <%-- 하단 공통부분 --%>

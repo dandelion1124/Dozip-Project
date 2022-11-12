@@ -29,10 +29,6 @@
 
 
 
-        <!--pay_state 1(계약금완납),2(중도금신청),3(중도금완납),4(잔금신청),5(잔금완납)
-        -->
-
-
     </select>
     <!--내공사 내역에서 계약서 조회 -->
     <select id="show_contract" resultType="ContractVO">

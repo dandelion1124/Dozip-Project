@@ -20,7 +20,11 @@
     .my_rv_table td { border-bottom: 1px solid #B3B9BE; padding: 10px 0; font-size: 0.8rem; }
     .page_area{ text-align:center; margin-top: 10px; }
     .re_contt{ overflow: hidden; white-space: nowrap; text-overflow: ellipsis; word-break: break-all; max-width: 200px; min-width : 100px;  }
+    #r_del{border:none; border-radius: 2px;color: white;background-color: #FF0033; height: 25px;}
+    #del_a{text-decoration:none; color: white;}
 </style>
+
+
 <%-- 내 후기 관리 --%>
 <div class="mypage_body" id="my_review_list">
     <div class="rv_wrap">
@@ -37,23 +41,25 @@
         <div class="my_rv_cont">
             <table class="my_rv_table">
                 <tr>
-                    <th style="width: 90px;">번호</th> <th  style="width: 110px;">계약번호</th>
-                    <th>제목</th> <th>내용</th><th style="width: 120px;">작성일</th>
+                    <th style="width: 8% ">번호</th> <th  style="width: 110px;">계약번호</th>
+                    <th style="width: 10%">제목</th> <th>내용</th><th style="width: 120px;">작성일</th>
+                    <th style="width: 120px;">후기삭제</th>
                 </tr>
                 <c:if test="${fn:length(rlist) == 0}">
-                    <tr><td colspan="5">등록된 후기가 없습니다</td></tr>
+                    <tr><td colspan="6">등록된 후기가 없습니다</td></tr>
                 </c:if>
                 <c:if test="${fn:length(rlist)!=0}">
                     <c:forEach var="i" begin="0" end="${fn:length(rlist)-1}" step="1">
-                        <tr>
+                        <tr id="r_tr">
                             <td id="num">
                                 <c:set var="number" value="${(p.count-(p.pageSize*(p.page-1)))-i}" />
                                 <c:out value="${number}"/>
                             </td>
-                            <td>${rlist[i].cont_no}</td>
-                            <td class = "re_contt"><a href="review_detail?re_no=${rlist[i].re_no}">${rlist[i].re_title}</a></td>
-                            <td class = "re_contt">${rlist[i].re_cont}</td>
+                            <td id="cont_no">${rlist[i].cont_no}</td>
+                            <td class = "re_title"><a href="review_detail?re_no=${rlist[i].re_no}">${rlist[i].re_title}</a></td>
+                            <td class = "re_contt" style="width: 100px; padding-left: 50px;">${rlist[i].re_cont}</td>
                             <td>${rlist[i].re_date.substring(0,10)}</td>
+                        <td><button id = "r_del" onclick="review_del()"><a id = "del_a" href="review_del?re_no=${rlist[i].re_no}">삭제</a></button></td>
                         </tr>
                     </c:forEach>
                 </c:if>
@@ -88,6 +94,13 @@
         $( this ).css( "background-color", "white" );
     });
 </script>
+
+<script>
+    function review_del(){
+        alert('후기를 삭제하시겠습니까?');
+    }
+</script>
+
 
 <%-- 하단 공통부분 --%>
 <jsp:include page="./mypage_footer.jsp" />

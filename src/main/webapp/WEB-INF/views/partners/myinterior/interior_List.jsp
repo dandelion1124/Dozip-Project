@@ -6,6 +6,7 @@
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <script src="/js/utilities.js"></script>
+
 <link rel="stylesheet" href="/css/partners/myinterior.css">
 <style>
     #interiorList_table td{
@@ -114,7 +115,12 @@
                 </td>
                 <td>${fn:substring(c.cont_start,0,10)}</td>
                 <td>${fn:substring(c.cont_end,0,10)}</td>
-                <td>${c.pay_state}</td>
+                <c:if test="${c.pay_state=='잔금결제완료'}">
+                    <td style="color:red;font-weight: bold">${c.pay_state}(공사완료)</td>
+                </c:if>
+                <c:if test="${c.pay_state!='잔금결제완료'}">
+                    <td>${c.pay_state}</td>
+                </c:if>
                 <script>
                     function schedule_regit(cont_no){
                         let regitCheck=confirm('일정 등록을 하시겠습니까?')
@@ -132,13 +138,12 @@
                             });
                         }
                         }
-
                 </script>
                 <%--
-                계약금요청, 계약금 결제완료, 중도금요청, 중도금결제완료, 잔금요청, 잔금 결제완료=공사완료
+                계약금요청, 계약금 결제완료, 중도금결제완료, 잔금 결제완료=공사완료
                 --%>
                 <td><button onclick="show_contract('${c.cont_no}')" class='schedule_btn'>보기</button></td>
-                <td>보기</td>
+                <td><button onclick="est_detail('${c.est_num}')" class='schedule_btn'>보기</button></td>
             </tr>
             </c:forEach>
         </c:if>

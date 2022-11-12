@@ -2,6 +2,7 @@ package com.dozip.controller.dozip;
 
 import com.dozip.service.dozip.apply.ApplyService;
 import com.dozip.utils.ConvertAddr;
+import com.dozip.utils.UploadPath;
 import com.dozip.vo.EstimateVO;
 import com.dozip.vo.PartnersVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/dozip/*")
 public class ApplyController {
-    @Value("${uploadPath}")
-    private String uploadPath;
+
 
     @Autowired
     private ApplyService applyService;
@@ -103,9 +103,10 @@ public class ApplyController {
 
         String bn = request.getParameter("bNum");
         System.out.println("선택한 회사 : "+bn);
+        UploadPath path = new UploadPath();
+        String uploadPath=path.getPath();
 
-
-        uploadPath+="est_upload//";
+        uploadPath+="est_upload\\";
 
         Date now =new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-");
@@ -120,10 +121,11 @@ public class ApplyController {
 
         String dbFilename= uploadDBPath + sdf.format(now)+randomName +".jpg";   //String 객체에 DB(html에서 불러올) 파일명 저장
         String saveFilename= uploadPath + sdf.format(now)+randomName +".jpg";   //String 객체에 실제 파일명 저장
+        System.out.println(saveFilename);
         est_file.transferTo(new File(saveFilename)); //실제 파일저장.
         e.setEst_file(dbFilename);
 
-        if(bn != null) {
+        if(bn != null) {    //선택한 회사가 1개 또는 그 이상이면 갯수만큼 여러번 DB에 같은 값 저장
             String[] array=bn.split("/");
             for (int i = 0; i < array.length; i++) {
                 e.setBusinessNum(array[i]);
