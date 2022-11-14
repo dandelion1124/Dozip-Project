@@ -20,6 +20,7 @@ public interface MyInteriorService {
 
     PayVO totalBalance_ing(PayVO vo); // 시공중 정산내역 합계 불러오기
 
+    List<ContractVO> getContractList_port(String businessNum);
 
     List<PayVO> monthly_balance(PayVO vo); //시공완료  월별 정산상세내역 불러오기
 

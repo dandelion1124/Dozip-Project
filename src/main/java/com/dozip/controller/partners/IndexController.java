@@ -45,8 +45,6 @@ public class IndexController {
             /*미답변 문의 개수 */
             int qnaCount = indexService.newQnaCount(bNum);
 
-
-
             /* 업체시공요청 개수 */
             int directEstCount = indexService.directEstCount(bNum);
 
@@ -57,13 +55,9 @@ public class IndexController {
                 /* 업체 평점합 가져오기 */
                 getreviewStar= indexService.getreviewStart(bNum);
             }
-
             System.out.println("getreviewStar: "+getreviewStar);
             /*계약 요청 개수 */
             int requestContCount = indexService.requestContCount(bNum);
-
-
-
             /* 공사완료 개수 */
             int finishedInterior = indexService.finishedInteriorCount(bNum);
 
@@ -78,10 +72,6 @@ public class IndexController {
             mv.addObject("finishedInterior",finishedInterior);
             mv.addObject("portfolioCount",portfolioCount);
         }
-
-        //월별 정산내역
-
-
 
        return mv;
     }

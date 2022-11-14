@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -68,7 +69,18 @@ public class MyInteriorController {
         mv.addObject("cv", myInteriorService.show_contract(cont_no));
         return mv;
     }
+    @RequestMapping("/load_info")
+    public String load_info(Model model, HttpSession session) {
 
+        //파트너스 번호로 계약서 불러오기
+        String businessNum = (String) session.getAttribute("businessNum");
+
+        List<ContractVO> clist = myInteriorService.getContractList_port(businessNum);
+
+        System.out.println(clist);
+        model.addAttribute("clist", clist);
+        return "/partners/portfolio/load_info";
+    }
     @RequestMapping(value = "/schedule_list") //내공사 일정
     public ModelAndView schedule_list(HttpSession session) throws JsonProcessingException {
 
