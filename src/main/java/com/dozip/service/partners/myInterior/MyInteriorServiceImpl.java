@@ -56,6 +56,10 @@ public class MyInteriorServiceImpl implements MyInteriorService {
         return myInteriorDAO.monthly_balance(vo);
     }
 
+    @Override
+    public List<ContractVO> getContractList_port(String businessNum) {
+        return myInteriorDAO.getContractList_port(businessNum);
+    }
     @Override //시공중  월별 정산상세내역 불러오기
     public List<PayVO> monthly_balance_ing(PayVO vo) {
 

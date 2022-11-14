@@ -67,10 +67,6 @@ public class PartnerServiceImpl implements PartnerService {
 
 
 
-    @Override
-    public List<ContractVO> getContractList_port(String businessNum) {
-        return partnerDao.getContractList_port(businessNum);
-    }
 
     @Override
     public List<EstimateVO> getpartEstList(String businessNum) {

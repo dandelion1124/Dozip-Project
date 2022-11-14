@@ -26,4 +26,5 @@ public interface MyInteriorDAO {
 
     List<PayVO> monthly_balance_ing(PayVO vo); //시공중  월별 정산상세내역 불러오기
 
+    List<ContractVO> getContractList_port(String businessNum);
 }

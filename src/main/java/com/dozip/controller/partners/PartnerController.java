@@ -113,8 +113,7 @@ public class PartnerController {
                     imsiPwd+="ims!";
                     vo.setP_Pw(passwordEncoder.encode(imsiPwd));
                     partnerService.updatePwd(vo);
-                    System.out.println("zzzz" +vo.getP_Pw());
-
+                    System.out.println(vo);
                     String toEmail = vo.getP_MailId()+"@"+vo.getP_MailDomain();
 
                     System.out.println(toEmail);

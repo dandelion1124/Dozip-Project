@@ -20,10 +20,6 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
-
-    /*
-    고객 문의페이지
-     */
     // 검색 전,후 고객문의 글 보기
     @RequestMapping(value = "/customer_qna")
     public String customerQna(Model model, HttpSession session, HttpServletRequest request, QnaVO findQ, String answer) throws Exception {

@@ -15,7 +15,6 @@ public interface PartnerService {
     /*minwoo*/
     List<BidVO> getBidList();
 
-    List<ContractVO> getContractList_port(String businessNum);
 
     List<EstimateVO> getpartEstList(String businessNum);
 
