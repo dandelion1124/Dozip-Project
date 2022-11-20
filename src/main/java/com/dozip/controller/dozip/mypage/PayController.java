@@ -53,7 +53,7 @@ public class PayController {
         return map;
     }
 
-    @Scheduled(cron = "0/10 * * * * ?") //1식간마다 실행 (빨리 상태 보고 싶을땐 "0/15 * * * * ?" 15초마다로 변경해서 확인)
+    @Scheduled(cron = "0 0 1 * * ?") //1시간마다 실행 (빨리 상태 보고 싶을땐 "0/15 * * * * ?" 15초마다로 변경해서 확인)
     public void payStateUpdate(){
         int res =  this.payService.check();
         if(res!=0) { //DB에 등록된 값이 있을 경우에만 수행

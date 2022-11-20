@@ -55,4 +55,9 @@ public class MyInteriorDAOImpl implements MyInteriorDAO{
     public List<PayVO> monthly_balance_ing(PayVO vo) {
         return sqlSession.selectList("montly_bal_ing", vo);
     }
+
+    @Override
+    public List<ContractVO> getContractList_port(String businessNum) {
+        return null;
+    }
 }
